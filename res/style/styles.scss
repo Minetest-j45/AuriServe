@@ -1,0 +1,173 @@
+@import "reset";
+
+$neutral-000: #f0f4f8;
+$neutral-100: #d9e2ec;
+$neutral-200: #bcccdc;
+$neutral-300: #9fb3c8;
+$neutral-400: #829ab1;
+$neutral-500: #627d98;
+$neutral-600: #486581;
+$neutral-700: #334e68;
+$neutral-800: #243b53;
+$neutral-900: #102a43;
+$neutral-1000:#081e38;
+
+$t-ufast: 0.075s;
+$t-fast: 0.15s;
+$t-med: 0.3s;
+$t-slow: 0.5s;
+
+%card {
+	background-color: #fff;
+	box-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);
+	border-radius: 4px;
+	padding: 16px 24px;
+}
+
+%center_wrap {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+%para_no_collapse {
+	// Use Japanese fullwidth spaces
+	// to prevent line collapsing.
+	&::before, &::after { content: "　"; }
+}
+
+%material_border {
+	border-radius: 4px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: $neutral-400;
+}
+
+%material_input {
+	@extend %material_border;
+	border-color: $neutral-100;
+	outline: 0;
+
+	&:hover {
+		border-color: $neutral-200;
+	}
+
+	&:focus {
+		border-color: $neutral-400;
+	}
+
+	&::placeholder {
+		font-weight: 400;
+		color: $neutral-400;
+	}
+}
+
+%material_button {
+	position: relative;
+	background-color: transparent;
+	border: none;
+	outline: 0;
+
+	border-radius: 4px;
+	border: 1px solid transparent;
+	background: transparentize($neutral-800, 1 - .075);
+
+	$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);
+
+	&::after {
+		content: " ";
+		display: block;
+		position: absolute;
+
+		// Compensate for 1px border.
+		top: -1px;
+		left: -1px;
+		right: -1px;
+		bottom: -1px;
+
+		margin: 4px;
+		transform: scale(0.87);
+	
+		border-radius: 4px;
+		background: transparentize($neutral-400, 1);
+
+		transition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;
+	}
+
+	&:hover::after, &:focus::after {
+		margin: 0px;
+		transform: scale(1);
+		background: transparentize($neutral-400, 1 - .15);
+
+		transition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;
+	}
+
+	&:active {
+		transition: border $t-fast;
+	}
+
+	&:focus {
+		@extend %material_border; 
+	}
+}
+
+body {
+	background-color: $neutral-000;
+	color: $neutral-800;
+	font-family: "Roboto", sans-serif;
+}
+
+*::selection {
+	background-color: transparentize($neutral-300, 0.5);
+}
+
+.center_wrap {
+	@extend %center_wrap;
+}
+
+#login_card {
+	@extend %card;
+
+	display: flex;
+	flex-direction: column;
+
+	.profile_placeholder {
+		display: block;
+		width: 70%;
+		height: 0;
+		padding-bottom: 70%;
+		margin: 16px auto 32px auto;
+
+		border-radius: 50%;
+		background: linear-gradient(45deg, #0288d1, #80deea);
+
+		box-shadow: 0px 0px 0px 6px $neutral-100, 0px 0px 0px 12px $neutral-000;
+	}
+
+	input {
+		@extend %material_input;
+		margin-bottom: 8px;
+	}
+
+	button {
+		@extend %material_button;
+		user-select: none;
+		margin-top: 16px;
+		margin-bottom: 8px;
+	}
+
+	input, button {
+		width: 230px;
+	}
+}
+
+input, button {
+	padding: 12px;
+}
+
+.warning {
+	@extend %para_no_collapse;
+	user-select: none;
+	color: #ef4e4e;
+}
