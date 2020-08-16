@@ -5,7 +5,14 @@
   "main": "build/Main.js",
   "scripts": {
     "start": "ts-node --project ./tsconfig.json ./src/Main.ts",
-    "dev": "sass --watch res/style/styles.scss res/style/styles.css & nodemon --config ./nodemon.json"
+    "dev": "npm run dev-admin & npm run dev-admin-sass & npm run dev-server",
+    "dev-admin": "webpack --config admin/wp-dev.js",
+    "dev-admin-sass": "sass --watch admin/res/style/styles.scss admin/res/style/styles.css",
+    "dev-server": "nodemon --config server/nodemon.json",
+    "prod": "npm run prod-admin & npm run prod-admin-sass & npm run prod-server",
+    "prod-admin": "webpack --config admin/wp-prod.js",
+    "prod-admin-sass": "sass admin/res/style/styles.scss admin/res/style/styles.css",
+    "prod-server": "ts-node --project server/tsconfig.json ./server/Main.ts"
   },
   "repository": {
     "type": "git",
@@ -21,21 +28,54 @@
   },
   "homepage": "https://github.com/Aurailus/AuriServe#readme",
   "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/polyfill": "^7.10.4",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
+    "@types/bcrypt": "^3.0.0",
     "@types/cookie-parser": "^1.4.2",
+    "@types/js-cookie": "^2.2.6",
+    "@types/log4js": "^2.3.5",
+    "@types/minimist": "^1.2.0",
+    "@types/mongodb": "^3.5.25",
     "@types/node": "^14.0.27",
+    "@types/react": "^16.9.46",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-router-dom": "^5.1.5",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^4.2.1",
+    "file-loader": "^6.0.0",
+    "fork-ts-checker-webpack-plugin": "^5.0.14",
+    "html-webpack-plugin": "^4.3.0",
+    "node-sass": "^4.14.1",
     "nodemon": "^2.0.4",
-    "ts-node": "^8.10.2"
+    "react-hot-loader": "^4.12.21",
+    "sass-loader": "^9.0.3",
+    "source-map-loader": "^1.0.1",
+    "style-loader": "^1.2.1",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-livereload-plugin": "^2.3.0",
+    "webpack-merge": "^5.1.1"
   },
   "dependencies": {
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
+    "js-cookie": "^2.2.1",
     "log4js": "^6.3.0",
     "minimist": "^1.2.5",
     "mongodb": "^3.6.0",
     "prompt": "^1.0.0",
     "pug": "^3.0.0",
-    "typescript": "^3.9.7"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0"
   }
 }

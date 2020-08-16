@@ -1,0 +1,137 @@
+@import "partial/Ext";
+
+.AppHeader {
+	width: 100%;
+	height: auto;
+	
+	overflow: auto;
+	background-color: #fff;
+
+	user-select: none;
+
+	.AppHeader-wrap {
+		position: relative;
+		display: block;
+
+		max-width: $wrap-wide;
+		margin: 0 auto;
+		width: 100%;
+		height: 64px;
+
+		overflow: hidden;
+
+		.AppHeader-nav {
+			display: flex;
+			justify-content: center;
+
+			a {
+				display: inline-block;
+				position: relative;
+
+				font-family: "Alata", "Roboto", sans-serif;
+				text-decoration: none;
+				font-size: 20px;
+				padding: 4px 8px;
+				margin: 14px 32px;
+
+				color: $neutral-400;
+				outline: 0;
+
+				transition: color $t-fast;
+
+				&::after {
+					content: " ";
+					display: block;
+					position: absolute;
+					left: 0;
+					right: 0;
+					bottom: 0;
+					height: 2px;
+					background: $neutral-800;
+
+					opacity: 0;
+					transform: scaleX(0);
+
+					transition: opacity $t-fast, transform $t-fast;
+				}
+
+				&:hover {
+					color: $neutral-600;
+					
+					&::after {
+						opacity: 0.5;
+						transform: scaleX(0.8);
+					}
+				}
+
+				&:focus {
+					&::after {
+						opacity: 0.5;
+						transform: scaleX(0.8);
+					}
+				}
+
+				&.active {
+					color: $neutral-800;
+					
+					&::after {
+						opacity: 0.9;
+						transform: scaleX(0.85);
+					}
+				}
+
+				&:active {
+					color: $neutral-800;
+					
+					&::after {
+						opacity: 1;
+						transform: scaleX(1);
+					}
+				}
+			}
+		}
+
+		.AppHeader-logo {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			width: 44px;
+			height: 44px;
+
+			animation: AppHeader-logo-glide $t-slow 1;
+			@keyframes AppHeader-logo-glide {
+				from {transform: translate(-20px, 20px); opacity: 0.4;}
+				to {transform: translate(0, 0); opacity: 1;}
+			}
+		}
+
+		.AppHeader-logout {
+			@extend %material_button;
+			
+			position: absolute;
+			top: 8px;
+			right: 8px;
+			width: 48px;
+			height: 48px;
+
+			padding: 8px;
+			border-radius: 50%;
+
+			img {
+				width: 100%;
+				height: 100%;
+				position: relative;
+				left: 2px;
+			}
+		}
+
+		.AppHeader-options {
+			@extend .AppHeader-logout;
+			right: 64px;
+
+			img {
+				left: 0px;
+			}
+		}
+	}
+}

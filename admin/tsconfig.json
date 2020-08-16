@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "lib": [ "dom", "es2015", "es2016", "es2017" ],
+    "allowJs": true,    // Allow .js files to be compiled as well.
+    "jsx": "react",     // Generate react-compatible code from .jsx files.
+    "sourceMap": true,  // Generate a sourcemap.
+    "outDir": "res/script",
+    "removeComments": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,             // Report errors on unused locals.
+    "noUnusedParameters": true,         // Report errors on unused parameters.
+    "noImplicitReturns": true,          // Report error when not all code paths in function return a value.
+    "noFallthroughCasesInSwitch": true, // Report errors for fallthrough cases in switch statement.
+  },
+  "include": ["./src",]
+}
