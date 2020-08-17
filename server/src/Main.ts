@@ -5,7 +5,7 @@ import log4js from "log4js"
 import minimist from "minimist"
 
 import Server from "./Server"
-import resolvePath from "./util/ResolvePath"
+import resolvePath from "../../common/util/ResolvePath"
 import {Config, mergeConfig} from "./interface/Config"
 
 const DEFAULT_DATA_DIR = "site-data";

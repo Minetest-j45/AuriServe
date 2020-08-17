@@ -7,6 +7,7 @@ import './App.scss';
 import LoginForm from "./LoginForm"
 import AppHeader from "./AppHeader"
 import MainPage from "./pages/MainPage"
+import MediaPage from "./pages/MediaPage"
 
 import { SiteData } from "../../common/SiteData"
 
@@ -56,7 +57,7 @@ export default class App extends React.Component<{}, State> {
 									<MainPage data={this.state.data!}/>
 								</Route>
 								<Route exact path="/media">
-									<p>media</p>
+									<MediaPage data={this.state.data!}/>
 								</Route>
 								<Route exact path="/pages">
 									<p>pages</p>

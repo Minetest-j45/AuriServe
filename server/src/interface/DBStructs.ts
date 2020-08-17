@@ -30,5 +30,13 @@ export interface Media {
 	_id?: ObjectID;
 
 	name: string;
+	path: string;
+	ext: string;
+
+	dimensions?: {x: number, y: number};
+
+	uploadDate: number;
+	uploadUser: string;
+	
 	size: number;
 }

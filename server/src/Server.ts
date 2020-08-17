@@ -12,7 +12,7 @@ import Express from "express"
 import Admin from "./Admin"
 import Database from "./Database"
 import { Config } from "./interface/Config"
-import resolvePath from "./util/ResolvePath"
+import resolvePath from "../../common/util/ResolvePath"
 
 export default class Server {
 	private conf: Config;

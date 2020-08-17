@@ -1,5 +1,3 @@
-// import fs from 'fs';
-// import path from 'path';
 import crypto from 'crypto';
 import bcrypt from 'bcrypt';
 import log4js from "log4js"
@@ -36,14 +34,70 @@ export default class Database {
 
 			await this.db.collection('media').deleteMany({});
 			await this.db.collection('media').insertMany([{
-				name: "aaa",
-				size: 0.1*1024*1024*1024
+				name: "Hi Doc",
+				size: 0.1*1024*1024*1024,
+				path: "/asset/hi.txt",
+				ext: "txt",
+				uploadUser: "Aurailus",
+				uploadDate: Date.now() - 1000,
 			}, {
-				name: "aaa",
-				size: 0.1*1024*1024*1024
+				name: "Cat Pic",
+				size: 0.1*1024*1024*1024,
+				path: "/asset/200.jpg",
+				ext: "jpg",
+				uploadUser: "Aurailus",
+				uploadDate: Date.now() - 5000,
+				dimensions: { x: 300, y: 250 }
 			}, {
-				name: "aaa",
-				size: 0.2*1024*1024*1024
+				name: "Another Cat Pic",
+				size: 0.1*1024*1024*1024,
+				path: "/asset/256.jpg",
+				ext: "jpg",
+				uploadUser: "Aurailus",
+				uploadDate: Date.now() - 5000,
+				dimensions: { x: 300, y: 250 }
+			}, {
+				name: "word Doc",
+				size: 0.1*1024*1024*1024,
+				path: "/asset/256.jpg",
+				ext: "docx",
+				uploadUser: "Aurailus",
+				uploadDate: Date.now() - 5000,
+			}, {
+				name: "Powepoint",
+				size: 0.1*1024*1024*1024,
+				path: "/asset/256.jpg",
+				ext: "ppt",
+				uploadUser: "Aurailus",
+				uploadDate: Date.now() - 5000,
+			}, {
+				name: "Sheetsss",
+				size: 0.1*1024*1024*1024,
+				path: "/asset/256.jpg",
+				ext: "xlsx",
+				uploadUser: "Aurailus",
+				uploadDate: Date.now() - 5000,
+			}, {
+				name: "COVID Policy",
+				size: 0.1*1024*1024*1024,
+				path: "/asset/256.jpg",
+				ext: "pdf",
+				uploadUser: "Aurailus",
+				uploadDate: Date.now() - 5000,
+			}, {
+				name: "Registration Form",
+				size: 0.1*1024*1024*1024,
+				path: "/asset/256.jpg",
+				ext: "pdf",
+				uploadUser: "Aurailus",
+				uploadDate: Date.now() - 5000,
+			}, {
+				name: "Executable",
+				size: 0.1*1024*1024*1024,
+				path: "/asset/256.jpg",
+				ext: "exe",
+				uploadUser: "Aurailus",
+				uploadDate: Date.now() - 5000,
 			}]);
 		}
 		catch (e) {
