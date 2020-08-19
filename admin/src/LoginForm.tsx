@@ -3,17 +3,14 @@ import * as React from 'react';
 
 import './LoginForm.scss';
 
-import { SiteData } from "../../common/SiteData"
+import { AppContext } from "./AppContext";
+import { SiteInfo } from "../../common/DBStructs";
 
 enum LoginState {
 	UNAUTH,
 	PENDING,
 	AUTH,
 	REDIRECT
-}
-
-interface Props {
-	handleSiteData: (data: SiteData) => void;
 }
 
 interface State {
@@ -23,7 +20,7 @@ interface State {
 	state: LoginState;
 }
 
-export default class LoginForm extends React.PureComponent<Props, State> {
+export default class LoginForm extends React.PureComponent<{}, State> {
 	constructor(props: any) {
 		super(props);
 
@@ -61,18 +58,18 @@ export default class LoginForm extends React.PureComponent<Props, State> {
 			this.setState({state: LoginState.AUTH});
 
 			let returnImmediate = false;
-			let data: SiteData | null = null;
+			let data: SiteInfo | null = null;
 
 			fetch("/admin/data", {
 				cache: 'no-cache',
 			}).then(r => r.json()).then(res => {
-				if (returnImmediate) this.props.handleSiteData(res);
+				if (returnImmediate) this.context.handleSiteData(res);
 				else data = res;
 			});
 
 			setTimeout(() => this.setState({state: LoginState.REDIRECT}), 450);
 			setTimeout(() => {
-				if (data) this.props.handleSiteData(data);
+				if (data) this.context.handleSiteData(data);
 				else returnImmediate = true;
 			}, 650);
 
@@ -115,3 +112,5 @@ export default class LoginForm extends React.PureComponent<Props, State> {
 		</>;
 	}
 }
+
+LoginForm.contextType = AppContext;

@@ -1,15 +1,32 @@
+import path from 'path';
 import crypto from 'crypto';
 import bcrypt from 'bcrypt';
-import log4js from "log4js"
-const logger = log4js.getLogger()
+import log4js from "log4js";
+import { UploadedFile } from "express-fileupload";
 import { MongoClient, Db } from 'mongodb';
+import { promises as fs, constants as fsc } from 'fs';
 
-import * as DB from './interface/DBStructs'
-import { SiteData, MediaItem } from "../../common/SiteData";
+import * as DB from '../../common/DBStructs';
+import sanitize from '../../common/util/Sanitize';
+
+const logger = log4js.getLogger();
+
+export enum MediaStatus {
+	OK,
+	INVALID,
+	EXISTS,
+	MEDIA_LIMIT
+}
 
 export default class Database {
 	private client: MongoClient | null = null;
-	private db: Db | null = null;
+	private db: Db | null = null
+
+	dataPath: string;
+
+	constructor(dataPath: string) {
+		this.dataPath = dataPath;
+	}
 
 	async init(url: string, db: string) {
 		this.client = new MongoClient(url, { useUnifiedTopology: true });
@@ -20,85 +37,24 @@ export default class Database {
 
 			this.db = this.client.db(db);
 
-			await this.db.collection('siteinfo').deleteMany({});
+			// await this.db.collection('siteinfo').deleteMany({});
 			if (!await this.db.collection('siteinfo').findOne({})) {
 				const siteInfo: DB.SiteInfo = {
 					domain: "example.com",
 					sitename: "Example",
 
-					max_media: 1*1024*1024*1024
+					mediaMax: 1*1024*1024*1024,
+					mediaUsed: 0,
+
+					activeThemes: [],
 				}
 
 				await this.db.collection('siteinfo').insertOne(siteInfo);
 			}
 
-			await this.db.collection('media').deleteMany({});
-			await this.db.collection('media').insertMany([{
-				name: "Hi Doc",
-				size: 0.1*1024*1024*1024,
-				path: "/asset/hi.txt",
-				ext: "txt",
-				uploadUser: "Aurailus",
-				uploadDate: Date.now() - 1000,
-			}, {
-				name: "Cat Pic",
-				size: 0.1*1024*1024*1024,
-				path: "/asset/200.jpg",
-				ext: "jpg",
-				uploadUser: "Aurailus",
-				uploadDate: Date.now() - 5000,
-				dimensions: { x: 300, y: 250 }
-			}, {
-				name: "Another Cat Pic",
-				size: 0.1*1024*1024*1024,
-				path: "/asset/256.jpg",
-				ext: "jpg",
-				uploadUser: "Aurailus",
-				uploadDate: Date.now() - 5000,
-				dimensions: { x: 300, y: 250 }
-			}, {
-				name: "word Doc",
-				size: 0.1*1024*1024*1024,
-				path: "/asset/256.jpg",
-				ext: "docx",
-				uploadUser: "Aurailus",
-				uploadDate: Date.now() - 5000,
-			}, {
-				name: "Powepoint",
-				size: 0.1*1024*1024*1024,
-				path: "/asset/256.jpg",
-				ext: "ppt",
-				uploadUser: "Aurailus",
-				uploadDate: Date.now() - 5000,
-			}, {
-				name: "Sheetsss",
-				size: 0.1*1024*1024*1024,
-				path: "/asset/256.jpg",
-				ext: "xlsx",
-				uploadUser: "Aurailus",
-				uploadDate: Date.now() - 5000,
-			}, {
-				name: "COVID Policy",
-				size: 0.1*1024*1024*1024,
-				path: "/asset/256.jpg",
-				ext: "pdf",
-				uploadUser: "Aurailus",
-				uploadDate: Date.now() - 5000,
-			}, {
-				name: "Registration Form",
-				size: 0.1*1024*1024*1024,
-				path: "/asset/256.jpg",
-				ext: "pdf",
-				uploadUser: "Aurailus",
-				uploadDate: Date.now() - 5000,
-			}, {
-				name: "Executable",
-				size: 0.1*1024*1024*1024,
-				path: "/asset/256.jpg",
-				ext: "exe",
-				uploadUser: "Aurailus",
-				uploadDate: Date.now() - 5000,
-			}]);
+			await this.refreshThemes();
+
+			// await this.db.collection('media').deleteMany({});
 		}
 		catch (e) {
 			logger.fatal("Failed to connect to MongoDB instance %s with database %s.\n %s", url, db, e);
@@ -106,21 +62,171 @@ export default class Database {
 		}
 	}
 
-	// async setHeader(subdomain: string, file: UploadedFile) {
-	// 	const accountObj = await this.getAccount(subdomain);
 
-	// 	if (file.mimetype != "image/png" && file.mimetype != "image/jpeg") 
-	// 		throw "Uploaded file must be a PNG or JPEG file.";
+	/**
+	* Scans the themes directory and 
+	* updates the themes collection to match.
+	*/
 
-	// 	if (file.size > 2 * 1024 * 1024 || file.truncated) 
-	// 		throw "Uploaded file must be < 2MB.";
+	async refreshThemes() {
+		const themes = this.db!.collection('themes');
+		themes.deleteMany({});
 
-	// 	let ext = file.mimetype == "image/png" ? ".png" : ".jpg";
-	// 	await file.mv(path.join(__dirname, "/../public/headers/" + subdomain + ext));
+		let themesLoaded = 0;
+		let themesErrored = 0;
 
-	// 	await this.db!.collection('calculators').updateOne(
-	// 		{identifier: subdomain}, {$set: { "theme.hasHeader": ext }});
-	// }
+		const files = await fs.readdir(path.join(this.dataPath, "themes"));
+
+		await Promise.all(files.map(async f => {
+			try {
+				if (sanitize(f) != f) throw `Failed to parse theme ${f}, theme directory must be lowercase alphanumeric.`;
+
+				let conf: DB.Theme;
+				const confStr = (await fs.readFile(path.join(this.dataPath, "themes", f, "conf.json"))).toString();
+				
+				try { conf = JSON.parse(confStr); }
+				catch (e) { throw `Failed to parse configuration file for theme ${f}.\n ${e}`; }
+
+				let cover = true;
+				try { await fs.access(path.join(this.dataPath, "themes", f, "cover.jpg"), fsc.R_OK); }
+				catch (e) { cover = false; }
+
+				await themes.insertOne({
+					identifier: f,
+
+					name: conf.name || f,
+					description: conf.description || "",
+					author: conf.author || "Unauthored",
+					
+					hasCover: cover,
+
+					pre: conf.pre || ""
+				});
+
+				themesLoaded++;
+			}
+			catch (e) {
+				if (typeof(e) == "string") logger.warn(e);
+				else if (e.code == 'ENOTDIR') logger.warn("Failed to load theme %s, not a directory.", f);
+				else if (e.code == 'ENOENT') logger.warn("Failed to load theme %s, missing conf.json.", f);
+				else logger.warn(e);
+
+				themesErrored++;
+			}
+		}));
+
+		let log = "Parsed " + themesLoaded + " theme" + (themesLoaded > 1 ? "s" : "");
+		if (themesErrored) log += ", failed to parse " + themesErrored + " theme" + (themesErrored > 1 ? "s" : "");
+		else log += ".";
+
+		logger.info(log);
+	}
+
+	/**
+	* Toggles the listed themes based on their identifiers.
+	*
+	* @param {string[]} identifiers - Themes to toggle
+	*/
+
+	async toggleThemes(themes: string[]) {
+		let info = this.db!.collection("siteinfo");
+
+		let activeThemes: string[] = (await info.findOne({})).activeThemes;
+		
+		for (let theme of themes) {
+			if (activeThemes.indexOf(theme) != -1) activeThemes.splice(activeThemes.indexOf(theme), 1);
+			else activeThemes.push(theme);
+		}
+
+		info.updateOne({}, { $set: { activeThemes: activeThemes }});
+	}
+
+
+	/**
+	* Accept a file as a media asset. 
+	* Add it to the database and move it into the media folder.
+	*
+	* @param {string} user - The uploading user.
+	* @param {string} name - A name for the asset.
+	* @param {string} identifier - A sanitized asset identifier.
+	* @param {UploadedFile} media - The file to accept.
+	*/
+
+	async acceptMedia(user: string, media: UploadedFile, name: string, identifier: string): Promise<MediaStatus> {
+		try {
+			if (identifier.length > 32 || name.length > 32) return MediaStatus.INVALID;
+			let siteinfo = this.db!.collection('siteinfo');
+
+			// Make sure there is space in the server for
+			// the media, and update the media used value.
+			const max = (await siteinfo.findOne({})).media_max;
+			const ret = await this.db!.collection('siteinfo').findOneAndUpdate(
+				{media_used: {$lte: max - media.size }}, { $inc: { media_used: media.size }});
+				
+			// Return if there wasn't enough space.
+			if (ret.value == null) return MediaStatus.MEDIA_LIMIT;
+
+			const ext = media.name.substr(media.name.lastIndexOf("."));
+			const fullPath = path.join(this.dataPath, "media", identifier + ext);
+
+			try { await fs.access(fullPath, fsc.R_OK); return MediaStatus.EXISTS; } catch (e) {}
+
+			await media.mv(fullPath);
+
+			const mediaEntry: DB.Media = {
+				name: name,
+				identifier: identifier,
+				path: fullPath,
+				ext: ext.substr(1),
+				size: media.size,
+				uploadUser: user,
+				uploadDate: Date.now(),
+				publicPath: `/media/${identifier}${ext}`
+			}
+
+			await this.db!.collection('media').insertOne(mediaEntry);
+			return MediaStatus.OK;
+		}
+		catch(e) {
+			console.log(e);
+			return MediaStatus.INVALID;
+		}
+	}
+
+
+	/**
+	* Delete a series of media objects from the database.
+	* 
+	* @param {string[]} identifiers - A list of media identifiers to delete.
+	*/
+
+	async deleteMedia(identifiers: string[]) {
+		const media = this.db!.collection('media');
+
+		const docs = await (await media.find({identifier: { $in: identifiers }})).toArray();
+		await media.deleteMany({identifier: { $in: identifiers }});
+
+		// Delete all of the files.
+		await Promise.all(docs.map((d) => fs.unlink(d.path)));
+	}
+
+
+	/**
+	* Get a SiteData object from the database.
+	* Used for the client admin site to show information.
+	*/
+
+	async getSiteData(): Promise<DB.SiteInfo> {
+		let info =  await this.db!.collection('siteinfo').findOne({});
+		const media = await (await this.db!.collection('media').find({})).toArray();
+		const themes = await (await this.db!.collection('themes').find({})).toArray();
+		
+		info.media = media;
+		info.themes = themes;
+
+		return info;
+	}
+
 
 	/**
 	* Get a User database object from a user user.
@@ -182,7 +288,6 @@ export default class Database {
 	}
 
 
-
 	/**
 	* Deletes all super accounts.
 	*/
@@ -227,33 +332,6 @@ export default class Database {
 		return token;
 	}
 
-
-	/**
-	* Get a SiteData object from the database.
-	* Used for the client admin site to show information.
-	*/
-
-	async getSiteData(): Promise<SiteData> {
-		const info =  await this.db!.collection('siteinfo').findOne({});
-		const media = await (await this.db!.collection('media').find({})).toArray();
-		
-		const mediaSpaceUsed = media.map((a: DB.Media) => a.size).reduce((a: number, b: number) => a + b);
-
-		let data: SiteData = {
-			domain: info.domain,
-			sitename: info.sitename,
-
-			media: {
-				usage: mediaSpaceUsed,
-				capacity: info.max_media,
-
-				items: media as MediaItem[]
-			}
-		}
-
-		return data;
-	}
-
 	/**
 	* Returns the user user that a token points to when provided with a
 	* token string or a network request containing a 'tkn' cookie.
@@ -284,20 +362,5 @@ export default class Database {
 	private async pruneTokens() {
 		const tokens = this.db!.collection('tokens');
 		await tokens.deleteMany({expires: {$lt: (Date.now() / 1000)}});
-	}
-
-
-	/**
-	* Sanitize a name for use as an identifier, and return that value.
-	* Throws if the passed in value isn't a string, or identifier generated is empty.
-	*
-	* @param {string} name - The name to be sanitized.
-	*/
-
-	sanitizeName(name: string) {
-		if (typeof name != "string" || name.length < 1) throw "Name must not be empty.";
-		const sanitized = name.toLowerCase().replace(/[ -]/g, '_').replace(/[^a-zA-Z0-9_]/g, '');
-		if (sanitized.length == 0) throw "Name must include at least one alphanumeric character.";
-		return sanitized;
 	}
 }

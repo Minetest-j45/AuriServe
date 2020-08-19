@@ -2,6 +2,7 @@ import path from "path"
 import HTTP from "http"
 import HTTPS from "https"
 import cookieParser from "cookie-parser"
+import fileUpload from "express-fileupload"
 import { promises as fs, constants as fsc } from "fs"
 
 import log4js from "log4js"
@@ -19,16 +20,19 @@ export default class Server {
 	private dataPath: string;
 
 	private app: Express.Application = Express();
-	private db: Database = new Database();
+	private db: Database;
 	private admin: Admin;
 
 	constructor(conf: Config, dataPath: string) {
 		this.conf = conf;
 		this.dataPath = dataPath;
 
+		this.db = new Database(dataPath);
+
 		this.app.use(cookieParser());
 		this.app.use(bodyParser.json());
-		// this.app.use(fileUpload({limits: {fileSize: uploadLimit}, useTempFiles: true, tempFileDir: '/tmp/'}));
+		this.app.use(fileUpload({ useTempFiles: true, tempFileDir: '/tmp/' }));
+
 		this.app.set('view engine', 'pug');
 		this.app.set('views', path.join(path.dirname(__filename), "views"));
 
@@ -92,7 +96,7 @@ export default class Server {
 			});
 
 			// Set up static route
-			this.app.use('/asset', Express.static(path.join(dataPath, "assets")));
+			this.app.use('/media', Express.static(path.join(dataPath, "media")));
 			
 			// Initialize admin backend
 			await this.admin.init();

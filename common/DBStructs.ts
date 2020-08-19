@@ -19,24 +19,44 @@ export interface AuthToken {
 
 export interface SiteInfo {
 	_id?: ObjectID;
-	
+
 	domain: string;
 	sitename: string;
 
-	max_media: number;
+	mediaMax: number;
+	mediaUsed: number;
+
+	activeThemes: string[];
+
+	// Sitedata grouped info.
+	media?: Media[]; 
+	themes?: Theme[];
 }
 
 export interface Media {
 	_id?: ObjectID;
 
 	name: string;
-	path: string;
+	identifier: string;
+	size: number;
 	ext: string;
+	
+	path: string;
+	publicPath: string;
 
 	dimensions?: {x: number, y: number};
 
 	uploadDate: number;
 	uploadUser: string;
-	
-	size: number;
+}
+
+export interface Theme {
+	identifier: string;
+
+	name: string;
+	description: string;
+	author: string;
+	hasCover: boolean;
+
+	pre: string;
 }

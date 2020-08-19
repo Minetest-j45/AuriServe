@@ -2,41 +2,35 @@ import * as React from 'react';
 
 import './MediaItem.scss';
 
-import DoubleClickable from "./DoubleClickable";
+import Selectable from "./Selectable";
+import { ClickHandlerCallbacks } from "./ClickHandler";
 
-import { MediaItem } from "../../common/SiteData";
+import { Media } from "../../common/DBStructs";
 import * as Format from "../../common/util/Format";
 
 interface Props {
-	item: MediaItem;
+	item: Media;
+	ind: number;
+
 	onClick: (e: React.SyntheticEvent) => void;
 }
 
-interface State {
-	selected: boolean;
-}
+export default class MediaItem extends React.Component<Props, {}> {
+	callbacks: ClickHandlerCallbacks;
 
-export default class MediaPage extends DoubleClickable<Props, State> {
 	constructor(props: Props) {
 		super(props);
 
-		this.state = { selected: false };
-	}
-	
-	handleFirstClick(_: React.SyntheticEvent) {
-		this.setState({selected: !this.state.selected});
-	}
-
-	handleDoubleClick(e: React.SyntheticEvent) {
-		this.setState({selected: true});
-		this.props.onClick(e);
+		this.callbacks = {
+			onDoubleClick: this.props.onClick
+		};
 	}
 
 	render() {
-		let isImage = this.props.item.ext == "png" || this.props.item.ext == "jpg" || this.props.item.ext == "svg";
+		let isImage = this.props.item.ext == "png" || this.props.item.ext == "jpg" || this.props.item.ext == "svg" || this.props.item.ext == "gif";
 		let icon = "/admin/asset/icon/ext-unknown-color.svg";
 
-		if (isImage) icon = this.props.item.path;
+		if (isImage) icon = this.props.item.publicPath;
 		else {
 			if (this.props.item.ext == "pdf") icon = "/admin/asset/icon/ext-pdf-color.svg";
 			else if (this.props.item.ext == "md" || this.props.item.ext == "txt") icon = "/admin/asset/icon/ext-txt-color.svg";
@@ -46,14 +40,14 @@ export default class MediaPage extends DoubleClickable<Props, State> {
 		}
 
 		return (
-			<button className={"MediaItem" + (this.state.selected ? " selected" : "")} onClick={this.handleClickTest}>
+			<Selectable className="MediaItem" ind={this.props.ind} callbacks={this.callbacks} doubleClickSelects={true}>
 				<img src={icon} className={"MediaItem-Image" + (isImage ? "" : " icon")}/>
 				<div className="MediaItem-Description">	
 					<p className="MediaItem-Title">{this.props.item.name}</p>
 					<p className="MediaItem-Author">{`Uploaded by ${this.props.item.uploadUser} ${Format.date(this.props.item.uploadDate)}.`}</p>
 					<p className="MediaItem-Size">{(this.props.item.dimensions ? Format.vector(this.props.item.dimensions, 'px') + " • " : "") + Format.bytes(this.props.item.size)}</p>
 				</div>
-			</button>
+			</Selectable>
 		);
 	}
 }

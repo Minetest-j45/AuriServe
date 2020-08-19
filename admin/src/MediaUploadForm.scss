@@ -1,0 +1,74 @@
+@import "./partial/Vars";
+@import "./partial/Ext";
+
+.MediaUploadForm {
+	.MediaUploadForm-InputWrap {
+		@extend %material_button;
+		@extend %material_border;
+		
+		margin: 16px 0px;
+		position: relative;
+		display: flex;
+		width: 100%;
+		height: 150px;
+		align-items: center;
+		text-align: center;
+
+		background-color: $neutral-000;
+		border-color: $neutral-200;
+		
+		transition: height $t-med, margin-top $t-med, opacity $t-fast;
+
+		&.disabled {
+			height: 0;
+			margin: 0;
+			opacity: 0;
+		}
+
+		.MediaUploadForm-Input {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			opacity: 0;
+			cursor: pointer;
+		}
+
+		h2 {
+			color: $neutral-500;
+			user-select: none;
+			display: block;
+			width: 100%;
+		}
+	}
+
+	.MediaUploadForm-Files {
+		margin: 16px 0px;
+		display: grid;
+		grid-gap: 8px;
+		
+		width: 600px;
+
+		&.Grid {
+			grid-gap: 16px;
+			grid-template-columns: 1fr 1fr;
+
+			width: 840px;
+		}
+	}
+
+	.MediaUploadForm-Toolbar {
+		@extend %card_toolbar;
+	}
+
+	.MediaUploadForm-ActionBar {
+		margin: 32px 0px 8px 0px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+
+		.MediaUploadForm-ActionBar-Button {
+			@extend %material_button;
+			padding: 16px;
+		}
+	}
+}

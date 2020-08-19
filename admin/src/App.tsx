@@ -1,6 +1,6 @@
 import Cookie from 'js-cookie';
 import * as React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
 import './App.scss';
 
@@ -8,8 +8,10 @@ import LoginForm from "./LoginForm"
 import AppHeader from "./AppHeader"
 import MainPage from "./pages/MainPage"
 import MediaPage from "./pages/MediaPage"
+import ThemePage from "./pages/ThemePage"
 
-import { SiteData } from "../../common/SiteData"
+import { SiteInfo } from "../../common/DBStructs";
+import { AppContext, AppContextData } from "./AppContext";
 
 enum AppState {
 	QUERYING,
@@ -18,18 +20,18 @@ enum AppState {
 }
 
 interface State {
-	data?: SiteData;
 	state: AppState;
+	contextData: AppContextData;
 }
+
 
 export default class App extends React.Component<{}, State> {
 	constructor(props: any) {
 		super(props);
 
 		const tkn = Cookie.get('tkn');
-
-		this.state = { state: tkn ? AppState.QUERYING : AppState.LOGIN };
 		this.handleSiteData = this.handleSiteData.bind(this);
+		this.state = { state: tkn ? AppState.QUERYING : AppState.LOGIN, contextData: { handleSiteData: this.handleSiteData, data: null as any } };
 
 		if (tkn) fetch("/admin/data", {
 			cache: 'no-cache',
@@ -38,34 +40,32 @@ export default class App extends React.Component<{}, State> {
 		});
 	}
 
-	private handleSiteData(data: SiteData) {
-		this.setState({ data: data, state: AppState.ADMIN });
+	private handleSiteData(data: SiteInfo) {
+		console.log(data);
+		this.setState({ contextData: { handleSiteData: this.handleSiteData, data: data }, state: AppState.ADMIN });
 	}
 
 	render() {
 		return (
-			<div className="App">
-				{this.state.state == AppState.LOGIN && 
-					<LoginForm handleSiteData={this.handleSiteData} />}
-
-				{this.state.state == AppState.ADMIN &&
-					<div className="App-Wrap">
-						<Router basename="/admin">
-							<AppHeader/>
-							<Switch>
-								<Route exact path="/">
-									<MainPage data={this.state.data!}/>
-								</Route>
-								<Route exact path="/media">
-									<MediaPage data={this.state.data!}/>
-								</Route>
-								<Route exact path="/pages">
-									<p>pages</p>
-								</Route>
-							</Switch>
-						</Router>
-					</div>}
-			</div>
+			<AppContext.Provider value={this.state.contextData!}>
+				<div className="App">
+					{this.state.state == AppState.LOGIN && <LoginForm/>}
+					{this.state.state == AppState.ADMIN &&
+						<div className="App-Wrap">
+							<Router basename="/admin">
+								<AppHeader/>
+								<Switch>
+									<Redirect exact from="/" to="/home"/>
+									<Route exact path="/home" component={MainPage}/>
+									<Route exact path="/media" component={MediaPage}/>
+									{/*<Route exact path="/pages"/>*/}
+									<Route exact path="/themes" component={ThemePage}/>
+								</Switch>
+							</Router>
+							
+						</div>}
+				</div>
+			</AppContext.Provider>
 		);
 	}
 }

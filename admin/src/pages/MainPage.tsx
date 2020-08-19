@@ -1,36 +1,30 @@
 import * as React from 'react';
-// import { Link } from 'react-router-dom';
 
 import './MainPage.scss';
 
 import Meter from "../Meter";
 
-import { SiteData } from "../../../common/SiteData";
+import { AppContext } from "../AppContext";
 
-interface Props {
-	data: SiteData;
-}
-
-export default class MainPage extends React.PureComponent<Props, {}> {
-	constructor(props: any) {
-		super(props);
-	}
-
+export default class MainPage extends React.PureComponent {
 	render() {
-		console.log(this.props.data);
 		return (
 			<div className="MainPage">
 				<div className="MainPage-Header">
 					<h1>
 						<img src="/admin/asset/icon/globe-dark.svg" alt=""/>
-						{this.props.data.domain}
+						{this.context.data.domain}
 					</h1>
-					<h2>{this.props.data.sitename}</h2>
+					<h2>{this.context.data.sitename}</h2>
 				</div>
 				<div className="MainPage-Content">
 					<aside>
 						<div className="MainPage-MediaCard">
-							<Meter usage={this.props.data.media.usage} size={this.props.data.media.capacity} />
+
+						<AppContext.Consumer>{ctx => 
+							<Meter usage={ctx.data.mediaUsed} size={ctx.data.mediaMax} />
+						}</AppContext.Consumer>
+
 						</div>
 					</aside>
 					<main>
@@ -40,3 +34,5 @@ export default class MainPage extends React.PureComponent<Props, {}> {
 		);
 	}
 }
+
+MainPage.contextType = AppContext;

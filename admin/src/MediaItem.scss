@@ -22,15 +22,15 @@
 	}
 
 	&.selected {
-		border-color: #3F51B5;
-		background-color: #2196f333;
+		border-color: $accent-400;
+		background-color: transparentize($accent-300, 0.7);
 
 		&:focus::after, &:hover::after {
-			background-color: #2196f333;
+			background-color: transparentize($accent-300, 0.8);
 		}
 
 		.MediaItem-Image.icon {
-			background-color: #2196f333;
+			background-color: transparentize($accent-500, 0.7);
 		}
 	}
 

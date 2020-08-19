@@ -1,10 +1,35 @@
 @import "Vars";
 
 %card {
-	background-color: #fff;
-	box-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);
+	height: min-content;
 	border-radius: 4px;
 	padding: 16px 24px;
+
+	background-color: #fff;
+	box-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);
+}
+
+%card_toolbar {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+	button {
+		@extend %material_icon_button;
+	}
+
+	.separator {
+		width: 24px;
+		display: inline-block;
+	}
+
+	div:first-of-type button {
+		margin-right: 8px;
+	}
+
+	div:last-of-type button {
+		margin-left: 8px;
+	}
 }
 
 %center_wrap {
@@ -55,9 +80,11 @@
 	border: none;
 	outline: 0;
 
+	user-select: none;
 	border-radius: 4px;
+	text-underline: none;
 	border: 1px solid transparent;
-	background: transparentize($neutral-800, 1 - .075);
+	background: transparentize($neutral-300, 1 - .15);
 
 	$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);
 
@@ -83,19 +110,54 @@
 		transition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;
 	}
 
-	&:hover::after, &:focus::after {
-		margin: 0px;
-		transform: scale(1);
-		background: transparentize($neutral-400, 1 - .15);
+	&:not(:disabled) {
+		&:hover, &:focus {
+			&::after {
+				margin: 0px;
+				transform: scale(1);
+				background: transparentize($neutral-400, 1 - .15);
 
-		transition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;
+				transition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;
+			}
+		}
+
+		&:active {
+			transition: border $t-fast;
+		}
+
+		&:focus {
+			border-color: $neutral-400;
+		}
 	}
 
-	&:active {
-		transition: border $t-fast;
+	&:disabled {
+		cursor: auto;
+		opacity: 0.65;
+		color: $neutral-500;
+	}
+}
+
+%material_icon_button {
+	@extend %material_button;
+	display: inline-block;
+
+	// width: 48px;
+	height: 48px;
+
+	padding: 8px;
+	border-radius: 24px;
+
+	img {
+		width: 30px;
+		height: 30px;
+		pointer-events: none;
+		vertical-align: middle;
 	}
 
-	&:focus {
-		border-color: $neutral-400;
+	span {
+		color: $neutral-700;
+		vertical-align: middle;
+		padding-right: 8px;
+		padding-left: 8px;
 	}
 }

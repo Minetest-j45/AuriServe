@@ -2,25 +2,34 @@
 @import "../partial/Ext";
 
 .MediaPage {
-	.MediaPage-Add {
-		@extend %material_button;
-		margin-bottom: 32px;
-		padding: 16px;
-	}
-
 	.MediaPage-Media {
 		display: grid;
 		width: 100%;
 		height: auto;
-		grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-		grid-gap: 16px;
+		grid-gap: 8px;
+		grid-template-columns: 1fr;
+
+		&.Grid {
+			grid-gap: 16px;
+			grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+		}
 	}
 
-	img {
+	.MediaPage-NoMedia {
+		text-align: center;
+		color: $neutral-500;
+		margin: 32px 0px 48px 0px; 
+	}
+
+	& > img {
 		width: 24px;
 		height: 24px;
 		margin-right: 8px;
 		vertical-align: -33%;
+	}
+
+	.MediaPage-Toolbar {
+		@extend %card_toolbar;
 	}
 }
 

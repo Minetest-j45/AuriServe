@@ -1,10 +1,11 @@
 import path from "path"
-// import log4js from "log4js"
-// const logger = log4js.getLogger()
 import Express from "express";
+import { UploadedFile } from "express-fileupload";
 
 import Router from "./Router"
-import Database from "../Database";
+import Database, { MediaStatus } from "../Database";
+
+import sanitize from "../../../common/util/Sanitize";
 
 export default class AdminRouter extends Router {
 	constructor(db: Database, app: Express.Application) {
@@ -33,7 +34,71 @@ export default class AdminRouter extends Router {
 				res.send(JSON.stringify(await this.db.getSiteData()));
 			}
 			catch (e) {
-				console.log(e);
+				this.routeError(res, 403, e);
+			}
+		});
+
+		this.app.post('/admin/media/upload', async (req, res) => {
+			try {
+				let user = await this.db.authUser(req);
+
+				const file: UploadedFile = (req.files || {}).file as UploadedFile;
+				if (!file) throw "Request is missing a file.";
+
+				const name: string = req.body.name;
+				const identifier: string = sanitize(req.body.identifier || req.body.name);
+
+				if (typeof(name) != "string" || typeof(identifier) != "string")
+					throw "Request is missing required data.";
+
+				let status = await this.db.acceptMedia(user, file, name, identifier);
+				if (status != MediaStatus.OK) res.status(409).send(status.toString());
+				else res.status(202).send(status.toString());
+			}
+			catch (e) {
+				this.routeError(res, 403, e);
+			}
+		});
+
+		this.app.post('/admin/media/delete', async (req, res) => {
+			try {
+				await this.db.authUser(req);
+				await this.db.deleteMedia(req.body);
+				res.send(JSON.stringify(await this.db.getSiteData()));
+			}
+			catch (e) {
+				this.routeError(res, 403, e);
+			}
+		});
+
+		this.app.get('/admin/theme/cover/:identifier.jpg', async (req, res) => {
+			try {
+				await this.db.authUser(req);
+				res.sendFile(path.join(this.db.dataPath, "themes", req.params.identifier, "cover.jpg"));
+			}
+			catch (e) {
+				this.routeError(res, 403, e);
+			}
+		});
+
+		this.app.post('/admin/theme/refresh', async (req, res) => {
+			try {
+				await this.db.authUser(req);
+				await this.db.refreshThemes();
+				res.send(JSON.stringify(await this.db.getSiteData()));
+			}
+			catch (e) {
+				this.routeError(res, 403, e);
+			}
+		});
+
+		this.app.post('/admin/theme/toggle', async (req, res) => {
+			try {
+				await this.db.authUser(req);
+				await this.db.toggleThemes(req.body);
+				res.send(JSON.stringify(await this.db.getSiteData()));
+			}
+			catch (e) {
 				this.routeError(res, 403, e);
 			}
 		});

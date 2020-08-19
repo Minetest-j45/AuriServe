@@ -1,0 +1,44 @@
+@import "./partial/Vars";
+@import "./partial/Ext";
+
+.CardHeader {
+	$img-size: 80px;
+	$img-margin: 12px;
+	display: grid;
+	grid-template-columns: #{$img-size - $img-margin} 1fr;
+	grid-template-rows: 46px 34px;
+	grid-template-areas: "a b" "a c";
+
+	.CardHeader-Icon {
+		grid-area: a;
+		user-select: none;
+
+		width: calc(100% - #{$img-margin});
+		height: calc(100% - #{$img-margin * 2});
+		margin: $img-margin;
+		margin-left: 0;
+		padding: 10px;
+
+		border-radius: 50%;
+		pointer-events: none;
+		background-color: $neutral-000;
+
+	}
+
+	.CardHeader-Title {
+		grid-area: b;
+		align-self: end;
+		margin: 0;
+
+		font-size: 1.6em;
+	}
+
+	.CardHeader-Description {
+		grid-area: c;
+		margin: 0;
+
+		font-size: 16px;
+		font-weight: 400;
+		opacity: 0.8;
+	}
+}

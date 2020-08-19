@@ -13,46 +13,5 @@
 		@media screen and (max-width: $wrap-wide + 32px) {
 			margin: 48px 16px;
 		}
-
-		.Page-Card-Header {
-			$img-size: 80px;
-			display: grid;
-			grid-template-columns: 80px 1fr;
-			grid-template-rows: 46px 34px;
-			grid-template-areas: "a b" "a c";
-
-			margin-bottom: 24px;
-
-			.Page-Card-Icon {
-				$margin: 12px;
-				grid-area: a;
-				user-select: none;
-
-				width: calc(100% - #{$margin * 2});
-				height: calc(100% - #{$margin * 2});
-				margin: $margin;
-				padding: 10px;
-
-				border-radius: 50%;
-				background-color: $neutral-000;
-			}
-
-			.Page-Card-Title {
-				grid-area: b;
-				align-self: end;
-				margin: 0;
-
-				font-size: 1.6em;
-			}
-
-			.Page-Card-Description {
-				grid-area: c;
-				margin: 0;
-
-				font-size: 16px;
-				font-weight: 400;
-				opacity: 0.8;
-			}
-		}
 	}
 }

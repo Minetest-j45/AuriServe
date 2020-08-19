@@ -9659,7 +9659,29 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, ".AppHeader .AppHeader-wrap .AppHeader-logout, .AppHeader .AppHeader-wrap .AppHeader-options {\n  position: relative;\n  background-color: transparent;\n  cursor: pointer;\n  border: none;\n  outline: 0;\n  border-radius: 4px;\n  border: 1px solid transparent;\n  background: rgba(36, 59, 83, 0.075); }\n  .AppHeader .AppHeader-wrap .AppHeader-logout::after, .AppHeader .AppHeader-wrap .AppHeader-options::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    user-select: none;\n    pointer-events: none;\n    top: -1px;\n    left: -1px;\n    right: -1px;\n    bottom: -1px;\n    margin: 4px;\n    transform: scale(0.87);\n    border-radius: inherit;\n    background: rgba(130, 154, 177, 0);\n    transition: background 0.3s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02) 0.075s, margin 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .AppHeader .AppHeader-wrap .AppHeader-logout:hover::after, .AppHeader .AppHeader-wrap .AppHeader-options:hover::after, .AppHeader .AppHeader-wrap .AppHeader-logout:focus::after, .AppHeader .AppHeader-wrap .AppHeader-options:focus::after {\n    margin: 0px;\n    transform: scale(1);\n    background: rgba(130, 154, 177, 0.15);\n    transition: background 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), margin 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .AppHeader .AppHeader-wrap .AppHeader-logout:active, .AppHeader .AppHeader-wrap .AppHeader-options:active {\n    transition: border 0.15s; }\n  .AppHeader .AppHeader-wrap .AppHeader-logout:focus, .AppHeader .AppHeader-wrap .AppHeader-options:focus {\n    border-color: #829ab1; }\n\n.AppHeader {\n  width: 100%;\n  height: auto;\n  overflow: auto;\n  background-color: #fff;\n  user-select: none; }\n  .AppHeader .AppHeader-wrap {\n    position: relative;\n    display: block;\n    max-width: 1400px;\n    margin: 0 auto;\n    width: 100%;\n    height: 64px;\n    overflow: hidden; }\n    .AppHeader .AppHeader-wrap .AppHeader-nav {\n      display: flex;\n      justify-content: center; }\n      .AppHeader .AppHeader-wrap .AppHeader-nav a {\n        display: inline-block;\n        position: relative;\n        font-family: \"Alata\", \"Roboto\", sans-serif;\n        text-decoration: none;\n        font-size: 20px;\n        padding: 4px 8px;\n        margin: 14px 32px;\n        color: #829ab1;\n        outline: 0;\n        transition: color 0.15s; }\n        .AppHeader .AppHeader-wrap .AppHeader-nav a::after {\n          content: \" \";\n          display: block;\n          position: absolute;\n          left: 0;\n          right: 0;\n          bottom: 0;\n          height: 2px;\n          background: #243b53;\n          opacity: 0;\n          transform: scaleX(0);\n          transition: opacity 0.15s, transform 0.15s; }\n        .AppHeader .AppHeader-wrap .AppHeader-nav a:hover {\n          color: #486581; }\n          .AppHeader .AppHeader-wrap .AppHeader-nav a:hover::after {\n            opacity: 0.5;\n            transform: scaleX(0.8); }\n        .AppHeader .AppHeader-wrap .AppHeader-nav a:focus::after {\n          opacity: 0.5;\n          transform: scaleX(0.8); }\n        .AppHeader .AppHeader-wrap .AppHeader-nav a.active {\n          color: #243b53; }\n          .AppHeader .AppHeader-wrap .AppHeader-nav a.active::after {\n            opacity: 0.9;\n            transform: scaleX(0.85); }\n        .AppHeader .AppHeader-wrap .AppHeader-nav a:active {\n          color: #243b53; }\n          .AppHeader .AppHeader-wrap .AppHeader-nav a:active::after {\n            opacity: 1;\n            transform: scaleX(1); }\n    .AppHeader .AppHeader-wrap .AppHeader-logo {\n      position: absolute;\n      top: 10px;\n      left: 10px;\n      width: 44px;\n      height: 44px;\n      animation: AppHeader-logo-glide 0.5s 1; }\n\n@keyframes AppHeader-logo-glide {\n  from {\n    transform: translate(-20px, 20px);\n    opacity: 0.4; }\n  to {\n    transform: translate(0, 0);\n    opacity: 1; } }\n    .AppHeader .AppHeader-wrap .AppHeader-logout, .AppHeader .AppHeader-wrap .AppHeader-options {\n      position: absolute;\n      top: 8px;\n      right: 8px;\n      width: 48px;\n      height: 48px;\n      padding: 8px;\n      border-radius: 50%; }\n      .AppHeader .AppHeader-wrap .AppHeader-logout img, .AppHeader .AppHeader-wrap .AppHeader-options img {\n        width: 100%;\n        height: 100%;\n        position: relative;\n        left: 2px; }\n    .AppHeader .AppHeader-wrap .AppHeader-options {\n      right: 64px; }\n      .AppHeader .AppHeader-wrap .AppHeader-options img {\n        left: 0px; }\n", "",{"version":3,"sources":["/home/aurailus/Code/Projects/AuriServer/admin/src/AppHeader.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Ext.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Vars.scss"],"names":[],"mappings":"AAEA;ECiDC,kBAAkB;EAClB,6BAA6B;EAC7B,eAAe;EACf,YAAY;EACZ,UAAU;EAEV,kBAAkB;EAClB,6BAA6B;EAC7B,mCAAkD,EAAA;EDzDnD;IC8DE,YAAY;IACZ,cAAc;IACd,kBAAkB;IAClB,iBAAiB;IACjB,oBAAoB;IAGpB,SAAS;IACT,UAAU;IACV,WAAW;IACX,YAAY;IAEZ,WAAW;IACX,sBAAsB;IAEtB,sBAAsB;IACtB,kCAA2C;IAE3C,2KArB0C,EAAA;ED3D5C;ICoFE,WAAW;IACX,mBAAmB;IACnB,qCAAiD;IAEjD,uKA7B0C,EAAA;ED3D5C;IC4FE,wBCtEY,EAAA;EFtBd;ICgGE,qBC9FmB,EAAA;;AFFrB;EACC,WAAW;EACX,YAAY;EAEZ,cAAc;EACd,sBAAsB;EAEtB,iBAAiB,EAAA;EAPlB;IAUE,kBAAkB;IAClB,cAAc;IAEd,iBEagB;IFZhB,cAAc;IACd,WAAW;IACX,YAAY;IAEZ,gBAAgB,EAAA;IAlBlB;MAqBG,aAAa;MACb,uBAAuB,EAAA;MAtB1B;QAyBI,qBAAqB;QACrB,kBAAkB;QAElB,0CAA0C;QAC1C,qBAAqB;QACrB,eAAe;QACf,gBAAgB;QAChB,iBAAiB;QAEjB,cEhCiB;QFiCjB,UAAU;QAEV,uBEfU,EAAA;QFtBd;UAwCK,YAAY;UACZ,cAAc;UACd,kBAAkB;UAClB,OAAO;UACP,QAAQ;UACR,SAAS;UACT,WAAW;UACX,mBEzCgB;UF2ChB,UAAU;UACV,oBAAoB;UAEpB,0CE9BS,EAAA;QFtBd;UAwDK,cEpDgB,EAAA;UFJrB;YA2DM,YAAY;YACZ,sBAAsB,EAAA;QA5D5B;UAkEM,YAAY;UACZ,sBAAsB,EAAA;QAnE5B;UAwEK,cElEgB,EAAA;UFNrB;YA2EM,YAAY;YACZ,uBAAuB,EAAA;QA5E7B;UAiFK,cE3EgB,EAAA;UFNrB;YAoFM,UAAU;YACV,oBAAoB,EAAA;IArF1B;MA4FG,kBAAkB;MAClB,SAAS;MACT,UAAU;MACV,WAAW;MACX,YAAY;MAEZ,sCAAyC,EAAA;;AACzC;EACC;IAAM,iCAAiC;IAAE,YAAY,EAAA;EACrD;IAAI,0BAA0B;IAAE,UAAU,EAAA,EAAA;IArG9C;MA4GG,kBAAkB;MAClB,QAAQ;MACR,UAAU;MACV,WAAW;MACX,YAAY;MAEZ,YAAY;MACZ,kBAAkB,EAAA;MAnHrB;QAsHI,WAAW;QACX,YAAY;QACZ,kBAAkB;QAClB,SAAS,EAAA;IAzHb;MA+HG,WAAW,EAAA;MA/Hd;QAkII,SAAS,EAAA","file":"AppHeader.scss","sourcesContent":["@import \"partial/Ext\";\n\n.AppHeader {\n\twidth: 100%;\n\theight: auto;\n\t\n\toverflow: auto;\n\tbackground-color: #fff;\n\n\tuser-select: none;\n\n\t.AppHeader-wrap {\n\t\tposition: relative;\n\t\tdisplay: block;\n\n\t\tmax-width: $wrap-wide;\n\t\tmargin: 0 auto;\n\t\twidth: 100%;\n\t\theight: 64px;\n\n\t\toverflow: hidden;\n\n\t\t.AppHeader-nav {\n\t\t\tdisplay: flex;\n\t\t\tjustify-content: center;\n\n\t\t\ta {\n\t\t\t\tdisplay: inline-block;\n\t\t\t\tposition: relative;\n\n\t\t\t\tfont-family: \"Alata\", \"Roboto\", sans-serif;\n\t\t\t\ttext-decoration: none;\n\t\t\t\tfont-size: 20px;\n\t\t\t\tpadding: 4px 8px;\n\t\t\t\tmargin: 14px 32px;\n\n\t\t\t\tcolor: $neutral-400;\n\t\t\t\toutline: 0;\n\n\t\t\t\ttransition: color $t-fast;\n\n\t\t\t\t&::after {\n\t\t\t\t\tcontent: \" \";\n\t\t\t\t\tdisplay: block;\n\t\t\t\t\tposition: absolute;\n\t\t\t\t\tleft: 0;\n\t\t\t\t\tright: 0;\n\t\t\t\t\tbottom: 0;\n\t\t\t\t\theight: 2px;\n\t\t\t\t\tbackground: $neutral-800;\n\n\t\t\t\t\topacity: 0;\n\t\t\t\t\ttransform: scaleX(0);\n\n\t\t\t\t\ttransition: opacity $t-fast, transform $t-fast;\n\t\t\t\t}\n\n\t\t\t\t&:hover {\n\t\t\t\t\tcolor: $neutral-600;\n\t\t\t\t\t\n\t\t\t\t\t&::after {\n\t\t\t\t\t\topacity: 0.5;\n\t\t\t\t\t\ttransform: scaleX(0.8);\n\t\t\t\t\t}\n\t\t\t\t}\n\n\t\t\t\t&:focus {\n\t\t\t\t\t&::after {\n\t\t\t\t\t\topacity: 0.5;\n\t\t\t\t\t\ttransform: scaleX(0.8);\n\t\t\t\t\t}\n\t\t\t\t}\n\n\t\t\t\t&.active {\n\t\t\t\t\tcolor: $neutral-800;\n\t\t\t\t\t\n\t\t\t\t\t&::after {\n\t\t\t\t\t\topacity: 0.9;\n\t\t\t\t\t\ttransform: scaleX(0.85);\n\t\t\t\t\t}\n\t\t\t\t}\n\n\t\t\t\t&:active {\n\t\t\t\t\tcolor: $neutral-800;\n\t\t\t\t\t\n\t\t\t\t\t&::after {\n\t\t\t\t\t\topacity: 1;\n\t\t\t\t\t\ttransform: scaleX(1);\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\t.AppHeader-logo {\n\t\t\tposition: absolute;\n\t\t\ttop: 10px;\n\t\t\tleft: 10px;\n\t\t\twidth: 44px;\n\t\t\theight: 44px;\n\n\t\t\tanimation: AppHeader-logo-glide $t-slow 1;\n\t\t\t@keyframes AppHeader-logo-glide {\n\t\t\t\tfrom {transform: translate(-20px, 20px); opacity: 0.4;}\n\t\t\t\tto {transform: translate(0, 0); opacity: 1;}\n\t\t\t}\n\t\t}\n\n\t\t.AppHeader-logout {\n\t\t\t@extend %material_button;\n\t\t\t\n\t\t\tposition: absolute;\n\t\t\ttop: 8px;\n\t\t\tright: 8px;\n\t\t\twidth: 48px;\n\t\t\theight: 48px;\n\n\t\t\tpadding: 8px;\n\t\t\tborder-radius: 50%;\n\n\t\t\timg {\n\t\t\t\twidth: 100%;\n\t\t\t\theight: 100%;\n\t\t\t\tposition: relative;\n\t\t\t\tleft: 2px;\n\t\t\t}\n\t\t}\n\n\t\t.AppHeader-options {\n\t\t\t@extend .AppHeader-logout;\n\t\t\tright: 64px;\n\n\t\t\timg {\n\t\t\t\tleft: 0px;\n\t\t\t}\n\t\t}\n\t}\n}\n","@import \"Vars\";\n\n%card {\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tborder-radius: 4px;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-800, 1 - .075);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:hover::after, &:focus::after {\n\t\tmargin: 0px;\n\t\ttransform: scale(1);\n\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t}\n\n\t&:active {\n\t\ttransition: border $t-fast;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"]}]);
+___CSS_LOADER_EXPORT___.push([module.i, ".AppHeader .AppHeader-wrap .AppHeader-logout, .AppHeader .AppHeader-wrap .AppHeader-options {\n  position: relative;\n  background-color: transparent;\n  cursor: pointer;\n  border: none;\n  outline: 0;\n  user-select: none;\n  border-radius: 4px;\n  text-underline: none;\n  border: 1px solid transparent;\n  background: rgba(159, 179, 200, 0.15); }\n  .AppHeader .AppHeader-wrap .AppHeader-logout::after, .AppHeader .AppHeader-wrap .AppHeader-options::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    user-select: none;\n    pointer-events: none;\n    top: -1px;\n    left: -1px;\n    right: -1px;\n    bottom: -1px;\n    margin: 4px;\n    transform: scale(0.87);\n    border-radius: inherit;\n    background: rgba(130, 154, 177, 0);\n    transition: background 0.3s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02) 0.075s, margin 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .AppHeader .AppHeader-wrap .AppHeader-logout:not(:disabled):hover::after, .AppHeader .AppHeader-wrap .AppHeader-options:not(:disabled):hover::after, .AppHeader .AppHeader-wrap .AppHeader-logout:not(:disabled):focus::after, .AppHeader .AppHeader-wrap .AppHeader-options:not(:disabled):focus::after {\n    margin: 0px;\n    transform: scale(1);\n    background: rgba(130, 154, 177, 0.15);\n    transition: background 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), margin 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .AppHeader .AppHeader-wrap .AppHeader-logout:not(:disabled):active, .AppHeader .AppHeader-wrap .AppHeader-options:not(:disabled):active {\n    transition: border 0.15s; }\n  .AppHeader .AppHeader-wrap .AppHeader-logout:not(:disabled):focus, .AppHeader .AppHeader-wrap .AppHeader-options:not(:disabled):focus {\n    border-color: #829ab1; }\n  .AppHeader .AppHeader-wrap .AppHeader-logout:disabled, .AppHeader .AppHeader-wrap .AppHeader-options:disabled {\n    cursor: auto;\n    opacity: 0.65;\n    color: #627d98; }\n\n.AppHeader .AppHeader-wrap .AppHeader-logout, .AppHeader .AppHeader-wrap .AppHeader-options {\n  display: inline-block;\n  height: 48px;\n  padding: 8px;\n  border-radius: 24px; }\n  .AppHeader .AppHeader-wrap .AppHeader-logout img, .AppHeader .AppHeader-wrap .AppHeader-options img {\n    width: 30px;\n    height: 30px;\n    pointer-events: none;\n    vertical-align: middle; }\n  .AppHeader .AppHeader-wrap .AppHeader-logout span, .AppHeader .AppHeader-wrap .AppHeader-options span {\n    color: #334e68;\n    vertical-align: middle;\n    padding-right: 8px;\n    padding-left: 8px; }\n\n.AppHeader {\n  width: 100%;\n  height: auto;\n  overflow: auto;\n  background-color: #fff;\n  user-select: none; }\n  .AppHeader .AppHeader-wrap {\n    position: relative;\n    display: block;\n    max-width: 1400px;\n    margin: 0 auto;\n    width: 100%;\n    height: 64px;\n    overflow: hidden; }\n    .AppHeader .AppHeader-wrap .AppHeader-nav {\n      display: flex;\n      justify-content: center; }\n      .AppHeader .AppHeader-wrap .AppHeader-nav a {\n        display: inline-block;\n        position: relative;\n        font-family: \"Alata\", \"Roboto\", sans-serif;\n        text-decoration: none;\n        font-size: 20px;\n        padding: 4px 8px;\n        margin: 14px 32px;\n        color: #829ab1;\n        outline: 0;\n        transition: color 0.15s; }\n        .AppHeader .AppHeader-wrap .AppHeader-nav a::after {\n          content: \" \";\n          display: block;\n          position: absolute;\n          left: 0;\n          right: 0;\n          bottom: 0;\n          height: 2px;\n          background: #243b53;\n          opacity: 0;\n          transform: scaleX(0);\n          transition: opacity 0.15s, transform 0.15s; }\n        .AppHeader .AppHeader-wrap .AppHeader-nav a:hover {\n          color: #486581; }\n          .AppHeader .AppHeader-wrap .AppHeader-nav a:hover::after {\n            opacity: 0.5;\n            transform: scaleX(0.8); }\n        .AppHeader .AppHeader-wrap .AppHeader-nav a:focus::after {\n          opacity: 0.5;\n          transform: scaleX(0.8); }\n        .AppHeader .AppHeader-wrap .AppHeader-nav a.active {\n          color: #243b53; }\n          .AppHeader .AppHeader-wrap .AppHeader-nav a.active::after {\n            opacity: 0.9;\n            transform: scaleX(0.85); }\n        .AppHeader .AppHeader-wrap .AppHeader-nav a:active {\n          color: #243b53; }\n          .AppHeader .AppHeader-wrap .AppHeader-nav a:active::after {\n            opacity: 1;\n            transform: scaleX(1); }\n    .AppHeader .AppHeader-wrap .AppHeader-logo {\n      position: absolute;\n      top: 10px;\n      left: 10px;\n      width: 44px;\n      height: 44px;\n      animation: AppHeader-logo-glide 0.5s 1; }\n\n@keyframes AppHeader-logo-glide {\n  from {\n    transform: translate(-20px, 20px);\n    opacity: 0.4; }\n  to {\n    transform: translate(0, 0);\n    opacity: 1; } }\n    .AppHeader .AppHeader-wrap .AppHeader-logout, .AppHeader .AppHeader-wrap .AppHeader-options {\n      position: absolute;\n      top: 8px;\n      right: 8px; }\n    .AppHeader .AppHeader-wrap .AppHeader-options {\n      right: 64px; }\n", "",{"version":3,"sources":["/home/aurailus/Code/Projects/AuriServer/admin/src/AppHeader.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Ext.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Vars.scss"],"names":[],"mappings":"AAEA;EC0EC,kBAAkB;EAClB,6BAA6B;EAC7B,eAAe;EACf,YAAY;EACZ,UAAU;EAEV,iBAAiB;EACjB,kBAAkB;EAClB,oBAAoB;EACpB,6BAA6B;EAC7B,qCAAiD,EAAA;EDpFlD;ICyFE,YAAY;IACZ,cAAc;IACd,kBAAkB;IAClB,iBAAiB;IACjB,oBAAoB;IAGpB,SAAS;IACT,UAAU;IACV,WAAW;IACX,YAAY;IAEZ,WAAW;IACX,sBAAsB;IAEtB,sBAAsB;IACtB,kCAA2C;IAE3C,2KArB0C,EAAA;EDtF5C;ICiHI,WAAW;IACX,mBAAmB;IACnB,qCAAiD;IAEjD,uKA/BwC,EAAA;EDtF5C;IC0HG,wBCpGW,EAAA;EFtBd;IC8HG,qBC5HkB,EAAA;EFFrB;ICmIE,YAAY;IACZ,aAAa;IACb,cClImB,EAAA;;AFHrB;EC2IC,qBAAqB;EAGrB,YAAY;EAEZ,YAAY;EACZ,mBAAmB,EAAA;EDjJpB;ICoJE,WAAW;IACX,YAAY;IACZ,oBAAoB;IACpB,sBAAsB,EAAA;EDvJxB;IC2JE,cCtJmB;IDuJnB,sBAAsB;IACtB,kBAAkB;IAClB,iBAAiB,EAAA;;AD9JnB;EACC,WAAW;EACX,YAAY;EAEZ,cAAc;EACd,sBAAsB;EAEtB,iBAAiB,EAAA;EAPlB;IAUE,kBAAkB;IAClB,cAAc;IAEd,iBEagB;IFZhB,cAAc;IACd,WAAW;IACX,YAAY;IAEZ,gBAAgB,EAAA;IAlBlB;MAqBG,aAAa;MACb,uBAAuB,EAAA;MAtB1B;QAyBI,qBAAqB;QACrB,kBAAkB;QAElB,0CAA0C;QAC1C,qBAAqB;QACrB,eAAe;QACf,gBAAgB;QAChB,iBAAiB;QAEjB,cEhCiB;QFiCjB,UAAU;QAEV,uBEfU,EAAA;QFtBd;UAwCK,YAAY;UACZ,cAAc;UACd,kBAAkB;UAClB,OAAO;UACP,QAAQ;UACR,SAAS;UACT,WAAW;UACX,mBEzCgB;UF2ChB,UAAU;UACV,oBAAoB;UAEpB,0CE9BS,EAAA;QFtBd;UAwDK,cEpDgB,EAAA;UFJrB;YA2DM,YAAY;YACZ,sBAAsB,EAAA;QA5D5B;UAkEM,YAAY;UACZ,sBAAsB,EAAA;QAnE5B;UAwEK,cElEgB,EAAA;UFNrB;YA2EM,YAAY;YACZ,uBAAuB,EAAA;QA5E7B;UAiFK,cE3EgB,EAAA;UFNrB;YAoFM,UAAU;YACV,oBAAoB,EAAA;IArF1B;MA4FG,kBAAkB;MAClB,SAAS;MACT,UAAU;MACV,WAAW;MACX,YAAY;MAEZ,sCAAyC,EAAA;;AACzC;EACC;IAAM,iCAAiC;IAAE,YAAY,EAAA;EACrD;IAAI,0BAA0B;IAAE,UAAU,EAAA,EAAA;IArG9C;MA4GG,kBAAkB;MAClB,QAAQ;MACR,UAAU,EAAA;IA9Gb;MAmHG,WAAW,EAAA","file":"AppHeader.scss","sourcesContent":["@import \"partial/Ext\";\n\n.AppHeader {\n\twidth: 100%;\n\theight: auto;\n\t\n\toverflow: auto;\n\tbackground-color: #fff;\n\n\tuser-select: none;\n\n\t.AppHeader-wrap {\n\t\tposition: relative;\n\t\tdisplay: block;\n\n\t\tmax-width: $wrap-wide;\n\t\tmargin: 0 auto;\n\t\twidth: 100%;\n\t\theight: 64px;\n\n\t\toverflow: hidden;\n\n\t\t.AppHeader-nav {\n\t\t\tdisplay: flex;\n\t\t\tjustify-content: center;\n\n\t\t\ta {\n\t\t\t\tdisplay: inline-block;\n\t\t\t\tposition: relative;\n\n\t\t\t\tfont-family: \"Alata\", \"Roboto\", sans-serif;\n\t\t\t\ttext-decoration: none;\n\t\t\t\tfont-size: 20px;\n\t\t\t\tpadding: 4px 8px;\n\t\t\t\tmargin: 14px 32px;\n\n\t\t\t\tcolor: $neutral-400;\n\t\t\t\toutline: 0;\n\n\t\t\t\ttransition: color $t-fast;\n\n\t\t\t\t&::after {\n\t\t\t\t\tcontent: \" \";\n\t\t\t\t\tdisplay: block;\n\t\t\t\t\tposition: absolute;\n\t\t\t\t\tleft: 0;\n\t\t\t\t\tright: 0;\n\t\t\t\t\tbottom: 0;\n\t\t\t\t\theight: 2px;\n\t\t\t\t\tbackground: $neutral-800;\n\n\t\t\t\t\topacity: 0;\n\t\t\t\t\ttransform: scaleX(0);\n\n\t\t\t\t\ttransition: opacity $t-fast, transform $t-fast;\n\t\t\t\t}\n\n\t\t\t\t&:hover {\n\t\t\t\t\tcolor: $neutral-600;\n\t\t\t\t\t\n\t\t\t\t\t&::after {\n\t\t\t\t\t\topacity: 0.5;\n\t\t\t\t\t\ttransform: scaleX(0.8);\n\t\t\t\t\t}\n\t\t\t\t}\n\n\t\t\t\t&:focus {\n\t\t\t\t\t&::after {\n\t\t\t\t\t\topacity: 0.5;\n\t\t\t\t\t\ttransform: scaleX(0.8);\n\t\t\t\t\t}\n\t\t\t\t}\n\n\t\t\t\t&.active {\n\t\t\t\t\tcolor: $neutral-800;\n\t\t\t\t\t\n\t\t\t\t\t&::after {\n\t\t\t\t\t\topacity: 0.9;\n\t\t\t\t\t\ttransform: scaleX(0.85);\n\t\t\t\t\t}\n\t\t\t\t}\n\n\t\t\t\t&:active {\n\t\t\t\t\tcolor: $neutral-800;\n\t\t\t\t\t\n\t\t\t\t\t&::after {\n\t\t\t\t\t\topacity: 1;\n\t\t\t\t\t\ttransform: scaleX(1);\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\t.AppHeader-logo {\n\t\t\tposition: absolute;\n\t\t\ttop: 10px;\n\t\t\tleft: 10px;\n\t\t\twidth: 44px;\n\t\t\theight: 44px;\n\n\t\t\tanimation: AppHeader-logo-glide $t-slow 1;\n\t\t\t@keyframes AppHeader-logo-glide {\n\t\t\t\tfrom {transform: translate(-20px, 20px); opacity: 0.4;}\n\t\t\t\tto {transform: translate(0, 0); opacity: 1;}\n\t\t\t}\n\t\t}\n\n\t\t.AppHeader-logout {\n\t\t\t@extend %material_icon_button;\n\n\t\t\tposition: absolute;\n\t\t\ttop: 8px;\n\t\t\tright: 8px;\n\t\t}\n\n\t\t.AppHeader-options {\n\t\t\t@extend .AppHeader-logout;\n\t\t\tright: 64px;\n\t\t}\n\t}\n}\n","@import \"Vars\";\n\n%card {\n\theight: min-content;\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n}\n\n%card_toolbar {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\n\tbutton {\n\t\t@extend %material_icon_button;\n\t}\n\n\t.separator {\n\t\twidth: 24px;\n\t\tdisplay: inline-block;\n\t}\n\n\tdiv:first-of-type button {\n\t\tmargin-right: 8px;\n\t}\n\n\tdiv:last-of-type button {\n\t\tmargin-left: 8px;\n\t}\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tuser-select: none;\n\tborder-radius: 4px;\n\ttext-underline: none;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-300, 1 - .15);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:not(:disabled) {\n\t\t&:hover, &:focus {\n\t\t\t&::after {\n\t\t\t\tmargin: 0px;\n\t\t\t\ttransform: scale(1);\n\t\t\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\t\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t\t\t}\n\t\t}\n\n\t\t&:active {\n\t\t\ttransition: border $t-fast;\n\t\t}\n\n\t\t&:focus {\n\t\t\tborder-color: $neutral-400;\n\t\t}\n\t}\n\n\t&:disabled {\n\t\tcursor: auto;\n\t\topacity: 0.65;\n\t\tcolor: $neutral-500;\n\t}\n}\n\n%material_icon_button {\n\t@extend %material_button;\n\tdisplay: inline-block;\n\n\t// width: 48px;\n\theight: 48px;\n\n\tpadding: 8px;\n\tborder-radius: 24px;\n\n\timg {\n\t\twidth: 30px;\n\t\theight: 30px;\n\t\tpointer-events: none;\n\t\tvertical-align: middle;\n\t}\n\n\tspan {\n\t\tcolor: $neutral-700;\n\t\tvertical-align: middle;\n\t\tpadding-right: 8px;\n\t\tpadding-left: 8px;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"]}]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/CardHeader.scss":
+/*!************************************************************************************************************!*\
+  !*** ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/CardHeader.scss ***!
+  \************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "../node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
+// Module
+___CSS_LOADER_EXPORT___.push([module.i, ".CardHeader {\n  display: grid;\n  grid-template-columns: 68px 1fr;\n  grid-template-rows: 46px 34px;\n  grid-template-areas: \"a b\" \"a c\"; }\n  .CardHeader .CardHeader-Icon {\n    grid-area: a;\n    user-select: none;\n    width: calc(100% - 12px);\n    height: calc(100% - 24px);\n    margin: 12px;\n    margin-left: 0;\n    padding: 10px;\n    border-radius: 50%;\n    pointer-events: none;\n    background-color: #f0f4f8; }\n  .CardHeader .CardHeader-Title {\n    grid-area: b;\n    align-self: end;\n    margin: 0;\n    font-size: 1.6em; }\n  .CardHeader .CardHeader-Description {\n    grid-area: c;\n    margin: 0;\n    font-size: 16px;\n    font-weight: 400;\n    opacity: 0.8; }\n", "",{"version":3,"sources":["/home/aurailus/Code/Projects/AuriServer/admin/src/CardHeader.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Vars.scss"],"names":[],"mappings":"AAGA;EAGC,aAAa;EACb,+BAAqD;EACrD,6BAA6B;EAC7B,gCAAgC,EAAA;EANjC;IASE,YAAY;IACZ,iBAAiB;IAEjB,wBAAkC;IAClC,yBAAuC;IACvC,YAZgB;IAahB,cAAc;IACd,aAAa;IAEb,kBAAkB;IAClB,oBAAoB;IACpB,yBCvBmB,EAAA;EDGrB;IAyBE,YAAY;IACZ,eAAe;IACf,SAAS;IAET,gBAAgB,EAAA;EA7BlB;IAiCE,YAAY;IACZ,SAAS;IAET,eAAe;IACf,gBAAgB;IAChB,YAAY,EAAA","file":"CardHeader.scss","sourcesContent":["@import \"./partial/Vars\";\n@import \"./partial/Ext\";\n\n.CardHeader {\n\t$img-size: 80px;\n\t$img-margin: 12px;\n\tdisplay: grid;\n\tgrid-template-columns: #{$img-size - $img-margin} 1fr;\n\tgrid-template-rows: 46px 34px;\n\tgrid-template-areas: \"a b\" \"a c\";\n\n\t.CardHeader-Icon {\n\t\tgrid-area: a;\n\t\tuser-select: none;\n\n\t\twidth: calc(100% - #{$img-margin});\n\t\theight: calc(100% - #{$img-margin * 2});\n\t\tmargin: $img-margin;\n\t\tmargin-left: 0;\n\t\tpadding: 10px;\n\n\t\tborder-radius: 50%;\n\t\tpointer-events: none;\n\t\tbackground-color: $neutral-000;\n\n\t}\n\n\t.CardHeader-Title {\n\t\tgrid-area: b;\n\t\talign-self: end;\n\t\tmargin: 0;\n\n\t\tfont-size: 1.6em;\n\t}\n\n\t.CardHeader-Description {\n\t\tgrid-area: c;\n\t\tmargin: 0;\n\n\t\tfont-size: 16px;\n\t\tfont-weight: 400;\n\t\topacity: 0.8;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"]}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -9681,7 +9703,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, "@charset \"UTF-8\";\n.LoginForm-Card:not(.loading) {\n  background-color: #fff;\n  box-shadow: 0px 2px 8px 0px rgba(8, 30, 56, 0.1);\n  border-radius: 4px;\n  padding: 16px 24px; }\n\n.LoginForm {\n  display: flex;\n  width: 100%;\n  height: 100%;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center; }\n\n.LoginForm-Warning::before, .LoginForm-Warning::after {\n  content: \"　\"; }\n\n.LoginForm-Card .LoginForm-FormContents input {\n  border-radius: 4px;\n  border-width: 1px;\n  border-style: solid;\n  border-color: #829ab1; }\n\n.LoginForm-Card .LoginForm-FormContents input {\n  border-color: #d9e2ec;\n  outline: 0; }\n  .LoginForm-Card .LoginForm-FormContents input:hover {\n    border-color: #bcccdc; }\n  .LoginForm-Card .LoginForm-FormContents input:focus {\n    border-color: #829ab1; }\n  .LoginForm-Card .LoginForm-FormContents input::placeholder {\n    font-weight: 400;\n    color: #829ab1; }\n\n.LoginForm-Card .LoginForm-FormContents button {\n  position: relative;\n  background-color: transparent;\n  cursor: pointer;\n  border: none;\n  outline: 0;\n  border-radius: 4px;\n  border: 1px solid transparent;\n  background: rgba(36, 59, 83, 0.075); }\n  .LoginForm-Card .LoginForm-FormContents button::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    user-select: none;\n    pointer-events: none;\n    top: -1px;\n    left: -1px;\n    right: -1px;\n    bottom: -1px;\n    margin: 4px;\n    transform: scale(0.87);\n    border-radius: inherit;\n    background: rgba(130, 154, 177, 0);\n    transition: background 0.3s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02) 0.075s, margin 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .LoginForm-Card .LoginForm-FormContents button:hover::after, .LoginForm-Card .LoginForm-FormContents button:focus::after {\n    margin: 0px;\n    transform: scale(1);\n    background: rgba(130, 154, 177, 0.15);\n    transition: background 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), margin 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .LoginForm-Card .LoginForm-FormContents button:active {\n    transition: border 0.15s; }\n  .LoginForm-Card .LoginForm-FormContents button:focus {\n    border-color: #829ab1; }\n\n.LoginForm {\n  height: calc(100vh - 6px); }\n\n.LoginForm-Card {\n  transition: background-color 0.15s, border-color 0.15s, padding 0.15s; }\n  .LoginForm-Card .LoginForm-FormContents {\n    display: flex;\n    flex-direction: column;\n    max-height: 230px;\n    overflow: hidden;\n    opacity: 1;\n    transition: max-height 0.3s, opacity 0.15s; }\n    .LoginForm-Card .LoginForm-FormContents input {\n      margin-bottom: 8px; }\n    .LoginForm-Card .LoginForm-FormContents button {\n      user-select: none;\n      margin-top: 16px;\n      margin-bottom: 8px; }\n    .LoginForm-Card .LoginForm-FormContents input, .LoginForm-Card .LoginForm-FormContents button {\n      width: 230px;\n      padding: 12px; }\n  .LoginForm-Card .LoginForm-ProfilePlaceholder {\n    display: block;\n    position: relative;\n    width: 70%;\n    height: 0;\n    user-select: none;\n    padding-bottom: 70%;\n    margin: 16px auto 32px auto;\n    border-radius: 50%;\n    background: linear-gradient(45deg, #14919b, #87eaf2);\n    box-shadow: 0px 0px 0px 6px #d9e2ec, 0px 0px 0px 12px #f0f4f8;\n    transition: width 0.3s 0.075s, padding-bottom 0.3s 0.075s, box-shadow 0.3s 0.075s, transform 0.15s, opacity 0.15s; }\n    .LoginForm-Card .LoginForm-ProfilePlaceholder img {\n      position: absolute;\n      padding: 28px;\n      width: 100%;\n      height: auto;\n      transition: opacity 0.15s, transform 0.15s; }\n    .LoginForm-Card .LoginForm-ProfilePlaceholder img.success {\n      opacity: 0;\n      transform: scale(0.7);\n      bottom: 0;\n      left: 0; }\n\n.LoginForm-Card.loading {\n  background-color: transparent;\n  border-color: transparent;\n  padding: 0px 24px; }\n  .LoginForm-Card.loading .LoginForm-ProfilePlaceholder {\n    width: 80%;\n    height: 0;\n    padding-bottom: 80%;\n    margin: 16px auto 32px auto;\n    box-shadow: 0px 0px 0px 6px #bcccdc, 0px 0px 0px 12px #d9e2ec; }\n    .LoginForm-Card.loading .LoginForm-ProfilePlaceholder img.card {\n      opacity: 0;\n      transform: scale(0.7); }\n    .LoginForm-Card.loading .LoginForm-ProfilePlaceholder img.success {\n      bottom: 32px;\n      left: 32px;\n      opacity: 0.8;\n      transform: scale(1);\n      transition: opacity 0.15s 0.15s, transform 0.15s 0.15s, bottom 0.3s 0.3s ease-in, left 0.3s 0.3s ease-in; }\n  .LoginForm-Card.loading .LoginForm-FormContents {\n    max-height: 0;\n    opacity: 0; }\n\n.LoginForm-Card.loaded .LoginForm-ProfilePlaceholder {\n  transform: scale(0.8);\n  opacity: 0; }\n\n.LoginForm-Warning {\n  user-select: none;\n  color: #ef4e4e; }\n", "",{"version":3,"sources":["LoginForm.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/LoginForm.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Ext.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Vars.scss"],"names":[],"mappings":"AAAA,gBAAgB;ACOhB;ECJC,sBAAsB;EACtB,gDAA8D;EAC9D,kBAAkB;EAClB,kBAAkB,EAAA;;ADJnB;ECQC,aAAa;EACb,WAAW;EACX,YAAY;EACZ,sBAAsB;EACtB,uBAAuB;EACvB,mBAAmB,EAAA;;ADiGpB;EC3FuB,YAAS,EAAI;;ADdpC;ECkBC,kBAAkB;EAClB,iBAAiB;EACjB,mBAAmB;EACnB,qBCxBoB,EAAA;;AFGrB;EC0BC,qBChCoB;EDiCpB,UAAU,EAAA;ED3BX;IC8BE,qBCnCmB,EAAA;EFKrB;ICkCE,qBCrCmB,EAAA;EFGrB;ICsCE,gBAAgB;IAChB,cC1CmB,EAAA;;AFGrB;EC4CC,kBAAkB;EAClB,6BAA6B;EAC7B,eAAe;EACf,YAAY;EACZ,UAAU;EAEV,kBAAkB;EAClB,6BAA6B;EAC7B,mCAAkD,EAAA;EDpDnD;ICyDE,YAAY;IACZ,cAAc;IACd,kBAAkB;IAClB,iBAAiB;IACjB,oBAAoB;IAGpB,SAAS;IACT,UAAU;IACV,WAAW;IACX,YAAY;IAEZ,WAAW;IACX,sBAAsB;IAEtB,sBAAsB;IACtB,kCAA2C;IAE3C,2KArB0C,EAAA;EDtD5C;IC+EE,WAAW;IACX,mBAAmB;IACnB,qCAAiD;IAEjD,uKA7B0C,EAAA;EDtD5C;ICuFE,wBCtEY,EAAA;EFjBd;IC2FE,qBC9FmB,EAAA;;AFFrB;EAEC,yBAAyB,EAAA;;AAG1B;EAGC,qEEca,EAAA;EFjBd;IAME,aAAa;IACb,sBAAsB;IACtB,iBAAiB;IACjB,gBAAgB;IAChB,UAAU;IAEV,0CEKY,EAAA;IFjBd;MAgBG,kBAAkB,EAAA;IAhBrB;MAqBG,iBAAiB;MACjB,gBAAgB;MAChB,kBAAkB,EAAA;IAvBrB;MA2BG,YAAY;MACZ,aAAa,EAAA;EA5BhB;IAiCE,cAAc;IACd,kBAAkB;IAClB,UAAU;IACV,SAAS;IACT,iBAAiB;IACjB,mBAAmB;IACnB,2BAA2B;IAE3B,kBAAkB;IAClB,oDAA4D;IAE5D,6DEnDmB;IFqDnB,iHE7BY,EAAA;IFjBd;MAiDG,kBAAkB;MAClB,aAAa;MACb,WAAW;MACX,YAAY;MAEZ,0CErCW,EAAA;IFjBd;MA0DG,UAAU;MACV,qBAAqB;MACrB,SAAS;MACT,OAAO,EAAA;;AAKV;EACC,6BAA6B;EAC7B,yBAAyB;EACzB,iBAAiB,EAAA;EAHlB;IAME,UAAU;IACV,SAAS;IACT,mBAAmB;IACnB,2BAA2B;IAC3B,6DElFmB,EAAA;IFwErB;MAaG,UAAU;MACV,qBAAqB,EAAA;IAdxB;MAkBG,YAAY;MACZ,UAAU;MACV,YAAY;MACZ,mBAAmB;MACnB,wGAAwH,EAAA;EAtB3H;IA2BE,aAAa;IACb,UAAU,EAAA;;AAIZ;EAEE,qBAAqB;EACrB,UAAU,EAAA;;AAIZ;EAEC,iBAAiB;EACjB,cAAc,EAAA","file":"LoginForm.scss","sourcesContent":["@charset \"UTF-8\";\n.LoginForm-Card:not(.loading) {\n  background-color: #fff;\n  box-shadow: 0px 2px 8px 0px rgba(8, 30, 56, 0.1);\n  border-radius: 4px;\n  padding: 16px 24px; }\n\n.LoginForm {\n  display: flex;\n  width: 100%;\n  height: 100%;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center; }\n\n.LoginForm-Warning::before, .LoginForm-Warning::after {\n  content: \"　\"; }\n\n.LoginForm-Card .LoginForm-FormContents input {\n  border-radius: 4px;\n  border-width: 1px;\n  border-style: solid;\n  border-color: #829ab1; }\n\n.LoginForm-Card .LoginForm-FormContents input {\n  border-color: #d9e2ec;\n  outline: 0; }\n  .LoginForm-Card .LoginForm-FormContents input:hover {\n    border-color: #bcccdc; }\n  .LoginForm-Card .LoginForm-FormContents input:focus {\n    border-color: #829ab1; }\n  .LoginForm-Card .LoginForm-FormContents input::placeholder {\n    font-weight: 400;\n    color: #829ab1; }\n\n.LoginForm-Card .LoginForm-FormContents button {\n  position: relative;\n  background-color: transparent;\n  cursor: pointer;\n  border: none;\n  outline: 0;\n  border-radius: 4px;\n  border: 1px solid transparent;\n  background: rgba(36, 59, 83, 0.075); }\n  .LoginForm-Card .LoginForm-FormContents button::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    user-select: none;\n    pointer-events: none;\n    top: -1px;\n    left: -1px;\n    right: -1px;\n    bottom: -1px;\n    margin: 4px;\n    transform: scale(0.87);\n    border-radius: inherit;\n    background: rgba(130, 154, 177, 0);\n    transition: background 0.3s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02) 0.075s, margin 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .LoginForm-Card .LoginForm-FormContents button:hover::after, .LoginForm-Card .LoginForm-FormContents button:focus::after {\n    margin: 0px;\n    transform: scale(1);\n    background: rgba(130, 154, 177, 0.15);\n    transition: background 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), margin 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .LoginForm-Card .LoginForm-FormContents button:active {\n    transition: border 0.15s; }\n  .LoginForm-Card .LoginForm-FormContents button:focus {\n    border-color: #829ab1; }\n\n.LoginForm {\n  height: calc(100vh - 6px); }\n\n.LoginForm-Card {\n  transition: background-color 0.15s, border-color 0.15s, padding 0.15s; }\n  .LoginForm-Card .LoginForm-FormContents {\n    display: flex;\n    flex-direction: column;\n    max-height: 230px;\n    overflow: hidden;\n    opacity: 1;\n    transition: max-height 0.3s, opacity 0.15s; }\n    .LoginForm-Card .LoginForm-FormContents input {\n      margin-bottom: 8px; }\n    .LoginForm-Card .LoginForm-FormContents button {\n      user-select: none;\n      margin-top: 16px;\n      margin-bottom: 8px; }\n    .LoginForm-Card .LoginForm-FormContents input, .LoginForm-Card .LoginForm-FormContents button {\n      width: 230px;\n      padding: 12px; }\n  .LoginForm-Card .LoginForm-ProfilePlaceholder {\n    display: block;\n    position: relative;\n    width: 70%;\n    height: 0;\n    user-select: none;\n    padding-bottom: 70%;\n    margin: 16px auto 32px auto;\n    border-radius: 50%;\n    background: linear-gradient(45deg, #14919b, #87eaf2);\n    box-shadow: 0px 0px 0px 6px #d9e2ec, 0px 0px 0px 12px #f0f4f8;\n    transition: width 0.3s 0.075s, padding-bottom 0.3s 0.075s, box-shadow 0.3s 0.075s, transform 0.15s, opacity 0.15s; }\n    .LoginForm-Card .LoginForm-ProfilePlaceholder img {\n      position: absolute;\n      padding: 28px;\n      width: 100%;\n      height: auto;\n      transition: opacity 0.15s, transform 0.15s; }\n    .LoginForm-Card .LoginForm-ProfilePlaceholder img.success {\n      opacity: 0;\n      transform: scale(0.7);\n      bottom: 0;\n      left: 0; }\n\n.LoginForm-Card.loading {\n  background-color: transparent;\n  border-color: transparent;\n  padding: 0px 24px; }\n  .LoginForm-Card.loading .LoginForm-ProfilePlaceholder {\n    width: 80%;\n    height: 0;\n    padding-bottom: 80%;\n    margin: 16px auto 32px auto;\n    box-shadow: 0px 0px 0px 6px #bcccdc, 0px 0px 0px 12px #d9e2ec; }\n    .LoginForm-Card.loading .LoginForm-ProfilePlaceholder img.card {\n      opacity: 0;\n      transform: scale(0.7); }\n    .LoginForm-Card.loading .LoginForm-ProfilePlaceholder img.success {\n      bottom: 32px;\n      left: 32px;\n      opacity: 0.8;\n      transform: scale(1);\n      transition: opacity 0.15s 0.15s, transform 0.15s 0.15s, bottom 0.3s 0.3s ease-in, left 0.3s 0.3s ease-in; }\n  .LoginForm-Card.loading .LoginForm-FormContents {\n    max-height: 0;\n    opacity: 0; }\n\n.LoginForm-Card.loaded .LoginForm-ProfilePlaceholder {\n  transform: scale(0.8);\n  opacity: 0; }\n\n.LoginForm-Warning {\n  user-select: none;\n  color: #ef4e4e; }\n","@import \"partial/Ext\";\n\n.LoginForm {\n\t@extend %center_wrap;\n\theight: calc(100vh - 6px);\n}\n\n.LoginForm-Card {\n\t&:not(.loading) { @extend %card; }\n\n\ttransition: background-color $t-fast, border-color $t-fast, padding $t-fast;\n\n\t.LoginForm-FormContents {\n\t\tdisplay: flex;\n\t\tflex-direction: column;\n\t\tmax-height: 230px;\n\t\toverflow: hidden;\n\t\topacity: 1;\n\n\t\ttransition: max-height $t-med, opacity $t-fast;\n\n\t\tinput {\n\t\t\t@extend %material_input;\n\t\t\tmargin-bottom: 8px;\n\t\t}\n\n\t\tbutton {\n\t\t\t@extend %material_button;\n\t\t\tuser-select: none;\n\t\t\tmargin-top: 16px;\n\t\t\tmargin-bottom: 8px;\n\t\t}\n\n\t\tinput, button {\n\t\t\twidth: 230px;\n\t\t\tpadding: 12px;\n\t\t}\n\t}\n\n\t.LoginForm-ProfilePlaceholder {\n\t\tdisplay: block;\n\t\tposition: relative;\n\t\twidth: 70%;\n\t\theight: 0;\n\t\tuser-select: none;\n\t\tpadding-bottom: 70%;\n\t\tmargin: 16px auto 32px auto;\n\n\t\tborder-radius: 50%;\n\t\tbackground: linear-gradient(45deg, $accent-700, $accent-300);\n\n\t\tbox-shadow: 0px 0px 0px 6px $neutral-100, 0px 0px 0px 12px $neutral-000;\n\n\t\ttransition: width $t-med $t-ufast, padding-bottom $t-med $t-ufast, box-shadow $t-med $t-ufast, transform $t-fast, opacity $t-fast;\n\n\t\timg {\n\t\t\tposition: absolute;\n\t\t\tpadding: 28px;\n\t\t\twidth: 100%;\n\t\t\theight: auto;\n\n\t\t\ttransition: opacity $t-fast, transform $t-fast;\n\t\t}\n\n\t\timg.success {\n\t\t\topacity: 0;\n\t\t\ttransform: scale(0.7);\n\t\t\tbottom: 0;\n\t\t\tleft: 0;\n\t\t}\n\t}\n}\n\n.LoginForm-Card.loading {\n\tbackground-color: transparent;\n\tborder-color: transparent;\n\tpadding: 0px 24px;\n\n\t.LoginForm-ProfilePlaceholder {\n\t\twidth: 80%;\n\t\theight: 0;\n\t\tpadding-bottom: 80%;\n\t\tmargin: 16px auto 32px auto;\n\t\tbox-shadow: 0px 0px 0px 6px $neutral-200, 0px 0px 0px 12px $neutral-100;\n\n\t\timg.card {\n\t\t\topacity: 0;\n\t\t\ttransform: scale(0.7);\n\t\t}\n\n\t\timg.success {\n\t\t\tbottom: 32px;\n\t\t\tleft: 32px;\n\t\t\topacity: 0.8;\n\t\t\ttransform: scale(1);\n\t\t\ttransition: opacity $t-fast $t-fast, transform $t-fast $t-fast, bottom $t-med $t-med ease-in, left $t-med $t-med ease-in;\n\t\t}\n\t}\n\n\t.LoginForm-FormContents {\n\t\tmax-height: 0;\n\t\topacity: 0;\n\t}\n}\n\n.LoginForm-Card.loaded {\n\t.LoginForm-ProfilePlaceholder {\n\t\ttransform: scale(0.8);\n\t\topacity: 0;\n\t}\n}\n\n.LoginForm-Warning {\n\t@extend %para_no_collapse;\n\tuser-select: none;\n\tcolor: #ef4e4e;\n}\n","@import \"Vars\";\n\n%card {\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tborder-radius: 4px;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-800, 1 - .075);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:hover::after, &:focus::after {\n\t\tmargin: 0px;\n\t\ttransform: scale(1);\n\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t}\n\n\t&:active {\n\t\ttransition: border $t-fast;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"]}]);
+___CSS_LOADER_EXPORT___.push([module.i, "@charset \"UTF-8\";\n.LoginForm-Card:not(.loading) {\n  height: min-content;\n  border-radius: 4px;\n  padding: 16px 24px;\n  background-color: #fff;\n  box-shadow: 0px 2px 8px 0px rgba(8, 30, 56, 0.1); }\n\n.LoginForm {\n  display: flex;\n  width: 100%;\n  height: 100%;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center; }\n\n.LoginForm-Warning::before, .LoginForm-Warning::after {\n  content: \"　\"; }\n\n.LoginForm-Card .LoginForm-FormContents input {\n  border-radius: 4px;\n  border-width: 1px;\n  border-style: solid;\n  border-color: #829ab1; }\n\n.LoginForm-Card .LoginForm-FormContents input {\n  border-color: #d9e2ec;\n  outline: 0; }\n  .LoginForm-Card .LoginForm-FormContents input:hover {\n    border-color: #bcccdc; }\n  .LoginForm-Card .LoginForm-FormContents input:focus {\n    border-color: #829ab1; }\n  .LoginForm-Card .LoginForm-FormContents input::placeholder {\n    font-weight: 400;\n    color: #829ab1; }\n\n.LoginForm-Card .LoginForm-FormContents button {\n  position: relative;\n  background-color: transparent;\n  cursor: pointer;\n  border: none;\n  outline: 0;\n  user-select: none;\n  border-radius: 4px;\n  text-underline: none;\n  border: 1px solid transparent;\n  background: rgba(159, 179, 200, 0.15); }\n  .LoginForm-Card .LoginForm-FormContents button::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    user-select: none;\n    pointer-events: none;\n    top: -1px;\n    left: -1px;\n    right: -1px;\n    bottom: -1px;\n    margin: 4px;\n    transform: scale(0.87);\n    border-radius: inherit;\n    background: rgba(130, 154, 177, 0);\n    transition: background 0.3s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02) 0.075s, margin 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .LoginForm-Card .LoginForm-FormContents button:not(:disabled):hover::after, .LoginForm-Card .LoginForm-FormContents button:not(:disabled):focus::after {\n    margin: 0px;\n    transform: scale(1);\n    background: rgba(130, 154, 177, 0.15);\n    transition: background 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), margin 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .LoginForm-Card .LoginForm-FormContents button:not(:disabled):active {\n    transition: border 0.15s; }\n  .LoginForm-Card .LoginForm-FormContents button:not(:disabled):focus {\n    border-color: #829ab1; }\n  .LoginForm-Card .LoginForm-FormContents button:disabled {\n    cursor: auto;\n    opacity: 0.65;\n    color: #627d98; }\n\n.LoginForm {\n  height: calc(100vh - 6px); }\n\n.LoginForm-Card {\n  transition: background-color 0.15s, border-color 0.15s, padding 0.15s; }\n  .LoginForm-Card .LoginForm-FormContents {\n    display: flex;\n    flex-direction: column;\n    max-height: 230px;\n    overflow: hidden;\n    opacity: 1;\n    transition: max-height 0.3s, opacity 0.15s; }\n    .LoginForm-Card .LoginForm-FormContents input {\n      margin-bottom: 8px; }\n    .LoginForm-Card .LoginForm-FormContents button {\n      user-select: none;\n      margin-top: 16px;\n      margin-bottom: 8px; }\n    .LoginForm-Card .LoginForm-FormContents input, .LoginForm-Card .LoginForm-FormContents button {\n      width: 230px;\n      padding: 12px; }\n  .LoginForm-Card .LoginForm-ProfilePlaceholder {\n    display: block;\n    position: relative;\n    width: 70%;\n    height: 0;\n    user-select: none;\n    padding-bottom: 70%;\n    margin: 16px auto 32px auto;\n    border-radius: 50%;\n    background: linear-gradient(45deg, #14919b, #87eaf2);\n    box-shadow: 0px 0px 0px 6px #d9e2ec, 0px 0px 0px 12px #f0f4f8;\n    transition: width 0.3s 0.075s, padding-bottom 0.3s 0.075s, box-shadow 0.3s 0.075s, transform 0.15s, opacity 0.15s; }\n    .LoginForm-Card .LoginForm-ProfilePlaceholder img {\n      position: absolute;\n      padding: 28px;\n      width: 100%;\n      height: auto;\n      transition: opacity 0.15s, transform 0.15s; }\n    .LoginForm-Card .LoginForm-ProfilePlaceholder img.success {\n      opacity: 0;\n      transform: scale(0.7);\n      bottom: 0;\n      left: 0; }\n\n.LoginForm-Card.loading {\n  background-color: transparent;\n  border-color: transparent;\n  padding: 0px 24px; }\n  .LoginForm-Card.loading .LoginForm-ProfilePlaceholder {\n    width: 80%;\n    height: 0;\n    padding-bottom: 80%;\n    margin: 16px auto 32px auto;\n    box-shadow: 0px 0px 0px 6px #bcccdc, 0px 0px 0px 12px #d9e2ec; }\n    .LoginForm-Card.loading .LoginForm-ProfilePlaceholder img.card {\n      opacity: 0;\n      transform: scale(0.7); }\n    .LoginForm-Card.loading .LoginForm-ProfilePlaceholder img.success {\n      bottom: 32px;\n      left: 32px;\n      opacity: 0.8;\n      transform: scale(1);\n      transition: opacity 0.15s 0.15s, transform 0.15s 0.15s, bottom 0.3s 0.3s ease-in, left 0.3s 0.3s ease-in; }\n  .LoginForm-Card.loading .LoginForm-FormContents {\n    max-height: 0;\n    opacity: 0; }\n\n.LoginForm-Card.loaded .LoginForm-ProfilePlaceholder {\n  transform: scale(0.8);\n  opacity: 0; }\n\n.LoginForm-Warning {\n  user-select: none;\n  color: #ef4e4e; }\n", "",{"version":3,"sources":["LoginForm.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/LoginForm.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Ext.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Vars.scss"],"names":[],"mappings":"AAAA,gBAAgB;ACOhB;ECJC,mBAAmB;EACnB,kBAAkB;EAClB,kBAAkB;EAElB,sBAAsB;EACtB,gDAA8D,EAAA;;ADN/D;ECiCC,aAAa;EACb,WAAW;EACX,YAAY;EACZ,sBAAsB;EACtB,uBAAuB;EACvB,mBAAmB,EAAA;;ADwEpB;EClEuB,YAAS,EAAI;;ADvCpC;EC2CC,kBAAkB;EAClB,iBAAiB;EACjB,mBAAmB;EACnB,qBCjDoB,EAAA;;AFGrB;ECmDC,qBCzDoB;ED0DpB,UAAU,EAAA;EDpDX;ICuDE,qBC5DmB,EAAA;EFKrB;IC2DE,qBC9DmB,EAAA;EFGrB;IC+DE,gBAAgB;IAChB,cCnEmB,EAAA;;AFGrB;ECqEC,kBAAkB;EAClB,6BAA6B;EAC7B,eAAe;EACf,YAAY;EACZ,UAAU;EAEV,iBAAiB;EACjB,kBAAkB;EAClB,oBAAoB;EACpB,6BAA6B;EAC7B,qCAAiD,EAAA;ED/ElD;ICoFE,YAAY;IACZ,cAAc;IACd,kBAAkB;IAClB,iBAAiB;IACjB,oBAAoB;IAGpB,SAAS;IACT,UAAU;IACV,WAAW;IACX,YAAY;IAEZ,WAAW;IACX,sBAAsB;IAEtB,sBAAsB;IACtB,kCAA2C;IAE3C,2KArB0C,EAAA;EDjF5C;IC4GI,WAAW;IACX,mBAAmB;IACnB,qCAAiD;IAEjD,uKA/BwC,EAAA;EDjF5C;ICqHG,wBCpGW,EAAA;EFjBd;ICyHG,qBC5HkB,EAAA;EFGrB;IC8HE,YAAY;IACZ,aAAa;IACb,cClImB,EAAA;;AFHrB;EAEC,yBAAyB,EAAA;;AAG1B;EAGC,qEEca,EAAA;EFjBd;IAME,aAAa;IACb,sBAAsB;IACtB,iBAAiB;IACjB,gBAAgB;IAChB,UAAU;IAEV,0CEKY,EAAA;IFjBd;MAgBG,kBAAkB,EAAA;IAhBrB;MAqBG,iBAAiB;MACjB,gBAAgB;MAChB,kBAAkB,EAAA;IAvBrB;MA2BG,YAAY;MACZ,aAAa,EAAA;EA5BhB;IAiCE,cAAc;IACd,kBAAkB;IAClB,UAAU;IACV,SAAS;IACT,iBAAiB;IACjB,mBAAmB;IACnB,2BAA2B;IAE3B,kBAAkB;IAClB,oDAA4D;IAE5D,6DEnDmB;IFqDnB,iHE7BY,EAAA;IFjBd;MAiDG,kBAAkB;MAClB,aAAa;MACb,WAAW;MACX,YAAY;MAEZ,0CErCW,EAAA;IFjBd;MA0DG,UAAU;MACV,qBAAqB;MACrB,SAAS;MACT,OAAO,EAAA;;AAKV;EACC,6BAA6B;EAC7B,yBAAyB;EACzB,iBAAiB,EAAA;EAHlB;IAME,UAAU;IACV,SAAS;IACT,mBAAmB;IACnB,2BAA2B;IAC3B,6DElFmB,EAAA;IFwErB;MAaG,UAAU;MACV,qBAAqB,EAAA;IAdxB;MAkBG,YAAY;MACZ,UAAU;MACV,YAAY;MACZ,mBAAmB;MACnB,wGAAwH,EAAA;EAtB3H;IA2BE,aAAa;IACb,UAAU,EAAA;;AAIZ;EAEE,qBAAqB;EACrB,UAAU,EAAA;;AAIZ;EAEC,iBAAiB;EACjB,cAAc,EAAA","file":"LoginForm.scss","sourcesContent":["@charset \"UTF-8\";\n.LoginForm-Card:not(.loading) {\n  height: min-content;\n  border-radius: 4px;\n  padding: 16px 24px;\n  background-color: #fff;\n  box-shadow: 0px 2px 8px 0px rgba(8, 30, 56, 0.1); }\n\n.LoginForm {\n  display: flex;\n  width: 100%;\n  height: 100%;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center; }\n\n.LoginForm-Warning::before, .LoginForm-Warning::after {\n  content: \"　\"; }\n\n.LoginForm-Card .LoginForm-FormContents input {\n  border-radius: 4px;\n  border-width: 1px;\n  border-style: solid;\n  border-color: #829ab1; }\n\n.LoginForm-Card .LoginForm-FormContents input {\n  border-color: #d9e2ec;\n  outline: 0; }\n  .LoginForm-Card .LoginForm-FormContents input:hover {\n    border-color: #bcccdc; }\n  .LoginForm-Card .LoginForm-FormContents input:focus {\n    border-color: #829ab1; }\n  .LoginForm-Card .LoginForm-FormContents input::placeholder {\n    font-weight: 400;\n    color: #829ab1; }\n\n.LoginForm-Card .LoginForm-FormContents button {\n  position: relative;\n  background-color: transparent;\n  cursor: pointer;\n  border: none;\n  outline: 0;\n  user-select: none;\n  border-radius: 4px;\n  text-underline: none;\n  border: 1px solid transparent;\n  background: rgba(159, 179, 200, 0.15); }\n  .LoginForm-Card .LoginForm-FormContents button::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    user-select: none;\n    pointer-events: none;\n    top: -1px;\n    left: -1px;\n    right: -1px;\n    bottom: -1px;\n    margin: 4px;\n    transform: scale(0.87);\n    border-radius: inherit;\n    background: rgba(130, 154, 177, 0);\n    transition: background 0.3s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02) 0.075s, margin 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .LoginForm-Card .LoginForm-FormContents button:not(:disabled):hover::after, .LoginForm-Card .LoginForm-FormContents button:not(:disabled):focus::after {\n    margin: 0px;\n    transform: scale(1);\n    background: rgba(130, 154, 177, 0.15);\n    transition: background 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), margin 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .LoginForm-Card .LoginForm-FormContents button:not(:disabled):active {\n    transition: border 0.15s; }\n  .LoginForm-Card .LoginForm-FormContents button:not(:disabled):focus {\n    border-color: #829ab1; }\n  .LoginForm-Card .LoginForm-FormContents button:disabled {\n    cursor: auto;\n    opacity: 0.65;\n    color: #627d98; }\n\n.LoginForm {\n  height: calc(100vh - 6px); }\n\n.LoginForm-Card {\n  transition: background-color 0.15s, border-color 0.15s, padding 0.15s; }\n  .LoginForm-Card .LoginForm-FormContents {\n    display: flex;\n    flex-direction: column;\n    max-height: 230px;\n    overflow: hidden;\n    opacity: 1;\n    transition: max-height 0.3s, opacity 0.15s; }\n    .LoginForm-Card .LoginForm-FormContents input {\n      margin-bottom: 8px; }\n    .LoginForm-Card .LoginForm-FormContents button {\n      user-select: none;\n      margin-top: 16px;\n      margin-bottom: 8px; }\n    .LoginForm-Card .LoginForm-FormContents input, .LoginForm-Card .LoginForm-FormContents button {\n      width: 230px;\n      padding: 12px; }\n  .LoginForm-Card .LoginForm-ProfilePlaceholder {\n    display: block;\n    position: relative;\n    width: 70%;\n    height: 0;\n    user-select: none;\n    padding-bottom: 70%;\n    margin: 16px auto 32px auto;\n    border-radius: 50%;\n    background: linear-gradient(45deg, #14919b, #87eaf2);\n    box-shadow: 0px 0px 0px 6px #d9e2ec, 0px 0px 0px 12px #f0f4f8;\n    transition: width 0.3s 0.075s, padding-bottom 0.3s 0.075s, box-shadow 0.3s 0.075s, transform 0.15s, opacity 0.15s; }\n    .LoginForm-Card .LoginForm-ProfilePlaceholder img {\n      position: absolute;\n      padding: 28px;\n      width: 100%;\n      height: auto;\n      transition: opacity 0.15s, transform 0.15s; }\n    .LoginForm-Card .LoginForm-ProfilePlaceholder img.success {\n      opacity: 0;\n      transform: scale(0.7);\n      bottom: 0;\n      left: 0; }\n\n.LoginForm-Card.loading {\n  background-color: transparent;\n  border-color: transparent;\n  padding: 0px 24px; }\n  .LoginForm-Card.loading .LoginForm-ProfilePlaceholder {\n    width: 80%;\n    height: 0;\n    padding-bottom: 80%;\n    margin: 16px auto 32px auto;\n    box-shadow: 0px 0px 0px 6px #bcccdc, 0px 0px 0px 12px #d9e2ec; }\n    .LoginForm-Card.loading .LoginForm-ProfilePlaceholder img.card {\n      opacity: 0;\n      transform: scale(0.7); }\n    .LoginForm-Card.loading .LoginForm-ProfilePlaceholder img.success {\n      bottom: 32px;\n      left: 32px;\n      opacity: 0.8;\n      transform: scale(1);\n      transition: opacity 0.15s 0.15s, transform 0.15s 0.15s, bottom 0.3s 0.3s ease-in, left 0.3s 0.3s ease-in; }\n  .LoginForm-Card.loading .LoginForm-FormContents {\n    max-height: 0;\n    opacity: 0; }\n\n.LoginForm-Card.loaded .LoginForm-ProfilePlaceholder {\n  transform: scale(0.8);\n  opacity: 0; }\n\n.LoginForm-Warning {\n  user-select: none;\n  color: #ef4e4e; }\n","@import \"partial/Ext\";\n\n.LoginForm {\n\t@extend %center_wrap;\n\theight: calc(100vh - 6px);\n}\n\n.LoginForm-Card {\n\t&:not(.loading) { @extend %card; }\n\n\ttransition: background-color $t-fast, border-color $t-fast, padding $t-fast;\n\n\t.LoginForm-FormContents {\n\t\tdisplay: flex;\n\t\tflex-direction: column;\n\t\tmax-height: 230px;\n\t\toverflow: hidden;\n\t\topacity: 1;\n\n\t\ttransition: max-height $t-med, opacity $t-fast;\n\n\t\tinput {\n\t\t\t@extend %material_input;\n\t\t\tmargin-bottom: 8px;\n\t\t}\n\n\t\tbutton {\n\t\t\t@extend %material_button;\n\t\t\tuser-select: none;\n\t\t\tmargin-top: 16px;\n\t\t\tmargin-bottom: 8px;\n\t\t}\n\n\t\tinput, button {\n\t\t\twidth: 230px;\n\t\t\tpadding: 12px;\n\t\t}\n\t}\n\n\t.LoginForm-ProfilePlaceholder {\n\t\tdisplay: block;\n\t\tposition: relative;\n\t\twidth: 70%;\n\t\theight: 0;\n\t\tuser-select: none;\n\t\tpadding-bottom: 70%;\n\t\tmargin: 16px auto 32px auto;\n\n\t\tborder-radius: 50%;\n\t\tbackground: linear-gradient(45deg, $accent-700, $accent-300);\n\n\t\tbox-shadow: 0px 0px 0px 6px $neutral-100, 0px 0px 0px 12px $neutral-000;\n\n\t\ttransition: width $t-med $t-ufast, padding-bottom $t-med $t-ufast, box-shadow $t-med $t-ufast, transform $t-fast, opacity $t-fast;\n\n\t\timg {\n\t\t\tposition: absolute;\n\t\t\tpadding: 28px;\n\t\t\twidth: 100%;\n\t\t\theight: auto;\n\n\t\t\ttransition: opacity $t-fast, transform $t-fast;\n\t\t}\n\n\t\timg.success {\n\t\t\topacity: 0;\n\t\t\ttransform: scale(0.7);\n\t\t\tbottom: 0;\n\t\t\tleft: 0;\n\t\t}\n\t}\n}\n\n.LoginForm-Card.loading {\n\tbackground-color: transparent;\n\tborder-color: transparent;\n\tpadding: 0px 24px;\n\n\t.LoginForm-ProfilePlaceholder {\n\t\twidth: 80%;\n\t\theight: 0;\n\t\tpadding-bottom: 80%;\n\t\tmargin: 16px auto 32px auto;\n\t\tbox-shadow: 0px 0px 0px 6px $neutral-200, 0px 0px 0px 12px $neutral-100;\n\n\t\timg.card {\n\t\t\topacity: 0;\n\t\t\ttransform: scale(0.7);\n\t\t}\n\n\t\timg.success {\n\t\t\tbottom: 32px;\n\t\t\tleft: 32px;\n\t\t\topacity: 0.8;\n\t\t\ttransform: scale(1);\n\t\t\ttransition: opacity $t-fast $t-fast, transform $t-fast $t-fast, bottom $t-med $t-med ease-in, left $t-med $t-med ease-in;\n\t\t}\n\t}\n\n\t.LoginForm-FormContents {\n\t\tmax-height: 0;\n\t\topacity: 0;\n\t}\n}\n\n.LoginForm-Card.loaded {\n\t.LoginForm-ProfilePlaceholder {\n\t\ttransform: scale(0.8);\n\t\topacity: 0;\n\t}\n}\n\n.LoginForm-Warning {\n\t@extend %para_no_collapse;\n\tuser-select: none;\n\tcolor: #ef4e4e;\n}\n","@import \"Vars\";\n\n%card {\n\theight: min-content;\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n}\n\n%card_toolbar {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\n\tbutton {\n\t\t@extend %material_icon_button;\n\t}\n\n\t.separator {\n\t\twidth: 24px;\n\t\tdisplay: inline-block;\n\t}\n\n\tdiv:first-of-type button {\n\t\tmargin-right: 8px;\n\t}\n\n\tdiv:last-of-type button {\n\t\tmargin-left: 8px;\n\t}\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tuser-select: none;\n\tborder-radius: 4px;\n\ttext-underline: none;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-300, 1 - .15);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:not(:disabled) {\n\t\t&:hover, &:focus {\n\t\t\t&::after {\n\t\t\t\tmargin: 0px;\n\t\t\t\ttransform: scale(1);\n\t\t\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\t\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t\t\t}\n\t\t}\n\n\t\t&:active {\n\t\t\ttransition: border $t-fast;\n\t\t}\n\n\t\t&:focus {\n\t\t\tborder-color: $neutral-400;\n\t\t}\n\t}\n\n\t&:disabled {\n\t\tcursor: auto;\n\t\topacity: 0.65;\n\t\tcolor: $neutral-500;\n\t}\n}\n\n%material_icon_button {\n\t@extend %material_button;\n\tdisplay: inline-block;\n\n\t// width: 48px;\n\theight: 48px;\n\n\tpadding: 8px;\n\tborder-radius: 24px;\n\n\timg {\n\t\twidth: 30px;\n\t\theight: 30px;\n\t\tpointer-events: none;\n\t\tvertical-align: middle;\n\t}\n\n\tspan {\n\t\tcolor: $neutral-700;\n\t\tvertical-align: middle;\n\t\tpadding-right: 8px;\n\t\tpadding-left: 8px;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"]}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -9725,17 +9747,17 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, ".MediaItem {\n  position: relative;\n  background-color: transparent;\n  cursor: pointer;\n  border: none;\n  outline: 0;\n  border-radius: 4px;\n  border: 1px solid transparent;\n  background: rgba(36, 59, 83, 0.075); }\n  .MediaItem::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    user-select: none;\n    pointer-events: none;\n    top: -1px;\n    left: -1px;\n    right: -1px;\n    bottom: -1px;\n    margin: 4px;\n    transform: scale(0.87);\n    border-radius: inherit;\n    background: rgba(130, 154, 177, 0);\n    transition: background 0.3s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02) 0.075s, margin 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .MediaItem:hover::after, .MediaItem:focus::after {\n    margin: 0px;\n    transform: scale(1);\n    background: rgba(130, 154, 177, 0.15);\n    transition: background 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), margin 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .MediaItem:active {\n    transition: border 0.15s; }\n  .MediaItem:focus {\n    border-color: #829ab1; }\n\n.MediaItem {\n  background: transparent;\n  border-color: #d9e2ec;\n  box-sizing: content-box;\n  user-select: none;\n  padding: 8px;\n  height: 80px;\n  display: grid;\n  grid-template-columns: 80px 1fr;\n  grid-gap: 16px; }\n  .MediaItem > * {\n    box-sizing: border-box; }\n  .MediaItem.selected {\n    border-color: #3F51B5;\n    background-color: #2196f333; }\n    .MediaItem.selected:focus::after, .MediaItem.selected:hover::after {\n      background-color: #2196f333; }\n    .MediaItem.selected .MediaItem-Image.icon {\n      background-color: #2196f333; }\n  .MediaItem .MediaItem-Image {\n    width: 100%;\n    height: 100%;\n    border-radius: 4px;\n    object-fit: cover; }\n    .MediaItem .MediaItem-Image.icon {\n      background-color: #ebf0f6;\n      padding: 16px; }\n  .MediaItem .MediaItem-Description {\n    height: 100%;\n    overflow: auto;\n    text-align: left;\n    padding-top: 8px; }\n    .MediaItem .MediaItem-Description p {\n      margin-top: 0em;\n      margin-bottom: 0.3em;\n      overflow: hidden;\n      white-space: nowrap;\n      text-overflow: ellipsis; }\n    .MediaItem .MediaItem-Description p.MediaItem-Title {\n      font-size: 18px; }\n    .MediaItem .MediaItem-Description p.MediaItem-Author {\n      opacity: 0.8;\n      font-size: 14px; }\n    .MediaItem .MediaItem-Description p.MediaItem-Size {\n      opacity: 0.7;\n      font-size: 14px; }\n", "",{"version":3,"sources":["/home/aurailus/Code/Projects/AuriServer/admin/src/MediaItem.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Ext.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Vars.scss"],"names":[],"mappings":"AAGA;ECgDC,kBAAkB;EAClB,6BAA6B;EAC7B,eAAe;EACf,YAAY;EACZ,UAAU;EAEV,kBAAkB;EAClB,6BAA6B;EAC7B,mCAAkD,EAAA;EDxDnD;IC6DE,YAAY;IACZ,cAAc;IACd,kBAAkB;IAClB,iBAAiB;IACjB,oBAAoB;IAGpB,SAAS;IACT,UAAU;IACV,WAAW;IACX,YAAY;IAEZ,WAAW;IACX,sBAAsB;IAEtB,sBAAsB;IACtB,kCAA2C;IAE3C,2KArB0C,EAAA;ED1D5C;ICmFE,WAAW;IACX,mBAAmB;IACnB,qCAAiD;IAEjD,uKA7B0C,EAAA;ED1D5C;IC2FE,wBCtEY,EAAA;EFrBd;IC+FE,qBC9FmB,EAAA;;AFDrB;EAGC,uBAAuB;EACvB,qBENoB;EFOpB,uBAAuB;EACvB,iBAAiB;EACjB,YAAY;EAGZ,YADQ;EAGR,aAAa;EACb,+BAA6B;EAC7B,cAAc,EAAA;EAdf;IAiBE,sBAAsB,EAAA;EAjBxB;IAqBE,qBAAqB;IACrB,2BAA2B,EAAA;IAtB7B;MAyBG,2BAA2B,EAAA;IAzB9B;MA6BG,2BAA2B,EAAA;EA7B9B;IAkCE,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,iBAAiB,EAAA;IArCnB;MAwCG,yBAAsD;MACtD,aAAa,EAAA;EAzChB;IA8CE,YAAY;IACZ,cAAc;IACd,gBAAgB;IAChB,gBAAgB,EAAA;IAjDlB;MAoDG,eAAe;MACf,oBAAoB;MAEpB,gBAAgB;MAChB,mBAAmB;MACnB,uBAAuB,EAAA;IAzD1B;MA6DG,eAAe,EAAA;IA7DlB;MAiEG,YAAY;MACZ,eAAe,EAAA;IAlElB;MAsEG,YAAY;MACZ,eAAe,EAAA","file":"MediaItem.scss","sourcesContent":["@import \"partial/Vars\";\n@import \"partial/Ext\";\n\n.MediaItem {\n\t// @extend %material_border;\n\t@extend %material_button;\n\tbackground: transparent;\n\tborder-color: $neutral-100;\n\tbox-sizing: content-box;\n\tuser-select: none;\n\tpadding: 8px;\n\n\t$h: 80px;\n\theight: $h;\n\n\tdisplay: grid;\n\tgrid-template-columns: $h 1fr;\n\tgrid-gap: 16px;\n\n\t& > * {\n\t\tbox-sizing: border-box;\n\t}\n\n\t&.selected {\n\t\tborder-color: #3F51B5;\n\t\tbackground-color: #2196f333;\n\n\t\t&:focus::after, &:hover::after {\n\t\t\tbackground-color: #2196f333;\n\t\t}\n\n\t\t.MediaItem-Image.icon {\n\t\t\tbackground-color: #2196f333;\n\t\t}\n\t}\n\n\t.MediaItem-Image {\n\t\twidth: 100%;\n\t\theight: 100%;\n\t\tborder-radius: 4px;\n\t\tobject-fit: cover;\n\n\t\t&.icon {\n\t\t\tbackground-color: mix($neutral-100, $neutral-000, 20%);\n\t\t\tpadding: 16px;\n\t\t}\n\t}\n\n\t.MediaItem-Description {\n\t\theight: 100%;\n\t\toverflow: auto;\n\t\ttext-align: left;\n\t\tpadding-top: 8px;\n\n\t\tp {\n\t\t\tmargin-top: 0em;\n\t\t\tmargin-bottom: 0.3em;\n\n\t\t\toverflow: hidden;\n\t\t\twhite-space: nowrap;\n\t\t\ttext-overflow: ellipsis;\n\t\t}\n\n\t\tp.MediaItem-Title {\n\t\t\tfont-size: 18px;\n\t\t}\n\n\t\tp.MediaItem-Author {\n\t\t\topacity: 0.8;\n\t\t\tfont-size: 14px;\n\t\t}\n\n\t\tp.MediaItem-Size {\n\t\t\topacity: 0.7;\n\t\t\tfont-size: 14px;\n\t\t}\n\t}\n}\n","@import \"Vars\";\n\n%card {\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tborder-radius: 4px;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-800, 1 - .075);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:hover::after, &:focus::after {\n\t\tmargin: 0px;\n\t\ttransform: scale(1);\n\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t}\n\n\t&:active {\n\t\ttransition: border $t-fast;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"]}]);
+___CSS_LOADER_EXPORT___.push([module.i, ".MediaItem {\n  position: relative;\n  background-color: transparent;\n  cursor: pointer;\n  border: none;\n  outline: 0;\n  user-select: none;\n  border-radius: 4px;\n  text-underline: none;\n  border: 1px solid transparent;\n  background: rgba(159, 179, 200, 0.15); }\n  .MediaItem::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    user-select: none;\n    pointer-events: none;\n    top: -1px;\n    left: -1px;\n    right: -1px;\n    bottom: -1px;\n    margin: 4px;\n    transform: scale(0.87);\n    border-radius: inherit;\n    background: rgba(130, 154, 177, 0);\n    transition: background 0.3s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02) 0.075s, margin 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .MediaItem:not(:disabled):hover::after, .MediaItem:not(:disabled):focus::after {\n    margin: 0px;\n    transform: scale(1);\n    background: rgba(130, 154, 177, 0.15);\n    transition: background 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), margin 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .MediaItem:not(:disabled):active {\n    transition: border 0.15s; }\n  .MediaItem:not(:disabled):focus {\n    border-color: #829ab1; }\n  .MediaItem:disabled {\n    cursor: auto;\n    opacity: 0.65;\n    color: #627d98; }\n\n.MediaItem {\n  background: transparent;\n  border-color: #d9e2ec;\n  box-sizing: content-box;\n  user-select: none;\n  padding: 8px;\n  height: 80px;\n  display: grid;\n  grid-template-columns: 80px 1fr;\n  grid-gap: 16px; }\n  .MediaItem > * {\n    box-sizing: border-box; }\n  .MediaItem.selected {\n    border-color: #54d1db;\n    background-color: rgba(135, 234, 242, 0.3); }\n    .MediaItem.selected:focus::after, .MediaItem.selected:hover::after {\n      background-color: rgba(135, 234, 242, 0.2); }\n    .MediaItem.selected .MediaItem-Image.icon {\n      background-color: rgba(56, 190, 201, 0.3); }\n  .MediaItem .MediaItem-Image {\n    width: 100%;\n    height: 100%;\n    border-radius: 4px;\n    object-fit: cover; }\n    .MediaItem .MediaItem-Image.icon {\n      background-color: #ebf0f6;\n      padding: 16px; }\n  .MediaItem .MediaItem-Description {\n    height: 100%;\n    overflow: auto;\n    text-align: left;\n    padding-top: 8px; }\n    .MediaItem .MediaItem-Description p {\n      margin-top: 0em;\n      margin-bottom: 0.3em;\n      overflow: hidden;\n      white-space: nowrap;\n      text-overflow: ellipsis; }\n    .MediaItem .MediaItem-Description p.MediaItem-Title {\n      font-size: 18px; }\n    .MediaItem .MediaItem-Description p.MediaItem-Author {\n      opacity: 0.8;\n      font-size: 14px; }\n    .MediaItem .MediaItem-Description p.MediaItem-Size {\n      opacity: 0.7;\n      font-size: 14px; }\n", "",{"version":3,"sources":["/home/aurailus/Code/Projects/AuriServer/admin/src/MediaItem.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Ext.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Vars.scss"],"names":[],"mappings":"AAGA;ECyEC,kBAAkB;EAClB,6BAA6B;EAC7B,eAAe;EACf,YAAY;EACZ,UAAU;EAEV,iBAAiB;EACjB,kBAAkB;EAClB,oBAAoB;EACpB,6BAA6B;EAC7B,qCAAiD,EAAA;EDnFlD;ICwFE,YAAY;IACZ,cAAc;IACd,kBAAkB;IAClB,iBAAiB;IACjB,oBAAoB;IAGpB,SAAS;IACT,UAAU;IACV,WAAW;IACX,YAAY;IAEZ,WAAW;IACX,sBAAsB;IAEtB,sBAAsB;IACtB,kCAA2C;IAE3C,2KArB0C,EAAA;EDrF5C;ICgHI,WAAW;IACX,mBAAmB;IACnB,qCAAiD;IAEjD,uKA/BwC,EAAA;EDrF5C;ICyHG,wBCpGW,EAAA;EFrBd;IC6HG,qBC5HkB,EAAA;EFDrB;ICkIE,YAAY;IACZ,aAAa;IACb,cClImB,EAAA;;AFFrB;EAGC,uBAAuB;EACvB,qBENoB;EFOpB,uBAAuB;EACvB,iBAAiB;EACjB,YAAY;EAGZ,YADQ;EAGR,aAAa;EACb,+BAA6B;EAC7B,cAAc,EAAA;EAdf;IAiBE,sBAAsB,EAAA;EAjBxB;IAqBE,qBETkB;IFUlB,0CAAkD,EAAA;IAtBpD;MAyBG,0CAAkD,EAAA;IAzBrD;MA6BG,yCAAkD,EAAA;EA7BrD;IAkCE,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,iBAAiB,EAAA;IArCnB;MAwCG,yBAAsD;MACtD,aAAa,EAAA;EAzChB;IA8CE,YAAY;IACZ,cAAc;IACd,gBAAgB;IAChB,gBAAgB,EAAA;IAjDlB;MAoDG,eAAe;MACf,oBAAoB;MAEpB,gBAAgB;MAChB,mBAAmB;MACnB,uBAAuB,EAAA;IAzD1B;MA6DG,eAAe,EAAA;IA7DlB;MAiEG,YAAY;MACZ,eAAe,EAAA;IAlElB;MAsEG,YAAY;MACZ,eAAe,EAAA","file":"MediaItem.scss","sourcesContent":["@import \"partial/Vars\";\n@import \"partial/Ext\";\n\n.MediaItem {\n\t// @extend %material_border;\n\t@extend %material_button;\n\tbackground: transparent;\n\tborder-color: $neutral-100;\n\tbox-sizing: content-box;\n\tuser-select: none;\n\tpadding: 8px;\n\n\t$h: 80px;\n\theight: $h;\n\n\tdisplay: grid;\n\tgrid-template-columns: $h 1fr;\n\tgrid-gap: 16px;\n\n\t& > * {\n\t\tbox-sizing: border-box;\n\t}\n\n\t&.selected {\n\t\tborder-color: $accent-400;\n\t\tbackground-color: transparentize($accent-300, 0.7);\n\n\t\t&:focus::after, &:hover::after {\n\t\t\tbackground-color: transparentize($accent-300, 0.8);\n\t\t}\n\n\t\t.MediaItem-Image.icon {\n\t\t\tbackground-color: transparentize($accent-500, 0.7);\n\t\t}\n\t}\n\n\t.MediaItem-Image {\n\t\twidth: 100%;\n\t\theight: 100%;\n\t\tborder-radius: 4px;\n\t\tobject-fit: cover;\n\n\t\t&.icon {\n\t\t\tbackground-color: mix($neutral-100, $neutral-000, 20%);\n\t\t\tpadding: 16px;\n\t\t}\n\t}\n\n\t.MediaItem-Description {\n\t\theight: 100%;\n\t\toverflow: auto;\n\t\ttext-align: left;\n\t\tpadding-top: 8px;\n\n\t\tp {\n\t\t\tmargin-top: 0em;\n\t\t\tmargin-bottom: 0.3em;\n\n\t\t\toverflow: hidden;\n\t\t\twhite-space: nowrap;\n\t\t\ttext-overflow: ellipsis;\n\t\t}\n\n\t\tp.MediaItem-Title {\n\t\t\tfont-size: 18px;\n\t\t}\n\n\t\tp.MediaItem-Author {\n\t\t\topacity: 0.8;\n\t\t\tfont-size: 14px;\n\t\t}\n\n\t\tp.MediaItem-Size {\n\t\t\topacity: 0.7;\n\t\t\tfont-size: 14px;\n\t\t}\n\t}\n}\n","@import \"Vars\";\n\n%card {\n\theight: min-content;\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n}\n\n%card_toolbar {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\n\tbutton {\n\t\t@extend %material_icon_button;\n\t}\n\n\t.separator {\n\t\twidth: 24px;\n\t\tdisplay: inline-block;\n\t}\n\n\tdiv:first-of-type button {\n\t\tmargin-right: 8px;\n\t}\n\n\tdiv:last-of-type button {\n\t\tmargin-left: 8px;\n\t}\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tuser-select: none;\n\tborder-radius: 4px;\n\ttext-underline: none;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-300, 1 - .15);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:not(:disabled) {\n\t\t&:hover, &:focus {\n\t\t\t&::after {\n\t\t\t\tmargin: 0px;\n\t\t\t\ttransform: scale(1);\n\t\t\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\t\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t\t\t}\n\t\t}\n\n\t\t&:active {\n\t\t\ttransition: border $t-fast;\n\t\t}\n\n\t\t&:focus {\n\t\t\tborder-color: $neutral-400;\n\t\t}\n\t}\n\n\t&:disabled {\n\t\tcursor: auto;\n\t\topacity: 0.65;\n\t\tcolor: $neutral-500;\n\t}\n}\n\n%material_icon_button {\n\t@extend %material_button;\n\tdisplay: inline-block;\n\n\t// width: 48px;\n\theight: 48px;\n\n\tpadding: 8px;\n\tborder-radius: 24px;\n\n\timg {\n\t\twidth: 30px;\n\t\theight: 30px;\n\t\tpointer-events: none;\n\t\tvertical-align: middle;\n\t}\n\n\tspan {\n\t\tcolor: $neutral-700;\n\t\tvertical-align: middle;\n\t\tpadding-right: 8px;\n\t\tpadding-left: 8px;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"]}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
 
 /***/ }),
 
-/***/ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/MediaModal.scss":
-/*!************************************************************************************************************!*\
-  !*** ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/MediaModal.scss ***!
-  \************************************************************************************************************/
+/***/ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/MediaUploadForm.scss":
+/*!*****************************************************************************************************************!*\
+  !*** ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/MediaUploadForm.scss ***!
+  \*****************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -9747,7 +9769,51 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, ".MediaModal .MediaModal-Card {\n  background-color: #fff;\n  box-shadow: 0px 2px 8px 0px rgba(8, 30, 56, 0.1);\n  border-radius: 4px;\n  padding: 16px 24px; }\n\n.MediaModal {\n  display: flex;\n  width: 100%;\n  height: 100%;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center; }\n\n.MediaModal {\n  position: fixed;\n  top: 0;\n  left: 0;\n  background-color: rgba(188, 204, 220, 0.7);\n  cursor: pointer; }\n  .MediaModal .MediaModal-Card {\n    display: block;\n    cursor: auto; }\n", "",{"version":3,"sources":["/home/aurailus/Code/Projects/AuriServer/admin/src/MediaModal.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Ext.scss"],"names":[],"mappings":"AAGA;ECAC,sBAAsB;EACtB,gDAA8D;EAC9D,kBAAkB;EAClB,kBAAkB,EAAA;;ADHnB;ECOC,aAAa;EACb,WAAW;EACX,YAAY;EACZ,sBAAsB;EACtB,uBAAuB;EACvB,mBAAmB,EAAA;;ADZpB;EAGC,eAAe;EACf,MAAM;EACN,OAAO;EAEP,0CAAmD;EACnD,eAAe,EAAA;EARhB;IAaE,cAAc;IACd,YAAY,EAAA","file":"MediaModal.scss","sourcesContent":["@import \"partial/Vars\";\n@import \"partial/Ext\";\n\n.MediaModal {\n\t@extend %center_wrap;\n\n\tposition: fixed;\n\ttop: 0;\n\tleft: 0;\n\n\tbackground-color: transparentize($neutral-200, 0.3);\n\tcursor: pointer;\n\n\t.MediaModal-Card {\n\t\t@extend %card;\n\n\t\tdisplay: block;\n\t\tcursor: auto;\n\t\t\n\t}\n}\n","@import \"Vars\";\n\n%card {\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tborder-radius: 4px;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-800, 1 - .075);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:hover::after, &:focus::after {\n\t\tmargin: 0px;\n\t\ttransform: scale(1);\n\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t}\n\n\t&:active {\n\t\ttransition: border $t-fast;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n}\n"]}]);
+___CSS_LOADER_EXPORT___.push([module.i, ".MediaUploadForm .MediaUploadForm-Toolbar {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between; }\n  .MediaUploadForm .MediaUploadForm-Toolbar .separator {\n    width: 24px;\n    display: inline-block; }\n  .MediaUploadForm .MediaUploadForm-Toolbar div:first-of-type button {\n    margin-right: 8px; }\n  .MediaUploadForm .MediaUploadForm-Toolbar div:last-of-type button {\n    margin-left: 8px; }\n\n.MediaUploadForm .MediaUploadForm-InputWrap {\n  border-radius: 4px;\n  border-width: 1px;\n  border-style: solid;\n  border-color: #829ab1; }\n\n.MediaUploadForm .MediaUploadForm-Toolbar button, .MediaUploadForm .MediaUploadForm-InputWrap, .MediaUploadForm .MediaUploadForm-ActionBar .MediaUploadForm-ActionBar-Button {\n  position: relative;\n  background-color: transparent;\n  cursor: pointer;\n  border: none;\n  outline: 0;\n  user-select: none;\n  border-radius: 4px;\n  text-underline: none;\n  border: 1px solid transparent;\n  background: rgba(159, 179, 200, 0.15); }\n  .MediaUploadForm .MediaUploadForm-Toolbar button::after, .MediaUploadForm .MediaUploadForm-InputWrap::after, .MediaUploadForm .MediaUploadForm-ActionBar .MediaUploadForm-ActionBar-Button::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    user-select: none;\n    pointer-events: none;\n    top: -1px;\n    left: -1px;\n    right: -1px;\n    bottom: -1px;\n    margin: 4px;\n    transform: scale(0.87);\n    border-radius: inherit;\n    background: rgba(130, 154, 177, 0);\n    transition: background 0.3s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02) 0.075s, margin 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .MediaUploadForm .MediaUploadForm-Toolbar button:not(:disabled):hover::after, .MediaUploadForm .MediaUploadForm-InputWrap:not(:disabled):hover::after, .MediaUploadForm .MediaUploadForm-ActionBar .MediaUploadForm-ActionBar-Button:not(:disabled):hover::after, .MediaUploadForm .MediaUploadForm-Toolbar button:not(:disabled):focus::after, .MediaUploadForm .MediaUploadForm-InputWrap:not(:disabled):focus::after, .MediaUploadForm .MediaUploadForm-ActionBar .MediaUploadForm-ActionBar-Button:not(:disabled):focus::after {\n    margin: 0px;\n    transform: scale(1);\n    background: rgba(130, 154, 177, 0.15);\n    transition: background 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), margin 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .MediaUploadForm .MediaUploadForm-Toolbar button:not(:disabled):active, .MediaUploadForm .MediaUploadForm-InputWrap:not(:disabled):active, .MediaUploadForm .MediaUploadForm-ActionBar .MediaUploadForm-ActionBar-Button:not(:disabled):active {\n    transition: border 0.15s; }\n  .MediaUploadForm .MediaUploadForm-Toolbar button:not(:disabled):focus, .MediaUploadForm .MediaUploadForm-InputWrap:not(:disabled):focus, .MediaUploadForm .MediaUploadForm-ActionBar .MediaUploadForm-ActionBar-Button:not(:disabled):focus {\n    border-color: #829ab1; }\n  .MediaUploadForm .MediaUploadForm-Toolbar button:disabled, .MediaUploadForm .MediaUploadForm-InputWrap:disabled, .MediaUploadForm .MediaUploadForm-ActionBar .MediaUploadForm-ActionBar-Button:disabled {\n    cursor: auto;\n    opacity: 0.65;\n    color: #627d98; }\n\n.MediaUploadForm .MediaUploadForm-Toolbar button {\n  display: inline-block;\n  height: 48px;\n  padding: 8px;\n  border-radius: 24px; }\n  .MediaUploadForm .MediaUploadForm-Toolbar button img {\n    width: 30px;\n    height: 30px;\n    pointer-events: none;\n    vertical-align: middle; }\n  .MediaUploadForm .MediaUploadForm-Toolbar button span {\n    color: #334e68;\n    vertical-align: middle;\n    padding-right: 8px;\n    padding-left: 8px; }\n\n.MediaUploadForm .MediaUploadForm-InputWrap {\n  margin: 16px 0px;\n  position: relative;\n  display: flex;\n  width: 100%;\n  height: 150px;\n  align-items: center;\n  text-align: center;\n  background-color: #f0f4f8;\n  border-color: #bcccdc;\n  transition: height 0.3s, margin-top 0.3s, opacity 0.15s; }\n  .MediaUploadForm .MediaUploadForm-InputWrap.disabled {\n    height: 0;\n    margin: 0;\n    opacity: 0; }\n  .MediaUploadForm .MediaUploadForm-InputWrap .MediaUploadForm-Input {\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    opacity: 0;\n    cursor: pointer; }\n  .MediaUploadForm .MediaUploadForm-InputWrap h2 {\n    color: #627d98;\n    user-select: none;\n    display: block;\n    width: 100%; }\n\n.MediaUploadForm .MediaUploadForm-Files {\n  margin: 16px 0px;\n  display: grid;\n  grid-gap: 8px;\n  width: 600px; }\n  .MediaUploadForm .MediaUploadForm-Files.Grid {\n    grid-gap: 16px;\n    grid-template-columns: 1fr 1fr;\n    width: 840px; }\n\n.MediaUploadForm .MediaUploadForm-ActionBar {\n  margin: 32px 0px 8px 0px;\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between; }\n  .MediaUploadForm .MediaUploadForm-ActionBar .MediaUploadForm-ActionBar-Button {\n    padding: 16px; }\n", "",{"version":3,"sources":["/home/aurailus/Code/Projects/AuriServer/admin/src/MediaUploadForm.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Ext.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Vars.scss"],"names":[],"mappings":"AAGA;ECSC,aAAa;EACb,mBAAmB;EACnB,8BAA8B,EAAA;EDX/B;ICkBE,WAAW;IACX,qBAAqB,EAAA;EDnBvB;ICuBE,iBAAiB,EAAA;EDvBnB;IC2BE,gBAAgB,EAAA;;AD3BlB;EC+CC,kBAAkB;EAClB,iBAAiB;EACjB,mBAAmB;EACnB,qBCjDoB,EAAA;;AFDrB;ECyEC,kBAAkB;EAClB,6BAA6B;EAC7B,eAAe;EACf,YAAY;EACZ,UAAU;EAEV,iBAAiB;EACjB,kBAAkB;EAClB,oBAAoB;EACpB,6BAA6B;EAC7B,qCAAiD,EAAA;EDnFlD;ICwFE,YAAY;IACZ,cAAc;IACd,kBAAkB;IAClB,iBAAiB;IACjB,oBAAoB;IAGpB,SAAS;IACT,UAAU;IACV,WAAW;IACX,YAAY;IAEZ,WAAW;IACX,sBAAsB;IAEtB,sBAAsB;IACtB,kCAA2C;IAE3C,2KArB0C,EAAA;EDrF5C;ICgHI,WAAW;IACX,mBAAmB;IACnB,qCAAiD;IAEjD,uKA/BwC,EAAA;EDrF5C;ICyHG,wBCpGW,EAAA;EFrBd;IC6HG,qBC5HkB,EAAA;EFDrB;ICkIE,YAAY;IACZ,aAAa;IACb,cClImB,EAAA;;AFFrB;EC0IC,qBAAqB;EAGrB,YAAY;EAEZ,YAAY;EACZ,mBAAmB,EAAA;EDhJpB;ICmJE,WAAW;IACX,YAAY;IACZ,oBAAoB;IACpB,sBAAsB,EAAA;EDtJxB;IC0JE,cCtJmB;IDuJnB,sBAAsB;IACtB,kBAAkB;IAClB,iBAAiB,EAAA;;AD7JnB;EAKE,gBAAgB;EAChB,kBAAkB;EAClB,aAAa;EACb,WAAW;EACX,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAElB,yBEhBmB;EFiBnB,qBEfmB;EFiBnB,uDEKY,EAAA;EFrBd;IAmBG,SAAS;IACT,SAAS;IACT,UAAU,EAAA;EArBb;IAyBG,kBAAkB;IAClB,WAAW;IACX,YAAY;IACZ,UAAU;IACV,eAAe,EAAA;EA7BlB;IAiCG,cE/BkB;IFgClB,iBAAiB;IACjB,cAAc;IACd,WAAW,EAAA;;AApCd;EAyCE,gBAAgB;EAChB,aAAa;EACb,aAAa;EAEb,YAAY,EAAA;EA7Cd;IAgDG,cAAc;IACd,8BAA8B;IAE9B,YAAY,EAAA;;AAnDf;EA4DE,wBAAwB;EACxB,aAAa;EACb,mBAAmB;EACnB,8BAA8B,EAAA;EA/DhC;IAmEG,aAAa,EAAA","file":"MediaUploadForm.scss","sourcesContent":["@import \"./partial/Vars\";\n@import \"./partial/Ext\";\n\n.MediaUploadForm {\n\t.MediaUploadForm-InputWrap {\n\t\t@extend %material_button;\n\t\t@extend %material_border;\n\t\t\n\t\tmargin: 16px 0px;\n\t\tposition: relative;\n\t\tdisplay: flex;\n\t\twidth: 100%;\n\t\theight: 150px;\n\t\talign-items: center;\n\t\ttext-align: center;\n\n\t\tbackground-color: $neutral-000;\n\t\tborder-color: $neutral-200;\n\t\t\n\t\ttransition: height $t-med, margin-top $t-med, opacity $t-fast;\n\n\t\t&.disabled {\n\t\t\theight: 0;\n\t\t\tmargin: 0;\n\t\t\topacity: 0;\n\t\t}\n\n\t\t.MediaUploadForm-Input {\n\t\t\tposition: absolute;\n\t\t\twidth: 100%;\n\t\t\theight: 100%;\n\t\t\topacity: 0;\n\t\t\tcursor: pointer;\n\t\t}\n\n\t\th2 {\n\t\t\tcolor: $neutral-500;\n\t\t\tuser-select: none;\n\t\t\tdisplay: block;\n\t\t\twidth: 100%;\n\t\t}\n\t}\n\n\t.MediaUploadForm-Files {\n\t\tmargin: 16px 0px;\n\t\tdisplay: grid;\n\t\tgrid-gap: 8px;\n\t\t\n\t\twidth: 600px;\n\n\t\t&.Grid {\n\t\t\tgrid-gap: 16px;\n\t\t\tgrid-template-columns: 1fr 1fr;\n\n\t\t\twidth: 840px;\n\t\t}\n\t}\n\n\t.MediaUploadForm-Toolbar {\n\t\t@extend %card_toolbar;\n\t}\n\n\t.MediaUploadForm-ActionBar {\n\t\tmargin: 32px 0px 8px 0px;\n\t\tdisplay: flex;\n\t\tflex-direction: row;\n\t\tjustify-content: space-between;\n\n\t\t.MediaUploadForm-ActionBar-Button {\n\t\t\t@extend %material_button;\n\t\t\tpadding: 16px;\n\t\t}\n\t}\n}\n","@import \"Vars\";\n\n%card {\n\theight: min-content;\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n}\n\n%card_toolbar {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\n\tbutton {\n\t\t@extend %material_icon_button;\n\t}\n\n\t.separator {\n\t\twidth: 24px;\n\t\tdisplay: inline-block;\n\t}\n\n\tdiv:first-of-type button {\n\t\tmargin-right: 8px;\n\t}\n\n\tdiv:last-of-type button {\n\t\tmargin-left: 8px;\n\t}\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tuser-select: none;\n\tborder-radius: 4px;\n\ttext-underline: none;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-300, 1 - .15);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:not(:disabled) {\n\t\t&:hover, &:focus {\n\t\t\t&::after {\n\t\t\t\tmargin: 0px;\n\t\t\t\ttransform: scale(1);\n\t\t\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\t\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t\t\t}\n\t\t}\n\n\t\t&:active {\n\t\t\ttransition: border $t-fast;\n\t\t}\n\n\t\t&:focus {\n\t\t\tborder-color: $neutral-400;\n\t\t}\n\t}\n\n\t&:disabled {\n\t\tcursor: auto;\n\t\topacity: 0.65;\n\t\tcolor: $neutral-500;\n\t}\n}\n\n%material_icon_button {\n\t@extend %material_button;\n\tdisplay: inline-block;\n\n\t// width: 48px;\n\theight: 48px;\n\n\tpadding: 8px;\n\tborder-radius: 24px;\n\n\timg {\n\t\twidth: 30px;\n\t\theight: 30px;\n\t\tpointer-events: none;\n\t\tvertical-align: middle;\n\t}\n\n\tspan {\n\t\tcolor: $neutral-700;\n\t\tvertical-align: middle;\n\t\tpadding-right: 8px;\n\t\tpadding-left: 8px;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"]}]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/MediaUploadItem.scss":
+/*!*****************************************************************************************************************!*\
+  !*** ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/MediaUploadItem.scss ***!
+  \*****************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "../node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
+// Module
+___CSS_LOADER_EXPORT___.push([module.i, ".MediaUploadItem .MediaItem-Description input {\n  border-radius: 4px;\n  border-width: 1px;\n  border-style: solid;\n  border-color: #829ab1; }\n\n.MediaUploadItem .MediaItem-Description input {\n  border-color: #d9e2ec;\n  outline: 0; }\n  .MediaUploadItem .MediaItem-Description input:hover {\n    border-color: #bcccdc; }\n  .MediaUploadItem .MediaItem-Description input:focus {\n    border-color: #829ab1; }\n  .MediaUploadItem .MediaItem-Description input::placeholder {\n    font-weight: 400;\n    color: #829ab1; }\n\n.MediaUploadItem {\n  position: relative;\n  background-color: transparent;\n  cursor: pointer;\n  border: none;\n  outline: 0;\n  user-select: none;\n  border-radius: 4px;\n  text-underline: none;\n  border: 1px solid transparent;\n  background: rgba(159, 179, 200, 0.15); }\n  .MediaUploadItem::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    user-select: none;\n    pointer-events: none;\n    top: -1px;\n    left: -1px;\n    right: -1px;\n    bottom: -1px;\n    margin: 4px;\n    transform: scale(0.87);\n    border-radius: inherit;\n    background: rgba(130, 154, 177, 0);\n    transition: background 0.3s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02) 0.075s, margin 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .MediaUploadItem:not(:disabled):hover::after, .MediaUploadItem:not(:disabled):focus::after {\n    margin: 0px;\n    transform: scale(1);\n    background: rgba(130, 154, 177, 0.15);\n    transition: background 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), margin 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .MediaUploadItem:not(:disabled):active {\n    transition: border 0.15s; }\n  .MediaUploadItem:not(:disabled):focus {\n    border-color: #829ab1; }\n  .MediaUploadItem:disabled {\n    cursor: auto;\n    opacity: 0.65;\n    color: #627d98; }\n\n.MediaUploadItem {\n  background: transparent;\n  border-color: #d9e2ec;\n  box-sizing: content-box;\n  user-select: none;\n  padding: 8px;\n  height: 80px;\n  display: grid;\n  grid-template-columns: 80px 1fr;\n  grid-gap: 16px; }\n  .MediaUploadItem:hover:not(:focus) {\n    border-color: #9fb3c8; }\n    .MediaUploadItem:hover:not(:focus)::after {\n      background-color: transparent; }\n  .MediaUploadItem > * {\n    box-sizing: border-box; }\n  .MediaUploadItem.selected {\n    border-color: #5595ed;\n    background-color: #2196f319; }\n    .MediaUploadItem.selected:focus::after, .MediaUploadItem.selected:hover::after {\n      background-color: #2196f322; }\n    .MediaUploadItem.selected .MediaItem-Image.icon {\n      background-color: #2196f322; }\n  .MediaUploadItem .MediaItem-Image {\n    width: 100%;\n    height: 100%;\n    border-radius: 4px;\n    object-fit: cover;\n    pointer-events: none; }\n    .MediaUploadItem .MediaItem-Image.icon {\n      background-color: #ebf0f6;\n      padding: 16px; }\n  .MediaUploadItem .MediaItem-Description {\n    height: 100%;\n    overflow: auto;\n    text-align: left;\n    padding-right: 8px; }\n    .MediaUploadItem .MediaItem-Description p, .MediaUploadItem .MediaItem-Description input {\n      margin-top: 0em;\n      margin-bottom: 0.3em; }\n    .MediaUploadItem .MediaItem-Description p {\n      overflow: hidden;\n      white-space: nowrap;\n      text-overflow: ellipsis; }\n      .MediaUploadItem .MediaItem-Description p.MediaItem-Metadata {\n        opacity: 0.7;\n        font-size: 14px;\n        padding-left: 4px; }\n    .MediaUploadItem .MediaItem-Description input {\n      background: transparent;\n      padding: 2px 4px;\n      width: 100%; }\n      .MediaUploadItem .MediaItem-Description input::placeholder {\n        color: #243b53;\n        font-weight: 500; }\n      .MediaUploadItem .MediaItem-Description input.MediaItem-Name {\n        font-size: 18px; }\n      .MediaUploadItem .MediaItem-Description input.MediaItem-FileName {\n        opacity: 0.8;\n        font-size: 14px; }\n        .MediaUploadItem .MediaItem-Description input.MediaItem-FileName:disabled {\n          position: relative;\n          top: -2px; }\n    .MediaUploadItem .MediaItem-Description input:disabled {\n      padding: 0;\n      border: none;\n      cursor: pointer; }\n    .MediaUploadItem .MediaItem-Description input:first-child:disabled {\n      padding-top: 8px; }\n    .MediaUploadItem .MediaItem-Description input:disabled + .MediaItem-Metadata {\n      padding-left: 0; }\n", "",{"version":3,"sources":["/home/aurailus/Code/Projects/AuriServer/admin/src/MediaUploadItem.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Ext.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Vars.scss"],"names":[],"mappings":"AAGA;EC+CC,kBAAkB;EAClB,iBAAiB;EACjB,mBAAmB;EACnB,qBCjDoB,EAAA;;AFDrB;ECuDC,qBCzDoB;ED0DpB,UAAU,EAAA;EDxDX;IC2DE,qBC5DmB,EAAA;EFCrB;IC+DE,qBC9DmB,EAAA;EFDrB;ICmEE,gBAAgB;IAChB,cCnEmB,EAAA;;AFDrB;ECyEC,kBAAkB;EAClB,6BAA6B;EAC7B,eAAe;EACf,YAAY;EACZ,UAAU;EAEV,iBAAiB;EACjB,kBAAkB;EAClB,oBAAoB;EACpB,6BAA6B;EAC7B,qCAAiD,EAAA;EDnFlD;ICwFE,YAAY;IACZ,cAAc;IACd,kBAAkB;IAClB,iBAAiB;IACjB,oBAAoB;IAGpB,SAAS;IACT,UAAU;IACV,WAAW;IACX,YAAY;IAEZ,WAAW;IACX,sBAAsB;IAEtB,sBAAsB;IACtB,kCAA2C;IAE3C,2KArB0C,EAAA;EDrF5C;ICgHI,WAAW;IACX,mBAAmB;IACnB,qCAAiD;IAEjD,uKA/BwC,EAAA;EDrF5C;ICyHG,wBCpGW,EAAA;EFrBd;IC6HG,qBC5HkB,EAAA;EFDrB;ICkIE,YAAY;IACZ,aAAa;IACb,cClImB,EAAA;;AFFrB;EAEC,uBAAuB;EACvB,qBELoB;EFMpB,uBAAuB;EACvB,iBAAiB;EACjB,YAAY;EAGZ,YADQ;EAGR,aAAa;EACb,+BAA6B;EAC7B,cAAc,EAAA;EAbf;IAgBE,qBEhBmB,EAAA;IFArB;MAmBG,6BAA6B,EAAA;EAnBhC;IAwBE,sBAAsB,EAAA;EAxBxB;IA4BE,qBAAqB;IACrB,2BAA2B,EAAA;IA7B7B;MAgCG,2BAA2B,EAAA;IAhC9B;MAoCG,2BAA2B,EAAA;EApC9B;IAyCE,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,iBAAiB;IACjB,oBAAoB,EAAA;IA7CtB;MAgDG,yBAAsD;MACtD,aAAa,EAAA;EAjDhB;IAsDE,YAAY;IACZ,cAAc;IACd,gBAAgB;IAChB,kBAAkB,EAAA;IAzDpB;MA4DG,eAAe;MACf,oBAAoB,EAAA;IA7DvB;MAiEG,gBAAgB;MAChB,mBAAmB;MACnB,uBAAuB,EAAA;MAnE1B;QAsEI,YAAY;QACZ,eAAe;QACf,iBAAiB,EAAA;IAxErB;MA8EG,uBAAuB;MACvB,gBAAgB;MAChB,WAAW,EAAA;MAhFd;QAmFI,cE9EiB;QF+EjB,gBAAgB,EAAA;MApFpB;QAwFI,eAAe,EAAA;MAxFnB;QA4FI,YAAY;QACZ,eAAe,EAAA;QA7FnB;UAgGK,kBAAkB;UAClB,SAAS,EAAA;IAjGd;MAuGG,UAAU;MACV,YAAY;MACZ,eAAe,EAAA;IAzGlB;MA6GG,gBAAgB,EAAA;IA7GnB;MAiHG,eAAe,EAAA","file":"MediaUploadItem.scss","sourcesContent":["@import \"partial/Vars\";\n@import \"partial/Ext\";\n\n.MediaUploadItem {\n\t@extend %material_button;\n\tbackground: transparent;\n\tborder-color: $neutral-100;\n\tbox-sizing: content-box;\n\tuser-select: none;\n\tpadding: 8px;\n\n\t$h: 80px;\n\theight: $h;\n\n\tdisplay: grid;\n\tgrid-template-columns: $h 1fr;\n\tgrid-gap: 16px;\n\n\t&:hover:not(:focus) {\n\t\tborder-color: $neutral-300;\n\n\t\t&::after {\n\t\t\tbackground-color: transparent;\n\t\t}\n\t}\n\n\t& > * {\n\t\tbox-sizing: border-box;\n\t}\n\n\t&.selected {\n\t\tborder-color: #5595ed;\n\t\tbackground-color: #2196f319;\n\n\t\t&:focus::after, &:hover::after {\n\t\t\tbackground-color: #2196f322;\n\t\t}\n\n\t\t.MediaItem-Image.icon {\n\t\t\tbackground-color: #2196f322;\n\t\t}\n\t}\n\n\t.MediaItem-Image {\n\t\twidth: 100%;\n\t\theight: 100%;\n\t\tborder-radius: 4px;\n\t\tobject-fit: cover;\n\t\tpointer-events: none;\n\n\t\t&.icon {\n\t\t\tbackground-color: mix($neutral-100, $neutral-000, 20%);\n\t\t\tpadding: 16px;\n\t\t}\n\t}\n\n\t.MediaItem-Description {\n\t\theight: 100%;\n\t\toverflow: auto;\n\t\ttext-align: left;\n\t\tpadding-right: 8px;\n\n\t\tp, input {\n\t\t\tmargin-top: 0em;\n\t\t\tmargin-bottom: 0.3em;\n\t\t}\n\n\t\tp {\n\t\t\toverflow: hidden;\n\t\t\twhite-space: nowrap;\n\t\t\ttext-overflow: ellipsis;\n\n\t\t\t&.MediaItem-Metadata {\n\t\t\t\topacity: 0.7;\n\t\t\t\tfont-size: 14px;\n\t\t\t\tpadding-left: 4px;\n\t\t\t}\n\t\t}\n\n\t\tinput {\n\t\t\t@extend %material_input;\n\t\t\tbackground: transparent;\n\t\t\tpadding: 2px 4px;\n\t\t\twidth: 100%;\n\n\t\t\t&::placeholder {\n\t\t\t\tcolor: $neutral-800;\n\t\t\t\tfont-weight: 500;\n\t\t\t}\n\n\t\t\t&.MediaItem-Name {\n\t\t\t\tfont-size: 18px;\n\t\t\t}\n\n\t\t\t&.MediaItem-FileName {\n\t\t\t\topacity: 0.8;\n\t\t\t\tfont-size: 14px;\n\n\t\t\t\t&:disabled {\n\t\t\t\t\tposition: relative;\n\t\t\t\t\ttop: -2px;\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tinput:disabled {\n\t\t\tpadding: 0;\n\t\t\tborder: none;\n\t\t\tcursor: pointer;\n\t\t}\n\n\t\tinput:first-child:disabled {\n\t\t\tpadding-top: 8px;\n\t\t}\n\n\t\tinput:disabled + .MediaItem-Metadata {\n\t\t\tpadding-left: 0;\n\t\t}\n\t}\n}\n","@import \"Vars\";\n\n%card {\n\theight: min-content;\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n}\n\n%card_toolbar {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\n\tbutton {\n\t\t@extend %material_icon_button;\n\t}\n\n\t.separator {\n\t\twidth: 24px;\n\t\tdisplay: inline-block;\n\t}\n\n\tdiv:first-of-type button {\n\t\tmargin-right: 8px;\n\t}\n\n\tdiv:last-of-type button {\n\t\tmargin-left: 8px;\n\t}\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tuser-select: none;\n\tborder-radius: 4px;\n\ttext-underline: none;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-300, 1 - .15);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:not(:disabled) {\n\t\t&:hover, &:focus {\n\t\t\t&::after {\n\t\t\t\tmargin: 0px;\n\t\t\t\ttransform: scale(1);\n\t\t\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\t\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t\t\t}\n\t\t}\n\n\t\t&:active {\n\t\t\ttransition: border $t-fast;\n\t\t}\n\n\t\t&:focus {\n\t\t\tborder-color: $neutral-400;\n\t\t}\n\t}\n\n\t&:disabled {\n\t\tcursor: auto;\n\t\topacity: 0.65;\n\t\tcolor: $neutral-500;\n\t}\n}\n\n%material_icon_button {\n\t@extend %material_button;\n\tdisplay: inline-block;\n\n\t// width: 48px;\n\theight: 48px;\n\n\tpadding: 8px;\n\tborder-radius: 24px;\n\n\timg {\n\t\twidth: 30px;\n\t\theight: 30px;\n\t\tpointer-events: none;\n\t\tvertical-align: middle;\n\t}\n\n\tspan {\n\t\tcolor: $neutral-700;\n\t\tvertical-align: middle;\n\t\tpadding-right: 8px;\n\t\tpadding-left: 8px;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"]}]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/MediaView.scss":
+/*!***********************************************************************************************************!*\
+  !*** ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/MediaView.scss ***!
+  \***********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "../node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
+// Module
+___CSS_LOADER_EXPORT___.push([module.i, ".MediaView {\n  display: block; }\n", "",{"version":3,"sources":["/home/aurailus/Code/Projects/AuriServer/admin/src/MediaView.scss"],"names":[],"mappings":"AAGA;EACC,cAAc,EAAA","file":"MediaView.scss","sourcesContent":["@import \"partial/Vars\";\n@import \"partial/Ext\";\n\n.MediaView {\n\tdisplay: block;\n}\n"]}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -9776,6 +9842,72 @@ ___CSS_LOADER_EXPORT___.push([module.i, ".Meter {\n  position: relative;\n  widt
 
 /***/ }),
 
+/***/ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/Modal.scss":
+/*!*******************************************************************************************************!*\
+  !*** ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/Modal.scss ***!
+  \*******************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "../node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
+// Module
+___CSS_LOADER_EXPORT___.push([module.i, ".Modal .MediaModal-CardWrap .MediaModal-Card {\n  height: min-content;\n  border-radius: 4px;\n  padding: 16px 24px;\n  background-color: #fff;\n  box-shadow: 0px 2px 8px 0px rgba(8, 30, 56, 0.1); }\n\n.Modal {\n  display: flex;\n  width: 100%;\n  height: 100%;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center; }\n\n.Modal {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(188, 204, 220, 0.7); }\n  .Modal .closes {\n    cursor: pointer; }\n  .Modal .MediaModal-CardWrap {\n    width: 100%;\n    height: auto;\n    display: flex;\n    overflow: auto;\n    padding: 64px;\n    justify-content: space-around; }\n    .Modal .MediaModal-CardWrap .MediaModal-Card {\n      display: block;\n      cursor: auto;\n      height: min-content; }\n", "",{"version":3,"sources":["/home/aurailus/Code/Projects/AuriServer/admin/src/Modal.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Ext.scss"],"names":[],"mappings":"AAGA;ECAC,mBAAmB;EACnB,kBAAkB;EAClB,kBAAkB;EAElB,sBAAsB;EACtB,gDAA8D,EAAA;;ADL/D;ECgCC,aAAa;EACb,WAAW;EACX,YAAY;EACZ,sBAAsB;EACtB,uBAAuB;EACvB,mBAAmB,EAAA;;ADrCpB;EAGC,eAAe;EACf,MAAM;EACN,OAAO;EACP,WAAW;EACX,YAAY;EAEZ,0CAAmD,EAAA;EATpD;IAYE,eAAe,EAAA;EAZjB;IAgBE,WAAW;IACX,YAAY;IACZ,aAAa;IACb,cAAc;IACd,aAAa;IACb,6BAA6B,EAAA;IArB/B;MA0BG,cAAc;MACd,YAAY;MAEZ,mBAAmB,EAAA","file":"Modal.scss","sourcesContent":["@import \"partial/Vars\";\n@import \"partial/Ext\";\n\n.Modal {\n\t@extend %center_wrap;\n\n\tposition: fixed;\n\ttop: 0;\n\tleft: 0;\n\twidth: 100%;\n\theight: 100%;\n\n\tbackground-color: transparentize($neutral-200, 0.3);\n\n\t.closes {\n\t\tcursor: pointer;\n\t}\n\t\n\t.MediaModal-CardWrap {\n\t\twidth: 100%;\n\t\theight: auto;\n\t\tdisplay: flex;\n\t\toverflow: auto;\n\t\tpadding: 64px;\n\t\tjustify-content: space-around;\n\n\t\t.MediaModal-Card {\n\t\t\t@extend %card;\n\n\t\t\tdisplay: block;\n\t\t\tcursor: auto;\n\t\t\t\n\t\t\theight: min-content;\n\t\t}\n\t}\n}\n","@import \"Vars\";\n\n%card {\n\theight: min-content;\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n}\n\n%card_toolbar {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\n\tbutton {\n\t\t@extend %material_icon_button;\n\t}\n\n\t.separator {\n\t\twidth: 24px;\n\t\tdisplay: inline-block;\n\t}\n\n\tdiv:first-of-type button {\n\t\tmargin-right: 8px;\n\t}\n\n\tdiv:last-of-type button {\n\t\tmargin-left: 8px;\n\t}\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tuser-select: none;\n\tborder-radius: 4px;\n\ttext-underline: none;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-300, 1 - .15);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:not(:disabled) {\n\t\t&:hover, &:focus {\n\t\t\t&::after {\n\t\t\t\tmargin: 0px;\n\t\t\t\ttransform: scale(1);\n\t\t\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\t\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t\t\t}\n\t\t}\n\n\t\t&:active {\n\t\t\ttransition: border $t-fast;\n\t\t}\n\n\t\t&:focus {\n\t\t\tborder-color: $neutral-400;\n\t\t}\n\t}\n\n\t&:disabled {\n\t\tcursor: auto;\n\t\topacity: 0.65;\n\t\tcolor: $neutral-500;\n\t}\n}\n\n%material_icon_button {\n\t@extend %material_button;\n\tdisplay: inline-block;\n\n\t// width: 48px;\n\theight: 48px;\n\n\tpadding: 8px;\n\tborder-radius: 24px;\n\n\timg {\n\t\twidth: 30px;\n\t\theight: 30px;\n\t\tpointer-events: none;\n\t\tvertical-align: middle;\n\t}\n\n\tspan {\n\t\tcolor: $neutral-700;\n\t\tvertical-align: middle;\n\t\tpadding-right: 8px;\n\t\tpadding-left: 8px;\n\t}\n}\n"]}]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/SelectGroup.scss":
+/*!*************************************************************************************************************!*\
+  !*** ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/SelectGroup.scss ***!
+  \*************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "../node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
+// Module
+___CSS_LOADER_EXPORT___.push([module.i, ".SelectGroup {\n  padding: 0; }\n", "",{"version":3,"sources":["/home/aurailus/Code/Projects/AuriServer/admin/src/SelectGroup.scss"],"names":[],"mappings":"AAAA;EACC,UAAU,EAAA","file":"SelectGroup.scss","sourcesContent":[".SelectGroup {\n\tpadding: 0;\n}\n"]}]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/ThemeItem.scss":
+/*!***********************************************************************************************************!*\
+  !*** ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/ThemeItem.scss ***!
+  \***********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "../node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
+// Module
+___CSS_LOADER_EXPORT___.push([module.i, ".ThemeItem {\n  position: relative;\n  background-color: transparent;\n  cursor: pointer;\n  border: none;\n  outline: 0;\n  user-select: none;\n  border-radius: 4px;\n  text-underline: none;\n  border: 1px solid transparent;\n  background: rgba(159, 179, 200, 0.15); }\n  .ThemeItem::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    user-select: none;\n    pointer-events: none;\n    top: -1px;\n    left: -1px;\n    right: -1px;\n    bottom: -1px;\n    margin: 4px;\n    transform: scale(0.87);\n    border-radius: inherit;\n    background: rgba(130, 154, 177, 0);\n    transition: background 0.3s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02) 0.075s, margin 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .ThemeItem:not(:disabled):hover::after, .ThemeItem:not(:disabled):focus::after {\n    margin: 0px;\n    transform: scale(1);\n    background: rgba(130, 154, 177, 0.15);\n    transition: background 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), margin 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .ThemeItem:not(:disabled):active {\n    transition: border 0.15s; }\n  .ThemeItem:not(:disabled):focus {\n    border-color: #829ab1; }\n  .ThemeItem:disabled {\n    cursor: auto;\n    opacity: 0.65;\n    color: #627d98; }\n\n.ThemeItem {\n  background-color: #fff;\n  border-color: #d9e2ec;\n  box-sizing: content-box;\n  padding: 8px;\n  display: grid;\n  grid-gap: 8px;\n  text-align: left;\n  grid-template-rows: auto 1fr; }\n  .ThemeItem > * {\n    box-sizing: border-box; }\n  .ThemeItem.selected {\n    border-color: #54d1db;\n    background-color: rgba(135, 234, 242, 0.3); }\n    .ThemeItem.selected:focus::after, .ThemeItem.selected:hover::after {\n      background-color: rgba(135, 234, 242, 0.2); }\n    .ThemeItem.selected .MediaItem-Image.icon {\n      background-color: rgba(56, 190, 201, 0.3); }\n  .ThemeItem .ThemeItem-Cover {\n    height: 0;\n    width: 100%;\n    position: relative;\n    padding-top: 56.25%; }\n    .ThemeItem .ThemeItem-Cover > img {\n      position: absolute;\n      user-select: none;\n      pointer-events: none;\n      width: 100%;\n      height: 100%;\n      top: 0;\n      left: 0;\n      object-fit: cover;\n      border-radius: 4px; }\n  .ThemeItem .ThemeItem-Content p.ThemeItem-Author {\n    margin: 0;\n    margin-top: 4px; }\n  .ThemeItem .ThemeItem-Content h2.ThemeItem-Title {\n    font-size: 24px;\n    margin: 0;\n    margin-top: 4px; }\n  .ThemeItem .ThemeItem-Content p.ThemeItem-Description {\n    margin: 0;\n    margin-top: 12px;\n    font-weight: 400;\n    opacity: 0.8;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    max-height: 38px;\n    display: block;\n    line-clamp: 2;\n    display: -webkit-box;\n    -webkit-line-clamp: 2;\n    -webkit-box-orient: vertical; }\n  .ThemeItem .ThemeItem-Tag {\n    position: absolute;\n    display: inline-block;\n    bottom: 8px;\n    left: 8px;\n    padding: 4px 12px;\n    border-radius: 20px;\n    box-shadow: 0px 2px 8px 0px rgba(36, 59, 83, 0.3);\n    background: #d9e2ec;\n    color: #486581; }\n    .ThemeItem .ThemeItem-Tag.Enabled {\n      background: #bef8fd;\n      color: #14919b; }\n", "",{"version":3,"sources":["/home/aurailus/Code/Projects/AuriServer/admin/src/ThemeItem.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Ext.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Vars.scss"],"names":[],"mappings":"AAGA;ECyEC,kBAAkB;EAClB,6BAA6B;EAC7B,eAAe;EACf,YAAY;EACZ,UAAU;EAEV,iBAAiB;EACjB,kBAAkB;EAClB,oBAAoB;EACpB,6BAA6B;EAC7B,qCAAiD,EAAA;EDnFlD;ICwFE,YAAY;IACZ,cAAc;IACd,kBAAkB;IAClB,iBAAiB;IACjB,oBAAoB;IAGpB,SAAS;IACT,UAAU;IACV,WAAW;IACX,YAAY;IAEZ,WAAW;IACX,sBAAsB;IAEtB,sBAAsB;IACtB,kCAA2C;IAE3C,2KArB0C,EAAA;EDrF5C;ICgHI,WAAW;IACX,mBAAmB;IACnB,qCAAiD;IAEjD,uKA/BwC,EAAA;EDrF5C;ICyHG,wBCpGW,EAAA;EFrBd;IC6HG,qBC5HkB,EAAA;EFDrB;ICkIE,YAAY;IACZ,aAAa;IACb,cClImB,EAAA;;AFFrB;EAGC,sBAAsB;EACtB,qBENoB;EFOpB,uBAAuB;EACvB,YAAY;EAEZ,aAAa;EACb,aAAa;EACb,gBAAgB;EAChB,4BAA4B,EAAA;EAX7B;IAcE,sBAAsB,EAAA;EAdxB;IAkBE,qBENkB;IFOlB,0CAAkD,EAAA;IAnBpD;MAsBG,0CAAkD,EAAA;IAtBrD;MA0BG,yCAAkD,EAAA;EA1BrD;IA+BE,SAAS;IACT,WAAW;IACX,kBAAkB;IAClB,mBAAmB,EAAA;IAlCrB;MAqCG,kBAAkB;MAClB,iBAAiB;MACjB,oBAAoB;MACpB,WAAW;MACX,YAAY;MACZ,MAAM;MACN,OAAO;MACP,iBAAiB;MACjB,kBAAkB,EAAA;EA7CrB;IA0EG,SAAS;IACT,eAAe,EAAA;EA3ElB;IA+EG,eAAe;IACf,SAAS;IACT,eAAe,EAAA;EAjFlB;IAqFG,SAAS;IACT,gBAAgB;IAChB,gBAAgB;IAChB,YAAY;IAEV,gBAAgB;IAChB,uBAAuB;IAGzB,gBAAgB;IACf,cAAc;IAGb,aAAa;IACb,oBAAoB;IACpB,qBAAqB;IACrB,4BAA4B,EAAA;EArGjC;IA0GE,kBAAkB;IAClB,qBAAqB;IACrB,WAAW;IACX,SAAS;IACT,iBAAiB;IACjB,mBAAmB;IAEnB,iDAA6D;IAC7D,mBEpHmB;IFqHnB,cEhHmB,EAAA;IFHrB;MAsHG,mBE5GiB;MF6GjB,cExGiB,EAAA","file":"ThemeItem.scss","sourcesContent":["@import \"partial/Vars\";\n@import \"partial/Ext\";\n\n.ThemeItem {\n\t@extend %material_button;\n\n\tbackground-color: #fff;\n\tborder-color: $neutral-100;\n\tbox-sizing: content-box;\n\tpadding: 8px;\n\n\tdisplay: grid;\n\tgrid-gap: 8px;\n\ttext-align: left;\n\tgrid-template-rows: auto 1fr;\n\n\t& > * {\n\t\tbox-sizing: border-box;\n\t}\n\n\t&.selected {\n\t\tborder-color: $accent-400;\n\t\tbackground-color: transparentize($accent-300, 0.7);\n\n\t\t&:focus::after, &:hover::after {\n\t\t\tbackground-color: transparentize($accent-300, 0.8);\n\t\t}\n\n\t\t.MediaItem-Image.icon {\n\t\t\tbackground-color: transparentize($accent-500, 0.7);\n\t\t}\n\t}\n\n\t.ThemeItem-Cover {\n\t\theight: 0;\n\t\twidth: 100%;\n\t\tposition: relative;\n\t\tpadding-top: 56.25%;\n\n\t\t& > img {\n\t\t\tposition: absolute;\n\t\t\tuser-select: none;\n\t\t\tpointer-events: none;\n\t\t\twidth: 100%;\n\t\t\theight: 100%;\n\t\t\ttop: 0;\n\t\t\tleft: 0;\n\t\t\tobject-fit: cover;\n\t\t\tborder-radius: 4px;\n\t\t}\n\t\t// width: 100%;\n\t\t// height: 100%;\n\t\t// border-radius: 4px;\n\t\t// object-fit: cover;\n\n\t\t// &.icon {\n\t\t// \tbackground-color: mix($neutral-100, $neutral-000, 20%);\n\t\t// \tpadding: 16px;\n\t\t// }\n\t}\n\n\t.ThemeItem-Content {\n\t// \theight: 100%;\n\t// \toverflow: auto;\n\t// \ttext-align: left;\n\t// \tpadding-top: 8px;\n\n\t// \tp {\n\t// \t\tmargin-top: 0em;\n\t// \t\tmargin-bottom: 0.3em;\n\n\t// \t\toverflow: hidden;\n\t// \t\twhite-space: nowrap;\n\t// \t\ttext-overflow: ellipsis;\n\t// \t}\n\n\t\tp.ThemeItem-Author {\n\t\t\tmargin: 0;\n\t\t\tmargin-top: 4px;\n\t\t}\n\n\t\th2.ThemeItem-Title {\n\t\t\tfont-size: 24px;\n\t\t\tmargin: 0;\n\t\t\tmargin-top: 4px;\n\t\t}\n\n\t\tp.ThemeItem-Description {\n\t\t\tmargin: 0;\n\t\t\tmargin-top: 12px;\n\t\t\tfont-weight: 400;\n\t\t\topacity: 0.8;\n\n\t    overflow: hidden;\n\t    text-overflow: ellipsis;\n\n\t\t\t// Fallbacks for multiline clamping. \n\t\t\tmax-height: 38px; \n\t\t  display: block;\n\t\n\t\t\t// Webkit specific fancy line clamping.\n\t    line-clamp: 2;\n\t    display: -webkit-box;\n\t    -webkit-line-clamp: 2;\n\t    -webkit-box-orient: vertical;\n\t\t}\n\t}\n\n\t.ThemeItem-Tag {\n\t\tposition: absolute;\n\t\tdisplay: inline-block;\n\t\tbottom: 8px;\n\t\tleft: 8px;\n\t\tpadding: 4px 12px;\n\t\tborder-radius: 20px;\n\t\t\t\n\t\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-800, 0.7);\n\t\tbackground: $neutral-100;\n\t\tcolor: $neutral-600;\n\n\t\t&.Enabled {\n\t\t\tbackground: $accent-200;\n\t\t\tcolor: $accent-700;\n\t\t}\n\t}\n}\n","@import \"Vars\";\n\n%card {\n\theight: min-content;\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n}\n\n%card_toolbar {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\n\tbutton {\n\t\t@extend %material_icon_button;\n\t}\n\n\t.separator {\n\t\twidth: 24px;\n\t\tdisplay: inline-block;\n\t}\n\n\tdiv:first-of-type button {\n\t\tmargin-right: 8px;\n\t}\n\n\tdiv:last-of-type button {\n\t\tmargin-left: 8px;\n\t}\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tuser-select: none;\n\tborder-radius: 4px;\n\ttext-underline: none;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-300, 1 - .15);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:not(:disabled) {\n\t\t&:hover, &:focus {\n\t\t\t&::after {\n\t\t\t\tmargin: 0px;\n\t\t\t\ttransform: scale(1);\n\t\t\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\t\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t\t\t}\n\t\t}\n\n\t\t&:active {\n\t\t\ttransition: border $t-fast;\n\t\t}\n\n\t\t&:focus {\n\t\t\tborder-color: $neutral-400;\n\t\t}\n\t}\n\n\t&:disabled {\n\t\tcursor: auto;\n\t\topacity: 0.65;\n\t\tcolor: $neutral-500;\n\t}\n}\n\n%material_icon_button {\n\t@extend %material_button;\n\tdisplay: inline-block;\n\n\t// width: 48px;\n\theight: 48px;\n\n\tpadding: 8px;\n\tborder-radius: 24px;\n\n\timg {\n\t\twidth: 30px;\n\t\theight: 30px;\n\t\tpointer-events: none;\n\t\tvertical-align: middle;\n\t}\n\n\tspan {\n\t\tcolor: $neutral-700;\n\t\tvertical-align: middle;\n\t\tpadding-right: 8px;\n\t\tpadding-left: 8px;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"]}]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/pages/MainPage.scss":
 /*!****************************************************************************************************************!*\
   !*** ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/pages/MainPage.scss ***!
@@ -9791,7 +9923,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, ".MainPage-MediaCard {\n  background-color: #fff;\n  box-shadow: 0px 2px 8px 0px rgba(8, 30, 56, 0.1);\n  border-radius: 4px;\n  padding: 16px 24px; }\n\n.MainPage-Header {\n  background-color: #fff;\n  padding: 80px 24px 112px 24px;\n  text-align: center; }\n  .MainPage-Header h1, .MainPage-Header h2 {\n    margin: 0.5em 0; }\n  .MainPage-Header h1 img {\n    width: 1em;\n    height: 1em;\n    vertical-align: -10%;\n    margin-right: 8px; }\n  .MainPage-Header h2 {\n    color: #627d98; }\n\n.MainPage-Content {\n  display: grid;\n  grid-template-columns: 400px 1000px;\n  justify-content: center;\n  padding-top: 48px;\n  grid-gap: 24px;\n  width: 100%;\n  height: 64px; }\n\n.MainPage-MediaCard {\n  margin-bottom: 24px; }\n", "",{"version":3,"sources":["/home/aurailus/Code/Projects/AuriServer/admin/src/pages/MainPage.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Ext.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Vars.scss"],"names":[],"mappings":"AA2CA;ECxCC,sBAAsB;EACtB,gDAA8D;EAC9D,kBAAkB;EAClB,kBAAkB,EAAA;;ADHnB;EACC,sBAAsB;EACtB,6BAA6B;EAC7B,kBAAkB,EAAA;EAHnB;IAME,eAAe,EAAA;EANjB;IAUE,UAAU;IACV,WAAW;IACX,oBAAoB;IACpB,iBAAiB,EAAA;EAbnB;IAiBE,cEfmB,EAAA;;AFmBrB;EAIC,aAAa;EACb,mCAHyC;EAIzC,uBAAuB;EACvB,iBAAiB;EACjB,cAAc;EAEd,WAAW;EACX,YAAY,EAAA;;AAGb;EAEC,mBAAmB,EAAA","file":"MainPage.scss","sourcesContent":["@import \"../partial/Vars\";\n@import \"../partial/Ext\";\n\n.MainPage-Header {\n\tbackground-color: #fff;\n\tpadding: 80px 24px 112px 24px;\n\ttext-align: center;\n\n\th1, h2 {\n\t\tmargin: 0.5em 0;\n\t}\n\t\n\th1 img {\n\t\twidth: 1em;\n\t\theight: 1em;\n\t\tvertical-align: -10%;\n\t\tmargin-right: 8px;\n\t}\n\n\th2 {\n\t\tcolor: $neutral-500;\n\t}\n}\n\n.MainPage-Content {\n\t$aside-width: 400px;\n\t$content-width: $wrap-wide - $aside-width;\n\n\tdisplay: grid;\n\tgrid-template-columns: $aside-width $content-width;\n\tjustify-content: center;\n\tpadding-top: 48px;\n\tgrid-gap: 24px;\n\t\n\twidth: 100%;\n\theight: 64px;\n}\n\n%mainpage_card {\n\t@extend %card;\n\tmargin-bottom: 24px;\n}\n\n.MainPage-MediaCard {\n\t@extend %mainpage_card;\n\n\t// display: grid;\n\t// grid-gap: 16px;\n\t// grid-auto-rows: min-content;\n\t// grid-template-columns: 1fr 1fr 1fr;\n\n}\n","@import \"Vars\";\n\n%card {\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tborder-radius: 4px;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-800, 1 - .075);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:hover::after, &:focus::after {\n\t\tmargin: 0px;\n\t\ttransform: scale(1);\n\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t}\n\n\t&:active {\n\t\ttransition: border $t-fast;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"]}]);
+___CSS_LOADER_EXPORT___.push([module.i, ".MainPage-MediaCard {\n  height: min-content;\n  border-radius: 4px;\n  padding: 16px 24px;\n  background-color: #fff;\n  box-shadow: 0px 2px 8px 0px rgba(8, 30, 56, 0.1); }\n\n.MainPage-Header {\n  background-color: #fff;\n  padding: 80px 24px 112px 24px;\n  text-align: center; }\n  .MainPage-Header h1, .MainPage-Header h2 {\n    margin: 0.5em 0; }\n  .MainPage-Header h1 img {\n    width: 1em;\n    height: 1em;\n    vertical-align: -10%;\n    margin-right: 8px; }\n  .MainPage-Header h2 {\n    color: #627d98; }\n\n.MainPage-Content {\n  display: grid;\n  grid-template-columns: 400px 1000px;\n  justify-content: center;\n  padding-top: 48px;\n  grid-gap: 24px;\n  width: 100%;\n  height: 64px; }\n\n.MainPage-MediaCard {\n  margin-bottom: 24px; }\n", "",{"version":3,"sources":["/home/aurailus/Code/Projects/AuriServer/admin/src/pages/MainPage.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Ext.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Vars.scss"],"names":[],"mappings":"AA2CA;ECxCC,mBAAmB;EACnB,kBAAkB;EAClB,kBAAkB;EAElB,sBAAsB;EACtB,gDAA8D,EAAA;;ADL/D;EACC,sBAAsB;EACtB,6BAA6B;EAC7B,kBAAkB,EAAA;EAHnB;IAME,eAAe,EAAA;EANjB;IAUE,UAAU;IACV,WAAW;IACX,oBAAoB;IACpB,iBAAiB,EAAA;EAbnB;IAiBE,cEfmB,EAAA;;AFmBrB;EAIC,aAAa;EACb,mCAHyC;EAIzC,uBAAuB;EACvB,iBAAiB;EACjB,cAAc;EAEd,WAAW;EACX,YAAY,EAAA;;AAGb;EAEC,mBAAmB,EAAA","file":"MainPage.scss","sourcesContent":["@import \"../partial/Vars\";\n@import \"../partial/Ext\";\n\n.MainPage-Header {\n\tbackground-color: #fff;\n\tpadding: 80px 24px 112px 24px;\n\ttext-align: center;\n\n\th1, h2 {\n\t\tmargin: 0.5em 0;\n\t}\n\t\n\th1 img {\n\t\twidth: 1em;\n\t\theight: 1em;\n\t\tvertical-align: -10%;\n\t\tmargin-right: 8px;\n\t}\n\n\th2 {\n\t\tcolor: $neutral-500;\n\t}\n}\n\n.MainPage-Content {\n\t$aside-width: 400px;\n\t$content-width: $wrap-wide - $aside-width;\n\n\tdisplay: grid;\n\tgrid-template-columns: $aside-width $content-width;\n\tjustify-content: center;\n\tpadding-top: 48px;\n\tgrid-gap: 24px;\n\t\n\twidth: 100%;\n\theight: 64px;\n}\n\n%mainpage_card {\n\t@extend %card;\n\tmargin-bottom: 24px;\n}\n\n.MainPage-MediaCard {\n\t@extend %mainpage_card;\n\n\t// display: grid;\n\t// grid-gap: 16px;\n\t// grid-auto-rows: min-content;\n\t// grid-template-columns: 1fr 1fr 1fr;\n\n}\n","@import \"Vars\";\n\n%card {\n\theight: min-content;\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n}\n\n%card_toolbar {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\n\tbutton {\n\t\t@extend %material_icon_button;\n\t}\n\n\t.separator {\n\t\twidth: 24px;\n\t\tdisplay: inline-block;\n\t}\n\n\tdiv:first-of-type button {\n\t\tmargin-right: 8px;\n\t}\n\n\tdiv:last-of-type button {\n\t\tmargin-left: 8px;\n\t}\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tuser-select: none;\n\tborder-radius: 4px;\n\ttext-underline: none;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-300, 1 - .15);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:not(:disabled) {\n\t\t&:hover, &:focus {\n\t\t\t&::after {\n\t\t\t\tmargin: 0px;\n\t\t\t\ttransform: scale(1);\n\t\t\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\t\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t\t\t}\n\t\t}\n\n\t\t&:active {\n\t\t\ttransition: border $t-fast;\n\t\t}\n\n\t\t&:focus {\n\t\t\tborder-color: $neutral-400;\n\t\t}\n\t}\n\n\t&:disabled {\n\t\tcursor: auto;\n\t\topacity: 0.65;\n\t\tcolor: $neutral-500;\n\t}\n}\n\n%material_icon_button {\n\t@extend %material_button;\n\tdisplay: inline-block;\n\n\t// width: 48px;\n\theight: 48px;\n\n\tpadding: 8px;\n\tborder-radius: 24px;\n\n\timg {\n\t\twidth: 30px;\n\t\theight: 30px;\n\t\tpointer-events: none;\n\t\tvertical-align: middle;\n\t}\n\n\tspan {\n\t\tcolor: $neutral-700;\n\t\tvertical-align: middle;\n\t\tpadding-right: 8px;\n\t\tpadding-left: 8px;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"]}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -9813,7 +9945,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, ".MediaPage .MediaPage-Add {\n  position: relative;\n  background-color: transparent;\n  cursor: pointer;\n  border: none;\n  outline: 0;\n  border-radius: 4px;\n  border: 1px solid transparent;\n  background: rgba(36, 59, 83, 0.075); }\n  .MediaPage .MediaPage-Add::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    user-select: none;\n    pointer-events: none;\n    top: -1px;\n    left: -1px;\n    right: -1px;\n    bottom: -1px;\n    margin: 4px;\n    transform: scale(0.87);\n    border-radius: inherit;\n    background: rgba(130, 154, 177, 0);\n    transition: background 0.3s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02) 0.075s, margin 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .MediaPage .MediaPage-Add:hover::after, .MediaPage .MediaPage-Add:focus::after {\n    margin: 0px;\n    transform: scale(1);\n    background: rgba(130, 154, 177, 0.15);\n    transition: background 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), margin 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .MediaPage .MediaPage-Add:active {\n    transition: border 0.15s; }\n  .MediaPage .MediaPage-Add:focus {\n    border-color: #829ab1; }\n\n.MediaPage .MediaPage-Add {\n  margin-bottom: 32px;\n  padding: 16px; }\n\n.MediaPage .MediaPage-Media {\n  display: grid;\n  width: 100%;\n  height: auto;\n  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));\n  grid-gap: 16px; }\n\n.MediaPage img {\n  width: 24px;\n  height: 24px;\n  margin-right: 8px;\n  vertical-align: -33%; }\n", "",{"version":3,"sources":["/home/aurailus/Code/Projects/AuriServer/admin/src/pages/MediaPage.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Ext.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Vars.scss"],"names":[],"mappings":"AAGA;ECgDC,kBAAkB;EAClB,6BAA6B;EAC7B,eAAe;EACf,YAAY;EACZ,UAAU;EAEV,kBAAkB;EAClB,6BAA6B;EAC7B,mCAAkD,EAAA;EDxDnD;IC6DE,YAAY;IACZ,cAAc;IACd,kBAAkB;IAClB,iBAAiB;IACjB,oBAAoB;IAGpB,SAAS;IACT,UAAU;IACV,WAAW;IACX,YAAY;IAEZ,WAAW;IACX,sBAAsB;IAEtB,sBAAsB;IACtB,kCAA2C;IAE3C,2KArB0C,EAAA;ED1D5C;ICmFE,WAAW;IACX,mBAAmB;IACnB,qCAAiD;IAEjD,uKA7B0C,EAAA;ED1D5C;IC2FE,wBCtEY,EAAA;EFrBd;IC+FE,qBC9FmB,EAAA;;AFDrB;EAGE,mBAAmB;EACnB,aAAa,EAAA;;AAJf;EAQE,aAAa;EACb,WAAW;EACX,YAAY;EACZ,2DAA2D;EAC3D,cAAc,EAAA;;AAZhB;EAgBE,WAAW;EACX,YAAY;EACZ,iBAAiB;EACjB,oBAAoB,EAAA","file":"MediaPage.scss","sourcesContent":["@import \"../partial/Vars\";\n@import \"../partial/Ext\";\n\n.MediaPage {\n\t.MediaPage-Add {\n\t\t@extend %material_button;\n\t\tmargin-bottom: 32px;\n\t\tpadding: 16px;\n\t}\n\n\t.MediaPage-Media {\n\t\tdisplay: grid;\n\t\twidth: 100%;\n\t\theight: auto;\n\t\tgrid-template-columns: repeat(auto-fit, minmax(400px, 1fr));\n\t\tgrid-gap: 16px;\n\t}\n\n\timg {\n\t\twidth: 24px;\n\t\theight: 24px;\n\t\tmargin-right: 8px;\n\t\tvertical-align: -33%;\n\t}\n}\n\n// .MainPage-MediaCard {\n// \t@extend %card;\n\n// \t// display: grid;\n// \t// grid-gap: 16px;\n// \t// grid-auto-rows: min-content;\n// \t// grid-template-columns: 1fr 1fr 1fr;\n\n// }\n","@import \"Vars\";\n\n%card {\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tborder-radius: 4px;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-800, 1 - .075);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:hover::after, &:focus::after {\n\t\tmargin: 0px;\n\t\ttransform: scale(1);\n\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t}\n\n\t&:active {\n\t\ttransition: border $t-fast;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"]}]);
+___CSS_LOADER_EXPORT___.push([module.i, ".MediaPage .MediaPage-Toolbar {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between; }\n  .MediaPage .MediaPage-Toolbar .separator {\n    width: 24px;\n    display: inline-block; }\n  .MediaPage .MediaPage-Toolbar div:first-of-type button {\n    margin-right: 8px; }\n  .MediaPage .MediaPage-Toolbar div:last-of-type button {\n    margin-left: 8px; }\n\n.MediaPage .MediaPage-Toolbar button {\n  position: relative;\n  background-color: transparent;\n  cursor: pointer;\n  border: none;\n  outline: 0;\n  user-select: none;\n  border-radius: 4px;\n  text-underline: none;\n  border: 1px solid transparent;\n  background: rgba(159, 179, 200, 0.15); }\n  .MediaPage .MediaPage-Toolbar button::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    user-select: none;\n    pointer-events: none;\n    top: -1px;\n    left: -1px;\n    right: -1px;\n    bottom: -1px;\n    margin: 4px;\n    transform: scale(0.87);\n    border-radius: inherit;\n    background: rgba(130, 154, 177, 0);\n    transition: background 0.3s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02) 0.075s, margin 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .MediaPage .MediaPage-Toolbar button:not(:disabled):hover::after, .MediaPage .MediaPage-Toolbar button:not(:disabled):focus::after {\n    margin: 0px;\n    transform: scale(1);\n    background: rgba(130, 154, 177, 0.15);\n    transition: background 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), margin 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .MediaPage .MediaPage-Toolbar button:not(:disabled):active {\n    transition: border 0.15s; }\n  .MediaPage .MediaPage-Toolbar button:not(:disabled):focus {\n    border-color: #829ab1; }\n  .MediaPage .MediaPage-Toolbar button:disabled {\n    cursor: auto;\n    opacity: 0.65;\n    color: #627d98; }\n\n.MediaPage .MediaPage-Toolbar button {\n  display: inline-block;\n  height: 48px;\n  padding: 8px;\n  border-radius: 24px; }\n  .MediaPage .MediaPage-Toolbar button img {\n    width: 30px;\n    height: 30px;\n    pointer-events: none;\n    vertical-align: middle; }\n  .MediaPage .MediaPage-Toolbar button span {\n    color: #334e68;\n    vertical-align: middle;\n    padding-right: 8px;\n    padding-left: 8px; }\n\n.MediaPage .MediaPage-Media {\n  display: grid;\n  width: 100%;\n  height: auto;\n  grid-gap: 8px;\n  grid-template-columns: 1fr; }\n  .MediaPage .MediaPage-Media.Grid {\n    grid-gap: 16px;\n    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); }\n\n.MediaPage .MediaPage-NoMedia {\n  text-align: center;\n  color: #627d98;\n  margin: 32px 0px 48px 0px; }\n\n.MediaPage > img {\n  width: 24px;\n  height: 24px;\n  margin-right: 8px;\n  vertical-align: -33%; }\n", "",{"version":3,"sources":["/home/aurailus/Code/Projects/AuriServer/admin/src/pages/MediaPage.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Ext.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Vars.scss"],"names":[],"mappings":"AAGA;ECSC,aAAa;EACb,mBAAmB;EACnB,8BAA8B,EAAA;EDX/B;ICkBE,WAAW;IACX,qBAAqB,EAAA;EDnBvB;ICuBE,iBAAiB,EAAA;EDvBnB;IC2BE,gBAAgB,EAAA;;AD3BlB;ECyEC,kBAAkB;EAClB,6BAA6B;EAC7B,eAAe;EACf,YAAY;EACZ,UAAU;EAEV,iBAAiB;EACjB,kBAAkB;EAClB,oBAAoB;EACpB,6BAA6B;EAC7B,qCAAiD,EAAA;EDnFlD;ICwFE,YAAY;IACZ,cAAc;IACd,kBAAkB;IAClB,iBAAiB;IACjB,oBAAoB;IAGpB,SAAS;IACT,UAAU;IACV,WAAW;IACX,YAAY;IAEZ,WAAW;IACX,sBAAsB;IAEtB,sBAAsB;IACtB,kCAA2C;IAE3C,2KArB0C,EAAA;EDrF5C;ICgHI,WAAW;IACX,mBAAmB;IACnB,qCAAiD;IAEjD,uKA/BwC,EAAA;EDrF5C;ICyHG,wBCpGW,EAAA;EFrBd;IC6HG,qBC5HkB,EAAA;EFDrB;ICkIE,YAAY;IACZ,aAAa;IACb,cClImB,EAAA;;AFFrB;EC0IC,qBAAqB;EAGrB,YAAY;EAEZ,YAAY;EACZ,mBAAmB,EAAA;EDhJpB;ICmJE,WAAW;IACX,YAAY;IACZ,oBAAoB;IACpB,sBAAsB,EAAA;EDtJxB;IC0JE,cCtJmB;IDuJnB,sBAAsB;IACtB,kBAAkB;IAClB,iBAAiB,EAAA;;AD7JnB;EAEE,aAAa;EACb,WAAW;EACX,YAAY;EACZ,aAAa;EACb,0BAA0B,EAAA;EAN5B;IASG,cAAc;IACd,2DAA2D,EAAA;;AAV9D;EAeE,kBAAkB;EAClB,cEdmB;EFenB,yBAAyB,EAAA;;AAjB3B;EAqBE,WAAW;EACX,YAAY;EACZ,iBAAiB;EACjB,oBAAoB,EAAA","file":"MediaPage.scss","sourcesContent":["@import \"../partial/Vars\";\n@import \"../partial/Ext\";\n\n.MediaPage {\n\t.MediaPage-Media {\n\t\tdisplay: grid;\n\t\twidth: 100%;\n\t\theight: auto;\n\t\tgrid-gap: 8px;\n\t\tgrid-template-columns: 1fr;\n\n\t\t&.Grid {\n\t\t\tgrid-gap: 16px;\n\t\t\tgrid-template-columns: repeat(auto-fit, minmax(400px, 1fr));\n\t\t}\n\t}\n\n\t.MediaPage-NoMedia {\n\t\ttext-align: center;\n\t\tcolor: $neutral-500;\n\t\tmargin: 32px 0px 48px 0px; \n\t}\n\n\t& > img {\n\t\twidth: 24px;\n\t\theight: 24px;\n\t\tmargin-right: 8px;\n\t\tvertical-align: -33%;\n\t}\n\n\t.MediaPage-Toolbar {\n\t\t@extend %card_toolbar;\n\t}\n}\n\n// .MainPage-MediaCard {\n// \t@extend %card;\n\n// \t// display: grid;\n// \t// grid-gap: 16px;\n// \t// grid-auto-rows: min-content;\n// \t// grid-template-columns: 1fr 1fr 1fr;\n\n// }\n","@import \"Vars\";\n\n%card {\n\theight: min-content;\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n}\n\n%card_toolbar {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\n\tbutton {\n\t\t@extend %material_icon_button;\n\t}\n\n\t.separator {\n\t\twidth: 24px;\n\t\tdisplay: inline-block;\n\t}\n\n\tdiv:first-of-type button {\n\t\tmargin-right: 8px;\n\t}\n\n\tdiv:last-of-type button {\n\t\tmargin-left: 8px;\n\t}\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tuser-select: none;\n\tborder-radius: 4px;\n\ttext-underline: none;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-300, 1 - .15);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:not(:disabled) {\n\t\t&:hover, &:focus {\n\t\t\t&::after {\n\t\t\t\tmargin: 0px;\n\t\t\t\ttransform: scale(1);\n\t\t\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\t\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t\t\t}\n\t\t}\n\n\t\t&:active {\n\t\t\ttransition: border $t-fast;\n\t\t}\n\n\t\t&:focus {\n\t\t\tborder-color: $neutral-400;\n\t\t}\n\t}\n\n\t&:disabled {\n\t\tcursor: auto;\n\t\topacity: 0.65;\n\t\tcolor: $neutral-500;\n\t}\n}\n\n%material_icon_button {\n\t@extend %material_button;\n\tdisplay: inline-block;\n\n\t// width: 48px;\n\theight: 48px;\n\n\tpadding: 8px;\n\tborder-radius: 24px;\n\n\timg {\n\t\twidth: 30px;\n\t\theight: 30px;\n\t\tpointer-events: none;\n\t\tvertical-align: middle;\n\t}\n\n\tspan {\n\t\tcolor: $neutral-700;\n\t\tvertical-align: middle;\n\t\tpadding-right: 8px;\n\t\tpadding-left: 8px;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"]}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -9835,7 +9967,29 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, ".Page .Page-Card {\n  background-color: #fff;\n  box-shadow: 0px 2px 8px 0px rgba(8, 30, 56, 0.1);\n  border-radius: 4px;\n  padding: 16px 24px; }\n\n.Page .Page-Card {\n  display: block;\n  width: calc(100% - 32px);\n  max-width: 1400px;\n  margin: 48px auto; }\n  @media screen and (max-width: 1432px) {\n    .Page .Page-Card {\n      margin: 48px 16px; } }\n  .Page .Page-Card .Page-Card-Header {\n    display: grid;\n    grid-template-columns: 80px 1fr;\n    grid-template-rows: 46px 34px;\n    grid-template-areas: \"a b\" \"a c\";\n    margin-bottom: 24px; }\n    .Page .Page-Card .Page-Card-Header .Page-Card-Icon {\n      grid-area: a;\n      user-select: none;\n      width: calc(100% - 24px);\n      height: calc(100% - 24px);\n      margin: 12px;\n      padding: 10px;\n      border-radius: 50%;\n      background-color: #f0f4f8; }\n    .Page .Page-Card .Page-Card-Header .Page-Card-Title {\n      grid-area: b;\n      align-self: end;\n      margin: 0;\n      font-size: 1.6em; }\n    .Page .Page-Card .Page-Card-Header .Page-Card-Description {\n      grid-area: c;\n      margin: 0;\n      font-size: 16px;\n      font-weight: 400;\n      opacity: 0.8; }\n", "",{"version":3,"sources":["/home/aurailus/Code/Projects/AuriServer/admin/src/pages/Page.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Ext.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Vars.scss"],"names":[],"mappings":"AAGA;ECAC,sBAAsB;EACtB,gDAA8D;EAC9D,kBAAkB;EAClB,kBAAkB,EAAA;;ADHnB;EAIE,cAAc;EACd,wBAAwB;EACxB,iBEmBgB;EFlBhB,iBAAiB,EAAA;EAEjB;IATF;MAUG,iBAAiB,EAAA,EA2ClB;EArDF;IAeG,aAAa;IACb,+BAA+B;IAC/B,6BAA6B;IAC7B,gCAAgC;IAEhC,mBAAmB,EAAA;IApBtB;MAwBI,YAAY;MACZ,iBAAiB;MAEjB,wBAAkC;MAClC,yBAAmC;MACnC,YANa;MAOb,aAAa;MAEb,kBAAkB;MAClB,yBEpCiB,EAAA;IFGrB;MAqCI,YAAY;MACZ,eAAe;MACf,SAAS;MAET,gBAAgB,EAAA;IAzCpB;MA6CI,YAAY;MACZ,SAAS;MAET,eAAe;MACf,gBAAgB;MAChB,YAAY,EAAA","file":"Page.scss","sourcesContent":["@import \"../partial/Vars\";\n@import \"../partial/Ext\";\n\n.Page {\n\t.Page-Card {\n\t\t@extend %card;\n\n\t\tdisplay: block;\n\t\twidth: calc(100% - 32px);\n\t\tmax-width: $wrap-wide;\n\t\tmargin: 48px auto;\n\n\t\t@media screen and (max-width: $wrap-wide + 32px) {\n\t\t\tmargin: 48px 16px;\n\t\t}\n\n\t\t.Page-Card-Header {\n\t\t\t$img-size: 80px;\n\t\t\tdisplay: grid;\n\t\t\tgrid-template-columns: 80px 1fr;\n\t\t\tgrid-template-rows: 46px 34px;\n\t\t\tgrid-template-areas: \"a b\" \"a c\";\n\n\t\t\tmargin-bottom: 24px;\n\n\t\t\t.Page-Card-Icon {\n\t\t\t\t$margin: 12px;\n\t\t\t\tgrid-area: a;\n\t\t\t\tuser-select: none;\n\n\t\t\t\twidth: calc(100% - #{$margin * 2});\n\t\t\t\theight: calc(100% - #{$margin * 2});\n\t\t\t\tmargin: $margin;\n\t\t\t\tpadding: 10px;\n\n\t\t\t\tborder-radius: 50%;\n\t\t\t\tbackground-color: $neutral-000;\n\t\t\t}\n\n\t\t\t.Page-Card-Title {\n\t\t\t\tgrid-area: b;\n\t\t\t\talign-self: end;\n\t\t\t\tmargin: 0;\n\n\t\t\t\tfont-size: 1.6em;\n\t\t\t}\n\n\t\t\t.Page-Card-Description {\n\t\t\t\tgrid-area: c;\n\t\t\t\tmargin: 0;\n\n\t\t\t\tfont-size: 16px;\n\t\t\t\tfont-weight: 400;\n\t\t\t\topacity: 0.8;\n\t\t\t}\n\t\t}\n\t}\n}\n","@import \"Vars\";\n\n%card {\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tborder-radius: 4px;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-800, 1 - .075);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:hover::after, &:focus::after {\n\t\tmargin: 0px;\n\t\ttransform: scale(1);\n\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t}\n\n\t&:active {\n\t\ttransition: border $t-fast;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"]}]);
+___CSS_LOADER_EXPORT___.push([module.i, ".Page .Page-Card {\n  height: min-content;\n  border-radius: 4px;\n  padding: 16px 24px;\n  background-color: #fff;\n  box-shadow: 0px 2px 8px 0px rgba(8, 30, 56, 0.1); }\n\n.Page .Page-Card {\n  display: block;\n  width: calc(100% - 32px);\n  max-width: 1400px;\n  margin: 48px auto; }\n  @media screen and (max-width: 1432px) {\n    .Page .Page-Card {\n      margin: 48px 16px; } }\n", "",{"version":3,"sources":["/home/aurailus/Code/Projects/AuriServer/admin/src/pages/Page.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Ext.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Vars.scss"],"names":[],"mappings":"AAGA;ECAC,mBAAmB;EACnB,kBAAkB;EAClB,kBAAkB;EAElB,sBAAsB;EACtB,gDAA8D,EAAA;;ADL/D;EAIE,cAAc;EACd,wBAAwB;EACxB,iBEmBgB;EFlBhB,iBAAiB,EAAA;EAEjB;IATF;MAUG,iBAAiB,EAAA,EAElB","file":"Page.scss","sourcesContent":["@import \"../partial/Vars\";\n@import \"../partial/Ext\";\n\n.Page {\n\t.Page-Card {\n\t\t@extend %card;\n\n\t\tdisplay: block;\n\t\twidth: calc(100% - 32px);\n\t\tmax-width: $wrap-wide;\n\t\tmargin: 48px auto;\n\n\t\t@media screen and (max-width: $wrap-wide + 32px) {\n\t\t\tmargin: 48px 16px;\n\t\t}\n\t}\n}\n","@import \"Vars\";\n\n%card {\n\theight: min-content;\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n}\n\n%card_toolbar {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\n\tbutton {\n\t\t@extend %material_icon_button;\n\t}\n\n\t.separator {\n\t\twidth: 24px;\n\t\tdisplay: inline-block;\n\t}\n\n\tdiv:first-of-type button {\n\t\tmargin-right: 8px;\n\t}\n\n\tdiv:last-of-type button {\n\t\tmargin-left: 8px;\n\t}\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tuser-select: none;\n\tborder-radius: 4px;\n\ttext-underline: none;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-300, 1 - .15);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:not(:disabled) {\n\t\t&:hover, &:focus {\n\t\t\t&::after {\n\t\t\t\tmargin: 0px;\n\t\t\t\ttransform: scale(1);\n\t\t\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\t\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t\t\t}\n\t\t}\n\n\t\t&:active {\n\t\t\ttransition: border $t-fast;\n\t\t}\n\n\t\t&:focus {\n\t\t\tborder-color: $neutral-400;\n\t\t}\n\t}\n\n\t&:disabled {\n\t\tcursor: auto;\n\t\topacity: 0.65;\n\t\tcolor: $neutral-500;\n\t}\n}\n\n%material_icon_button {\n\t@extend %material_button;\n\tdisplay: inline-block;\n\n\t// width: 48px;\n\theight: 48px;\n\n\tpadding: 8px;\n\tborder-radius: 24px;\n\n\timg {\n\t\twidth: 30px;\n\t\theight: 30px;\n\t\tpointer-events: none;\n\t\tvertical-align: middle;\n\t}\n\n\tspan {\n\t\tcolor: $neutral-700;\n\t\tvertical-align: middle;\n\t\tpadding-right: 8px;\n\t\tpadding-left: 8px;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"]}]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/pages/ThemePage.scss":
+/*!*****************************************************************************************************************!*\
+  !*** ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/pages/ThemePage.scss ***!
+  \*****************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "../node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
+// Module
+___CSS_LOADER_EXPORT___.push([module.i, ".ThemePage .ThemePage-Toolbar {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between; }\n  .ThemePage .ThemePage-Toolbar .separator {\n    width: 24px;\n    display: inline-block; }\n  .ThemePage .ThemePage-Toolbar div:first-of-type button {\n    margin-right: 8px; }\n  .ThemePage .ThemePage-Toolbar div:last-of-type button {\n    margin-left: 8px; }\n\n.ThemePage .ThemePage-Toolbar button {\n  position: relative;\n  background-color: transparent;\n  cursor: pointer;\n  border: none;\n  outline: 0;\n  user-select: none;\n  border-radius: 4px;\n  text-underline: none;\n  border: 1px solid transparent;\n  background: rgba(159, 179, 200, 0.15); }\n  .ThemePage .ThemePage-Toolbar button::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    user-select: none;\n    pointer-events: none;\n    top: -1px;\n    left: -1px;\n    right: -1px;\n    bottom: -1px;\n    margin: 4px;\n    transform: scale(0.87);\n    border-radius: inherit;\n    background: rgba(130, 154, 177, 0);\n    transition: background 0.3s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02) 0.075s, margin 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .ThemePage .ThemePage-Toolbar button:not(:disabled):hover::after, .ThemePage .ThemePage-Toolbar button:not(:disabled):focus::after {\n    margin: 0px;\n    transform: scale(1);\n    background: rgba(130, 154, 177, 0.15);\n    transition: background 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), margin 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .ThemePage .ThemePage-Toolbar button:not(:disabled):active {\n    transition: border 0.15s; }\n  .ThemePage .ThemePage-Toolbar button:not(:disabled):focus {\n    border-color: #829ab1; }\n  .ThemePage .ThemePage-Toolbar button:disabled {\n    cursor: auto;\n    opacity: 0.65;\n    color: #627d98; }\n\n.ThemePage .ThemePage-Toolbar button {\n  display: inline-block;\n  height: 48px;\n  padding: 8px;\n  border-radius: 24px; }\n  .ThemePage .ThemePage-Toolbar button img {\n    width: 30px;\n    height: 30px;\n    pointer-events: none;\n    vertical-align: middle; }\n  .ThemePage .ThemePage-Toolbar button span {\n    color: #334e68;\n    vertical-align: middle;\n    padding-right: 8px;\n    padding-left: 8px; }\n\n.ThemePage .ThemePage-Themes {\n  display: grid;\n  width: 100%;\n  height: auto;\n  grid-gap: 16px;\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }\n", "",{"version":3,"sources":["/home/aurailus/Code/Projects/AuriServer/admin/src/pages/ThemePage.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Ext.scss","/home/aurailus/Code/Projects/AuriServer/admin/src/partial/_Vars.scss"],"names":[],"mappings":"AAEA;ECUC,aAAa;EACb,mBAAmB;EACnB,8BAA8B,EAAA;EDZ/B;ICmBE,WAAW;IACX,qBAAqB,EAAA;EDpBvB;ICwBE,iBAAiB,EAAA;EDxBnB;IC4BE,gBAAgB,EAAA;;AD5BlB;EC0EC,kBAAkB;EAClB,6BAA6B;EAC7B,eAAe;EACf,YAAY;EACZ,UAAU;EAEV,iBAAiB;EACjB,kBAAkB;EAClB,oBAAoB;EACpB,6BAA6B;EAC7B,qCAAiD,EAAA;EDpFlD;ICyFE,YAAY;IACZ,cAAc;IACd,kBAAkB;IAClB,iBAAiB;IACjB,oBAAoB;IAGpB,SAAS;IACT,UAAU;IACV,WAAW;IACX,YAAY;IAEZ,WAAW;IACX,sBAAsB;IAEtB,sBAAsB;IACtB,kCAA2C;IAE3C,2KArB0C,EAAA;EDtF5C;ICiHI,WAAW;IACX,mBAAmB;IACnB,qCAAiD;IAEjD,uKA/BwC,EAAA;EDtF5C;IC0HG,wBCpGW,EAAA;EFtBd;IC8HG,qBC5HkB,EAAA;EFFrB;ICmIE,YAAY;IACZ,aAAa;IACb,cClImB,EAAA;;AFHrB;EC2IC,qBAAqB;EAGrB,YAAY;EAEZ,YAAY;EACZ,mBAAmB,EAAA;EDjJpB;ICoJE,WAAW;IACX,YAAY;IACZ,oBAAoB;IACpB,sBAAsB,EAAA;EDvJxB;IC2JE,cCtJmB;IDuJnB,sBAAsB;IACtB,kBAAkB;IAClB,iBAAiB,EAAA;;AD9JnB;EAEE,aAAa;EACb,WAAW;EACX,YAAY;EACZ,cAAc;EACd,4DAA4D,EAAA","file":"ThemePage.scss","sourcesContent":["@import \"../partial/Ext\";\n\n.ThemePage {\n\t.ThemePage-Themes {\n\t\tdisplay: grid;\n\t\twidth: 100%;\n\t\theight: auto;\n\t\tgrid-gap: 16px;\n\t\tgrid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n\t}\n\n\t.ThemePage-Toolbar {\n\t\t@extend %card_toolbar;\n\t}\n}\n","@import \"Vars\";\n\n%card {\n\theight: min-content;\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n}\n\n%card_toolbar {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\n\tbutton {\n\t\t@extend %material_icon_button;\n\t}\n\n\t.separator {\n\t\twidth: 24px;\n\t\tdisplay: inline-block;\n\t}\n\n\tdiv:first-of-type button {\n\t\tmargin-right: 8px;\n\t}\n\n\tdiv:last-of-type button {\n\t\tmargin-left: 8px;\n\t}\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tuser-select: none;\n\tborder-radius: 4px;\n\ttext-underline: none;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-300, 1 - .15);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:not(:disabled) {\n\t\t&:hover, &:focus {\n\t\t\t&::after {\n\t\t\t\tmargin: 0px;\n\t\t\t\ttransform: scale(1);\n\t\t\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\t\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t\t\t}\n\t\t}\n\n\t\t&:active {\n\t\t\ttransition: border $t-fast;\n\t\t}\n\n\t\t&:focus {\n\t\t\tborder-color: $neutral-400;\n\t\t}\n\t}\n\n\t&:disabled {\n\t\tcursor: auto;\n\t\topacity: 0.65;\n\t\tcolor: $neutral-500;\n\t}\n}\n\n%material_icon_button {\n\t@extend %material_button;\n\tdisplay: inline-block;\n\n\t// width: 48px;\n\theight: 48px;\n\n\tpadding: 8px;\n\tborder-radius: 24px;\n\n\timg {\n\t\twidth: 30px;\n\t\theight: 30px;\n\t\tpointer-events: none;\n\t\tvertical-align: middle;\n\t}\n\n\tspan {\n\t\tcolor: $neutral-700;\n\t\tvertical-align: middle;\n\t\tpadding-right: 8px;\n\t\tpadding-left: 8px;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"]}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -64913,6 +65067,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AppHeader__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./AppHeader */ "./src/AppHeader.tsx");
 /* harmony import */ var _pages_MainPage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/MainPage */ "./src/pages/MainPage.tsx");
 /* harmony import */ var _pages_MediaPage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/MediaPage */ "./src/pages/MediaPage.tsx");
+/* harmony import */ var _pages_ThemePage__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pages/ThemePage */ "./src/pages/ThemePage.tsx");
+/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./AppContext */ "./src/AppContext.tsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -64943,6 +65099,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
+
 var AppState;
 
 (function (AppState) {
@@ -64963,10 +65121,14 @@ var App = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     var tkn = js_cookie__WEBPACK_IMPORTED_MODULE_0___default.a.get('tkn');
-    _this.state = {
-      state: tkn ? AppState.QUERYING : AppState.LOGIN
-    };
     _this.handleSiteData = _this.handleSiteData.bind(_assertThisInitialized(_this));
+    _this.state = {
+      state: tkn ? AppState.QUERYING : AppState.LOGIN,
+      contextData: {
+        handleSiteData: _this.handleSiteData,
+        data: null
+      }
+    };
     if (tkn) fetch("/admin/data", {
       cache: 'no-cache'
     }).then(function (r) {
@@ -64980,36 +65142,43 @@ var App = /*#__PURE__*/function (_React$Component) {
   _createClass(App, [{
     key: "handleSiteData",
     value: function handleSiteData(data) {
+      console.log(data);
       this.setState({
-        data: data,
+        contextData: {
+          handleSiteData: this.handleSiteData,
+          data: data
+        },
         state: AppState.ADMIN
       });
     }
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_AppContext__WEBPACK_IMPORTED_MODULE_9__["AppContext"].Provider, {
+        value: this.state.contextData
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", {
         className: "App"
-      }, this.state.state == AppState.LOGIN && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_LoginForm__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        handleSiteData: this.handleSiteData
-      }), this.state.state == AppState.ADMIN && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", {
+      }, this.state.state == AppState.LOGIN && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_LoginForm__WEBPACK_IMPORTED_MODULE_4__["default"], null), this.state.state == AppState.ADMIN && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", {
         className: "App-Wrap"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], {
         basename: "/admin"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_AppHeader__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_AppHeader__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Redirect"], {
         exact: true,
-        path: "/"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_pages_MainPage__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        data: this.state.data
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        from: "/",
+        to: "/home"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         exact: true,
-        path: "/media"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_pages_MediaPage__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        data: this.state.data
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        path: "/home",
+        component: _pages_MainPage__WEBPACK_IMPORTED_MODULE_6__["default"]
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         exact: true,
-        path: "/pages"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("p", null, "pages"))))));
+        path: "/media",
+        component: _pages_MediaPage__WEBPACK_IMPORTED_MODULE_7__["default"]
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        exact: true,
+        path: "/themes",
+        component: _pages_ThemePage__WEBPACK_IMPORTED_MODULE_8__["default"]
+      }))))));
     }
   }]);
 
@@ -65017,6 +65186,26 @@ var App = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_1__["Component"]);
 
 
+
+/***/ }),
+
+/***/ "./src/AppContext.tsx":
+/*!****************************!*\
+  !*** ./src/AppContext.tsx ***!
+  \****************************/
+/*! exports provided: AppContext */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppContext", function() { return AppContext; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var AppContext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createContext"]({
+  handleSiteData: function handleSiteData() {},
+  data: null
+});
 
 /***/ }),
 
@@ -65128,17 +65317,17 @@ var AppHeader = /*#__PURE__*/function (_React$PureComponent) {
         className: "AppHeader-nav"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
         activeClassName: "active",
-        exact: true,
-        to: "/"
+        to: "/home"
       }, "Home"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
         activeClassName: "active",
-        exact: true,
         to: "/media"
       }, "Media"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
         activeClassName: "active",
-        exact: true,
         to: "/pages"
-      }, "Pages")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
+      }, "Pages"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
+        activeClassName: "active",
+        to: "/themes"
+      }, "Themes")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
         className: "AppHeader-options",
         to: "/user_options"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("img", {
@@ -65159,18 +65348,49 @@ var AppHeader = /*#__PURE__*/function (_React$PureComponent) {
 
 /***/ }),
 
-/***/ "./src/DoubleClickable.tsx":
-/*!*********************************!*\
-  !*** ./src/DoubleClickable.tsx ***!
-  \*********************************/
+/***/ "./src/CardHeader.scss":
+/*!*****************************!*\
+  !*** ./src/CardHeader.scss ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./CardHeader.scss */ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/CardHeader.scss");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+
+
+module.exports = content.locals || {};
+
+/***/ }),
+
+/***/ "./src/CardHeader.tsx":
+/*!****************************!*\
+  !*** ./src/CardHeader.tsx ***!
+  \****************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return DoubleClickable; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return CardHeader; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _CardHeader_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CardHeader.scss */ "./src/CardHeader.scss");
+/* harmony import */ var _CardHeader_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_CardHeader_scss__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65195,61 +65415,94 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var DoubleClickable = /*#__PURE__*/function (_React$PureComponent) {
-  _inherits(DoubleClickable, _React$PureComponent);
 
-  var _super = _createSuper(DoubleClickable);
+var CardHeader = /*#__PURE__*/function (_React$PureComponent) {
+  _inherits(CardHeader, _React$PureComponent);
 
-  function DoubleClickable(props) {
-    var _this;
+  var _super = _createSuper(CardHeader);
 
-    _classCallCheck(this, DoubleClickable);
+  function CardHeader() {
+    _classCallCheck(this, CardHeader);
 
-    _this = _super.call(this, props);
-    _this._lastClick = 0;
-    _this._timeout = undefined;
-    _this.handleClickTest = _this.handleClickTest.bind(_assertThisInitialized(_this));
-    return _this;
+    return _super.apply(this, arguments);
   }
 
-  _createClass(DoubleClickable, [{
-    key: "handleAnyClick",
-    value: function handleAnyClick(_) {}
-  }, {
-    key: "handleFirstClick",
-    value: function handleFirstClick(_) {}
-  }, {
-    key: "handleSingleClick",
-    value: function handleSingleClick(_) {}
-  }, {
-    key: "handleDoubleClick",
-    value: function handleDoubleClick(_) {}
-  }, {
-    key: "handleClickTest",
-    value: function handleClickTest(e) {
-      var _this2 = this;
+  _createClass(CardHeader, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
+        className: "CardHeader"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
+        className: "CardHeader-Icon",
+        src: this.props.icon
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h1", {
+        className: "CardHeader-Title"
+      }, this.props.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", {
+        className: "CardHeader-Description"
+      }, this.props.subtitle || ""));
+    }
+  }]);
+
+  return CardHeader;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+
+
+
+/***/ }),
+
+/***/ "./src/ClickHandler.ts":
+/*!*****************************!*\
+  !*** ./src/ClickHandler.ts ***!
+  \*****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ClickHandler; });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var ClickHandler = /*#__PURE__*/function () {
+  function ClickHandler(callbacks) {
+    _classCallCheck(this, ClickHandler);
+
+    this.callbacks = void 0;
+    this._lastClick = 0;
+    this._timeout = undefined;
+    this.callbacks = callbacks;
+    this.handleMouseUp = this.handleMouseUp.bind(this);
+  }
+
+  _createClass(ClickHandler, [{
+    key: "handleMouseUp",
+    value: function handleMouseUp(e) {
+      var _this = this;
 
       var timeout = 250;
       e.persist();
       e.preventDefault();
-      this.handleAnyClick(e);
+      if (this.callbacks.onClick) this.callbacks.onClick(e);
 
       if (Date.now() - this._lastClick < timeout) {
         this._lastClick = 0;
         clearTimeout(this._timeout);
-        this.handleDoubleClick(e);
+        if (this.callbacks.onDoubleClick) this.callbacks.onDoubleClick(e);
       } else {
         this._lastClick = Date.now();
-        this.handleFirstClick(e);
+        if (this.callbacks.onFirstClick) this.callbacks.onFirstClick(e);
         this._timeout = setTimeout(function () {
-          return _this2.handleSingleClick(e);
+          if (_this.callbacks.onSingleClick) _this.callbacks.onSingleClick(e);
         }, timeout);
       }
     }
   }]);
 
-  return DoubleClickable;
-}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+  return ClickHandler;
+}();
 
 
 
@@ -65300,6 +65553,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _LoginForm_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LoginForm.scss */ "./src/LoginForm.scss");
 /* harmony import */ var _LoginForm_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_LoginForm_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AppContext */ "./src/AppContext.tsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -65325,6 +65579,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -65429,7 +65684,7 @@ var LoginForm = /*#__PURE__*/function (_React$PureComponent) {
         }).then(function (r) {
           return r.json();
         }).then(function (res) {
-          if (returnImmediate) _this2.props.handleSiteData(res);else data = res;
+          if (returnImmediate) _this2.context.handleSiteData(res);else data = res;
         });
         setTimeout(function () {
           return _this2.setState({
@@ -65437,7 +65692,7 @@ var LoginForm = /*#__PURE__*/function (_React$PureComponent) {
           });
         }, 450);
         setTimeout(function () {
-          if (data) _this2.props.handleSiteData(data);else returnImmediate = true;
+          if (data) _this2.context.handleSiteData(data);else returnImmediate = true;
         }, 650);
       }).catch(function (err) {
         _this2.setState({
@@ -65514,6 +65769,7 @@ var LoginForm = /*#__PURE__*/function (_React$PureComponent) {
 }(react__WEBPACK_IMPORTED_MODULE_1__["PureComponent"]);
 
 
+LoginForm.contextType = _AppContext__WEBPACK_IMPORTED_MODULE_3__["AppContext"];
 
 /***/ }),
 
@@ -65608,12 +65864,12 @@ module.exports = content.locals || {};
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return MediaPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return MediaItem; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _MediaItem_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MediaItem.scss */ "./src/MediaItem.scss");
 /* harmony import */ var _MediaItem_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_MediaItem_scss__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _DoubleClickable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DoubleClickable */ "./src/DoubleClickable.tsx");
+/* harmony import */ var _Selectable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Selectable */ "./src/Selectable.tsx");
 /* harmony import */ var _common_util_Format__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/util/Format */ "../common/util/Format.ts");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -65642,49 +65898,37 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var MediaPage = /*#__PURE__*/function (_DoubleClickable) {
-  _inherits(MediaPage, _DoubleClickable);
+var MediaItem = /*#__PURE__*/function (_React$Component) {
+  _inherits(MediaItem, _React$Component);
 
-  var _super = _createSuper(MediaPage);
+  var _super = _createSuper(MediaItem);
 
-  function MediaPage(props) {
+  function MediaItem(props) {
     var _this;
 
-    _classCallCheck(this, MediaPage);
+    _classCallCheck(this, MediaItem);
 
     _this = _super.call(this, props);
-    _this.state = {
-      selected: false
+    _this.callbacks = void 0;
+    _this.callbacks = {
+      onDoubleClick: _this.props.onClick
     };
     return _this;
   }
 
-  _createClass(MediaPage, [{
-    key: "handleFirstClick",
-    value: function handleFirstClick(_) {
-      this.setState({
-        selected: !this.state.selected
-      });
-    }
-  }, {
-    key: "handleDoubleClick",
-    value: function handleDoubleClick(e) {
-      this.setState({
-        selected: true
-      });
-      this.props.onClick(e);
-    }
-  }, {
+  _createClass(MediaItem, [{
     key: "render",
     value: function render() {
-      var isImage = this.props.item.ext == "png" || this.props.item.ext == "jpg" || this.props.item.ext == "svg";
+      var isImage = this.props.item.ext == "png" || this.props.item.ext == "jpg" || this.props.item.ext == "svg" || this.props.item.ext == "gif";
       var icon = "/admin/asset/icon/ext-unknown-color.svg";
-      if (isImage) icon = this.props.item.path;else {
+      if (isImage) icon = this.props.item.publicPath;else {
         if (this.props.item.ext == "pdf") icon = "/admin/asset/icon/ext-pdf-color.svg";else if (this.props.item.ext == "md" || this.props.item.ext == "txt") icon = "/admin/asset/icon/ext-txt-color.svg";else if (this.props.item.ext == "doc" || this.props.item.ext == "docx") icon = "/admin/asset/icon/ext-document-color.svg";else if (this.props.item.ext == "xls" || this.props.item.ext == "xlsx") icon = "/admin/asset/icon/ext-sheet-color.svg";else if (this.props.item.ext == "ppt" || this.props.item.ext == "pptx") icon = "/admin/asset/icon/ext-slideshow-color.svg";
       }
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", {
-        className: "MediaItem" + (this.state.selected ? " selected" : ""),
-        onClick: this.handleClickTest
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Selectable__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        className: "MediaItem",
+        ind: this.props.ind,
+        callbacks: this.callbacks,
+        doubleClickSelects: true
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
         src: icon,
         className: "MediaItem-Image" + (isImage ? "" : " icon")
@@ -65700,22 +65944,22 @@ var MediaPage = /*#__PURE__*/function (_DoubleClickable) {
     }
   }]);
 
-  return MediaPage;
-}(_DoubleClickable__WEBPACK_IMPORTED_MODULE_2__["default"]);
+  return MediaItem;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 
 
 /***/ }),
 
-/***/ "./src/MediaModal.scss":
-/*!*****************************!*\
-  !*** ./src/MediaModal.scss ***!
-  \*****************************/
+/***/ "./src/MediaUploadForm.scss":
+/*!**********************************!*\
+  !*** ./src/MediaUploadForm.scss ***!
+  \**********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 var api = __webpack_require__(/*! ../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-            var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./MediaModal.scss */ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/MediaModal.scss");
+            var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./MediaUploadForm.scss */ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/MediaUploadForm.scss");
 
             content = content.__esModule ? content.default : content;
 
@@ -65736,20 +65980,464 @@ module.exports = content.locals || {};
 
 /***/ }),
 
-/***/ "./src/MediaModal.tsx":
-/*!****************************!*\
-  !*** ./src/MediaModal.tsx ***!
-  \****************************/
+/***/ "./src/MediaUploadForm.tsx":
+/*!*********************************!*\
+  !*** ./src/MediaUploadForm.tsx ***!
+  \*********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return MediaModal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return MediaUploadForm; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _MediaModal_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MediaModal.scss */ "./src/MediaModal.scss");
-/* harmony import */ var _MediaModal_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_MediaModal_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _MediaUploadForm_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MediaUploadForm.scss */ "./src/MediaUploadForm.scss");
+/* harmony import */ var _MediaUploadForm_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_MediaUploadForm_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _CardHeader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CardHeader */ "./src/CardHeader.tsx");
+/* harmony import */ var _SelectGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SelectGroup */ "./src/SelectGroup.tsx");
+/* harmony import */ var _MediaUploadItem__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./MediaUploadItem */ "./src/MediaUploadItem.tsx");
+/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./AppContext */ "./src/AppContext.tsx");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _toArray(arr) { return _arrayWithHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+
+var MediaUploadState;
+
+(function (MediaUploadState) {
+  MediaUploadState[MediaUploadState["SELECTING"] = 0] = "SELECTING";
+  MediaUploadState[MediaUploadState["UPLOADING"] = 1] = "UPLOADING";
+  MediaUploadState[MediaUploadState["COMPLETED"] = 2] = "COMPLETED";
+})(MediaUploadState || (MediaUploadState = {}));
+
+var MediaUploadForm = /*#__PURE__*/function (_React$PureComponent) {
+  _inherits(MediaUploadForm, _React$PureComponent);
+
+  var _super = _createSuper(MediaUploadForm);
+
+  function MediaUploadForm(props) {
+    var _this;
+
+    _classCallCheck(this, MediaUploadForm);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      state: MediaUploadState.SELECTING,
+      files: [],
+      selected: [],
+      grid: false
+    };
+    _this.handleKeyUp = _this.handleKeyUp.bind(_assertThisInitialized(_this));
+    _this.handleClose = _this.handleClose.bind(_assertThisInitialized(_this));
+    _this.handleUpload = _this.handleUpload.bind(_assertThisInitialized(_this));
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleNameChange = _this.handleNameChange.bind(_assertThisInitialized(_this));
+    _this.handleViewToggle = _this.handleViewToggle.bind(_assertThisInitialized(_this));
+    _this.handleRemoveFiles = _this.handleRemoveFiles.bind(_assertThisInitialized(_this));
+    _this.handleFilesChange = _this.handleFilesChange.bind(_assertThisInitialized(_this));
+    _this.handleFilenameChange = _this.handleFilenameChange.bind(_assertThisInitialized(_this));
+    _this.handleSelectionChange = _this.handleSelectionChange.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(MediaUploadForm, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      window.addEventListener('keyup', this.handleKeyUp);
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      window.removeEventListener('keyup', this.handleKeyUp);
+    }
+  }, {
+    key: "handleKeyUp",
+    value: function handleKeyUp(e) {
+      if (e.key == 'Delete') this.handleRemoveFiles();
+    }
+  }, {
+    key: "handleViewToggle",
+    value: function handleViewToggle() {
+      this.setState({
+        grid: !this.state.grid
+      });
+    }
+  }, {
+    key: "handleRemoveFiles",
+    value: function handleRemoveFiles() {
+      var files = _toConsumableArray(this.state.files);
+
+      for (var i = this.state.selected.length - 1; i >= 0; i--) {
+        var ind = this.state.selected[i];
+        files.splice(ind, 1);
+      }
+
+      this.setState({
+        files: files
+      });
+    }
+  }, {
+    key: "handleNameChange",
+    value: function handleNameChange(ind, name) {
+      var files = _toConsumableArray(this.state.files);
+
+      var file = Object.assign(files[ind]);
+      file.name = name;
+      files[ind] = file;
+      this.setState({
+        files: files
+      });
+    }
+  }, {
+    key: "handleFilenameChange",
+    value: function handleFilenameChange(ind, name) {
+      var cleanName = name.toLowerCase().replace(/[ -]/g, '_').replace(/[^a-zA-Z0-9_]/g, '');
+
+      var files = _toConsumableArray(this.state.files);
+
+      var file = Object.assign(files[ind]);
+      file.filename = cleanName;
+      files[ind] = file;
+      this.setState({
+        files: files
+      });
+    }
+  }, {
+    key: "handleClose",
+    value: function handleClose(e) {
+      e.preventDefault();
+      this.props.onCancel();
+    }
+  }, {
+    key: "handleUpload",
+    value: function handleUpload() {
+      this.setState({
+        state: MediaUploadState.UPLOADING,
+        selected: []
+      });
+      this.handleSubmit();
+    }
+  }, {
+    key: "handleSelectionChange",
+    value: function handleSelectionChange(selected) {
+      this.setState({
+        selected: selected
+      });
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit() {
+      var _this2 = this;
+
+      var threads = 6;
+      var promises = [];
+
+      var _loop = function _loop(i) {
+        var ind = i;
+        promises.push(new Promise(function (resolve) {
+          var f = function f() {
+            if (ind >= _this2.state.files.length) return resolve();
+            var file = _this2.state.files[ind];
+            var data = new FormData();
+            data.append('file', file.file);
+            data.append('name', file.name);
+            data.append('identifier', file.identifier);
+            fetch("/admin/media/upload", {
+              method: 'POST',
+              cache: 'no-cache',
+              // headers: {'Content-Type': 'application/json'},
+              body: data
+            }).then(function () {
+              ind += threads;
+              f();
+            });
+          };
+
+          f();
+        }));
+      };
+
+      for (var i = 0; i < threads; i++) {
+        _loop(i);
+      }
+
+      Promise.all(promises).then(function () {
+        console.log("ALL DONE");
+        fetch("/admin/data", {
+          cache: 'no-cache'
+        }).then(function (r) {
+          return r.json();
+        }).then(function (res) {
+          _this2.context.handleSiteData(res);
+
+          _this2.props.onCancel();
+        });
+      });
+    }
+  }, {
+    key: "handleFilesChange",
+    value: function () {
+      var _handleFilesChange = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(e) {
+        var target, files, newFiles;
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                target = e.target;
+                files = _toConsumableArray(this.state.files);
+                newFiles = Array.from(target.files || []);
+                target.value = "";
+                _context.next = 6;
+                return Promise.all(newFiles.map(function (file) {
+                  return new Promise(function (resolve) {
+                    var ext = file.name.substr(file.name.lastIndexOf(".") + 1);
+                    var isImage = ext == "png" || ext == "jpeg" || ext == "jpg" || ext == "svg" || ext == "gif"; //@ts-ignore
+
+                    var cleanName = file.name.substr(0, file.name.lastIndexOf(".")).replace(/[_-]+/g, " ").split(" ").map(function (_ref) {
+                      var _ref2 = _toArray(_ref),
+                          firstChar = _ref2[0],
+                          rest = _ref2.slice(1);
+
+                      return firstChar.toUpperCase() + rest.join("").toLowerCase();
+                    }).join(" ");
+                    if (cleanName.length > 32) cleanName = cleanName.substr(0, 32);
+
+                    var resolveFile = function resolveFile(image) {
+                      var exists = false;
+
+                      var _iterator = _createForOfIteratorHelper(files),
+                          _step;
+
+                      try {
+                        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+                          var existingFile = _step.value;
+
+                          if (existingFile.name == cleanName) {
+                            exists = true;
+                            break;
+                          }
+                        }
+                      } catch (err) {
+                        _iterator.e(err);
+                      } finally {
+                        _iterator.f();
+                      }
+
+                      if (!exists) {
+                        files.push({
+                          file: file,
+                          ext: ext,
+                          name: cleanName,
+                          identifier: "",
+                          thumbnail: image
+                        });
+                      }
+
+                      resolve();
+                    };
+
+                    if (isImage) {
+                      var reader = new FileReader();
+                      reader.readAsDataURL(file);
+
+                      reader.onload = function () {
+                        return resolveFile(reader.result);
+                      };
+                    } else resolveFile();
+                  });
+                }));
+
+              case 6:
+                this.setState({
+                  files: files
+                });
+
+              case 7:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function handleFilesChange(_x) {
+        return _handleFilesChange.apply(this, arguments);
+      }
+
+      return handleFilesChange;
+    }()
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      var uploadItems = this.state.files.map(function (f, i) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_MediaUploadItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          file: f,
+          ind: i,
+          key: f.file.name,
+          editable: _this3.state.state == MediaUploadState.SELECTING,
+          onNameChange: _this3.handleNameChange.bind(_this3, i),
+          onFilenameChange: _this3.handleFilenameChange.bind(_this3, i)
+        });
+      });
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_AppContext__WEBPACK_IMPORTED_MODULE_5__["AppContext"].Consumer, null, function (ctx) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("form", {
+          className: "MediaUploadForm",
+          onSubmit: function onSubmit(e) {
+            return e.preventDefault();
+          }
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_CardHeader__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          icon: "/admin/asset/icon/document-dark.svg",
+          title: "Upload Media",
+          subtitle: "Upload new media assets to ".concat(ctx.data.sitename, ".")
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
+          className: "MediaUploadForm-InputWrap" + (_this3.state.state != MediaUploadState.SELECTING ? " disabled" : "")
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", {
+          type: "file",
+          multiple: true,
+          autoFocus: true,
+          className: "MediaUploadForm-Input",
+          onChange: _this3.handleFilesChange,
+          disabled: _this3.state.state != MediaUploadState.SELECTING
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h2", null, "Click or drag files here to upload.")), _this3.state.files.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
+          className: "MediaUploadForm-Toolbar"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, _this3.state.selected.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", {
+          className: "MediaUploadForm-Toolbar-Button",
+          onClick: _this3.handleRemoveFiles
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
+          src: "/admin/asset/icon/trash-dark.svg"
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null, _this3.state.selected.length == 1 ? "Remove" : "Remove (" + _this3.state.selected.length + ")"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", {
+          className: "MediaUploadForm-Toolbar-Button"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
+          src: "/admin/asset/icon/sort-dark.svg"
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null, "Sort by Size")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", {
+          className: "MediaUploadForm-Toolbar-Button",
+          onClick: _this3.handleViewToggle
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
+          src: "/admin/asset/icon/".concat(_this3.state.grid ? "grid" : "list", "-view-dark.svg")
+        })))), _this3.state.state == MediaUploadState.SELECTING && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_SelectGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          className: "MediaUploadForm-Files " + (_this3.state.grid ? "Grid" : "Stack"),
+          onSelectionChange: _this3.handleSelectionChange,
+          multi: true
+        }, uploadItems), _this3.state.state == MediaUploadState.UPLOADING && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
+          className: "MediaUploadForm-Files " + (_this3.state.grid ? "Grid" : "Stack")
+        }, uploadItems), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
+          className: "MediaUploadForm-ActionBar"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", {
+          onClick: _this3.handleClose,
+          className: "MediaUploadForm-ActionBar-Button",
+          disabled: _this3.state.state == MediaUploadState.UPLOADING
+        }, "Cancel")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, _this3.state.files.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", {
+          onClick: _this3.handleUpload,
+          className: "MediaUploadForm-ActionBar-Button Upload",
+          disabled: _this3.state.state == MediaUploadState.UPLOADING
+        }, "Upload File".concat(_this3.state.files.length > 1 ? "s" : "")))));
+      });
+    }
+  }]);
+
+  return MediaUploadForm;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+
+
+MediaUploadForm.contextType = _AppContext__WEBPACK_IMPORTED_MODULE_5__["AppContext"];
+
+/***/ }),
+
+/***/ "./src/MediaUploadItem.scss":
+/*!**********************************!*\
+  !*** ./src/MediaUploadItem.scss ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./MediaUploadItem.scss */ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/MediaUploadItem.scss");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+
+
+module.exports = content.locals || {};
+
+/***/ }),
+
+/***/ "./src/MediaUploadItem.tsx":
+/*!*********************************!*\
+  !*** ./src/MediaUploadItem.tsx ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return MediaItem; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _MediaUploadItem_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MediaUploadItem.scss */ "./src/MediaUploadItem.scss");
+/* harmony import */ var _MediaUploadItem_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_MediaUploadItem_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Selectable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Selectable */ "./src/Selectable.tsx");
+/* harmony import */ var _common_util_Format__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/util/Format */ "../common/util/Format.ts");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65775,41 +66463,195 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var MediaModal = /*#__PURE__*/function (_React$PureComponent) {
-  _inherits(MediaModal, _React$PureComponent);
 
-  var _super = _createSuper(MediaModal);
 
-  function MediaModal(props) {
+var MediaItem = /*#__PURE__*/function (_React$Component) {
+  _inherits(MediaItem, _React$Component);
+
+  var _super = _createSuper(MediaItem);
+
+  // callbacks: ClickHandlerCallbacks;
+  function MediaItem(props) {
     var _this;
 
-    _classCallCheck(this, MediaModal);
+    _classCallCheck(this, MediaItem);
 
-    _this = _super.call(this, props);
-    _this.avoidClose = _this.avoidClose.bind(_assertThisInitialized(_this));
+    _this = _super.call(this, props); // this.callbacks = {
+    // 	onDoubleClick: this.props.onClick
+    // };
+
+    _this.handleInputClick = _this.handleInputClick.bind(_assertThisInitialized(_this));
+    _this.handleNameChange = _this.handleNameChange.bind(_assertThisInitialized(_this));
+    _this.handleFilenameChange = _this.handleFilenameChange.bind(_assertThisInitialized(_this));
     return _this;
   }
 
-  _createClass(MediaModal, [{
-    key: "avoidClose",
-    value: function avoidClose(e) {
-      e.preventDefault();
+  _createClass(MediaItem, [{
+    key: "handleNameChange",
+    value: function handleNameChange(e) {
+      this.props.onNameChange(e.target.value);
+    }
+  }, {
+    key: "handleFilenameChange",
+    value: function handleFilenameChange(e) {
+      var start = e.target.selectionStart;
+      var end = e.target.selectionEnd;
+      var oldVal = e.target.value;
+      e.target.value = e.target.value.toLowerCase().replace(/[ -]/g, '_').replace(/[^a-zA-Z0-9_]/g, '');
+
+      if (oldVal.length > e.target.value.length) {
+        start -= oldVal.length - e.target.value.length;
+        end -= oldVal.length - e.target.value.length;
+      }
+
+      e.target.setSelectionRange(start, end);
+      this.props.onFilenameChange(e.target.value);
+    }
+  }, {
+    key: "handleInputClick",
+    value: function handleInputClick(e) {
       e.stopPropagation();
     }
   }, {
     key: "render",
     value: function render() {
+      var ext = this.props.file.ext;
+      var isImage = !!this.props.file.thumbnail;
+      var icon = "/admin/asset/icon/ext-unknown-color.svg";
+      if (isImage) icon = this.props.file.thumbnail;else {
+        if (ext == "pdf") icon = "/admin/asset/icon/ext-pdf-color.svg";else if (ext == "md" || ext == "txt") icon = "/admin/asset/icon/ext-txt-color.svg";else if (ext == "doc" || ext == "docx") icon = "/admin/asset/icon/ext-document-color.svg";else if (ext == "xls" || ext == "xlsx") icon = "/admin/asset/icon/ext-sheet-color.svg";else if (ext == "ppt" || ext == "pptx") icon = "/admin/asset/icon/ext-slideshow-color.svg";
+      }
+      var identifier = this.props.file.name.toLowerCase().replace(/[ -]/g, '_').replace(/[^a-zA-Z0-9_]/g, '');
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Selectable__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        className: "MediaUploadItem",
+        ind: this.props.ind,
+        doubleClickSelects: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
+        src: icon,
+        className: "MediaItem-Image" + (isImage ? "" : " icon")
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
+        className: "MediaItem-Description"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", {
+        type: "text",
+        className: "MediaItem-Name",
+        value: this.props.file.name,
+        disabled: !this.props.editable,
+        onChange: this.handleNameChange,
+        onMouseUp: this.handleInputClick,
+        maxLength: 32
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", {
+        type: "text",
+        className: "MediaItem-FileName",
+        value: this.props.editable ? this.props.file.identifier : identifier + "." + this.props.file.ext,
+        disabled: !this.props.editable,
+        maxLength: 32,
+        onChange: this.handleFilenameChange,
+        onMouseUp: this.handleInputClick,
+        placeholder: identifier
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", {
+        className: "MediaItem-Metadata"
+      }, "".concat(_common_util_Format__WEBPACK_IMPORTED_MODULE_3__["bytes"](this.props.file.file.size), " \u2022 ") + "Last modified ".concat(_common_util_Format__WEBPACK_IMPORTED_MODULE_3__["date"](this.props.file.file.lastModified)))));
+    }
+  }]);
+
+  return MediaItem;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./src/MediaView.scss":
+/*!****************************!*\
+  !*** ./src/MediaView.scss ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./MediaView.scss */ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/MediaView.scss");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+
+
+module.exports = content.locals || {};
+
+/***/ }),
+
+/***/ "./src/MediaView.tsx":
+/*!***************************!*\
+  !*** ./src/MediaView.tsx ***!
+  \***************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return MediaView; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _MediaView_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MediaView.scss */ "./src/MediaView.scss");
+/* harmony import */ var _MediaView_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_MediaView_scss__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+var MediaView = /*#__PURE__*/function (_React$PureComponent) {
+  _inherits(MediaView, _React$PureComponent);
+
+  var _super = _createSuper(MediaView);
+
+  function MediaView() {
+    _classCallCheck(this, MediaView);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(MediaView, [{
+    key: "render",
+    value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
-        className: "MediaModal",
-        onClick: this.props.onClose
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
-        className: "MediaModal-Card",
-        onClick: this.avoidClose
+        className: "MediaView"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
+        src: this.props.item.publicPath
       }));
     }
   }]);
 
-  return MediaModal;
+  return MediaView;
 }(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
 
 
@@ -65916,6 +66758,562 @@ var Meter = /*#__PURE__*/function (_React$PureComponent) {
 
 /***/ }),
 
+/***/ "./src/Modal.scss":
+/*!************************!*\
+  !*** ./src/Modal.scss ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./Modal.scss */ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/Modal.scss");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+
+
+module.exports = content.locals || {};
+
+/***/ }),
+
+/***/ "./src/Modal.tsx":
+/*!***********************!*\
+  !*** ./src/Modal.tsx ***!
+  \***********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Modal; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Modal_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Modal.scss */ "./src/Modal.scss");
+/* harmony import */ var _Modal_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Modal_scss__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+var Modal = /*#__PURE__*/function (_React$PureComponent) {
+  _inherits(Modal, _React$PureComponent);
+
+  var _super = _createSuper(Modal);
+
+  function Modal(props) {
+    var _this;
+
+    _classCallCheck(this, Modal);
+
+    _this = _super.call(this, props);
+    _this.avoidClose = _this.avoidClose.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(Modal, [{
+    key: "avoidClose",
+    value: function avoidClose(e) {
+      e.stopPropagation();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
+        className: "Modal" + (this.props.className ? " " + this.props.className : "") + (this.props.onClose ? " closes" : ""),
+        style: this.props.style,
+        onClick: this.props.onClose
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
+        className: "MediaModal-CardWrap"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
+        className: "MediaModal-Card",
+        onClick: this.avoidClose
+      }, this.props.children)));
+    }
+  }]);
+
+  return Modal;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+
+
+
+/***/ }),
+
+/***/ "./src/SelectGroup.scss":
+/*!******************************!*\
+  !*** ./src/SelectGroup.scss ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./SelectGroup.scss */ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/SelectGroup.scss");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+
+
+module.exports = content.locals || {};
+
+/***/ }),
+
+/***/ "./src/SelectGroup.tsx":
+/*!*****************************!*\
+  !*** ./src/SelectGroup.tsx ***!
+  \*****************************/
+/*! exports provided: SelectGroupContext, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SelectGroupContext", function() { return SelectGroupContext; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SelectGroup; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _SelectGroup_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SelectGroup.scss */ "./src/SelectGroup.scss");
+/* harmony import */ var _SelectGroup_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_SelectGroup_scss__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+var SelectGroupContext = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createContext"]({
+  handleSelect: function handleSelect() {},
+  selected: []
+});
+
+var SelectGroup = /*#__PURE__*/function (_React$Component) {
+  _inherits(SelectGroup, _React$Component);
+
+  var _super = _createSuper(SelectGroup);
+
+  function SelectGroup(props) {
+    var _this;
+
+    _classCallCheck(this, SelectGroup);
+
+    _this = _super.call(this, props);
+    _this.ctrl = false;
+    _this.shift = false;
+    _this.handleSelect = _this.handleSelect.bind(_assertThisInitialized(_this));
+    _this.keyDown = _this.keyDown.bind(_assertThisInitialized(_this));
+    _this.keyUp = _this.keyUp.bind(_assertThisInitialized(_this));
+    _this.state = {
+      contextData: {
+        handleSelect: _this.handleSelect,
+        selected: []
+      }
+    };
+    return _this;
+  }
+
+  _createClass(SelectGroup, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.resetContextArray();
+      window.addEventListener("keydown", this.keyDown);
+      window.addEventListener("keyup", this.keyUp);
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      window.removeEventListener("keydown", this.keyDown);
+      window.removeEventListener("keyup", this.keyUp);
+    }
+  }, {
+    key: "keyDown",
+    value: function keyDown(e) {
+      if (e.key == 'Control') this.ctrl = true;
+      if (e.key == 'Shift') this.shift = true;
+    }
+  }, {
+    key: "keyUp",
+    value: function keyUp(e) {
+      if (e.key == 'Control') this.ctrl = false;
+      if (e.key == 'Shift') this.shift = false;
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(oldProps) {
+      var equal = true;
+      var oldKeys = oldProps.children.map(function (child) {
+        return child.key;
+      });
+      var newKeys = this.props.children.map(function (child) {
+        return child.key;
+      });
+      if (oldKeys.length != newKeys.length) equal = false;
+      if (equal) for (var i = 0; i < oldKeys.length; i++) {
+        if (oldKeys[i] != newKeys[i]) equal = false;
+      }
+      if (equal) return;
+      this.resetContextArray();
+    }
+  }, {
+    key: "resetContextArray",
+    value: function resetContextArray() {
+      var selected = [];
+
+      for (var i = 0; i < this.props.children.length; i++) {
+        selected.push(false);
+      }
+
+      this.setState({
+        contextData: {
+          handleSelect: this.state.contextData.handleSelect,
+          selected: selected
+        },
+        lastSelected: undefined
+      });
+      if (this.props.onSelectionChange) this.props.onSelectionChange([]);
+    }
+  }, {
+    key: "handleSelect",
+    value: function handleSelect(_, ind, state) {
+      var contextData = _objectSpread({}, this.state.contextData);
+
+      if (!this.props.multi || !this.ctrl) contextData.selected = contextData.selected.map(function (v, i) {
+        return i == ind ? v : false;
+      });
+
+      if (this.props.multi && this.state.lastSelected !== undefined && this.shift) {
+        var a = ind < this.state.lastSelected ? ind : this.state.lastSelected;
+        var b = ind < this.state.lastSelected ? this.state.lastSelected : ind;
+
+        for (var i = a; i <= b; i++) {
+          contextData.selected[i] = true;
+        }
+      } else contextData.selected[ind] = state !== undefined ? state : !contextData.selected[ind];
+
+      var lastSelected = this.shift && this.state.lastSelected !== undefined ? this.state.lastSelected : ind;
+      if (this.props.onSelectionChange) this.props.onSelectionChange(contextData.selected.map(function (s, i) {
+        return s ? i : -1;
+      }).filter(function (i) {
+        return i != -1;
+      }));
+      this.setState({
+        contextData: contextData,
+        lastSelected: lastSelected
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](SelectGroupContext.Provider, {
+        value: this.state.contextData
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("ul", {
+        className: "SelectGroup " + (this.props.className ? this.props.className : ""),
+        style: this.props.style
+      }, this.props.children));
+    }
+  }]);
+
+  return SelectGroup;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
+/***/ "./src/Selectable.tsx":
+/*!****************************!*\
+  !*** ./src/Selectable.tsx ***!
+  \****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Selectable; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _ClickHandler__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ClickHandler */ "./src/ClickHandler.ts");
+/* harmony import */ var _SelectGroup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SelectGroup */ "./src/SelectGroup.tsx");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+var Selectable = /*#__PURE__*/function (_React$Component) {
+  _inherits(Selectable, _React$Component);
+
+  var _super = _createSuper(Selectable);
+
+  function Selectable(props) {
+    var _this;
+
+    _classCallCheck(this, Selectable);
+
+    _this = _super.call(this, props);
+    _this.clickHandler = new _ClickHandler__WEBPACK_IMPORTED_MODULE_1__["default"]({});
+    return _this;
+  }
+
+  _createClass(Selectable, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.updateCallbacks();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(oldProps) {
+      if (oldProps.callbacks == this.props.callbacks) return;
+      this.updateCallbacks();
+    }
+  }, {
+    key: "updateCallbacks",
+    value: function updateCallbacks() {
+      var _this2 = this;
+
+      var callbacks = Object.assign({}, this.props.callbacks);
+      if (!callbacks.onClick) callbacks.onClick = function (e) {
+        return _this2.context.handleSelect(e, _this2.props.ind);
+      };else {
+        var clickCallback = callbacks.onClick;
+
+        callbacks.onClick = function (e) {
+          clickCallback(e);
+
+          _this2.context.handleSelect(e, _this2.props.ind);
+        };
+      }
+
+      if (callbacks.onDoubleClick && this.props.doubleClickSelects) {
+        var doubleClickCallback = callbacks.onDoubleClick;
+
+        callbacks.onDoubleClick = function (e) {
+          doubleClickCallback(e);
+
+          _this2.context.handleSelect(e, _this2.props.ind, true);
+        };
+      }
+
+      this.clickHandler = new _ClickHandler__WEBPACK_IMPORTED_MODULE_1__["default"](callbacks);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      var selected = this.context.selected[this.props.ind];
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_SelectGroup__WEBPACK_IMPORTED_MODULE_2__["SelectGroupContext"].Consumer, null, function (_) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", {
+          className: "Selectable " + (_this3.props.className ? _this3.props.className : "") + (selected ? " selected" : ""),
+          style: _this3.props.style,
+          onMouseUp: _this3.clickHandler.handleMouseUp
+        }, _this3.props.children);
+      });
+    }
+  }]);
+
+  return Selectable;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+Selectable.contextType = _SelectGroup__WEBPACK_IMPORTED_MODULE_2__["SelectGroupContext"];
+
+/***/ }),
+
+/***/ "./src/ThemeItem.scss":
+/*!****************************!*\
+  !*** ./src/ThemeItem.scss ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./ThemeItem.scss */ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/ThemeItem.scss");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+
+
+module.exports = content.locals || {};
+
+/***/ }),
+
+/***/ "./src/ThemeItem.tsx":
+/*!***************************!*\
+  !*** ./src/ThemeItem.tsx ***!
+  \***************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return MediaItem; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _ThemeItem_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ThemeItem.scss */ "./src/ThemeItem.scss");
+/* harmony import */ var _ThemeItem_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ThemeItem_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Selectable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Selectable */ "./src/Selectable.tsx");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+ // import { ClickHandlerCallbacks } from "./ClickHandler";
+
+var MediaItem = /*#__PURE__*/function (_React$Component) {
+  _inherits(MediaItem, _React$Component);
+
+  var _super = _createSuper(MediaItem);
+
+  function MediaItem() {
+    _classCallCheck(this, MediaItem);
+
+    return _super.apply(this, arguments);
+  }
+
+  _createClass(MediaItem, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Selectable__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        className: "ThemeItem",
+        ind: this.props.ind,
+        doubleClickSelects: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
+        className: "ThemeItem-Cover"
+      }, this.props.item.hasCover && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
+        src: "/admin/theme/cover/" + this.props.item.identifier + ".jpg"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", {
+        className: "ThemeItem-Tag " + (this.props.active ? "Enabled" : "Disabled")
+      }, this.props.active ? "Enabled" : "Disabled")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
+        className: "ThemeItem-Content"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h2", {
+        className: "ThemeItem-Title"
+      }, this.props.item.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", {
+        className: "ThemeItem-Author"
+      }, this.props.item.author), this.props.item.description && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", {
+        className: "ThemeItem-Description"
+      }, this.props.item.description)));
+    }
+  }]);
+
+  return MediaItem;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
 /***/ "./src/pages/MainPage.scss":
 /*!*********************************!*\
   !*** ./src/pages/MainPage.scss ***!
@@ -65960,6 +67358,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _MainPage_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MainPage.scss */ "./src/pages/MainPage.scss");
 /* harmony import */ var _MainPage_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_MainPage_scss__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _Meter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Meter */ "./src/Meter.tsx");
+/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../AppContext */ "./src/AppContext.tsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65982,7 +67381,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
- // import { Link } from 'react-router-dom';
+
 
 
 
@@ -65992,16 +67391,15 @@ var MainPage = /*#__PURE__*/function (_React$PureComponent) {
 
   var _super = _createSuper(MainPage);
 
-  function MainPage(props) {
+  function MainPage() {
     _classCallCheck(this, MainPage);
 
-    return _super.call(this, props);
+    return _super.apply(this, arguments);
   }
 
   _createClass(MainPage, [{
     key: "render",
     value: function render() {
-      console.log(this.props.data);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
         className: "MainPage"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
@@ -66009,13 +67407,15 @@ var MainPage = /*#__PURE__*/function (_React$PureComponent) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h1", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
         src: "/admin/asset/icon/globe-dark.svg",
         alt: ""
-      }), this.props.data.domain), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h2", null, this.props.data.sitename)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
+      }), this.context.data.domain), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h2", null, this.context.data.sitename)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
         className: "MainPage-Content"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("aside", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
         className: "MainPage-MediaCard"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Meter__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        usage: this.props.data.media.usage,
-        size: this.props.data.media.capacity
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_AppContext__WEBPACK_IMPORTED_MODULE_3__["AppContext"].Consumer, null, function (ctx) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Meter__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          usage: ctx.data.mediaUsed,
+          size: ctx.data.mediaMax
+        });
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("main", null)));
     }
   }]);
@@ -66024,6 +67424,7 @@ var MainPage = /*#__PURE__*/function (_React$PureComponent) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
 
 
+MainPage.contextType = _AppContext__WEBPACK_IMPORTED_MODULE_3__["AppContext"];
 
 /***/ }),
 
@@ -66072,8 +67473,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Page_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Page_scss__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _MediaPage_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MediaPage.scss */ "./src/pages/MediaPage.scss");
 /* harmony import */ var _MediaPage_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_MediaPage_scss__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _MediaItem__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../MediaItem */ "./src/MediaItem.tsx");
-/* harmony import */ var _MediaModal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../MediaModal */ "./src/MediaModal.tsx");
+/* harmony import */ var _Modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Modal */ "./src/Modal.tsx");
+/* harmony import */ var _MediaItem__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../MediaItem */ "./src/MediaItem.tsx");
+/* harmony import */ var _MediaView__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../MediaView */ "./src/MediaView.tsx");
+/* harmony import */ var _CardHeader__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../CardHeader */ "./src/CardHeader.tsx");
+/* harmony import */ var _SelectGroup__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../SelectGroup */ "./src/SelectGroup.tsx");
+/* harmony import */ var _MediaUploadForm__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../MediaUploadForm */ "./src/MediaUploadForm.tsx");
+/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../AppContext */ "./src/AppContext.tsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66096,7 +67502,11 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
- // import { Link } from 'react-router-dom';
+
+
+
+
+
 
 
 
@@ -66115,66 +67525,158 @@ var MediaPage = /*#__PURE__*/function (_React$PureComponent) {
 
     _this = _super.call(this, props);
     _this.state = {
-      viewed: undefined
+      selected: [],
+      viewed: undefined,
+      grid: true,
+      uploading: false
     };
+    _this.handleKeyUp = _this.handleKeyUp.bind(_assertThisInitialized(_this));
     _this.handleOpenMedia = _this.handleOpenMedia.bind(_assertThisInitialized(_this));
+    _this.handleViewToggle = _this.handleViewToggle.bind(_assertThisInitialized(_this));
     _this.handleCloseMedia = _this.handleCloseMedia.bind(_assertThisInitialized(_this));
     _this.handleUploadMedia = _this.handleUploadMedia.bind(_assertThisInitialized(_this));
+    _this.handleDeleteMedia = _this.handleDeleteMedia.bind(_assertThisInitialized(_this));
+    _this.handleUploadCancel = _this.handleUploadCancel.bind(_assertThisInitialized(_this));
+    _this.handleSelectionChange = _this.handleSelectionChange.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(MediaPage, [{
-    key: "handleUploadMedia",
-    value: function handleUploadMedia(_) {}
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      window.addEventListener('keyup', this.handleKeyUp);
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      window.removeEventListener('keyup', this.handleKeyUp);
+    }
+  }, {
+    key: "handleKeyUp",
+    value: function handleKeyUp(e) {
+      if (e.key == 'Delete') this.handleDeleteMedia();
+    }
+  }, {
+    key: "handleViewToggle",
+    value: function handleViewToggle() {
+      this.setState({
+        grid: !this.state.grid
+      });
+    }
   }, {
     key: "handleOpenMedia",
-    value: function handleOpenMedia(ind, _) {
+    value: function handleOpenMedia(ind) {
       this.setState({
         viewed: ind
       });
     }
   }, {
     key: "handleCloseMedia",
-    value: function handleCloseMedia(_) {
+    value: function handleCloseMedia() {
       this.setState({
         viewed: undefined
       });
     }
   }, {
-    key: "render",
-    value: function render() {
+    key: "handleUploadCancel",
+    value: function handleUploadCancel() {
+      this.setState({
+        uploading: false
+      });
+    }
+  }, {
+    key: "handleUploadMedia",
+    value: function handleUploadMedia() {
+      this.handleSelectionChange([]);
+      this.setState({
+        uploading: true
+      });
+    }
+  }, {
+    key: "handleDeleteMedia",
+    value: function handleDeleteMedia() {
       var _this2 = this;
 
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
-        className: "Page MediaPage"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("main", {
-        className: "Page-Card"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
-        className: "Page-Card-Header"
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
-        className: "Page-Card-Icon",
-        src: "/admin/asset/icon/document-dark.svg"
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h1", {
-        className: "Page-Card-Title"
-      }, "Manage Media"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", {
-        className: "Page-Card-Description"
-      }, "Create or remove media assets on ".concat(this.props.data.sitename, "."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", {
-        className: "MediaPage-Add",
-        onClick: this.handleUploadMedia
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
-        src: "/admin/asset/icon/add-dark.svg"
-      }), "Upload Media"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
-        className: "MediaPage-Media"
-      }, this.props.data.media.items.map(function (a, i) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_MediaItem__WEBPACK_IMPORTED_MODULE_3__["default"], {
-          item: a,
-          key: i,
-          onClick: _this2.handleOpenMedia.bind(_this2, i)
-        });
-      }))), this.state.viewed != undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_MediaModal__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        item: this.props.data.media.items[this.state.viewed],
-        onClose: this.handleCloseMedia
-      }));
+      if (this.state.selected.length == 0) return;
+      fetch("/admin/media/delete", {
+        method: 'POST',
+        cache: 'no-cache',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(this.state.selected.map(function (ind) {
+          return _this2.context.data.media[ind].identifier;
+        }))
+      }).then(function (r) {
+        return r.json();
+      }).then(function (res) {
+        _this2.context.handleSiteData(res);
+      });
+    }
+  }, {
+    key: "handleSelectionChange",
+    value: function handleSelectionChange(selected) {
+      this.setState({
+        selected: selected
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_AppContext__WEBPACK_IMPORTED_MODULE_9__["AppContext"].Consumer, null, function (ctx) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
+          className: "Page MediaPage"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("section", {
+          className: "Page-Card"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_CardHeader__WEBPACK_IMPORTED_MODULE_6__["default"], {
+          icon: "/admin/asset/icon/document-dark.svg",
+          title: "Manage Media",
+          subtitle: "Create or remove media assets on ".concat(ctx.data.sitename, ".")
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
+          className: "MediaPage-Toolbar"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", {
+          className: "MediaPage-Toolbar-Button",
+          onClick: _this3.handleUploadMedia
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
+          src: "/admin/asset/icon/add-dark.svg"
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null, "Upload Media")), _this3.state.selected.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", {
+          className: "MediaPage-Toolbar-Button",
+          onClick: _this3.handleDeleteMedia
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
+          src: "/admin/asset/icon/trash-dark.svg"
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null, _this3.state.selected.length == 1 ? "Delete" : "Delete (" + _this3.state.selected.length + ")"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", {
+          className: "MediaPage-Toolbar-Button",
+          onClick: _this3.handleUploadMedia
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
+          src: "/admin/asset/icon/sort-dark.svg"
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null, "Sort by Size")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", {
+          className: "MediaPage-Toolbar-Button",
+          onClick: _this3.handleViewToggle
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
+          src: "/admin/asset/icon/".concat(_this3.state.grid ? "grid" : "list", "-view-dark.svg")
+        })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_SelectGroup__WEBPACK_IMPORTED_MODULE_7__["default"], {
+          multi: true,
+          className: "MediaPage-Media " + (_this3.state.grid ? "Grid" : "Stack"),
+          onSelectionChange: _this3.handleSelectionChange
+        }, ctx.data.media.map(function (a, i) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_MediaItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+            item: a,
+            key: a.identifier,
+            ind: i,
+            onClick: _this3.handleOpenMedia.bind(_this3, i)
+          });
+        })), ctx.data.media.length == 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h2", {
+          className: "MediaPage-NoMedia"
+        }, "No media found.")), _this3.state.viewed != undefined && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Modal__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          onClose: _this3.handleCloseMedia
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_MediaView__WEBPACK_IMPORTED_MODULE_5__["default"], {
+          item: ctx.data.media[_this3.state.viewed]
+        })), _this3.state.uploading && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Modal__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_MediaUploadForm__WEBPACK_IMPORTED_MODULE_8__["default"], {
+          onCancel: _this3.handleUploadCancel
+        })));
+      });
     }
   }]);
 
@@ -66182,6 +67684,7 @@ var MediaPage = /*#__PURE__*/function (_React$PureComponent) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
 
 
+MediaPage.contextType = _AppContext__WEBPACK_IMPORTED_MODULE_9__["AppContext"];
 
 /***/ }),
 
@@ -66211,6 +67714,196 @@ var update = api(content, options);
 
 
 module.exports = content.locals || {};
+
+/***/ }),
+
+/***/ "./src/pages/ThemePage.scss":
+/*!**********************************!*\
+  !*** ./src/pages/ThemePage.scss ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/sass-loader/dist/cjs.js!./ThemePage.scss */ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/pages/ThemePage.scss");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+
+
+module.exports = content.locals || {};
+
+/***/ }),
+
+/***/ "./src/pages/ThemePage.tsx":
+/*!*********************************!*\
+  !*** ./src/pages/ThemePage.tsx ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ThemePage; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _ThemePage_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ThemePage.scss */ "./src/pages/ThemePage.scss");
+/* harmony import */ var _ThemePage_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ThemePage_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ThemeItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ThemeItem */ "./src/ThemeItem.tsx");
+/* harmony import */ var _CardHeader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../CardHeader */ "./src/CardHeader.tsx");
+/* harmony import */ var _SelectGroup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../SelectGroup */ "./src/SelectGroup.tsx");
+/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../AppContext */ "./src/AppContext.tsx");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+
+
+var ThemePage = /*#__PURE__*/function (_React$PureComponent) {
+  _inherits(ThemePage, _React$PureComponent);
+
+  var _super = _createSuper(ThemePage);
+
+  function ThemePage(props) {
+    var _this;
+
+    _classCallCheck(this, ThemePage);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      selected: []
+    };
+    _this.handleToggleThemes = _this.handleToggleThemes.bind(_assertThisInitialized(_this));
+    _this.handleRefreshThemes = _this.handleRefreshThemes.bind(_assertThisInitialized(_this));
+    _this.handleSelectionChange = _this.handleSelectionChange.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(ThemePage, [{
+    key: "handleSelectionChange",
+    value: function handleSelectionChange(selected) {
+      this.setState({
+        selected: selected
+      });
+    }
+  }, {
+    key: "handleToggleThemes",
+    value: function handleToggleThemes() {
+      var _this2 = this;
+
+      fetch("/admin/theme/toggle", {
+        method: 'POST',
+        cache: 'no-cache',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(this.state.selected.map(function (ind) {
+          return _this2.context.data.themes[ind].identifier;
+        }))
+      }).then(function (r) {
+        return r.json();
+      }).then(function (res) {
+        _this2.context.handleSiteData(res);
+      });
+    }
+  }, {
+    key: "handleRefreshThemes",
+    value: function handleRefreshThemes() {
+      var _this3 = this;
+
+      fetch("/admin/theme/refresh", {
+        cache: 'no-cache',
+        method: 'POST'
+      }).then(function (r) {
+        return r.json();
+      }).then(function (res) {
+        _this3.context.handleSiteData(res);
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this4 = this;
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_AppContext__WEBPACK_IMPORTED_MODULE_5__["AppContext"].Consumer, null, function (ctx) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
+          className: "Page ThemePage"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("section", {
+          className: "Page-Card"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_CardHeader__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          icon: "/admin/asset/icon/theme-dark.svg",
+          title: "Manage Themes",
+          subtitle: "Select your theme for use with ".concat(ctx.data.sitename, ".")
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
+          className: "ThemePage-Toolbar"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, _this4.state.selected.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", {
+          onClick: _this4.handleToggleThemes
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
+          src: "/admin/asset/icon/add-dark.svg"
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null, _this4.state.selected.length == 1 ? ctx.data.activeThemes.indexOf(ctx.data.themes[_this4.state.selected[0]].identifier) != -1 ? "Disable Theme" : "Enable Theme" : "Toggle " + _this4.state.selected.length + " Themes"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", {
+          className: "MediaPage-Toolbar-Button",
+          onClick: _this4.handleToggleThemes
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
+          src: "/admin/asset/icon/sort-dark.svg"
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null, "Sort by Size")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", {
+          onClick: _this4.handleRefreshThemes
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
+          src: "/admin/asset/icon/refresh-dark.svg"
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null, "Refresh")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_SelectGroup__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          className: "ThemePage-Themes",
+          onSelectionChange: _this4.handleSelectionChange,
+          multi: true
+        }, ctx.data.themes.map(function (t, i) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_ThemeItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
+            item: t,
+            ind: i,
+            active: ctx.data.activeThemes.indexOf(t.identifier) != -1,
+            key: t.identifier
+          });
+        }))));
+      });
+    }
+  }]);
+
+  return ThemePage;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+
+
+ThemePage.contextType = _AppContext__WEBPACK_IMPORTED_MODULE_5__["AppContext"];
 
 /***/ }),
 
