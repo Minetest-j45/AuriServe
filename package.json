@@ -4,15 +4,13 @@
   "description": "",
   "main": "build/Main.js",
   "scripts": {
-    "start": "ts-node --project ./tsconfig.json ./src/Main.ts",
-    "dev": "npm run dev-admin & npm run dev-admin-sass & npm run dev-server",
+    "start": "ts-node --project server/tsconfig.json ./server/src/Main.ts",
+    "dev": "npm run dev-admin & npm run dev-server",
     "dev-admin": "webpack --config admin/wp-dev.js",
-    "dev-admin-sass": "sass --watch admin/res/style/styles.scss admin/res/style/styles.css",
     "dev-server": "nodemon --config server/nodemon.json",
-    "prod": "npm run prod-admin & npm run prod-admin-sass & npm run prod-server",
+    "prod": "npm run prod-admin & npm run prod-server",
     "prod-admin": "webpack --config admin/wp-prod.js",
-    "prod-admin-sass": "sass admin/res/style/styles.scss admin/res/style/styles.css",
-    "prod-server": "ts-node --project server/tsconfig.json ./server/Main.ts"
+    "prod-server": "ts-node --project server/tsconfig.json ./server/src/Main.ts"
   },
   "repository": {
     "type": "git",
@@ -42,15 +40,16 @@
     "@types/minimist": "^1.2.0",
     "@types/mongodb": "^3.5.25",
     "@types/node": "^14.0.27",
+    "@types/node-sass": "^4.11.1",
     "@types/react": "^16.9.46",
     "@types/react-dom": "^16.9.8",
     "@types/react-router-dom": "^5.1.5",
+    "@types/rimraf": "^3.0.0",
     "babel-loader": "^8.1.0",
     "css-loader": "^4.2.1",
     "file-loader": "^6.0.0",
     "fork-ts-checker-webpack-plugin": "^5.0.14",
     "html-webpack-plugin": "^4.3.0",
-    "node-sass": "^4.14.1",
     "nodemon": "^2.0.4",
     "react-hot-loader": "^4.12.21",
     "sass-loader": "^9.0.3",
@@ -75,10 +74,12 @@
     "minimist": "^1.2.5",
     "moment": "^2.27.0",
     "mongodb": "^3.6.0",
+    "node-sass": "^4.14.1",
     "prompt": "^1.0.0",
     "pug": "^3.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "rimraf": "^3.0.2"
   }
 }

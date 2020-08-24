@@ -3,7 +3,7 @@ import { ObjectID } from 'mongodb';
 export interface Account {
 	_id?: ObjectID;
 	
-	user: string;
+	identifier: string;
 	pass: string;
 
 	super: boolean;
@@ -12,7 +12,7 @@ export interface Account {
 export interface AuthToken {
 	_id?: ObjectID;
 
-	user: string;
+	identifier: string;
 	token: string;
 	expires: number;
 }
@@ -51,6 +51,8 @@ export interface Media {
 }
 
 export interface Theme {
+	_id?: ObjectID;
+
 	identifier: string;
 
 	name: string;

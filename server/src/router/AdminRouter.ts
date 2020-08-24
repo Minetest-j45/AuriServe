@@ -2,13 +2,14 @@ import path from "path"
 import Express from "express";
 import { UploadedFile } from "express-fileupload";
 
-import Router from "./Router"
+import Router from "./Router";
+import ThemeParser from "../ThemeParser";
 import Database, { MediaStatus } from "../Database";
 
 import sanitize from "../../../common/util/Sanitize";
 
 export default class AdminRouter extends Router {
-	constructor(db: Database, app: Express.Application) {
+	constructor(db: Database, app: Express.Application, private themes: ThemeParser) {
 		super(db, app);
 	}
 
@@ -84,7 +85,7 @@ export default class AdminRouter extends Router {
 		this.app.post('/admin/theme/refresh', async (req, res) => {
 			try {
 				await this.db.authUser(req);
-				await this.db.refreshThemes();
+				await this.themes.refresh();
 				res.send(JSON.stringify(await this.db.getSiteData()));
 			}
 			catch (e) {
@@ -95,7 +96,7 @@ export default class AdminRouter extends Router {
 		this.app.post('/admin/theme/toggle', async (req, res) => {
 			try {
 				await this.db.authUser(req);
-				await this.db.toggleThemes(req.body);
+				await this.themes.toggle(req.body);
 				res.send(JSON.stringify(await this.db.getSiteData()));
 			}
 			catch (e) {
@@ -103,7 +104,7 @@ export default class AdminRouter extends Router {
 			}
 		});
 
-		this.app.use('/admin/asset', Express.static(path.join(path.dirname(path.dirname(__dirname)), "../admin/res")));
-		this.app.get('/admin(/*)?', async (_, res) => res.render('admin.pug'));
+		this.app.use('/admin/asset', Express.static(path.join(path.dirname(__dirname), "../../admin/res")));
+		this.app.get('/admin(/*)?', async (_, res) => res.render(path.join(path.dirname(__dirname), "../views/admin")));
 	}
 }

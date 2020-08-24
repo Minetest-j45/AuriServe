@@ -35,8 +35,14 @@ export default class App extends React.Component<{}, State> {
 
 		if (tkn) fetch("/admin/data", {
 			cache: 'no-cache',
-		}).then(r => r.json()).then(res => {
+		}).then(r => {
+			if (r.status != 200) throw "Invalid credentials.";
+			return r.json()
+		}).then(res => {
 			this.handleSiteData(res);
+		}).catch(() => {
+			Cookie.remove('tkn');
+			location.href = '/admin';
 		});
 	}
 

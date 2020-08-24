@@ -98,7 +98,7 @@ export default class MediaUploadForm extends React.PureComponent<Props, State> {
 
 		let files = [...this.state.files];
 		let file = Object.assign(files[ind]);
-		file.filename = cleanName;
+		file.identifier = cleanName;
 		files[ind] = file;
 		this.setState({files: files});
 	}

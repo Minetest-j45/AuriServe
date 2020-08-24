@@ -14,6 +14,8 @@ interface State {
 }
 
 export default class ThemePage extends React.PureComponent<{}, State> {
+	private selected: number[] = [];
+
 	constructor(props: {}) {
 		super(props);
 		this.state = { selected: [] };
@@ -24,6 +26,7 @@ export default class ThemePage extends React.PureComponent<{}, State> {
 	}
 
 	private handleSelectionChange(selected: number[]): void {
+		this.selected = selected;
 		this.setState({ selected: selected });
 	}
 
@@ -32,7 +35,7 @@ export default class ThemePage extends React.PureComponent<{}, State> {
 			method: 'POST',
 			cache: 'no-cache',
     	headers: {'Content-Type': 'application/json'},
-			body: JSON.stringify(this.state.selected.map(ind => this.context.data.themes[ind].identifier)),
+			body: JSON.stringify(this.selected.map(ind => this.context.data.themes[ind].identifier)),
 		}).then(r => r.json()).then(res => {
 			this.context.handleSiteData(res);
 		});
@@ -53,17 +56,17 @@ export default class ThemePage extends React.PureComponent<{}, State> {
 				<div className="Page ThemePage">
 					<section className="Page-Card">
 						<CardHeader icon="/admin/asset/icon/theme-dark.svg" title="Manage Themes" 
-							subtitle={`Select your theme for use with ${ctx.data.sitename}.`} />
+							subtitle={`Enable and disable themes for ${ctx.data.sitename}.`} />
 
 							<div className="ThemePage-Toolbar">
 								<div>
-									{/*<div className="MediaPage-Toolbar-Separator"/>*/}
+									<button className="MediaPage-Toolbar-Button" onClick={this.handleToggleThemes}>
+										<img src="/admin/asset/icon/add-dark.svg"/><span>Upload Theme</span>
+									</button>
 
 									{this.state.selected.length > 0 && <button onClick={this.handleToggleThemes}>
-										<img src="/admin/asset/icon/add-dark.svg"/>
-										<span>{this.state.selected.length == 1 ? 
-											(ctx.data.activeThemes.indexOf(ctx.data.themes![this.state.selected[0]].identifier) != -1 ? "Disable Theme" : "Enable Theme") : 
-											"Toggle " + this.state.selected.length + " Themes"}</span>
+										<img src="/admin/asset/icon/refresh-dark.svg"/>
+										<span>{"Toggle Theme" + (this.state.selected.length != 1 ? " (" + this.state.selected.length + ")" : "")}</span>
 									</button>}
 								</div>
 								<div>
@@ -78,7 +81,7 @@ export default class ThemePage extends React.PureComponent<{}, State> {
 							</div>
 
 							<SelectGroup className="ThemePage-Themes" onSelectionChange={this.handleSelectionChange} multi={true}>
-								{ctx.data.themes!.map((t: Theme, i: number) => <ThemeItem item={t} ind={i} 
+								{ctx.data.themes!.map((t: Theme, i: number) => <ThemeItem item={t} ind={i} onClick={this.handleToggleThemes}
 									active={ctx.data.activeThemes.indexOf(t.identifier) != -1} key={t.identifier}/>)}
 							</SelectGroup>
 					</section>

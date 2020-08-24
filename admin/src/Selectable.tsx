@@ -35,15 +35,17 @@ export default class Selectable extends React.Component<Props, {}, SelectGroupCo
 		if (!callbacks.onClick) callbacks.onClick = e => this.context.handleSelect(e, this.props.ind); 
 		else {
 			let clickCallback = callbacks.onClick;
-			callbacks.onClick = e => { clickCallback(e);
+			callbacks.onClick = e => {
 				this.context.handleSelect(e, this.props.ind);
+				clickCallback(e);
 			}
 		}
 		
 		if (callbacks.onDoubleClick && this.props.doubleClickSelects) {
 			let doubleClickCallback = callbacks.onDoubleClick;
-			callbacks.onDoubleClick = e => { doubleClickCallback(e);
+			callbacks.onDoubleClick = e => {
 				this.context.handleSelect(e, this.props.ind, true);
+				doubleClickCallback(e);
 			}
 		}
 

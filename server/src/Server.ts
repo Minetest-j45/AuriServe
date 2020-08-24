@@ -3,31 +3,30 @@ import HTTP from "http"
 import HTTPS from "https"
 import cookieParser from "cookie-parser"
 import fileUpload from "express-fileupload"
-import { promises as fs, constants as fsc } from "fs"
+import { promises as fs } from "fs"
 
 import log4js from "log4js"
-const logger = log4js.getLogger()
-import bodyParser from "body-parser"
 import Express from "express"
+import bodyParser from "body-parser"
 
 import Admin from "./Admin"
 import Database from "./Database"
+import ThemeParser from "./ThemeParser";
+import SuperUserPrompt from "./SuperUserPrompt"
+
 import { Config } from "./interface/Config"
 import resolvePath from "../../common/util/ResolvePath"
 
+const logger = log4js.getLogger()
+
 export default class Server {
-	private conf: Config;
-	private dataPath: string;
 
-	private app: Express.Application = Express();
-	private db: Database;
 	private admin: Admin;
+	private app = Express();
+	private db = new Database(this.dataPath);
+	private themes = new ThemeParser(this.db);
 
-	constructor(conf: Config, dataPath: string) {
-		this.conf = conf;
-		this.dataPath = dataPath;
-
-		this.db = new Database(dataPath);
+	constructor(private conf: Config, private dataPath: string) {
 
 		this.app.use(cookieParser());
 		this.app.use(bodyParser.json());
@@ -36,53 +35,15 @@ export default class Server {
 		this.app.set('view engine', 'pug');
 		this.app.set('views', path.join(path.dirname(__filename), "views"));
 
-		this.admin = new Admin(this.db, this.app, dataPath);
+		this.admin = new Admin(this.db, this.app, this.themes);
 		
 		this.init().then(async () => {
 			// Create a superuser account if the super parameter is set.
-			if (this.conf["super"]) {
-				const prompt = require("prompt");
-				prompt.start();
-				prompt.message = "";
-				prompt.delimiter = "";
-
-				prompt.get([{
-					name: "username",
-					description: "Please enter a username:",
-					message: "Username must be between 3 and 32 characters long.",
-					pattern: /^\w{3,32}$/g,
-					required: true
-				}, {
-					name: "password",
-					description: "Please enter a password:",
-					message: "Password must be at least 8 characters long.",
-					pattern: /.{8,}/g,
-					required: true,
-					hidden: true,
-					replace: "*"
-				}, {
-					name: "erase",
-					description: "Erase other Superusers? Type 'yes' to confirm:",
-					required: false
-				}], async (err: string, result: {username: string, password: string, erase: string}) => {
-						prompt.stop();
-
-						if (err) {
-							logger.fatal("Failed to create a superuser.\n %s", err);
-							process.exit(1);
-						}
-
-						if (result.erase.toLowerCase() == "yes") this.db.deleteSuperAccounts();
-						try {
-							await this.db.createAccount(result.username, result.password, true);
-							logger.info("Created new superuser account %s.", result.username);
-						}
-						catch (e) {
-							logger.info("Failed to create new superuser account %s.\n %s", result.username, e);
-							process.exit(1);
-						}
-				});
-			}
+			if (this.conf.super) new SuperUserPrompt(this.db);
+			
+			// Initialize everything
+			await this.admin.init();
+			await this.themes.init();
 
 			// Debug Network Requests
 			this.app.get('*', (req, res, next) => {
@@ -97,9 +58,7 @@ export default class Server {
 
 			// Set up static route
 			this.app.use('/media', Express.static(path.join(dataPath, "media")));
-			
-			// Initialize admin backend
-			await this.admin.init();
+			this.app.use('/theme', Express.static(path.join(dataPath, "themes", "public")));
 		});
 	}
 
@@ -152,12 +111,14 @@ export default class Server {
 	}
 
 	private async resolvePage(req: Express.Request, res: Express.Response, next: Express.NextFunction) {
-		let page = path.join(this.dataPath, "pages", req.params[0] != "/" ? req.params[0] : "index");
+		const root = path.join(path.dirname(__dirname), "views");
+		const props = { basedir: root, themes: this.themes.getActiveThemes() };
+		
+		let page = path.join(this.dataPath, "pages", req.params[0]);
+
 		try {
-			await fs.access(page + ".pug", fsc.R_OK);
-			res.render(page);
-		}
-		catch (e) { next(); }
+			res.render(page, props);
+		} catch (e) { next(); }
 	}
 
 	private forwardHttps(req: Express.Request, res: Express.Response) {

@@ -2,12 +2,11 @@ import path from 'path';
 import crypto from 'crypto';
 import bcrypt from 'bcrypt';
 import log4js from "log4js";
-import { UploadedFile } from "express-fileupload";
 import { MongoClient, Db } from 'mongodb';
+import { UploadedFile } from "express-fileupload";
 import { promises as fs, constants as fsc } from 'fs';
 
 import * as DB from '../../common/DBStructs';
-import sanitize from '../../common/util/Sanitize';
 
 const logger = log4js.getLogger();
 
@@ -52,8 +51,6 @@ export default class Database {
 				await this.db.collection('siteinfo').insertOne(siteInfo);
 			}
 
-			await this.refreshThemes();
-
 			// await this.db.collection('media').deleteMany({});
 		}
 		catch (e) {
@@ -64,81 +61,39 @@ export default class Database {
 
 
 	/**
-	* Scans the themes directory and 
-	* updates the themes collection to match.
+	* Sets the contents of the themes collection to the
+	* Passed in array of theme objects.
 	*/
 
-	async refreshThemes() {
-		const themes = this.db!.collection('themes');
-		themes.deleteMany({});
-
-		let themesLoaded = 0;
-		let themesErrored = 0;
-
-		const files = await fs.readdir(path.join(this.dataPath, "themes"));
-
-		await Promise.all(files.map(async f => {
-			try {
-				if (sanitize(f) != f) throw `Failed to parse theme ${f}, theme directory must be lowercase alphanumeric.`;
-
-				let conf: DB.Theme;
-				const confStr = (await fs.readFile(path.join(this.dataPath, "themes", f, "conf.json"))).toString();
-				
-				try { conf = JSON.parse(confStr); }
-				catch (e) { throw `Failed to parse configuration file for theme ${f}.\n ${e}`; }
-
-				let cover = true;
-				try { await fs.access(path.join(this.dataPath, "themes", f, "cover.jpg"), fsc.R_OK); }
-				catch (e) { cover = false; }
-
-				await themes.insertOne({
-					identifier: f,
-
-					name: conf.name || f,
-					description: conf.description || "",
-					author: conf.author || "Unauthored",
-					
-					hasCover: cover,
-
-					pre: conf.pre || ""
-				});
-
-				themesLoaded++;
-			}
-			catch (e) {
-				if (typeof(e) == "string") logger.warn(e);
-				else if (e.code == 'ENOTDIR') logger.warn("Failed to load theme %s, not a directory.", f);
-				else if (e.code == 'ENOENT') logger.warn("Failed to load theme %s, missing conf.json.", f);
-				else logger.warn(e);
-
-				themesErrored++;
-			}
-		}));
-
-		let log = "Parsed " + themesLoaded + " theme" + (themesLoaded > 1 ? "s" : "");
-		if (themesErrored) log += ", failed to parse " + themesErrored + " theme" + (themesErrored > 1 ? "s" : "");
-		else log += ".";
-
-		logger.info(log);
+	async setThemes(themes: DB.Theme[]) {
+		const collection = this.db!.collection('themes');
+		await collection.deleteMany({});
+		await collection.insertMany(themes);
 	}
 
+
 	/**
-	* Toggles the listed themes based on their identifiers.
+	* Returns the active theme array.
 	*
-	* @param {string[]} identifiers - Themes to toggle
+	* @param {string[]} identifiers - Themes to be activated.
 	*/
 
-	async toggleThemes(themes: string[]) {
+	async getActiveThemes(): Promise<string[]> {
 		let info = this.db!.collection("siteinfo");
+		let themes = await info.findOne({}, { projection: { activeThemes: 1 }});
+		return themes.activeThemes || [];
+	}
 
-		let activeThemes: string[] = (await info.findOne({})).activeThemes;
-		
-		for (let theme of themes) {
-			if (activeThemes.indexOf(theme) != -1) activeThemes.splice(activeThemes.indexOf(theme), 1);
-			else activeThemes.push(theme);
-		}
 
-		info.updateOne({}, { $set: { activeThemes: activeThemes }});
+	/**
+	* Sets the active theme array to the string provided.
+	*
+	* @param {string[]} identifiers - Themes to be activated.
+	*/
+
+	async setActiveThemes(themes: string[]) {
+		let info = this.db!.collection("siteinfo");
+		await info.updateOne({}, { $set: { activeThemes: themes }});
 	}
 
 
@@ -156,13 +111,13 @@ export default class Database {
 		try {
 			if (identifier.length > 32 || name.length > 32) return MediaStatus.INVALID;
 			let siteinfo = this.db!.collection('siteinfo');
-
+	
 			// Make sure there is space in the server for
 			// the media, and update the media used value.
-			const max = (await siteinfo.findOne({})).media_max;
+			const max = (await siteinfo.findOne({})).mediaMax;
 			const ret = await this.db!.collection('siteinfo').findOneAndUpdate(
-				{media_used: {$lte: max - media.size }}, { $inc: { media_used: media.size }});
-				
+				{mediaUsed: {$lte: max - media.size }}, { $inc: { mediaUsed: media.size }});
+
 			// Return if there wasn't enough space.
 			if (ret.value == null) return MediaStatus.MEDIA_LIMIT;
 
@@ -237,7 +192,7 @@ export default class Database {
 
 	async getAccount(user: string): Promise<DB.Account> {
 		const accounts = this.db!.collection('accounts');
-		const accountObj: DB.Account | null = await accounts.findOne({user: user});
+		const accountObj: DB.Account | null = await accounts.findOne({identifier: user});
 		if (!accountObj) throw "This user no longer exists.";
 
 		return accountObj;
@@ -255,10 +210,10 @@ export default class Database {
 
 	async createAccount(user: string, password: string, superUser: boolean) {
 		const accounts = this.db!.collection('accounts');
-		if (await accounts.findOne({user: user}) != null) throw "This user already already exists.";
+		if (await accounts.findOne({identifier: user}) != null) throw "This user already already exists.";
 
 		let pass = await bcrypt.hash(password, 10);
-		await accounts.insertOne({ user: user, pass: pass, super: superUser });
+		await accounts.insertOne({identifier: user, pass: pass, super: superUser});
 	}
 
 
@@ -272,7 +227,7 @@ export default class Database {
 	async updatePassword(user: string, password: string) {
 		const accounts = this.db!.collection('accounts');
 		let pass = await bcrypt.hash(password, 10);
-		await accounts.updateOne({ user: user }, { $set: { pass: pass }});
+		await accounts.updateOne({ identifier: user }, { $set: { pass: pass }});
 	}
 
 
@@ -284,7 +239,7 @@ export default class Database {
 
 	async deleteAccount(user: string) {
 		const accounts = this.db!.collection('accounts');
-		await accounts.deleteOne({ user: user });
+		await accounts.deleteOne({ identifier: user });
 	}
 
 
@@ -304,7 +259,7 @@ export default class Database {
 
 	async listAccounts() {
 		const accounts = this.db!.collection('accounts');
-		return (await accounts.find({}).toArray()).map((a: DB.Account) => a.user);
+		return (await accounts.find({}, {projection: {identifier: 1}}).toArray()).map((a: DB.Account) => a.identifier);
 	}
 
 
@@ -318,7 +273,7 @@ export default class Database {
 
 	async getAuthToken(user: string, password: string): Promise<string> {
 		const accounts = this.db!.collection('accounts');
-		const accountObj: DB.Account | null = await accounts.findOne({user: user});
+		const accountObj: DB.Account | null = await accounts.findOne({identifier: user});
 
 		if (!accountObj || !await bcrypt.compare(password, accountObj.pass)) throw "Incorrect username or password.";
 
@@ -326,14 +281,14 @@ export default class Database {
 		const token = buffer.toString('hex');
 
 		const tokens = this.db!.collection('tokens');
-		const tkn = {user: accountObj.user, token: token, expires: (Date.now() / 1000) + 60 * 60 * 24 * 3};
+		const tkn = {identifier: accountObj.identifier, token: token, expires: (Date.now() / 1000) + 60 * 60 * 24 * 3};
 		await tokens.insertOne(tkn);
 
 		return token;
 	}
 
 	/**
-	* Returns the user user that a token points to when provided with a
+	* Returns the user identifier that a token points to when provided with a
 	* token string or a network request containing a 'tkn' cookie.
 	* Throws if the token doesn't exist.
 	*
@@ -351,7 +306,7 @@ export default class Database {
 		let inst: DB.AuthToken | null = await this.db!.collection('tokens').findOne({token: token});
 		if (!inst) throw "Auth token is no longer valid, please reload the page.";
 		
-		return inst.user;
+		return inst.identifier;
 	}
 
 
@@ -360,7 +315,10 @@ export default class Database {
 	*/
 
 	private async pruneTokens() {
-		const tokens = this.db!.collection('tokens');
-		await tokens.deleteMany({expires: {$lt: (Date.now() / 1000)}});
+		const users = (await (await this.db!.collection('accounts').find({}, 
+			{projection: {identifier: 1}}).toArray()).map((u: DB.Account) => u.identifier));
+
+		await this.db!.collection('tokens').deleteMany(
+			{$or: [{expires: { $lt: (Date.now() / 1000)}}, {identifier: { $nin: users }}]});
 	}
 }
