@@ -25,9 +25,9 @@ export default class AppHeader extends React.PureComponent {
 					<nav className="AppHeader-nav">
 						<NavLink activeClassName="active" to="/home">Home</NavLink>
 						<NavLink activeClassName="active" to="/pages">Pages</NavLink>
-						<NavLink activeClassName="active" to="/pages">Components</NavLink>
 						<NavLink activeClassName="active" to="/media">Media</NavLink>
 						<NavLink activeClassName="active" to="/themes">Themes</NavLink>
+						<NavLink activeClassName="active" to="/plugins">Plugins</NavLink>
 					</nav>
 					
 					<NavLink className="AppHeader-options" to="/user_options"><img src="/admin/asset/icon/settings-dark.svg"/></NavLink>

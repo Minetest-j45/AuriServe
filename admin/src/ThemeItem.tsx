@@ -30,7 +30,7 @@ export default class MediaItem extends React.Component<Props> {
 		return (
 			<Selectable className="ThemeItem" ind={this.props.ind} callbacks={this.callbacks} doubleClickSelects={true}>
 				<div className="ThemeItem-Cover">
-					{this.props.item.hasCover && <img src={"/admin/theme/cover/" + this.props.item.identifier + ".jpg"}/>}
+					{this.props.item.hasCover && <img src={"/admin/themes/cover/" + this.props.item.identifier + ".jpg"}/>}
 					<span className={"ThemeItem-Tag " + (this.props.active ? "Enabled" : "Disabled")}>{this.props.active ? "Enabled" : "Disabled"}</span>
 				</div>
 

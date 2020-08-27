@@ -9864,6 +9864,28 @@ ___CSS_LOADER_EXPORT___.push([module.i, ".Modal .MediaModal-CardWrap .MediaModal
 
 /***/ }),
 
+/***/ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/PluginItem.scss":
+/*!************************************************************************************************************!*\
+  !*** ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/PluginItem.scss ***!
+  \************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "../node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
+// Module
+___CSS_LOADER_EXPORT___.push([module.i, ".PluginItem {\n  position: relative;\n  background-color: transparent;\n  cursor: pointer;\n  border: none;\n  outline: 0;\n  user-select: none;\n  border-radius: 4px;\n  text-underline: none;\n  border: 1px solid transparent;\n  background: rgba(159, 179, 200, 0.15); }\n  .PluginItem::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    user-select: none;\n    pointer-events: none;\n    top: -1px;\n    left: -1px;\n    right: -1px;\n    bottom: -1px;\n    margin: 4px;\n    transform: scale(0.87);\n    border-radius: inherit;\n    background: rgba(130, 154, 177, 0);\n    transition: background 0.3s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02) 0.075s, margin 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .PluginItem:not(:disabled):hover::after, .PluginItem:not(:disabled):focus::after {\n    margin: 0px;\n    transform: scale(1);\n    background: rgba(130, 154, 177, 0.15);\n    transition: background 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), margin 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .PluginItem:not(:disabled):active {\n    transition: border 0.15s; }\n  .PluginItem:not(:disabled):focus {\n    border-color: #829ab1; }\n  .PluginItem:disabled {\n    cursor: auto;\n    opacity: 0.65;\n    color: #627d98; }\n\n.PluginItem {\n  background-color: #fff;\n  border-color: #d9e2ec;\n  box-sizing: content-box;\n  padding: 8px;\n  display: grid;\n  grid-gap: 8px;\n  text-align: left;\n  grid-template-rows: auto 1fr; }\n  .PluginItem > * {\n    box-sizing: border-box; }\n  .PluginItem.selected {\n    border-color: #54d1db;\n    background-color: rgba(135, 234, 242, 0.3); }\n    .PluginItem.selected:focus::after, .PluginItem.selected:hover::after {\n      background-color: rgba(135, 234, 242, 0.2); }\n    .PluginItem.selected .MediaItem-Image.icon {\n      background-color: rgba(56, 190, 201, 0.3); }\n  .PluginItem .PluginItem-Cover {\n    height: 0;\n    width: 100%;\n    position: relative;\n    padding-top: 56.25%; }\n    .PluginItem .PluginItem-Cover > img {\n      position: absolute;\n      user-select: none;\n      pointer-events: none;\n      width: 100%;\n      height: 100%;\n      top: 0;\n      left: 0;\n      object-fit: cover;\n      border-radius: 4px; }\n  .PluginItem .PluginItem-Content p.PluginItem-Author {\n    margin: 0;\n    margin-top: 4px; }\n  .PluginItem .PluginItem-Content h2.PluginItem-Title {\n    font-size: 24px;\n    margin: 0;\n    margin-top: 4px; }\n  .PluginItem .PluginItem-Content p.PluginItem-Description {\n    margin: 0;\n    margin-top: 12px;\n    font-weight: 400;\n    opacity: 0.8;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    max-height: 38px;\n    display: block;\n    line-clamp: 2;\n    display: -webkit-box;\n    -webkit-line-clamp: 2;\n    -webkit-box-orient: vertical; }\n  .PluginItem .PluginItem-Tag {\n    position: absolute;\n    display: inline-block;\n    bottom: 8px;\n    left: 8px;\n    padding: 4px 12px;\n    border-radius: 20px;\n    box-shadow: 0px 2px 8px 0px rgba(36, 59, 83, 0.3);\n    background: #d9e2ec;\n    color: #486581; }\n    .PluginItem .PluginItem-Tag.Enabled {\n      background: #bef8fd;\n      color: #14919b; }\n", "",{"version":3,"sources":["/home/auri/Code/Projects/AuriServer/admin/src/PluginItem.scss","/home/auri/Code/Projects/AuriServer/admin/src/partial/_Ext.scss","/home/auri/Code/Projects/AuriServer/admin/src/partial/_Vars.scss"],"names":[],"mappings":"AAGA;ECyEC,kBAAkB;EAClB,6BAA6B;EAC7B,eAAe;EACf,YAAY;EACZ,UAAU;EAEV,iBAAiB;EACjB,kBAAkB;EAClB,oBAAoB;EACpB,6BAA6B;EAC7B,qCAAiD,EAAA;EDnFlD;ICwFE,YAAY;IACZ,cAAc;IACd,kBAAkB;IAClB,iBAAiB;IACjB,oBAAoB;IAGpB,SAAS;IACT,UAAU;IACV,WAAW;IACX,YAAY;IAEZ,WAAW;IACX,sBAAsB;IAEtB,sBAAsB;IACtB,kCAA2C;IAE3C,2KArB0C,EAAA;EDrF5C;ICgHI,WAAW;IACX,mBAAmB;IACnB,qCAAiD;IAEjD,uKA/BwC,EAAA;EDrF5C;ICyHG,wBCpGW,EAAA;EFrBd;IC6HG,qBC5HkB,EAAA;EFDrB;ICkIE,YAAY;IACZ,aAAa;IACb,cClImB,EAAA;;AFFrB;EAGC,sBAAsB;EACtB,qBENoB;EFOpB,uBAAuB;EACvB,YAAY;EAEZ,aAAa;EACb,aAAa;EACb,gBAAgB;EAChB,4BAA4B,EAAA;EAX7B;IAcE,sBAAsB,EAAA;EAdxB;IAkBE,qBENkB;IFOlB,0CAAkD,EAAA;IAnBpD;MAsBG,0CAAkD,EAAA;IAtBrD;MA0BG,yCAAkD,EAAA;EA1BrD;IA+BE,SAAS;IACT,WAAW;IACX,kBAAkB;IAClB,mBAAmB,EAAA;IAlCrB;MAqCG,kBAAkB;MAClB,iBAAiB;MACjB,oBAAoB;MACpB,WAAW;MACX,YAAY;MACZ,MAAM;MACN,OAAO;MACP,iBAAiB;MACjB,kBAAkB,EAAA;EA7CrB;IAmDG,SAAS;IACT,eAAe,EAAA;EApDlB;IAwDG,eAAe;IACf,SAAS;IACT,eAAe,EAAA;EA1DlB;IA8DG,SAAS;IACT,gBAAgB;IAChB,gBAAgB;IAChB,YAAY;IAEV,gBAAgB;IAChB,uBAAuB;IAGzB,gBAAgB;IACf,cAAc;IAGb,aAAa;IACb,oBAAoB;IACpB,qBAAqB;IACrB,4BAA4B,EAAA;EA9EjC;IAmFE,kBAAkB;IAClB,qBAAqB;IACrB,WAAW;IACX,SAAS;IACT,iBAAiB;IACjB,mBAAmB;IAEnB,iDAA6D;IAC7D,mBE7FmB;IF8FnB,cEzFmB,EAAA;IFHrB;MA+FG,mBErFiB;MFsFjB,cEjFiB,EAAA","file":"PluginItem.scss","sourcesContent":["@import \"partial/Vars\";\n@import \"partial/Ext\";\n\n.PluginItem {\n\t@extend %material_button;\n\n\tbackground-color: #fff;\n\tborder-color: $neutral-100;\n\tbox-sizing: content-box;\n\tpadding: 8px;\n\n\tdisplay: grid;\n\tgrid-gap: 8px;\n\ttext-align: left;\n\tgrid-template-rows: auto 1fr;\n\n\t& > * {\n\t\tbox-sizing: border-box;\n\t}\n\n\t&.selected {\n\t\tborder-color: $accent-400;\n\t\tbackground-color: transparentize($accent-300, 0.7);\n\n\t\t&:focus::after, &:hover::after {\n\t\t\tbackground-color: transparentize($accent-300, 0.8);\n\t\t}\n\n\t\t.MediaItem-Image.icon {\n\t\t\tbackground-color: transparentize($accent-500, 0.7);\n\t\t}\n\t}\n\n\t.PluginItem-Cover {\n\t\theight: 0;\n\t\twidth: 100%;\n\t\tposition: relative;\n\t\tpadding-top: 56.25%;\n\n\t\t& > img {\n\t\t\tposition: absolute;\n\t\t\tuser-select: none;\n\t\t\tpointer-events: none;\n\t\t\twidth: 100%;\n\t\t\theight: 100%;\n\t\t\ttop: 0;\n\t\t\tleft: 0;\n\t\t\tobject-fit: cover;\n\t\t\tborder-radius: 4px;\n\t\t}\n\t}\n\n\t.PluginItem-Content {\n\t\tp.PluginItem-Author {\n\t\t\tmargin: 0;\n\t\t\tmargin-top: 4px;\n\t\t}\n\n\t\th2.PluginItem-Title {\n\t\t\tfont-size: 24px;\n\t\t\tmargin: 0;\n\t\t\tmargin-top: 4px;\n\t\t}\n\n\t\tp.PluginItem-Description {\n\t\t\tmargin: 0;\n\t\t\tmargin-top: 12px;\n\t\t\tfont-weight: 400;\n\t\t\topacity: 0.8;\n\n\t    overflow: hidden;\n\t    text-overflow: ellipsis;\n\n\t\t\t// Fallbacks for multiline clamping. \n\t\t\tmax-height: 38px; \n\t\t  display: block;\n\t\n\t\t\t// Webkit specific fancy line clamping.\n\t    line-clamp: 2;\n\t    display: -webkit-box;\n\t    -webkit-line-clamp: 2;\n\t    -webkit-box-orient: vertical;\n\t\t}\n\t}\n\n\t.PluginItem-Tag {\n\t\tposition: absolute;\n\t\tdisplay: inline-block;\n\t\tbottom: 8px;\n\t\tleft: 8px;\n\t\tpadding: 4px 12px;\n\t\tborder-radius: 20px;\n\t\t\t\n\t\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-800, 0.7);\n\t\tbackground: $neutral-100;\n\t\tcolor: $neutral-600;\n\n\t\t&.Enabled {\n\t\t\tbackground: $accent-200;\n\t\t\tcolor: $accent-700;\n\t\t}\n\t}\n}\n","@import \"Vars\";\n\n%card {\n\theight: min-content;\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n}\n\n%card_toolbar {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\n\tbutton {\n\t\t@extend %material_icon_button;\n\t}\n\n\t.separator {\n\t\twidth: 24px;\n\t\tdisplay: inline-block;\n\t}\n\n\tdiv:first-of-type button {\n\t\tmargin-right: 8px;\n\t}\n\n\tdiv:last-of-type button {\n\t\tmargin-left: 8px;\n\t}\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tuser-select: none;\n\tborder-radius: 4px;\n\ttext-underline: none;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-300, 1 - .15);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:not(:disabled) {\n\t\t&:hover, &:focus {\n\t\t\t&::after {\n\t\t\t\tmargin: 0px;\n\t\t\t\ttransform: scale(1);\n\t\t\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\t\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t\t\t}\n\t\t}\n\n\t\t&:active {\n\t\t\ttransition: border $t-fast;\n\t\t}\n\n\t\t&:focus {\n\t\t\tborder-color: $neutral-400;\n\t\t}\n\t}\n\n\t&:disabled {\n\t\tcursor: auto;\n\t\topacity: 0.65;\n\t\tcolor: $neutral-500;\n\t}\n}\n\n%material_icon_button {\n\t@extend %material_button;\n\tdisplay: inline-block;\n\n\t// width: 48px;\n\theight: 48px;\n\n\tpadding: 8px;\n\tborder-radius: 24px;\n\n\timg {\n\t\twidth: 30px;\n\t\theight: 30px;\n\t\tpointer-events: none;\n\t\tvertical-align: middle;\n\t}\n\n\tspan {\n\t\tcolor: $neutral-700;\n\t\tvertical-align: middle;\n\t\tpadding-right: 8px;\n\t\tpadding-left: 8px;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"]}]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/SelectGroup.scss":
 /*!*************************************************************************************************************!*\
   !*** ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/SelectGroup.scss ***!
@@ -9901,7 +9923,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, ".ThemeItem {\n  position: relative;\n  background-color: transparent;\n  cursor: pointer;\n  border: none;\n  outline: 0;\n  user-select: none;\n  border-radius: 4px;\n  text-underline: none;\n  border: 1px solid transparent;\n  background: rgba(159, 179, 200, 0.15); }\n  .ThemeItem::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    user-select: none;\n    pointer-events: none;\n    top: -1px;\n    left: -1px;\n    right: -1px;\n    bottom: -1px;\n    margin: 4px;\n    transform: scale(0.87);\n    border-radius: inherit;\n    background: rgba(130, 154, 177, 0);\n    transition: background 0.3s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02) 0.075s, margin 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .ThemeItem:not(:disabled):hover::after, .ThemeItem:not(:disabled):focus::after {\n    margin: 0px;\n    transform: scale(1);\n    background: rgba(130, 154, 177, 0.15);\n    transition: background 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), margin 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .ThemeItem:not(:disabled):active {\n    transition: border 0.15s; }\n  .ThemeItem:not(:disabled):focus {\n    border-color: #829ab1; }\n  .ThemeItem:disabled {\n    cursor: auto;\n    opacity: 0.65;\n    color: #627d98; }\n\n.ThemeItem {\n  background-color: #fff;\n  border-color: #d9e2ec;\n  box-sizing: content-box;\n  padding: 8px;\n  display: grid;\n  grid-gap: 8px;\n  text-align: left;\n  grid-template-rows: auto 1fr; }\n  .ThemeItem > * {\n    box-sizing: border-box; }\n  .ThemeItem.selected {\n    border-color: #54d1db;\n    background-color: rgba(135, 234, 242, 0.3); }\n    .ThemeItem.selected:focus::after, .ThemeItem.selected:hover::after {\n      background-color: rgba(135, 234, 242, 0.2); }\n    .ThemeItem.selected .MediaItem-Image.icon {\n      background-color: rgba(56, 190, 201, 0.3); }\n  .ThemeItem .ThemeItem-Cover {\n    height: 0;\n    width: 100%;\n    position: relative;\n    padding-top: 56.25%; }\n    .ThemeItem .ThemeItem-Cover > img {\n      position: absolute;\n      user-select: none;\n      pointer-events: none;\n      width: 100%;\n      height: 100%;\n      top: 0;\n      left: 0;\n      object-fit: cover;\n      border-radius: 4px; }\n  .ThemeItem .ThemeItem-Content p.ThemeItem-Author {\n    margin: 0;\n    margin-top: 4px; }\n  .ThemeItem .ThemeItem-Content h2.ThemeItem-Title {\n    font-size: 24px;\n    margin: 0;\n    margin-top: 4px; }\n  .ThemeItem .ThemeItem-Content p.ThemeItem-Description {\n    margin: 0;\n    margin-top: 12px;\n    font-weight: 400;\n    opacity: 0.8;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    max-height: 38px;\n    display: block;\n    line-clamp: 2;\n    display: -webkit-box;\n    -webkit-line-clamp: 2;\n    -webkit-box-orient: vertical; }\n  .ThemeItem .ThemeItem-Tag {\n    position: absolute;\n    display: inline-block;\n    bottom: 8px;\n    left: 8px;\n    padding: 4px 12px;\n    border-radius: 20px;\n    box-shadow: 0px 2px 8px 0px rgba(36, 59, 83, 0.3);\n    background: #d9e2ec;\n    color: #486581; }\n    .ThemeItem .ThemeItem-Tag.Enabled {\n      background: #bef8fd;\n      color: #14919b; }\n", "",{"version":3,"sources":["/home/auri/Code/Projects/AuriServer/admin/src/ThemeItem.scss","/home/auri/Code/Projects/AuriServer/admin/src/partial/_Ext.scss","/home/auri/Code/Projects/AuriServer/admin/src/partial/_Vars.scss"],"names":[],"mappings":"AAGA;ECyEC,kBAAkB;EAClB,6BAA6B;EAC7B,eAAe;EACf,YAAY;EACZ,UAAU;EAEV,iBAAiB;EACjB,kBAAkB;EAClB,oBAAoB;EACpB,6BAA6B;EAC7B,qCAAiD,EAAA;EDnFlD;ICwFE,YAAY;IACZ,cAAc;IACd,kBAAkB;IAClB,iBAAiB;IACjB,oBAAoB;IAGpB,SAAS;IACT,UAAU;IACV,WAAW;IACX,YAAY;IAEZ,WAAW;IACX,sBAAsB;IAEtB,sBAAsB;IACtB,kCAA2C;IAE3C,2KArB0C,EAAA;EDrF5C;ICgHI,WAAW;IACX,mBAAmB;IACnB,qCAAiD;IAEjD,uKA/BwC,EAAA;EDrF5C;ICyHG,wBCpGW,EAAA;EFrBd;IC6HG,qBC5HkB,EAAA;EFDrB;ICkIE,YAAY;IACZ,aAAa;IACb,cClImB,EAAA;;AFFrB;EAGC,sBAAsB;EACtB,qBENoB;EFOpB,uBAAuB;EACvB,YAAY;EAEZ,aAAa;EACb,aAAa;EACb,gBAAgB;EAChB,4BAA4B,EAAA;EAX7B;IAcE,sBAAsB,EAAA;EAdxB;IAkBE,qBENkB;IFOlB,0CAAkD,EAAA;IAnBpD;MAsBG,0CAAkD,EAAA;IAtBrD;MA0BG,yCAAkD,EAAA;EA1BrD;IA+BE,SAAS;IACT,WAAW;IACX,kBAAkB;IAClB,mBAAmB,EAAA;IAlCrB;MAqCG,kBAAkB;MAClB,iBAAiB;MACjB,oBAAoB;MACpB,WAAW;MACX,YAAY;MACZ,MAAM;MACN,OAAO;MACP,iBAAiB;MACjB,kBAAkB,EAAA;EA7CrB;IA0EG,SAAS;IACT,eAAe,EAAA;EA3ElB;IA+EG,eAAe;IACf,SAAS;IACT,eAAe,EAAA;EAjFlB;IAqFG,SAAS;IACT,gBAAgB;IAChB,gBAAgB;IAChB,YAAY;IAEV,gBAAgB;IAChB,uBAAuB;IAGzB,gBAAgB;IACf,cAAc;IAGb,aAAa;IACb,oBAAoB;IACpB,qBAAqB;IACrB,4BAA4B,EAAA;EArGjC;IA0GE,kBAAkB;IAClB,qBAAqB;IACrB,WAAW;IACX,SAAS;IACT,iBAAiB;IACjB,mBAAmB;IAEnB,iDAA6D;IAC7D,mBEpHmB;IFqHnB,cEhHmB,EAAA;IFHrB;MAsHG,mBE5GiB;MF6GjB,cExGiB,EAAA","file":"ThemeItem.scss","sourcesContent":["@import \"partial/Vars\";\n@import \"partial/Ext\";\n\n.ThemeItem {\n\t@extend %material_button;\n\n\tbackground-color: #fff;\n\tborder-color: $neutral-100;\n\tbox-sizing: content-box;\n\tpadding: 8px;\n\n\tdisplay: grid;\n\tgrid-gap: 8px;\n\ttext-align: left;\n\tgrid-template-rows: auto 1fr;\n\n\t& > * {\n\t\tbox-sizing: border-box;\n\t}\n\n\t&.selected {\n\t\tborder-color: $accent-400;\n\t\tbackground-color: transparentize($accent-300, 0.7);\n\n\t\t&:focus::after, &:hover::after {\n\t\t\tbackground-color: transparentize($accent-300, 0.8);\n\t\t}\n\n\t\t.MediaItem-Image.icon {\n\t\t\tbackground-color: transparentize($accent-500, 0.7);\n\t\t}\n\t}\n\n\t.ThemeItem-Cover {\n\t\theight: 0;\n\t\twidth: 100%;\n\t\tposition: relative;\n\t\tpadding-top: 56.25%;\n\n\t\t& > img {\n\t\t\tposition: absolute;\n\t\t\tuser-select: none;\n\t\t\tpointer-events: none;\n\t\t\twidth: 100%;\n\t\t\theight: 100%;\n\t\t\ttop: 0;\n\t\t\tleft: 0;\n\t\t\tobject-fit: cover;\n\t\t\tborder-radius: 4px;\n\t\t}\n\t\t// width: 100%;\n\t\t// height: 100%;\n\t\t// border-radius: 4px;\n\t\t// object-fit: cover;\n\n\t\t// &.icon {\n\t\t// \tbackground-color: mix($neutral-100, $neutral-000, 20%);\n\t\t// \tpadding: 16px;\n\t\t// }\n\t}\n\n\t.ThemeItem-Content {\n\t// \theight: 100%;\n\t// \toverflow: auto;\n\t// \ttext-align: left;\n\t// \tpadding-top: 8px;\n\n\t// \tp {\n\t// \t\tmargin-top: 0em;\n\t// \t\tmargin-bottom: 0.3em;\n\n\t// \t\toverflow: hidden;\n\t// \t\twhite-space: nowrap;\n\t// \t\ttext-overflow: ellipsis;\n\t// \t}\n\n\t\tp.ThemeItem-Author {\n\t\t\tmargin: 0;\n\t\t\tmargin-top: 4px;\n\t\t}\n\n\t\th2.ThemeItem-Title {\n\t\t\tfont-size: 24px;\n\t\t\tmargin: 0;\n\t\t\tmargin-top: 4px;\n\t\t}\n\n\t\tp.ThemeItem-Description {\n\t\t\tmargin: 0;\n\t\t\tmargin-top: 12px;\n\t\t\tfont-weight: 400;\n\t\t\topacity: 0.8;\n\n\t    overflow: hidden;\n\t    text-overflow: ellipsis;\n\n\t\t\t// Fallbacks for multiline clamping. \n\t\t\tmax-height: 38px; \n\t\t  display: block;\n\t\n\t\t\t// Webkit specific fancy line clamping.\n\t    line-clamp: 2;\n\t    display: -webkit-box;\n\t    -webkit-line-clamp: 2;\n\t    -webkit-box-orient: vertical;\n\t\t}\n\t}\n\n\t.ThemeItem-Tag {\n\t\tposition: absolute;\n\t\tdisplay: inline-block;\n\t\tbottom: 8px;\n\t\tleft: 8px;\n\t\tpadding: 4px 12px;\n\t\tborder-radius: 20px;\n\t\t\t\n\t\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-800, 0.7);\n\t\tbackground: $neutral-100;\n\t\tcolor: $neutral-600;\n\n\t\t&.Enabled {\n\t\t\tbackground: $accent-200;\n\t\t\tcolor: $accent-700;\n\t\t}\n\t}\n}\n","@import \"Vars\";\n\n%card {\n\theight: min-content;\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n}\n\n%card_toolbar {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\n\tbutton {\n\t\t@extend %material_icon_button;\n\t}\n\n\t.separator {\n\t\twidth: 24px;\n\t\tdisplay: inline-block;\n\t}\n\n\tdiv:first-of-type button {\n\t\tmargin-right: 8px;\n\t}\n\n\tdiv:last-of-type button {\n\t\tmargin-left: 8px;\n\t}\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tuser-select: none;\n\tborder-radius: 4px;\n\ttext-underline: none;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-300, 1 - .15);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:not(:disabled) {\n\t\t&:hover, &:focus {\n\t\t\t&::after {\n\t\t\t\tmargin: 0px;\n\t\t\t\ttransform: scale(1);\n\t\t\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\t\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t\t\t}\n\t\t}\n\n\t\t&:active {\n\t\t\ttransition: border $t-fast;\n\t\t}\n\n\t\t&:focus {\n\t\t\tborder-color: $neutral-400;\n\t\t}\n\t}\n\n\t&:disabled {\n\t\tcursor: auto;\n\t\topacity: 0.65;\n\t\tcolor: $neutral-500;\n\t}\n}\n\n%material_icon_button {\n\t@extend %material_button;\n\tdisplay: inline-block;\n\n\t// width: 48px;\n\theight: 48px;\n\n\tpadding: 8px;\n\tborder-radius: 24px;\n\n\timg {\n\t\twidth: 30px;\n\t\theight: 30px;\n\t\tpointer-events: none;\n\t\tvertical-align: middle;\n\t}\n\n\tspan {\n\t\tcolor: $neutral-700;\n\t\tvertical-align: middle;\n\t\tpadding-right: 8px;\n\t\tpadding-left: 8px;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"]}]);
+___CSS_LOADER_EXPORT___.push([module.i, ".ThemeItem {\n  position: relative;\n  background-color: transparent;\n  cursor: pointer;\n  border: none;\n  outline: 0;\n  user-select: none;\n  border-radius: 4px;\n  text-underline: none;\n  border: 1px solid transparent;\n  background: rgba(159, 179, 200, 0.15); }\n  .ThemeItem::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    user-select: none;\n    pointer-events: none;\n    top: -1px;\n    left: -1px;\n    right: -1px;\n    bottom: -1px;\n    margin: 4px;\n    transform: scale(0.87);\n    border-radius: inherit;\n    background: rgba(130, 154, 177, 0);\n    transition: background 0.3s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02) 0.075s, margin 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .ThemeItem:not(:disabled):hover::after, .ThemeItem:not(:disabled):focus::after {\n    margin: 0px;\n    transform: scale(1);\n    background: rgba(130, 154, 177, 0.15);\n    transition: background 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), margin 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .ThemeItem:not(:disabled):active {\n    transition: border 0.15s; }\n  .ThemeItem:not(:disabled):focus {\n    border-color: #829ab1; }\n  .ThemeItem:disabled {\n    cursor: auto;\n    opacity: 0.65;\n    color: #627d98; }\n\n.ThemeItem {\n  background-color: #fff;\n  border-color: #d9e2ec;\n  box-sizing: content-box;\n  padding: 8px;\n  display: grid;\n  grid-gap: 8px;\n  text-align: left;\n  grid-template-rows: auto 1fr; }\n  .ThemeItem > * {\n    box-sizing: border-box; }\n  .ThemeItem.selected {\n    border-color: #54d1db;\n    background-color: rgba(135, 234, 242, 0.3); }\n    .ThemeItem.selected:focus::after, .ThemeItem.selected:hover::after {\n      background-color: rgba(135, 234, 242, 0.2); }\n    .ThemeItem.selected .MediaItem-Image.icon {\n      background-color: rgba(56, 190, 201, 0.3); }\n  .ThemeItem .ThemeItem-Cover {\n    height: 0;\n    width: 100%;\n    position: relative;\n    padding-top: 56.25%; }\n    .ThemeItem .ThemeItem-Cover > img {\n      position: absolute;\n      user-select: none;\n      pointer-events: none;\n      width: 100%;\n      height: 100%;\n      top: 0;\n      left: 0;\n      object-fit: cover;\n      border-radius: 4px; }\n  .ThemeItem .ThemeItem-Content p.ThemeItem-Author {\n    margin: 0;\n    margin-top: 4px; }\n  .ThemeItem .ThemeItem-Content h2.ThemeItem-Title {\n    font-size: 24px;\n    margin: 0;\n    margin-top: 4px; }\n  .ThemeItem .ThemeItem-Content p.ThemeItem-Description {\n    margin: 0;\n    margin-top: 12px;\n    font-weight: 400;\n    opacity: 0.8;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    max-height: 38px;\n    display: block;\n    line-clamp: 2;\n    display: -webkit-box;\n    -webkit-line-clamp: 2;\n    -webkit-box-orient: vertical; }\n  .ThemeItem .ThemeItem-Tag {\n    position: absolute;\n    display: inline-block;\n    bottom: 8px;\n    left: 8px;\n    padding: 4px 12px;\n    border-radius: 20px;\n    box-shadow: 0px 2px 8px 0px rgba(36, 59, 83, 0.3);\n    background: #d9e2ec;\n    color: #486581; }\n    .ThemeItem .ThemeItem-Tag.Enabled {\n      background: #bef8fd;\n      color: #14919b; }\n", "",{"version":3,"sources":["/home/auri/Code/Projects/AuriServer/admin/src/ThemeItem.scss","/home/auri/Code/Projects/AuriServer/admin/src/partial/_Ext.scss","/home/auri/Code/Projects/AuriServer/admin/src/partial/_Vars.scss"],"names":[],"mappings":"AAGA;ECyEC,kBAAkB;EAClB,6BAA6B;EAC7B,eAAe;EACf,YAAY;EACZ,UAAU;EAEV,iBAAiB;EACjB,kBAAkB;EAClB,oBAAoB;EACpB,6BAA6B;EAC7B,qCAAiD,EAAA;EDnFlD;ICwFE,YAAY;IACZ,cAAc;IACd,kBAAkB;IAClB,iBAAiB;IACjB,oBAAoB;IAGpB,SAAS;IACT,UAAU;IACV,WAAW;IACX,YAAY;IAEZ,WAAW;IACX,sBAAsB;IAEtB,sBAAsB;IACtB,kCAA2C;IAE3C,2KArB0C,EAAA;EDrF5C;ICgHI,WAAW;IACX,mBAAmB;IACnB,qCAAiD;IAEjD,uKA/BwC,EAAA;EDrF5C;ICyHG,wBCpGW,EAAA;EFrBd;IC6HG,qBC5HkB,EAAA;EFDrB;ICkIE,YAAY;IACZ,aAAa;IACb,cClImB,EAAA;;AFFrB;EAGC,sBAAsB;EACtB,qBENoB;EFOpB,uBAAuB;EACvB,YAAY;EAEZ,aAAa;EACb,aAAa;EACb,gBAAgB;EAChB,4BAA4B,EAAA;EAX7B;IAcE,sBAAsB,EAAA;EAdxB;IAkBE,qBENkB;IFOlB,0CAAkD,EAAA;IAnBpD;MAsBG,0CAAkD,EAAA;IAtBrD;MA0BG,yCAAkD,EAAA;EA1BrD;IA+BE,SAAS;IACT,WAAW;IACX,kBAAkB;IAClB,mBAAmB,EAAA;IAlCrB;MAqCG,kBAAkB;MAClB,iBAAiB;MACjB,oBAAoB;MACpB,WAAW;MACX,YAAY;MACZ,MAAM;MACN,OAAO;MACP,iBAAiB;MACjB,kBAAkB,EAAA;EA7CrB;IAmDG,SAAS;IACT,eAAe,EAAA;EApDlB;IAwDG,eAAe;IACf,SAAS;IACT,eAAe,EAAA;EA1DlB;IA8DG,SAAS;IACT,gBAAgB;IAChB,gBAAgB;IAChB,YAAY;IAEV,gBAAgB;IAChB,uBAAuB;IAGzB,gBAAgB;IACf,cAAc;IAGb,aAAa;IACb,oBAAoB;IACpB,qBAAqB;IACrB,4BAA4B,EAAA;EA9EjC;IAmFE,kBAAkB;IAClB,qBAAqB;IACrB,WAAW;IACX,SAAS;IACT,iBAAiB;IACjB,mBAAmB;IAEnB,iDAA6D;IAC7D,mBE7FmB;IF8FnB,cEzFmB,EAAA;IFHrB;MA+FG,mBErFiB;MFsFjB,cEjFiB,EAAA","file":"ThemeItem.scss","sourcesContent":["@import \"partial/Vars\";\n@import \"partial/Ext\";\n\n.ThemeItem {\n\t@extend %material_button;\n\n\tbackground-color: #fff;\n\tborder-color: $neutral-100;\n\tbox-sizing: content-box;\n\tpadding: 8px;\n\n\tdisplay: grid;\n\tgrid-gap: 8px;\n\ttext-align: left;\n\tgrid-template-rows: auto 1fr;\n\n\t& > * {\n\t\tbox-sizing: border-box;\n\t}\n\n\t&.selected {\n\t\tborder-color: $accent-400;\n\t\tbackground-color: transparentize($accent-300, 0.7);\n\n\t\t&:focus::after, &:hover::after {\n\t\t\tbackground-color: transparentize($accent-300, 0.8);\n\t\t}\n\n\t\t.MediaItem-Image.icon {\n\t\t\tbackground-color: transparentize($accent-500, 0.7);\n\t\t}\n\t}\n\n\t.ThemeItem-Cover {\n\t\theight: 0;\n\t\twidth: 100%;\n\t\tposition: relative;\n\t\tpadding-top: 56.25%;\n\n\t\t& > img {\n\t\t\tposition: absolute;\n\t\t\tuser-select: none;\n\t\t\tpointer-events: none;\n\t\t\twidth: 100%;\n\t\t\theight: 100%;\n\t\t\ttop: 0;\n\t\t\tleft: 0;\n\t\t\tobject-fit: cover;\n\t\t\tborder-radius: 4px;\n\t\t}\n\t}\n\n\t.ThemeItem-Content {\n\t\tp.ThemeItem-Author {\n\t\t\tmargin: 0;\n\t\t\tmargin-top: 4px;\n\t\t}\n\n\t\th2.ThemeItem-Title {\n\t\t\tfont-size: 24px;\n\t\t\tmargin: 0;\n\t\t\tmargin-top: 4px;\n\t\t}\n\n\t\tp.ThemeItem-Description {\n\t\t\tmargin: 0;\n\t\t\tmargin-top: 12px;\n\t\t\tfont-weight: 400;\n\t\t\topacity: 0.8;\n\n\t    overflow: hidden;\n\t    text-overflow: ellipsis;\n\n\t\t\t// Fallbacks for multiline clamping. \n\t\t\tmax-height: 38px; \n\t\t  display: block;\n\t\n\t\t\t// Webkit specific fancy line clamping.\n\t    line-clamp: 2;\n\t    display: -webkit-box;\n\t    -webkit-line-clamp: 2;\n\t    -webkit-box-orient: vertical;\n\t\t}\n\t}\n\n\t.ThemeItem-Tag {\n\t\tposition: absolute;\n\t\tdisplay: inline-block;\n\t\tbottom: 8px;\n\t\tleft: 8px;\n\t\tpadding: 4px 12px;\n\t\tborder-radius: 20px;\n\t\t\t\n\t\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-800, 0.7);\n\t\tbackground: $neutral-100;\n\t\tcolor: $neutral-600;\n\n\t\t&.Enabled {\n\t\t\tbackground: $accent-200;\n\t\t\tcolor: $accent-700;\n\t\t}\n\t}\n}\n","@import \"Vars\";\n\n%card {\n\theight: min-content;\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n}\n\n%card_toolbar {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\n\tbutton {\n\t\t@extend %material_icon_button;\n\t}\n\n\t.separator {\n\t\twidth: 24px;\n\t\tdisplay: inline-block;\n\t}\n\n\tdiv:first-of-type button {\n\t\tmargin-right: 8px;\n\t}\n\n\tdiv:last-of-type button {\n\t\tmargin-left: 8px;\n\t}\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tuser-select: none;\n\tborder-radius: 4px;\n\ttext-underline: none;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-300, 1 - .15);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:not(:disabled) {\n\t\t&:hover, &:focus {\n\t\t\t&::after {\n\t\t\t\tmargin: 0px;\n\t\t\t\ttransform: scale(1);\n\t\t\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\t\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t\t\t}\n\t\t}\n\n\t\t&:active {\n\t\t\ttransition: border $t-fast;\n\t\t}\n\n\t\t&:focus {\n\t\t\tborder-color: $neutral-400;\n\t\t}\n\t}\n\n\t&:disabled {\n\t\tcursor: auto;\n\t\topacity: 0.65;\n\t\tcolor: $neutral-500;\n\t}\n}\n\n%material_icon_button {\n\t@extend %material_button;\n\tdisplay: inline-block;\n\n\t// width: 48px;\n\theight: 48px;\n\n\tpadding: 8px;\n\tborder-radius: 24px;\n\n\timg {\n\t\twidth: 30px;\n\t\theight: 30px;\n\t\tpointer-events: none;\n\t\tvertical-align: middle;\n\t}\n\n\tspan {\n\t\tcolor: $neutral-700;\n\t\tvertical-align: middle;\n\t\tpadding-right: 8px;\n\t\tpadding-left: 8px;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"]}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -9974,10 +9996,10 @@ ___CSS_LOADER_EXPORT___.push([module.i, ".Page .Page-Card {\n  height: min-conte
 
 /***/ }),
 
-/***/ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/pages/ThemePage.scss":
-/*!*****************************************************************************************************************!*\
-  !*** ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/pages/ThemePage.scss ***!
-  \*****************************************************************************************************************/
+/***/ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/pages/PluginsPage.scss":
+/*!*******************************************************************************************************************!*\
+  !*** ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/pages/PluginsPage.scss ***!
+  \*******************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -9989,7 +10011,29 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, ".ThemePage .ThemePage-Toolbar {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between; }\n  .ThemePage .ThemePage-Toolbar .separator {\n    width: 24px;\n    display: inline-block; }\n  .ThemePage .ThemePage-Toolbar div:first-of-type button {\n    margin-right: 8px; }\n  .ThemePage .ThemePage-Toolbar div:last-of-type button {\n    margin-left: 8px; }\n\n.ThemePage .ThemePage-Toolbar button {\n  position: relative;\n  background-color: transparent;\n  cursor: pointer;\n  border: none;\n  outline: 0;\n  user-select: none;\n  border-radius: 4px;\n  text-underline: none;\n  border: 1px solid transparent;\n  background: rgba(159, 179, 200, 0.15); }\n  .ThemePage .ThemePage-Toolbar button::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    user-select: none;\n    pointer-events: none;\n    top: -1px;\n    left: -1px;\n    right: -1px;\n    bottom: -1px;\n    margin: 4px;\n    transform: scale(0.87);\n    border-radius: inherit;\n    background: rgba(130, 154, 177, 0);\n    transition: background 0.3s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02) 0.075s, margin 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .ThemePage .ThemePage-Toolbar button:not(:disabled):hover::after, .ThemePage .ThemePage-Toolbar button:not(:disabled):focus::after {\n    margin: 0px;\n    transform: scale(1);\n    background: rgba(130, 154, 177, 0.15);\n    transition: background 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), margin 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .ThemePage .ThemePage-Toolbar button:not(:disabled):active {\n    transition: border 0.15s; }\n  .ThemePage .ThemePage-Toolbar button:not(:disabled):focus {\n    border-color: #829ab1; }\n  .ThemePage .ThemePage-Toolbar button:disabled {\n    cursor: auto;\n    opacity: 0.65;\n    color: #627d98; }\n\n.ThemePage .ThemePage-Toolbar button {\n  display: inline-block;\n  height: 48px;\n  padding: 8px;\n  border-radius: 24px; }\n  .ThemePage .ThemePage-Toolbar button img {\n    width: 30px;\n    height: 30px;\n    pointer-events: none;\n    vertical-align: middle; }\n  .ThemePage .ThemePage-Toolbar button span {\n    color: #334e68;\n    vertical-align: middle;\n    padding-right: 8px;\n    padding-left: 8px; }\n\n.ThemePage .ThemePage-Themes {\n  display: grid;\n  width: 100%;\n  height: auto;\n  grid-gap: 8px;\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }\n", "",{"version":3,"sources":["/home/auri/Code/Projects/AuriServer/admin/src/pages/ThemePage.scss","/home/auri/Code/Projects/AuriServer/admin/src/partial/_Ext.scss","/home/auri/Code/Projects/AuriServer/admin/src/partial/_Vars.scss"],"names":[],"mappings":"AAEA;ECUC,aAAa;EACb,mBAAmB;EACnB,8BAA8B,EAAA;EDZ/B;ICmBE,WAAW;IACX,qBAAqB,EAAA;EDpBvB;ICwBE,iBAAiB,EAAA;EDxBnB;IC4BE,gBAAgB,EAAA;;AD5BlB;EC0EC,kBAAkB;EAClB,6BAA6B;EAC7B,eAAe;EACf,YAAY;EACZ,UAAU;EAEV,iBAAiB;EACjB,kBAAkB;EAClB,oBAAoB;EACpB,6BAA6B;EAC7B,qCAAiD,EAAA;EDpFlD;ICyFE,YAAY;IACZ,cAAc;IACd,kBAAkB;IAClB,iBAAiB;IACjB,oBAAoB;IAGpB,SAAS;IACT,UAAU;IACV,WAAW;IACX,YAAY;IAEZ,WAAW;IACX,sBAAsB;IAEtB,sBAAsB;IACtB,kCAA2C;IAE3C,2KArB0C,EAAA;EDtF5C;ICiHI,WAAW;IACX,mBAAmB;IACnB,qCAAiD;IAEjD,uKA/BwC,EAAA;EDtF5C;IC0HG,wBCpGW,EAAA;EFtBd;IC8HG,qBC5HkB,EAAA;EFFrB;ICmIE,YAAY;IACZ,aAAa;IACb,cClImB,EAAA;;AFHrB;EC2IC,qBAAqB;EAGrB,YAAY;EAEZ,YAAY;EACZ,mBAAmB,EAAA;EDjJpB;ICoJE,WAAW;IACX,YAAY;IACZ,oBAAoB;IACpB,sBAAsB,EAAA;EDvJxB;IC2JE,cCtJmB;IDuJnB,sBAAsB;IACtB,kBAAkB;IAClB,iBAAiB,EAAA;;AD9JnB;EAEE,aAAa;EACb,WAAW;EACX,YAAY;EACZ,aAAa;EACb,4DAA4D,EAAA","file":"ThemePage.scss","sourcesContent":["@import \"../partial/Ext\";\n\n.ThemePage {\n\t.ThemePage-Themes {\n\t\tdisplay: grid;\n\t\twidth: 100%;\n\t\theight: auto;\n\t\tgrid-gap: 8px;\n\t\tgrid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n\t}\n\n\t.ThemePage-Toolbar {\n\t\t@extend %card_toolbar;\n\t}\n}\n","@import \"Vars\";\n\n%card {\n\theight: min-content;\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n}\n\n%card_toolbar {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\n\tbutton {\n\t\t@extend %material_icon_button;\n\t}\n\n\t.separator {\n\t\twidth: 24px;\n\t\tdisplay: inline-block;\n\t}\n\n\tdiv:first-of-type button {\n\t\tmargin-right: 8px;\n\t}\n\n\tdiv:last-of-type button {\n\t\tmargin-left: 8px;\n\t}\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tuser-select: none;\n\tborder-radius: 4px;\n\ttext-underline: none;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-300, 1 - .15);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:not(:disabled) {\n\t\t&:hover, &:focus {\n\t\t\t&::after {\n\t\t\t\tmargin: 0px;\n\t\t\t\ttransform: scale(1);\n\t\t\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\t\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t\t\t}\n\t\t}\n\n\t\t&:active {\n\t\t\ttransition: border $t-fast;\n\t\t}\n\n\t\t&:focus {\n\t\t\tborder-color: $neutral-400;\n\t\t}\n\t}\n\n\t&:disabled {\n\t\tcursor: auto;\n\t\topacity: 0.65;\n\t\tcolor: $neutral-500;\n\t}\n}\n\n%material_icon_button {\n\t@extend %material_button;\n\tdisplay: inline-block;\n\n\t// width: 48px;\n\theight: 48px;\n\n\tpadding: 8px;\n\tborder-radius: 24px;\n\n\timg {\n\t\twidth: 30px;\n\t\theight: 30px;\n\t\tpointer-events: none;\n\t\tvertical-align: middle;\n\t}\n\n\tspan {\n\t\tcolor: $neutral-700;\n\t\tvertical-align: middle;\n\t\tpadding-right: 8px;\n\t\tpadding-left: 8px;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"]}]);
+___CSS_LOADER_EXPORT___.push([module.i, ".PluginsPage .PluginsPage-Toolbar {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between; }\n  .PluginsPage .PluginsPage-Toolbar .separator {\n    width: 24px;\n    display: inline-block; }\n  .PluginsPage .PluginsPage-Toolbar div:first-of-type button {\n    margin-right: 8px; }\n  .PluginsPage .PluginsPage-Toolbar div:last-of-type button {\n    margin-left: 8px; }\n\n.PluginsPage .PluginsPage-Toolbar button {\n  position: relative;\n  background-color: transparent;\n  cursor: pointer;\n  border: none;\n  outline: 0;\n  user-select: none;\n  border-radius: 4px;\n  text-underline: none;\n  border: 1px solid transparent;\n  background: rgba(159, 179, 200, 0.15); }\n  .PluginsPage .PluginsPage-Toolbar button::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    user-select: none;\n    pointer-events: none;\n    top: -1px;\n    left: -1px;\n    right: -1px;\n    bottom: -1px;\n    margin: 4px;\n    transform: scale(0.87);\n    border-radius: inherit;\n    background: rgba(130, 154, 177, 0);\n    transition: background 0.3s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02) 0.075s, margin 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .PluginsPage .PluginsPage-Toolbar button:not(:disabled):hover::after, .PluginsPage .PluginsPage-Toolbar button:not(:disabled):focus::after {\n    margin: 0px;\n    transform: scale(1);\n    background: rgba(130, 154, 177, 0.15);\n    transition: background 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), margin 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .PluginsPage .PluginsPage-Toolbar button:not(:disabled):active {\n    transition: border 0.15s; }\n  .PluginsPage .PluginsPage-Toolbar button:not(:disabled):focus {\n    border-color: #829ab1; }\n  .PluginsPage .PluginsPage-Toolbar button:disabled {\n    cursor: auto;\n    opacity: 0.65;\n    color: #627d98; }\n\n.PluginsPage .PluginsPage-Toolbar button {\n  display: inline-block;\n  height: 48px;\n  padding: 8px;\n  border-radius: 24px; }\n  .PluginsPage .PluginsPage-Toolbar button img {\n    width: 30px;\n    height: 30px;\n    pointer-events: none;\n    vertical-align: middle; }\n  .PluginsPage .PluginsPage-Toolbar button span {\n    color: #334e68;\n    vertical-align: middle;\n    padding-right: 8px;\n    padding-left: 8px; }\n\n.PluginsPage .PluginsPage-Plugins {\n  display: grid;\n  width: 100%;\n  height: auto;\n  grid-gap: 8px;\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }\n", "",{"version":3,"sources":["/home/auri/Code/Projects/AuriServer/admin/src/pages/PluginsPage.scss","/home/auri/Code/Projects/AuriServer/admin/src/partial/_Ext.scss","/home/auri/Code/Projects/AuriServer/admin/src/partial/_Vars.scss"],"names":[],"mappings":"AAEA;ECUC,aAAa;EACb,mBAAmB;EACnB,8BAA8B,EAAA;EDZ/B;ICmBE,WAAW;IACX,qBAAqB,EAAA;EDpBvB;ICwBE,iBAAiB,EAAA;EDxBnB;IC4BE,gBAAgB,EAAA;;AD5BlB;EC0EC,kBAAkB;EAClB,6BAA6B;EAC7B,eAAe;EACf,YAAY;EACZ,UAAU;EAEV,iBAAiB;EACjB,kBAAkB;EAClB,oBAAoB;EACpB,6BAA6B;EAC7B,qCAAiD,EAAA;EDpFlD;ICyFE,YAAY;IACZ,cAAc;IACd,kBAAkB;IAClB,iBAAiB;IACjB,oBAAoB;IAGpB,SAAS;IACT,UAAU;IACV,WAAW;IACX,YAAY;IAEZ,WAAW;IACX,sBAAsB;IAEtB,sBAAsB;IACtB,kCAA2C;IAE3C,2KArB0C,EAAA;EDtF5C;ICiHI,WAAW;IACX,mBAAmB;IACnB,qCAAiD;IAEjD,uKA/BwC,EAAA;EDtF5C;IC0HG,wBCpGW,EAAA;EFtBd;IC8HG,qBC5HkB,EAAA;EFFrB;ICmIE,YAAY;IACZ,aAAa;IACb,cClImB,EAAA;;AFHrB;EC2IC,qBAAqB;EAGrB,YAAY;EAEZ,YAAY;EACZ,mBAAmB,EAAA;EDjJpB;ICoJE,WAAW;IACX,YAAY;IACZ,oBAAoB;IACpB,sBAAsB,EAAA;EDvJxB;IC2JE,cCtJmB;IDuJnB,sBAAsB;IACtB,kBAAkB;IAClB,iBAAiB,EAAA;;AD9JnB;EAEE,aAAa;EACb,WAAW;EACX,YAAY;EACZ,aAAa;EACb,4DAA4D,EAAA","file":"PluginsPage.scss","sourcesContent":["@import \"../partial/Ext\";\n\n.PluginsPage {\n\t.PluginsPage-Plugins {\n\t\tdisplay: grid;\n\t\twidth: 100%;\n\t\theight: auto;\n\t\tgrid-gap: 8px;\n\t\tgrid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n\t}\n\n\t.PluginsPage-Toolbar {\n\t\t@extend %card_toolbar;\n\t}\n}\n","@import \"Vars\";\n\n%card {\n\theight: min-content;\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n}\n\n%card_toolbar {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\n\tbutton {\n\t\t@extend %material_icon_button;\n\t}\n\n\t.separator {\n\t\twidth: 24px;\n\t\tdisplay: inline-block;\n\t}\n\n\tdiv:first-of-type button {\n\t\tmargin-right: 8px;\n\t}\n\n\tdiv:last-of-type button {\n\t\tmargin-left: 8px;\n\t}\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tuser-select: none;\n\tborder-radius: 4px;\n\ttext-underline: none;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-300, 1 - .15);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:not(:disabled) {\n\t\t&:hover, &:focus {\n\t\t\t&::after {\n\t\t\t\tmargin: 0px;\n\t\t\t\ttransform: scale(1);\n\t\t\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\t\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t\t\t}\n\t\t}\n\n\t\t&:active {\n\t\t\ttransition: border $t-fast;\n\t\t}\n\n\t\t&:focus {\n\t\t\tborder-color: $neutral-400;\n\t\t}\n\t}\n\n\t&:disabled {\n\t\tcursor: auto;\n\t\topacity: 0.65;\n\t\tcolor: $neutral-500;\n\t}\n}\n\n%material_icon_button {\n\t@extend %material_button;\n\tdisplay: inline-block;\n\n\t// width: 48px;\n\theight: 48px;\n\n\tpadding: 8px;\n\tborder-radius: 24px;\n\n\timg {\n\t\twidth: 30px;\n\t\theight: 30px;\n\t\tpointer-events: none;\n\t\tvertical-align: middle;\n\t}\n\n\tspan {\n\t\tcolor: $neutral-700;\n\t\tvertical-align: middle;\n\t\tpadding-right: 8px;\n\t\tpadding-left: 8px;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"]}]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/pages/ThemesPage.scss":
+/*!******************************************************************************************************************!*\
+  !*** ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/pages/ThemesPage.scss ***!
+  \******************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "../node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
+// Module
+___CSS_LOADER_EXPORT___.push([module.i, ".ThemesPage .ThemesPage-Toolbar {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between; }\n  .ThemesPage .ThemesPage-Toolbar .separator {\n    width: 24px;\n    display: inline-block; }\n  .ThemesPage .ThemesPage-Toolbar div:first-of-type button {\n    margin-right: 8px; }\n  .ThemesPage .ThemesPage-Toolbar div:last-of-type button {\n    margin-left: 8px; }\n\n.ThemesPage .ThemesPage-Toolbar button {\n  position: relative;\n  background-color: transparent;\n  cursor: pointer;\n  border: none;\n  outline: 0;\n  user-select: none;\n  border-radius: 4px;\n  text-underline: none;\n  border: 1px solid transparent;\n  background: rgba(159, 179, 200, 0.15); }\n  .ThemesPage .ThemesPage-Toolbar button::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    user-select: none;\n    pointer-events: none;\n    top: -1px;\n    left: -1px;\n    right: -1px;\n    bottom: -1px;\n    margin: 4px;\n    transform: scale(0.87);\n    border-radius: inherit;\n    background: rgba(130, 154, 177, 0);\n    transition: background 0.3s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02) 0.075s, margin 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .ThemesPage .ThemesPage-Toolbar button:not(:disabled):hover::after, .ThemesPage .ThemesPage-Toolbar button:not(:disabled):focus::after {\n    margin: 0px;\n    transform: scale(1);\n    background: rgba(130, 154, 177, 0.15);\n    transition: background 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), margin 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .ThemesPage .ThemesPage-Toolbar button:not(:disabled):active {\n    transition: border 0.15s; }\n  .ThemesPage .ThemesPage-Toolbar button:not(:disabled):focus {\n    border-color: #829ab1; }\n  .ThemesPage .ThemesPage-Toolbar button:disabled {\n    cursor: auto;\n    opacity: 0.65;\n    color: #627d98; }\n\n.ThemesPage .ThemesPage-Toolbar button {\n  display: inline-block;\n  height: 48px;\n  padding: 8px;\n  border-radius: 24px; }\n  .ThemesPage .ThemesPage-Toolbar button img {\n    width: 30px;\n    height: 30px;\n    pointer-events: none;\n    vertical-align: middle; }\n  .ThemesPage .ThemesPage-Toolbar button span {\n    color: #334e68;\n    vertical-align: middle;\n    padding-right: 8px;\n    padding-left: 8px; }\n\n.ThemesPage .ThemesPage-Themes {\n  display: grid;\n  width: 100%;\n  height: auto;\n  grid-gap: 8px;\n  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }\n", "",{"version":3,"sources":["/home/auri/Code/Projects/AuriServer/admin/src/pages/ThemesPage.scss","/home/auri/Code/Projects/AuriServer/admin/src/partial/_Ext.scss","/home/auri/Code/Projects/AuriServer/admin/src/partial/_Vars.scss"],"names":[],"mappings":"AAEA;ECUC,aAAa;EACb,mBAAmB;EACnB,8BAA8B,EAAA;EDZ/B;ICmBE,WAAW;IACX,qBAAqB,EAAA;EDpBvB;ICwBE,iBAAiB,EAAA;EDxBnB;IC4BE,gBAAgB,EAAA;;AD5BlB;EC0EC,kBAAkB;EAClB,6BAA6B;EAC7B,eAAe;EACf,YAAY;EACZ,UAAU;EAEV,iBAAiB;EACjB,kBAAkB;EAClB,oBAAoB;EACpB,6BAA6B;EAC7B,qCAAiD,EAAA;EDpFlD;ICyFE,YAAY;IACZ,cAAc;IACd,kBAAkB;IAClB,iBAAiB;IACjB,oBAAoB;IAGpB,SAAS;IACT,UAAU;IACV,WAAW;IACX,YAAY;IAEZ,WAAW;IACX,sBAAsB;IAEtB,sBAAsB;IACtB,kCAA2C;IAE3C,2KArB0C,EAAA;EDtF5C;ICiHI,WAAW;IACX,mBAAmB;IACnB,qCAAiD;IAEjD,uKA/BwC,EAAA;EDtF5C;IC0HG,wBCpGW,EAAA;EFtBd;IC8HG,qBC5HkB,EAAA;EFFrB;ICmIE,YAAY;IACZ,aAAa;IACb,cClImB,EAAA;;AFHrB;EC2IC,qBAAqB;EAGrB,YAAY;EAEZ,YAAY;EACZ,mBAAmB,EAAA;EDjJpB;ICoJE,WAAW;IACX,YAAY;IACZ,oBAAoB;IACpB,sBAAsB,EAAA;EDvJxB;IC2JE,cCtJmB;IDuJnB,sBAAsB;IACtB,kBAAkB;IAClB,iBAAiB,EAAA;;AD9JnB;EAEE,aAAa;EACb,WAAW;EACX,YAAY;EACZ,aAAa;EACb,4DAA4D,EAAA","file":"ThemesPage.scss","sourcesContent":["@import \"../partial/Ext\";\n\n.ThemesPage {\n\t.ThemesPage-Themes {\n\t\tdisplay: grid;\n\t\twidth: 100%;\n\t\theight: auto;\n\t\tgrid-gap: 8px;\n\t\tgrid-template-columns: repeat(auto-fill, minmax(300px, 1fr));\n\t}\n\n\t.ThemesPage-Toolbar {\n\t\t@extend %card_toolbar;\n\t}\n}\n","@import \"Vars\";\n\n%card {\n\theight: min-content;\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n}\n\n%card_toolbar {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\n\tbutton {\n\t\t@extend %material_icon_button;\n\t}\n\n\t.separator {\n\t\twidth: 24px;\n\t\tdisplay: inline-block;\n\t}\n\n\tdiv:first-of-type button {\n\t\tmargin-right: 8px;\n\t}\n\n\tdiv:last-of-type button {\n\t\tmargin-left: 8px;\n\t}\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tuser-select: none;\n\tborder-radius: 4px;\n\ttext-underline: none;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-300, 1 - .15);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:not(:disabled) {\n\t\t&:hover, &:focus {\n\t\t\t&::after {\n\t\t\t\tmargin: 0px;\n\t\t\t\ttransform: scale(1);\n\t\t\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\t\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t\t\t}\n\t\t}\n\n\t\t&:active {\n\t\t\ttransition: border $t-fast;\n\t\t}\n\n\t\t&:focus {\n\t\t\tborder-color: $neutral-400;\n\t\t}\n\t}\n\n\t&:disabled {\n\t\tcursor: auto;\n\t\topacity: 0.65;\n\t\tcolor: $neutral-500;\n\t}\n}\n\n%material_icon_button {\n\t@extend %material_button;\n\tdisplay: inline-block;\n\n\t// width: 48px;\n\theight: 48px;\n\n\tpadding: 8px;\n\tborder-radius: 24px;\n\n\timg {\n\t\twidth: 30px;\n\t\theight: 30px;\n\t\tpointer-events: none;\n\t\tvertical-align: middle;\n\t}\n\n\tspan {\n\t\tcolor: $neutral-700;\n\t\tvertical-align: middle;\n\t\tpadding-right: 8px;\n\t\tpadding-left: 8px;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"]}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -65067,8 +65111,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AppHeader__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./AppHeader */ "./src/AppHeader.tsx");
 /* harmony import */ var _pages_MainPage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/MainPage */ "./src/pages/MainPage.tsx");
 /* harmony import */ var _pages_MediaPage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/MediaPage */ "./src/pages/MediaPage.tsx");
-/* harmony import */ var _pages_ThemePage__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pages/ThemePage */ "./src/pages/ThemePage.tsx");
-/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./AppContext */ "./src/AppContext.tsx");
+/* harmony import */ var _pages_ThemesPage__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pages/ThemesPage */ "./src/pages/ThemesPage.tsx");
+/* harmony import */ var _pages_PluginsPage__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./pages/PluginsPage */ "./src/pages/PluginsPage.tsx");
+/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./AppContext */ "./src/AppContext.tsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65090,6 +65135,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
 
 
 
@@ -65158,7 +65204,7 @@ var App = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_AppContext__WEBPACK_IMPORTED_MODULE_9__["AppContext"].Provider, {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](_AppContext__WEBPACK_IMPORTED_MODULE_10__["AppContext"].Provider, {
         value: this.state.contextData
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("div", {
         className: "App"
@@ -65181,7 +65227,11 @@ var App = /*#__PURE__*/function (_React$Component) {
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         exact: true,
         path: "/themes",
-        component: _pages_ThemePage__WEBPACK_IMPORTED_MODULE_8__["default"]
+        component: _pages_ThemesPage__WEBPACK_IMPORTED_MODULE_8__["default"]
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        exact: true,
+        path: "/plugins",
+        component: _pages_PluginsPage__WEBPACK_IMPORTED_MODULE_9__["default"]
       }))))));
     }
   }]);
@@ -65327,14 +65377,14 @@ var AppHeader = /*#__PURE__*/function (_React$PureComponent) {
         to: "/pages"
       }, "Pages"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
         activeClassName: "active",
-        to: "/pages"
-      }, "Components"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
-        activeClassName: "active",
         to: "/media"
       }, "Media"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
         activeClassName: "active",
         to: "/themes"
-      }, "Themes")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
+      }, "Themes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
+        activeClassName: "active",
+        to: "/plugins"
+      }, "Plugins")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
         className: "AppHeader-options",
         to: "/user_options"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("img", {
@@ -66876,6 +66926,127 @@ var Modal = /*#__PURE__*/function (_React$PureComponent) {
 
 /***/ }),
 
+/***/ "./src/PluginItem.scss":
+/*!*****************************!*\
+  !*** ./src/PluginItem.scss ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./PluginItem.scss */ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/PluginItem.scss");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+
+
+module.exports = content.locals || {};
+
+/***/ }),
+
+/***/ "./src/PluginItem.tsx":
+/*!****************************!*\
+  !*** ./src/PluginItem.tsx ***!
+  \****************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return MediaItem; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _PluginItem_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PluginItem.scss */ "./src/PluginItem.scss");
+/* harmony import */ var _PluginItem_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_PluginItem_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Selectable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Selectable */ "./src/Selectable.tsx");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+var MediaItem = /*#__PURE__*/function (_React$Component) {
+  _inherits(MediaItem, _React$Component);
+
+  var _super = _createSuper(MediaItem);
+
+  function MediaItem(props) {
+    var _this;
+
+    _classCallCheck(this, MediaItem);
+
+    _this = _super.call(this, props);
+    _this.callbacks = void 0;
+    _this.callbacks = {
+      onDoubleClick: _this.props.onClick
+    };
+    return _this;
+  }
+
+  _createClass(MediaItem, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Selectable__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        className: "PluginItem",
+        ind: this.props.ind,
+        callbacks: this.callbacks,
+        doubleClickSelects: true
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
+        className: "PluginItem-Cover"
+      }, this.props.item.hasCover && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
+        src: "/admin/plugins/cover/" + this.props.item.identifier + ".jpg"
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", {
+        className: "PluginItem-Tag " + (this.props.active ? "Enabled" : "Disabled")
+      }, this.props.active ? "Enabled" : "Disabled")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
+        className: "PluginItem-Content"
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h2", {
+        className: "PluginItem-Title"
+      }, this.props.item.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", {
+        className: "PluginItem-Author"
+      }, this.props.item.author), this.props.item.description && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", {
+        className: "PluginItem-Description"
+      }, this.props.item.description)));
+    }
+  }]);
+
+  return MediaItem;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+/***/ }),
+
 /***/ "./src/SelectGroup.scss":
 /*!******************************!*\
   !*** ./src/SelectGroup.scss ***!
@@ -67307,7 +67478,7 @@ var MediaItem = /*#__PURE__*/function (_React$Component) {
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
         className: "ThemeItem-Cover"
       }, this.props.item.hasCover && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
-        src: "/admin/theme/cover/" + this.props.item.identifier + ".jpg"
+        src: "/admin/themes/cover/" + this.props.item.identifier + ".jpg"
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", {
         className: "ThemeItem-Tag " + (this.props.active ? "Enabled" : "Disabled")
       }, this.props.active ? "Enabled" : "Disabled")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
@@ -67648,7 +67819,7 @@ var MediaPage = /*#__PURE__*/function (_React$PureComponent) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_CardHeader__WEBPACK_IMPORTED_MODULE_6__["default"], {
           icon: "/admin/asset/icon/document-dark.svg",
           title: "Manage Media",
-          subtitle: "Create or remove media assets on ".concat(ctx.data.sitename, ".")
+          subtitle: "Create or remove user-uploaded media."
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
           className: "MediaPage-Toolbar"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", {
@@ -67732,15 +67903,15 @@ module.exports = content.locals || {};
 
 /***/ }),
 
-/***/ "./src/pages/ThemePage.scss":
-/*!**********************************!*\
-  !*** ./src/pages/ThemePage.scss ***!
-  \**********************************/
+/***/ "./src/pages/PluginsPage.scss":
+/*!************************************!*\
+  !*** ./src/pages/PluginsPage.scss ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 var api = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-            var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/sass-loader/dist/cjs.js!./ThemePage.scss */ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/pages/ThemePage.scss");
+            var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/sass-loader/dist/cjs.js!./PluginsPage.scss */ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/pages/PluginsPage.scss");
 
             content = content.__esModule ? content.default : content;
 
@@ -67761,20 +67932,218 @@ module.exports = content.locals || {};
 
 /***/ }),
 
-/***/ "./src/pages/ThemePage.tsx":
-/*!*********************************!*\
-  !*** ./src/pages/ThemePage.tsx ***!
-  \*********************************/
+/***/ "./src/pages/PluginsPage.tsx":
+/*!***********************************!*\
+  !*** ./src/pages/PluginsPage.tsx ***!
+  \***********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ThemePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PluginsPage; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _ThemePage_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ThemePage.scss */ "./src/pages/ThemePage.scss");
-/* harmony import */ var _ThemePage_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ThemePage_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _PluginsPage_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PluginsPage.scss */ "./src/pages/PluginsPage.scss");
+/* harmony import */ var _PluginsPage_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_PluginsPage_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _PluginItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../PluginItem */ "./src/PluginItem.tsx");
+/* harmony import */ var _CardHeader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../CardHeader */ "./src/CardHeader.tsx");
+/* harmony import */ var _SelectGroup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../SelectGroup */ "./src/SelectGroup.tsx");
+/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../AppContext */ "./src/AppContext.tsx");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+
+
+
+
+
+
+
+var PluginsPage = /*#__PURE__*/function (_React$PureComponent) {
+  _inherits(PluginsPage, _React$PureComponent);
+
+  var _super = _createSuper(PluginsPage);
+
+  function PluginsPage(props) {
+    var _this;
+
+    _classCallCheck(this, PluginsPage);
+
+    _this = _super.call(this, props);
+    _this.selected = [];
+    _this.state = {
+      selected: []
+    };
+    _this.handleTogglePlugins = _this.handleTogglePlugins.bind(_assertThisInitialized(_this));
+    _this.handleRefreshPlugins = _this.handleRefreshPlugins.bind(_assertThisInitialized(_this));
+    _this.handleSelectionChange = _this.handleSelectionChange.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(PluginsPage, [{
+    key: "handleSelectionChange",
+    value: function handleSelectionChange(selected) {
+      this.selected = selected;
+      this.setState({
+        selected: selected
+      });
+    }
+  }, {
+    key: "handleTogglePlugins",
+    value: function handleTogglePlugins() {
+      var _this2 = this;
+
+      fetch("/admin/plugins/toggle", {
+        method: 'POST',
+        cache: 'no-cache',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(this.selected.map(function (ind) {
+          return _this2.context.data.plugins[ind].identifier;
+        }))
+      }).then(function (r) {
+        return r.json();
+      }).then(function (res) {
+        _this2.context.handleSiteData(res);
+      });
+    }
+  }, {
+    key: "handleRefreshPlugins",
+    value: function handleRefreshPlugins() {
+      var _this3 = this;
+
+      fetch("/admin/plugins/refresh", {
+        cache: 'no-cache',
+        method: 'POST'
+      }).then(function (r) {
+        return r.json();
+      }).then(function (res) {
+        _this3.context.handleSiteData(res);
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this4 = this;
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_AppContext__WEBPACK_IMPORTED_MODULE_5__["AppContext"].Consumer, null, function (ctx) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
+          className: "Page PluginsPage"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("section", {
+          className: "Page-Card"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_CardHeader__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          icon: "/admin/asset/icon/element-dark.svg",
+          title: "Manage Plugins",
+          subtitle: "Install, enable, or disable plugins."
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
+          className: "PluginsPage-Toolbar"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", {
+          className: "MediaPage-Toolbar-Button",
+          onClick: _this4.handleTogglePlugins
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
+          src: "/admin/asset/icon/add-dark.svg"
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null, "Install Plugin")), _this4.state.selected.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", {
+          onClick: _this4.handleTogglePlugins
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
+          src: "/admin/asset/icon/refresh-dark.svg"
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null, "Toggle Plugin" + (_this4.state.selected.length != 1 ? " (" + _this4.state.selected.length + ")" : "")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", {
+          className: "MediaPage-Toolbar-Button",
+          onClick: _this4.handleTogglePlugins
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
+          src: "/admin/asset/icon/sort-dark.svg"
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null, "Sort by Size")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", {
+          onClick: _this4.handleRefreshPlugins
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
+          src: "/admin/asset/icon/refresh-dark.svg"
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null, "Refresh")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_SelectGroup__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          className: "ThemePage-Themes",
+          onSelectionChange: _this4.handleSelectionChange,
+          multi: true
+        }, ctx.data.plugins.map(function (t, i) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_PluginItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
+            item: t,
+            ind: i,
+            onClick: _this4.handleTogglePlugins,
+            active: ctx.data.activeThemes.indexOf(t.identifier) != -1,
+            key: t.identifier
+          });
+        }))));
+      });
+    }
+  }]);
+
+  return PluginsPage;
+}(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
+
+
+PluginsPage.contextType = _AppContext__WEBPACK_IMPORTED_MODULE_5__["AppContext"];
+
+/***/ }),
+
+/***/ "./src/pages/ThemesPage.scss":
+/*!***********************************!*\
+  !*** ./src/pages/ThemesPage.scss ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/sass-loader/dist/cjs.js!./ThemesPage.scss */ "../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./src/pages/ThemesPage.scss");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+
+
+module.exports = content.locals || {};
+
+/***/ }),
+
+/***/ "./src/pages/ThemesPage.tsx":
+/*!**********************************!*\
+  !*** ./src/pages/ThemesPage.tsx ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ThemesPage; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "../node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _ThemesPage_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ThemesPage.scss */ "./src/pages/ThemesPage.scss");
+/* harmony import */ var _ThemesPage_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ThemesPage_scss__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _ThemeItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ThemeItem */ "./src/ThemeItem.tsx");
 /* harmony import */ var _CardHeader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../CardHeader */ "./src/CardHeader.tsx");
 /* harmony import */ var _SelectGroup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../SelectGroup */ "./src/SelectGroup.tsx");
@@ -67808,15 +68177,15 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
-var ThemePage = /*#__PURE__*/function (_React$PureComponent) {
-  _inherits(ThemePage, _React$PureComponent);
+var ThemesPage = /*#__PURE__*/function (_React$PureComponent) {
+  _inherits(ThemesPage, _React$PureComponent);
 
-  var _super = _createSuper(ThemePage);
+  var _super = _createSuper(ThemesPage);
 
-  function ThemePage(props) {
+  function ThemesPage(props) {
     var _this;
 
-    _classCallCheck(this, ThemePage);
+    _classCallCheck(this, ThemesPage);
 
     _this = _super.call(this, props);
     _this.selected = [];
@@ -67829,7 +68198,7 @@ var ThemePage = /*#__PURE__*/function (_React$PureComponent) {
     return _this;
   }
 
-  _createClass(ThemePage, [{
+  _createClass(ThemesPage, [{
     key: "handleSelectionChange",
     value: function handleSelectionChange(selected) {
       this.selected = selected;
@@ -67842,7 +68211,7 @@ var ThemePage = /*#__PURE__*/function (_React$PureComponent) {
     value: function handleToggleThemes() {
       var _this2 = this;
 
-      fetch("/admin/theme/toggle", {
+      fetch("/admin/themes/toggle", {
         method: 'POST',
         cache: 'no-cache',
         headers: {
@@ -67862,7 +68231,7 @@ var ThemePage = /*#__PURE__*/function (_React$PureComponent) {
     value: function handleRefreshThemes() {
       var _this3 = this;
 
-      fetch("/admin/theme/refresh", {
+      fetch("/admin/themes/refresh", {
         cache: 'no-cache',
         method: 'POST'
       }).then(function (r) {
@@ -67878,21 +68247,21 @@ var ThemePage = /*#__PURE__*/function (_React$PureComponent) {
 
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_AppContext__WEBPACK_IMPORTED_MODULE_5__["AppContext"].Consumer, null, function (ctx) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
-          className: "Page ThemePage"
+          className: "Page ThemesPage"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("section", {
           className: "Page-Card"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_CardHeader__WEBPACK_IMPORTED_MODULE_3__["default"], {
           icon: "/admin/asset/icon/theme-dark.svg",
           title: "Manage Themes",
-          subtitle: "Enable and disable themes for ".concat(ctx.data.sitename, ".")
+          subtitle: "Install, enable, or disable site themes."
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", {
-          className: "ThemePage-Toolbar"
+          className: "ThemesPage-Toolbar"
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", {
           className: "MediaPage-Toolbar-Button",
           onClick: _this4.handleToggleThemes
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
           src: "/admin/asset/icon/add-dark.svg"
-        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null, "Upload Theme")), _this4.state.selected.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", {
+        }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null, "Install Theme")), _this4.state.selected.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", {
           onClick: _this4.handleToggleThemes
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
           src: "/admin/asset/icon/refresh-dark.svg"
@@ -67906,7 +68275,7 @@ var ThemePage = /*#__PURE__*/function (_React$PureComponent) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
           src: "/admin/asset/icon/refresh-dark.svg"
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null, "Refresh")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_SelectGroup__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          className: "ThemePage-Themes",
+          className: "ThemesPage-Themes",
           onSelectionChange: _this4.handleSelectionChange,
           multi: true
         }, ctx.data.themes.map(function (t, i) {
@@ -67922,11 +68291,11 @@ var ThemePage = /*#__PURE__*/function (_React$PureComponent) {
     }
   }]);
 
-  return ThemePage;
+  return ThemesPage;
 }(react__WEBPACK_IMPORTED_MODULE_0__["PureComponent"]);
 
 
-ThemePage.contextType = _AppContext__WEBPACK_IMPORTED_MODULE_5__["AppContext"];
+ThemesPage.contextType = _AppContext__WEBPACK_IMPORTED_MODULE_5__["AppContext"];
 
 /***/ }),
 

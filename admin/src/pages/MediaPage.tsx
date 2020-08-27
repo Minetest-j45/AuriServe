@@ -91,7 +91,7 @@ export default class MediaPage extends React.PureComponent<{}, State> {
 				<div className="Page MediaPage">
 					<section className="Page-Card">
 						<CardHeader icon="/admin/asset/icon/document-dark.svg" title="Manage Media" 
-							subtitle={`Create or remove media assets on ${ctx.data.sitename}.`} />
+							subtitle={`Create or remove user-uploaded media.`} />
 
 						<div className="MediaPage-Toolbar">
 							<div>

@@ -173,12 +173,11 @@ export default class Database {
 
 	async getSiteData(): Promise<DB.SiteInfo> {
 		let info =  await this.db!.collection('siteinfo').findOne({});
-		const media = await (await this.db!.collection('media').find({})).toArray();
-		const themes = await (await this.db!.collection('themes').find({})).toArray();
 		
-		info.media = media;
-		info.themes = themes;
-
+		info.media = await (await this.db!.collection('media').find({})).toArray();
+		info.themes = await (await this.db!.collection('themes').find({})).toArray();
+		info.plugins = await (await this.db!.collection('plugins').find({})).toArray();
+		
 		return info;
 	}
 

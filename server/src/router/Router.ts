@@ -1,9 +1,8 @@
-import Express from "express";
-import Database from "../Database";
+import Server from "../Server";
 
 export default class Router {
 
-	constructor(protected db: Database, protected app: Express.Application) {}
+	constructor(protected server: Server) {}
 
 	protected routeError(res: any, code: number, e: any) {
 		if (typeof e == "string") {

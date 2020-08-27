@@ -8,7 +8,8 @@ import LoginForm from "./LoginForm"
 import AppHeader from "./AppHeader"
 import MainPage from "./pages/MainPage"
 import MediaPage from "./pages/MediaPage"
-import ThemePage from "./pages/ThemePage"
+import ThemesPage from "./pages/ThemesPage"
+import PluginsPage from "./pages/PluginsPage"
 
 import { SiteInfo } from "../../common/DBStructs";
 import { AppContext, AppContextData } from "./AppContext";
@@ -64,8 +65,8 @@ export default class App extends React.Component<{}, State> {
 									<Redirect exact from="/" to="/home"/>
 									<Route exact path="/home" component={MainPage}/>
 									<Route exact path="/media" component={MediaPage}/>
-									{/*<Route exact path="/pages"/>*/}
-									<Route exact path="/themes" component={ThemePage}/>
+									<Route exact path="/themes" component={ThemesPage}/>
+									<Route exact path="/plugins" component={PluginsPage}/>
 								</Switch>
 							</Router>
 							

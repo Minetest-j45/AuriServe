@@ -31,6 +31,7 @@ export interface SiteInfo {
 	// Sitedata grouped info.
 	media?: Media[]; 
 	themes?: Theme[];
+	plugins?: Plugin[];
 }
 
 export interface Media {
@@ -61,4 +62,15 @@ export interface Theme {
 	hasCover: boolean;
 
 	pre: string;
+}
+
+export interface Plugin {
+	_id?: ObjectID;
+
+	identifier: string;
+
+	name: string;
+	description: string;
+	author: string;
+	hasCover: boolean;
 }

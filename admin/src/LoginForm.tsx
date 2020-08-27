@@ -100,7 +100,7 @@ export default class LoginForm extends React.PureComponent<{}, State> {
 						<img className="success" src="/admin/asset/icon/serve-light.svg"/>
 					</div>
 					<div className="LoginForm-FormContents">
-						<input type="text" name="user" placeholder="Username" autoFocus required minLength={3} maxLength={32} 
+						<input type="text" name="user" placeholder="Username" autoFocus required minLength={3} maxLength={32}
 							value={this.state.username} onChange={this.handleUsernameChange} disabled={loading}/>
 						<input type="password" name="pass" placeholder="Password" required minLength={8} 
 							value={this.state.password} onChange={this.handlePasswordChange} disabled={loading}/>

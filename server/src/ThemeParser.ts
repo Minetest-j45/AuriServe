@@ -19,9 +19,14 @@ export default class ThemeParser {
 	constructor(private db: Database) {};
 
 	async init() {
-		await this.refresh();
+		// Synchronize active themes representation with server.
 		this.activeThemes = await this.db.getActiveThemes();
-		await this.parse();
+		
+		// Reload themes list and parse themes.
+		await this.refresh();
+		
+		// Force clearing of invalid themes.
+		await this.toggle([]);
 	}
 
 	getActiveThemes(): string[] {
@@ -103,6 +108,8 @@ export default class ThemeParser {
 		if (failedThemes) log += ", failed to load " + failedThemes + " theme" + (failedThemes != 1 ? "s" : "");
 		else log += ".";
 		logger.info(log);
+
+		await this.parse();
 	}
 
 	async toggle(themes: string[]) {

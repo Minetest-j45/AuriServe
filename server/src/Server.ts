@@ -1,33 +1,37 @@
-import path from "path"
-import HTTP from "http"
-import HTTPS from "https"
-import cookieParser from "cookie-parser"
-import fileUpload from "express-fileupload"
-import { promises as fs } from "fs"
+import path from "path";
+import HTTP from "http";
+import HTTPS from "https";
+import { promises as fs } from "fs";
+import cookieParser from "cookie-parser";
+import fileUpload from "express-fileupload";
 
-import log4js from "log4js"
-import Express from "express"
-import bodyParser from "body-parser"
+import log4js from "log4js";
+import Express from "express";
+import bodyParser from "body-parser";
 
-import Admin from "./Admin"
-import Database from "./Database"
+import Admin from "./Admin";
+import Pages from "./Pages";
+
+import Database from "./Database";
 import ThemeParser from "./ThemeParser";
-import SuperUserPrompt from "./SuperUserPrompt"
+import PluginParser from "./PluginParser";
 
-import { Config } from "./interface/Config"
-import resolvePath from "../../common/util/ResolvePath"
+import { Config } from "./interface/Config";
+import resolvePath from "../../common/util/ResolvePath";
 
 const logger = log4js.getLogger()
 
 export default class Server {
+	admin: Admin;
+	pages: Pages;
+	
+	app = Express();
+	db = new Database(this.dataPath);
 
-	private admin: Admin;
-	private app = Express();
-	private db = new Database(this.dataPath);
-	private themes = new ThemeParser(this.db);
+	themes = new ThemeParser(this.db);
+	plugins = new PluginParser(this);
 
-	constructor(private conf: Config, private dataPath: string) {
-
+	constructor(public readonly conf: Config, public readonly dataPath: string) {
 		this.app.use(cookieParser());
 		this.app.use(bodyParser.json());
 		this.app.use(fileUpload({ useTempFiles: true, tempFileDir: '/tmp/' }));
@@ -35,26 +39,17 @@ export default class Server {
 		this.app.set('view engine', 'pug');
 		this.app.set('views', path.join(path.dirname(__filename), "views"));
 
-		this.admin = new Admin(this.db, this.app, this.themes);
+		this.admin = new Admin(this);
+		this.pages = new Pages(this);
 		
-		this.init().then(async () => {
-			// Create a superuser account if the super parameter is set.
-			if (this.conf.super) new SuperUserPrompt(this.db);
-			
-			// Initialize everything
-			await this.admin.init();
+		this.init().then(async () => {		
+			this.debugRoutes();
+
 			await this.themes.init();
+			await this.plugins.init();
 
-			// Debug Network Requests
-			this.app.get('*', (req, res, next) => {
-				logger.debug("GET %s", req.params[0]);
-				this.resolvePage(req, res, next);
-			});
-
-			this.app.post('*', (req, _, next) => {
-				logger.debug("POST %s", req.params[0]);
-				next();
-			});
+			await this.admin.init();
+			await this.pages.init();
 
 			// Set up static route
 			this.app.use('/media', Express.static(path.join(dataPath, "media")));
@@ -110,15 +105,16 @@ export default class Server {
 		logger.info("Initialized AuriServe.");
 	}
 
-	private async resolvePage(req: Express.Request, res: Express.Response, next: Express.NextFunction) {
-		const root = path.join(path.dirname(__dirname), "views");
-		const props = { basedir: root, themes: this.themes.getActiveThemes() };
-		
-		let page = path.join(this.dataPath, "pages", req.params[0]);
+	private debugRoutes() {
+		this.app.get('*', (req, _, next) => {
+			logger.debug("GET %s", req.params[0]);
+			next();
+		});
 
-		try {
-			res.render(page, props);
-		} catch (e) { next(); }
+		this.app.post('*', (req, _, next) => {
+			logger.debug("POST %s", req.params[0]);
+			next();
+		});
 	}
 
 	private forwardHttps(req: Express.Request, res: Express.Response) {

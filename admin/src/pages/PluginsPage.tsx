@@ -1,27 +1,27 @@
 import * as React from 'react';
 
-import './ThemePage.scss';
+import './PluginsPage.scss';
 
-import ThemeItem from "../ThemeItem";
+import PluginItem from "../PluginItem";
 import CardHeader from "../CardHeader";
 import SelectGroup from "../SelectGroup";
 
-import { Theme } from "../../../common/DBStructs";
+import { Plugin } from "../../../common/DBStructs";
 import { AppContext } from "../AppContext";
 
 interface State {
 	selected: number[];
 }
 
-export default class ThemePage extends React.PureComponent<{}, State> {
+export default class PluginsPage extends React.PureComponent<{}, State> {
 	private selected: number[] = [];
 
 	constructor(props: {}) {
 		super(props);
 		this.state = { selected: [] };
 
-		this.handleToggleThemes = this.handleToggleThemes.bind(this);
-		this.handleRefreshThemes = this.handleRefreshThemes.bind(this);
+		this.handleTogglePlugins = this.handleTogglePlugins.bind(this);
+		this.handleRefreshPlugins = this.handleRefreshPlugins.bind(this);
 		this.handleSelectionChange = this.handleSelectionChange.bind(this);
 	}
 
@@ -30,19 +30,19 @@ export default class ThemePage extends React.PureComponent<{}, State> {
 		this.setState({ selected: selected });
 	}
 
-	private handleToggleThemes(): void {
-		fetch("/admin/theme/toggle", {
+	private handleTogglePlugins(): void {
+		fetch("/admin/plugins/toggle", {
 			method: 'POST',
 			cache: 'no-cache',
     	headers: {'Content-Type': 'application/json'},
-			body: JSON.stringify(this.selected.map(ind => this.context.data.themes[ind].identifier)),
+			body: JSON.stringify(this.selected.map(ind => this.context.data.plugins[ind].identifier)),
 		}).then(r => r.json()).then(res => {
 			this.context.handleSiteData(res);
 		});
 	}
 
-	private handleRefreshThemes(): void {
-		fetch("/admin/theme/refresh", {
+	private handleRefreshPlugins(): void {
+		fetch("/admin/plugins/refresh", {
 			cache: 'no-cache',
 			method: 'POST',
 		}).then(r => r.json()).then(res => {
@@ -53,35 +53,35 @@ export default class ThemePage extends React.PureComponent<{}, State> {
 	render() {
 		return (
 			<AppContext.Consumer>{ctx =>
-				<div className="Page ThemePage">
+				<div className="Page PluginsPage">
 					<section className="Page-Card">
-						<CardHeader icon="/admin/asset/icon/theme-dark.svg" title="Manage Themes" 
-							subtitle={`Enable and disable themes for ${ctx.data.sitename}.`} />
+						<CardHeader icon="/admin/asset/icon/element-dark.svg" title="Manage Plugins" 
+							subtitle={`Install, enable, or disable plugins.`} />
 
-							<div className="ThemePage-Toolbar">
+							<div className="PluginsPage-Toolbar">
 								<div>
-									<button className="MediaPage-Toolbar-Button" onClick={this.handleToggleThemes}>
-										<img src="/admin/asset/icon/add-dark.svg"/><span>Upload Theme</span>
+									<button className="MediaPage-Toolbar-Button" onClick={this.handleTogglePlugins}>
+										<img src="/admin/asset/icon/add-dark.svg"/><span>Install Plugin</span>
 									</button>
 
-									{this.state.selected.length > 0 && <button onClick={this.handleToggleThemes}>
+									{this.state.selected.length > 0 && <button onClick={this.handleTogglePlugins}>
 										<img src="/admin/asset/icon/refresh-dark.svg"/>
-										<span>{"Toggle Theme" + (this.state.selected.length != 1 ? " (" + this.state.selected.length + ")" : "")}</span>
+										<span>{"Toggle Plugin" + (this.state.selected.length != 1 ? " (" + this.state.selected.length + ")" : "")}</span>
 									</button>}
 								</div>
 								<div>
-									<button className="MediaPage-Toolbar-Button" onClick={this.handleToggleThemes}>
+									<button className="MediaPage-Toolbar-Button" onClick={this.handleTogglePlugins}>
 										<img src="/admin/asset/icon/sort-dark.svg"/><span>Sort by Size</span>
 									</button>
 
-									<button onClick={this.handleRefreshThemes}>
+									<button onClick={this.handleRefreshPlugins}>
 										<img src="/admin/asset/icon/refresh-dark.svg"/><span>Refresh</span>
 									</button>
 								</div>
 							</div>
 
 							<SelectGroup className="ThemePage-Themes" onSelectionChange={this.handleSelectionChange} multi={true}>
-								{ctx.data.themes!.map((t: Theme, i: number) => <ThemeItem item={t} ind={i} onClick={this.handleToggleThemes}
+								{ctx.data.plugins!.map((t: Plugin, i: number) => <PluginItem item={t} ind={i} onClick={this.handleTogglePlugins}
 									active={ctx.data.activeThemes.indexOf(t.identifier) != -1} key={t.identifier}/>)}
 							</SelectGroup>
 					</section>
@@ -91,4 +91,4 @@ export default class ThemePage extends React.PureComponent<{}, State> {
 	}
 }
 
-ThemePage.contextType = AppContext;
+PluginsPage.contextType = AppContext;

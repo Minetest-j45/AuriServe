@@ -1,7 +1,7 @@
 @import "partial/Vars";
 @import "partial/Ext";
 
-.ThemeItem {
+.PluginItem {
 	@extend %material_button;
 
 	background-color: #fff;
@@ -31,7 +31,7 @@
 		}
 	}
 
-	.ThemeItem-Cover {
+	.PluginItem-Cover {
 		height: 0;
 		width: 100%;
 		position: relative;
@@ -50,19 +50,19 @@
 		}
 	}
 
-	.ThemeItem-Content {
-		p.ThemeItem-Author {
+	.PluginItem-Content {
+		p.PluginItem-Author {
 			margin: 0;
 			margin-top: 4px;
 		}
 
-		h2.ThemeItem-Title {
+		h2.PluginItem-Title {
 			font-size: 24px;
 			margin: 0;
 			margin-top: 4px;
 		}
 
-		p.ThemeItem-Description {
+		p.PluginItem-Description {
 			margin: 0;
 			margin-top: 12px;
 			font-weight: 400;
@@ -83,7 +83,7 @@
 		}
 	}
 
-	.ThemeItem-Tag {
+	.PluginItem-Tag {
 		position: absolute;
 		display: inline-block;
 		bottom: 8px;

@@ -1,15 +1,15 @@
-import Express from "express";
-
-import Database from "./Database";
-import ThemeParser from "./ThemeParser";
+import Server from "./Server";
 import AdminRouter from "./router/AdminRouter";
+import SuperUserPrompt from "./SuperUserPrompt";
 
 export default class Admin {
-	private adminRouter = new AdminRouter(this.db, this.app, this.themes);
+	private router = new AdminRouter(this.server);
 
-	constructor(private db: Database, private app: Express.Application, private themes: ThemeParser) {}
+	constructor(private server: Server) {}
 
 	async init() {
-		this.adminRouter.init();
+		if (this.server.conf.super) new SuperUserPrompt(this.server.db);
+
+		this.router.init();
 	}
 }
