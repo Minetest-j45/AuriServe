@@ -54,6 +54,7 @@ export default class Server {
 			// Set up static route
 			this.app.use('/media', Express.static(path.join(dataPath, "media")));
 			this.app.use('/theme', Express.static(path.join(dataPath, "themes", "public")));
+			this.app.get('/plugin/build.js', (_, res) => res.sendFile(path.join(dataPath, "plugins", "public", "main.js")));
 		});
 	}
 

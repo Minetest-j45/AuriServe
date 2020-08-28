@@ -5,7 +5,7 @@ import './PluginItem.scss';
 import Selectable from "./Selectable";
 import { ClickHandlerCallbacks } from "./ClickHandler";
 
-import { Plugin } from "../../common/DBStructs";
+import { Plugin } from "../../common/interface/DBStructs";
 
 interface Props {
 	item: Plugin;

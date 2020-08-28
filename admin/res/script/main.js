@@ -68077,7 +68077,7 @@ var PluginsPage = /*#__PURE__*/function (_React$PureComponent) {
         }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("img", {
           src: "/admin/asset/icon/refresh-dark.svg"
         }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("span", null, "Refresh")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_SelectGroup__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          className: "ThemePage-Themes",
+          className: "PluginsPage-Plugins",
           onSelectionChange: _this4.handleSelectionChange,
           multi: true
         }, ctx.data.plugins.map(function (t, i) {
@@ -68085,7 +68085,7 @@ var PluginsPage = /*#__PURE__*/function (_React$PureComponent) {
             item: t,
             ind: i,
             onClick: _this4.handleTogglePlugins,
-            active: ctx.data.activeThemes.indexOf(t.identifier) != -1,
+            active: ctx.data.enabledPlugins.indexOf(t.identifier) != -1,
             key: t.identifier
           });
         }))));
@@ -68283,7 +68283,7 @@ var ThemesPage = /*#__PURE__*/function (_React$PureComponent) {
             item: t,
             ind: i,
             onClick: _this4.handleToggleThemes,
-            active: ctx.data.activeThemes.indexOf(t.identifier) != -1,
+            active: ctx.data.enabledThemes.indexOf(t.identifier) != -1,
             key: t.identifier
           });
         }))));

@@ -5,8 +5,8 @@ import './MediaItem.scss';
 import Selectable from "./Selectable";
 import { ClickHandlerCallbacks } from "./ClickHandler";
 
-import { Media } from "../../common/DBStructs";
 import * as Format from "../../common/util/Format";
+import { Media } from "../../common/interface/DBStructs";
 
 interface Props {
 	item: Media;

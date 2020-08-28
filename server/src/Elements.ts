@@ -1,20 +1,28 @@
 import * as React from "react";
 
-export class Element extends React.Component {}
+export interface ElementProps {
+	[key: string]: any
+}
+
+export interface Element {
+	element: typeof React.Component,
+	props: ElementProps,
+	children: boolean
+}
 
 export default class Elements {
-	private lists: Set<Map<string, typeof Element>> = new Set();
+	private lists: Set<Map<string, Element>> = new Set();
 
-	addList(list: Map<string, typeof Element>): void {
+	addList(list: Map<string, Element>): void {
 		this.lists.add(list);
 	}
 
-	removeList(list: Map<string, typeof Element>): void {
+	removeList(list: Map<string, Element>): void {
 		this.lists.delete(list);
 	}
 
-	getAllElements(): Map<string, typeof Element> {
-		let map: Map<string, typeof Element> = new Map();
+	getAllElements(): Map<string, Element> {
+		let map: Map<string, Element> = new Map();
 		for (let m of this.lists) {
 			for (let [k, v] of m) map.set(k, v);
 		}

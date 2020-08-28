@@ -26,12 +26,8 @@ export interface SiteInfo {
 	mediaMax: number;
 	mediaUsed: number;
 
-	activeThemes: string[];
-
-	// Sitedata grouped info.
-	media?: Media[]; 
-	themes?: Theme[];
-	plugins?: Plugin[];
+	enabledThemes: string[];
+	enabledPlugins: string[];
 }
 
 export interface Media {

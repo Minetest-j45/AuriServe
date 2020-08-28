@@ -11,7 +11,7 @@ import MediaPage from "./pages/MediaPage"
 import ThemesPage from "./pages/ThemesPage"
 import PluginsPage from "./pages/PluginsPage"
 
-import { SiteInfo } from "../../common/DBStructs";
+import SiteData from "../../common/interface/SiteData";
 import { AppContext, AppContextData } from "./AppContext";
 
 enum AppState {
@@ -47,7 +47,7 @@ export default class App extends React.Component<{}, State> {
 		});
 	}
 
-	private handleSiteData(data: SiteInfo) {
+	private handleSiteData(data: SiteData) {
 		console.log(data);
 		this.setState({ contextData: { handleSiteData: this.handleSiteData, data: data }, state: AppState.ADMIN });
 	}

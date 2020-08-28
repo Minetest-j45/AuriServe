@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { SiteInfo } from "../../common/DBStructs";
+import SiteData from "../../common/interface/SiteData";
 
 export interface AppContextData {
-	handleSiteData(data: SiteInfo): void;
-	data: SiteInfo;
+	handleSiteData(data: SiteData): void;
+	data: SiteData;
 }
 
 export const AppContext = React.createContext<AppContextData>({

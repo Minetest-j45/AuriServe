@@ -4,8 +4,8 @@ import rimraf from "rimraf";
 import sass from "node-sass";
 import { promises as fs, constants as fsc } from "fs";
 
-import { Theme as DBTheme } from "../../common/DBStructs";
 import sanitize from "../../common/util/Sanitize";
+import { Theme as DBTheme } from "../../common/interface/DBStructs";
 
 import Database from "./Database";
 
@@ -14,13 +14,13 @@ const logger = log4js.getLogger();
 export type Theme = DBTheme;
 
 export default class ThemeParser {
-	activeThemes: string[] = [];
+	private enabledThemes: string[] = [];
 
 	constructor(private db: Database) {};
 
 	async init() {
 		// Synchronize active themes representation with server.
-		this.activeThemes = await this.db.getActiveThemes();
+		this.enabledThemes = await this.db.getEnabledThemes();
 		
 		// Reload themes list and parse themes.
 		await this.refresh();
@@ -30,7 +30,7 @@ export default class ThemeParser {
 	}
 
 	getActiveThemes(): string[] {
-		return this.activeThemes;
+		return this.enabledThemes;
 	}
 
 	async parse() {
@@ -41,8 +41,8 @@ export default class ThemeParser {
 		await fs.mkdir(outPath);
 
 		// Parse all active themes and add them to themes/public.
-		const activeThemes = (await this.db.getSiteData()).themes!.filter(t => this.activeThemes.indexOf(t.identifier) != -1);
-		await Promise.all(activeThemes.map(async (t) => {
+		const enabledThemes = (await this.db.getSiteData()).themes!.filter(t => this.enabledThemes.indexOf(t.identifier) != -1);
+		await Promise.all(enabledThemes.map(async (t) => {
 			const themePath = path.join(this.db.dataPath, "themes", t.identifier);
 
 			return new Promise((resolve) => {
@@ -56,7 +56,7 @@ export default class ThemeParser {
 			});
 		}));
 
-		logger.info("Parsed %s theme%s.", activeThemes.length, activeThemes.length != 1 ? "s" : "");
+		logger.info("Parsed %s theme%s.", enabledThemes.length, enabledThemes.length != 1 ? "s" : "");
 	}
 	
 	async refresh() {
@@ -114,16 +114,16 @@ export default class ThemeParser {
 
 	async toggle(themes: string[]) {
 		// Prune invalid active themes.
-		const existing = (await this.db.getSiteData()).themes!.map(t => t.identifier);
-		this.activeThemes = this.activeThemes.filter(t => existing.indexOf(t) != -1);
+		const existing = (await this.db.getThemes()).map(t => t.identifier);
+		this.enabledThemes = this.enabledThemes.filter(t => existing.indexOf(t) != -1);
 
 		// Toggle themes.
 		for (let theme of themes) {
-			if (this.activeThemes.indexOf(theme) != -1) this.activeThemes.splice(this.activeThemes.indexOf(theme), 1);
-			else if (existing.indexOf(theme) != -1) this.activeThemes.push(theme);
+			if (this.enabledThemes.indexOf(theme) != -1) this.enabledThemes.splice(this.enabledThemes.indexOf(theme), 1);
+			else if (existing.indexOf(theme) != -1) this.enabledThemes.push(theme);
 		}
 
-		await this.db.setActiveThemes(this.activeThemes);
+		await this.db.setEnabledThemes(this.enabledThemes);
 		await this.parse();
 	}
 }

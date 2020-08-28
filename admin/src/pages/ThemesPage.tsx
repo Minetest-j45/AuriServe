@@ -6,7 +6,7 @@ import ThemeItem from "../ThemeItem";
 import CardHeader from "../CardHeader";
 import SelectGroup from "../SelectGroup";
 
-import { Theme } from "../../../common/DBStructs";
+import { Theme } from "../../../common/interface/DBStructs";
 import { AppContext } from "../AppContext";
 
 interface State {
@@ -81,8 +81,8 @@ export default class ThemesPage extends React.PureComponent<{}, State> {
 							</div>
 
 							<SelectGroup className="ThemesPage-Themes" onSelectionChange={this.handleSelectionChange} multi={true}>
-								{ctx.data.themes!.map((t: Theme, i: number) => <ThemeItem item={t} ind={i} onClick={this.handleToggleThemes}
-									active={ctx.data.activeThemes.indexOf(t.identifier) != -1} key={t.identifier}/>)}
+								{ctx.data.themes.map((t: Theme, i: number) => <ThemeItem item={t} ind={i} onClick={this.handleToggleThemes}
+									active={ctx.data.enabledThemes.indexOf(t.identifier) != -1} key={t.identifier}/>)}
 							</SelectGroup>
 					</section>
 				</div>

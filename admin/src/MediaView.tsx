@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import './MediaView.scss';
 
-import { Media } from "../../common/DBStructs";
+import { Media } from "../../common/interface/DBStructs";
 
 interface Props {
 	item: Media;

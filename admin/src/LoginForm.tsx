@@ -4,7 +4,7 @@ import * as React from 'react';
 import './LoginForm.scss';
 
 import { AppContext } from "./AppContext";
-import { SiteInfo } from "../../common/DBStructs";
+import { SiteInfo } from "../../common/interface/DBStructs";
 
 enum LoginState {
 	UNAUTH,

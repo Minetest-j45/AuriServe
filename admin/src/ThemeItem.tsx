@@ -5,7 +5,7 @@ import './ThemeItem.scss';
 import Selectable from "./Selectable";
 import { ClickHandlerCallbacks } from "./ClickHandler";
 
-import { Theme } from "../../common/DBStructs";
+import { Theme } from "../../common/interface/DBStructs";
 
 interface Props {
 	item: Theme;

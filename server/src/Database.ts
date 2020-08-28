@@ -6,7 +6,8 @@ import { MongoClient, Db } from 'mongodb';
 import { UploadedFile } from "express-fileupload";
 import { promises as fs, constants as fsc } from 'fs';
 
-import * as DB from '../../common/DBStructs';
+import * as DB from '../../common/interface/DBStructs';
+import SiteData from '../../common/interface/SiteData';
 
 const logger = log4js.getLogger();
 
@@ -45,7 +46,8 @@ export default class Database {
 					mediaMax: 1*1024*1024*1024,
 					mediaUsed: 0,
 
-					activeThemes: [],
+					enabledThemes: [],
+					enabledPlugins: []
 				}
 
 				await this.db.collection('siteinfo').insertOne(siteInfo);
@@ -61,8 +63,57 @@ export default class Database {
 
 
 	/**
+	* Sets the contents of the plugins collection to the
+	* Passed in array of theme objects.
+	*/
+
+	async setPlugins(plugins: DB.Plugin[]) {
+		const collection = this.db!.collection('plugins');
+		await collection.deleteMany({});
+		await collection.insertMany(plugins);
+	}
+
+
+	/**
+	* Returns the active plugins.
+	*
+	* @param {string[]} identifiers - Themes to be activated.
+	*/
+
+	async getActivePlugins(): Promise<string[]> {
+		let info = this.db!.collection("siteinfo");
+		let themes = await info.findOne({}, { projection: { enabledPlugins: 1 }});
+		return themes.enabledPlugins || [];
+	}
+
+
+	/**
+	* Sets the active plugins to the string provided.
+	*
+	* @param {string[]} identifiers - Themes to be activated.
+	*/
+
+	async setEnabledPlugins(plugins: string[]) {
+		let info = this.db!.collection("siteinfo");
+		await info.updateOne({}, { $set: { enabledPlugins: plugins }});
+	}
+
+
+	/**
+	* Returns an array of every currently loaded theme
+	*/
+
+	async getThemes() {
+		const collection = this.db!.collection('themes');
+		return await (await collection.find({})).toArray();
+	}
+
+
+	/**
 	* Sets the contents of the themes collection to the
 	* Passed in array of theme objects.
+	*
+	* @param {Db.Theme[]} themes - The themes to populate the array with.
 	*/
 
 	async setThemes(themes: DB.Theme[]) {
@@ -73,27 +124,27 @@ export default class Database {
 
 
 	/**
-	* Returns the active theme array.
+	* Returns the enabled themes.
 	*
 	* @param {string[]} identifiers - Themes to be activated.
 	*/
 
-	async getActiveThemes(): Promise<string[]> {
+	async getEnabledThemes(): Promise<string[]> {
 		let info = this.db!.collection("siteinfo");
-		let themes = await info.findOne({}, { projection: { activeThemes: 1 }});
-		return themes.activeThemes || [];
+		let themes = await info.findOne({}, { projection: { enabledThemes: 1 }});
+		return themes.enabledThemes || [];
 	}
 
 
 	/**
-	* Sets the active theme array to the string provided.
+	* Sets the enabled themes to the string provided.
 	*
 	* @param {string[]} identifiers - Themes to be activated.
 	*/
 
-	async setActiveThemes(themes: string[]) {
+	async setEnabledThemes(themes: string[]) {
 		let info = this.db!.collection("siteinfo");
-		await info.updateOne({}, { $set: { activeThemes: themes }});
+		await info.updateOne({}, { $set: { enabledThemes: themes }});
 	}
 
 
@@ -171,7 +222,7 @@ export default class Database {
 	* Used for the client admin site to show information.
 	*/
 
-	async getSiteData(): Promise<DB.SiteInfo> {
+	async getSiteData(): Promise<SiteData> {
 		let info =  await this.db!.collection('siteinfo').findOne({});
 		
 		info.media = await (await this.db!.collection('media').find({})).toArray();

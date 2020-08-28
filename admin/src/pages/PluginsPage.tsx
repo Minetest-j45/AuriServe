@@ -6,8 +6,8 @@ import PluginItem from "../PluginItem";
 import CardHeader from "../CardHeader";
 import SelectGroup from "../SelectGroup";
 
-import { Plugin } from "../../../common/DBStructs";
 import { AppContext } from "../AppContext";
+import { Plugin } from "../../../common/interface/DBStructs";
 
 interface State {
 	selected: number[];
@@ -80,9 +80,9 @@ export default class PluginsPage extends React.PureComponent<{}, State> {
 								</div>
 							</div>
 
-							<SelectGroup className="ThemePage-Themes" onSelectionChange={this.handleSelectionChange} multi={true}>
-								{ctx.data.plugins!.map((t: Plugin, i: number) => <PluginItem item={t} ind={i} onClick={this.handleTogglePlugins}
-									active={ctx.data.activeThemes.indexOf(t.identifier) != -1} key={t.identifier}/>)}
+							<SelectGroup className="PluginsPage-Plugins" onSelectionChange={this.handleSelectionChange} multi={true}>
+								{ctx.data.plugins.map((t: Plugin, i: number) => <PluginItem item={t} ind={i} onClick={this.handleTogglePlugins}
+									active={ctx.data.enabledPlugins.indexOf(t.identifier) != -1} key={t.identifier}/>)}
 							</SelectGroup>
 					</section>
 				</div>
