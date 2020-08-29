@@ -1,6 +1,7 @@
 import path from "path";
 import log4js from "log4js";
 import webpack from "webpack";
+import decache from "decache";
 import { promises as fs, constants as fsc } from "fs";
 
 import Server from "./Server";
@@ -103,8 +104,9 @@ export default class PluginParser {
 
 			webpack({
 				mode: "production",
+				target: "web",
 				entry: {
-					main: [...entries, "react"]
+					main: [...entries, "react", "react-dom"]
 				},
 				output: {
 					path: path.join(this.server.dataPath, "plugins", "public")
@@ -215,7 +217,9 @@ export default class PluginParser {
 
 				// Create Plugin object and add it to the plugins array.
 
-				const plugin = new Plugin(this.server, conf, require(path.join(p, conf.sources.server)));
+				let requirePath = require.resolve(path.join(p, conf.sources.server));
+				decache(requirePath);
+				const plugin = new Plugin(this.server, conf, require(requirePath));
 				this.plugins.push(plugin);
 			}
 			catch (e) {

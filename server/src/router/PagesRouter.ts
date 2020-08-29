@@ -1,11 +1,12 @@
 import path from "path"
 import Express from "express";
-import * as React from "react";
-import { renderToString } from 'react-dom/server';
+import * as Preact from "preact";
+import render from "preact-render-to-string";
 
 import Router from "./Router";
 import Server from "../Server";
 import Elements from "../Elements";
+
 
 export default class PagesRouter extends Router {
 	constructor(server: Server, private elements: Elements) {
@@ -21,21 +22,21 @@ export default class PagesRouter extends Router {
 		});
 	}
 
-	private serverElement(identifier: string, props?: any, ...children: React.ReactNode[]): React.ReactNode {
+	private serverElement(identifier: string, props?: any, ...children: Preact.VNode[]): React.ReactNode {
 		const invalidStyle = { backgroundColor: "#f00", color: "#fff", fontWeight: 800 };
 
 		const elem = this.elements.getAllElements().get(identifier);
 
-		if (!elem) return React.createElement("span", { style: invalidStyle }, "Element " + identifier + " is not defined.");
-		if (!elem.children && children.length) return React.createElement("span", { style: invalidStyle }, "Element " + identifier + " may not have children.");
+		if (!elem) return Preact.h("span", { style: invalidStyle }, "Element " + identifier + " is not defined.");
+		if (!elem.children && children.length) return Preact.h("span", { style: invalidStyle }, "Element " + identifier + " may not have children.");
 
 		if (typeof props == "string") console.log("Load DB specification pls")
 
-		return React.createElement(elem.element, props ?? {}, ...(children ?? []));
+		return Preact.h(elem.element, props ?? {}, ...(children ?? []));
 	}
 
-	private render(node: React.ReactNode): string {
-		return renderToString(node as React.ReactElement);
+	private render(node: Preact.VNode): string {
+		return render(node);
 	}
 
 	private async resolvePage(req: Express.Request, res: Express.Response, next: Express.NextFunction) {
