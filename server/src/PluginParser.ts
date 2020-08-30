@@ -1,6 +1,6 @@
 import path from "path";
 import log4js from "log4js";
-import webpack from "webpack";
+// import webpack from "webpack";
 import decache from "decache";
 import { promises as fs, constants as fsc } from "fs";
 
@@ -90,33 +90,33 @@ export default class PluginParser {
 	*/
 
 	private async compile() {
-		await new Promise((resolve) => {
-			let entries: string[] = [];
+		// await new Promise((resolve) => {
+		// 	let entries: string[] = [];
 
-			for (let identifier of this.enabledPlugins) {
-				const plugin = this.plugins.filter(p => p.conf.identifier == identifier && p.conf.sources.site)[0];
-				if (plugin) entries.push(path.join(this.server.dataPath, "plugins", identifier, plugin.conf.sources.site!));
-			}
+		// 	for (let identifier of this.enabledPlugins) {
+		// 		const plugin = this.plugins.filter(p => p.conf.identifier == identifier && p.conf.sources.site)[0];
+		// 		if (plugin) entries.push(path.join(this.server.dataPath, "plugins", identifier, plugin.conf.sources.site!));
+		// 	}
 
-			if (!entries.length) { resolve(); return }
+		// 	if (!entries.length) { resolve(); return }
 
-			logger.info("Compiling %s plugins.", entries.length);
+		// 	logger.info("Compiling %s plugins.", entries.length);
 
-			webpack({
-				mode: "production",
-				target: "web",
-				entry: {
-					main: [...entries, "react", "react-dom"]
-				},
-				output: {
-					path: path.join(this.server.dataPath, "plugins", "public")
-				}
-			}, (err) => {
-				if (err) logger.error(err);
-				logger.info("Finished compiling plugins.");
-				resolve();
-			});
-		});
+		// 	webpack({
+		// 		mode: "production",
+		// 		target: "web",
+		// 		entry: {
+		// 			main: [...entries, "preact"]
+		// 		},
+		// 		output: {
+		// 			path: path.join(this.server.dataPath, "plugins", "public")
+		// 		}
+		// 	}, (err) => {
+		// 		if (err) logger.error(err);
+		// 		logger.info("Finished compiling plugins.");
+		// 		resolve();
+		// 	});
+		// });
 	}
 
 
@@ -174,12 +174,12 @@ export default class PluginParser {
 				const stat = await fs.stat(p);
 				if (!stat.isDirectory()) throw "Plugin is not a directory.";
 				
-				try { await fs.access(path.join(p, "conf.json")) }
-				catch (e) { throw "conf.json not found in plugin root directory."; }
+				try { await fs.access(path.join(p, "plugin.json")) }
+				catch (e) { throw "plugin.json not found in plugin root directory."; }
 
 				// Parse and validate config.
 
-				const confStr = (await fs.readFile(path.join(p, "conf.json"))).toString();
+				const confStr = (await fs.readFile(path.join(p, "plugin.json"))).toString();
 				
 				let conf: PluginConfig;
 				try { conf = JSON.parse(confStr); }

@@ -5,7 +5,7 @@ import PagesRouter from "./router/PagesRouter";
 export default class Pages {
 	elements = new Elements();
 	
-	private router = new PagesRouter(this.server, this.elements);
+	private router = new PagesRouter(this.server);
 
 	constructor(private server: Server) {}
 
