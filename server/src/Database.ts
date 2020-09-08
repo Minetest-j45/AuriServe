@@ -80,7 +80,7 @@ export default class Database {
 	* @param {string[]} identifiers - Themes to be activated.
 	*/
 
-	async getActivePlugins(): Promise<string[]> {
+	async getEnabledPlugins(): Promise<string[]> {
 		let info = this.db!.collection("siteinfo");
 		let themes = await info.findOne({}, { projection: { enabledPlugins: 1 }});
 		return themes.enabledPlugins || [];

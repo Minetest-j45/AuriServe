@@ -2,6 +2,7 @@ import path from "path";
 import HTTP from "http";
 import HTTPS from "https";
 import { promises as fs } from "fs";
+import compression from "compression";
 import cookieParser from "cookie-parser";
 import fileUpload from "express-fileupload";
 
@@ -32,6 +33,7 @@ export default class Server {
 	plugins = new PluginParser(this);
 
 	constructor(public readonly conf: Config, public readonly dataPath: string) {
+		this.app.use(compression());
 		this.app.use(cookieParser());
 		this.app.use(bodyParser.json());
 		this.app.use(fileUpload({ useTempFiles: true, tempFileDir: '/tmp/' }));
@@ -50,11 +52,6 @@ export default class Server {
 
 			await this.admin.init();
 			await this.pages.init();
-
-			// Set up static route
-			this.app.use('/media', Express.static(path.join(dataPath, "media")));
-			this.app.use('/theme', Express.static(path.join(dataPath, "themes", "public")));
-			this.app.get('/plugin/build.js', (_, res) => res.sendFile(path.join(dataPath, "plugins", "public", "main.js")));
 		});
 	}
 

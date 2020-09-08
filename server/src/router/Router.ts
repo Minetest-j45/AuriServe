@@ -1,6 +1,9 @@
+import Express from "express";
+
 import Server from "../Server";
 
 export default class Router {
+	router: Express.Router = Express.Router();
 
 	constructor(protected server: Server) {}
 

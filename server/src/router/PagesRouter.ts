@@ -16,9 +16,22 @@ export default class PagesRouter extends Router {
 	}
 
 	init() {
-		this.server.app.get('*', (req, res, next) => {
+		this.router.get('*', (req, res, next) => {
 			this.resolvePage(req, res, next);
 		});
+
+		this.router.use('/media', Express.static(path.join(this.server.dataPath, "media")));
+		this.router.use('/theme', Express.static(path.join(this.server.dataPath, "themes", "public")));
+		this.router.get('/plugin/:identifier.js', (req, res) => {
+			const plugins = this.server.plugins.getEnabledPlugins().filter(p => p.conf.identifier == req.params.identifier);
+			if (plugins.length != 1) { res.sendStatus(404); return; }
+			const plugin = plugins[0];
+
+			if (!plugin.conf.sources.client) { res.sendStatus(404); return; }
+			res.sendFile(path.join(this.server.dataPath, "plugins", plugin.conf.identifier, plugin.conf.sources.client));
+		});
+
+		this.server.app.use(this.router);
 	}
 
 	private async resolvePage(req: Express.Request, res: Express.Response, next: Express.NextFunction) {
@@ -26,8 +39,15 @@ export default class PagesRouter extends Router {
 		let page = path.join(this.server.dataPath, "pages", req.params[0]);
 
 		try {
-			await fs.access(page + ".pug");
-			res.send(await new PageAssembler(this.server.themes, this.server.pages.elements, root, page).assemble());
+			try {
+				await fs.access(page + ".pug");
+			}
+			catch (e) {
+				await fs.access(path.join(page, "index.pug"));
+				page = path.join(page, "index");
+			}
+
+			res.send(await new PageAssembler(this.server.themes, this.server.plugins, this.server.pages.elements, root, page).assemble());
 		}
 		catch (e) {
 			if (e.code != "ENOENT") logger.error("Encountered an error assembling file %s.\n %s", page, e);

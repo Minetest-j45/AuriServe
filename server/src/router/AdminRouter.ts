@@ -14,7 +14,7 @@ export default class AdminRouter extends Router {
 	}
 
 	init() {
-		this.server.app.post('/admin/auth', async (req, res) => {
+		this.router.post('/auth', async (req, res) => {
 			try {
 				const user = req.body.user;
 				const pass = req.body.pass;
@@ -29,7 +29,7 @@ export default class AdminRouter extends Router {
 			}
 		});
 
-		this.server.app.get('/admin/data', async (req, res) => {
+		this.router.get('/data', async (req, res) => {
 			try {
 				await this.server.db.authUser(req);
 				res.send(JSON.stringify(await this.server.db.getSiteData()));
@@ -39,7 +39,7 @@ export default class AdminRouter extends Router {
 			}
 		});
 
-		this.server.app.post('/admin/media/upload', async (req, res) => {
+		this.router.post('/media/upload', async (req, res) => {
 			try {
 				let user = await this.server.db.authUser(req);
 
@@ -61,7 +61,7 @@ export default class AdminRouter extends Router {
 			}
 		});
 
-		this.server.app.post('/admin/media/delete', async (req, res) => {
+		this.router.post('/media/delete', async (req, res) => {
 			try {
 				await this.server.db.authUser(req);
 				await this.server.db.deleteMedia(req.body);
@@ -72,7 +72,7 @@ export default class AdminRouter extends Router {
 			}
 		});
 
-		this.server.app.get('/admin/themes/cover/:identifier.jpg', async (req, res) => {
+		this.router.get('/themes/cover/:identifier.jpg', async (req, res) => {
 			try {
 				await this.server.db.authUser(req);
 				res.sendFile(path.join(this.server.db.dataPath, "themes", req.params.identifier, "cover.jpg"));
@@ -82,7 +82,7 @@ export default class AdminRouter extends Router {
 			}
 		});
 
-		this.server.app.post('/admin/themes/refresh', async (req, res) => {
+		this.router.post('/themes/refresh', async (req, res) => {
 			try {
 				await this.server.db.authUser(req);
 				await this.server.themes.refresh();
@@ -93,7 +93,7 @@ export default class AdminRouter extends Router {
 			}
 		});
 
-		this.server.app.post('/admin/themes/toggle', async (req, res) => {
+		this.router.post('/themes/toggle', async (req, res) => {
 			try {
 				await this.server.db.authUser(req);
 				await this.server.themes.toggle(req.body);
@@ -104,7 +104,7 @@ export default class AdminRouter extends Router {
 			}
 		});
 
-		this.server.app.get('/admin/plugins/cover/:identifier.jpg', async (req, res) => {
+		this.router.get('/plugins/cover/:identifier.jpg', async (req, res) => {
 			try {
 				await this.server.db.authUser(req);
 				res.sendFile(path.join(this.server.db.dataPath, "plugins", req.params.identifier, "cover.jpg"));
@@ -114,7 +114,7 @@ export default class AdminRouter extends Router {
 			}
 		});
 
-		this.server.app.post('/admin/plugins/refresh', async (req, res) => {
+		this.router.post('/plugins/refresh', async (req, res) => {
 			try {
 				await this.server.db.authUser(req);
 				await this.server.plugins.refresh();
@@ -125,7 +125,7 @@ export default class AdminRouter extends Router {
 			}
 		});
 
-		this.server.app.post('/admin/plugins/toggle', async (req, res) => {
+		this.router.post('/plugins/toggle', async (req, res) => {
 			try {
 				await this.server.db.authUser(req);
 				await this.server.plugins.toggle(req.body);
@@ -136,7 +136,9 @@ export default class AdminRouter extends Router {
 			}
 		});
 
-		this.server.app.use('/admin/asset', Express.static(path.join(path.dirname(__dirname), "../../admin/res")));
-		this.server.app.get('/admin(/*)?', async (_, res) => res.render(path.join(path.dirname(__dirname), "../views/admin")));
+		this.router.use('/asset', Express.static(path.join(path.dirname(__dirname), "../../admin/res")));
+		this.router.get('(/*)?', async (_, res) => res.render(path.join(path.dirname(__dirname), "../views/admin")));
+
+		this.server.app.use('/admin', this.router);
 	}
 }

@@ -14,6 +14,8 @@ const logger = log4js.getLogger();
 export type Theme = DBTheme;
 
 export default class ThemeParser {
+	private watchers: any = [];
+	private parsing: boolean = false;
 	private enabledThemes: string[] = [];
 
 	constructor(private db: Database) {};
@@ -29,11 +31,14 @@ export default class ThemeParser {
 		await this.toggle([]);
 	}
 
-	getActiveThemes(): string[] {
+	getEnabledThemes(): string[] {
 		return this.enabledThemes;
 	}
 
 	async parse() {
+		if (this.parsing) return;
+		this.parsing = true;
+
 		const outPath = path.join(this.db.dataPath, "themes", "public");
 
 		// Remove everything from themes/public.
@@ -57,6 +62,24 @@ export default class ThemeParser {
 		}));
 
 		logger.info("Parsed %s theme%s.", enabledThemes.length, enabledThemes.length != 1 ? "s" : "");
+
+		this.parsing = false;
+		this.watch();
+	}
+
+	private watch() {
+		let watched = 0;
+		const watch = require("recursive-watch") as any;
+
+		this.watchers.forEach((w: any) => w());
+		this.watchers = [];
+
+		this.enabledThemes.forEach(identifier => {
+			this.watchers.push(watch(path.join(this.db.dataPath, "themes", identifier), () => this.parse()));
+			watched ++;
+		});
+
+		logger.debug("Watching " + watched + " theme" + (watched != 1 ? "s" : "") + ".");
 	}
 	
 	async refresh() {

@@ -2,7 +2,7 @@ import path from "path";
 import log4js from "log4js";
 // import webpack from "webpack";
 import decache from "decache";
-import { promises as fs, constants as fsc } from "fs";
+import ff, { promises as fs, constants as fsc } from "fs";
 
 import Server from "./Server";
 import PluginBindings from "./PluginBindings";
@@ -21,7 +21,7 @@ interface PluginConfig {
 
 	sources: {
 		server: string
-		site?: string
+		client?: string
 	}
 }
 
@@ -40,13 +40,30 @@ class Plugin {
 }
 
 export default class PluginParser {
+	private watchers: ff.FSWatcher[] = [];
 	private enabledPlugins: string[] = [];
 	private plugins: Plugin[] = [];
 
 	constructor(private server: Server) {}
 
 	async init() {
+		// Synchronize active themes representation with server.
+		this.enabledPlugins = await this.server.db.getEnabledPlugins();
+		
+		// Reload themes list and parse themes.
 		await this.refresh();
+		
+		// Force clearing of invalid themes.
+		await this.toggle([]);
+	}
+
+
+	/**
+	* Returns an array of all of the active plugins.
+	*/
+
+	getEnabledPlugins(): Plugin[] {
+		return this.plugins.filter(p => this.enabledPlugins.includes(p.conf.identifier));
 	}
 
 
@@ -70,7 +87,7 @@ export default class PluginParser {
 				succeeded++;
 			}
 			catch (e) {
-				logger.error("Failed to attach plugin %s.\n %s", plugin.conf.identifier, e);
+				logger.error("Failed to attach plugin %s.\n %s", plugin?.conf?.identifier, e);
 				if (plugin) plugin.bindings = undefined;
 				failed++;
 			}
@@ -80,43 +97,7 @@ export default class PluginParser {
 		if (failed) log += ", failed to attach " + failed + " plugin" + (failed != 1 ? "s" : "");
 		logger.info(log + ".");
 
-		await this.compile();
-	}
-
-
-	/**
-	* Compiles all enabled plugins that have 
-	* site sources into one minified JS file. 
-	*/
-
-	private async compile() {
-		// await new Promise((resolve) => {
-		// 	let entries: string[] = [];
-
-		// 	for (let identifier of this.enabledPlugins) {
-		// 		const plugin = this.plugins.filter(p => p.conf.identifier == identifier && p.conf.sources.site)[0];
-		// 		if (plugin) entries.push(path.join(this.server.dataPath, "plugins", identifier, plugin.conf.sources.site!));
-		// 	}
-
-		// 	if (!entries.length) { resolve(); return }
-
-		// 	logger.info("Compiling %s plugins.", entries.length);
-
-		// 	webpack({
-		// 		mode: "production",
-		// 		target: "web",
-		// 		entry: {
-		// 			main: [...entries, "preact"]
-		// 		},
-		// 		output: {
-		// 			path: path.join(this.server.dataPath, "plugins", "public")
-		// 		}
-		// 	}, (err) => {
-		// 		if (err) logger.error(err);
-		// 		logger.info("Finished compiling plugins.");
-		// 		resolve();
-		// 	});
-		// });
+		this.watch();
 	}
 
 
@@ -133,7 +114,7 @@ export default class PluginParser {
 			const plugin = this.plugins.filter(p => p.conf.identifier == identifier)[0];
 
 			try {
-				if (!plugin) throw "Plugin doesn't exist.";
+				if (!plugin) return;
 				if (!plugin.bindings) throw "Plugin was not attached.";
 				await plugin.detach();
 				succeeded++;
@@ -147,6 +128,30 @@ export default class PluginParser {
 		let log = "Detached " + succeeded + " plugin" + (succeeded != 1 ? "s" : "");
 		if (failed) log += ", failed to detache " + failed + " plugin" + (failed != 1 ? "s" : "");
 		logger.info(log + ".");
+	}
+
+
+	/**
+	* Watch enabled plugins for source changes.
+	*/
+
+	private watch() {
+		let watched = 0;
+
+		this.watchers.forEach(w => w.close());
+		this.watchers = [];
+
+		this.enabledPlugins.forEach(identifier => {
+			const plugin = this.plugins.filter(p => p.conf.identifier == identifier)[0];
+			if (!plugin || !plugin.bindings) return;
+
+			this.watchers.push(ff.watch(path.join(this.server.dataPath, "plugins", plugin.conf.identifier, plugin.conf.sources.server), 
+				{ persistent: false, recursive: false, encoding: 'utf8'}, () => this.refresh()));
+
+			watched ++;
+		});
+
+		logger.debug("Watching " + watched + " plugin" + (watched != 1 ? "s" : "") + ".");
 	}
 
 
@@ -190,9 +195,9 @@ export default class PluginParser {
 				try { await fs.access(path.join(p, conf.sources.server)) }
 				catch (e) { throw `Server source file '${conf.sources.server}' not found.`; }
 
-				if (conf.sources.site) {
-					try { await fs.access(path.join(p, conf.sources.site)) }
-					catch (e) { throw `Site source file '${conf.sources.site}' not found.`; }
+				if (conf.sources.client) {
+					try { await fs.access(path.join(p, conf.sources.client)) }
+					catch (e) { throw `Client source file '${conf.sources.client}' not found.`; }
 				}
 				
 				// Add extra details to config.
