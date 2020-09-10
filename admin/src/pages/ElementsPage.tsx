@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import './Page.scss';
 import './ElementsPage.scss';
 
 import CardHeader from "../CardHeader";

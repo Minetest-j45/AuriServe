@@ -7,6 +7,7 @@ import './App.scss';
 import LoginForm from "./LoginForm"
 import AppHeader from "./AppHeader"
 import MainPage from "./pages/MainPage"
+import PagesPage from "./pages/PagesPage"
 import MediaPage from "./pages/MediaPage"
 import ThemesPage from "./pages/ThemesPage"
 import PluginsPage from "./pages/PluginsPage"
@@ -64,6 +65,7 @@ export default class App extends React.Component<{}, State> {
 								<Switch>
 									<Redirect exact from="/" to="/home"/>
 									<Route exact path="/home" component={MainPage}/>
+									<Route exact path="/pages" component={PagesPage}/>
 									<Route exact path="/media" component={MediaPage}/>
 									<Route exact path="/themes" component={ThemesPage}/>
 									<Route exact path="/plugins" component={PluginsPage}/>

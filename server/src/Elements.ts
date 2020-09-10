@@ -1,28 +1,45 @@
-import * as Preact from "preact";
+export type Element = any;
 
-export interface ElementPropsDefinition {
-	[key: string]: any
+export interface ElementPropField {
+	name?: string;
+	optional?: true;
+	default?: any;
+
+	type: string;
 }
 
-export interface ElementDefinition {
-	element: Preact.ComponentType,
-	props: ElementPropsDefinition,
-	hydrate: boolean
+export interface ElementPropTable {
+	name?: string;
+	optional?: true;
+	
+	fields: ElementProps;
 }
+
+export interface ElementProps {
+	[key: string]: ElementPropField | ElementPropTable;
+};
+
+export interface ElementConfig {
+	props: ElementProps;
+	manageElement?: Element;
+	hydrate?: true;
+}
+
+export type ElementPair = { element: Element; config: ElementConfig };
 
 export default class Elements {
-	private lists: Set<Map<string, ElementDefinition>> = new Set();
+	private lists: Set<Map<string, ElementPair>> = new Set();
 
-	addList(list: Map<string, ElementDefinition>): void {
+	addList(list: Map<string, ElementPair>): void {
 		this.lists.add(list);
 	}
 
-	removeList(list: Map<string, ElementDefinition>): void {
+	removeList(list: Map<string, ElementPair>): void {
 		this.lists.delete(list);
 	}
 
-	getAllElements(): Map<string, ElementDefinition> {
-		let map: Map<string, ElementDefinition> = new Map();
+	getAllElements(): Map<string, ElementPair> {
+		let map: Map<string, ElementPair> = new Map();
 		for (let m of this.lists) {
 			for (let [k, v] of m) map.set(k, v);
 		}
