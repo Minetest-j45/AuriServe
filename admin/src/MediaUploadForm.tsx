@@ -1,10 +1,11 @@
-import * as React from 'react';
+import * as Preact from 'preact';
 
 import './MediaUploadForm.scss';
 
 import CardHeader from "./CardHeader";
 import SelectGroup from "./SelectGroup";
 import MediaUploadItem from "./MediaUploadItem";
+import DimensionTransition from "./DimensionTransition";
 
 import { AppContext } from "./AppContext";
 
@@ -37,7 +38,7 @@ interface State {
 	grid: boolean;
 }
 
-export default class MediaUploadForm extends React.PureComponent<Props, State> {
+export default class MediaUploadForm extends Preact.Component<Props, State> {
 	constructor(props: any) {
 		super(props);
 
@@ -103,7 +104,7 @@ export default class MediaUploadForm extends React.PureComponent<Props, State> {
 		this.setState({files: files});
 	}
 
-	private handleClose(e: React.FormEvent) {
+	private handleClose(e: any) {
 		e.preventDefault();
 		this.props.onCancel();
 	}
@@ -160,7 +161,7 @@ export default class MediaUploadForm extends React.PureComponent<Props, State> {
 		});
 	}
 
-	private async handleFilesChange(e: React.SyntheticEvent) {
+	private async handleFilesChange(e: any) {
 		let target = e.target as HTMLInputElement;
 		let files = [...this.state.files];
 		let newFiles = Array.from(target.files || []);
@@ -245,16 +246,18 @@ export default class MediaUploadForm extends React.PureComponent<Props, State> {
 					</div>
 				</div>}
 
-				{this.state.state == MediaUploadState.SELECTING && <SelectGroup  
-					className={"MediaUploadForm-Files " + (this.state.grid ? "Grid" : "Stack")} 
-					onSelectionChange={this.handleSelectionChange} multi={true}>
-					{uploadItems}
-				</SelectGroup>}
+				<DimensionTransition duration={150}>
+					{this.state.state == MediaUploadState.SELECTING && <SelectGroup  
+						className={"MediaUploadForm-Files " + (this.state.grid ? "Grid" : "Stack")} 
+						onSelectionChange={this.handleSelectionChange} multi={true}>
+						{uploadItems}
+					</SelectGroup>}
 
-				{this.state.state == MediaUploadState.UPLOADING && 
-				<div className={"MediaUploadForm-Files " + (this.state.grid ? "Grid" : "Stack")}>
-					{uploadItems}
-				</div>}
+					{this.state.state == MediaUploadState.UPLOADING && 
+					<div className={"MediaUploadForm-Files " + (this.state.grid ? "Grid" : "Stack")}>
+						{uploadItems}
+					</div>}
+				</DimensionTransition>
 
 				<div className="MediaUploadForm-ActionBar">
 					<div>

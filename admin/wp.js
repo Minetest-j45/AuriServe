@@ -45,15 +45,15 @@ module.exports = {
 				presets: [
 					['@babel/preset-env', {targets: {browsers: 'last 2 versions'}}], // Polyfills for the last 2 versions of chromium.
 					'@babel/preset-typescript', // Compile Typescript into Javascript.
-					'@babel/preset-react' // Compile TSX files.
 				],
 				plugins: [
 					// Allow class properties (properties defined outside of functions).
-					['@babel/plugin-proposal-class-properties', { loose: true }]
+					['@babel/plugin-proposal-class-properties', { loose: true }],
+			    ["@babel/transform-react-jsx", { "pragma": "Preact.h" }]
 				]
 			}
 		}, {
-			test: /\.scss$/,
+			test: /\.s[c|a]ss$/,
 			loaders: ['style-loader', 'css-loader', 'sass-loader']
 		}, {
 			test: /\.css$/,

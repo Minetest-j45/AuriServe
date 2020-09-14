@@ -1,22 +1,22 @@
-import * as React from 'react';
+import * as Preact from 'preact';
 
 import './Modal.scss';
 
 interface Props {
-	onClose?: (_: React.SyntheticEvent) => void;
+	onClose?: (_: MouseEvent) => void;
 	children: JSX.Element[] | JSX.Element;
 	className?: string;
 	style?: any;
 }
 
-export default class Modal extends React.PureComponent<Props, {}> {
+export default class Modal extends Preact.Component<Props, {}> {
 	constructor(props: Props) {
 		super(props);
 
 		this.avoidClose = this.avoidClose.bind(this);
 	}
 
-	private avoidClose(e: React.SyntheticEvent): void {
+	private avoidClose(e: MouseEvent): void {
 		e.stopPropagation();
 	}
 
@@ -24,8 +24,8 @@ export default class Modal extends React.PureComponent<Props, {}> {
 		return (
 			<div className={"Modal" + (this.props.className ? " " + this.props.className : "") + (this.props.onClose ? " closes" : "")} 
 				style={this.props.style} onClick={this.props.onClose}>
-				<div className="MediaModal-CardWrap">
-					<div className="MediaModal-Card" onClick={this.avoidClose}>
+				<div className="Modal-CardWrap">
+					<div className="Modal-Card" onClick={this.avoidClose}>
 						{this.props.children}
 					</div>
 				</div>

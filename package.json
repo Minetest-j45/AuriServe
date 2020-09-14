@@ -82,12 +82,10 @@
     "node-sass": "^4.14.1",
     "preact": "^10.4.8",
     "preact-render-to-string": "^5.1.10",
+    "preact-router": "^3.2.1",
     "prompt": "^1.0.0",
     "pug": "^3.0.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
-    "react-showdown": "^2.1.0",
     "recursive-watch": "^1.1.4",
     "rimraf": "^3.0.2",
     "showdown": "^1.9.1"

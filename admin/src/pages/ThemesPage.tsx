@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as Preact from 'preact';
 
 import './ThemesPage.scss';
 
@@ -13,7 +13,7 @@ interface State {
 	selected: number[];
 }
 
-export default class ThemesPage extends React.PureComponent<{}, State> {
+export default class ThemesPage extends Preact.Component<{}, State> {
 	private selected: number[] = [];
 
 	constructor(props: {}) {

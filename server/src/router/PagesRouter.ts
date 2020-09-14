@@ -47,7 +47,7 @@ export default class PagesRouter extends Router {
 				page = path.join(page, "index");
 			}
 
-			res.send(await new PageAssembler(this.server.themes, this.server.plugins, this.server.pages.elements, root, page).assemble());
+			res.send(await new PageAssembler(this.server.themes, this.server.plugins, this.server.elements, root, page).assemble());
 		}
 		catch (e) {
 			if (e.code != "ENOENT") logger.error("Encountered an error assembling file %s.\n %s", page, e);

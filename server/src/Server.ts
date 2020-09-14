@@ -14,10 +14,12 @@ import Admin from "./Admin";
 import Pages from "./Pages";
 
 import Database from "./Database";
+import Elements from "./Elements";
 import ThemeParser from "./ThemeParser";
 import PluginParser from "./PluginParser";
 
 import { Config } from "./interface/Config";
+import SiteData from '../../common/interface/SiteData';
 import resolvePath from "../../common/util/ResolvePath";
 
 const logger = log4js.getLogger()
@@ -29,8 +31,9 @@ export default class Server {
 	app = Express();
 	db = new Database(this.dataPath);
 
-	themes = new ThemeParser(this.db);
+	themes = new ThemeParser(this);
 	plugins = new PluginParser(this);
+	elements = new Elements();
 
 	constructor(public readonly conf: Config, public readonly dataPath: string) {
 		this.app.use(compression());
@@ -53,6 +56,14 @@ export default class Server {
 			await this.admin.init();
 			await this.pages.init();
 		});
+	}
+
+	async getSiteData(): Promise<SiteData> {
+		let data = await this.db.getSiteData();
+		let confMap: {[key: string]: any} = {};
+		this.elements.getAllElements().forEach((elem, key) => confMap[key] = elem.config);
+		data.elementDefs = confMap;
+		return data;
 	}
 
 	private async init() {

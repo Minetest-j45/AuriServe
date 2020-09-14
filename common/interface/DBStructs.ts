@@ -70,3 +70,12 @@ export interface Plugin {
 	author: string;
 	hasCover: boolean;
 }
+
+export interface Element {
+	_id?: ObjectID;
+
+	identifier: string;
+	page: string;
+	
+	data: any;
+}

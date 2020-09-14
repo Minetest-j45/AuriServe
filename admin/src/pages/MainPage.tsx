@@ -1,12 +1,13 @@
-import * as React from 'react';
+import * as Preact from 'preact';
 
+import './Page.scss';
 import './MainPage.scss';
 
 import Meter from "../Meter";
 
 import { AppContext } from "../AppContext";
 
-export default class MainPage extends React.PureComponent {
+export default class MainPage extends Preact.Component {
 	render() {
 		return (
 			<div className="MainPage">

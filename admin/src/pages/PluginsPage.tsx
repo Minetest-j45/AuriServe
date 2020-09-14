@@ -1,5 +1,6 @@
-import * as React from 'react';
+import * as Preact from 'preact';
 
+import './Page.scss';
 import './PluginsPage.scss';
 
 import PluginItem from "../PluginItem";
@@ -13,7 +14,7 @@ interface State {
 	selected: number[];
 }
 
-export default class PluginsPage extends React.PureComponent<{}, State> {
+export default class PluginsPage extends Preact.Component<{}, State> {
 	private selected: number[] = [];
 
 	constructor(props: {}) {

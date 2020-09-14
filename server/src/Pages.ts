@@ -1,10 +1,7 @@
 import Server from "./Server";
-import Elements from "./Elements";
 import PagesRouter from "./router/PagesRouter";
 
-export default class Pages {
-	elements = new Elements();
-	
+export default class Pages {	
 	private router = new PagesRouter(this.server);
 
 	constructor(private server: Server) {}

@@ -1,12 +1,14 @@
 import Cookie from 'js-cookie';
-import * as React from 'react';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import * as Preact from 'preact';
+import { Router, Route } from 'preact-router';
 
 import './App.scss';
 
+import Redirect from './Redirect'
 import LoginForm from "./LoginForm"
 import AppHeader from "./AppHeader"
 import MainPage from "./pages/MainPage"
+import PagesPage from "./pages/PagesPage"
 import MediaPage from "./pages/MediaPage"
 import ThemesPage from "./pages/ThemesPage"
 import PluginsPage from "./pages/PluginsPage"
@@ -25,8 +27,7 @@ interface State {
 	contextData: AppContextData;
 }
 
-
-export default class App extends React.Component<{}, State> {
+export default class App extends Preact.Component<{}, State> {
 	constructor(props: any) {
 		super(props);
 
@@ -56,21 +57,20 @@ export default class App extends React.Component<{}, State> {
 		return (
 			<AppContext.Provider value={this.state.contextData!}>
 				<div className="App">
+
 					{this.state.state == AppState.LOGIN && <LoginForm/>}
 					{this.state.state == AppState.ADMIN &&
-						<div className="App-Wrap">
-							<Router basename="/admin">
-								<AppHeader/>
-								<Switch>
-									<Redirect exact from="/" to="/home"/>
-									<Route exact path="/home" component={MainPage}/>
-									<Route exact path="/media" component={MediaPage}/>
-									<Route exact path="/themes" component={ThemesPage}/>
-									<Route exact path="/plugins" component={PluginsPage}/>
-								</Switch>
-							</Router>
-							
-						</div>}
+					<div className="App-Wrap">
+						<AppHeader/>
+						<Router>
+							<Route path="/admin/home" component={MainPage}/>
+							<Route path="/admin/pages" component={PagesPage}/>
+							<Route path="/admin/media" component={MediaPage}/>
+							<Route path="/admin/themes" component={ThemesPage}/>
+							<Route path="/admin/plugins" component={PluginsPage}/>
+							<Redirect default to="/admin/home"/>
+						</Router>
+					</div>}
 				</div>
 			</AppContext.Provider>
 		);

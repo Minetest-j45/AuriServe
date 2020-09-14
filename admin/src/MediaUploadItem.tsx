@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as Preact from 'preact';
 
 import './MediaUploadItem.scss';
 
@@ -17,7 +17,7 @@ interface Props {
 	onFilenameChange: (name: string) => void;
 }
 
-export default class MediaItem extends React.Component<Props, {}> {
+export default class MediaItem extends Preact.Component<Props, {}> {
 	// callbacks: ClickHandlerCallbacks;
 
 	constructor(props: Props) {
@@ -32,28 +32,30 @@ export default class MediaItem extends React.Component<Props, {}> {
 		this.handleFilenameChange = this.handleFilenameChange.bind(this);
 	}
 
-	private handleNameChange(e: React.ChangeEvent<HTMLInputElement>) {
+	private handleNameChange(e: any) {
 		this.props.onNameChange(e.target.value);
 	}
 
-	private handleFilenameChange(e: React.ChangeEvent<HTMLInputElement>) {
-		let start = e.target.selectionStart!;
-    let end = e.target.selectionEnd!;
+	private handleFilenameChange(e: any) {
+		let target = e.target as HTMLInputElement;
 
-    let oldVal = e.target.value;
-		e.target.value = e.target.value.toLowerCase().replace(/[ -]/g, '_').replace(/[^a-zA-Z0-9_]/g, '');
+		let start = target.selectionStart!;
+    let end = target.selectionEnd!;
+
+    let oldVal = target.value;
+		target.value = target.value.toLowerCase().replace(/[ -]/g, '_').replace(/[^a-zA-Z0-9_]/g, '');
 		
-		if (oldVal.length > e.target.value.length) {
-			start -= oldVal.length - e.target.value.length;
-			end -= oldVal.length - e.target.value.length;
+		if (oldVal.length > target.value.length) {
+			start -= oldVal.length - target.value.length;
+			end -= oldVal.length - target.value.length;
 		}
 
-		e.target.setSelectionRange(start, end);
+		target.setSelectionRange(start, end);
 
-		this.props.onFilenameChange(e.target.value);
+		this.props.onFilenameChange(target.value);
 	}
 
-	private handleInputClick(e: React.SyntheticEvent) {
+	private handleInputClick(e: any) {
 		e.stopPropagation();
 	}
 
@@ -79,11 +81,11 @@ export default class MediaItem extends React.Component<Props, {}> {
 				<div className="MediaItem-Description">	
 
 					<input type="text" className="MediaItem-Name" value={this.props.file.name} disabled={!this.props.editable}
-						onChange={this.handleNameChange} onMouseUp={this.handleInputClick} maxLength={32}/>
+						onChange={this.handleNameChange} onInput={this.handleNameChange} onMouseUp={this.handleInputClick} maxLength={32}/>
 
 					<input type="text" className="MediaItem-FileName" value={this.props.editable ? this.props.file.identifier : 
 						(identifier + "." + this.props.file.ext)} disabled={!this.props.editable} maxLength={32}
-						onChange={this.handleFilenameChange} onMouseUp={this.handleInputClick} placeholder={identifier}/>
+						onChange={this.handleFilenameChange} onInput={this.handleFilenameChange} onMouseUp={this.handleInputClick} placeholder={identifier}/>
 
 					<p className="MediaItem-Metadata">{`${Format.bytes(this.props.file.file.size)} • ` +
 						`Last modified ${Format.date(this.props.file.file.lastModified)}`}</p>

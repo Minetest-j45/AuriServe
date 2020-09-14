@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as Preact from 'preact';
 
 import './Page.scss';
 import './MediaPage.scss';
@@ -19,7 +19,7 @@ interface State {
 	grid: boolean;
 }
 
-export default class MediaPage extends React.PureComponent<{}, State> {
+export default class MediaPage extends Preact.Component<{}, State> {
 	constructor(props: any) {
 		super(props);
 
@@ -128,7 +128,9 @@ export default class MediaPage extends React.PureComponent<{}, State> {
 						<MediaView item={ctx.data.media![this.state.viewed]}/>
 					</Modal>}
 
-					{this.state.uploading && <Modal><MediaUploadForm onCancel={this.handleUploadCancel}/></Modal>}
+					{this.state.uploading && <Modal>
+						<MediaUploadForm onCancel={this.handleUploadCancel}/>
+					</Modal>}
 				</div>
 			}</AppContext.Consumer>
 		);

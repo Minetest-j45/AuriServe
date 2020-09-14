@@ -6,7 +6,8 @@
     "allowJs": true,    // Allow .js files to be compiled as well.
     "jsx": "react",     // Generate react-compatible code from .jsx files.
     "sourceMap": true,  // Generate a sourcemap.
-    "outDir": "res/script",
+    "jsxFactory": "Preact.h",
+    "outFile": "res/script",
     "removeComments": true,
     "esModuleInterop": true,
     "strict": true,

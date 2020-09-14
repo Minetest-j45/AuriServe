@@ -1,6 +1,5 @@
 import path from "path";
 import log4js from "log4js";
-// import webpack from "webpack";
 import decache from "decache";
 import ff, { promises as fs, constants as fsc } from "fs";
 
@@ -31,11 +30,11 @@ class Plugin {
 
 	async attach() {
 		await this.init(this.bindings!);
-		this.server.pages.elements.addList(this.bindings!.elements);
+		this.server.elements.addList(this.bindings!.elements);
 	}
 
 	async detach() {
-		this.server.pages.elements.removeList(this.bindings!.elements);
+		this.server.elements.removeList(this.bindings!.elements);
 	}
 }
 

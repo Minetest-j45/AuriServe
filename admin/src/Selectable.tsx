@@ -1,7 +1,7 @@
-import * as React from "react";
+import * as Preact from "preact";
 
 import ClickHandler, { ClickHandlerCallbacks } from './ClickHandler';
-import { SelectGroupContext, SelectGroupContextData } from './SelectGroup';
+import { SelectGroupContext } from './SelectGroup';
 
 interface Props {
 	ind: number;
@@ -13,7 +13,7 @@ interface Props {
 	style?: any;
 }
 
-export default class Selectable extends React.Component<Props, {}, SelectGroupContextData> {
+export default class Selectable extends Preact.Component<Props, {}> {
 	private clickHandler: ClickHandler = new ClickHandler({});
 
 	constructor(props: Props) {

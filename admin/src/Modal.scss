@@ -16,7 +16,7 @@
 		cursor: pointer;
 	}
 	
-	.MediaModal-CardWrap {
+	.Modal-CardWrap {
 		width: 100%;
 		height: auto;
 		display: flex;
@@ -24,7 +24,7 @@
 		padding: 64px;
 		justify-content: space-around;
 
-		.MediaModal-Card {
+		.Modal-Card {
 			@extend %card;
 
 			display: block;

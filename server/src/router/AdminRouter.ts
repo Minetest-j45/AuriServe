@@ -32,7 +32,7 @@ export default class AdminRouter extends Router {
 		this.router.get('/data', async (req, res) => {
 			try {
 				await this.server.db.authUser(req);
-				res.send(JSON.stringify(await this.server.db.getSiteData()));
+				res.send(JSON.stringify(await this.server.getSiteData()));
 			}
 			catch (e) {
 				this.routeError(res, 403, e);
@@ -65,7 +65,7 @@ export default class AdminRouter extends Router {
 			try {
 				await this.server.db.authUser(req);
 				await this.server.db.deleteMedia(req.body);
-				res.send(JSON.stringify(await this.server.db.getSiteData()));
+				res.send(JSON.stringify(await this.server.getSiteData()));
 			}
 			catch (e) {
 				this.routeError(res, 403, e);
@@ -86,7 +86,7 @@ export default class AdminRouter extends Router {
 			try {
 				await this.server.db.authUser(req);
 				await this.server.themes.refresh();
-				res.send(JSON.stringify(await this.server.db.getSiteData()));
+				res.send(JSON.stringify(await this.server.getSiteData()));
 			}
 			catch (e) {
 				this.routeError(res, 403, e);
@@ -97,7 +97,7 @@ export default class AdminRouter extends Router {
 			try {
 				await this.server.db.authUser(req);
 				await this.server.themes.toggle(req.body);
-				res.send(JSON.stringify(await this.server.db.getSiteData()));
+				res.send(JSON.stringify(await this.server.getSiteData()));
 			}
 			catch (e) {
 				this.routeError(res, 403, e);
@@ -118,7 +118,7 @@ export default class AdminRouter extends Router {
 			try {
 				await this.server.db.authUser(req);
 				await this.server.plugins.refresh();
-				res.send(JSON.stringify(await this.server.db.getSiteData()));
+				res.send(JSON.stringify(await this.server.getSiteData()));
 			}
 			catch (e) {
 				this.routeError(res, 403, e);
@@ -129,7 +129,7 @@ export default class AdminRouter extends Router {
 			try {
 				await this.server.db.authUser(req);
 				await this.server.plugins.toggle(req.body);
-				res.send(JSON.stringify(await this.server.db.getSiteData()));
+				res.send(JSON.stringify(await this.server.getSiteData()));
 			}
 			catch (e) {
 				this.routeError(res, 403, e);

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as Preact from 'preact';
 import SiteData from "../../common/interface/SiteData";
 
 export interface AppContextData {
@@ -6,7 +6,7 @@ export interface AppContextData {
 	data: SiteData;
 }
 
-export const AppContext = React.createContext<AppContextData>({
+export const AppContext = Preact.createContext<AppContextData>({
 	handleSiteData: () => {},
 	data: null as any
 });

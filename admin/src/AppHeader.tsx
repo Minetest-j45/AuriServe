@@ -1,37 +1,37 @@
 import Cookie from 'js-cookie';
-import * as React from 'react';
-import { NavLink } from 'react-router-dom';
+import * as Preact from 'preact';
+import { Link } from 'preact-router';
 
 import './AppHeader.scss';
 
-export default class AppHeader extends React.PureComponent {
+export default class AppHeader extends Preact.Component {
 	constructor(props: any) {
 		super(props);
 
 		this.logout = this.logout.bind(this);
 	}
 
-	private logout(_: React.SyntheticEvent): void {
+	private logout(): void {
 		Cookie.remove('tkn');
 		location.href = '/admin';
 	}
 
 	render() {
 		return (
-			<header className="AppHeader">
-				<div className="AppHeader-wrap">
-					<img className="AppHeader-logo" src="/admin/asset/icon/serve.svg" />
+			<header class="AppHeader">
+				<div class="AppHeader-wrap">
+					<img class="AppHeader-logo" src="/admin/asset/icon/serve.svg" />
 
-					<nav className="AppHeader-nav">
-						<NavLink activeClassName="active" to="/home">Home</NavLink>
-						<NavLink activeClassName="active" to="/pages">Pages</NavLink>
-						<NavLink activeClassName="active" to="/media">Media</NavLink>
-						<NavLink activeClassName="active" to="/themes">Themes</NavLink>
-						<NavLink activeClassName="active" to="/plugins">Plugins</NavLink>
+					<nav class="AppHeader-nav">
+						<Link activeClassName="active" href="/admin/home">Home</Link>
+						<Link activeClassName="active" href="/admin/pages">Pages</Link>
+						<Link activeClassName="active" href="/admin/media">Media</Link>
+						<Link activeClassName="active" href="/admin/themes">Themes</Link>
+						<Link activeClassName="active" href="/admin/plugins">Plugins</Link>
 					</nav>
 					
-					<NavLink className="AppHeader-options" to="/user_options"><img src="/admin/asset/icon/settings-dark.svg"/></NavLink>
-					<button className="AppHeader-logout" onClick={this.logout}><img src="/admin/asset/icon/logout-dark.svg" /></button>
+					<Link class="AppHeader-options" href="/admin/user_options"><img src="/admin/asset/icon/settings-dark.svg"/></Link>
+					<button class="AppHeader-logout" onClick={this.logout}><img src="/admin/asset/icon/logout-dark.svg" /></button>
 				</div>
 			</header>
 		);

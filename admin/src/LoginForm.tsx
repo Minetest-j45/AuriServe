@@ -1,5 +1,5 @@
 import Cookie from 'js-cookie';
-import * as React from 'react';
+import * as Preact from 'preact';
 
 import './LoginForm.scss';
 
@@ -20,7 +20,7 @@ interface State {
 	state: LoginState;
 }
 
-export default class LoginForm extends React.PureComponent<{}, State> {
+export default class LoginForm extends Preact.Component<{}, State> {
 	constructor(props: any) {
 		super(props);
 
@@ -36,7 +36,7 @@ export default class LoginForm extends React.PureComponent<{}, State> {
 		this.handlePasswordChange = this.handlePasswordChange.bind(this);
 	}
 
-	private handleSubmit(e: React.FormEvent): boolean {
+	private handleSubmit(e: any): boolean {
 		e.preventDefault();
 		if (this.state.state == LoginState.PENDING) return false;
 		this.setState({warning: ""});
@@ -81,18 +81,18 @@ export default class LoginForm extends React.PureComponent<{}, State> {
 		return false;
 	}
 
-	private handleUsernameChange(e: React.SyntheticEvent) {
-		this.setState({username: (e.target as HTMLInputElement).value});
+	private handleUsernameChange(e: any) {
+		this.setState({username: e.target.value});
 	}
 
-	private handlePasswordChange(e: React.SyntheticEvent) {
-		this.setState({password: (e.target as HTMLInputElement).value});
+	private handlePasswordChange(e: any) {
+		this.setState({password: e.target.value});
 	}
 
 	render() {
 		const loading = this.state.state == LoginState.AUTH || this.state.state == LoginState.REDIRECT;
 		const loaded = this.state.state == LoginState.REDIRECT;
-		return <>
+		return (
 			<div className="LoginForm">
 				<form className={"LoginForm-Card" + (loading ? " loading" : "") + (loaded ? " loaded" : "")} onSubmit={this.handleSubmit}>
 					<div className="LoginForm-ProfilePlaceholder">
@@ -109,7 +109,7 @@ export default class LoginForm extends React.PureComponent<{}, State> {
 				</form>
 				<p className="LoginForm-Warning">{this.state.warning}</p>
 			</div>
-		</>;
+		);
 	}
 }
 

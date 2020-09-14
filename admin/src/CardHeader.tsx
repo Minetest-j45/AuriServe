@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as Preact from "preact";
 
 import './CardHeader.scss';
 
@@ -7,7 +7,7 @@ interface Props {
 	title: string;
 	subtitle?: string;
 }
-export default class CardHeader extends React.PureComponent<Props, {}> {
+export default class CardHeader extends Preact.Component<Props, {}> {
 	render() {
 		return (		
 			<div className="CardHeader">

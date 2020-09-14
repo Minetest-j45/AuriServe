@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as Preact from 'preact';
 
 import './PluginItem.scss';
 
@@ -12,10 +12,10 @@ interface Props {
 	ind: number;
 	active: boolean;
 
-	onClick: (_: React.SyntheticEvent) => void;
+	onClick: (_: MouseEvent) => void;
 }
 
-export default class MediaItem extends React.Component<Props> {
+export default class MediaItem extends Preact.Component<Props, {}> {
 	callbacks: ClickHandlerCallbacks;
 
 	constructor(props: Props) {

@@ -1,6 +1,4 @@
-import * as React from 'react';
-
-type ClickCB = (e: React.SyntheticEvent) => void;
+type ClickCB = (e: MouseEvent) => void;
 
 export interface ClickHandlerCallbacks {
 	onClick?: ClickCB;
@@ -20,10 +18,9 @@ export default class ClickHandler {
 		this.handleMouseUp = this.handleMouseUp.bind(this);
 	}
 
-	handleMouseUp(e: React.SyntheticEvent) {
+	handleMouseUp(e: MouseEvent) {
     const timeout = 250;
 
-    e.persist();
     e.preventDefault();
 
     if (this.callbacks.onClick) this.callbacks.onClick(e);

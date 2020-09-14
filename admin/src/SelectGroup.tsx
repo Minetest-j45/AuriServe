@@ -1,13 +1,13 @@
-import * as React from "react";
+import * as Preact from "preact";
 
 import './SelectGroup.scss'
 
 export interface SelectGroupContextData {
-	handleSelect(_: React.SyntheticEvent, ind: number, state?: boolean): void;
+	handleSelect(_: MouseEvent, ind: number, state?: boolean): void;
 	selected: boolean[];
 }
 
-export const SelectGroupContext = React.createContext<SelectGroupContextData>({
+export const SelectGroupContext = Preact.createContext<SelectGroupContextData>({
 	handleSelect: () => {},
 	selected: [],
 }); 
@@ -26,7 +26,7 @@ interface State {
 	lastSelected?: number;
 }
 
-export default class SelectGroup extends React.Component<Props, State> {
+export default class SelectGroup extends Preact.Component<Props, State> {
 	private ctrl: boolean = false;
 	private shift: boolean = false;
 
@@ -87,7 +87,7 @@ export default class SelectGroup extends React.Component<Props, State> {
 		if (this.props.onSelectionChange) this.props.onSelectionChange([]);
 	}
 
-	private handleSelect(_: React.SyntheticEvent, ind: number, state?: boolean) {
+	private handleSelect(_: MouseEvent, ind: number, state?: boolean) {
 		let contextData = {...this.state.contextData};
 		
 		if (!this.props.multi || !this.ctrl)

@@ -62,7 +62,7 @@ export default class PageAssembler {
 		if (!elem) return Preact.h("span", { style: PageAssembler.invalidStyle }, "Element " + identifier + " is not defined.");
 
 		let element = elem.element;
-		if (elem.hydrate) element = this.withHydration(identifier, elem.element);
+		if (elem.config.hydrate) element = this.withHydration(identifier, elem.element);
 
 		return Preact.h(element, props ?? {}, ...(children ?? []));
 	}

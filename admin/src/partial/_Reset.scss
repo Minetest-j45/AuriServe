@@ -19,6 +19,10 @@ button {
 	cursor: pointer;
 }
 
-input, button {
+input, textarea, select, button {
 	font-size: 1em;
+}
+
+textarea {
+	resize: vertical;
 }

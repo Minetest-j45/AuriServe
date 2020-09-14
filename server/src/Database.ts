@@ -37,9 +37,8 @@ export default class Database {
 
 			this.db = this.client.db(db);
 
-			// await this.db.collection('siteinfo').deleteMany({});
 			if (!await this.db.collection('siteinfo').findOne({})) {
-				const siteInfo: DB.SiteInfo = {
+				await this.db.collection('siteinfo').insertOne({
 					domain: "example.com",
 					sitename: "Example",
 
@@ -48,12 +47,8 @@ export default class Database {
 
 					enabledThemes: [],
 					enabledPlugins: []
-				}
-
-				await this.db.collection('siteinfo').insertOne(siteInfo);
+				} as DB.SiteInfo);
 			}
-
-			// await this.db.collection('media').deleteMany({});
 		}
 		catch (e) {
 			logger.fatal("Failed to connect to MongoDB instance %s with database %s.\n %s", url, db, e);
@@ -223,12 +218,14 @@ export default class Database {
 	*/
 
 	async getSiteData(): Promise<SiteData> {
-		let info =  await this.db!.collection('siteinfo').findOne({});
+		let info = await this.db!.collection('siteinfo').findOne({}) as DB.SiteInfo as SiteData;
 		
+		// Add SiteData lists to `info`.
 		info.media = await (await this.db!.collection('media').find({})).toArray();
 		info.themes = await (await this.db!.collection('themes').find({})).toArray();
 		info.plugins = await (await this.db!.collection('plugins').find({})).toArray();
-		
+		info.elements = await (await this.db!.collection('elements').find({})).toArray();
+
 		return info;
 	}
 
