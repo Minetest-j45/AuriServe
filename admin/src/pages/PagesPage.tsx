@@ -32,7 +32,6 @@ export default class PagesPage extends Preact.Component<{}, State> {
 					<section className="Page-Card">
 						<CardHeader icon="/admin/asset/icon/element-dark.svg" title="Manage Pages" 
 							subtitle={`Manage site pages and elements.`} />
-
 						<div className="PagesPage-Toolbar">
 							<button className="PagesPage-Toolbar-Button" onClick={this.toggleCreateElement}>
 								<img src="/admin/asset/icon/add-dark.svg"/><span>Create new Element</span>
