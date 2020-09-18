@@ -10,8 +10,8 @@ export interface ClickHandlerCallbacks {
 export default class ClickHandler {
 	private callbacks: ClickHandlerCallbacks;
 
-  private _lastClick: number = 0;
-  private _timeout: any = undefined;
+	private _lastClick: number = 0;
+	private _timeout: any = undefined;
 
 	constructor(callbacks: ClickHandlerCallbacks) {
 		this.callbacks = callbacks;
@@ -19,23 +19,24 @@ export default class ClickHandler {
 	}
 
 	handleMouseUp(e: MouseEvent) {
-    const timeout = 250;
+		const timeout = 250;
 
-    e.preventDefault();
+		e.preventDefault();
 
-    if (this.callbacks.onClick) this.callbacks.onClick(e);
+		if (this.callbacks.onClick) this.callbacks.onClick(e);
 
-    if (Date.now() - this._lastClick < timeout) {
+		if (Date.now() - this._lastClick < timeout) {
     	this._lastClick = 0;
     	clearTimeout(this._timeout);
 
     	if (this.callbacks.onDoubleClick) this.callbacks.onDoubleClick(e);
-    }
-    else {
+		} else {
 	    this._lastClick = Date.now();
 
     	if (this.callbacks.onFirstClick) this.callbacks.onFirstClick(e);
-	    this._timeout = setTimeout(() => { if (this.callbacks.onSingleClick) this.callbacks.onSingleClick(e); }, timeout);
+	    this._timeout = setTimeout(() => {
+				if (this.callbacks.onSingleClick) this.callbacks.onSingleClick(e);
+			}, timeout);
 	  }
 	}
 }

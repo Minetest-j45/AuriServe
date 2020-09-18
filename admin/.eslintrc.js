@@ -21,7 +21,7 @@ module.exports = {
 	],
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
-		"project": "tsconfig.json",
+		"project": "admin/tsconfig.json",
 		"sourceType": "module"
 	},
 	"plugins": [
@@ -107,9 +107,8 @@ module.exports = {
 		"jsdoc/check-indentation": "error",
 		"jsdoc/newline-after-description": "error",
 		"max-len": [
-			"error",
-			{
-				"code": 140
+			"error", {
+				"code": 150
 			}
 		],
 		"no-bitwise": "error",
@@ -149,18 +148,11 @@ module.exports = {
 		"no-fallthrough": "error",
 		"no-new-wrappers": "error",
 		"no-redeclare": "error",
-		"no-shadow": [
-			"error",
-			{
-				"hoist": "all"
-			}
-		],
 		"no-trailing-spaces": [
 			"error", {
 				"skipBlankLines": true
 			}
 		],
-		"no-underscore-dangle": "error",
 		"no-unused-labels": "error",
 		"no-var": "error",
 		"radix": "error",

@@ -1,4 +1,4 @@
-import * as Preact from "preact";
+import * as Preact from 'preact';
 
 import './CardHeader.scss';
 
@@ -9,11 +9,11 @@ interface Props {
 }
 export default class CardHeader extends Preact.Component<Props, {}> {
 	render() {
-		return (		
+		return (
 			<div className="CardHeader">
-				<img className="CardHeader-Icon" src={this.props.icon} />	
+				<img className="CardHeader-Icon" src={this.props.icon} />
 				<h1 className="CardHeader-Title">{this.props.title}</h1>
-				<p className="CardHeader-Description">{this.props.subtitle || ""}</p>
+				<p className="CardHeader-Description">{this.props.subtitle || ''}</p>
 			</div>
 		);
 	}

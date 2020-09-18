@@ -3,9 +3,9 @@ import * as React from 'react';
 import './Page.scss';
 import './ElementsPage.scss';
 
-import CardHeader from "../CardHeader";
+import CardHeader from '../CardHeader';
 
-import { AppContext } from "../AppContext";
+import { AppContext } from '../AppContext';
 
 export default class ElementsPage extends React.PureComponent {
 	render() {
@@ -13,7 +13,7 @@ export default class ElementsPage extends React.PureComponent {
 			<AppContext.Consumer>{ctx =>
 				<div className="Page ElementsPage">
 					<section className="Page-Card">
-						<CardHeader icon="/admin/asset/icon/element-dark.svg" title="Manage Elements" 
+						<CardHeader icon="/admin/asset/icon/element-dark.svg" title="Manage Elements"
 							subtitle={`Manage dynamic elements on ${ctx.data.sitename}.`} />
 
 						<h2>Recent Elements</h2>

@@ -7507,10 +7507,10 @@ var App = /*#__PURE__*/function (_Preact$Component) {
       appState: tkn ? AppState.QUERYING : AppState.LOGIN,
       pluginState: PluginState.UNLINKED
     };
-    if (tkn) fetch("/admin/data", {
+    if (tkn) fetch('/admin/data', {
       cache: 'no-cache'
     }).then(function (r) {
-      if (r.status != 200) throw "Invalid credentials.";
+      if (r.status !== 200) throw 'Invalid credentials.';
       return r.json();
     }).then(function (res) {
       _this.handleSiteData(res);
@@ -7522,14 +7522,43 @@ var App = /*#__PURE__*/function (_Preact$Component) {
   }
 
   _createClass(App, [{
+    key: "render",
+    value: function render() {
+      return preact__WEBPACK_IMPORTED_MODULE_1__["h"](_AppContext__WEBPACK_IMPORTED_MODULE_12__["AppContext"].Provider, {
+        value: this.state.contextData
+      }, preact__WEBPACK_IMPORTED_MODULE_1__["h"]("div", {
+        className: "App"
+      }, this.state.appState === AppState.LOGIN && preact__WEBPACK_IMPORTED_MODULE_1__["h"](_LoginForm__WEBPACK_IMPORTED_MODULE_5__["default"], null), this.state.appState === AppState.ADMIN && preact__WEBPACK_IMPORTED_MODULE_1__["h"]("div", {
+        className: "App-Wrap"
+      }, preact__WEBPACK_IMPORTED_MODULE_1__["h"](_AppHeader__WEBPACK_IMPORTED_MODULE_6__["default"], null), preact__WEBPACK_IMPORTED_MODULE_1__["h"](preact_router__WEBPACK_IMPORTED_MODULE_2__["Router"], null, preact__WEBPACK_IMPORTED_MODULE_1__["h"](preact_router__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        path: "/admin/home",
+        component: _pages_MainPage__WEBPACK_IMPORTED_MODULE_7__["default"]
+      }), preact__WEBPACK_IMPORTED_MODULE_1__["h"](preact_router__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        path: "/admin/pages",
+        component: _pages_PagesPage__WEBPACK_IMPORTED_MODULE_8__["default"]
+      }), preact__WEBPACK_IMPORTED_MODULE_1__["h"](preact_router__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        path: "/admin/media",
+        component: _pages_MediaPage__WEBPACK_IMPORTED_MODULE_9__["default"]
+      }), preact__WEBPACK_IMPORTED_MODULE_1__["h"](preact_router__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        path: "/admin/themes",
+        component: _pages_ThemesPage__WEBPACK_IMPORTED_MODULE_10__["default"]
+      }), preact__WEBPACK_IMPORTED_MODULE_1__["h"](preact_router__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        path: "/admin/plugins",
+        component: _pages_PluginsPage__WEBPACK_IMPORTED_MODULE_11__["default"]
+      }), preact__WEBPACK_IMPORTED_MODULE_1__["h"](_Redirect__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        default: true,
+        to: "/admin/home"
+      })))));
+    }
+  }, {
     key: "loadPlugins",
     value: function loadPlugins() {
       var _this2 = this;
 
       var pluginState = this.state.pluginState;
 
-      if (pluginState == PluginState.UNLINKED) {
-        var adminScripts = JSON.parse(document.querySelector("#plugins").innerText).pluginSources;
+      if (pluginState === PluginState.UNLINKED) {
+        var adminScripts = JSON.parse(document.querySelector('#plugins').innerText).pluginSources;
         window.serve = {
           registerElement: function registerElement(elem) {
             var contextData = Object.assign({}, _this2.state.contextData);
@@ -7567,35 +7596,6 @@ var App = /*#__PURE__*/function (_Preact$Component) {
         pluginState: pluginState
       });
     }
-  }, {
-    key: "render",
-    value: function render() {
-      return preact__WEBPACK_IMPORTED_MODULE_1__["h"](_AppContext__WEBPACK_IMPORTED_MODULE_12__["AppContext"].Provider, {
-        value: this.state.contextData
-      }, preact__WEBPACK_IMPORTED_MODULE_1__["h"]("div", {
-        className: "App"
-      }, this.state.appState == AppState.LOGIN && preact__WEBPACK_IMPORTED_MODULE_1__["h"](_LoginForm__WEBPACK_IMPORTED_MODULE_5__["default"], null), this.state.appState == AppState.ADMIN && preact__WEBPACK_IMPORTED_MODULE_1__["h"]("div", {
-        className: "App-Wrap"
-      }, preact__WEBPACK_IMPORTED_MODULE_1__["h"](_AppHeader__WEBPACK_IMPORTED_MODULE_6__["default"], null), preact__WEBPACK_IMPORTED_MODULE_1__["h"](preact_router__WEBPACK_IMPORTED_MODULE_2__["Router"], null, preact__WEBPACK_IMPORTED_MODULE_1__["h"](preact_router__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        path: "/admin/home",
-        component: _pages_MainPage__WEBPACK_IMPORTED_MODULE_7__["default"]
-      }), preact__WEBPACK_IMPORTED_MODULE_1__["h"](preact_router__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        path: "/admin/pages",
-        component: _pages_PagesPage__WEBPACK_IMPORTED_MODULE_8__["default"]
-      }), preact__WEBPACK_IMPORTED_MODULE_1__["h"](preact_router__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        path: "/admin/media",
-        component: _pages_MediaPage__WEBPACK_IMPORTED_MODULE_9__["default"]
-      }), preact__WEBPACK_IMPORTED_MODULE_1__["h"](preact_router__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        path: "/admin/themes",
-        component: _pages_ThemesPage__WEBPACK_IMPORTED_MODULE_10__["default"]
-      }), preact__WEBPACK_IMPORTED_MODULE_1__["h"](preact_router__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        path: "/admin/plugins",
-        component: _pages_PluginsPage__WEBPACK_IMPORTED_MODULE_11__["default"]
-      }), preact__WEBPACK_IMPORTED_MODULE_1__["h"](_Redirect__WEBPACK_IMPORTED_MODULE_4__["default"], {
-        default: true,
-        to: "/admin/home"
-      })))));
-    }
   }]);
 
   return App;
@@ -7618,9 +7618,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! preact */ "../../node_modules/preact/dist/preact.module.js");
 
 var AppContext = preact__WEBPACK_IMPORTED_MODULE_0__["createContext"]({
-  handleSiteData: function handleSiteData() {},
   plugins: null,
-  data: null
+  data: null,
+  handleSiteData: function handleSiteData() {
+    /* No handling for default context. */
+  }
 });
 
 /***/ }),
@@ -7713,12 +7715,6 @@ var AppHeader = /*#__PURE__*/function (_Preact$Component) {
   }
 
   _createClass(AppHeader, [{
-    key: "logout",
-    value: function logout() {
-      js_cookie__WEBPACK_IMPORTED_MODULE_0___default.a.remove('tkn');
-      location.href = '/admin';
-    }
-  }, {
     key: "render",
     value: function render() {
       return preact__WEBPACK_IMPORTED_MODULE_1__["h"]("header", {
@@ -7756,6 +7752,12 @@ var AppHeader = /*#__PURE__*/function (_Preact$Component) {
       }, preact__WEBPACK_IMPORTED_MODULE_1__["h"]("img", {
         src: "/admin/asset/icon/logout-dark.svg"
       }))));
+    }
+  }, {
+    key: "logout",
+    value: function logout() {
+      js_cookie__WEBPACK_IMPORTED_MODULE_0___default.a.remove('tkn');
+      location.href = '/admin';
     }
   }]);
 
@@ -7856,7 +7858,7 @@ var CardHeader = /*#__PURE__*/function (_Preact$Component) {
         className: "CardHeader-Title"
       }, this.props.title), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("p", {
         className: "CardHeader-Description"
-      }, this.props.subtitle || ""));
+      }, this.props.subtitle || ''));
     }
   }]);
 
@@ -8024,7 +8026,7 @@ var CreateElementForm = /*#__PURE__*/function (_Preact$Component) {
     _this = _super.call(this, props);
     _this.state = {
       stage: 0,
-      identifier: ""
+      identifier: ''
     };
     _this.handleBack = _this.handleBack.bind(_assertThisInitialized(_this));
     _this.handleForward = _this.handleForward.bind(_assertThisInitialized(_this));
@@ -8035,71 +8037,145 @@ var CreateElementForm = /*#__PURE__*/function (_Preact$Component) {
   }
 
   _createClass(CreateElementForm, [{
-    key: "parseProps",
-    value: function parseProps(props, dest) {
+    key: "render",
+    value: function render() {
       var _this2 = this;
 
-      Object.entries(props).forEach(function (_ref) {
-        var _ref2 = _slicedToArray(_ref, 2),
-            identifier = _ref2[0],
-            v = _ref2[1];
+      var editor = undefined;
+
+      if (this.state.stage === 1) {
+        var customElement = this.context.plugins.elements.get(this.state.element);
+        console.log(customElement);
+
+        if (customElement === null || customElement === void 0 ? void 0 : customElement.element) {
+          editor = preact__WEBPACK_IMPORTED_MODULE_0__["h"](customElement.element, null);
+        } else {
+          editor = preact__WEBPACK_IMPORTED_MODULE_0__["h"](_ElementPropsEditor__WEBPACK_IMPORTED_MODULE_3__["default"], {
+            values: this.state.elementProps,
+            props: this.state.elementPropsDef,
+            updateValue: this.handleUpdateValue
+          });
+        }
+      }
+
+      return preact__WEBPACK_IMPORTED_MODULE_0__["h"](_AppContext__WEBPACK_IMPORTED_MODULE_5__["AppContext"].Consumer, null, function (ctx) {
+        return preact__WEBPACK_IMPORTED_MODULE_0__["h"]("form", {
+          className: "CreateElementForm",
+          onSubmit: function onSubmit(e) {
+            return e.preventDefault();
+          }
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"](_CardHeader__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          icon: "/admin/asset/icon/element-dark.svg",
+          title: "Create New Element",
+          subtitle: "Create a new element on ".concat(ctx.data.sitename, ".")
+        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"](_DimensionTransition__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          duration: 150,
+          mode: "height"
+        }, _this2.state.stage === 0 && preact__WEBPACK_IMPORTED_MODULE_0__["h"](preact__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("p", {
+          className: "CreateElementForm-Disclaimer"
+        }, "This form is only for experienced developers, such as the administrator of ".concat(ctx.data.sitename, ".\n\t\t\t\t\t\t\t\tIf you ignore this warning you could break your website!")), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("label", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", {
+          className: "CreateElementForm-Label"
+        }, "Identifier"), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("input", {
+          type: "text",
+          className: "CreateElementForm-IdentifierInput",
+          value: _this2.state.identifier,
+          onChange: _this2.handleIdentifierChange
+        })), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("label", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", {
+          className: "CreateElementForm-Label"
+        }, "Element Type"), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("select", {
+          className: "CreateElementForm-Select",
+          value: _this2.state.element,
+          onChange: _this2.handleElementChange
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("option", {
+          value: "",
+          key: ""
+        }, "- Select Type -"), Object.entries(ctx.data.elementDefs).map(function (_ref) {
+          var _ref2 = _slicedToArray(_ref, 2),
+              k = _ref2[0],
+              name = _ref2[1].name;
+
+          return preact__WEBPACK_IMPORTED_MODULE_0__["h"]("option", {
+            value: k,
+            key: k
+          }, name || k);
+        })))), _this2.state.stage === 1 && preact__WEBPACK_IMPORTED_MODULE_0__["h"](preact__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, editor, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("code", null, JSON.stringify(_this2.state.elementProps, null, 2)))), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
+          className: "CreateElementForm-ActionBar"
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
+          type: "button",
+          onClick: _this2.handleBack,
+          className: "CreateElementForm-ActionBar-Button"
+        }, _this2.state.stage === 0 ? 'Cancel' : 'Back')), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
+          onClick: _this2.handleForward,
+          className: "CreateElementForm-ActionBar-Button"
+        }, _this2.state.stage === 1 ? 'Create Element' : 'Next'))));
+      });
+    }
+  }, {
+    key: "parseProps",
+    value: function parseProps(props, dest) {
+      var _this3 = this;
+
+      Object.entries(props).forEach(function (_ref3) {
+        var _ref4 = _slicedToArray(_ref3, 2),
+            identifier = _ref4[0],
+            v = _ref4[1];
 
         if (v.entries) {
           dest[identifier] = [];
         } else if (v.fields) {
           dest[identifier] = {};
 
-          _this2.parseProps(v.fields, dest[identifier]);
+          _this3.parseProps(v.fields, dest[identifier]);
         } else {
           var prop = v;
-          var types = prop.type.replace(/ /g, "").split("|");
+          var types = prop.type.replace(/ /g, '').split('|');
           var baseTypes = types.map(function (t) {
-            return t.split(":")[0];
+            return t.split(':')[0];
           });
           var val = undefined;
           if (prop.default) val = prop.default;else switch (baseTypes[0]) {
-            case "text":
-              val = "";
+            case 'text':
+              val = '';
               break;
 
-            case "long_text":
-              val = "";
+            case 'long_text':
+              val = '';
               break;
 
-            case "number":
+            case 'number':
               val = 0;
               break;
 
-            case "date":
+            case 'date':
               val = Date.now();
               break;
 
-            case "time":
+            case 'time':
               val = 1000 * 60 * 12;
               break;
 
-            case "datetime":
+            case 'datetime':
               val = Date.now();
               break;
 
-            case "boolean":
+            case 'boolean':
               val = false;
               break;
 
-            case "media":
-              val = "";
+            case 'media':
+              val = '';
               break;
 
-            case "url":
-              val = "";
+            case 'url':
+              val = '';
               break;
 
-            case "color":
-              val = "#000";
+            case 'color':
+              val = '#000';
               break;
 
             default:
-              console.log(baseTypes[0], "does not have hardcoded default!");
+              console.log(baseTypes[0], 'does not have hardcoded default!');
           }
           dest[identifier] = val;
         }
@@ -8108,7 +8184,7 @@ var CreateElementForm = /*#__PURE__*/function (_Preact$Component) {
   }, {
     key: "handleUpdateValue",
     value: function handleUpdateValue(identifier, value) {
-      var splitPath = identifier.split(".");
+      var splitPath = identifier.split('.');
       var src = Object.assign({}, this.state.elementProps);
       var down = src;
 
@@ -8157,7 +8233,7 @@ var CreateElementForm = /*#__PURE__*/function (_Preact$Component) {
     key: "handleBack",
     value: function handleBack() {
       var stage = this.state.stage;
-      if (stage == 0) this.props.onCancel();else this.setState({
+      if (stage === 0) this.props.onCancel();else this.setState({
         stage: stage - 1
       });
     }
@@ -8165,9 +8241,9 @@ var CreateElementForm = /*#__PURE__*/function (_Preact$Component) {
     key: "handleForward",
     value: function handleForward() {
       var stage = this.state.stage;
-      if (stage == 0 && !this.state.element) return;
+      if (stage === 0 && !this.state.element) return;
 
-      if (stage == 1) {
+      if (stage === 1) {
         this.handleSubmitForm();
         return;
       }
@@ -8180,7 +8256,7 @@ var CreateElementForm = /*#__PURE__*/function (_Preact$Component) {
     key: "handleSubmitForm",
     value: function handleSubmitForm() {
       var ctx = this.context;
-      fetch("/admin/elements/create", {
+      fetch('/admin/elements/create', {
         method: 'POST',
         cache: 'no-cache',
         headers: {
@@ -8196,80 +8272,6 @@ var CreateElementForm = /*#__PURE__*/function (_Preact$Component) {
       }).then(function (res) {
         console.log(res);
         ctx.handleSiteData(res);
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this3 = this;
-
-      var editor = undefined;
-
-      if (this.state.stage == 1) {
-        var customElement = this.context.plugins.elements.get(this.state.element);
-        console.log(customElement);
-
-        if (customElement === null || customElement === void 0 ? void 0 : customElement.element) {
-          editor = preact__WEBPACK_IMPORTED_MODULE_0__["h"](customElement.element, null);
-        } else {
-          editor = preact__WEBPACK_IMPORTED_MODULE_0__["h"](_ElementPropsEditor__WEBPACK_IMPORTED_MODULE_3__["default"], {
-            values: this.state.elementProps,
-            props: this.state.elementPropsDef,
-            updateValue: this.handleUpdateValue
-          });
-        }
-      }
-
-      return preact__WEBPACK_IMPORTED_MODULE_0__["h"](_AppContext__WEBPACK_IMPORTED_MODULE_5__["AppContext"].Consumer, null, function (ctx) {
-        return preact__WEBPACK_IMPORTED_MODULE_0__["h"]("form", {
-          className: "CreateElementForm",
-          onSubmit: function onSubmit(e) {
-            return e.preventDefault();
-          }
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"](_CardHeader__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          icon: "/admin/asset/icon/element-dark.svg",
-          title: "Create New Element",
-          subtitle: "Create a new element on ".concat(ctx.data.sitename, ".")
-        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"](_DimensionTransition__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          duration: 150,
-          mode: "height"
-        }, _this3.state.stage == 0 && preact__WEBPACK_IMPORTED_MODULE_0__["h"](preact__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("p", {
-          className: "CreateElementForm-Disclaimer"
-        }, "This form is only for experienced developers, such as the administrator of ".concat(ctx.data.sitename, ".\n\t\t\t\t\t\t\t\tIf you ignore this warning you could break your website!")), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("label", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", {
-          className: "CreateElementForm-Label"
-        }, "Identifier"), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("input", {
-          type: "text",
-          className: "CreateElementForm-IdentifierInput",
-          value: _this3.state.identifier,
-          onChange: _this3.handleIdentifierChange
-        })), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("label", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", {
-          className: "CreateElementForm-Label"
-        }, "Element Type"), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("select", {
-          className: "CreateElementForm-Select",
-          value: _this3.state.element,
-          onChange: _this3.handleElementChange
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("option", {
-          value: "",
-          key: ""
-        }, "- Select Type -"), Object.entries(ctx.data.elementDefs).map(function (_ref3) {
-          var _ref4 = _slicedToArray(_ref3, 2),
-              k = _ref4[0],
-              name = _ref4[1].name;
-
-          return preact__WEBPACK_IMPORTED_MODULE_0__["h"]("option", {
-            value: k,
-            key: k
-          }, name || k);
-        })))), _this3.state.stage == 1 && preact__WEBPACK_IMPORTED_MODULE_0__["h"](preact__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, editor, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("code", null, JSON.stringify(_this3.state.elementProps, null, 2)))), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
-          className: "CreateElementForm-ActionBar"
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
-          type: "button",
-          onClick: _this3.handleBack,
-          className: "CreateElementForm-ActionBar-Button"
-        }, _this3.state.stage == 0 ? "Cancel" : "Back")), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
-          onClick: _this3.handleForward,
-          className: "CreateElementForm-ActionBar-Button"
-        }, _this3.state.stage == 1 ? "Create Element" : "Next"))));
       });
     }
   }]);
@@ -8387,30 +8389,19 @@ var DimensionTransition = /*#__PURE__*/function (_Preact$Component) {
       (_this$observer = this.observer) === null || _this$observer === void 0 ? void 0 : _this$observer.disconnect();
     }
   }, {
-    key: "handleContentChanged",
-    value: function handleContentChanged() {
-      var elem = this.ref.current;
-      this.setState({
-        dimensions: {
-          x: elem.offsetWidth,
-          y: elem.offsetHeight
-        }
-      });
-    }
-  }, {
     key: "render",
     value: function render() {
       var _this$state$dimension, _this$state$dimension2;
 
       var appliedOuterStyles = {};
-      if (this.props.mode != "height") appliedOuterStyles.width = (_this$state$dimension = this.state.dimensions) === null || _this$state$dimension === void 0 ? void 0 : _this$state$dimension.x;
-      if (this.props.mode != "width") appliedOuterStyles.height = (_this$state$dimension2 = this.state.dimensions) === null || _this$state$dimension2 === void 0 ? void 0 : _this$state$dimension2.y;
+      if (this.props.mode !== 'height') appliedOuterStyles.width = (_this$state$dimension = this.state.dimensions) === null || _this$state$dimension === void 0 ? void 0 : _this$state$dimension.x;
+      if (this.props.mode !== 'width') appliedOuterStyles.height = (_this$state$dimension2 = this.state.dimensions) === null || _this$state$dimension2 === void 0 ? void 0 : _this$state$dimension2.y;
       var appliedInnerStyles = {
-        width: "min-content",
-        height: "min-content"
+        width: 'min-content',
+        height: 'min-content'
       };
-      if (this.props.mode == "height") appliedInnerStyles.width = "auto";
-      if (this.props.mode == "width") appliedInnerStyles.height = "auto";
+      if (this.props.mode === 'height') appliedInnerStyles.width = 'auto';
+      if (this.props.mode === 'width') appliedInnerStyles.height = 'auto';
       return preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
         className: "DimensionTransition",
         style: Object.assign(appliedOuterStyles, this.props.style, {
@@ -8421,6 +8412,17 @@ var DimensionTransition = /*#__PURE__*/function (_Preact$Component) {
         style: appliedInnerStyles,
         ref: this.ref
       }, this.props.children));
+    }
+  }, {
+    key: "handleContentChanged",
+    value: function handleContentChanged() {
+      var elem = this.ref.current;
+      this.setState({
+        dimensions: {
+          x: elem.offsetWidth,
+          y: elem.offsetHeight
+        }
+      });
     }
   }]);
 
@@ -8612,44 +8614,24 @@ var ElementPropInput = /*#__PURE__*/function (_Preact$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      type: _this.props.prop.type.replace(/ /g, "").split("|")[0]
+      type: _this.props.prop.type.replace(/ /g, '').split('|')[0]
     };
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(ElementPropInput, [{
-    key: "handleChange",
-    value: function handleChange(evt) {
-      var value = evt.target.value; // Apply transformations to value based on type.
-
-      var baseType = this.state.type.split(":")[0];
-
-      switch (baseType) {
-        case "number":
-          value = value == "" ? 0 : Number.parseInt(value);
-          if (Number.isNaN(value)) value = this.props.value;
-          break;
-
-        case "boolean":
-          value = !this.props.value;
-          break;
-      }
-
-      this.props.onChange(value);
-    }
-  }, {
     key: "render",
     value: function render() {
       var friendlyName = this.props.prop.name || this.props.identifier.split(' ').map(function (s) {
         return s.charAt(0).toUpperCase() + s.substr(1);
       }).join(' ');
       var widget = undefined;
-      var baseType = this.state.type.split(":")[0];
+      var baseType = this.state.type.split(':')[0];
 
       switch (baseType) {
         default:
-        case "text":
+        case 'text':
           widget = preact__WEBPACK_IMPORTED_MODULE_0__["h"]("input", {
             type: "text",
             name: this.props.identifier,
@@ -8659,7 +8641,7 @@ var ElementPropInput = /*#__PURE__*/function (_Preact$Component) {
           });
           break;
 
-        case "long_text":
+        case 'long_text':
           widget = preact__WEBPACK_IMPORTED_MODULE_0__["h"]("textarea", {
             rows: 1,
             name: this.props.identifier,
@@ -8669,7 +8651,7 @@ var ElementPropInput = /*#__PURE__*/function (_Preact$Component) {
           });
           break;
 
-        case "number":
+        case 'number':
           widget = preact__WEBPACK_IMPORTED_MODULE_0__["h"]("input", {
             type: "number",
             name: this.props.identifier,
@@ -8679,7 +8661,7 @@ var ElementPropInput = /*#__PURE__*/function (_Preact$Component) {
           });
           break;
 
-        case "date":
+        case 'date':
           widget = preact__WEBPACK_IMPORTED_MODULE_0__["h"]("input", {
             type: "date",
             name: this.props.identifier,
@@ -8689,7 +8671,7 @@ var ElementPropInput = /*#__PURE__*/function (_Preact$Component) {
           });
           break;
 
-        case "time":
+        case 'time':
           widget = preact__WEBPACK_IMPORTED_MODULE_0__["h"]("input", {
             type: "time",
             name: this.props.identifier,
@@ -8699,7 +8681,7 @@ var ElementPropInput = /*#__PURE__*/function (_Preact$Component) {
           });
           break;
 
-        case "datetime":
+        case 'datetime':
           widget = preact__WEBPACK_IMPORTED_MODULE_0__["h"]("input", {
             type: "datetime",
             name: this.props.identifier,
@@ -8709,7 +8691,7 @@ var ElementPropInput = /*#__PURE__*/function (_Preact$Component) {
           });
           break;
 
-        case "boolean":
+        case 'boolean':
           widget = preact__WEBPACK_IMPORTED_MODULE_0__["h"]("input", {
             type: "checkbox",
             name: this.props.identifier,
@@ -8719,7 +8701,7 @@ var ElementPropInput = /*#__PURE__*/function (_Preact$Component) {
           });
           break;
 
-        case "color":
+        case 'color':
           widget = preact__WEBPACK_IMPORTED_MODULE_0__["h"]("input", {
             type: "color",
             name: this.props.identifier,
@@ -8736,6 +8718,29 @@ var ElementPropInput = /*#__PURE__*/function (_Preact$Component) {
       }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", {
         className: "ElementPropInput-Label"
       }, friendlyName), widget);
+    }
+  }, {
+    key: "handleChange",
+    value: function handleChange(evt) {
+      var value = evt.target.value; // Apply transformations to value based on type.
+
+      var baseType = this.state.type.split(':')[0];
+
+      switch (baseType) {
+        default:
+          break;
+
+        case 'number':
+          value = value === '' ? 0 : Number.parseInt(value, 10);
+          if (Number.isNaN(value)) value = this.props.value;
+          break;
+
+        case 'boolean':
+          value = !this.props.value;
+          break;
+      }
+
+      this.props.onChange(value);
     }
   }]);
 
@@ -8841,23 +8846,28 @@ var ElementPropsEditor = /*#__PURE__*/function (_Preact$Component) {
   }
 
   _createClass(ElementPropsEditor, [{
+    key: "render",
+    value: function render() {
+      return this.renderPropsTable(this.props.props, this.props.values, '');
+    }
+  }, {
     key: "renderProp",
     value: function renderProp(identifier, p, values, fullIdentifier) {
       var widget;
 
-      if ("fields" in p) {
+      if ('fields' in p) {
         var prop = p;
         var friendlyName = prop.name || identifier.split(' ').map(function (s) {
           return s.charAt(0).toUpperCase() + s.substr(1);
         }).join(' ');
         widget = preact__WEBPACK_IMPORTED_MODULE_0__["h"]("label", {
-          key: fullIdentifier + "-LABEL",
+          key: fullIdentifier + '-LABEL',
           className: "ElementPropsEditor-WrapLabel"
         }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, friendlyName), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
           key: fullIdentifier,
           className: "ElementPropsEditor-TableWrap"
         }, this.renderPropsTable(prop.fields, values[identifier], fullIdentifier)));
-      } else if ("entries" in p) {
+      } else if ('entries' in p) {
         var _prop = p;
         widget = preact__WEBPACK_IMPORTED_MODULE_0__["h"](_ElementPropArray__WEBPACK_IMPORTED_MODULE_3__["default"], {
           prop: _prop,
@@ -8891,13 +8901,8 @@ var ElementPropsEditor = /*#__PURE__*/function (_Preact$Component) {
             k = _ref2[0],
             v = _ref2[1];
 
-        return _this.renderProp(k, v, values, fullIdentifier + (fullIdentifier != "" ? "." : "") + k);
+        return _this.renderProp(k, v, values, fullIdentifier + (fullIdentifier !== '' ? '.' : '') + k);
       }));
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return this.renderPropsTable(this.props.props, this.props.values, "");
     }
   }]);
 
@@ -9004,9 +9009,9 @@ var LoginForm = /*#__PURE__*/function (_Preact$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      username: "",
-      password: "",
-      warning: "",
+      username: '',
+      password: '',
+      warning: '',
       state: LoginState.UNAUTH
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
@@ -9016,16 +9021,64 @@ var LoginForm = /*#__PURE__*/function (_Preact$Component) {
   }
 
   _createClass(LoginForm, [{
+    key: "render",
+    value: function render() {
+      var loading = this.state.state === LoginState.AUTH || this.state.state === LoginState.REDIRECT;
+      var loaded = this.state.state === LoginState.REDIRECT;
+      return preact__WEBPACK_IMPORTED_MODULE_1__["h"]("div", {
+        className: "LoginForm"
+      }, preact__WEBPACK_IMPORTED_MODULE_1__["h"]("form", {
+        className: 'LoginForm-Card' + (loading ? ' loading' : '') + (loaded ? ' loaded' : ''),
+        onSubmit: this.handleSubmit
+      }, preact__WEBPACK_IMPORTED_MODULE_1__["h"]("div", {
+        className: "LoginForm-ProfilePlaceholder"
+      }, preact__WEBPACK_IMPORTED_MODULE_1__["h"]("img", {
+        className: "card",
+        src: "/admin/asset/icon/account-light.svg"
+      }), preact__WEBPACK_IMPORTED_MODULE_1__["h"]("img", {
+        className: "success",
+        src: "/admin/asset/icon/serve-light.svg"
+      })), preact__WEBPACK_IMPORTED_MODULE_1__["h"]("div", {
+        className: "LoginForm-FormContents"
+      }, preact__WEBPACK_IMPORTED_MODULE_1__["h"]("input", {
+        type: "text",
+        name: "user",
+        placeholder: "Username",
+        autoFocus: true,
+        required: true,
+        minLength: 3,
+        maxLength: 32,
+        autoComplete: 'username',
+        value: this.state.username,
+        onChange: this.handleUsernameChange,
+        disabled: loading
+      }), preact__WEBPACK_IMPORTED_MODULE_1__["h"]("input", {
+        type: "password",
+        name: "pass",
+        placeholder: "Password",
+        required: true,
+        minLength: 8,
+        autoComplete: 'current-password',
+        value: this.state.password,
+        onChange: this.handlePasswordChange,
+        disabled: loading
+      }), preact__WEBPACK_IMPORTED_MODULE_1__["h"]("button", {
+        disabled: loading
+      }, "Log In"))), preact__WEBPACK_IMPORTED_MODULE_1__["h"]("p", {
+        className: "LoginForm-Warning"
+      }, this.state.warning));
+    }
+  }, {
     key: "handleSubmit",
     value: function handleSubmit(e) {
       var _this2 = this;
 
       e.preventDefault();
-      if (this.state.state == LoginState.PENDING) return false;
+      if (this.state.state === LoginState.PENDING) return false;
       this.setState({
-        warning: ""
+        warning: ''
       });
-      fetch("/admin/auth", {
+      fetch('/admin/auth', {
         method: 'POST',
         cache: 'no-cache',
         headers: {
@@ -9048,7 +9101,7 @@ var LoginForm = /*#__PURE__*/function (_Preact$Component) {
                 case 2:
                   res = _context.sent;
 
-                  if (!(r.status != 200)) {
+                  if (!(r.status !== 200)) {
                     _context.next = 5;
                     break;
                   }
@@ -9078,12 +9131,12 @@ var LoginForm = /*#__PURE__*/function (_Preact$Component) {
 
         var returnImmediate = false;
         var data = null;
-        fetch("/admin/data", {
+        fetch('/admin/data', {
           cache: 'no-cache'
         }).then(function (r) {
           return r.json();
-        }).then(function (res) {
-          if (returnImmediate) _this2.context.handleSiteData(res);else data = res;
+        }).then(function (r) {
+          if (returnImmediate) _this2.context.handleSiteData(r);else data = r;
         });
         setTimeout(function () {
           return _this2.setState({
@@ -9115,54 +9168,6 @@ var LoginForm = /*#__PURE__*/function (_Preact$Component) {
       this.setState({
         password: e.target.value
       });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var loading = this.state.state == LoginState.AUTH || this.state.state == LoginState.REDIRECT;
-      var loaded = this.state.state == LoginState.REDIRECT;
-      return preact__WEBPACK_IMPORTED_MODULE_1__["h"]("div", {
-        className: "LoginForm"
-      }, preact__WEBPACK_IMPORTED_MODULE_1__["h"]("form", {
-        className: "LoginForm-Card" + (loading ? " loading" : "") + (loaded ? " loaded" : ""),
-        onSubmit: this.handleSubmit
-      }, preact__WEBPACK_IMPORTED_MODULE_1__["h"]("div", {
-        className: "LoginForm-ProfilePlaceholder"
-      }, preact__WEBPACK_IMPORTED_MODULE_1__["h"]("img", {
-        className: "card",
-        src: "/admin/asset/icon/account-light.svg"
-      }), preact__WEBPACK_IMPORTED_MODULE_1__["h"]("img", {
-        className: "success",
-        src: "/admin/asset/icon/serve-light.svg"
-      })), preact__WEBPACK_IMPORTED_MODULE_1__["h"]("div", {
-        className: "LoginForm-FormContents"
-      }, preact__WEBPACK_IMPORTED_MODULE_1__["h"]("input", {
-        type: "text",
-        name: "user",
-        placeholder: "Username",
-        autoFocus: true,
-        required: true,
-        minLength: 3,
-        maxLength: 32,
-        autoComplete: "username",
-        value: this.state.username,
-        onChange: this.handleUsernameChange,
-        disabled: loading
-      }), preact__WEBPACK_IMPORTED_MODULE_1__["h"]("input", {
-        type: "password",
-        name: "pass",
-        placeholder: "Password",
-        required: true,
-        minLength: 8,
-        autoComplete: "current-password",
-        value: this.state.password,
-        onChange: this.handlePasswordChange,
-        disabled: loading
-      }), preact__WEBPACK_IMPORTED_MODULE_1__["h"]("button", {
-        disabled: loading
-      }, "Log In"))), preact__WEBPACK_IMPORTED_MODULE_1__["h"]("p", {
-        className: "LoginForm-Warning"
-      }, this.state.warning));
     }
   }]);
 
@@ -9219,7 +9224,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-preact__WEBPACK_IMPORTED_MODULE_0__["render"](preact__WEBPACK_IMPORTED_MODULE_0__["h"](_App__WEBPACK_IMPORTED_MODULE_2__["default"], null), document.getElementById("root"));
+preact__WEBPACK_IMPORTED_MODULE_0__["render"](preact__WEBPACK_IMPORTED_MODULE_0__["h"](_App__WEBPACK_IMPORTED_MODULE_2__["default"], null), document.getElementById('root'));
 
 /***/ }),
 
@@ -9315,28 +9320,28 @@ var MediaItem = /*#__PURE__*/function (_Preact$Component) {
   _createClass(MediaItem, [{
     key: "render",
     value: function render() {
-      var isImage = this.props.item.ext == "png" || this.props.item.ext == "jpg" || this.props.item.ext == "svg" || this.props.item.ext == "gif";
-      var icon = "/admin/asset/icon/ext-unknown-color.svg";
+      var isImage = this.props.item.ext === 'png' || this.props.item.ext === 'jpg' || this.props.item.ext === 'svg' || this.props.item.ext === 'gif';
+      var icon = '/admin/asset/icon/ext-unknown-color.svg';
       if (isImage) icon = this.props.item.publicPath;else {
-        if (this.props.item.ext == "pdf") icon = "/admin/asset/icon/ext-pdf-color.svg";else if (this.props.item.ext == "md" || this.props.item.ext == "txt") icon = "/admin/asset/icon/ext-txt-color.svg";else if (this.props.item.ext == "doc" || this.props.item.ext == "docx") icon = "/admin/asset/icon/ext-document-color.svg";else if (this.props.item.ext == "xls" || this.props.item.ext == "xlsx") icon = "/admin/asset/icon/ext-sheet-color.svg";else if (this.props.item.ext == "ppt" || this.props.item.ext == "pptx") icon = "/admin/asset/icon/ext-slideshow-color.svg";
+        if (this.props.item.ext === 'pdf') icon = '/admin/asset/icon/ext-pdf-color.svg';else if (this.props.item.ext === 'md' || this.props.item.ext === 'txt') icon = '/admin/asset/icon/ext-txt-color.svg';else if (this.props.item.ext === 'doc' || this.props.item.ext === 'docx') icon = '/admin/asset/icon/ext-document-color.svg';else if (this.props.item.ext === 'xls' || this.props.item.ext === 'xlsx') icon = '/admin/asset/icon/ext-sheet-color.svg';else if (this.props.item.ext === 'ppt' || this.props.item.ext === 'pptx') icon = '/admin/asset/icon/ext-slideshow-color.svg';
       }
       return preact__WEBPACK_IMPORTED_MODULE_0__["h"](_Selectable__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        className: "MediaItem",
+        class: "MediaItem",
         ind: this.props.ind,
         callbacks: this.callbacks,
         doubleClickSelects: true
       }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
         src: icon,
-        className: "MediaItem-Image" + (isImage ? "" : " icon")
+        class: 'MediaItem-Image' + (isImage ? '' : ' icon')
       }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
-        className: "MediaItem-Description"
+        class: "MediaItem-Description"
       }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("p", {
-        className: "MediaItem-Title"
+        class: "MediaItem-Title"
       }, this.props.item.name), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("p", {
-        className: "MediaItem-Author"
+        class: "MediaItem-Author"
       }, "Uploaded by ".concat(this.props.item.uploadUser, " ").concat(_common_util_Format__WEBPACK_IMPORTED_MODULE_3__["date"](this.props.item.uploadDate), ".")), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("p", {
-        className: "MediaItem-Size"
-      }, (this.props.item.dimensions ? _common_util_Format__WEBPACK_IMPORTED_MODULE_3__["vector"](this.props.item.dimensions, 'px') + " • " : "") + _common_util_Format__WEBPACK_IMPORTED_MODULE_3__["bytes"](this.props.item.size))));
+        class: "MediaItem-Size"
+      }, (this.props.item.dimensions ? _common_util_Format__WEBPACK_IMPORTED_MODULE_3__["vector"](this.props.item.dimensions, 'px') + ' • ' : '') + _common_util_Format__WEBPACK_IMPORTED_MODULE_3__["bytes"](this.props.item.size))));
     }
   }]);
 
@@ -9496,9 +9501,80 @@ var MediaUploadForm = /*#__PURE__*/function (_Preact$Component) {
       window.removeEventListener('keyup', this.handleKeyUp);
     }
   }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var uploadItems = this.state.files.map(function (f, i) {
+        return preact__WEBPACK_IMPORTED_MODULE_0__["h"](_MediaUploadItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          file: f,
+          ind: i,
+          key: f.file.name,
+          editable: _this2.state.state === MediaUploadState.SELECTING,
+          onNameChange: _this2.handleNameChange.bind(_this2, i),
+          onFilenameChange: _this2.handleFilenameChange.bind(_this2, i)
+        });
+      });
+      return preact__WEBPACK_IMPORTED_MODULE_0__["h"](_AppContext__WEBPACK_IMPORTED_MODULE_6__["AppContext"].Consumer, null, function (ctx) {
+        return preact__WEBPACK_IMPORTED_MODULE_0__["h"]("form", {
+          className: "MediaUploadForm",
+          onSubmit: function onSubmit(e) {
+            return e.preventDefault();
+          }
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"](_CardHeader__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          icon: "/admin/asset/icon/document-dark.svg",
+          title: "Upload Media",
+          subtitle: "Upload new media assets to ".concat(ctx.data.sitename, ".")
+        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
+          className: 'MediaUploadForm-InputWrap' + (_this2.state.state !== MediaUploadState.SELECTING ? ' disabled' : '')
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("input", {
+          type: "file",
+          multiple: true,
+          autoFocus: true,
+          className: "MediaUploadForm-Input",
+          onChange: _this2.handleFilesChange,
+          disabled: _this2.state.state !== MediaUploadState.SELECTING
+        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("h2", null, "Click or drag files here to upload.")), _this2.state.files.length > 0 && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
+          className: "MediaUploadForm-Toolbar"
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, _this2.state.selected.length > 0 && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
+          className: "MediaUploadForm-Toolbar-Button",
+          onClick: _this2.handleRemoveFiles
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
+          src: "/admin/asset/icon/trash-dark.svg"
+        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, _this2.state.selected.length === 1 ? 'Remove' : 'Remove (' + _this2.state.selected.length + ')'))), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
+          className: "MediaUploadForm-Toolbar-Button"
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
+          src: "/admin/asset/icon/sort-dark.svg"
+        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Sort by Size")), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
+          className: "MediaUploadForm-Toolbar-Button",
+          onClick: _this2.handleViewToggle
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
+          src: "/admin/asset/icon/".concat(_this2.state.grid ? 'grid' : 'list', "-view-dark.svg")
+        })))), preact__WEBPACK_IMPORTED_MODULE_0__["h"](_DimensionTransition__WEBPACK_IMPORTED_MODULE_5__["default"], {
+          duration: 150
+        }, _this2.state.state === MediaUploadState.SELECTING && preact__WEBPACK_IMPORTED_MODULE_0__["h"](_SelectGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          className: 'MediaUploadForm-Files ' + (_this2.state.grid ? 'Grid' : 'Stack'),
+          onSelectionChange: _this2.handleSelectionChange,
+          multi: true
+        }, uploadItems), _this2.state.state === MediaUploadState.UPLOADING && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
+          className: 'MediaUploadForm-Files ' + (_this2.state.grid ? 'Grid' : 'Stack')
+        }, uploadItems)), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
+          className: "MediaUploadForm-ActionBar"
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
+          onClick: _this2.handleClose,
+          className: "MediaUploadForm-ActionBar-Button",
+          disabled: _this2.state.state === MediaUploadState.UPLOADING
+        }, "Cancel")), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, _this2.state.files.length > 0 && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
+          onClick: _this2.handleUpload,
+          className: "MediaUploadForm-ActionBar-Button Upload",
+          disabled: _this2.state.state === MediaUploadState.UPLOADING
+        }, "Upload File".concat(_this2.state.files.length > 1 ? 's' : '')))));
+      });
+    }
+  }, {
     key: "handleKeyUp",
     value: function handleKeyUp(e) {
-      if (e.key == 'Delete') this.handleRemoveFiles();
+      if (e.key === 'Delete') this.handleRemoveFiles();
     }
   }, {
     key: "handleViewToggle",
@@ -9572,7 +9648,7 @@ var MediaUploadForm = /*#__PURE__*/function (_Preact$Component) {
   }, {
     key: "handleSubmit",
     value: function handleSubmit() {
-      var _this2 = this;
+      var _this3 = this;
 
       var threads = 6;
       var promises = [];
@@ -9581,13 +9657,13 @@ var MediaUploadForm = /*#__PURE__*/function (_Preact$Component) {
         var ind = i;
         promises.push(new Promise(function (resolve) {
           var f = function f() {
-            if (ind >= _this2.state.files.length) return resolve();
-            var file = _this2.state.files[ind];
+            if (ind >= _this3.state.files.length) return resolve();
+            var file = _this3.state.files[ind];
             var data = new FormData();
             data.append('file', file.file);
             data.append('name', file.name);
             data.append('identifier', file.identifier);
-            fetch("/admin/media/upload", {
+            fetch('/admin/media/upload', {
               method: 'POST',
               cache: 'no-cache',
               // headers: {'Content-Type': 'application/json'},
@@ -9607,15 +9683,15 @@ var MediaUploadForm = /*#__PURE__*/function (_Preact$Component) {
       }
 
       Promise.all(promises).then(function () {
-        console.log("ALL DONE");
-        fetch("/admin/data", {
+        console.log('ALL DONE');
+        fetch('/admin/data', {
           cache: 'no-cache'
         }).then(function (r) {
           return r.json();
         }).then(function (res) {
-          _this2.context.handleSiteData(res);
+          _this3.context.handleSiteData(res);
 
-          _this2.props.onCancel();
+          _this3.props.onCancel();
         });
       });
     }
@@ -9631,20 +9707,20 @@ var MediaUploadForm = /*#__PURE__*/function (_Preact$Component) {
                 target = e.target;
                 files = _toConsumableArray(this.state.files);
                 newFiles = Array.from(target.files || []);
-                target.value = "";
+                target.value = '';
                 _context.next = 6;
                 return Promise.all(newFiles.map(function (file) {
                   return new Promise(function (resolve) {
-                    var ext = file.name.substr(file.name.lastIndexOf(".") + 1);
-                    var isImage = ext == "png" || ext == "jpeg" || ext == "jpg" || ext == "svg" || ext == "gif"; //@ts-ignore
+                    var ext = file.name.substr(file.name.lastIndexOf('.') + 1);
+                    var isImage = ext === 'png' || ext === 'jpeg' || ext === 'jpg' || ext === 'svg' || ext === 'gif'; // @ts-ignore
 
-                    var cleanName = file.name.substr(0, file.name.lastIndexOf(".")).replace(/[_-]+/g, " ").split(" ").map(function (_ref) {
+                    var cleanName = file.name.substr(0, file.name.lastIndexOf('.')).replace(/[_-]+/g, ' ').split(' ').map(function (_ref) {
                       var _ref2 = _toArray(_ref),
                           firstChar = _ref2[0],
                           rest = _ref2.slice(1);
 
-                      return firstChar.toUpperCase() + rest.join("").toLowerCase();
-                    }).join(" ");
+                      return firstChar.toUpperCase() + rest.join('').toLowerCase();
+                    }).join(' ');
                     if (cleanName.length > 32) cleanName = cleanName.substr(0, 32);
 
                     var resolveFile = function resolveFile(image) {
@@ -9657,7 +9733,7 @@ var MediaUploadForm = /*#__PURE__*/function (_Preact$Component) {
                         for (_iterator.s(); !(_step = _iterator.n()).done;) {
                           var existingFile = _step.value;
 
-                          if (existingFile.name == cleanName) {
+                          if (existingFile.name === cleanName) {
                             exists = true;
                             break;
                           }
@@ -9673,7 +9749,7 @@ var MediaUploadForm = /*#__PURE__*/function (_Preact$Component) {
                           file: file,
                           ext: ext,
                           name: cleanName,
-                          identifier: "",
+                          identifier: '',
                           thumbnail: image
                         });
                       }
@@ -9711,77 +9787,6 @@ var MediaUploadForm = /*#__PURE__*/function (_Preact$Component) {
 
       return handleFilesChange;
     }()
-  }, {
-    key: "render",
-    value: function render() {
-      var _this3 = this;
-
-      var uploadItems = this.state.files.map(function (f, i) {
-        return preact__WEBPACK_IMPORTED_MODULE_0__["h"](_MediaUploadItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          file: f,
-          ind: i,
-          key: f.file.name,
-          editable: _this3.state.state == MediaUploadState.SELECTING,
-          onNameChange: _this3.handleNameChange.bind(_this3, i),
-          onFilenameChange: _this3.handleFilenameChange.bind(_this3, i)
-        });
-      });
-      return preact__WEBPACK_IMPORTED_MODULE_0__["h"](_AppContext__WEBPACK_IMPORTED_MODULE_6__["AppContext"].Consumer, null, function (ctx) {
-        return preact__WEBPACK_IMPORTED_MODULE_0__["h"]("form", {
-          className: "MediaUploadForm",
-          onSubmit: function onSubmit(e) {
-            return e.preventDefault();
-          }
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"](_CardHeader__WEBPACK_IMPORTED_MODULE_2__["default"], {
-          icon: "/admin/asset/icon/document-dark.svg",
-          title: "Upload Media",
-          subtitle: "Upload new media assets to ".concat(ctx.data.sitename, ".")
-        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
-          className: "MediaUploadForm-InputWrap" + (_this3.state.state != MediaUploadState.SELECTING ? " disabled" : "")
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("input", {
-          type: "file",
-          multiple: true,
-          autoFocus: true,
-          className: "MediaUploadForm-Input",
-          onChange: _this3.handleFilesChange,
-          disabled: _this3.state.state != MediaUploadState.SELECTING
-        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("h2", null, "Click or drag files here to upload.")), _this3.state.files.length > 0 && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
-          className: "MediaUploadForm-Toolbar"
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, _this3.state.selected.length > 0 && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
-          className: "MediaUploadForm-Toolbar-Button",
-          onClick: _this3.handleRemoveFiles
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
-          src: "/admin/asset/icon/trash-dark.svg"
-        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, _this3.state.selected.length == 1 ? "Remove" : "Remove (" + _this3.state.selected.length + ")"))), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
-          className: "MediaUploadForm-Toolbar-Button"
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
-          src: "/admin/asset/icon/sort-dark.svg"
-        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Sort by Size")), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
-          className: "MediaUploadForm-Toolbar-Button",
-          onClick: _this3.handleViewToggle
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
-          src: "/admin/asset/icon/".concat(_this3.state.grid ? "grid" : "list", "-view-dark.svg")
-        })))), preact__WEBPACK_IMPORTED_MODULE_0__["h"](_DimensionTransition__WEBPACK_IMPORTED_MODULE_5__["default"], {
-          duration: 150
-        }, _this3.state.state == MediaUploadState.SELECTING && preact__WEBPACK_IMPORTED_MODULE_0__["h"](_SelectGroup__WEBPACK_IMPORTED_MODULE_3__["default"], {
-          className: "MediaUploadForm-Files " + (_this3.state.grid ? "Grid" : "Stack"),
-          onSelectionChange: _this3.handleSelectionChange,
-          multi: true
-        }, uploadItems), _this3.state.state == MediaUploadState.UPLOADING && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
-          className: "MediaUploadForm-Files " + (_this3.state.grid ? "Grid" : "Stack")
-        }, uploadItems)), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
-          className: "MediaUploadForm-ActionBar"
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
-          onClick: _this3.handleClose,
-          className: "MediaUploadForm-ActionBar-Button",
-          disabled: _this3.state.state == MediaUploadState.UPLOADING
-        }, "Cancel")), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, _this3.state.files.length > 0 && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
-          onClick: _this3.handleUpload,
-          className: "MediaUploadForm-ActionBar-Button Upload",
-          disabled: _this3.state.state == MediaUploadState.UPLOADING
-        }, "Upload File".concat(_this3.state.files.length > 1 ? "s" : "")))));
-      });
-    }
   }]);
 
   return MediaUploadForm;
@@ -9885,6 +9890,48 @@ var MediaItem = /*#__PURE__*/function (_Preact$Component) {
   }
 
   _createClass(MediaItem, [{
+    key: "render",
+    value: function render() {
+      var ext = this.props.file.ext;
+      var isImage = !!this.props.file.thumbnail;
+      var icon = '/admin/asset/icon/ext-unknown-color.svg';
+      if (isImage) icon = this.props.file.thumbnail;else {
+        if (ext === 'pdf') icon = '/admin/asset/icon/ext-pdf-color.svg';else if (ext === 'md' || ext === 'txt') icon = '/admin/asset/icon/ext-txt-color.svg';else if (ext === 'doc' || ext === 'docx') icon = '/admin/asset/icon/ext-document-color.svg';else if (ext === 'xls' || ext === 'xlsx') icon = '/admin/asset/icon/ext-sheet-color.svg';else if (ext === 'ppt' || ext === 'pptx') icon = '/admin/asset/icon/ext-slideshow-color.svg';
+      }
+      var identifier = this.props.file.name.toLowerCase().replace(/[ -]/g, '_').replace(/[^a-zA-Z0-9_]/g, '');
+      return preact__WEBPACK_IMPORTED_MODULE_0__["h"](_Selectable__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        class: "MediaUploadItem",
+        ind: this.props.ind,
+        doubleClickSelects: true
+      }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
+        src: icon,
+        className: 'MediaItem-Image' + (isImage ? '' : ' icon')
+      }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
+        className: "MediaItem-Description"
+      }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("input", {
+        type: "text",
+        maxLength: 32,
+        disabled: !this.props.editable,
+        class: "MediaItem-Name",
+        value: this.props.file.name,
+        onChange: this.handleNameChange,
+        onInput: this.handleNameChange,
+        onMouseUp: this.handleInputClick
+      }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("input", {
+        type: "text",
+        maxLength: 32,
+        disabled: !this.props.editable,
+        class: "MediaItem-FileName",
+        placeholder: identifier,
+        value: this.props.editable ? this.props.file.identifier : identifier + '.' + this.props.file.ext,
+        onChange: this.handleFilenameChange,
+        onInput: this.handleFilenameChange,
+        onMouseUp: this.handleInputClick
+      }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("p", {
+        className: "MediaItem-Metadata"
+      }, "".concat(_common_util_Format__WEBPACK_IMPORTED_MODULE_3__["bytes"](this.props.file.file.size), " \u2022 ") + "Last modified ".concat(_common_util_Format__WEBPACK_IMPORTED_MODULE_3__["date"](this.props.file.file.lastModified)))));
+    }
+  }, {
     key: "handleNameChange",
     value: function handleNameChange(e) {
       this.props.onNameChange(e.target.value);
@@ -9910,48 +9957,6 @@ var MediaItem = /*#__PURE__*/function (_Preact$Component) {
     key: "handleInputClick",
     value: function handleInputClick(e) {
       e.stopPropagation();
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var ext = this.props.file.ext;
-      var isImage = !!this.props.file.thumbnail;
-      var icon = "/admin/asset/icon/ext-unknown-color.svg";
-      if (isImage) icon = this.props.file.thumbnail;else {
-        if (ext == "pdf") icon = "/admin/asset/icon/ext-pdf-color.svg";else if (ext == "md" || ext == "txt") icon = "/admin/asset/icon/ext-txt-color.svg";else if (ext == "doc" || ext == "docx") icon = "/admin/asset/icon/ext-document-color.svg";else if (ext == "xls" || ext == "xlsx") icon = "/admin/asset/icon/ext-sheet-color.svg";else if (ext == "ppt" || ext == "pptx") icon = "/admin/asset/icon/ext-slideshow-color.svg";
-      }
-      var identifier = this.props.file.name.toLowerCase().replace(/[ -]/g, '_').replace(/[^a-zA-Z0-9_]/g, '');
-      return preact__WEBPACK_IMPORTED_MODULE_0__["h"](_Selectable__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        className: "MediaUploadItem",
-        ind: this.props.ind,
-        doubleClickSelects: true
-      }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
-        src: icon,
-        className: "MediaItem-Image" + (isImage ? "" : " icon")
-      }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
-        className: "MediaItem-Description"
-      }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("input", {
-        type: "text",
-        className: "MediaItem-Name",
-        value: this.props.file.name,
-        disabled: !this.props.editable,
-        onChange: this.handleNameChange,
-        onInput: this.handleNameChange,
-        onMouseUp: this.handleInputClick,
-        maxLength: 32
-      }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("input", {
-        type: "text",
-        className: "MediaItem-FileName",
-        value: this.props.editable ? this.props.file.identifier : identifier + "." + this.props.file.ext,
-        disabled: !this.props.editable,
-        maxLength: 32,
-        onChange: this.handleFilenameChange,
-        onInput: this.handleFilenameChange,
-        onMouseUp: this.handleInputClick,
-        placeholder: identifier
-      }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("p", {
-        className: "MediaItem-Metadata"
-      }, "".concat(_common_util_Format__WEBPACK_IMPORTED_MODULE_3__["bytes"](this.props.file.file.size), " \u2022 ") + "Last modified ".concat(_common_util_Format__WEBPACK_IMPORTED_MODULE_3__["date"](this.props.file.file.lastModified)))));
     }
   }]);
 
@@ -10144,7 +10149,7 @@ var Meter = /*#__PURE__*/function (_Preact$Component) {
       }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
         className: "Meter-Progress",
         style: {
-          width: this.props.usage / this.props.size * 100 + "%"
+          width: this.props.usage / this.props.size * 100 + '%'
         }
       }));
     }
@@ -10240,15 +10245,10 @@ var Modal = /*#__PURE__*/function (_Preact$Component) {
   }
 
   _createClass(Modal, [{
-    key: "avoidClose",
-    value: function avoidClose(e) {
-      e.stopPropagation();
-    }
-  }, {
     key: "render",
     value: function render() {
       return preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
-        className: "Modal" + (this.props.className ? " " + this.props.className : "") + (this.props.onClose ? " closes" : ""),
+        className: 'Modal' + (this.props.className ? ' ' + this.props.className : '') + (this.props.onClose ? ' closes' : ''),
         style: this.props.style,
         onClick: this.props.onClose
       }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
@@ -10257,6 +10257,11 @@ var Modal = /*#__PURE__*/function (_Preact$Component) {
         className: "Modal-Card",
         onClick: this.avoidClose
       }, this.props.children)));
+    }
+  }, {
+    key: "avoidClose",
+    value: function avoidClose(e) {
+      e.stopPropagation();
     }
   }]);
 
@@ -10358,24 +10363,24 @@ var MediaItem = /*#__PURE__*/function (_Preact$Component) {
     key: "render",
     value: function render() {
       return preact__WEBPACK_IMPORTED_MODULE_0__["h"](_Selectable__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        className: "PluginItem",
+        class: "PluginItem",
         ind: this.props.ind,
         callbacks: this.callbacks,
         doubleClickSelects: true
       }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
-        className: "PluginItem-Cover"
+        class: "PluginItem-Cover"
       }, this.props.item.hasCover && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
-        src: "/admin/plugins/cover/" + this.props.item.identifier + ".jpg"
+        src: '/admin/plugins/cover/' + this.props.item.identifier + '.jpg'
       }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", {
-        className: "PluginItem-Tag " + (this.props.active ? "Enabled" : "Disabled")
-      }, this.props.active ? "Enabled" : "Disabled")), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
-        className: "PluginItem-Content"
+        class: 'PluginItem-Tag ' + (this.props.active ? 'Enabled' : 'Disabled')
+      }, this.props.active ? 'Enabled' : 'Disabled')), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
+        class: "PluginItem-Content"
       }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("h2", {
-        className: "PluginItem-Title"
+        class: "PluginItem-Title"
       }, this.props.item.name), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("p", {
-        className: "PluginItem-Author"
+        class: "PluginItem-Author"
       }, this.props.item.author), this.props.item.description && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("p", {
-        className: "PluginItem-Description"
+        class: "PluginItem-Description"
       }, this.props.item.description)));
     }
   }]);
@@ -10528,7 +10533,9 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 var SelectGroupContext = preact__WEBPACK_IMPORTED_MODULE_0__["createContext"]({
-  handleSelect: function handleSelect() {},
+  handleSelect: function handleSelect() {
+    /* No action for default context. */
+  },
   selected: []
 });
 
@@ -10561,26 +10568,14 @@ var SelectGroup = /*#__PURE__*/function (_Preact$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.resetContextArray();
-      window.addEventListener("keydown", this.keyDown);
-      window.addEventListener("keyup", this.keyUp);
+      window.addEventListener('keydown', this.keyDown);
+      window.addEventListener('keyup', this.keyUp);
     }
   }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
-      window.removeEventListener("keydown", this.keyDown);
-      window.removeEventListener("keyup", this.keyUp);
-    }
-  }, {
-    key: "keyDown",
-    value: function keyDown(e) {
-      if (e.key == 'Control') this.ctrl = true;
-      if (e.key == 'Shift') this.shift = true;
-    }
-  }, {
-    key: "keyUp",
-    value: function keyUp(e) {
-      if (e.key == 'Control') this.ctrl = false;
-      if (e.key == 'Shift') this.shift = false;
+      window.removeEventListener('keydown', this.keyDown);
+      window.removeEventListener('keyup', this.keyUp);
     }
   }, {
     key: "componentDidUpdate",
@@ -10592,12 +10587,34 @@ var SelectGroup = /*#__PURE__*/function (_Preact$Component) {
       var newKeys = this.props.children.map(function (child) {
         return child.key;
       });
-      if (oldKeys.length != newKeys.length) equal = false;
+      if (oldKeys.length !== newKeys.length) equal = false;
       if (equal) for (var i = 0; i < oldKeys.length; i++) {
-        if (oldKeys[i] != newKeys[i]) equal = false;
+        if (oldKeys[i] !== newKeys[i]) equal = false;
       }
       if (equal) return;
       this.resetContextArray();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return preact__WEBPACK_IMPORTED_MODULE_0__["h"](SelectGroupContext.Provider, {
+        value: this.state.contextData
+      }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("ul", {
+        class: 'SelectGroup ' + (this.props.className ? this.props.className : ''),
+        style: this.props.style
+      }, this.props.children));
+    }
+  }, {
+    key: "keyDown",
+    value: function keyDown(e) {
+      if (e.key === 'Control') this.ctrl = true;
+      if (e.key === 'Shift') this.shift = true;
+    }
+  }, {
+    key: "keyUp",
+    value: function keyUp(e) {
+      if (e.key === 'Control') this.ctrl = false;
+      if (e.key === 'Shift') this.shift = false;
     }
   }, {
     key: "resetContextArray",
@@ -10623,7 +10640,7 @@ var SelectGroup = /*#__PURE__*/function (_Preact$Component) {
       var contextData = _objectSpread({}, this.state.contextData);
 
       if (!this.props.multi || !this.ctrl) contextData.selected = contextData.selected.map(function (v, i) {
-        return i == ind ? v : false;
+        return i === ind ? v : false;
       });
 
       if (this.props.multi && this.state.lastSelected !== undefined && this.shift) {
@@ -10639,22 +10656,12 @@ var SelectGroup = /*#__PURE__*/function (_Preact$Component) {
       if (this.props.onSelectionChange) this.props.onSelectionChange(contextData.selected.map(function (s, i) {
         return s ? i : -1;
       }).filter(function (i) {
-        return i != -1;
+        return i !== -1;
       }));
       this.setState({
         contextData: contextData,
         lastSelected: lastSelected
       });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return preact__WEBPACK_IMPORTED_MODULE_0__["h"](SelectGroupContext.Provider, {
-        value: this.state.contextData
-      }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("ul", {
-        className: "SelectGroup " + (this.props.className ? this.props.className : ""),
-        style: this.props.style
-      }, this.props.children));
     }
   }]);
 
@@ -10727,22 +10734,36 @@ var Selectable = /*#__PURE__*/function (_Preact$Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(oldProps) {
-      if (oldProps.callbacks == this.props.callbacks) return;
+      if (oldProps.callbacks === this.props.callbacks) return;
       this.updateCallbacks();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var selected = this.context.selected[this.props.ind];
+      return preact__WEBPACK_IMPORTED_MODULE_0__["h"](_SelectGroup__WEBPACK_IMPORTED_MODULE_2__["SelectGroupContext"].Consumer, null, function (_) {
+        return preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
+          class: 'Selectable ' + (_this2.props.class ? _this2.props.class : '') + (selected ? ' selected' : ''),
+          style: _this2.props.style,
+          onMouseUp: _this2.clickHandler.handleMouseUp
+        }, _this2.props.children);
+      });
     }
   }, {
     key: "updateCallbacks",
     value: function updateCallbacks() {
-      var _this2 = this;
+      var _this3 = this;
 
       var callbacks = Object.assign({}, this.props.callbacks);
       if (!callbacks.onClick) callbacks.onClick = function (e) {
-        return _this2.context.handleSelect(e, _this2.props.ind);
+        return _this3.context.handleSelect(e, _this3.props.ind);
       };else {
         var clickCallback = callbacks.onClick;
 
         callbacks.onClick = function (e) {
-          _this2.context.handleSelect(e, _this2.props.ind);
+          _this3.context.handleSelect(e, _this3.props.ind);
 
           clickCallback(e);
         };
@@ -10752,27 +10773,13 @@ var Selectable = /*#__PURE__*/function (_Preact$Component) {
         var doubleClickCallback = callbacks.onDoubleClick;
 
         callbacks.onDoubleClick = function (e) {
-          _this2.context.handleSelect(e, _this2.props.ind, true);
+          _this3.context.handleSelect(e, _this3.props.ind, true);
 
           doubleClickCallback(e);
         };
       }
 
       this.clickHandler = new _ClickHandler__WEBPACK_IMPORTED_MODULE_1__["default"](callbacks);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this3 = this;
-
-      var selected = this.context.selected[this.props.ind];
-      return preact__WEBPACK_IMPORTED_MODULE_0__["h"](_SelectGroup__WEBPACK_IMPORTED_MODULE_2__["SelectGroupContext"].Consumer, null, function (_) {
-        return preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
-          className: "Selectable " + (_this3.props.className ? _this3.props.className : "") + (selected ? " selected" : ""),
-          style: _this3.props.style,
-          onMouseUp: _this3.clickHandler.handleMouseUp
-        }, _this3.props.children);
-      });
     }
   }]);
 
@@ -10875,24 +10882,24 @@ var MediaItem = /*#__PURE__*/function (_Preact$Component) {
     key: "render",
     value: function render() {
       return preact__WEBPACK_IMPORTED_MODULE_0__["h"](_Selectable__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        className: "ThemeItem",
+        class: "ThemeItem",
         ind: this.props.ind,
         callbacks: this.callbacks,
         doubleClickSelects: true
       }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
-        className: "ThemeItem-Cover"
+        class: "ThemeItem-Cover"
       }, this.props.item.hasCover && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
-        src: "/admin/themes/cover/" + this.props.item.identifier + ".jpg"
+        src: '/admin/themes/cover/' + this.props.item.identifier + '.jpg'
       }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", {
-        className: "ThemeItem-Tag " + (this.props.active ? "Enabled" : "Disabled")
-      }, this.props.active ? "Enabled" : "Disabled")), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
-        className: "ThemeItem-Content"
+        class: 'ThemeItem-Tag ' + (this.props.active ? 'Enabled' : 'Disabled')
+      }, this.props.active ? 'Enabled' : 'Disabled')), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
+        class: "ThemeItem-Content"
       }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("h2", {
-        className: "ThemeItem-Title"
+        class: "ThemeItem-Title"
       }, this.props.item.name), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("p", {
-        className: "ThemeItem-Author"
+        class: "ThemeItem-Author"
       }, this.props.item.author), this.props.item.description && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("p", {
-        className: "ThemeItem-Description"
+        class: "ThemeItem-Description"
       }, this.props.item.description)));
     }
   }]);
@@ -11143,9 +11150,67 @@ var MediaPage = /*#__PURE__*/function (_Preact$Component) {
       window.removeEventListener('keyup', this.handleKeyUp);
     }
   }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return preact__WEBPACK_IMPORTED_MODULE_0__["h"](_AppContext__WEBPACK_IMPORTED_MODULE_9__["AppContext"].Consumer, null, function (ctx) {
+        return preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
+          className: "Page MediaPage"
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("section", {
+          className: "Page-Card"
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"](_CardHeader__WEBPACK_IMPORTED_MODULE_6__["default"], {
+          icon: "/admin/asset/icon/document-dark.svg",
+          title: "Manage Media",
+          subtitle: 'Create or remove user-uploaded media.'
+        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
+          className: "MediaPage-Toolbar"
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
+          className: "MediaPage-Toolbar-Button",
+          onClick: _this2.handleUploadMedia
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
+          src: "/admin/asset/icon/add-dark.svg"
+        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Upload Media")), _this2.state.selected.length > 0 && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
+          className: "MediaPage-Toolbar-Button",
+          onClick: _this2.handleDeleteMedia
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
+          src: "/admin/asset/icon/trash-dark.svg"
+        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, _this2.state.selected.length === 1 ? 'Delete' : 'Delete (' + _this2.state.selected.length + ')'))), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
+          className: "MediaPage-Toolbar-Button",
+          onClick: _this2.handleUploadMedia
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
+          src: "/admin/asset/icon/sort-dark.svg"
+        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Sort by Size")), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
+          className: "MediaPage-Toolbar-Button",
+          onClick: _this2.handleViewToggle
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
+          src: "/admin/asset/icon/".concat(_this2.state.grid ? 'grid' : 'list', "-view-dark.svg")
+        })))), preact__WEBPACK_IMPORTED_MODULE_0__["h"](_SelectGroup__WEBPACK_IMPORTED_MODULE_7__["default"], {
+          multi: true,
+          onSelectionChange: _this2.handleSelectionChange,
+          className: 'MediaPage-Media ' + (_this2.state.grid ? 'Grid' : 'Stack')
+        }, ctx.data.media.map(function (a, i) {
+          return preact__WEBPACK_IMPORTED_MODULE_0__["h"](_MediaItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
+            ind: i,
+            item: a,
+            key: a.identifier,
+            onClick: _this2.handleOpenMedia.bind(_this2, i)
+          });
+        })), ctx.data.media.length === 0 && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("h2", {
+          className: "MediaPage-NoMedia"
+        }, "No media found.")), _this2.state.viewed !== undefined && preact__WEBPACK_IMPORTED_MODULE_0__["h"](_Modal__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          onClose: _this2.handleCloseMedia
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"](_MediaView__WEBPACK_IMPORTED_MODULE_5__["default"], {
+          item: ctx.data.media[_this2.state.viewed]
+        })), _this2.state.uploading && preact__WEBPACK_IMPORTED_MODULE_0__["h"](_Modal__WEBPACK_IMPORTED_MODULE_3__["default"], null, preact__WEBPACK_IMPORTED_MODULE_0__["h"](_MediaUploadForm__WEBPACK_IMPORTED_MODULE_8__["default"], {
+          onCancel: _this2.handleUploadCancel
+        })));
+      });
+    }
+  }, {
     key: "handleKeyUp",
     value: function handleKeyUp(e) {
-      if (e.key == 'Delete') this.handleDeleteMedia();
+      if (e.key === 'Delete') this.handleDeleteMedia();
     }
   }, {
     key: "handleViewToggle",
@@ -11186,22 +11251,22 @@ var MediaPage = /*#__PURE__*/function (_Preact$Component) {
   }, {
     key: "handleDeleteMedia",
     value: function handleDeleteMedia() {
-      var _this2 = this;
+      var _this3 = this;
 
-      if (this.state.selected.length == 0) return;
-      fetch("/admin/media/delete", {
+      if (this.state.selected.length === 0) return;
+      fetch('/admin/media/delete', {
         method: 'POST',
         cache: 'no-cache',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(this.state.selected.map(function (ind) {
-          return _this2.context.data.media[ind].identifier;
+          return _this3.context.data.media[ind].identifier;
         }))
       }).then(function (r) {
         return r.json();
       }).then(function (res) {
-        _this2.context.handleSiteData(res);
+        _this3.context.handleSiteData(res);
       });
     }
   }, {
@@ -11209,64 +11274,6 @@ var MediaPage = /*#__PURE__*/function (_Preact$Component) {
     value: function handleSelectionChange(selected) {
       this.setState({
         selected: selected
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this3 = this;
-
-      return preact__WEBPACK_IMPORTED_MODULE_0__["h"](_AppContext__WEBPACK_IMPORTED_MODULE_9__["AppContext"].Consumer, null, function (ctx) {
-        return preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
-          className: "Page MediaPage"
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("section", {
-          className: "Page-Card"
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"](_CardHeader__WEBPACK_IMPORTED_MODULE_6__["default"], {
-          icon: "/admin/asset/icon/document-dark.svg",
-          title: "Manage Media",
-          subtitle: "Create or remove user-uploaded media."
-        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
-          className: "MediaPage-Toolbar"
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
-          className: "MediaPage-Toolbar-Button",
-          onClick: _this3.handleUploadMedia
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
-          src: "/admin/asset/icon/add-dark.svg"
-        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Upload Media")), _this3.state.selected.length > 0 && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
-          className: "MediaPage-Toolbar-Button",
-          onClick: _this3.handleDeleteMedia
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
-          src: "/admin/asset/icon/trash-dark.svg"
-        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, _this3.state.selected.length == 1 ? "Delete" : "Delete (" + _this3.state.selected.length + ")"))), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
-          className: "MediaPage-Toolbar-Button",
-          onClick: _this3.handleUploadMedia
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
-          src: "/admin/asset/icon/sort-dark.svg"
-        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Sort by Size")), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
-          className: "MediaPage-Toolbar-Button",
-          onClick: _this3.handleViewToggle
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
-          src: "/admin/asset/icon/".concat(_this3.state.grid ? "grid" : "list", "-view-dark.svg")
-        })))), preact__WEBPACK_IMPORTED_MODULE_0__["h"](_SelectGroup__WEBPACK_IMPORTED_MODULE_7__["default"], {
-          multi: true,
-          className: "MediaPage-Media " + (_this3.state.grid ? "Grid" : "Stack"),
-          onSelectionChange: _this3.handleSelectionChange
-        }, ctx.data.media.map(function (a, i) {
-          return preact__WEBPACK_IMPORTED_MODULE_0__["h"](_MediaItem__WEBPACK_IMPORTED_MODULE_4__["default"], {
-            item: a,
-            key: a.identifier,
-            ind: i,
-            onClick: _this3.handleOpenMedia.bind(_this3, i)
-          });
-        })), ctx.data.media.length == 0 && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("h2", {
-          className: "MediaPage-NoMedia"
-        }, "No media found.")), _this3.state.viewed != undefined && preact__WEBPACK_IMPORTED_MODULE_0__["h"](_Modal__WEBPACK_IMPORTED_MODULE_3__["default"], {
-          onClose: _this3.handleCloseMedia
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"](_MediaView__WEBPACK_IMPORTED_MODULE_5__["default"], {
-          item: ctx.data.media[_this3.state.viewed]
-        })), _this3.state.uploading && preact__WEBPACK_IMPORTED_MODULE_0__["h"](_Modal__WEBPACK_IMPORTED_MODULE_3__["default"], null, preact__WEBPACK_IMPORTED_MODULE_0__["h"](_MediaUploadForm__WEBPACK_IMPORTED_MODULE_8__["default"], {
-          onCancel: _this3.handleUploadCancel
-        })));
       });
     }
   }]);
@@ -11405,13 +11412,6 @@ var PagesPage = /*#__PURE__*/function (_Preact$Component) {
   }
 
   _createClass(PagesPage, [{
-    key: "toggleCreateElement",
-    value: function toggleCreateElement() {
-      this.setState({
-        create: !this.state.create
-      });
-    }
-  }, {
     key: "render",
     value: function render() {
       var _this2 = this;
@@ -11424,7 +11424,7 @@ var PagesPage = /*#__PURE__*/function (_Preact$Component) {
         }, preact__WEBPACK_IMPORTED_MODULE_0__["h"](_CardHeader__WEBPACK_IMPORTED_MODULE_4__["default"], {
           icon: "/admin/asset/icon/element-dark.svg",
           title: "Manage Pages",
-          subtitle: "Manage site pages and elements."
+          subtitle: 'Manage site pages and elements.'
         }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
           className: "PagesPage-Toolbar"
         }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
@@ -11435,6 +11435,13 @@ var PagesPage = /*#__PURE__*/function (_Preact$Component) {
         }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Create new Element")))), _this2.state.create && preact__WEBPACK_IMPORTED_MODULE_0__["h"](_Modal__WEBPACK_IMPORTED_MODULE_3__["default"], null, preact__WEBPACK_IMPORTED_MODULE_0__["h"](_CreateElementForm__WEBPACK_IMPORTED_MODULE_5__["default"], {
           onCancel: _this2.toggleCreateElement
         })));
+      });
+    }
+  }, {
+    key: "toggleCreateElement",
+    value: function toggleCreateElement() {
+      this.setState({
+        create: !this.state.create
       });
     }
   }]);
@@ -11547,6 +11554,55 @@ var PluginsPage = /*#__PURE__*/function (_Preact$Component) {
   }
 
   _createClass(PluginsPage, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return preact__WEBPACK_IMPORTED_MODULE_0__["h"](_AppContext__WEBPACK_IMPORTED_MODULE_6__["AppContext"].Consumer, null, function (ctx) {
+        return preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
+          className: "Page PluginsPage"
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("section", {
+          className: "Page-Card"
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"](_CardHeader__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          icon: "/admin/asset/icon/element-dark.svg",
+          title: "Manage Plugins",
+          subtitle: 'Install, enable, or disable plugins.'
+        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
+          className: "PluginsPage-Toolbar"
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
+          className: "MediaPage-Toolbar-Button",
+          onClick: _this2.handleTogglePlugins
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
+          src: "/admin/asset/icon/add-dark.svg"
+        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Install Plugin")), _this2.state.selected.length > 0 && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
+          onClick: _this2.handleTogglePlugins
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
+          src: "/admin/asset/icon/refresh-dark.svg"
+        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, 'Toggle Plugin' + (_this2.state.selected.length !== 1 ? ' (' + _this2.state.selected.length + ')' : '')))), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
+          className: "MediaPage-Toolbar-Button",
+          onClick: _this2.handleTogglePlugins
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
+          src: "/admin/asset/icon/sort-dark.svg"
+        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Sort by Size")), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
+          onClick: _this2.handleRefreshPlugins
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
+          src: "/admin/asset/icon/refresh-dark.svg"
+        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Refresh")))), preact__WEBPACK_IMPORTED_MODULE_0__["h"](_SelectGroup__WEBPACK_IMPORTED_MODULE_5__["default"], {
+          className: "PluginsPage-Plugins",
+          onSelectionChange: _this2.handleSelectionChange,
+          multi: true
+        }, ctx.data.plugins.map(function (t, i) {
+          return preact__WEBPACK_IMPORTED_MODULE_0__["h"](_PluginItem__WEBPACK_IMPORTED_MODULE_3__["default"], {
+            item: t,
+            ind: i,
+            onClick: _this2.handleTogglePlugins,
+            active: ctx.data.enabledPlugins.indexOf(t.identifier) !== -1,
+            key: t.identifier
+          });
+        }))));
+      });
+    }
+  }, {
     key: "handleSelectionChange",
     value: function handleSelectionChange(selected) {
       this.selected = selected;
@@ -11557,31 +11613,17 @@ var PluginsPage = /*#__PURE__*/function (_Preact$Component) {
   }, {
     key: "handleTogglePlugins",
     value: function handleTogglePlugins() {
-      var _this2 = this;
+      var _this3 = this;
 
-      fetch("/admin/plugins/toggle", {
+      fetch('/admin/plugins/toggle', {
         method: 'POST',
         cache: 'no-cache',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(this.selected.map(function (ind) {
-          return _this2.context.data.plugins[ind].identifier;
+          return _this3.context.data.plugins[ind].identifier;
         }))
-      }).then(function (r) {
-        return r.json();
-      }).then(function (res) {
-        _this2.context.handleSiteData(res);
-      });
-    }
-  }, {
-    key: "handleRefreshPlugins",
-    value: function handleRefreshPlugins() {
-      var _this3 = this;
-
-      fetch("/admin/plugins/refresh", {
-        cache: 'no-cache',
-        method: 'POST'
       }).then(function (r) {
         return r.json();
       }).then(function (res) {
@@ -11589,52 +11631,17 @@ var PluginsPage = /*#__PURE__*/function (_Preact$Component) {
       });
     }
   }, {
-    key: "render",
-    value: function render() {
+    key: "handleRefreshPlugins",
+    value: function handleRefreshPlugins() {
       var _this4 = this;
 
-      return preact__WEBPACK_IMPORTED_MODULE_0__["h"](_AppContext__WEBPACK_IMPORTED_MODULE_6__["AppContext"].Consumer, null, function (ctx) {
-        return preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
-          className: "Page PluginsPage"
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("section", {
-          className: "Page-Card"
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"](_CardHeader__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          icon: "/admin/asset/icon/element-dark.svg",
-          title: "Manage Plugins",
-          subtitle: "Install, enable, or disable plugins."
-        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
-          className: "PluginsPage-Toolbar"
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
-          className: "MediaPage-Toolbar-Button",
-          onClick: _this4.handleTogglePlugins
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
-          src: "/admin/asset/icon/add-dark.svg"
-        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Install Plugin")), _this4.state.selected.length > 0 && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
-          onClick: _this4.handleTogglePlugins
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
-          src: "/admin/asset/icon/refresh-dark.svg"
-        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Toggle Plugin" + (_this4.state.selected.length != 1 ? " (" + _this4.state.selected.length + ")" : "")))), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
-          className: "MediaPage-Toolbar-Button",
-          onClick: _this4.handleTogglePlugins
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
-          src: "/admin/asset/icon/sort-dark.svg"
-        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Sort by Size")), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
-          onClick: _this4.handleRefreshPlugins
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
-          src: "/admin/asset/icon/refresh-dark.svg"
-        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Refresh")))), preact__WEBPACK_IMPORTED_MODULE_0__["h"](_SelectGroup__WEBPACK_IMPORTED_MODULE_5__["default"], {
-          className: "PluginsPage-Plugins",
-          onSelectionChange: _this4.handleSelectionChange,
-          multi: true
-        }, ctx.data.plugins.map(function (t, i) {
-          return preact__WEBPACK_IMPORTED_MODULE_0__["h"](_PluginItem__WEBPACK_IMPORTED_MODULE_3__["default"], {
-            item: t,
-            ind: i,
-            onClick: _this4.handleTogglePlugins,
-            active: ctx.data.enabledPlugins.indexOf(t.identifier) != -1,
-            key: t.identifier
-          });
-        }))));
+      fetch('/admin/plugins/refresh', {
+        cache: 'no-cache',
+        method: 'POST'
+      }).then(function (r) {
+        return r.json();
+      }).then(function (res) {
+        _this4.context.handleSiteData(res);
       });
     }
   }]);
@@ -11744,6 +11751,55 @@ var ThemesPage = /*#__PURE__*/function (_Preact$Component) {
   }
 
   _createClass(ThemesPage, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return preact__WEBPACK_IMPORTED_MODULE_0__["h"](_AppContext__WEBPACK_IMPORTED_MODULE_5__["AppContext"].Consumer, null, function (ctx) {
+        return preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
+          className: "Page ThemesPage"
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("section", {
+          className: "Page-Card"
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"](_CardHeader__WEBPACK_IMPORTED_MODULE_3__["default"], {
+          icon: "/admin/asset/icon/theme-dark.svg",
+          title: "Manage Themes",
+          subtitle: 'Install, enable, or disable site themes.'
+        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
+          className: "ThemesPage-Toolbar"
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
+          className: "MediaPage-Toolbar-Button",
+          onClick: _this2.handleToggleThemes
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
+          src: "/admin/asset/icon/add-dark.svg"
+        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Install Theme")), _this2.state.selected.length > 0 && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
+          onClick: _this2.handleToggleThemes
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
+          src: "/admin/asset/icon/refresh-dark.svg"
+        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, 'Toggle Theme' + (_this2.state.selected.length !== 1 ? ' (' + _this2.state.selected.length + ')' : '')))), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
+          className: "MediaPage-Toolbar-Button",
+          onClick: _this2.handleToggleThemes
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
+          src: "/admin/asset/icon/sort-dark.svg"
+        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Sort by Size")), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
+          onClick: _this2.handleRefreshThemes
+        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
+          src: "/admin/asset/icon/refresh-dark.svg"
+        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Refresh")))), preact__WEBPACK_IMPORTED_MODULE_0__["h"](_SelectGroup__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          className: "ThemesPage-Themes",
+          onSelectionChange: _this2.handleSelectionChange,
+          multi: true
+        }, ctx.data.themes.map(function (t, i) {
+          return preact__WEBPACK_IMPORTED_MODULE_0__["h"](_ThemeItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
+            item: t,
+            ind: i,
+            onClick: _this2.handleToggleThemes,
+            active: ctx.data.enabledThemes.indexOf(t.identifier) !== -1,
+            key: t.identifier
+          });
+        }))));
+      });
+    }
+  }, {
     key: "handleSelectionChange",
     value: function handleSelectionChange(selected) {
       this.selected = selected;
@@ -11754,31 +11810,17 @@ var ThemesPage = /*#__PURE__*/function (_Preact$Component) {
   }, {
     key: "handleToggleThemes",
     value: function handleToggleThemes() {
-      var _this2 = this;
+      var _this3 = this;
 
-      fetch("/admin/themes/toggle", {
+      fetch('/admin/themes/toggle', {
         method: 'POST',
         cache: 'no-cache',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(this.selected.map(function (ind) {
-          return _this2.context.data.themes[ind].identifier;
+          return _this3.context.data.themes[ind].identifier;
         }))
-      }).then(function (r) {
-        return r.json();
-      }).then(function (res) {
-        _this2.context.handleSiteData(res);
-      });
-    }
-  }, {
-    key: "handleRefreshThemes",
-    value: function handleRefreshThemes() {
-      var _this3 = this;
-
-      fetch("/admin/themes/refresh", {
-        cache: 'no-cache',
-        method: 'POST'
       }).then(function (r) {
         return r.json();
       }).then(function (res) {
@@ -11786,52 +11828,17 @@ var ThemesPage = /*#__PURE__*/function (_Preact$Component) {
       });
     }
   }, {
-    key: "render",
-    value: function render() {
+    key: "handleRefreshThemes",
+    value: function handleRefreshThemes() {
       var _this4 = this;
 
-      return preact__WEBPACK_IMPORTED_MODULE_0__["h"](_AppContext__WEBPACK_IMPORTED_MODULE_5__["AppContext"].Consumer, null, function (ctx) {
-        return preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
-          className: "Page ThemesPage"
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("section", {
-          className: "Page-Card"
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"](_CardHeader__WEBPACK_IMPORTED_MODULE_3__["default"], {
-          icon: "/admin/asset/icon/theme-dark.svg",
-          title: "Manage Themes",
-          subtitle: "Install, enable, or disable site themes."
-        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
-          className: "ThemesPage-Toolbar"
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
-          className: "MediaPage-Toolbar-Button",
-          onClick: _this4.handleToggleThemes
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
-          src: "/admin/asset/icon/add-dark.svg"
-        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Install Theme")), _this4.state.selected.length > 0 && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
-          onClick: _this4.handleToggleThemes
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
-          src: "/admin/asset/icon/refresh-dark.svg"
-        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Toggle Theme" + (_this4.state.selected.length != 1 ? " (" + _this4.state.selected.length + ")" : "")))), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
-          className: "MediaPage-Toolbar-Button",
-          onClick: _this4.handleToggleThemes
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
-          src: "/admin/asset/icon/sort-dark.svg"
-        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Sort by Size")), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
-          onClick: _this4.handleRefreshThemes
-        }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
-          src: "/admin/asset/icon/refresh-dark.svg"
-        }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Refresh")))), preact__WEBPACK_IMPORTED_MODULE_0__["h"](_SelectGroup__WEBPACK_IMPORTED_MODULE_4__["default"], {
-          className: "ThemesPage-Themes",
-          onSelectionChange: _this4.handleSelectionChange,
-          multi: true
-        }, ctx.data.themes.map(function (t, i) {
-          return preact__WEBPACK_IMPORTED_MODULE_0__["h"](_ThemeItem__WEBPACK_IMPORTED_MODULE_2__["default"], {
-            item: t,
-            ind: i,
-            onClick: _this4.handleToggleThemes,
-            active: ctx.data.enabledThemes.indexOf(t.identifier) != -1,
-            key: t.identifier
-          });
-        }))));
+      fetch('/admin/themes/refresh', {
+        cache: 'no-cache',
+        method: 'POST'
+      }).then(function (r) {
+        return r.json();
+      }).then(function (res) {
+        _this4.context.handleSiteData(res);
       });
     }
   }]);

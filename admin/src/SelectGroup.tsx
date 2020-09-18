@@ -1,16 +1,17 @@
-import * as Preact from "preact";
+import * as Preact from 'preact';
 
-import './SelectGroup.scss'
+import './SelectGroup.scss';
 
 export interface SelectGroupContextData {
-	handleSelect(_: MouseEvent, ind: number, state?: boolean): void;
 	selected: boolean[];
+
+	handleSelect(_: MouseEvent, ind: number, state?: boolean): void;
 }
 
 export const SelectGroupContext = Preact.createContext<SelectGroupContextData>({
-	handleSelect: () => {},
-	selected: [],
-}); 
+	handleSelect: () => { /* No action for default context. */ },
+	selected: []
+});
 
 interface Props {
 	multi?: boolean;
@@ -48,23 +49,13 @@ export default class SelectGroup extends Preact.Component<Props, State> {
 	componentDidMount() {
 		this.resetContextArray();
 
-		window.addEventListener("keydown", this.keyDown);
-		window.addEventListener("keyup", this.keyUp);
+		window.addEventListener('keydown', this.keyDown);
+		window.addEventListener('keyup', this.keyUp);
 	}
 
 	componentWillUnmount() {
-		window.removeEventListener("keydown", this.keyDown);
-		window.removeEventListener("keyup", this.keyUp);
-	}
-
-	keyDown(e: KeyboardEvent) {
-		if (e.key == 'Control') this.ctrl = true;
-		if (e.key == 'Shift') this.shift = true;
-	}
-
-	keyUp(e: KeyboardEvent) {
-		if (e.key == 'Control') this.ctrl = false;
-		if (e.key == 'Shift') this.shift = false;
+		window.removeEventListener('keydown', this.keyDown);
+		window.removeEventListener('keyup', this.keyUp);
 	}
 
 	componentDidUpdate(oldProps: Props) {
@@ -73,11 +64,29 @@ export default class SelectGroup extends Preact.Component<Props, State> {
 		const oldKeys = oldProps.children.map(child => child.key);
 		const newKeys = this.props.children.map(child => child.key);
 
-		if (oldKeys.length != newKeys.length) equal = false;
-		if (equal) for (let i = 0; i < oldKeys.length; i++) if (oldKeys[i] != newKeys[i]) equal = false;
+		if (oldKeys.length !== newKeys.length) equal = false;
+		if (equal) for (let i = 0; i < oldKeys.length; i++) if (oldKeys[i] !== newKeys[i]) equal = false;
 		if (equal) return;
 
 		this.resetContextArray();
+	}
+
+	render() {
+		return (
+			<SelectGroupContext.Provider value={this.state.contextData}>
+				<ul class={'SelectGroup ' + (this.props.className ? this.props.className : '')} style={this.props.style}>{this.props.children}</ul>
+			</SelectGroupContext.Provider>
+		);
+	}
+
+	private keyDown(e: KeyboardEvent) {
+		if (e.key === 'Control') this.ctrl = true;
+		if (e.key === 'Shift') this.shift = true;
+	}
+
+	private keyUp(e: KeyboardEvent) {
+		if (e.key === 'Control') this.ctrl = false;
+		if (e.key === 'Shift') this.shift = false;
 	}
 
 	private resetContextArray() {
@@ -91,26 +100,17 @@ export default class SelectGroup extends Preact.Component<Props, State> {
 		let contextData = {...this.state.contextData};
 		
 		if (!this.props.multi || !this.ctrl)
-			contextData.selected = contextData.selected.map((v, i) => (i == ind ? v : false));
+			contextData.selected = contextData.selected.map((v, i) => (i === ind ? v : false));
 
 		if (this.props.multi && this.state.lastSelected !== undefined && this.shift) {
 			let a = ind < this.state.lastSelected ? ind : this.state.lastSelected;
 			let b = ind < this.state.lastSelected ? this.state.lastSelected : ind;
 			for (let i = a; i <= b; i++) contextData.selected[i] = true;
-		}
-		else contextData.selected[ind] = (state !== undefined ? state : !contextData.selected[ind]);
+		} else contextData.selected[ind] = (state !== undefined ? state : !contextData.selected[ind]);
 
 		let lastSelected = (this.shift && this.state.lastSelected !== undefined) ? this.state.lastSelected : ind;
 
-		if (this.props.onSelectionChange) this.props.onSelectionChange(contextData.selected.map((s, i) => (s ? i : -1)).filter(i => i != -1));
+		if (this.props.onSelectionChange) this.props.onSelectionChange(contextData.selected.map((s, i) => (s ? i : -1)).filter(i => i !== -1));
 		this.setState({ contextData: contextData, lastSelected: lastSelected });
-	}
-
-	render() {
-		return (
-			<SelectGroupContext.Provider value={this.state.contextData}>
-				<ul className={"SelectGroup " + (this.props.className ? this.props.className : "")} style={this.props.style}>{this.props.children}</ul>
-			</SelectGroupContext.Provider>
-		);
 	}
 }

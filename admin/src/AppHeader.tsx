@@ -11,11 +11,6 @@ export default class AppHeader extends Preact.Component {
 		this.logout = this.logout.bind(this);
 	}
 
-	private logout(): void {
-		Cookie.remove('tkn');
-		location.href = '/admin';
-	}
-
 	render() {
 		return (
 			<header class="AppHeader">
@@ -35,5 +30,10 @@ export default class AppHeader extends Preact.Component {
 				</div>
 			</header>
 		);
+	}
+
+	private logout(): void {
+		Cookie.remove('tkn');
+		location.href = '/admin';
 	}
 }

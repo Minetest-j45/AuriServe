@@ -2,7 +2,7 @@ import * as Preact from 'preact';
 
 import './MediaView.scss';
 
-import { Media } from "../../common/interface/DBStructs";
+import { Media } from '../../common/interface/DBStructs';
 
 interface Props {
 	item: Media;

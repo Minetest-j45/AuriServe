@@ -16,13 +16,9 @@ export default class Modal extends Preact.Component<Props, {}> {
 		this.avoidClose = this.avoidClose.bind(this);
 	}
 
-	private avoidClose(e: MouseEvent): void {
-		e.stopPropagation();
-	}
-
 	render() {
 		return (
-			<div className={"Modal" + (this.props.className ? " " + this.props.className : "") + (this.props.onClose ? " closes" : "")} 
+			<div className={'Modal' + (this.props.className ? ' ' + this.props.className : '') + (this.props.onClose ? ' closes' : '')}
 				style={this.props.style} onClick={this.props.onClose}>
 				<div className="Modal-CardWrap">
 					<div className="Modal-Card" onClick={this.avoidClose}>
@@ -31,5 +27,9 @@ export default class Modal extends Preact.Component<Props, {}> {
 				</div>
 			</div>
 		);
+	}
+
+	private avoidClose(e: MouseEvent): void {
+		e.stopPropagation();
 	}
 }

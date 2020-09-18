@@ -3,9 +3,9 @@ import * as Preact from 'preact';
 import './Page.scss';
 import './MainPage.scss';
 
-import Meter from "../Meter";
+import Meter from '../Meter';
 
-import { AppContext } from "../AppContext";
+import { AppContext } from '../AppContext';
 
 export default class MainPage extends Preact.Component {
 	render() {
@@ -22,9 +22,9 @@ export default class MainPage extends Preact.Component {
 					<aside>
 						<div className="MainPage-MediaCard">
 
-						<AppContext.Consumer>{ctx => 
-							<Meter usage={ctx.data.mediaUsed} size={ctx.data.mediaMax} />
-						}</AppContext.Consumer>
+							<AppContext.Consumer>{ctx =>
+								<Meter usage={ctx.data.mediaUsed} size={ctx.data.mediaMax} />
+							}</AppContext.Consumer>
 
 						</div>
 					</aside>

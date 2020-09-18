@@ -4,4 +4,4 @@ import './Main.scss';
 
 import App from './App';
 
-Preact.render(<App/>, document.getElementById("root")!);
+Preact.render(<App/>, document.getElementById('root')!);
