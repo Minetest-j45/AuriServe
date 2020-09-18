@@ -100,10 +100,15 @@ export default class LoginForm extends Preact.Component<{}, State> {
 						<img className="success" src="/admin/asset/icon/serve-light.svg"/>
 					</div>
 					<div className="LoginForm-FormContents">
-						<input type="text" name="user" placeholder="Username" autoFocus required minLength={3} maxLength={32}
+					
+						<input type="text" name="user" placeholder="Username" 
+							autoFocus required minLength={3} maxLength={32} autoComplete={"username"}
 							value={this.state.username} onChange={this.handleUsernameChange} disabled={loading}/>
-						<input type="password" name="pass" placeholder="Password" required minLength={8} 
+
+						<input type="password" name="pass" placeholder="Password" 
+							required minLength={8} autoComplete={"current-password"}
 							value={this.state.password} onChange={this.handlePasswordChange} disabled={loading}/>
+
 						<button disabled={loading}>Log In</button>
 					</div>
 				</form>

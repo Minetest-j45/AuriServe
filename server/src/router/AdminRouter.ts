@@ -14,6 +14,15 @@ export default class AdminRouter extends Router {
 	}
 
 	init() {
+		this.router.get('/plugin/:identifier.js', (req, res) => {
+			const plugins = this.server.plugins.getEnabledPlugins().filter(p => p.conf.identifier == req.params.identifier);
+			if (plugins.length != 1) { res.sendStatus(404); return; }
+			const plugin = plugins[0];
+
+			if (!plugin.conf.sources.admin) { res.sendStatus(404); return; }
+			res.sendFile(path.join(this.server.dataPath, "plugins", plugin.conf.identifier, plugin.conf.sources.admin));
+		});
+
 		this.router.post('/auth', async (req, res) => {
 			try {
 				const user = req.body.user;
@@ -137,7 +146,8 @@ export default class AdminRouter extends Router {
 		});
 
 		this.router.use('/asset', Express.static(path.join(path.dirname(__dirname), "../../admin/res")));
-		this.router.get('(/*)?', async (_, res) => res.render(path.join(path.dirname(__dirname), "../views/admin")));
+		this.router.get('(/*)?', async (_, res) => res.render(path.join(path.dirname(__dirname), "../views/admin"), {
+			plugins: this.server.plugins.getEnabledPlugins().filter(p => p.conf.sources.admin).map(p => p.conf.identifier)}));
 
 		this.server.app.use('/admin', this.router);
 	}

@@ -9,7 +9,9 @@ const path = require('path');
 const webpack = require('webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+// const WebpackBundleAnalyzer = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
 	context: __dirname,
@@ -72,7 +74,9 @@ module.exports = {
 		// new HtmlWebpackPlugin(),
 		new ForkTsCheckerWebpackPlugin(), // Run Typescript linting in a separate thread.
 		new webpack.NamedModulesPlugin(), // Displays module path when using HMR, only for development.
+		new MomentLocalesPlugin(), // Remove moment locales other than en. 
 		// Manipulates process.env.NODE_ENV, setting it to 'development' if it is not already specified.
-		new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development') })
+		new webpack.DefinePlugin({ 'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development') }),
+		// new WebpackBundleAnalyzer()
 	],
 };

@@ -14,7 +14,7 @@ module.exports = merge(require('./wp'), {
 	watch: true,
 
 	plugins: [
-		new LiveReloadPlugin()
+		new LiveReloadPlugin(),
 	]
 	// devServer: {
 	// 	port: 3000,

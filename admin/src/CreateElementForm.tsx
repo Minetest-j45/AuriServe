@@ -128,7 +128,7 @@ export default class CreateElementForm extends Preact.Component<Props, State> {
 		fetch("/admin/elements/create", {
 			method: 'POST',
 			cache: 'no-cache',
-    	headers: {'Content-Type': 'application/json'},
+			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({
 				identifier: this.state.identifier,
 				element: this.state.element,
@@ -141,6 +141,23 @@ export default class CreateElementForm extends Preact.Component<Props, State> {
 	}
 
 	render() {
+		let editor: Preact.VNode | undefined = undefined;
+
+		if (this.state.stage == 1) {
+			let customElement = this.context.plugins.elements.get(this.state.element);
+			console.log(customElement);
+			if (customElement?.element) {
+				editor = <customElement.element />;
+			}
+			else {
+				editor = <ElementPropsEditor 
+					values={this.state.elementProps} 
+					props={this.state.elementPropsDef!}
+					updateValue={this.handleUpdateValue} 
+				/>;
+			}
+		}
+
 		return (
 			<AppContext.Consumer>{ctx =>
 				<form className="CreateElementForm" onSubmit={(e) => e.preventDefault()}>
@@ -169,11 +186,7 @@ export default class CreateElementForm extends Preact.Component<Props, State> {
 							</label>
 						</Preact.Fragment>}
 						{this.state.stage == 1 && <Preact.Fragment>
-							<ElementPropsEditor 
-								values={this.state.elementProps} 
-								props={this.state.elementPropsDef!}
-								updateValue={this.handleUpdateValue} />
-								
+							{editor}
 							<code>{JSON.stringify(this.state.elementProps, null, 2)}</code>
 						</Preact.Fragment>}
 					</DimensionTransition>

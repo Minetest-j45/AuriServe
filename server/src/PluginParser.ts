@@ -21,6 +21,7 @@ interface PluginConfig {
 	sources: {
 		server: string
 		client?: string
+		admin?: string
 	}
 }
 
@@ -197,6 +198,11 @@ export default class PluginParser {
 				if (conf.sources.client) {
 					try { await fs.access(path.join(p, conf.sources.client)) }
 					catch (e) { throw `Client source file '${conf.sources.client}' not found.`; }
+				}
+
+				if (conf.sources.admin) {
+					try { await fs.access(path.join(p, conf.sources.admin)) }
+					catch (e) { throw `Admin source file '${conf.sources.admin}' not found.`; }
 				}
 				
 				// Add extra details to config.
