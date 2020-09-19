@@ -7511,14 +7511,14 @@ class App extends preact__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       };
       plugins.pluginScripts.forEach(scr => {
         const tag = document.createElement('script');
-        tag.src = '/admin/plugin/' + scr + '.js';
+        tag.src = '/plugin/' + scr;
         tag.async = true;
         document.head.appendChild(tag);
       });
       plugins.pluginStyles.forEach(styl => {
         const tag = document.createElement('link');
         tag.rel = 'stylesheet';
-        tag.href = '/plugin/styles/' + styl + '.css';
+        tag.href = '/plugin/' + styl;
         document.head.appendChild(tag);
       });
       pluginState = PluginState.LINKED;
@@ -8222,7 +8222,7 @@ class ElementPropArray extends preact__WEBPACK_IMPORTED_MODULE_0__["Component"] 
       className: "ElementPropArray-Label"
     }, friendlyName), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", {
       className: "ElementPropArray-Disclaimer"
-    }, "Array properties can't be edited by the built-in component editor. Please use a custom management component until this is resolved."));
+    }, "Array props can't be edited by the builtin element editor. Use a custom editElement until this is implemented."));
   }
 
 }
@@ -8355,8 +8355,7 @@ class ElementPropInput extends preact__WEBPACK_IMPORTED_MODULE_0__["Component"] 
           type: "checkbox",
           name: this.props.identifier,
           checked: this.props.value,
-          onChange: this.handleChange,
-          onInput: this.handleChange
+          onChange: this.handleChange
         });
         break;
 

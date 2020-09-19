@@ -21,8 +21,8 @@ export default class ElementPropArray extends Preact.Component<Props, {}> {
 			<label key={this.props.identifier} className="ElementPropArray">
 				<span className="ElementPropArray-Label">{friendlyName}</span>
 				<span className="ElementPropArray-Disclaimer">
-					Array properties can't be edited by the built-in component editor.
-					Please use a custom management component until this is resolved.
+					Array props can't be edited by the builtin element editor.
+					Use a custom editElement until this is implemented.
 				</span>
 			</label>
 		);

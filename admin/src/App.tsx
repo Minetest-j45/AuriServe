@@ -117,7 +117,7 @@ export default class App extends Preact.Component<{}, State> {
 
 			plugins.pluginScripts.forEach((scr: string) => {
 				const tag = document.createElement('script');
-				tag.src = '/admin/plugin/' + scr + '.js';
+				tag.src = '/plugin/' + scr;
 				tag.async = true;
 				document.head.appendChild(tag);
 			});
@@ -125,7 +125,7 @@ export default class App extends Preact.Component<{}, State> {
 			plugins.pluginStyles.forEach((styl: string) => {
 				const tag = document.createElement('link');
 				tag.rel = 'stylesheet';
-				tag.href = '/plugin/styles/' + styl + '.css';
+				tag.href = '/plugin/' + styl;
 				document.head.appendChild(tag);
 			});
 			

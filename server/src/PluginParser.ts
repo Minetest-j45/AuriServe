@@ -18,6 +18,7 @@ interface PluginConfig {
 	author: string
 	description: string
 
+	sourceRoot: string
 	sources: {
 		server: string
 		client?: string
@@ -146,7 +147,8 @@ export default class PluginParser {
 			const plugin = this.plugins.filter(p => p.conf.identifier == identifier)[0];
 			if (!plugin || !plugin.bindings) return;
 
-			this.watchers.push(ff.watch(path.join(this.server.dataPath, "plugins", plugin.conf.identifier, plugin.conf.sources.server), 
+			this.watchers.push(ff.watch(path.join(this.server.dataPath, "plugins", 
+				plugin.conf.identifier, plugin.conf.sourceRoot, plugin.conf.sources.server), 
 				{ persistent: false, recursive: false, encoding: 'utf8'}, () => this.refresh()));
 
 			watched ++;
@@ -193,17 +195,17 @@ export default class PluginParser {
 
 				if (!conf.sources || !conf.sources.server) throw "Plugin configuration is missing sources.server.";
 
-				try { await fs.access(path.join(p, conf.sources.server)) }
-				catch (e) { throw `Server source file '${conf.sources.server}' not found.`; }
+				try { await fs.access(path.join(p, conf.sourceRoot, conf.sources.server)) }
+				catch (e) { throw `Server source file '${conf.sourceRoot}/${conf.sources.server}' not found.`; }
 
 				if (conf.sources.client) {
-					try { await fs.access(path.join(p, conf.sources.client)) }
-					catch (e) { throw `Client source file '${conf.sources.client}' not found.`; }
+					try { await fs.access(path.join(p, conf.sourceRoot, conf.sources.client)) }
+					catch (e) { throw `Client source file '${conf.sourceRoot}/${conf.sources.client}' not found.`; }
 				}
 
 				if (conf.sources.admin) {
-					try { await fs.access(path.join(p, conf.sources.admin)) }
-					catch (e) { throw `Admin source file '${conf.sources.admin}' not found.`; }
+					try { await fs.access(path.join(p, conf.sourceRoot, conf.sources.admin)) }
+					catch (e) { throw `Admin source file '${conf.sourceRoot}/${conf.sources.admin}' not found.`; }
 				}
 				
 				// Add extra details to config.
@@ -228,7 +230,7 @@ export default class PluginParser {
 
 				// Create Plugin object and add it to the plugins array.
 
-				let requirePath = require.resolve(path.join(p, conf.sources.server));
+				let requirePath = require.resolve(path.join(p, conf.sourceRoot, conf.sources.server));
 				decache(requirePath);
 				const plugin = new Plugin(this.server, conf, require(requirePath));
 				this.plugins.push(plugin);

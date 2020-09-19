@@ -1,7 +1,7 @@
 import path from "path"
 import log4js from "log4js";
 import Express from "express";
-import { promises as fs } from "fs";
+import { promises as fs} from "fs";
 
 import Router from "./Router";
 import Server from "../Server";
@@ -22,16 +22,16 @@ export default class PagesRouter extends Router {
 
 		this.router.use('/media', Express.static(path.join(this.server.dataPath, "media")));
 		this.router.use('/theme', Express.static(path.join(this.server.dataPath, "themes", "public")));
-		
-		this.router.get('/plugin/:identifier.js', (req, res) => {
-			// setTimeout(() => {
-				const plugins = this.server.plugins.getEnabledPlugins().filter(p => p.conf.identifier == req.params.identifier);
-				if (plugins.length != 1) { res.sendStatus(404); return; }
-				const plugin = plugins[0];
 
-				if (!plugin.conf.sources.client) { res.sendStatus(404); return; }
-				res.sendFile(path.join(this.server.dataPath, "plugins", plugin.conf.identifier, plugin.conf.sources.client));
-			// }, 1000);
+		this.router.use('/plugin/:identifier/:file', async (req, res, next) => {
+			try {
+				let plugins = this.server.plugins.getEnabledPlugins().filter(p => p.conf.identifier === req.params.identifier);
+				if (plugins.length == 0) throw `There is no loaded plugin with identifier ${req.params.identifier}.`;
+				Express.static(path.join(this.server.dataPath, "plugins", req.params.identifier, plugins[0].conf.sourceRoot, req.params.file))(req, res, next);
+			}
+			catch (e) {
+				res.status(403).send(e);
+			}
 		});
 		
 		this.router.get('/plugin/styles/:identifier.css', (req, res) => {

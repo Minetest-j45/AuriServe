@@ -68,7 +68,7 @@ export default class ElementPropInput extends Preact.Component<Props, State> {
 
 		case 'boolean':
 			widget = <input type="checkbox" name={this.props.identifier}
-				checked={this.props.value} onChange={this.handleChange} onInput={this.handleChange} />;
+				checked={this.props.value} onChange={this.handleChange} />;
 			break;
 
 		case 'color':
