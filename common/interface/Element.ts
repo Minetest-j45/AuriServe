@@ -53,7 +53,6 @@ export type PropType =
 export interface Config {
 	name?: string;
 	props: PropsTable;
-	hydrate?: true;
 }
 
 /*
