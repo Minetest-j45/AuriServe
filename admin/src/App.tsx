@@ -98,8 +98,10 @@ export default class App extends Preact.Component<{}, State> {
 		let pluginState = this.state.pluginState;
 
 		if (pluginState === PluginState.UNLINKED) {
-			let adminScripts = JSON.parse((document.querySelector(
-				'#plugins') as HTMLScriptElement).innerText).pluginSources;
+			const plugins: { pluginScripts: string[]; pluginStyles: string[] } =
+				JSON.parse((document.querySelector('#plugins') as HTMLScriptElement).innerText);
+
+			console.log(plugins);
 
 			window.serve = {
 				registerElement: (elem: AdminDefinition) => {
@@ -113,10 +115,17 @@ export default class App extends Preact.Component<{}, State> {
 				}
 			};
 
-			adminScripts.forEach((scr: string) => {
+			plugins.pluginScripts.forEach((scr: string) => {
 				const tag = document.createElement('script');
 				tag.src = '/admin/plugin/' + scr + '.js';
 				tag.async = true;
+				document.head.appendChild(tag);
+			});
+
+			plugins.pluginStyles.forEach((styl: string) => {
+				const tag = document.createElement('link');
+				tag.rel = 'stylesheet';
+				tag.href = '/plugin/styles/' + styl + '.css';
 				document.head.appendChild(tag);
 			});
 			

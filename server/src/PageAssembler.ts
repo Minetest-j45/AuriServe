@@ -30,7 +30,8 @@ export default class PageAssembler {
 			basedir: this.root,
 
 			themes: this.themes.getEnabledThemes(),
-			plugins: this.plugins.getEnabledPlugins().filter(p => p.conf.sources.client).map(p => p.conf.identifier),
+			pluginStyles: this.plugins.getEnabledPlugins().filter(p => p.conf.sources.style).map(p => p.conf.identifier),
+			pluginScripts: this.plugins.getEnabledPlugins().filter(p => p.conf.sources.client).map(p => p.conf.identifier),
 
 			server: {
 				createElement: this.createElement.bind(this),

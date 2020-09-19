@@ -22,13 +22,25 @@ export default class PagesRouter extends Router {
 
 		this.router.use('/media', Express.static(path.join(this.server.dataPath, "media")));
 		this.router.use('/theme', Express.static(path.join(this.server.dataPath, "themes", "public")));
+		
 		this.router.get('/plugin/:identifier.js', (req, res) => {
+			// setTimeout(() => {
+				const plugins = this.server.plugins.getEnabledPlugins().filter(p => p.conf.identifier == req.params.identifier);
+				if (plugins.length != 1) { res.sendStatus(404); return; }
+				const plugin = plugins[0];
+
+				if (!plugin.conf.sources.client) { res.sendStatus(404); return; }
+				res.sendFile(path.join(this.server.dataPath, "plugins", plugin.conf.identifier, plugin.conf.sources.client));
+			// }, 1000);
+		});
+		
+		this.router.get('/plugin/styles/:identifier.css', (req, res) => {
 			const plugins = this.server.plugins.getEnabledPlugins().filter(p => p.conf.identifier == req.params.identifier);
 			if (plugins.length != 1) { res.sendStatus(404); return; }
 			const plugin = plugins[0];
 
-			if (!plugin.conf.sources.client) { res.sendStatus(404); return; }
-			res.sendFile(path.join(this.server.dataPath, "plugins", plugin.conf.identifier, plugin.conf.sources.client));
+			if (!plugin.conf.sources.style) { res.sendStatus(404); return; }
+			res.sendFile(path.join(this.server.dataPath, "plugins", plugin.conf.identifier, plugin.conf.sources.style));
 		});
 
 		this.server.app.use(this.router);

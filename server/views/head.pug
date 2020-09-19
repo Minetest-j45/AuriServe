@@ -1,7 +1,12 @@
 meta(charset='utf-8')
 meta(content='width=device-width, initial-scale=1' name='viewport')
 
+if pluginScripts.length > 0
+	script(src="https://cdn.jsdelivr.net/npm/preact/dist/preact.min.js" defer)
+
+for val in pluginStyles
+	link(rel="stylesheet" href=`/plugin/styles/${val}.css`)
 for val in themes
 	link(rel="stylesheet" href=`/theme/${val}.css`)
-for val in plugins
-	script(async=true src=`/plugin/${val}.js`)
+for val in pluginScripts
+	script(src=`/plugin/${val}.js` defer)

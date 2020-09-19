@@ -17,7 +17,7 @@ interface Props {
 	multi?: boolean;
 	onSelectionChange?: (selected: number[]) => void;
 
-	children: JSX.Element[];
+	children?: Preact.ComponentChildren;
 	className?: string;
 	style?: any;
 }
@@ -61,8 +61,10 @@ export default class SelectGroup extends Preact.Component<Props, State> {
 	componentDidUpdate(oldProps: Props) {
 		let equal = true;
 
-		const oldKeys = oldProps.children.map(child => child.key);
-		const newKeys = this.props.children.map(child => child.key);
+		const oldKeys = ((oldProps.children ? Array.isArray(oldProps.children) ?
+			oldProps.children : [oldProps.children] : []) as Preact.VNode[]).map(child => child.key);
+		const newKeys = ((this.props.children ? Array.isArray(this.props.children) ?
+			this.props.children : [this.props.children] : []) as Preact.VNode[]).map(child => child.key);
 
 		if (oldKeys.length !== newKeys.length) equal = false;
 		if (equal) for (let i = 0; i < oldKeys.length; i++) if (oldKeys[i] !== newKeys[i]) equal = false;
@@ -91,7 +93,9 @@ export default class SelectGroup extends Preact.Component<Props, State> {
 
 	private resetContextArray() {
 		let selected: boolean[] = [];
-		for (let i = 0; i < this.props.children.length; i++) selected.push(false);
+		for (let i = 0; i < (this.props.children ? Array.isArray(this.props.children)
+			? this.props.children.length : 1 : 0); i++) selected.push(false);
+
 		this.setState({ contextData: { handleSelect: this.state.contextData.handleSelect, selected: selected }, lastSelected: undefined });
 		if (this.props.onSelectionChange) this.props.onSelectionChange([]);
 	}

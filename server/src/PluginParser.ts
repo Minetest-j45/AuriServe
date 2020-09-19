@@ -22,6 +22,7 @@ interface PluginConfig {
 		server: string
 		client?: string
 		admin?: string
+		style?: string
 	}
 }
 

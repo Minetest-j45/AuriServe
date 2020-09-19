@@ -4,7 +4,7 @@ import './Modal.scss';
 
 interface Props {
 	onClose?: (_: MouseEvent) => void;
-	children: JSX.Element[] | JSX.Element;
+	children?: Preact.VNode | Preact.VNode[];
 	className?: string;
 	style?: any;
 }

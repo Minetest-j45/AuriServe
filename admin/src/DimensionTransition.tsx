@@ -8,7 +8,7 @@ interface Props {
 
 	style?: any;
 	className?: any;
-	children?: React.ReactNode | React.ReactNode[];
+	children?: Preact.ComponentChildren;
 }
 
 interface State {

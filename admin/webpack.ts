@@ -2,7 +2,7 @@ import { resolve } from 'path';
 import * as Webpack from 'webpack';
 import { merge } from 'webpack-merge';
 
-const LiveReloadPlugin = require('webpack-livereload-plugin');
+const LiveReloadPlugin    = require('webpack-livereload-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin'); 
 const ForkTsCheckerPlugin = require('fork-ts-checker-webpack-plugin');
 
@@ -16,10 +16,14 @@ export default function(_: {}, argv: { mode: string }) {
 		devtool: prod ? undefined : 'source-map',
 
 		entry: { main: [ './Main.tsx' ] },
-		output: { path: resolve(__dirname, '../res/script') },
+		output: { path: resolve(__dirname, './res/script') },
 
 		// TODO: Check if neccessary
 		node: { __dirname: false, __filename: false },
+
+		externals: {
+			preact: 'preact'
+		},
 
 		plugins: [
 			new ForkTsCheckerPlugin({
@@ -49,7 +53,7 @@ export default function(_: {}, argv: { mode: string }) {
 					presets: [
 						'@babel/preset-typescript',
 						[ '@babel/preset-env', { 
-							targets: { browsers: 'last 2 versions'}
+							targets: { browsers: ['Chrome 78']},
 						}]
 					],
 					plugins: [

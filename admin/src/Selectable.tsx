@@ -8,7 +8,7 @@ interface Props {
 	doubleClickSelects?: boolean;
 	callbacks?: ClickHandlerCallbacks;
 
-	children: JSX.Element[];
+	children: Preact.VNode[];
 	class?: string;
 	style?: any;
 }

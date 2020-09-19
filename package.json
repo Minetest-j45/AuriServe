@@ -5,11 +5,11 @@
 	"main": "build/Main.js",
 	"scripts": {
 		"dev": "npm run dev-admin & npm run dev-server",
-		"dev-admin": "webpack --mode=development --watch --progress --config admin/webpack.ts",
+		"dev-admin": "cd admin; webpack --mode=development --watch --progress --config webpack.ts",
 		"dev-server": "nodemon --config server/nodemon.json",
-		"prod": "npm run prod-admin & npm run prod-server",
-		"prod-admin": "webpack --mode=production --progress --config admin/webpack.ts",
-		"prod-server": "ts-node --project server/tsconfig.json ./server/src/Main.ts"
+		"dist": "npm run dist-admin & npm run dist-server",
+		"dist-admin": "cd admin; webpack --mode=production --progress --config webpack.ts",
+		"dist-server": "ts-node --project server/tsconfig.json ./server/src/Main.ts"
 	},
 	"repository": {
 		"type": "git",
@@ -25,14 +25,14 @@
 	},
 	"homepage": "https://github.com/Aurailus/AuriServe#readme",
 	"devDependencies": {
-		"@babel/core": "^7.11.1",
+		"@babel/core": "^7.11.6",
 		"@babel/plugin-proposal-class-properties": "^7.10.4",
-		"@babel/polyfill": "^7.10.4",
+		"@babel/plugin-transform-react-jsx": "^7.10.4",
+		"@babel/plugin-transform-regenerator": "^7.10.4",
+		"@babel/plugin-transform-runtime": "^7.11.5",
+		"@babel/polyfill": "^7.11.5",
 		"@babel/preset-env": "^7.11.0",
-		"@babel/preset-react": "^7.10.4",
 		"@babel/preset-typescript": "^7.10.4",
-		"@typescript-eslint/eslint-plugin": "^4.1.1",
-		"@typescript-eslint/parser": "^4.1.1",
 		"@types/bcrypt": "^3.0.0",
 		"@types/compression": "^1.7.0",
 		"@types/cookie-parser": "^1.4.2",
@@ -45,13 +45,11 @@
 		"@types/node": "^14.0.27",
 		"@types/node-sass": "^4.11.1",
 		"@types/pug": "^2.0.4",
-		"@types/react": "^16.9.46",
-		"@types/react-dom": "^16.9.8",
-		"@types/react-router-dom": "^5.1.5",
 		"@types/rimraf": "^3.0.0",
 		"@types/webpack-livereload-plugin": "^2.3.0",
+		"@typescript-eslint/eslint-plugin": "^4.1.1",
+		"@typescript-eslint/parser": "^4.1.1",
 		"babel-loader": "^8.1.0",
-		"core-js": "^3.6.5",
 		"css-loader": "^4.2.1",
 		"eslint": "^7.9.0",
 		"eslint-config-prettier": "^6.11.0",
@@ -71,10 +69,13 @@
 		"webpack-merge": "^5.1.4"
 	},
 	"dependencies": {
+		"@babel/runtime": "^7.11.2",
+		"@babel/runtime-corejs3": "^7.11.2",
 		"bcrypt": "^5.0.0",
 		"body-parser": "^1.19.0",
 		"compression": "^1.7.4",
 		"cookie-parser": "^1.4.5",
+		"core-js": "^3.6.5",
 		"decache": "^4.6.0",
 		"express": "^4.17.1",
 		"express-fileupload": "^1.2.0",
@@ -90,6 +91,7 @@
 		"prompt": "^1.0.0",
 		"pug": "^3.0.0",
 		"recursive-watch": "^1.1.4",
+		"regenerator-runtime": "^0.13.7",
 		"rimraf": "^3.0.2",
 		"showdown": "^1.9.1"
 	}

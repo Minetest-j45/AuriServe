@@ -41,7 +41,7 @@ export default class CreateElementForm extends Preact.Component<Props, State> {
 
 		if (this.state.stage === 1) {
 			let customElement = this.context.plugins.elements.get(this.state.element);
-			console.log(customElement);
+
 			if (customElement?.element) {
 				editor = <customElement.element />;
 			} else {
@@ -59,8 +59,8 @@ export default class CreateElementForm extends Preact.Component<Props, State> {
 					<CardHeader icon="/admin/asset/icon/element-dark.svg" title="Create New Element"
 						subtitle={`Create a new element on ${ctx.data.sitename}.`} />
 
-					<DimensionTransition duration={150} mode="height">
-						{this.state.stage === 0 && <Preact.Fragment>
+					<DimensionTransition duration={200}>
+						{this.state.stage === 0 && <div class="CreateElementForm-InnerWrap">
 							<p className="CreateElementForm-Disclaimer">{
 								`This form is only for experienced developers, such as the administrator of ${ctx.data.sitename}.
 								If you ignore this warning you could break your website!`
@@ -79,11 +79,11 @@ export default class CreateElementForm extends Preact.Component<Props, State> {
 									{Object.entries(ctx.data.elementDefs).map(([k, {name}]) => <option value={k} key={k}>{name || k}</option>)}
 								</select>
 							</label>
-						</Preact.Fragment>}
-						{this.state.stage === 1 && <Preact.Fragment>
+						</div>}
+						{this.state.stage === 1 && <div class="CreateElementForm-InnerWrap">
 							{editor}
 							<code>{JSON.stringify(this.state.elementProps, null, 2)}</code>
-						</Preact.Fragment>}
+						</div>}
 					</DimensionTransition>
 
 					<div className="CreateElementForm-ActionBar">

@@ -19,7 +19,7 @@ export default class ElementPropsEditor extends Preact.Component<Props, {}> {
 	}
 	
 	private renderProp(identifier: string, p: Element.Prop, values: any, fullIdentifier: string) {
-		let widget: React.ReactNode | undefined;
+		let widget: Preact.VNode | undefined;
 		
 		if ('fields' in p) {
 			const prop = p as Element.TableProp;
@@ -53,8 +53,10 @@ export default class ElementPropsEditor extends Preact.Component<Props, {}> {
 	}
 
 	private renderPropsTable(props: Element.PropsTable, values: any, fullIdentifier: string) {
-		return <div className="ElementPropsEditor-Table">
-			{Object.entries(props).map(([k, v]) => this.renderProp(k, v, values, fullIdentifier + (fullIdentifier !== '' ? '.' : '') + k))}
+		return <div class="ElementPropsEditor-Wrap">
+			<div className="ElementPropsEditor-Table">
+				{Object.entries(props).map(([k, v]) => this.renderProp(k, v, values, fullIdentifier + (fullIdentifier !== '' ? '.' : '') + k))}
+			</div>
 		</div>;
 	}
 }

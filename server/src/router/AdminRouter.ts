@@ -146,8 +146,11 @@ export default class AdminRouter extends Router {
 		});
 
 		this.router.use('/asset', Express.static(path.join(path.dirname(__dirname), "../../admin/res")));
+		
 		this.router.get('(/*)?', async (_, res) => res.render(path.join(path.dirname(__dirname), "../views/admin"), {
-			plugins: this.server.plugins.getEnabledPlugins().filter(p => p.conf.sources.admin).map(p => p.conf.identifier)}));
+			scripts: this.server.plugins.getEnabledPlugins().filter(p => p.conf.sources.admin).map(p => p.conf.identifier),
+			styles: this.server.plugins.getEnabledPlugins().filter(p => p.conf.sources.style).map(p => p.conf.identifier)
+		}));
 
 		this.server.app.use('/admin', this.router);
 	}

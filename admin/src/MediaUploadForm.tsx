@@ -70,7 +70,7 @@ export default class MediaUploadForm extends Preact.Component<Props, State> {
 	}
 
 	render() {
-		const uploadItems = this.state.files.map((f, i) => <MediaUploadItem
+		const uploadItems: Preact.VNode[] = this.state.files.map((f, i) => <MediaUploadItem
 			file={f} ind={i} key={f.file.name} editable={this.state.state === MediaUploadState.SELECTING}
 			onNameChange={this.handleNameChange.bind(this, i)} onFilenameChange={this.handleFilenameChange.bind(this, i)}/>);
 
