@@ -7,12 +7,21 @@ export default class Router {
 
 	constructor(protected server: Server) {}
 
-	protected routeError(res: any, code: number, e: any) {
+	protected async routeSafely(res: Express.Response, fn: () => void, code?: number) {
+		try {
+			await fn();
+		}
+		catch (e) {
+			this.routeError(res, e, code);
+		}
+	}
+
+	protected routeError(res: Express.Response, e: any, code?: number, ) {
 		if (typeof e == "string") {
-			res.status(code).send(e);
+			res.status(code ?? 403).send(e);
 		}
 		else {
-			res.sendStatus(code);
+			res.sendStatus(code ?? 403);
 			console.log(e);
 		}
 	}

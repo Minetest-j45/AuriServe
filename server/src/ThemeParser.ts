@@ -46,7 +46,7 @@ export default class ThemeParser {
 		await fs.mkdir(outPath);
 
 		// Parse all active themes and add them to themes/public.
-		const enabledThemes = (await this.server.getSiteData()).themes!.filter(t => this.enabledThemes.indexOf(t.identifier) != -1);
+		const enabledThemes = (await this.server.db.getSiteData('themes')).themes!.filter(t => this.enabledThemes.indexOf(t.identifier) != -1);
 		await Promise.all(enabledThemes.map(async (t) => {
 			const themePath = path.join(this.server.db.dataPath, "themes", t.identifier);
 
@@ -61,7 +61,7 @@ export default class ThemeParser {
 			});
 		}));
 
-		logger.info("Parsed %s theme%s.", enabledThemes.length, enabledThemes.length != 1 ? "s" : "");
+		logger.debug("Parsed %s theme%s.", enabledThemes.length, enabledThemes.length != 1 ? "s" : "");
 
 		this.parsing = false;
 		this.watch();

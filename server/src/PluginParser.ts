@@ -51,12 +51,13 @@ export default class PluginParser {
 	async init() {
 		// Synchronize active themes representation with server.
 		this.enabledPlugins = await this.server.db.getEnabledPlugins();
-		
+
 		// Reload themes list and parse themes.
 		await this.refresh();
 		
-		// Force clearing of invalid themes.
-		await this.toggle([]);
+		// Prune invalid enabled plugins.
+		const existing = this.plugins.map(p => p.conf.identifier);
+		this.enabledPlugins = this.enabledPlugins.filter(p => existing.indexOf(p) != -1);
 	}
 
 
@@ -70,8 +71,7 @@ export default class PluginParser {
 
 
 	/**
-	* Attaches all enabled plugins, 
-	* and then compiles them.
+	* Attaches all enabled plugins.
 	*/
 
 	private async attach() {
@@ -129,7 +129,8 @@ export default class PluginParser {
 
 		let log = "Detached " + succeeded + " plugin" + (succeeded != 1 ? "s" : "");
 		if (failed) log += ", failed to detache " + failed + " plugin" + (failed != 1 ? "s" : "");
-		logger.info(log + ".");
+		if (succeeded > 0 || failed > 0) logger.info(log + ".");
+		else logger.debug(log + ".");
 	}
 
 
@@ -254,14 +255,11 @@ export default class PluginParser {
 	async toggle(plugins: string[]) {
 		await this.detach();
 
-		// Prune invalid enabled plugins.
-		const existing = this.plugins.map(p => p.conf.identifier);
-		this.enabledPlugins = this.enabledPlugins.filter(p => existing.indexOf(p) != -1);
-
 		// Toggle Plugins
 		for (let plugin of plugins) {
-			if (this.enabledPlugins.indexOf(plugin) != -1) this.enabledPlugins.splice(this.enabledPlugins.indexOf(plugin), 1);
-			else if (existing.indexOf(plugin) != -1) this.enabledPlugins.push(plugin);
+			if (this.enabledPlugins.indexOf(plugin) != -1) 
+				this.enabledPlugins.splice(this.enabledPlugins.indexOf(plugin), 1);
+			else this.enabledPlugins.push(plugin);
 		}
 
 		await this.server.db.setEnabledPlugins(this.enabledPlugins);

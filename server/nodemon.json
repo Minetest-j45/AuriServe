@@ -2,5 +2,5 @@
 	"watch": ["server"],
 	"ext": ".ts,.js,.tsx,.json",
 	"ignore": [],
-	"exec": "ts-node --project server/tsconfig.json server/src/Main.ts"
+	"exec": "ts-node --project server/tsconfig.json server/src/Main.ts -- --verbose"
 }

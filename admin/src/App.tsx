@@ -1,10 +1,10 @@
 import Cookie from 'js-cookie';
 import * as Preact from 'preact';
-import { Router, Route } from 'preact-router';
+
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
 import './App.scss';
 
-import Redirect from './Redirect';
 import LoginForm from './LoginForm';
 import AppHeader from './AppHeader';
 import MainPage from './pages/MainPage';
@@ -13,9 +13,9 @@ import MediaPage from './pages/MediaPage';
 import ThemesPage from './pages/ThemesPage';
 import PluginsPage from './pages/PluginsPage';
 
-import SiteData from '../../common/interface/SiteData';
 import { AppContext, AppContextData } from './AppContext';
 import { AdminDefinition } from '../../common/interface/Element';
+import { SiteData, SiteDataSpecifier } from '../../common/interface/SiteData';
 
 declare global {
 	interface Window { serve: any }
@@ -43,13 +43,11 @@ export default class App extends Preact.Component<{}, State> {
 	constructor(props: any) {
 		super(props);
 		
-		this.loadPlugins = this.loadPlugins.bind(this);
-		this.handleSiteData = this.handleSiteData.bind(this);
-
 		const tkn = Cookie.get('tkn');
 
 		this.state = {
 			contextData: {
+				refreshSiteData: this.refreshSiteData,
 				handleSiteData: this.handleSiteData,
 				plugins: { elements: new Map() },
 				data: null as any
@@ -58,17 +56,7 @@ export default class App extends Preact.Component<{}, State> {
 			pluginState: PluginState.UNLINKED
 		};
 
-		if (tkn) fetch('/admin/data', {
-			cache: 'no-cache'
-		}).then(r => {
-			if (r.status !== 200) throw 'Invalid credentials.';
-			return r.json();
-		}).then(res => {
-			this.handleSiteData(res);
-		}).catch(() => {
-			Cookie.remove('tkn');
-			location.href = '/admin';
-		});
+		if (tkn) this.refreshSiteData('info');
 	}
 
 	render() {
@@ -79,14 +67,16 @@ export default class App extends Preact.Component<{}, State> {
 					{this.state.appState === AppState.LOGIN && <LoginForm/>}
 					{this.state.appState === AppState.ADMIN &&
 					<div className="App-Wrap">
-						<AppHeader/>
-						<Router>
-							<Route path="/admin/home" component={MainPage}/>
-							<Route path="/admin/pages" component={PagesPage}/>
-							<Route path="/admin/media" component={MediaPage}/>
-							<Route path="/admin/themes" component={ThemesPage}/>
-							<Route path="/admin/plugins" component={PluginsPage}/>
-							<Redirect default to="/admin/home"/>
+						<Router basename="/admin">
+							<AppHeader/>
+							<Switch>
+								<Redirect exact from="/" to="/home"/>
+								<Route exact path="/home" component={MainPage as any}/>
+								<Route exact path="/pages" component={PagesPage as any}/>
+								<Route exact path="/media" component={MediaPage as any}/>
+								<Route exact path="/themes" component={ThemesPage as any}/>
+								<Route exact path="/plugins" component={PluginsPage as any}/>
+							</Switch>
 						</Router>
 					</div>}
 				</div>
@@ -94,22 +84,18 @@ export default class App extends Preact.Component<{}, State> {
 		);
 	}
 
-	private loadPlugins(): PluginState {
+	private loadPlugins = (): PluginState => {
 		let pluginState = this.state.pluginState;
 
 		if (pluginState === PluginState.UNLINKED) {
 			const plugins: { pluginScripts: string[]; pluginStyles: string[] } =
 				JSON.parse((document.querySelector('#plugins') as HTMLScriptElement).innerText);
 
-			console.log(plugins);
-
 			window.serve = {
 				registerElement: (elem: AdminDefinition) => {
 					let contextData = Object.assign({}, this.state.contextData);
 					contextData.plugins = Object.assign({}, contextData.plugins);
 					contextData.plugins.elements.set(elem.identifier, elem);
-
-					console.log(contextData);
 					
 					this.setState({ contextData: contextData });
 				}
@@ -133,19 +119,44 @@ export default class App extends Preact.Component<{}, State> {
 		}
 
 		return pluginState;
-	}
+	};
 
-	private handleSiteData(data: SiteData) {
+	private refreshSiteData = (...types: SiteDataSpecifier[]): void => {
+		fetch('/admin/data/' + types.join('&'), {
+			cache: 'no-cache'
+		}).then(r => {
+			if (r.status !== 200) throw 'Invalid credentials.';
+			return r.json();
+		}).then(res => {
+			this.handleSiteData(res);
+		}).catch(() => {
+			Cookie.remove('tkn');
+			location.href = '/admin';
+		});
+	};
+
+	private handleSiteData = (data: SiteData): void => {
 		const pluginState = this.loadPlugins();
+
+		let siteData = Object.assign({}, this.state.contextData.data);
+		
+		for (const key of Object.keys(data)) (siteData as any)[key] = (data as any)[key];
+
+		if (!siteData.media) siteData.media = [];
+		if (!siteData.themes) siteData.themes = [];
+		if (!siteData.plugins) siteData.plugins = [];
+		if (!siteData.elements) siteData.elements = [];
+		if (!siteData.elementDefs) siteData.elementDefs = {};
 
 		this.setState({
 			contextData: {
+				refreshSiteData: this.refreshSiteData,
 				handleSiteData: this.handleSiteData,
 				plugins: this.state.contextData.plugins,
-				data: data
+				data: siteData
 			},
 			appState: AppState.ADMIN,
 			pluginState: pluginState
 		});
-	}
+	};
 }

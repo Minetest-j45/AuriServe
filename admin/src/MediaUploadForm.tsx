@@ -221,9 +221,7 @@ export default class MediaUploadForm extends Preact.Component<Props, State> {
 		}
 		
 		Promise.all(promises).then(() => {
-			console.log('ALL DONE');
-
-			fetch('/admin/data', {
+			fetch('/admin/data/media', {
 				cache: 'no-cache'
 			}).then(r => r.json()).then(res => {
 				this.context.handleSiteData(res);

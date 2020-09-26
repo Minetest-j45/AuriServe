@@ -1,6 +1,6 @@
 import * as Preact from 'preact';
 
-import './Page.scss';
+import './Page.sass';
 import './MainPage.scss';
 
 import Meter from '../Meter';
@@ -8,6 +8,10 @@ import Meter from '../Meter';
 import { AppContext } from '../AppContext';
 
 export default class MainPage extends Preact.Component {
+	componentWillMount() {
+		this.context.refreshSiteData('info');
+	}
+
 	render() {
 		return (
 			<div className="MainPage">

@@ -33,11 +33,7 @@ export default class SelectGroup extends Preact.Component<Props, State> {
 
 	constructor(props: any) {
 		super(props);
-
-		this.handleSelect = this.handleSelect.bind(this);
-		this.keyDown = this.keyDown.bind(this);
-		this.keyUp = this.keyUp.bind(this);
-
+		
 		this.state = {
 			contextData: {
 				handleSelect: this.handleSelect,
@@ -81,26 +77,26 @@ export default class SelectGroup extends Preact.Component<Props, State> {
 		);
 	}
 
-	private keyDown(e: KeyboardEvent) {
+	protected keyDown = (e: KeyboardEvent) => {
 		if (e.key === 'Control') this.ctrl = true;
 		if (e.key === 'Shift') this.shift = true;
-	}
+	};
 
-	private keyUp(e: KeyboardEvent) {
+	protected keyUp = (e: KeyboardEvent) => {
 		if (e.key === 'Control') this.ctrl = false;
 		if (e.key === 'Shift') this.shift = false;
-	}
+	};
 
-	private resetContextArray() {
+	protected resetContextArray = () => {
 		let selected: boolean[] = [];
 		for (let i = 0; i < (this.props.children ? Array.isArray(this.props.children)
 			? this.props.children.length : 1 : 0); i++) selected.push(false);
 
 		this.setState({ contextData: { handleSelect: this.state.contextData.handleSelect, selected: selected }, lastSelected: undefined });
 		if (this.props.onSelectionChange) this.props.onSelectionChange([]);
-	}
+	};
 
-	private handleSelect(_: MouseEvent, ind: number, state?: boolean) {
+	protected handleSelect = (_: MouseEvent, ind: number, state?: boolean) => {
 		let contextData = {...this.state.contextData};
 		
 		if (!this.props.multi || !this.ctrl)
@@ -116,5 +112,5 @@ export default class SelectGroup extends Preact.Component<Props, State> {
 
 		if (this.props.onSelectionChange) this.props.onSelectionChange(contextData.selected.map((s, i) => (s ? i : -1)).filter(i => i !== -1));
 		this.setState({ contextData: contextData, lastSelected: lastSelected });
-	}
+	};
 }

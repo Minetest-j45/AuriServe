@@ -43,7 +43,7 @@ export default class CreateElementForm extends Preact.Component<Props, State> {
 			let customElement = this.context.plugins.elements.get(this.state.element);
 
 			if (customElement?.element) {
-				editor = <customElement.element />;
+				editor = <customElement.editElement props={this.state.elementProps} updateProp={this.handleUpdateValue}/>;
 			} else {
 				editor = <ElementPropsEditor
 					values={this.state.elementProps}
@@ -76,13 +76,13 @@ export default class CreateElementForm extends Preact.Component<Props, State> {
 								<span className="CreateElementForm-Label">Element Type</span>
 								<select className="CreateElementForm-Select" value={this.state.element} onChange={this.handleElementChange}>
 									<option value="" key="">- Select Type -</option>
-									{Object.entries(ctx.data.elementDefs).map(([k, {name}]) => <option value={k} key={k}>{name || k}</option>)}
+									{Object.entries(ctx.data.elementDefs).map(([k, e]) => <option value={k} key={k}>{e.name || k}</option>)}
 								</select>
 							</label>
 						</div>}
 						{this.state.stage === 1 && <div class="CreateElementForm-InnerWrap">
 							{editor}
-							<code>{JSON.stringify(this.state.elementProps, null, 2)}</code>
+							{/* <code>{JSON.stringify(this.state.elementProps, null, 2)}</code> */}
 						</div>}
 					</DimensionTransition>
 

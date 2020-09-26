@@ -10,13 +10,17 @@ export interface Config {
 		url?: string
 		name?: string
 	}
-	super?: boolean
+	super?: boolean,
+	verbose?: boolean,
+	logLevel?: "debug" | "info" | "warn" | "error" | "fatal" | "off"
 }
 
 const props: string[] = [
 	"data",
 	"port",
-	"super"
+	"super",
+	"verbose",
+	"logLevel"
 ];
 
 export function mergeConfig(confA: Config, confB: Config): Config {

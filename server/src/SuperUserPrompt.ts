@@ -5,7 +5,6 @@ import Database from "./Database";
 
 export default class SuperUserPrompt {
 	constructor(db: Database) {
-		console.log("AIGHT HERE WE GO ");
 		const prompt = require("prompt");
 		prompt.start();
 		prompt.message = "";

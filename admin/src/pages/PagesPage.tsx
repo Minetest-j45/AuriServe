@@ -1,6 +1,6 @@
 import * as Preact from 'preact';
 
-import './Page.scss';
+import './Page.sass';
 import './PagesPage.sass';
 
 import Modal from '../Modal';
@@ -19,6 +19,10 @@ export default class PagesPage extends Preact.Component<{}, State> {
 		this.state = { create: false };
 
 		this.toggleCreateElement = this.toggleCreateElement.bind(this);
+	}
+
+	componentWillMount() {
+		this.context.refreshSiteData('elements');
 	}
 
 	render() {

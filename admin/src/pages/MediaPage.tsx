@@ -1,6 +1,6 @@
 import * as Preact from 'preact';
 
-import './Page.scss';
+import './Page.sass';
 import './MediaPage.scss';
 
 import Modal from '../Modal';
@@ -37,6 +37,7 @@ export default class MediaPage extends Preact.Component<{}, State> {
 
 	componentDidMount() {
 		window.addEventListener('keyup', this.handleKeyUp);
+		this.context.refreshSiteData('media');
 	}
 
 	componentWillUnmount() {
@@ -87,7 +88,7 @@ export default class MediaPage extends Preact.Component<{}, State> {
 							/>)}
 						</SelectGroup>
 
-						{ctx.data.media!.length === 0 && <h2 className="MediaPage-NoMedia">No media found.</h2>}
+						{ctx.data.media.length === 0 && <h2 className="MediaPage-NoMedia">No media found.</h2>}
 					</section>
 
 					{this.state.viewed !== undefined && <Modal onClose={this.handleCloseMedia}>

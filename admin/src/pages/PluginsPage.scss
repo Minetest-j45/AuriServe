@@ -12,4 +12,10 @@
 	.PluginsPage-Toolbar {
 		@extend %card_toolbar;
 	}
+
+	.PluginsPage-NoPlugins {
+		text-align: center;
+		color: $neutral-500;
+		margin: 32px 0px 48px 0px; 
+	}
 }

@@ -1,6 +1,6 @@
 import * as Preact from 'preact';
 
-import './Page.scss';
+import './Page.sass';
 import './PluginsPage.scss';
 
 import PluginItem from '../PluginItem';
@@ -24,6 +24,10 @@ export default class PluginsPage extends Preact.Component<{}, State> {
 		this.handleTogglePlugins = this.handleTogglePlugins.bind(this);
 		this.handleRefreshPlugins = this.handleRefreshPlugins.bind(this);
 		this.handleSelectionChange = this.handleSelectionChange.bind(this);
+	}
+
+	componentWillMount() {
+		this.context.refreshSiteData('plugins');
 	}
 
 	render() {
@@ -60,6 +64,8 @@ export default class PluginsPage extends Preact.Component<{}, State> {
 							{ctx.data.plugins.map((t: Plugin, i: number) => <PluginItem item={t} ind={i} onClick={this.handleTogglePlugins}
 								active={ctx.data.enabledPlugins.indexOf(t.identifier) !== -1} key={t.identifier}/>)}
 						</SelectGroup>
+
+						{ctx.data.plugins.length === 0 && <h2 className="PluginsPage-NoPlugins">No plugins found.</h2>}
 					</section>
 				</div>
 			}</AppContext.Consumer>

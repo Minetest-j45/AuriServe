@@ -9,7 +9,8 @@
 		"dev-server": "nodemon --config server/nodemon.json",
 		"dist": "npm run dist-admin & npm run dist-server",
 		"dist-admin": "cd admin; webpack --mode=production --progress --config webpack.ts",
-		"dist-server": "ts-node --project server/tsconfig.json ./server/src/Main.ts"
+		"dist-server": "ts-node --project server/tsconfig.json ./server/src/Main.ts",
+		"analyze-admin": "cd admin; webpack --mode=production --analyze --config webpack.ts"
 	},
 	"repository": {
 		"type": "git",
@@ -45,6 +46,7 @@
 		"@types/node": "^14.0.27",
 		"@types/node-sass": "^4.11.1",
 		"@types/pug": "^2.0.4",
+		"@types/react-transition-group": "^4.4.0",
 		"@types/rimraf": "^3.0.0",
 		"@types/webpack-livereload-plugin": "^2.3.0",
 		"@typescript-eslint/eslint-plugin": "^4.1.1",
@@ -64,6 +66,7 @@
 		"ts-node": "^8.10.2",
 		"typescript": "^3.9.7",
 		"webpack": "^4.44.1",
+		"webpack-bundle-analyzer": "^3.9.0",
 		"webpack-cli": "^3.3.12",
 		"webpack-livereload-plugin": "^2.3.0",
 		"webpack-merge": "^5.1.4"
@@ -71,6 +74,7 @@
 	"dependencies": {
 		"@babel/runtime": "^7.11.2",
 		"@babel/runtime-corejs3": "^7.11.2",
+		"@types/react-router-dom": "^5.1.5",
 		"bcrypt": "^5.0.0",
 		"body-parser": "^1.19.0",
 		"compression": "^1.7.4",
@@ -80,6 +84,7 @@
 		"express": "^4.17.1",
 		"express-fileupload": "^1.2.0",
 		"js-cookie": "^2.2.1",
+		"liquid-route": "^1.1.0",
 		"log4js": "^6.3.0",
 		"minimist": "^1.2.5",
 		"moment": "^2.27.0",
@@ -90,6 +95,8 @@
 		"preact-router": "^3.2.1",
 		"prompt": "^1.0.0",
 		"pug": "^3.0.0",
+		"react-router-dom": "^5.2.0",
+		"react-transition-group": "^4.4.1",
 		"recursive-watch": "^1.1.4",
 		"regenerator-runtime": "^0.13.7",
 		"rimraf": "^3.0.2",

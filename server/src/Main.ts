@@ -6,14 +6,13 @@ import minimist from "minimist"
 
 import Server from "./Server"
 import resolvePath from "../../common/util/ResolvePath"
-import {Config, mergeConfig} from "./interface/Config"
+import { Config, mergeConfig } from "./interface/Config"
 
 const DEFAULT_DATA_DIR = "site-data";
 const DEFAULT_CONF_FILENAME = "conf.json";
 
 // Initialize the logger.
 const logger = log4js.getLogger();
-logger.level = "debug";
 
 // Don't allow unhandled Promise rejections.
 process.on('unhandledRejection', up => { logger.fatal("Unhandled promise rejection."); throw up; });
@@ -27,8 +26,6 @@ async function start() {
 		args.data ? path.join(args.data, DEFAULT_CONF_FILENAME) :
 		path.join(DEFAULT_DATA_DIR, DEFAULT_CONF_FILENAME));
 
-	logger.info("Parsing configuration file '%s'.", confPath);
-
 	// Parse the config into conf.
 	let conf: Config | null;
 
@@ -37,14 +34,17 @@ async function start() {
 		conf = mergeConfig(JSON.parse(file), args);
 	}
 	catch (e) {
+		logger.level = "debug";
 		logger.fatal("Failed to parse configuration file '%s'.\n %s", confPath, e);
 		process.exit(1);
 	}
 
-	// Find the site data folder.
-	let dataPath = resolvePath(conf.data ? conf.data : DEFAULT_DATA_DIR);
+	logger.level = conf.verbose ? 'debug' : conf.logLevel ?? 'info';
 
-	logger.info("Starting AuriServe with data directory '%s'.", dataPath);
+	// Find the site data folder.
+	let dataPath = resolvePath(conf.data ?? DEFAULT_DATA_DIR);
+
+	logger.debug("Initializing AuriServe with data directory '%s' and configuration file '%s'.", dataPath, confPath);
 
 	try {
 		await fs.access(dataPath, fsc.R_OK | fsc.F_OK);

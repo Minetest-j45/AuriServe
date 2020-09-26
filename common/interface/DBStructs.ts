@@ -75,7 +75,7 @@ export interface Element {
 	_id?: ObjectID;
 
 	identifier: string;
-	page: string;
+	type: string;
 	
-	data: any;
+	props: any;
 }

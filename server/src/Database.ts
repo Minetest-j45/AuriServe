@@ -7,7 +7,7 @@ import { UploadedFile } from "express-fileupload";
 import { promises as fs, constants as fsc } from 'fs';
 
 import * as DB from '../../common/interface/DBStructs';
-import SiteData from '../../common/interface/SiteData';
+import { SiteDataSpecifier, PartialSiteData } from '../../common/interface/SiteData';
 
 const logger = log4js.getLogger();
 
@@ -65,7 +65,7 @@ export default class Database {
 	async setPlugins(plugins: DB.Plugin[]) {
 		const collection = this.db!.collection('plugins');
 		await collection.deleteMany({});
-		await collection.insertMany(plugins);
+		if (plugins.length) await collection.insertMany(plugins);
 	}
 
 
@@ -114,7 +114,7 @@ export default class Database {
 	async setThemes(themes: DB.Theme[]) {
 		const collection = this.db!.collection('themes');
 		await collection.deleteMany({});
-		await collection.insertMany(themes);
+		if (themes.length) await collection.insertMany(themes);
 	}
 
 
@@ -213,20 +213,63 @@ export default class Database {
 
 
 	/**
-	* Get a SiteData object from the database.
+	* Returns a list of all elements.
+	*/
+
+	async listElements(): Promise<DB.Element[]> {
+		return await (await this.db!.collection('elements').find({})).toArray();
+	}
+
+
+	/**
+	* Create a new element with the specified props and add it to the database.
+	* Throws if the identifier is in use.
+	*
+	* @param {string} identifier  - The unique identifier for the element, must pass sanitize.
+	* @param {string} elementType - The type of the element, must be a valid type in the elements list.
+	* @param {string} properties  - A valid JSON string containing the element properties.
+	*/
+
+	async createElement(identifier: string, elementType: string, properties: string) {
+		const elements = this.db!.collection('elements');
+		
+		if (await elements.findOne({identifier: identifier})) 
+			throw "An element with that identifier already exists in the database.";
+
+		elements.insertOne({
+			identifier: identifier,
+			type: elementType,
+			props: properties
+		} as DB.Element);
+	}
+
+
+	/**
+	* Returns a PartialSiteData object from the database.
 	* Used for the client admin site to show information.
 	*/
 
-	async getSiteData(): Promise<SiteData> {
-		let info = await this.db!.collection('siteinfo').findOne({}) as DB.SiteInfo as SiteData;
-		
-		// Add SiteData lists to `info`.
-		info.media = await (await this.db!.collection('media').find({})).toArray();
-		info.themes = await (await this.db!.collection('themes').find({})).toArray();
-		info.plugins = await (await this.db!.collection('plugins').find({})).toArray();
-		info.elements = await (await this.db!.collection('elements').find({})).toArray();
+	async getSiteData(specifier?: string): Promise<PartialSiteData> {
+		const specifiers = (specifier ? specifier.split('&') as SiteDataSpecifier[] : []);
 
-		return info;
+		let data: PartialSiteData = {};
+
+		data = (specifiers.includes('info')) ? 
+			Object.assign(data, await this.db!.collection('siteinfo').findOne({}) as PartialSiteData) : data;
+
+		if (specifiers.includes('media')) data.media = 
+			await (await this.db!.collection('media').find({})).toArray();
+
+		if (specifiers.includes('themes')) data.themes = 
+			await (await this.db!.collection('themes').find({})).toArray();
+		
+		if (specifiers.includes('plugins')) data.plugins = 
+			await (await this.db!.collection('plugins').find({})).toArray();
+
+		if (specifiers.includes('elements')) data.elements = 
+			await (await this.db!.collection('elements').find({})).toArray();
+
+		return data;
 	}
 
 

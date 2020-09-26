@@ -19,7 +19,7 @@ import ThemeParser from "./ThemeParser";
 import PluginParser from "./PluginParser";
 
 import { Config } from "./interface/Config";
-import SiteData from '../../common/interface/SiteData';
+// import { PartialSiteData } from '../../common/interface/SiteData';
 import resolvePath from "../../common/util/ResolvePath";
 
 const logger = log4js.getLogger()
@@ -58,13 +58,13 @@ export default class Server {
 		});
 	}
 
-	async getSiteData(): Promise<SiteData> {
-		let data = await this.db.getSiteData();
-		let confMap: {[key: string]: any} = {};
-		this.elements.getAllElements().forEach((elem, key) => confMap[key] = elem.config);
-		data.elementDefs = confMap;
-		return data;
-	}
+	// async getSiteData(): Promise<PartialSiteData> {
+	// 	let data = await this.db.getSiteData();
+	// 	let confMap: {[key: string]: any} = {};
+	// 	this.elements.getAllElements().forEach((elem, key) => confMap[key] = elem.config);
+	// 	data.elementDefs = confMap;
+	// 	return data;
+	// }
 
 	private async init() {
 		await new Promise(async (resolve) => {

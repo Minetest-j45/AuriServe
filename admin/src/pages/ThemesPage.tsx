@@ -1,5 +1,6 @@
 import * as Preact from 'preact';
 
+import './Page.sass';
 import './ThemesPage.scss';
 
 import ThemeItem from '../ThemeItem';
@@ -23,6 +24,10 @@ export default class ThemesPage extends Preact.Component<{}, State> {
 		this.handleToggleThemes = this.handleToggleThemes.bind(this);
 		this.handleRefreshThemes = this.handleRefreshThemes.bind(this);
 		this.handleSelectionChange = this.handleSelectionChange.bind(this);
+	}
+
+	componentWillMount() {
+		this.context.refreshSiteData('themes');
 	}
 
 	render() {
@@ -59,6 +64,8 @@ export default class ThemesPage extends Preact.Component<{}, State> {
 							{ctx.data.themes.map((t: Theme, i: number) => <ThemeItem item={t} ind={i} onClick={this.handleToggleThemes}
 								active={ctx.data.enabledThemes.indexOf(t.identifier) !== -1} key={t.identifier}/>)}
 						</SelectGroup>
+
+						{ctx.data.themes.length === 0 && <h2 className="ThemesPage-NoThemes">No themes found.</h2>}
 					</section>
 				</div>
 			}</AppContext.Consumer>
