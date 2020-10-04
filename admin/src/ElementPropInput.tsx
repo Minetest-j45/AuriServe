@@ -9,18 +9,18 @@ interface Props {
 	prop: Element.FieldProp;
 
 	value: any;
-	onChange: (val: any) => void;
+	setProps: (props: any) => void;
 }
 
 interface State {
-	type: Element.PropType;
+	types: Element.PropType[];
 }
 
 export default class ElementPropInput extends Preact.Component<Props, State> {
 	constructor(props: Props) {
 		super(props);
 		this.state = {
-			type: this.props.prop.type.replace(/ /g, '').split('|')[0] as Element.PropType
+			types: (Array.isArray(this.props.prop.type) ? this.props.prop.type : [this.props.prop.type]) as Element.PropType[]
 		};
 
 		this.handleChange = this.handleChange.bind(this);
@@ -32,7 +32,9 @@ export default class ElementPropInput extends Preact.Component<Props, State> {
 
 		let widget: Preact.VNode | undefined = undefined;
 
-		let baseType = this.state.type.split(':')[0] as Element.BasePropType;
+		const type = this.state.types[0];
+		const baseType = (Array.isArray(type) ? 'enum' : (this.state.types[0] as string).split(':')[0]) as Element.PropType | 'enum';
+
 		switch (baseType) {
 
 		default:
@@ -75,6 +77,11 @@ export default class ElementPropInput extends Preact.Component<Props, State> {
 			widget = <input type="color" name={this.props.identifier}
 				value={this.props.value} onChange={this.handleChange} onInput={this.handleChange} />;
 			break;
+
+		case 'enum':
+			widget = <select name={this.props.identifier} onChange={this.handleChange}>
+				{(type as any as string[]).map(t => <option selected={this.props.value === t} value={t}>{t}</option>)}
+			</select>;
 		}
 
 		return (
@@ -90,7 +97,10 @@ export default class ElementPropInput extends Preact.Component<Props, State> {
 
 		// Apply transformations to value based on type.
 		
-		let baseType = this.state.type.split(':')[0] as Element.BasePropType;
+		const key = evt.target.name;
+		const type = this.state.types[0];
+		const baseType = (Array.isArray(type) ? 'enum' : (this.state.types[0] as string).split(':')[0]) as Element.PropType;
+
 		switch (baseType) {
 		default: break;
 		
@@ -104,6 +114,6 @@ export default class ElementPropInput extends Preact.Component<Props, State> {
 			break;
 		}
 		
-		this.props.onChange(value);
+		this.props.setProps({ [key]: value });
 	}
 }

@@ -1,4 +1,5 @@
 import * as Preact from 'preact';
+import { NavLink as Link } from 'react-router-dom';
 
 import './Page.sass';
 import './PagesPage.sass';
@@ -22,21 +23,32 @@ export default class PagesPage extends Preact.Component<{}, State> {
 	}
 
 	componentWillMount() {
-		this.context.refreshSiteData('elements');
+		this.context.refreshSiteData('elements&pages');
 	}
 
 	render() {
 		return (
-			<AppContext.Consumer>{_ =>
-				<div className="Page PagesPage">
-					<section className="Page-Card">
+			<AppContext.Consumer>{ctx =>
+				<div class="Page PagesPage">
+					<section class="Page-Card">
 						<CardHeader icon="/admin/asset/icon/element-dark.svg" title="Manage Pages"
 							subtitle={'Manage site pages and elements.'} />
-						<div className="PagesPage-Toolbar">
-							<button className="PagesPage-Toolbar-Button" onClick={this.toggleCreateElement}>
+						<div class="PagesPage-Toolbar">
+							<button class="PagesPage-Toolbar-Button" onClick={this.toggleCreateElement}>
 								<img src="/admin/asset/icon/add-dark.svg"/><span>Create new Element</span>
 							</button>
 						</div>
+
+						<ul class="PagesPage-Pages">
+							{Object.keys(ctx.data.pages).sort((a, b) => a > b ? 1 : -1).map(p =>
+								<Link className="PagesPage-PageItem" to={'/pages/' + p}>
+									<p class="PagesPage-PageItemTitle">{ctx.data.pages[p]!.title}</p>
+									<p class="PagesPage-PageItemDescription">{ctx.data.pages[p].description || <em>No description</em>}</p>
+									<p class="PagesPage-PageItemPath">{p}</p>
+								</Link>
+							)}
+						</ul>
+
 					</section>
 
 					{this.state.create && <Modal>

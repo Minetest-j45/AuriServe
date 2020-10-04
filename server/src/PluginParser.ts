@@ -3,7 +3,9 @@ import log4js from "log4js";
 import decache from "decache";
 import ff, { promises as fs, constants as fsc } from "fs";
 
-import Server from "./Server";
+
+import DBView from './DBView';
+import Elements from './Elements';
 import PluginBindings from "./PluginBindings";
 
 import sanitize from "../../common/util/Sanitize";
@@ -29,15 +31,15 @@ interface PluginConfig {
 
 class Plugin {
 	public bindings?: PluginBindings;
-	constructor(private server: Server, public conf: PluginConfig, private init: (p: PluginBindings) => void) {};
+	constructor(private elements: Elements, public conf: PluginConfig, private init: (p: PluginBindings) => void) {};
 
 	async attach() {
 		await this.init(this.bindings!);
-		this.server.elements.addList(this.bindings!.elements);
+		this.elements.addList(this.bindings!.elements);
 	}
 
 	async detach() {
-		this.server.elements.removeList(this.bindings!.elements);
+		this.elements.removeList(this.bindings!.elements);
 	}
 }
 
@@ -46,11 +48,11 @@ export default class PluginParser {
 	private enabledPlugins: string[] = [];
 	private plugins: Plugin[] = [];
 
-	constructor(private server: Server) {}
+	constructor(private dataPath: string, private db: DBView, private elements: Elements) {};
 
 	async init() {
 		// Synchronize active themes representation with server.
-		this.enabledPlugins = await this.server.db.getEnabledPlugins();
+		this.enabledPlugins = await this.db.getEnabledPlugins();
 
 		// Reload themes list and parse themes.
 		await this.refresh();
@@ -84,7 +86,7 @@ export default class PluginParser {
 			try {
 				if (!plugin) throw "Plugin doesn't exist.";
 
-				plugin.bindings = new PluginBindings(this.server, plugin.conf.identifier);
+				plugin.bindings = new PluginBindings();
 				await plugin.attach();
 				succeeded++;
 			}
@@ -148,7 +150,7 @@ export default class PluginParser {
 			const plugin = this.plugins.filter(p => p.conf.identifier == identifier)[0];
 			if (!plugin || !plugin.bindings) return;
 
-			this.watchers.push(ff.watch(path.join(this.server.dataPath, "plugins", 
+			this.watchers.push(ff.watch(path.join(this.dataPath, "plugins", 
 				plugin.conf.identifier, plugin.conf.sourceRoot, plugin.conf.sources.server), 
 				{ persistent: false, recursive: false, encoding: 'utf8'}, () => this.refresh()));
 
@@ -170,7 +172,7 @@ export default class PluginParser {
 		
 		let pluginData: DBPlugin[] = [];
 
-		const dirs = await fs.readdir(path.join(this.server.dataPath, "plugins"));
+		const dirs = await fs.readdir(path.join(this.dataPath, "plugins"));
 		await Promise.all(dirs.map(async identifier => {
 			if (identifier == "public") return;
 			try {
@@ -178,7 +180,7 @@ export default class PluginParser {
 				// Validate basic plugin file structure.
 
 				if (sanitize(identifier) != identifier) throw `Plugin identifier must be lowercase alphanumeric.`;
-				const p = path.join(this.server.dataPath, "plugins", identifier);
+				const p = path.join(this.dataPath, "plugins", identifier);
 
 				const stat = await fs.stat(p);
 				if (!stat.isDirectory()) throw "Plugin is not a directory.";
@@ -216,7 +218,7 @@ export default class PluginParser {
 				// Create a DB.Plugin for the database.
 
 				let cover = true;
-				try { await fs.access(path.join(this.server.db.dataPath, "plugins", identifier, "cover.jpg"), fsc.R_OK); }
+				try { await fs.access(path.join(this.dataPath, "plugins", identifier, "cover.jpg"), fsc.R_OK); }
 				catch (e) { cover = false; }
 
 				pluginData.push({
@@ -233,7 +235,7 @@ export default class PluginParser {
 
 				let requirePath = require.resolve(path.join(p, conf.sourceRoot, conf.sources.server));
 				decache(requirePath);
-				const plugin = new Plugin(this.server, conf, require(requirePath));
+				const plugin = new Plugin(this.elements, conf, require(requirePath));
 				this.plugins.push(plugin);
 			}
 			catch (e) {
@@ -241,7 +243,7 @@ export default class PluginParser {
 			}
 		}));
 
-		await this.server.db.setPlugins(pluginData);
+		await this.db.setPlugins(pluginData);
 		await this.attach();
 	}
 
@@ -262,7 +264,7 @@ export default class PluginParser {
 			else this.enabledPlugins.push(plugin);
 		}
 
-		await this.server.db.setEnabledPlugins(this.enabledPlugins);
+		await this.db.setEnabledPlugins(this.enabledPlugins);
 
 		await this.attach();
 	}

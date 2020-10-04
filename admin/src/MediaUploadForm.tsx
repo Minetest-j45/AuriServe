@@ -272,7 +272,8 @@ export default class MediaUploadForm extends Preact.Component<Props, State> {
 				const reader = new FileReader();
 				reader.readAsDataURL(file);
 				reader.onload = () => resolveFile(reader.result as string);
-			} else resolveFile();
+			}
+			else resolveFile();
 		})));
 		
 		this.setState({files: files});

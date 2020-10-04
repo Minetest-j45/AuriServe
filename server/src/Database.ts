@@ -22,11 +22,7 @@ export default class Database {
 	private client: MongoClient | null = null;
 	private db: Db | null = null
 
-	dataPath: string;
-
-	constructor(dataPath: string) {
-		this.dataPath = dataPath;
-	}
+	constructor(private dataPath: string) {	}
 
 	async init(url: string, db: string) {
 		this.client = new MongoClient(url, { useUnifiedTopology: true });
@@ -216,9 +212,9 @@ export default class Database {
 	* Returns a list of all elements.
 	*/
 
-	async listElements(): Promise<DB.Element[]> {
-		return await (await this.db!.collection('elements').find({})).toArray();
-	}
+	// async listElements(): Promise<DB.Element[]> {
+	// 	return await (await this.db!.collection('elements').find({})).toArray();
+	// }
 
 
 	/**
@@ -230,23 +226,31 @@ export default class Database {
 	* @param {string} properties  - A valid JSON string containing the element properties.
 	*/
 
-	async createElement(identifier: string, elementType: string, properties: string) {
-		const elements = this.db!.collection('elements');
+	// async createElement(identifier: string, elementType: string, properties: string) {
+	// 	const elements = this.db!.collection('elements');
 		
-		if (await elements.findOne({identifier: identifier})) 
-			throw "An element with that identifier already exists in the database.";
+	// 	if (await elements.findOne({identifier: identifier})) 
+	// 		throw "An element with that identifier already exists in the database.";
 
-		elements.insertOne({
-			identifier: identifier,
-			type: elementType,
-			props: properties
-		} as DB.Element);
-	}
+	// 	elements.insertOne({
+	// 		identifier: identifier,
+	// 		type: elementType,
+	// 		props: properties
+	// 	} as DB.Element);
+	// }
 
 
 	/**
 	* Returns a PartialSiteData object from the database.
 	* Used for the client admin site to show information.
+	*
+	* @param {string} specifier - A ampersand-separated string containing one or more specifiers.
+	*
+	* Specifiers:
+	* info - Basic state and enabled themes and plugins.
+	* media - Media listings
+	* themes - Theme listings
+	* plugins - Plugin listings
 	*/
 
 	async getSiteData(specifier?: string): Promise<PartialSiteData> {
@@ -266,8 +270,8 @@ export default class Database {
 		if (specifiers.includes('plugins')) data.plugins = 
 			await (await this.db!.collection('plugins').find({})).toArray();
 
-		if (specifiers.includes('elements')) data.elements = 
-			await (await this.db!.collection('elements').find({})).toArray();
+		// if (specifiers.includes('elements')) data.elements = 
+		// 	await (await this.db!.collection('elements').find({})).toArray();
 
 		return data;
 	}

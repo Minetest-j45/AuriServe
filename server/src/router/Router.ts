@@ -1,11 +1,7 @@
 import Express from "express";
 
-import Server from "../Server";
-
 export default class Router {
 	router: Express.Router = Express.Router();
-
-	constructor(protected server: Server) {}
 
 	protected async routeSafely(res: Express.Response, fn: () => void, code?: number) {
 		try {

@@ -10,30 +10,34 @@ import log4js from "log4js";
 import Express from "express";
 import bodyParser from "body-parser";
 
-import Admin from "./Admin";
-import Pages from "./Pages";
-
+import DBView from './DBView';
 import Database from "./Database";
 import Elements from "./Elements";
 import ThemeParser from "./ThemeParser";
 import PluginParser from "./PluginParser";
+import PagesManager from "./PagesManager";
+
+import AdminRouter from "./router/AdminRouter";
+import PagesRouter from "./router/PagesRouter";
+import SuperUserPrompt from './SuperUserPrompt';
 
 import { Config } from "./interface/Config";
-// import { PartialSiteData } from '../../common/interface/SiteData';
 import resolvePath from "../../common/util/ResolvePath";
+import { SiteDataSpecifier, PartialSiteData } from '../../common/interface/SiteData';
 
 const logger = log4js.getLogger()
 
 export default class Server {
-	admin: Admin;
-	pages: Pages;
+	adminRouter: AdminRouter;
+	pagesRouter: PagesRouter;
 	
 	app = Express();
 	db = new Database(this.dataPath);
 
-	themes = new ThemeParser(this);
-	plugins = new PluginParser(this);
-	elements = new Elements();
+	elements: Elements;
+	pages: PagesManager;
+	themes: ThemeParser;
+	plugins: PluginParser;
 
 	constructor(public readonly conf: Config, public readonly dataPath: string) {
 		this.app.use(compression());
@@ -44,27 +48,68 @@ export default class Server {
 		this.app.set('view engine', 'pug');
 		this.app.set('views', path.join(path.dirname(__filename), "views"));
 
-		this.admin = new Admin(this);
-		this.pages = new Pages(this);
-		
-		this.init().then(async () => {		
-			this.debugRoutes();
+		this.getSiteData = this.getSiteData.bind(this);
 
+		this.elements = new Elements();
+		this.themes = new ThemeParser(this.dataPath, this.db as any as DBView, this.getSiteData);
+		this.plugins = new PluginParser(this.dataPath, this.db as any as DBView, this.elements);
+		this.pages = new PagesManager(this.themes, this.plugins, this.elements, path.join(this.dataPath, "pages"));
+
+		this.adminRouter = new AdminRouter(this.dataPath, this.db as any as DBView, 
+			this.app, this.themes, this.plugins, this.pages, this.getSiteData);
+		
+		this.pagesRouter = new PagesRouter(this.dataPath, this.app, this.pages, this.plugins);
+
+		this.init().then(async () => {
 			await this.themes.init();
 			await this.plugins.init();
 
-			await this.admin.init();
-			await this.pages.init();
+			if (this.conf.super) 
+				new SuperUserPrompt(this.db);
+
+			await this.adminRouter.init();
+			await this.pagesRouter.init();
 		});
 	}
 
-	// async getSiteData(): Promise<PartialSiteData> {
-	// 	let data = await this.db.getSiteData();
-	// 	let confMap: {[key: string]: any} = {};
-	// 	this.elements.getAllElements().forEach((elem, key) => confMap[key] = elem.config);
-	// 	data.elementDefs = confMap;
-	// 	return data;
-	// }
+
+	/**
+	* Returns a PartialSiteData object.
+	*
+	* @param {string} specifier - A ampersand-separated string containing one or more specifiers.
+	*
+	* Specifiers:
+	* info - Basic state and enabled themes and plugins.
+	* media - Media listings
+	* themes - Theme listings
+	* plugins - Plugin listings
+	* elements - Element definitions
+	* pages - Basic page listings
+	*/
+
+	async getSiteData(specifier: string | undefined): Promise<PartialSiteData> {
+		let data = await this.db.getSiteData(specifier);
+
+		const specifiers = (specifier ? specifier.split('&') as SiteDataSpecifier[] : []);
+		
+		if (specifiers.includes('elements')) {
+			let confMap: {[key: string]: any} = {};
+			this.elements.getAllElements().forEach((elem, key) => confMap[key] = elem.config);
+			data.elementDefs = confMap;
+		
+		}
+
+		if (specifiers.includes('pages'))
+			data.pages = await this.pages.getAllPages();
+
+		return data;
+	}
+
+
+	/**
+	* Initializes the server.
+	* Throws if there are configuration or database errors.
+	*/
 
 	private async init() {
 		await new Promise(async (resolve) => {
@@ -114,17 +159,13 @@ export default class Server {
 		logger.info("Initialized AuriServe.");
 	}
 
-	private debugRoutes() {
-		this.app.get('*', (req, _, next) => {
-			logger.debug("GET %s", req.params[0]);
-			next();
-		});
 
-		this.app.post('*', (req, _, next) => {
-			logger.debug("POST %s", req.params[0]);
-			next();
-		});
-	}
+	/**
+	* Routing function to forward HTTP traffic to HTTPS.
+	* 
+	* @param {Express.Request} req - The request object.
+	* @param {Express.Response} res - The response object.
+	*/
 
 	private forwardHttps(req: Express.Request, res: Express.Response) {
 		const host = req.headers['host'];

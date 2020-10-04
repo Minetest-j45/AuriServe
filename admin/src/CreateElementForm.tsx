@@ -44,11 +44,12 @@ export default class CreateElementForm extends Preact.Component<Props, State> {
 
 			if (customElement?.element) {
 				editor = <customElement.editElement props={this.state.elementProps} updateProp={this.handleUpdateValue}/>;
-			} else {
+			}
+			else {
 				editor = <ElementPropsEditor
 					values={this.state.elementProps}
 					props={this.state.elementPropsDef!}
-					updateValue={this.handleUpdateValue}
+					setProps={() => { /* Need to set this up or drop this component */ }}
 				/>;
 			}
 		}
@@ -109,10 +110,12 @@ export default class CreateElementForm extends Preact.Component<Props, State> {
 		Object.entries(props).forEach(([identifier, v]) => {
 			if ((v as Element.ArrayProp).entries) {
 				dest[identifier] = [];
-			} else if ((v as Element.TableProp).fields) {
+			}
+			else if ((v as Element.TableProp).fields) {
 				dest[identifier] = {};
 				this.parseProps((v as Element.TableProp).fields, dest[identifier]);
-			} else {
+			}
+			else {
 				const prop = v as Element.FieldProp;
 				const types = prop.type.replace(/ /g, '').split('|') as Element.PropType[];
 				const baseTypes = types.map(t => t.split(':')[0] as Element.BasePropType);
@@ -147,7 +150,8 @@ export default class CreateElementForm extends Preact.Component<Props, State> {
 			if (i < splitPath.length - 1) {
 				src[splitPath[i]] = Object.assign({}, src[splitPath[i]]);
 				down = down[splitPath[i]];
-			} else {
+			}
+			else {
 				down[splitPath[i]] = value;
 			}
 		}
@@ -164,7 +168,8 @@ export default class CreateElementForm extends Preact.Component<Props, State> {
 		
 		if (!identifier) {
 			this.setState({ element: undefined, elementProps: undefined });
-		} else {
+		}
+		else {
 			const elem = this.context.data.elementDefs[identifier];
 
 			let props = {};

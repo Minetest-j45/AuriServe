@@ -7,7 +7,6 @@ interface Props {
 	duration?: number;
 
 	style?: any;
-	className?: any;
 	children?: Preact.ComponentChildren;
 }
 

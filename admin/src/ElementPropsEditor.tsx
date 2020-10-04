@@ -10,7 +10,7 @@ import * as Element from '../../common/interface/Element';
 interface Props {
 	props: Element.PropsTable;
 	values: any;
-	updateValue: (path: string, value: any) => void;
+	setProps: (object: any) => void;
 }
 
 export default class ElementPropsEditor extends Preact.Component<Props, {}> {
@@ -31,32 +31,36 @@ export default class ElementPropsEditor extends Preact.Component<Props, {}> {
 					{this.renderPropsTable(prop.fields, values[identifier], fullIdentifier)}
 				</div>
 			</label>;
-		} else if ('entries' in p) {
+		}
+		else if ('entries' in p) {
 			const prop = p as Element.ArrayProp;
 			widget = <ElementPropArray
 				prop={prop}
 				key={fullIdentifier}
 				identifier={identifier}
 				value={values[identifier]}
-				onChange={this.props.updateValue.bind(this, fullIdentifier)} />;
-		} else {
+				onChange={this.props.setProps} />;
+		}
+		else {
 			const prop = p as Element.FieldProp;
 			widget = <ElementPropInput
 				prop={prop}
 				key={fullIdentifier}
 				identifier={identifier}
 				value={values[identifier]}
-				onChange={this.props.updateValue.bind(this, fullIdentifier)} />;
+				setProps={this.props.setProps} />;
 		}
 
 		return widget;
 	}
 
 	private renderPropsTable(props: Element.PropsTable, values: any, fullIdentifier: string) {
-		return <div class="ElementPropsEditor-Wrap">
-			<div className="ElementPropsEditor-Table">
-				{Object.entries(props).map(([k, v]) => this.renderProp(k, v, values, fullIdentifier + (fullIdentifier !== '' ? '.' : '') + k))}
+		return (
+			<div class="ElementPropsEditor-Wrap">
+				<div className="ElementPropsEditor-Table">
+					{Object.entries(props).map(([k, v]) => this.renderProp(k, v, values, fullIdentifier + (fullIdentifier !== '' ? '.' : '') + k))}
+				</div>
 			</div>
-		</div>;
+		);
 	}
 }

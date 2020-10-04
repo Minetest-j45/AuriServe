@@ -16,6 +16,14 @@ export default class Modal extends Preact.Component<Props, {}> {
 		this.avoidClose = this.avoidClose.bind(this);
 	}
 
+	componentDidMount() {
+		document.getElementsByTagName('body')[0].style.overflow = 'hidden';
+	}
+
+	componentWillUnmount() {
+		document.getElementsByTagName('body')[0].style.overflow = '';
+	}
+
 	render() {
 		return (
 			<div className={'Modal' + (this.props.className ? ' ' + this.props.className : '') + (this.props.onClose ? ' closes' : '')}

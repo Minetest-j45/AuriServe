@@ -14,7 +14,7 @@ export interface FieldProp {
 	name?: string;
 	optional?: true;
 	default?: any;
-	type: string;
+	type: PropType | PropsTable | PropType[] | PropsTable[];
 }
 
 export interface TableProp {
@@ -28,7 +28,7 @@ export interface ArrayProp {
 	name?: string;
 	optional?: true;	
 	
-	entries: PropType | PropsTable;
+	entries: PropType | PropsTable | PropType[] | PropsTable[];
 }
 
 export interface PropsTable {
@@ -39,12 +39,20 @@ export interface PropsTable {
 * Property Type Hints
 */
 
-export type BasePropType = 
-	"text" | "long_text" | "number" | "date" | "time" | "datetime" | "boolean" | "color" | "media" | "url";
+export type BasePrimitivePropType =
+	'text' | 'long_text' | 'number' | 'date' | 'time' | 'datetime' | 'boolean' | 'color' | 'url' | 'html' | string[] /* Enum */;
 
-export type PropType =
-	BasePropType | "text:markdown" | "long_text:markdown" | "media:image" | "url:image"
+export type PrimitivePropType =
+	BasePrimitivePropType | 'text:markdown' | 'long_text:markdown' | 'url:image'
 
+export type BaseAuriServePropType =
+	'media' | 'page';
+
+export type AuriServePropType =
+	BaseAuriServePropType | 'media:image';
+
+export type PropType = 
+	PrimitivePropType | AuriServePropType | 'custom' 
 
 /*
 * Configuration Object

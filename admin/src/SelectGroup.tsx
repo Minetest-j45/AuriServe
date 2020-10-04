@@ -106,7 +106,8 @@ export default class SelectGroup extends Preact.Component<Props, State> {
 			let a = ind < this.state.lastSelected ? ind : this.state.lastSelected;
 			let b = ind < this.state.lastSelected ? this.state.lastSelected : ind;
 			for (let i = a; i <= b; i++) contextData.selected[i] = true;
-		} else contextData.selected[ind] = (state !== undefined ? state : !contextData.selected[ind]);
+		}
+		else contextData.selected[ind] = (state !== undefined ? state : !contextData.selected[ind]);
 
 		let lastSelected = (this.shift && this.state.lastSelected !== undefined) ? this.state.lastSelected : ind;
 

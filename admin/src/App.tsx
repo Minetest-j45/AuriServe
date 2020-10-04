@@ -8,11 +8,13 @@ import './App.scss';
 import LoginForm from './LoginForm';
 import AppHeader from './AppHeader';
 import MainPage from './pages/MainPage';
+import PagePage from './pages/PagePage';
 import PagesPage from './pages/PagesPage';
 import MediaPage from './pages/MediaPage';
 import ThemesPage from './pages/ThemesPage';
 import PluginsPage from './pages/PluginsPage';
 
+import { Page } from '../../common/interface/Page';
 import { AppContext, AppContextData } from './AppContext';
 import { AdminDefinition } from '../../common/interface/Element';
 import { SiteData, SiteDataSpecifier } from '../../common/interface/SiteData';
@@ -47,6 +49,7 @@ export default class App extends Preact.Component<{}, State> {
 
 		this.state = {
 			contextData: {
+				getPageData: this.getPageData,
 				refreshSiteData: this.refreshSiteData,
 				handleSiteData: this.handleSiteData,
 				plugins: { elements: new Map() },
@@ -76,6 +79,7 @@ export default class App extends Preact.Component<{}, State> {
 								<Route exact path="/media" component={MediaPage as any}/>
 								<Route exact path="/themes" component={ThemesPage as any}/>
 								<Route exact path="/plugins" component={PluginsPage as any}/>
+								<Route path="/pages/" component={PagePage as any}/>
 							</Switch>
 						</Router>
 					</div>}
@@ -121,6 +125,24 @@ export default class App extends Preact.Component<{}, State> {
 		return pluginState;
 	};
 
+	private getPageData = async (page: string): Promise<Page> => {
+		try {
+			const r = await fetch('/admin/page-data/', {
+				method: 'POST',
+				cache: 'no-cache',
+	    	headers: {'Content-Type': 'application/json'},
+				body: JSON.stringify({ page: page })
+			});
+			if (r.status !== 200) throw 'Invalid credentials.';
+			return await r.json();
+		}
+		catch (e) {
+			Cookie.remove('tkn');
+			location.href = '/admin';
+			return {} as Page;
+		}
+	};
+
 	private refreshSiteData = (...types: SiteDataSpecifier[]): void => {
 		fetch('/admin/data/' + types.join('&'), {
 			cache: 'no-cache'
@@ -136,6 +158,7 @@ export default class App extends Preact.Component<{}, State> {
 	};
 
 	private handleSiteData = (data: SiteData): void => {
+		console.log(data);
 		const pluginState = this.loadPlugins();
 
 		let siteData = Object.assign({}, this.state.contextData.data);
@@ -146,10 +169,13 @@ export default class App extends Preact.Component<{}, State> {
 		if (!siteData.themes) siteData.themes = [];
 		if (!siteData.plugins) siteData.plugins = [];
 		if (!siteData.elements) siteData.elements = [];
+		
+		if (!siteData.pages) siteData.pages = {};
 		if (!siteData.elementDefs) siteData.elementDefs = {};
 
 		this.setState({
 			contextData: {
+				getPageData: this.getPageData,
 				refreshSiteData: this.refreshSiteData,
 				handleSiteData: this.handleSiteData,
 				plugins: this.state.contextData.plugins,

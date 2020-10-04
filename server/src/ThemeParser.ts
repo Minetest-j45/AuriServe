@@ -4,10 +4,10 @@ import rimraf from "rimraf";
 import sass from "node-sass";
 import { promises as fs, constants as fsc } from "fs";
 
+import DBView from './DBView';
 import sanitize from "../../common/util/Sanitize";
+import { PartialSiteData } from "../../common/interface/SiteData";
 import { Theme as DBTheme } from "../../common/interface/DBStructs";
-
-import Server from "./Server";
 
 const logger = log4js.getLogger();
 
@@ -18,11 +18,12 @@ export default class ThemeParser {
 	private parsing: boolean = false;
 	private enabledThemes: string[] = [];
 
-	constructor(private server: Server) {};
+	constructor(private dataPath: string, private db: DBView, 
+		private getSiteData: (specifier: string | undefined) => Promise<PartialSiteData>) {};
 
 	async init() {
 		// Synchronize active themes representation with server.
-		this.enabledThemes = await this.server.db.getEnabledThemes();
+		this.enabledThemes = await this.db.getEnabledThemes();
 		
 		// Reload themes list and parse themes.
 		await this.refresh();
@@ -39,16 +40,16 @@ export default class ThemeParser {
 		if (this.parsing) return;
 		this.parsing = true;
 
-		const outPath = path.join(this.server.db.dataPath, "themes", "public");
+		const outPath = path.join(this.dataPath, "themes", "public");
 
 		// Remove everything from themes/public.
 		await new Promise((res) => rimraf(outPath, res));
 		await fs.mkdir(outPath);
 
 		// Parse all active themes and add them to themes/public.
-		const enabledThemes = (await this.server.db.getSiteData('themes')).themes!.filter(t => this.enabledThemes.indexOf(t.identifier) != -1);
-		await Promise.all(enabledThemes.map(async (t) => {
-			const themePath = path.join(this.server.db.dataPath, "themes", t.identifier);
+		const enabledThemes = (await this.getSiteData('themes')).themes!.filter(t => this.enabledThemes.indexOf(t.identifier) != -1);
+		await Promise.all(enabledThemes.map(async t => {
+			const themePath = path.join(this.dataPath, "themes", t.identifier);
 
 			return new Promise((resolve) => {
 				sass.render({
@@ -75,7 +76,7 @@ export default class ThemeParser {
 		this.watchers = [];
 
 		this.enabledThemes.forEach(identifier => {
-			this.watchers.push(watch(path.join(this.server.db.dataPath, "themes", identifier), () => this.parse()));
+			this.watchers.push(watch(path.join(this.dataPath, "themes", identifier), () => this.parse()));
 			watched ++;
 		});
 
@@ -86,21 +87,21 @@ export default class ThemeParser {
 		let themes: Theme[] = [];
 		let failedThemes = 0;
 
-		const files = await fs.readdir(path.join(this.server.db.dataPath, "themes"));
+		const files = await fs.readdir(path.join(this.dataPath, "themes"));
 
 		await Promise.all(files.map(async f => {
 			if (f == "public") return;
 			try {
 				if (sanitize(f) != f) throw `Failed to parse theme ${f}, theme directory must be lowercase alphanumeric.`;
 
-				const confStr = (await fs.readFile(path.join(this.server.db.dataPath, "themes", f, "conf.json"))).toString();
+				const confStr = (await fs.readFile(path.join(this.dataPath, "themes", f, "conf.json"))).toString();
 				
 				let conf: Theme;
 				try { conf = JSON.parse(confStr); }
 				catch (e) { throw `Failed to parse configuration file for theme ${f}.\n ${e}`; }
 
 				let cover = true;
-				try { await fs.access(path.join(this.server.db.dataPath, "themes", f, "cover.jpg"), fsc.R_OK); }
+				try { await fs.access(path.join(this.dataPath, "themes", f, "cover.jpg"), fsc.R_OK); }
 				catch (e) { cover = false; }
 
 				themes.push({
@@ -125,7 +126,7 @@ export default class ThemeParser {
 			}
 		}));
 
-		await this.server.db.setThemes(themes);
+		await this.db.setThemes(themes);
 
 		let log = "Loaded " + themes.length + " theme" + (themes.length != 1 ? "s" : "");
 		if (failedThemes) log += ", failed to load " + failedThemes + " theme" + (failedThemes != 1 ? "s" : "");
@@ -137,7 +138,7 @@ export default class ThemeParser {
 
 	async toggle(themes: string[]) {
 		// Prune invalid active themes.
-		const existing = (await this.server.db.getThemes()).map(t => t.identifier);
+		const existing = (await this.db.getThemes()).map(t => t.identifier);
 		this.enabledThemes = this.enabledThemes.filter(t => existing.indexOf(t) != -1);
 
 		// Toggle themes.
@@ -146,7 +147,7 @@ export default class ThemeParser {
 			else if (existing.indexOf(theme) != -1) this.enabledThemes.push(theme);
 		}
 
-		await this.server.db.setEnabledThemes(this.enabledThemes);
+		await this.db.setEnabledThemes(this.enabledThemes);
 		await this.parse();
 	}
 }
