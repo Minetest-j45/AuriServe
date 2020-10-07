@@ -23,7 +23,7 @@ export default function(_: {}, argv: { mode: string, analyze: boolean }) {
 		},
 		devtool: prod ? undefined : 'source-map',
 
-		entry: { main: [ './Main.tsx' ] },
+		entry: { main: [ './Main.ts' ] },
 		output: { path: resolve(__dirname, './res/script') },
 
 		// TODO: Check if neccessary

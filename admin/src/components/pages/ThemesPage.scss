@@ -1,0 +1,22 @@
+@import "../../partial/Ext";
+
+.ThemesPage {
+	.ThemesPage-Themes {
+		display: grid;
+		width: 100%;
+		height: auto;
+		grid-gap: 8px;
+		margin-top: 16px;
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	}
+
+	.ThemesPage-Toolbar {
+		@extend %card_toolbar;
+	}
+
+	.ThemesPage-NoThemes {
+		text-align: center;
+		color: $neutral-500;
+		margin: 32px 0px 48px 0px; 
+	}
+}

@@ -1,0 +1,44 @@
+@import "../../partial/Vars";
+@import "../../partial/Ext";
+
+.MediaPage {
+	.MediaPage-Media {
+		display: grid;
+		width: 100%;
+		height: auto;
+		grid-gap: 8px;
+		margin-top: 16px;
+		grid-template-columns: 1fr;
+
+		&.Grid {
+			grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+		}
+	}
+
+	.MediaPage-NoMedia {
+		text-align: center;
+		color: $neutral-500;
+		margin: 32px 0px 48px 0px; 
+	}
+
+	& > img {
+		width: 24px;
+		height: 24px;
+		margin-right: 8px;
+		vertical-align: -33%;
+	}
+
+	.MediaPage-Toolbar {
+		@extend %card_toolbar;
+	}
+}
+
+// .MainPage-MediaCard {
+// 	@extend %card;
+
+// 	// display: grid;
+// 	// grid-gap: 16px;
+// 	// grid-auto-rows: min-content;
+// 	// grid-template-columns: 1fr 1fr 1fr;
+
+// }

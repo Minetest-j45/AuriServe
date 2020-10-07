@@ -1,0 +1,36 @@
+@import "../partial/Vars";
+@import "../partial/Ext";
+
+.Modal {
+	@extend %center_wrap;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+	background-color: transparentize($neutral-200, 0.3);
+
+	.closes {
+		cursor: pointer;
+	}
+	
+	.Modal-CardWrap {
+		width: 100%;
+		height: auto;
+		display: flex;
+		overflow: auto;
+		padding: 64px;
+		justify-content: space-around;
+
+		.Modal-Card {
+			@extend %card;
+
+			display: block;
+			cursor: auto;
+			
+			height: min-content;
+		}
+	}
+}

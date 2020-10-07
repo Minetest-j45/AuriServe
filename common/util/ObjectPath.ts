@@ -22,5 +22,6 @@ export function traversePath(path: string, object: any) {
 }
 
 export function combinePath(...segs: (string | number)[]): string {
-	return segs.reduce((p, c) => p.toString() + (Number.isInteger(c) ? '[' + c.toString() + ']' : '.' + (c as string))) as string;
+	return segs.filter(seg => seg !== "")
+		.reduce((p, c) => p.toString() + (Number.isInteger(c) ? '[' + c.toString() + ']' : '.' + (c as string))) as string;
 }
