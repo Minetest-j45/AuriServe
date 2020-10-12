@@ -88,7 +88,7 @@
 		"liquid-route": "^1.1.0",
 		"log4js": "^6.3.0",
 		"minimist": "^1.2.5",
-		"moment": "^2.27.0",
+		"moment": "^2.29.1",
 		"mongodb": "^3.6.0",
 		"node-sass": "^4.14.1",
 		"preact": "^10.4.8",
