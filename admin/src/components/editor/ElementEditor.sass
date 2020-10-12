@@ -1,2 +1,15 @@
+@import "../../partial/Vars"
+@import "../../partial/Ext"
+
 .ElementEditor
 	min-width: 400px
+
+	.ElementEditor-ActionBar
+		margin: 16px 0px 8px 0px
+		display: flex
+		flex-direction: row-reverse
+		justify-content: space-between
+
+		button
+			@extend %material_button
+			padding: 12px

@@ -86,10 +86,30 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "../../common/interface/Page.ts":
+/*!*******************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/common/interface/Page.ts ***!
+  \*******************************************************************/
+/*! exports provided: isElement, isInclude */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isElement", function() { return isElement; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isInclude", function() { return isInclude; });
+function isElement(e) {
+  return typeof e === 'object' && 'elem' in e && !('include' in e);
+}
+function isInclude(e) {
+  return typeof e === 'object' && 'include' in e;
+}
+
+/***/ }),
+
 /***/ "../../common/util/Format.ts":
-/*!*****************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/common/util/Format.ts ***!
-  \*****************************************************************/
+/*!****************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/common/util/Format.ts ***!
+  \****************************************************************/
 /*! exports provided: bytes, vector, date */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -124,9 +144,9 @@ function date(date) {
 /***/ }),
 
 /***/ "../../common/util/ObjectPath.ts":
-/*!*********************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/common/util/ObjectPath.ts ***!
-  \*********************************************************************/
+/*!********************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/common/util/ObjectPath.ts ***!
+  \********************************************************************/
 /*! exports provided: traversePath, combinePath */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -161,9 +181,9 @@ function combinePath(...segs) {
 /***/ }),
 
 /***/ "../../node_modules/@babel/runtime/helpers/esm/extends.js":
-/*!**********************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/@babel/runtime/helpers/esm/extends.js ***!
-  \**********************************************************************************************/
+/*!*********************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/@babel/runtime/helpers/esm/extends.js ***!
+  \*********************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -191,9 +211,9 @@ function _extends() {
 /***/ }),
 
 /***/ "../../node_modules/@babel/runtime/helpers/esm/inheritsLoose.js":
-/*!****************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js ***!
-  \****************************************************************************************************/
+/*!***************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/@babel/runtime/helpers/esm/inheritsLoose.js ***!
+  \***************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -209,9 +229,9 @@ function _inheritsLoose(subClass, superClass) {
 /***/ }),
 
 /***/ "../../node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js":
-/*!*******************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js ***!
-  \*******************************************************************************************************************/
+/*!******************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js ***!
+  \******************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -236,9 +256,9 @@ function _objectWithoutPropertiesLoose(source, excluded) {
 /***/ }),
 
 /***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./Main.scss":
-/*!********************************************************************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/css-loader/dist/cjs.js!/home/auri/Code/Projects/AuriServer/node_modules/sass-loader/dist/cjs.js!./Main.scss ***!
-  \********************************************************************************************************************************************************************/
+/*!******************************************************************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/cjs.js!C:/Users/100To/Documents/AuriServe/node_modules/sass-loader/dist/cjs.js!./Main.scss ***!
+  \******************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -258,9 +278,9 @@ ___CSS_LOADER_EXPORT___.push([module.i, "body {\n  margin: 0;\n  position: relat
 /***/ }),
 
 /***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/App.scss":
-/*!******************************************************************************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/css-loader/dist/cjs.js!/home/auri/Code/Projects/AuriServer/node_modules/sass-loader/dist/cjs.js!./components/App.scss ***!
-  \******************************************************************************************************************************************************************************/
+/*!****************************************************************************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/cjs.js!C:/Users/100To/Documents/AuriServe/node_modules/sass-loader/dist/cjs.js!./components/App.scss ***!
+  \****************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -280,9 +300,9 @@ ___CSS_LOADER_EXPORT___.push([module.i, ".App {\n  min-height: calc(100vh - 6px)
 /***/ }),
 
 /***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/AppHeader.scss":
-/*!************************************************************************************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/css-loader/dist/cjs.js!/home/auri/Code/Projects/AuriServer/node_modules/sass-loader/dist/cjs.js!./components/AppHeader.scss ***!
-  \************************************************************************************************************************************************************************************/
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/cjs.js!C:/Users/100To/Documents/AuriServe/node_modules/sass-loader/dist/cjs.js!./components/AppHeader.scss ***!
+  \**********************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -302,9 +322,9 @@ ___CSS_LOADER_EXPORT___.push([module.i, ".AppHeader .AppHeader-wrap .AppHeader-l
 /***/ }),
 
 /***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/CardHeader.scss":
-/*!*************************************************************************************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/css-loader/dist/cjs.js!/home/auri/Code/Projects/AuriServer/node_modules/sass-loader/dist/cjs.js!./components/CardHeader.scss ***!
-  \*************************************************************************************************************************************************************************************/
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/cjs.js!C:/Users/100To/Documents/AuriServe/node_modules/sass-loader/dist/cjs.js!./components/CardHeader.scss ***!
+  \***********************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -324,9 +344,9 @@ ___CSS_LOADER_EXPORT___.push([module.i, ".CardHeader {\n  display: grid;\n  grid
 /***/ }),
 
 /***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/DimensionTransition.sass":
-/*!**********************************************************************************************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/css-loader/dist/cjs.js!/home/auri/Code/Projects/AuriServer/node_modules/sass-loader/dist/cjs.js!./components/DimensionTransition.sass ***!
-  \**********************************************************************************************************************************************************************************************/
+/*!********************************************************************************************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/cjs.js!C:/Users/100To/Documents/AuriServe/node_modules/sass-loader/dist/cjs.js!./components/DimensionTransition.sass ***!
+  \********************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -346,9 +366,9 @@ ___CSS_LOADER_EXPORT___.push([module.i, ".DimensionTransition {\n  overflow: hid
 /***/ }),
 
 /***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/LoginForm.scss":
-/*!************************************************************************************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/css-loader/dist/cjs.js!/home/auri/Code/Projects/AuriServer/node_modules/sass-loader/dist/cjs.js!./components/LoginForm.scss ***!
-  \************************************************************************************************************************************************************************************/
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/cjs.js!C:/Users/100To/Documents/AuriServe/node_modules/sass-loader/dist/cjs.js!./components/LoginForm.scss ***!
+  \**********************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -367,10 +387,10 @@ ___CSS_LOADER_EXPORT___.push([module.i, "@charset \"UTF-8\";\n.LoginForm-Card:no
 
 /***/ }),
 
-/***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/MediaItem.scss":
-/*!************************************************************************************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/css-loader/dist/cjs.js!/home/auri/Code/Projects/AuriServer/node_modules/sass-loader/dist/cjs.js!./components/MediaItem.scss ***!
-  \************************************************************************************************************************************************************************************/
+/***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/MediaIcon.sass":
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/cjs.js!C:/Users/100To/Documents/AuriServe/node_modules/sass-loader/dist/cjs.js!./components/MediaIcon.sass ***!
+  \**********************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -382,7 +402,29 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, ".MediaItem {\n  position: relative;\n  background-color: transparent;\n  cursor: pointer;\n  border: none;\n  outline: 0;\n  user-select: none;\n  border-radius: 4px;\n  text-decoration: none;\n  border: 1px solid transparent;\n  background: rgba(159, 179, 200, 0.15); }\n  .MediaItem::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    user-select: none;\n    pointer-events: none;\n    top: -1px;\n    left: -1px;\n    right: -1px;\n    bottom: -1px;\n    margin: 4px;\n    transform: scale(0.87);\n    border-radius: inherit;\n    background: rgba(130, 154, 177, 0);\n    transition: background 0.3s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02) 0.075s, margin 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .MediaItem:not(:disabled):hover::after, .MediaItem:not(:disabled):focus::after {\n    margin: 0px;\n    transform: scale(1);\n    background: rgba(130, 154, 177, 0.15);\n    transition: background 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), margin 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .MediaItem:not(:disabled):active {\n    transition: border 0.15s; }\n  .MediaItem:not(:disabled):focus {\n    border-color: #829ab1; }\n  .MediaItem:disabled {\n    cursor: auto;\n    opacity: 0.65;\n    color: #627d98; }\n\n.MediaItem {\n  background: transparent;\n  border-color: #d9e2ec;\n  box-sizing: content-box;\n  user-select: none;\n  padding: 8px;\n  height: 80px;\n  display: grid;\n  grid-template-columns: 80px 1fr;\n  grid-gap: 16px; }\n  .MediaItem > * {\n    box-sizing: border-box; }\n  .MediaItem.selected {\n    border-color: #54d1db;\n    background-color: rgba(135, 234, 242, 0.3); }\n    .MediaItem.selected:focus::after, .MediaItem.selected:hover::after {\n      background-color: rgba(135, 234, 242, 0.2); }\n    .MediaItem.selected .MediaItem-Image.icon {\n      background-color: rgba(56, 190, 201, 0.3); }\n  .MediaItem .MediaItem-Image {\n    width: 100%;\n    height: 100%;\n    border-radius: 4px;\n    object-fit: cover; }\n    .MediaItem .MediaItem-Image.icon {\n      background-color: #ebf0f6;\n      padding: 16px; }\n  .MediaItem .MediaItem-Description {\n    height: 100%;\n    overflow: auto;\n    text-align: left;\n    padding-top: 8px; }\n    .MediaItem .MediaItem-Description p {\n      margin-top: 0em;\n      margin-bottom: 0.3em;\n      overflow: hidden;\n      white-space: nowrap;\n      text-overflow: ellipsis; }\n    .MediaItem .MediaItem-Description p.MediaItem-Title {\n      font-size: 18px; }\n    .MediaItem .MediaItem-Description p.MediaItem-Author {\n      opacity: 0.8;\n      font-size: 14px; }\n    .MediaItem .MediaItem-Description p.MediaItem-Size {\n      opacity: 0.7;\n      font-size: 14px; }\n", "",{"version":3,"sources":["webpack://components/MediaItem.scss","webpack://partial/_Ext.scss","webpack://partial/_Vars.scss"],"names":[],"mappings":"AAGA;ECyEC,kBAAkB;EAClB,6BAA6B;EAC7B,eAAe;EACf,YAAY;EACZ,UAAU;EAEV,iBAAiB;EACjB,kBAAkB;EAClB,qBAAqB;EACrB,6BAA6B;EAC7B,qCAAiD,EAAA;EDnFlD;ICwFE,YAAY;IACZ,cAAc;IACd,kBAAkB;IAClB,iBAAiB;IACjB,oBAAoB;IAGpB,SAAS;IACT,UAAU;IACV,WAAW;IACX,YAAY;IAEZ,WAAW;IACX,sBAAsB;IAEtB,sBAAsB;IACtB,kCAA2C;IAE3C,2KArB0C,EAAA;EDrF5C;ICgHI,WAAW;IACX,mBAAmB;IACnB,qCAAiD;IAEjD,uKA/BwC,EAAA;EDrF5C;ICyHG,wBCpGW,EAAA;EFrBd;IC6HG,qBC5HkB,EAAA;EFDrB;ICkIE,YAAY;IACZ,aAAa;IACb,cClImB,EAAA;;AFFrB;EAGC,uBAAuB;EACvB,qBENoB;EFOpB,uBAAuB;EACvB,iBAAiB;EACjB,YAAY;EAGZ,YADQ;EAGR,aAAa;EACb,+BAA6B;EAC7B,cAAc,EAAA;EAdf;IAiBE,sBAAsB,EAAA;EAjBxB;IAqBE,qBETkB;IFUlB,0CAAkD,EAAA;IAtBpD;MAyBG,0CAAkD,EAAA;IAzBrD;MA6BG,yCAAkD,EAAA;EA7BrD;IAkCE,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,iBAAiB,EAAA;IArCnB;MAwCG,yBAAsD;MACtD,aAAa,EAAA;EAzChB;IA8CE,YAAY;IACZ,cAAc;IACd,gBAAgB;IAChB,gBAAgB,EAAA;IAjDlB;MAoDG,eAAe;MACf,oBAAoB;MAEpB,gBAAgB;MAChB,mBAAmB;MACnB,uBAAuB,EAAA;IAzD1B;MA6DG,eAAe,EAAA;IA7DlB;MAiEG,YAAY;MACZ,eAAe,EAAA;IAlElB;MAsEG,YAAY;MACZ,eAAe,EAAA","sourcesContent":["@import \"../partial/Vars\";\n@import \"../partial/Ext\";\n\n.MediaItem {\n\t// @extend %material_border;\n\t@extend %material_button;\n\tbackground: transparent;\n\tborder-color: $neutral-100;\n\tbox-sizing: content-box;\n\tuser-select: none;\n\tpadding: 8px;\n\n\t$h: 80px;\n\theight: $h;\n\n\tdisplay: grid;\n\tgrid-template-columns: $h 1fr;\n\tgrid-gap: 16px;\n\n\t& > * {\n\t\tbox-sizing: border-box;\n\t}\n\n\t&.selected {\n\t\tborder-color: $accent-400;\n\t\tbackground-color: transparentize($accent-300, 0.7);\n\n\t\t&:focus::after, &:hover::after {\n\t\t\tbackground-color: transparentize($accent-300, 0.8);\n\t\t}\n\n\t\t.MediaItem-Image.icon {\n\t\t\tbackground-color: transparentize($accent-500, 0.7);\n\t\t}\n\t}\n\n\t.MediaItem-Image {\n\t\twidth: 100%;\n\t\theight: 100%;\n\t\tborder-radius: 4px;\n\t\tobject-fit: cover;\n\n\t\t&.icon {\n\t\t\tbackground-color: mix($neutral-100, $neutral-000, 20%);\n\t\t\tpadding: 16px;\n\t\t}\n\t}\n\n\t.MediaItem-Description {\n\t\theight: 100%;\n\t\toverflow: auto;\n\t\ttext-align: left;\n\t\tpadding-top: 8px;\n\n\t\tp {\n\t\t\tmargin-top: 0em;\n\t\t\tmargin-bottom: 0.3em;\n\n\t\t\toverflow: hidden;\n\t\t\twhite-space: nowrap;\n\t\t\ttext-overflow: ellipsis;\n\t\t}\n\n\t\tp.MediaItem-Title {\n\t\t\tfont-size: 18px;\n\t\t}\n\n\t\tp.MediaItem-Author {\n\t\t\topacity: 0.8;\n\t\t\tfont-size: 14px;\n\t\t}\n\n\t\tp.MediaItem-Size {\n\t\t\topacity: 0.7;\n\t\t\tfont-size: 14px;\n\t\t}\n\t}\n}\n","@import \"Vars\";\n\n%card {\n\theight: min-content;\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n}\n\n%card_toolbar {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\n\tbutton {\n\t\t@extend %material_icon_button;\n\t}\n\n\t.separator {\n\t\twidth: 24px;\n\t\tdisplay: inline-block;\n\t}\n\n\tdiv:first-of-type button {\n\t\tmargin-right: 8px;\n\t}\n\n\tdiv:last-of-type button {\n\t\tmargin-left: 8px;\n\t}\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tuser-select: none;\n\tborder-radius: 4px;\n\ttext-decoration: none;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-300, 1 - .15);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:not(:disabled) {\n\t\t&:hover, &:focus {\n\t\t\t&::after {\n\t\t\t\tmargin: 0px;\n\t\t\t\ttransform: scale(1);\n\t\t\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\t\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t\t\t}\n\t\t}\n\n\t\t&:active {\n\t\t\ttransition: border $t-fast;\n\t\t}\n\n\t\t&:focus {\n\t\t\tborder-color: $neutral-400;\n\t\t}\n\t}\n\n\t&:disabled {\n\t\tcursor: auto;\n\t\topacity: 0.65;\n\t\tcolor: $neutral-500;\n\t}\n}\n\n%material_icon_button {\n\t@extend %material_button;\n\tdisplay: inline-block;\n\n\t// width: 48px;\n\theight: 48px;\n\n\tpadding: 8px;\n\tborder-radius: 24px;\n\n\timg {\n\t\twidth: 30px;\n\t\theight: 30px;\n\t\tpointer-events: none;\n\t\tvertical-align: middle;\n\t}\n\n\tspan {\n\t\tcolor: $neutral-700;\n\t\tvertical-align: middle;\n\t\tpadding-right: 8px;\n\t\tpadding-left: 8px;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.i, ".MediaIcon {\n  width: 100%;\n  height: 100%;\n  border-radius: 4px;\n  object-fit: cover;\n  user-select: none; }\n  .MediaIcon.Icon {\n    background-color: #ebf0f6;\n    padding: 16px; }\n", "",{"version":3,"sources":["webpack://components/MediaIcon.sass"],"names":[],"mappings":"AAGA;EACC,WAAW;EACX,YAAY;EACZ,kBAAkB;EAClB,iBAAiB;EACjB,iBAAiB,EAAA;EALlB;IAQE,yBAAsD;IACtD,aAAa,EAAA","sourcesContent":["@import \"../partial/Vars\";\n@import \"../partial/Ext\";\n\n.MediaIcon {\n\twidth: 100%;\n\theight: 100%;\n\tborder-radius: 4px;\n\tobject-fit: cover;\n\tuser-select: none;\n\n\t&.Icon {\n\t\tbackground-color: mix($neutral-100, $neutral-000, 20%);\n\t\tpadding: 16px; } }\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/MediaItem.scss":
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/cjs.js!C:/Users/100To/Documents/AuriServe/node_modules/sass-loader/dist/cjs.js!./components/MediaItem.scss ***!
+  \**********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "../../node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
+// Module
+___CSS_LOADER_EXPORT___.push([module.i, ".MediaItem {\n  position: relative;\n  background-color: transparent;\n  cursor: pointer;\n  border: none;\n  outline: 0;\n  user-select: none;\n  border-radius: 4px;\n  text-decoration: none;\n  border: 1px solid transparent;\n  background: rgba(159, 179, 200, 0.15); }\n  .MediaItem::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    user-select: none;\n    pointer-events: none;\n    top: -1px;\n    left: -1px;\n    right: -1px;\n    bottom: -1px;\n    margin: 4px;\n    transform: scale(0.87);\n    border-radius: inherit;\n    background: rgba(130, 154, 177, 0);\n    transition: background 0.3s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02) 0.075s, margin 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .MediaItem:not(:disabled):hover::after, .MediaItem:not(:disabled):focus::after {\n    margin: 0px;\n    transform: scale(1);\n    background: rgba(130, 154, 177, 0.15);\n    transition: background 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), margin 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .MediaItem:not(:disabled):active {\n    transition: border 0.15s; }\n  .MediaItem:not(:disabled):focus {\n    border-color: #829ab1; }\n  .MediaItem:disabled {\n    cursor: auto;\n    opacity: 0.65;\n    color: #627d98; }\n\n.MediaItem {\n  background: transparent;\n  border-color: #d9e2ec;\n  box-sizing: content-box;\n  user-select: none;\n  padding: 8px;\n  height: 80px;\n  display: grid;\n  grid-template-columns: 80px 1fr;\n  grid-gap: 16px; }\n  .MediaItem > * {\n    box-sizing: border-box; }\n  .MediaItem.selected {\n    border-color: #54d1db;\n    background-color: rgba(135, 234, 242, 0.3); }\n    .MediaItem.selected:focus::after, .MediaItem.selected:hover::after {\n      background-color: rgba(135, 234, 242, 0.2); }\n    .MediaItem.selected .MediaIcon.Icon {\n      background-color: rgba(56, 190, 201, 0.3); }\n  .MediaItem .MediaItem-Description {\n    height: 100%;\n    overflow: auto;\n    text-align: left;\n    padding-top: 8px; }\n    .MediaItem .MediaItem-Description p {\n      margin-top: 0em;\n      margin-bottom: 0.3em;\n      overflow: hidden;\n      white-space: nowrap;\n      text-overflow: ellipsis; }\n    .MediaItem .MediaItem-Description p.MediaItem-Title {\n      font-size: 18px; }\n    .MediaItem .MediaItem-Description p.MediaItem-Author {\n      opacity: 0.8;\n      font-size: 14px; }\n    .MediaItem .MediaItem-Description p.MediaItem-Size {\n      opacity: 0.7;\n      font-size: 14px; }\n", "",{"version":3,"sources":["webpack://components/MediaItem.scss","webpack://partial/_Ext.scss","webpack://partial/_Vars.scss"],"names":[],"mappings":"AAGA;ECyEC,kBAAkB;EAClB,6BAA6B;EAC7B,eAAe;EACf,YAAY;EACZ,UAAU;EAEV,iBAAiB;EACjB,kBAAkB;EAClB,qBAAqB;EACrB,6BAA6B;EAC7B,qCAAiD,EAAA;EDnFlD;ICwFE,YAAY;IACZ,cAAc;IACd,kBAAkB;IAClB,iBAAiB;IACjB,oBAAoB;IAGpB,SAAS;IACT,UAAU;IACV,WAAW;IACX,YAAY;IAEZ,WAAW;IACX,sBAAsB;IAEtB,sBAAsB;IACtB,kCAA2C;IAE3C,2KArB0C,EAAA;EDrF5C;ICgHI,WAAW;IACX,mBAAmB;IACnB,qCAAiD;IAEjD,uKA/BwC,EAAA;EDrF5C;ICyHG,wBCpGW,EAAA;EFrBd;IC6HG,qBC5HkB,EAAA;EFDrB;ICkIE,YAAY;IACZ,aAAa;IACb,cClImB,EAAA;;AFFrB;EAGC,uBAAuB;EACvB,qBENoB;EFOpB,uBAAuB;EACvB,iBAAiB;EACjB,YAAY;EAGZ,YADQ;EAGR,aAAa;EACb,+BAA6B;EAC7B,cAAc,EAAA;EAdf;IAiBE,sBAAsB,EAAA;EAjBxB;IAqBE,qBETkB;IFUlB,0CAAkD,EAAA;IAtBpD;MAyBG,0CAAkD,EAAA;IAzBrD;MA6BG,yCAAkD,EAAA;EA7BrD;IAkCE,YAAY;IACZ,cAAc;IACd,gBAAgB;IAChB,gBAAgB,EAAA;IArClB;MAwCG,eAAe;MACf,oBAAoB;MAEpB,gBAAgB;MAChB,mBAAmB;MACnB,uBAAuB,EAAA;IA7C1B;MAiDG,eAAe,EAAA;IAjDlB;MAqDG,YAAY;MACZ,eAAe,EAAA;IAtDlB;MA0DG,YAAY;MACZ,eAAe,EAAA","sourcesContent":["@import \"../partial/Vars\";\n@import \"../partial/Ext\";\n\n.MediaItem {\n\t// @extend %material_border;\n\t@extend %material_button;\n\tbackground: transparent;\n\tborder-color: $neutral-100;\n\tbox-sizing: content-box;\n\tuser-select: none;\n\tpadding: 8px;\n\n\t$h: 80px;\n\theight: $h;\n\n\tdisplay: grid;\n\tgrid-template-columns: $h 1fr;\n\tgrid-gap: 16px;\n\n\t& > * {\n\t\tbox-sizing: border-box;\n\t}\n\n\t&.selected {\n\t\tborder-color: $accent-400;\n\t\tbackground-color: transparentize($accent-300, 0.7);\n\n\t\t&:focus::after, &:hover::after {\n\t\t\tbackground-color: transparentize($accent-300, 0.8);\n\t\t}\n\n\t\t.MediaIcon.Icon {\n\t\t\tbackground-color: transparentize($accent-500, 0.7);\n\t\t}\n\t}\n\n\t.MediaItem-Description {\n\t\theight: 100%;\n\t\toverflow: auto;\n\t\ttext-align: left;\n\t\tpadding-top: 8px;\n\n\t\tp {\n\t\t\tmargin-top: 0em;\n\t\t\tmargin-bottom: 0.3em;\n\n\t\t\toverflow: hidden;\n\t\t\twhite-space: nowrap;\n\t\t\ttext-overflow: ellipsis;\n\t\t}\n\n\t\tp.MediaItem-Title {\n\t\t\tfont-size: 18px;\n\t\t}\n\n\t\tp.MediaItem-Author {\n\t\t\topacity: 0.8;\n\t\t\tfont-size: 14px;\n\t\t}\n\n\t\tp.MediaItem-Size {\n\t\t\topacity: 0.7;\n\t\t\tfont-size: 14px;\n\t\t}\n\t}\n}\n","@import \"Vars\";\n\n%card {\n\theight: min-content;\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n}\n\n%card_toolbar {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\n\tbutton {\n\t\t@extend %material_icon_button;\n\t}\n\n\t.separator {\n\t\twidth: 24px;\n\t\tdisplay: inline-block;\n\t}\n\n\tdiv:first-of-type button {\n\t\tmargin-right: 8px;\n\t}\n\n\tdiv:last-of-type button {\n\t\tmargin-left: 8px;\n\t}\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tuser-select: none;\n\tborder-radius: 4px;\n\ttext-decoration: none;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-300, 1 - .15);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:not(:disabled) {\n\t\t&:hover, &:focus {\n\t\t\t&::after {\n\t\t\t\tmargin: 0px;\n\t\t\t\ttransform: scale(1);\n\t\t\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\t\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t\t\t}\n\t\t}\n\n\t\t&:active {\n\t\t\ttransition: border $t-fast;\n\t\t}\n\n\t\t&:focus {\n\t\t\tborder-color: $neutral-400;\n\t\t}\n\t}\n\n\t&:disabled {\n\t\tcursor: auto;\n\t\topacity: 0.65;\n\t\tcolor: $neutral-500;\n\t}\n}\n\n%material_icon_button {\n\t@extend %material_button;\n\tdisplay: inline-block;\n\n\t// width: 48px;\n\theight: 48px;\n\n\tpadding: 8px;\n\tborder-radius: 24px;\n\n\timg {\n\t\twidth: 30px;\n\t\theight: 30px;\n\t\tpointer-events: none;\n\t\tvertical-align: middle;\n\t}\n\n\tspan {\n\t\tcolor: $neutral-700;\n\t\tvertical-align: middle;\n\t\tpadding-right: 8px;\n\t\tpadding-left: 8px;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -390,9 +432,9 @@ ___CSS_LOADER_EXPORT___.push([module.i, ".MediaItem {\n  position: relative;\n  
 /***/ }),
 
 /***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/MediaUploadForm.scss":
-/*!******************************************************************************************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/css-loader/dist/cjs.js!/home/auri/Code/Projects/AuriServer/node_modules/sass-loader/dist/cjs.js!./components/MediaUploadForm.scss ***!
-  \******************************************************************************************************************************************************************************************/
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/cjs.js!C:/Users/100To/Documents/AuriServe/node_modules/sass-loader/dist/cjs.js!./components/MediaUploadForm.scss ***!
+  \****************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -412,9 +454,9 @@ ___CSS_LOADER_EXPORT___.push([module.i, ".MediaUploadForm .MediaUploadForm-Toolb
 /***/ }),
 
 /***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/MediaUploadItem.scss":
-/*!******************************************************************************************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/css-loader/dist/cjs.js!/home/auri/Code/Projects/AuriServer/node_modules/sass-loader/dist/cjs.js!./components/MediaUploadItem.scss ***!
-  \******************************************************************************************************************************************************************************************/
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/cjs.js!C:/Users/100To/Documents/AuriServe/node_modules/sass-loader/dist/cjs.js!./components/MediaUploadItem.scss ***!
+  \****************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -426,17 +468,17 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, ".MediaUploadItem .MediaItem-Description input {\n  border-radius: 4px;\n  border-width: 1px;\n  border-style: solid;\n  border-color: #829ab1; }\n\n.MediaUploadItem .MediaItem-Description input {\n  border-color: #d9e2ec;\n  outline: 0; }\n  .MediaUploadItem .MediaItem-Description input:hover {\n    border-color: #bcccdc; }\n  .MediaUploadItem .MediaItem-Description input:focus {\n    border-color: #829ab1; }\n  .MediaUploadItem .MediaItem-Description input::placeholder {\n    font-weight: 400;\n    color: #829ab1; }\n\n.MediaUploadItem {\n  position: relative;\n  background-color: transparent;\n  cursor: pointer;\n  border: none;\n  outline: 0;\n  user-select: none;\n  border-radius: 4px;\n  text-decoration: none;\n  border: 1px solid transparent;\n  background: rgba(159, 179, 200, 0.15); }\n  .MediaUploadItem::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    user-select: none;\n    pointer-events: none;\n    top: -1px;\n    left: -1px;\n    right: -1px;\n    bottom: -1px;\n    margin: 4px;\n    transform: scale(0.87);\n    border-radius: inherit;\n    background: rgba(130, 154, 177, 0);\n    transition: background 0.3s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02) 0.075s, margin 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .MediaUploadItem:not(:disabled):hover::after, .MediaUploadItem:not(:disabled):focus::after {\n    margin: 0px;\n    transform: scale(1);\n    background: rgba(130, 154, 177, 0.15);\n    transition: background 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), margin 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .MediaUploadItem:not(:disabled):active {\n    transition: border 0.15s; }\n  .MediaUploadItem:not(:disabled):focus {\n    border-color: #829ab1; }\n  .MediaUploadItem:disabled {\n    cursor: auto;\n    opacity: 0.65;\n    color: #627d98; }\n\n.MediaUploadItem {\n  background: transparent;\n  border-color: #d9e2ec;\n  box-sizing: content-box;\n  user-select: none;\n  padding: 8px;\n  height: 80px;\n  display: grid;\n  grid-template-columns: 80px 1fr;\n  grid-gap: 16px; }\n  .MediaUploadItem:hover:not(:focus) {\n    border-color: #9fb3c8; }\n    .MediaUploadItem:hover:not(:focus)::after {\n      background-color: transparent; }\n  .MediaUploadItem > * {\n    box-sizing: border-box; }\n  .MediaUploadItem.selected {\n    border-color: #54d1db;\n    background-color: rgba(135, 234, 242, 0.3); }\n    .MediaUploadItem.selected:focus::after, .MediaUploadItem.selected:hover::after {\n      background-color: rgba(135, 234, 242, 0.2); }\n    .MediaUploadItem.selected .MediaItem-Image.icon {\n      background-color: rgba(56, 190, 201, 0.3); }\n  .MediaUploadItem .MediaItem-Image {\n    width: 100%;\n    height: 100%;\n    border-radius: 4px;\n    object-fit: cover;\n    pointer-events: none; }\n    .MediaUploadItem .MediaItem-Image.icon {\n      background-color: #ebf0f6;\n      padding: 16px; }\n  .MediaUploadItem .MediaItem-Description {\n    height: 100%;\n    overflow: hidden;\n    text-align: left;\n    padding-right: 8px; }\n    .MediaUploadItem .MediaItem-Description p, .MediaUploadItem .MediaItem-Description input {\n      margin-top: 0em;\n      margin-bottom: 0.3em; }\n    .MediaUploadItem .MediaItem-Description p {\n      overflow: hidden;\n      white-space: nowrap;\n      text-overflow: ellipsis; }\n      .MediaUploadItem .MediaItem-Description p.MediaItem-Metadata {\n        opacity: 0.7;\n        font-size: 14px;\n        padding-left: 4px; }\n    .MediaUploadItem .MediaItem-Description input {\n      background: transparent;\n      padding: 2px 4px;\n      width: 100%; }\n      .MediaUploadItem .MediaItem-Description input::placeholder {\n        color: #243b53;\n        font-weight: 500; }\n      .MediaUploadItem .MediaItem-Description input.MediaItem-Name {\n        font-size: 18px; }\n      .MediaUploadItem .MediaItem-Description input.MediaItem-FileName {\n        opacity: 0.8;\n        font-size: 14px; }\n        .MediaUploadItem .MediaItem-Description input.MediaItem-FileName:disabled {\n          position: relative;\n          top: -2px; }\n    .MediaUploadItem .MediaItem-Description input:disabled {\n      padding: 0;\n      border: none;\n      cursor: pointer; }\n    .MediaUploadItem .MediaItem-Description input:first-child:disabled {\n      padding-top: 8px; }\n    .MediaUploadItem .MediaItem-Description input:disabled + .MediaItem-Metadata {\n      padding-left: 0; }\n", "",{"version":3,"sources":["webpack://components/MediaUploadItem.scss","webpack://partial/_Ext.scss","webpack://partial/_Vars.scss"],"names":[],"mappings":"AAGA;EC+CC,kBAAkB;EAClB,iBAAiB;EACjB,mBAAmB;EACnB,qBCjDoB,EAAA;;AFDrB;ECuDC,qBCzDoB;ED0DpB,UAAU,EAAA;EDxDX;IC2DE,qBC5DmB,EAAA;EFCrB;IC+DE,qBC9DmB,EAAA;EFDrB;ICmEE,gBAAgB;IAChB,cCnEmB,EAAA;;AFDrB;ECyEC,kBAAkB;EAClB,6BAA6B;EAC7B,eAAe;EACf,YAAY;EACZ,UAAU;EAEV,iBAAiB;EACjB,kBAAkB;EAClB,qBAAqB;EACrB,6BAA6B;EAC7B,qCAAiD,EAAA;EDnFlD;ICwFE,YAAY;IACZ,cAAc;IACd,kBAAkB;IAClB,iBAAiB;IACjB,oBAAoB;IAGpB,SAAS;IACT,UAAU;IACV,WAAW;IACX,YAAY;IAEZ,WAAW;IACX,sBAAsB;IAEtB,sBAAsB;IACtB,kCAA2C;IAE3C,2KArB0C,EAAA;EDrF5C;ICgHI,WAAW;IACX,mBAAmB;IACnB,qCAAiD;IAEjD,uKA/BwC,EAAA;EDrF5C;ICyHG,wBCpGW,EAAA;EFrBd;IC6HG,qBC5HkB,EAAA;EFDrB;ICkIE,YAAY;IACZ,aAAa;IACb,cClImB,EAAA;;AFFrB;EAEC,uBAAuB;EACvB,qBELoB;EFMpB,uBAAuB;EACvB,iBAAiB;EACjB,YAAY;EAGZ,YADQ;EAGR,aAAa;EACb,+BAA6B;EAC7B,cAAc,EAAA;EAbf;IAgBE,qBEhBmB,EAAA;IFArB;MAmBG,6BAA6B,EAAA;EAnBhC;IAwBE,sBAAsB,EAAA;EAxBxB;IA4BE,qBEhBkB;IFiBlB,0CAAkD,EAAA;IA7BpD;MAgCG,0CAAkD,EAAA;IAhCrD;MAoCG,yCAAkD,EAAA;EApCrD;IAyCE,WAAW;IACX,YAAY;IACZ,kBAAkB;IAClB,iBAAiB;IACjB,oBAAoB,EAAA;IA7CtB;MAgDG,yBAAsD;MACtD,aAAa,EAAA;EAjDhB;IAsDE,YAAY;IACZ,gBAAgB;IAChB,gBAAgB;IAChB,kBAAkB,EAAA;IAzDpB;MA4DG,eAAe;MACf,oBAAoB,EAAA;IA7DvB;MAiEG,gBAAgB;MAChB,mBAAmB;MACnB,uBAAuB,EAAA;MAnE1B;QAsEI,YAAY;QACZ,eAAe;QACf,iBAAiB,EAAA;IAxErB;MA8EG,uBAAuB;MACvB,gBAAgB;MAChB,WAAW,EAAA;MAhFd;QAmFI,cE9EiB;QF+EjB,gBAAgB,EAAA;MApFpB;QAwFI,eAAe,EAAA;MAxFnB;QA4FI,YAAY;QACZ,eAAe,EAAA;QA7FnB;UAgGK,kBAAkB;UAClB,SAAS,EAAA;IAjGd;MAuGG,UAAU;MACV,YAAY;MACZ,eAAe,EAAA;IAzGlB;MA6GG,gBAAgB,EAAA;IA7GnB;MAiHG,eAAe,EAAA","sourcesContent":["@import \"../partial/Vars\";\n@import \"../partial/Ext\";\n\n.MediaUploadItem {\n\t@extend %material_button;\n\tbackground: transparent;\n\tborder-color: $neutral-100;\n\tbox-sizing: content-box;\n\tuser-select: none;\n\tpadding: 8px;\n\n\t$h: 80px;\n\theight: $h;\n\n\tdisplay: grid;\n\tgrid-template-columns: $h 1fr;\n\tgrid-gap: 16px;\n\n\t&:hover:not(:focus) {\n\t\tborder-color: $neutral-300;\n\n\t\t&::after {\n\t\t\tbackground-color: transparent;\n\t\t}\n\t}\n\n\t& > * {\n\t\tbox-sizing: border-box;\n\t}\n\n\t&.selected {\n\t\tborder-color: $accent-400;\n\t\tbackground-color: transparentize($accent-300, 0.7);\n\n\t\t&:focus::after, &:hover::after {\n\t\t\tbackground-color: transparentize($accent-300, 0.8);\n\t\t}\n\n\t\t.MediaItem-Image.icon {\n\t\t\tbackground-color: transparentize($accent-500, 0.7);\n\t\t}\n\t}\n\n\t.MediaItem-Image {\n\t\twidth: 100%;\n\t\theight: 100%;\n\t\tborder-radius: 4px;\n\t\tobject-fit: cover;\n\t\tpointer-events: none;\n\n\t\t&.icon {\n\t\t\tbackground-color: mix($neutral-100, $neutral-000, 20%);\n\t\t\tpadding: 16px;\n\t\t}\n\t}\n\n\t.MediaItem-Description {\n\t\theight: 100%;\n\t\toverflow: hidden;\n\t\ttext-align: left;\n\t\tpadding-right: 8px;\n\n\t\tp, input {\n\t\t\tmargin-top: 0em;\n\t\t\tmargin-bottom: 0.3em;\n\t\t}\n\n\t\tp {\n\t\t\toverflow: hidden;\n\t\t\twhite-space: nowrap;\n\t\t\ttext-overflow: ellipsis;\n\n\t\t\t&.MediaItem-Metadata {\n\t\t\t\topacity: 0.7;\n\t\t\t\tfont-size: 14px;\n\t\t\t\tpadding-left: 4px;\n\t\t\t}\n\t\t}\n\n\t\tinput {\n\t\t\t@extend %material_input;\n\t\t\tbackground: transparent;\n\t\t\tpadding: 2px 4px;\n\t\t\twidth: 100%;\n\n\t\t\t&::placeholder {\n\t\t\t\tcolor: $neutral-800;\n\t\t\t\tfont-weight: 500;\n\t\t\t}\n\n\t\t\t&.MediaItem-Name {\n\t\t\t\tfont-size: 18px;\n\t\t\t}\n\n\t\t\t&.MediaItem-FileName {\n\t\t\t\topacity: 0.8;\n\t\t\t\tfont-size: 14px;\n\n\t\t\t\t&:disabled {\n\t\t\t\t\tposition: relative;\n\t\t\t\t\ttop: -2px;\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tinput:disabled {\n\t\t\tpadding: 0;\n\t\t\tborder: none;\n\t\t\tcursor: pointer;\n\t\t}\n\n\t\tinput:first-child:disabled {\n\t\t\tpadding-top: 8px;\n\t\t}\n\n\t\tinput:disabled + .MediaItem-Metadata {\n\t\t\tpadding-left: 0;\n\t\t}\n\t}\n}\n","@import \"Vars\";\n\n%card {\n\theight: min-content;\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n}\n\n%card_toolbar {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\n\tbutton {\n\t\t@extend %material_icon_button;\n\t}\n\n\t.separator {\n\t\twidth: 24px;\n\t\tdisplay: inline-block;\n\t}\n\n\tdiv:first-of-type button {\n\t\tmargin-right: 8px;\n\t}\n\n\tdiv:last-of-type button {\n\t\tmargin-left: 8px;\n\t}\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tuser-select: none;\n\tborder-radius: 4px;\n\ttext-decoration: none;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-300, 1 - .15);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:not(:disabled) {\n\t\t&:hover, &:focus {\n\t\t\t&::after {\n\t\t\t\tmargin: 0px;\n\t\t\t\ttransform: scale(1);\n\t\t\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\t\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t\t\t}\n\t\t}\n\n\t\t&:active {\n\t\t\ttransition: border $t-fast;\n\t\t}\n\n\t\t&:focus {\n\t\t\tborder-color: $neutral-400;\n\t\t}\n\t}\n\n\t&:disabled {\n\t\tcursor: auto;\n\t\topacity: 0.65;\n\t\tcolor: $neutral-500;\n\t}\n}\n\n%material_icon_button {\n\t@extend %material_button;\n\tdisplay: inline-block;\n\n\t// width: 48px;\n\theight: 48px;\n\n\tpadding: 8px;\n\tborder-radius: 24px;\n\n\timg {\n\t\twidth: 30px;\n\t\theight: 30px;\n\t\tpointer-events: none;\n\t\tvertical-align: middle;\n\t}\n\n\tspan {\n\t\tcolor: $neutral-700;\n\t\tvertical-align: middle;\n\t\tpadding-right: 8px;\n\t\tpadding-left: 8px;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.i, ".MediaUploadItem .MediaItem-Description input {\n  border-radius: 4px;\n  border-width: 1px;\n  border-style: solid;\n  border-color: #829ab1; }\n\n.MediaUploadItem .MediaItem-Description input {\n  border-color: #d9e2ec;\n  outline: 0; }\n  .MediaUploadItem .MediaItem-Description input:hover {\n    border-color: #bcccdc; }\n  .MediaUploadItem .MediaItem-Description input:focus {\n    border-color: #829ab1; }\n  .MediaUploadItem .MediaItem-Description input::placeholder {\n    font-weight: 400;\n    color: #829ab1; }\n\n.MediaUploadItem {\n  position: relative;\n  background-color: transparent;\n  cursor: pointer;\n  border: none;\n  outline: 0;\n  user-select: none;\n  border-radius: 4px;\n  text-decoration: none;\n  border: 1px solid transparent;\n  background: rgba(159, 179, 200, 0.15); }\n  .MediaUploadItem::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    user-select: none;\n    pointer-events: none;\n    top: -1px;\n    left: -1px;\n    right: -1px;\n    bottom: -1px;\n    margin: 4px;\n    transform: scale(0.87);\n    border-radius: inherit;\n    background: rgba(130, 154, 177, 0);\n    transition: background 0.3s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02) 0.075s, margin 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .MediaUploadItem:not(:disabled):hover::after, .MediaUploadItem:not(:disabled):focus::after {\n    margin: 0px;\n    transform: scale(1);\n    background: rgba(130, 154, 177, 0.15);\n    transition: background 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), margin 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .MediaUploadItem:not(:disabled):active {\n    transition: border 0.15s; }\n  .MediaUploadItem:not(:disabled):focus {\n    border-color: #829ab1; }\n  .MediaUploadItem:disabled {\n    cursor: auto;\n    opacity: 0.65;\n    color: #627d98; }\n\n.MediaUploadItem {\n  background: transparent;\n  border-color: #d9e2ec;\n  box-sizing: content-box;\n  user-select: none;\n  padding: 8px;\n  height: 80px;\n  display: grid;\n  grid-template-columns: 80px 1fr;\n  grid-gap: 16px; }\n  .MediaUploadItem:hover:not(:focus) {\n    border-color: #9fb3c8; }\n    .MediaUploadItem:hover:not(:focus)::after {\n      background-color: transparent; }\n  .MediaUploadItem > * {\n    box-sizing: border-box; }\n  .MediaUploadItem.selected {\n    border-color: #54d1db;\n    background-color: rgba(135, 234, 242, 0.3); }\n    .MediaUploadItem.selected:focus::after, .MediaUploadItem.selected:hover::after {\n      background-color: rgba(135, 234, 242, 0.2); }\n    .MediaUploadItem.selected .MediaIcon.Icon {\n      background-color: rgba(56, 190, 201, 0.3); }\n  .MediaUploadItem .MediaItem-Description {\n    height: 100%;\n    overflow: hidden;\n    text-align: left;\n    padding-right: 8px; }\n    .MediaUploadItem .MediaItem-Description p, .MediaUploadItem .MediaItem-Description input {\n      margin-top: 0em;\n      margin-bottom: 0.3em; }\n    .MediaUploadItem .MediaItem-Description p {\n      overflow: hidden;\n      white-space: nowrap;\n      text-overflow: ellipsis; }\n      .MediaUploadItem .MediaItem-Description p.MediaItem-Metadata {\n        opacity: 0.7;\n        font-size: 14px;\n        padding-left: 4px; }\n    .MediaUploadItem .MediaItem-Description input {\n      background: transparent;\n      padding: 2px 4px;\n      width: 100%; }\n      .MediaUploadItem .MediaItem-Description input::placeholder {\n        color: #243b53;\n        font-weight: 500; }\n      .MediaUploadItem .MediaItem-Description input.MediaItem-Name {\n        font-size: 18px; }\n      .MediaUploadItem .MediaItem-Description input.MediaItem-FileName {\n        opacity: 0.8;\n        font-size: 14px; }\n        .MediaUploadItem .MediaItem-Description input.MediaItem-FileName:disabled {\n          position: relative;\n          top: -2px; }\n    .MediaUploadItem .MediaItem-Description input:disabled {\n      padding: 0;\n      border: none;\n      cursor: pointer; }\n    .MediaUploadItem .MediaItem-Description input:first-child:disabled {\n      padding-top: 8px; }\n    .MediaUploadItem .MediaItem-Description input:disabled + .MediaItem-Metadata {\n      padding-left: 0; }\n", "",{"version":3,"sources":["webpack://components/MediaUploadItem.scss","webpack://partial/_Ext.scss","webpack://partial/_Vars.scss"],"names":[],"mappings":"AAGA;EC+CC,kBAAkB;EAClB,iBAAiB;EACjB,mBAAmB;EACnB,qBCjDoB,EAAA;;AFDrB;ECuDC,qBCzDoB;ED0DpB,UAAU,EAAA;EDxDX;IC2DE,qBC5DmB,EAAA;EFCrB;IC+DE,qBC9DmB,EAAA;EFDrB;ICmEE,gBAAgB;IAChB,cCnEmB,EAAA;;AFDrB;ECyEC,kBAAkB;EAClB,6BAA6B;EAC7B,eAAe;EACf,YAAY;EACZ,UAAU;EAEV,iBAAiB;EACjB,kBAAkB;EAClB,qBAAqB;EACrB,6BAA6B;EAC7B,qCAAiD,EAAA;EDnFlD;ICwFE,YAAY;IACZ,cAAc;IACd,kBAAkB;IAClB,iBAAiB;IACjB,oBAAoB;IAGpB,SAAS;IACT,UAAU;IACV,WAAW;IACX,YAAY;IAEZ,WAAW;IACX,sBAAsB;IAEtB,sBAAsB;IACtB,kCAA2C;IAE3C,2KArB0C,EAAA;EDrF5C;ICgHI,WAAW;IACX,mBAAmB;IACnB,qCAAiD;IAEjD,uKA/BwC,EAAA;EDrF5C;ICyHG,wBCpGW,EAAA;EFrBd;IC6HG,qBC5HkB,EAAA;EFDrB;ICkIE,YAAY;IACZ,aAAa;IACb,cClImB,EAAA;;AFFrB;EAEC,uBAAuB;EACvB,qBELoB;EFMpB,uBAAuB;EACvB,iBAAiB;EACjB,YAAY;EAGZ,YADQ;EAGR,aAAa;EACb,+BAA6B;EAC7B,cAAc,EAAA;EAbf;IAgBE,qBEhBmB,EAAA;IFArB;MAmBG,6BAA6B,EAAA;EAnBhC;IAwBE,sBAAsB,EAAA;EAxBxB;IA4BE,qBEhBkB;IFiBlB,0CAAkD,EAAA;IA7BpD;MAgCG,0CAAkD,EAAA;IAhCrD;MAoCG,yCAAkD,EAAA;EApCrD;IAyCE,YAAY;IACZ,gBAAgB;IAChB,gBAAgB;IAChB,kBAAkB,EAAA;IA5CpB;MA+CG,eAAe;MACf,oBAAoB,EAAA;IAhDvB;MAoDG,gBAAgB;MAChB,mBAAmB;MACnB,uBAAuB,EAAA;MAtD1B;QAyDI,YAAY;QACZ,eAAe;QACf,iBAAiB,EAAA;IA3DrB;MAiEG,uBAAuB;MACvB,gBAAgB;MAChB,WAAW,EAAA;MAnEd;QAsEI,cEjEiB;QFkEjB,gBAAgB,EAAA;MAvEpB;QA2EI,eAAe,EAAA;MA3EnB;QA+EI,YAAY;QACZ,eAAe,EAAA;QAhFnB;UAmFK,kBAAkB;UAClB,SAAS,EAAA;IApFd;MA0FG,UAAU;MACV,YAAY;MACZ,eAAe,EAAA;IA5FlB;MAgGG,gBAAgB,EAAA;IAhGnB;MAoGG,eAAe,EAAA","sourcesContent":["@import \"../partial/Vars\";\n@import \"../partial/Ext\";\n\n.MediaUploadItem {\n\t@extend %material_button;\n\tbackground: transparent;\n\tborder-color: $neutral-100;\n\tbox-sizing: content-box;\n\tuser-select: none;\n\tpadding: 8px;\n\n\t$h: 80px;\n\theight: $h;\n\n\tdisplay: grid;\n\tgrid-template-columns: $h 1fr;\n\tgrid-gap: 16px;\n\n\t&:hover:not(:focus) {\n\t\tborder-color: $neutral-300;\n\n\t\t&::after {\n\t\t\tbackground-color: transparent;\n\t\t}\n\t}\n\n\t& > * {\n\t\tbox-sizing: border-box;\n\t}\n\n\t&.selected {\n\t\tborder-color: $accent-400;\n\t\tbackground-color: transparentize($accent-300, 0.7);\n\n\t\t&:focus::after, &:hover::after {\n\t\t\tbackground-color: transparentize($accent-300, 0.8);\n\t\t}\n\n\t\t.MediaIcon.Icon {\n\t\t\tbackground-color: transparentize($accent-500, 0.7);\n\t\t}\n\t}\n\t\n\t.MediaItem-Description {\n\t\theight: 100%;\n\t\toverflow: hidden;\n\t\ttext-align: left;\n\t\tpadding-right: 8px;\n\n\t\tp, input {\n\t\t\tmargin-top: 0em;\n\t\t\tmargin-bottom: 0.3em;\n\t\t}\n\n\t\tp {\n\t\t\toverflow: hidden;\n\t\t\twhite-space: nowrap;\n\t\t\ttext-overflow: ellipsis;\n\n\t\t\t&.MediaItem-Metadata {\n\t\t\t\topacity: 0.7;\n\t\t\t\tfont-size: 14px;\n\t\t\t\tpadding-left: 4px;\n\t\t\t}\n\t\t}\n\n\t\tinput {\n\t\t\t@extend %material_input;\n\t\t\tbackground: transparent;\n\t\t\tpadding: 2px 4px;\n\t\t\twidth: 100%;\n\n\t\t\t&::placeholder {\n\t\t\t\tcolor: $neutral-800;\n\t\t\t\tfont-weight: 500;\n\t\t\t}\n\n\t\t\t&.MediaItem-Name {\n\t\t\t\tfont-size: 18px;\n\t\t\t}\n\n\t\t\t&.MediaItem-FileName {\n\t\t\t\topacity: 0.8;\n\t\t\t\tfont-size: 14px;\n\n\t\t\t\t&:disabled {\n\t\t\t\t\tposition: relative;\n\t\t\t\t\ttop: -2px;\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tinput:disabled {\n\t\t\tpadding: 0;\n\t\t\tborder: none;\n\t\t\tcursor: pointer;\n\t\t}\n\n\t\tinput:first-child:disabled {\n\t\t\tpadding-top: 8px;\n\t\t}\n\n\t\tinput:disabled + .MediaItem-Metadata {\n\t\t\tpadding-left: 0;\n\t\t}\n\t}\n}\n","@import \"Vars\";\n\n%card {\n\theight: min-content;\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n}\n\n%card_toolbar {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\n\tbutton {\n\t\t@extend %material_icon_button;\n\t}\n\n\t.separator {\n\t\twidth: 24px;\n\t\tdisplay: inline-block;\n\t}\n\n\tdiv:first-of-type button {\n\t\tmargin-right: 8px;\n\t}\n\n\tdiv:last-of-type button {\n\t\tmargin-left: 8px;\n\t}\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tuser-select: none;\n\tborder-radius: 4px;\n\ttext-decoration: none;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-300, 1 - .15);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:not(:disabled) {\n\t\t&:hover, &:focus {\n\t\t\t&::after {\n\t\t\t\tmargin: 0px;\n\t\t\t\ttransform: scale(1);\n\t\t\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\t\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t\t\t}\n\t\t}\n\n\t\t&:active {\n\t\t\ttransition: border $t-fast;\n\t\t}\n\n\t\t&:focus {\n\t\t\tborder-color: $neutral-400;\n\t\t}\n\t}\n\n\t&:disabled {\n\t\tcursor: auto;\n\t\topacity: 0.65;\n\t\tcolor: $neutral-500;\n\t}\n}\n\n%material_icon_button {\n\t@extend %material_button;\n\tdisplay: inline-block;\n\n\t// width: 48px;\n\theight: 48px;\n\n\tpadding: 8px;\n\tborder-radius: 24px;\n\n\timg {\n\t\twidth: 30px;\n\t\theight: 30px;\n\t\tpointer-events: none;\n\t\tvertical-align: middle;\n\t}\n\n\tspan {\n\t\tcolor: $neutral-700;\n\t\tvertical-align: middle;\n\t\tpadding-right: 8px;\n\t\tpadding-left: 8px;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
 
 /***/ }),
 
-/***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/MediaView.scss":
-/*!************************************************************************************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/css-loader/dist/cjs.js!/home/auri/Code/Projects/AuriServer/node_modules/sass-loader/dist/cjs.js!./components/MediaView.scss ***!
-  \************************************************************************************************************************************************************************************/
+/***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/MediaView.sass":
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/cjs.js!C:/Users/100To/Documents/AuriServe/node_modules/sass-loader/dist/cjs.js!./components/MediaView.sass ***!
+  \**********************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -448,7 +490,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, ".MediaView {\n  display: block; }\n", "",{"version":3,"sources":["webpack://components/MediaView.scss"],"names":[],"mappings":"AAGA;EACC,cAAc,EAAA","sourcesContent":["@import \"../partial/Vars\";\n@import \"../partial/Ext\";\n\n.MediaView {\n\tdisplay: block;\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.i, ".MediaView .MediaView-Toolbar {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between; }\n  .MediaView .MediaView-Toolbar .separator {\n    width: 24px;\n    display: inline-block; }\n  .MediaView .MediaView-Toolbar div:first-of-type button {\n    margin-right: 8px; }\n  .MediaView .MediaView-Toolbar div:last-of-type button {\n    margin-left: 8px; }\n\n.MediaView .MediaView-Toolbar button {\n  position: relative;\n  background-color: transparent;\n  cursor: pointer;\n  border: none;\n  outline: 0;\n  user-select: none;\n  border-radius: 4px;\n  text-decoration: none;\n  border: 1px solid transparent;\n  background: rgba(159, 179, 200, 0.15); }\n  .MediaView .MediaView-Toolbar button::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    user-select: none;\n    pointer-events: none;\n    top: -1px;\n    left: -1px;\n    right: -1px;\n    bottom: -1px;\n    margin: 4px;\n    transform: scale(0.87);\n    border-radius: inherit;\n    background: rgba(130, 154, 177, 0);\n    transition: background 0.3s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02) 0.075s, margin 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .MediaView .MediaView-Toolbar button:not(:disabled):hover::after, .MediaView .MediaView-Toolbar button:not(:disabled):focus::after {\n    margin: 0px;\n    transform: scale(1);\n    background: rgba(130, 154, 177, 0.15);\n    transition: background 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), margin 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .MediaView .MediaView-Toolbar button:not(:disabled):active {\n    transition: border 0.15s; }\n  .MediaView .MediaView-Toolbar button:not(:disabled):focus {\n    border-color: #829ab1; }\n  .MediaView .MediaView-Toolbar button:disabled {\n    cursor: auto;\n    opacity: 0.65;\n    color: #627d98; }\n\n.MediaView .MediaView-Toolbar button {\n  display: inline-block;\n  height: 48px;\n  padding: 8px;\n  border-radius: 24px; }\n  .MediaView .MediaView-Toolbar button img {\n    width: 30px;\n    height: 30px;\n    pointer-events: none;\n    vertical-align: middle; }\n  .MediaView .MediaView-Toolbar button span {\n    color: #334e68;\n    vertical-align: middle;\n    padding-right: 8px;\n    padding-left: 8px; }\n\n.MediaView {\n  display: block;\n  width: 100vw;\n  max-width: 800px; }\n  .MediaView .MediaView-Toolbar {\n    margin-top: 16px; }\n  .MediaView .MediaView-Top {\n    display: grid;\n    grid-template-columns: 80px 1fr;\n    grid-gap: 16px; }\n    .MediaView .MediaView-Top .MediaIcon {\n      height: 80px; }\n    .MediaView .MediaView-Top .MediaView-Info .MediaView-Name, .MediaView .MediaView-Top .MediaView-Info .MediaView-Author, .MediaView .MediaView-Top .MediaView-Info .MediaView-Size {\n      margin-top: 0;\n      margin-bottom: 0.3em;\n      font-size: inherit;\n      font-family: inherit;\n      overflow: hidden;\n      white-space: nowrap;\n      text-overflow: ellipsis; }\n    .MediaView .MediaView-Top .MediaView-Info .MediaView-Path {\n      opacity: 0.7;\n      margin-left: 4px;\n      font-size: 14px; }\n    .MediaView .MediaView-Top .MediaView-Info .MediaView-Name {\n      font-size: 18px;\n      margin-top: 8px; }\n    .MediaView .MediaView-Top .MediaView-Info .MediaView-Author {\n      opacity: 0.8;\n      font-size: 14px; }\n    .MediaView .MediaView-Top .MediaView-Info .MediaView-Size {\n      opacity: 0.7;\n      font-size: 14px; }\n  .MediaView .MediaView-Image {\n    display: block;\n    position: relative;\n    width: 100%;\n    height: auto;\n    padding: 16px;\n    margin-top: 16px;\n    border-radius: 4px;\n    background-color: #f0f4f8; }\n    .MediaView .MediaView-Image > img {\n      width: 100%;\n      height: max-content;\n      min-height: 64px;\n      max-height: 400px;\n      object-fit: contain;\n      object-position: center center; }\n", "",{"version":3,"sources":["webpack://components/MediaView.sass","webpack://partial/_Ext.scss","webpack://partial/_Vars.scss"],"names":[],"mappings":"AAGA;ECSC,aAAa;EACb,mBAAmB;EACnB,8BAA8B,EAAA;EDX/B;ICkBE,WAAW;IACX,qBAAqB,EAAA;EDnBvB;ICuBE,iBAAiB,EAAA;EDvBnB;IC2BE,gBAAgB,EAAA;;AD3BlB;ECyEC,kBAAkB;EAClB,6BAA6B;EAC7B,eAAe;EACf,YAAY;EACZ,UAAU;EAEV,iBAAiB;EACjB,kBAAkB;EAClB,qBAAqB;EACrB,6BAA6B;EAC7B,qCAAiD,EAAA;EDnFlD;ICwFE,YAAY;IACZ,cAAc;IACd,kBAAkB;IAClB,iBAAiB;IACjB,oBAAoB;IAGpB,SAAS;IACT,UAAU;IACV,WAAW;IACX,YAAY;IAEZ,WAAW;IACX,sBAAsB;IAEtB,sBAAsB;IACtB,kCAA2C;IAE3C,2KArB0C,EAAA;EDrF5C;ICgHI,WAAW;IACX,mBAAmB;IACnB,qCAAiD;IAEjD,uKA/BwC,EAAA;EDrF5C;ICyHG,wBCpGW,EAAA;EFrBd;IC6HG,qBC5HkB,EAAA;EFDrB;ICkIE,YAAY;IACZ,aAAa;IACb,cClImB,EAAA;;AFFrB;EC0IC,qBAAqB;EAGrB,YAAY;EAEZ,YAAY;EACZ,mBAAmB,EAAA;EDhJpB;ICmJE,WAAW;IACX,YAAY;IACZ,oBAAoB;IACpB,sBAAsB,EAAA;EDtJxB;IC0JE,cCtJmB;IDuJnB,sBAAsB;IACtB,kBAAkB;IAClB,iBAAiB,EAAA;;AD7JnB;EACC,cAAc;EACd,YAAY;EACZ,gBAAgB,EAAA;EAHjB;IAME,gBAAgB,EAAA;EANlB;IAYE,aAAa;IACb,+BAAsC;IACtC,cAAc,EAAA;IAdhB;MAiBG,YAPgB,EAAA;IAVnB;MAqBI,aAAa;MACb,oBAAoB;MAEpB,kBAAkB;MAClB,oBAAoB;MAEpB,gBAAgB;MAChB,mBAAmB;MACnB,uBAAuB,EAAA;IA7B3B;MAgCI,YAAY;MACZ,gBAAgB;MAChB,eAAe,EAAA;IAlCnB;MAqCI,eAAe;MACf,eAAe,EAAA;IAtCnB;MAyCI,YAAY;MACZ,eAAe,EAAA;IA1CnB;MA6CI,YAAY;MACZ,eAAe,EAAA;EA9CnB;IAiDE,cAAc;IACd,kBAAkB;IAClB,WAAW;IACX,YAAY;IACZ,aAAa;IACb,gBAAgB;IAEhB,kBAAkB;IAClB,yBE5DmB,EAAA;IFGrB;MA4DG,WAAW;MACX,mBAAmB;MACnB,gBAAgB;MAChB,iBAAiB;MAEjB,mBAAmB;MACnB,8BAA8B,EAAA","sourcesContent":["@import \"../partial/Vars\";\n@import \"../partial/Ext\";\n\n.MediaView {\n\tdisplay: block;\n\twidth: 100vw;\n\tmax-width: 800px;\n\n\t.MediaView-Toolbar {\n\t\tmargin-top: 16px;\n\t\t@extend %card_toolbar; }\n\n\t.MediaView-Top {\n\t\t$imageWidth: 80px;\n\n\t\tdisplay: grid;\n\t\tgrid-template-columns: $imageWidth 1fr;\n\t\tgrid-gap: 16px;\n\n\t\t.MediaIcon {\n\t\t\theight: $imageWidth; }\n\n\t\t.MediaView-Info {\n\t\t\t.MediaView-Name, .MediaView-Author, .MediaView-Size {\n\t\t\t\tmargin-top: 0;\n\t\t\t\tmargin-bottom: 0.3em;\n\n\t\t\t\tfont-size: inherit;\n\t\t\t\tfont-family: inherit;\n\n\t\t\t\toverflow: hidden;\n\t\t\t\twhite-space: nowrap;\n\t\t\t\ttext-overflow: ellipsis; }\n\n\t\t\t.MediaView-Path {\n\t\t\t\topacity: 0.7;\n\t\t\t\tmargin-left: 4px;\n\t\t\t\tfont-size: 14px; }\n\n\t\t\t.MediaView-Name {\n\t\t\t\tfont-size: 18px;\n\t\t\t\tmargin-top: 8px; }\n\n\t\t\t.MediaView-Author {\n\t\t\t\topacity: 0.8;\n\t\t\t\tfont-size: 14px; }\n\n\t\t\t.MediaView-Size {\n\t\t\t\topacity: 0.7;\n\t\t\t\tfont-size: 14px; } } }\n\n\t.MediaView-Image {\n\t\tdisplay: block;\n\t\tposition: relative;\n\t\twidth: 100%;\n\t\theight: auto;\n\t\tpadding: 16px;\n\t\tmargin-top: 16px;\n\n\t\tborder-radius: 4px;\n\t\tbackground-color: $neutral-000;\n\n\t\t& > img {\n\t\t\twidth: 100%;\n\t\t\theight: max-content;\n\t\t\tmin-height: 64px;\n\t\t\tmax-height: 400px;\n\n\t\t\tobject-fit: contain;\n\t\t\tobject-position: center center; } } }\n","@import \"Vars\";\n\n%card {\n\theight: min-content;\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n}\n\n%card_toolbar {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\n\tbutton {\n\t\t@extend %material_icon_button;\n\t}\n\n\t.separator {\n\t\twidth: 24px;\n\t\tdisplay: inline-block;\n\t}\n\n\tdiv:first-of-type button {\n\t\tmargin-right: 8px;\n\t}\n\n\tdiv:last-of-type button {\n\t\tmargin-left: 8px;\n\t}\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tuser-select: none;\n\tborder-radius: 4px;\n\ttext-decoration: none;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-300, 1 - .15);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:not(:disabled) {\n\t\t&:hover, &:focus {\n\t\t\t&::after {\n\t\t\t\tmargin: 0px;\n\t\t\t\ttransform: scale(1);\n\t\t\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\t\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t\t\t}\n\t\t}\n\n\t\t&:active {\n\t\t\ttransition: border $t-fast;\n\t\t}\n\n\t\t&:focus {\n\t\t\tborder-color: $neutral-400;\n\t\t}\n\t}\n\n\t&:disabled {\n\t\tcursor: auto;\n\t\topacity: 0.65;\n\t\tcolor: $neutral-500;\n\t}\n}\n\n%material_icon_button {\n\t@extend %material_button;\n\tdisplay: inline-block;\n\n\t// width: 48px;\n\theight: 48px;\n\n\tpadding: 8px;\n\tborder-radius: 24px;\n\n\timg {\n\t\twidth: 30px;\n\t\theight: 30px;\n\t\tpointer-events: none;\n\t\tvertical-align: middle;\n\t}\n\n\tspan {\n\t\tcolor: $neutral-700;\n\t\tvertical-align: middle;\n\t\tpadding-right: 8px;\n\t\tpadding-left: 8px;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -456,9 +498,9 @@ ___CSS_LOADER_EXPORT___.push([module.i, ".MediaView {\n  display: block; }\n", "
 /***/ }),
 
 /***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/Meter.scss":
-/*!********************************************************************************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/css-loader/dist/cjs.js!/home/auri/Code/Projects/AuriServer/node_modules/sass-loader/dist/cjs.js!./components/Meter.scss ***!
-  \********************************************************************************************************************************************************************************/
+/*!******************************************************************************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/cjs.js!C:/Users/100To/Documents/AuriServe/node_modules/sass-loader/dist/cjs.js!./components/Meter.scss ***!
+  \******************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -478,9 +520,9 @@ ___CSS_LOADER_EXPORT___.push([module.i, ".Meter {\n  position: relative;\n  widt
 /***/ }),
 
 /***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/Modal.scss":
-/*!********************************************************************************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/css-loader/dist/cjs.js!/home/auri/Code/Projects/AuriServer/node_modules/sass-loader/dist/cjs.js!./components/Modal.scss ***!
-  \********************************************************************************************************************************************************************************/
+/*!******************************************************************************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/cjs.js!C:/Users/100To/Documents/AuriServe/node_modules/sass-loader/dist/cjs.js!./components/Modal.scss ***!
+  \******************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -500,9 +542,9 @@ ___CSS_LOADER_EXPORT___.push([module.i, ".Modal .Modal-CardWrap .Modal-Card {\n 
 /***/ }),
 
 /***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/PluginItem.scss":
-/*!*************************************************************************************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/css-loader/dist/cjs.js!/home/auri/Code/Projects/AuriServer/node_modules/sass-loader/dist/cjs.js!./components/PluginItem.scss ***!
-  \*************************************************************************************************************************************************************************************/
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/cjs.js!C:/Users/100To/Documents/AuriServe/node_modules/sass-loader/dist/cjs.js!./components/PluginItem.scss ***!
+  \***********************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -522,9 +564,9 @@ ___CSS_LOADER_EXPORT___.push([module.i, ".PluginItem {\n  position: relative;\n 
 /***/ }),
 
 /***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/SelectGroup.scss":
-/*!**************************************************************************************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/css-loader/dist/cjs.js!/home/auri/Code/Projects/AuriServer/node_modules/sass-loader/dist/cjs.js!./components/SelectGroup.scss ***!
-  \**************************************************************************************************************************************************************************************/
+/*!************************************************************************************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/cjs.js!C:/Users/100To/Documents/AuriServe/node_modules/sass-loader/dist/cjs.js!./components/SelectGroup.scss ***!
+  \************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -544,9 +586,9 @@ ___CSS_LOADER_EXPORT___.push([module.i, ".SelectGroup {\n  padding: 0;\n  margin
 /***/ }),
 
 /***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/ThemeItem.scss":
-/*!************************************************************************************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/css-loader/dist/cjs.js!/home/auri/Code/Projects/AuriServer/node_modules/sass-loader/dist/cjs.js!./components/ThemeItem.scss ***!
-  \************************************************************************************************************************************************************************************/
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/cjs.js!C:/Users/100To/Documents/AuriServe/node_modules/sass-loader/dist/cjs.js!./components/ThemeItem.scss ***!
+  \**********************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -566,9 +608,9 @@ ___CSS_LOADER_EXPORT___.push([module.i, ".ThemeItem {\n  position: relative;\n  
 /***/ }),
 
 /***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/editor/CreateElementForm.sass":
-/*!***************************************************************************************************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/css-loader/dist/cjs.js!/home/auri/Code/Projects/AuriServer/node_modules/sass-loader/dist/cjs.js!./components/editor/CreateElementForm.sass ***!
-  \***************************************************************************************************************************************************************************************************/
+/*!*************************************************************************************************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/cjs.js!C:/Users/100To/Documents/AuriServe/node_modules/sass-loader/dist/cjs.js!./components/editor/CreateElementForm.sass ***!
+  \*************************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -588,30 +630,8 @@ ___CSS_LOADER_EXPORT___.push([module.i, ".CreateElementForm input[type=text] {\n
 /***/ }),
 
 /***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/editor/EditElementTree.sass":
-/*!*************************************************************************************************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/css-loader/dist/cjs.js!/home/auri/Code/Projects/AuriServer/node_modules/sass-loader/dist/cjs.js!./components/editor/EditElementTree.sass ***!
-  \*************************************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "../../node_modules/css-loader/dist/runtime/api.js");
-/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
-// Imports
-
-var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
-// Module
-___CSS_LOADER_EXPORT___.push([module.i, ".EditElementTree .EditElementTree-TreeItem {\n  position: relative;\n  background-color: transparent;\n  cursor: pointer;\n  border: none;\n  outline: 0;\n  user-select: none;\n  border-radius: 4px;\n  text-decoration: none;\n  border: 1px solid transparent;\n  background: rgba(159, 179, 200, 0.15); }\n  .EditElementTree .EditElementTree-TreeItem::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    user-select: none;\n    pointer-events: none;\n    top: -1px;\n    left: -1px;\n    right: -1px;\n    bottom: -1px;\n    margin: 4px;\n    transform: scale(0.87);\n    border-radius: inherit;\n    background: rgba(130, 154, 177, 0);\n    transition: background 0.3s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02) 0.075s, margin 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .EditElementTree .EditElementTree-TreeItem:not(:disabled):hover::after, .EditElementTree .EditElementTree-TreeItem:not(:disabled):focus::after {\n    margin: 0px;\n    transform: scale(1);\n    background: rgba(130, 154, 177, 0.15);\n    transition: background 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), margin 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .EditElementTree .EditElementTree-TreeItem:not(:disabled):active {\n    transition: border 0.15s; }\n  .EditElementTree .EditElementTree-TreeItem:not(:disabled):focus {\n    border-color: #829ab1; }\n  .EditElementTree .EditElementTree-TreeItem:disabled {\n    cursor: auto;\n    opacity: 0.65;\n    color: #627d98; }\n\n.EditElementTree ul {\n  margin-top: 4px;\n  margin-bottom: 8px; }\n\n.EditElementTree .EditElementTree-TreeItem {\n  padding: 8px;\n  margin-bottom: 4px; }\n", "",{"version":3,"sources":["webpack://components/editor/EditElementTree.sass","webpack://partial/_Ext.scss","webpack://partial/_Vars.scss"],"names":[],"mappings":"AAGA;ECyEC,kBAAkB;EAClB,6BAA6B;EAC7B,eAAe;EACf,YAAY;EACZ,UAAU;EAEV,iBAAiB;EACjB,kBAAkB;EAClB,qBAAqB;EACrB,6BAA6B;EAC7B,qCAAiD,EAAA;EDnFlD;ICwFE,YAAY;IACZ,cAAc;IACd,kBAAkB;IAClB,iBAAiB;IACjB,oBAAoB;IAGpB,SAAS;IACT,UAAU;IACV,WAAW;IACX,YAAY;IAEZ,WAAW;IACX,sBAAsB;IAEtB,sBAAsB;IACtB,kCAA2C;IAE3C,2KArB0C,EAAA;EDrF5C;ICgHI,WAAW;IACX,mBAAmB;IACnB,qCAAiD;IAEjD,uKA/BwC,EAAA;EDrF5C;ICyHG,wBCpGW,EAAA;EFrBd;IC6HG,qBC5HkB,EAAA;EFDrB;ICkIE,YAAY;IACZ,aAAa;IACb,cClImB,EAAA;;AFFrB;EAEE,eAAe;EACf,kBAAkB,EAAA;;AAHpB;EAQE,YAAY;EACZ,kBAAkB,EAAA","sourcesContent":["@import \"../../partial/Vars\";\n@import \"../../partial/Ext\";\n\n.EditElementTree {\n\tul {\n\t\tmargin-top: 4px;\n\t\tmargin-bottom: 8px; }\n\n\t.EditElementTree-TreeItem {\n\t\t@extend %material_button;\n\n\t\tpadding: 8px;\n\t\tmargin-bottom: 4px; } }\n","@import \"Vars\";\n\n%card {\n\theight: min-content;\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n}\n\n%card_toolbar {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\n\tbutton {\n\t\t@extend %material_icon_button;\n\t}\n\n\t.separator {\n\t\twidth: 24px;\n\t\tdisplay: inline-block;\n\t}\n\n\tdiv:first-of-type button {\n\t\tmargin-right: 8px;\n\t}\n\n\tdiv:last-of-type button {\n\t\tmargin-left: 8px;\n\t}\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tuser-select: none;\n\tborder-radius: 4px;\n\ttext-decoration: none;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-300, 1 - .15);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:not(:disabled) {\n\t\t&:hover, &:focus {\n\t\t\t&::after {\n\t\t\t\tmargin: 0px;\n\t\t\t\ttransform: scale(1);\n\t\t\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\t\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t\t\t}\n\t\t}\n\n\t\t&:active {\n\t\t\ttransition: border $t-fast;\n\t\t}\n\n\t\t&:focus {\n\t\t\tborder-color: $neutral-400;\n\t\t}\n\t}\n\n\t&:disabled {\n\t\tcursor: auto;\n\t\topacity: 0.65;\n\t\tcolor: $neutral-500;\n\t}\n}\n\n%material_icon_button {\n\t@extend %material_button;\n\tdisplay: inline-block;\n\n\t// width: 48px;\n\theight: 48px;\n\n\tpadding: 8px;\n\tborder-radius: 24px;\n\n\timg {\n\t\twidth: 30px;\n\t\theight: 30px;\n\t\tpointer-events: none;\n\t\tvertical-align: middle;\n\t}\n\n\tspan {\n\t\tcolor: $neutral-700;\n\t\tvertical-align: middle;\n\t\tpadding-right: 8px;\n\t\tpadding-left: 8px;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"],"sourceRoot":""}]);
-// Exports
-/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
-
-
-/***/ }),
-
-/***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/editor/ElementEditor.sass":
 /*!***********************************************************************************************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/css-loader/dist/cjs.js!/home/auri/Code/Projects/AuriServer/node_modules/sass-loader/dist/cjs.js!./components/editor/ElementEditor.sass ***!
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/cjs.js!C:/Users/100To/Documents/AuriServe/node_modules/sass-loader/dist/cjs.js!./components/editor/EditElementTree.sass ***!
   \***********************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -624,7 +644,29 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, ".ElementEditor {\n  min-width: 400px; }\n", "",{"version":3,"sources":["webpack://components/editor/ElementEditor.sass"],"names":[],"mappings":"AAAA;EACC,gBAAgB,EAAA","sourcesContent":[".ElementEditor {\n\tmin-width: 400px; }\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.i, ".EditElementTree .EditElementTree-TreeItem, .EditElementTree select {\n  position: relative;\n  background-color: transparent;\n  cursor: pointer;\n  border: none;\n  outline: 0;\n  user-select: none;\n  border-radius: 4px;\n  text-decoration: none;\n  border: 1px solid transparent;\n  background: rgba(159, 179, 200, 0.15); }\n  .EditElementTree .EditElementTree-TreeItem::after, .EditElementTree select::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    user-select: none;\n    pointer-events: none;\n    top: -1px;\n    left: -1px;\n    right: -1px;\n    bottom: -1px;\n    margin: 4px;\n    transform: scale(0.87);\n    border-radius: inherit;\n    background: rgba(130, 154, 177, 0);\n    transition: background 0.3s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02) 0.075s, margin 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .EditElementTree .EditElementTree-TreeItem:not(:disabled):hover::after, .EditElementTree select:not(:disabled):hover::after, .EditElementTree .EditElementTree-TreeItem:not(:disabled):focus::after, .EditElementTree select:not(:disabled):focus::after {\n    margin: 0px;\n    transform: scale(1);\n    background: rgba(130, 154, 177, 0.15);\n    transition: background 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), margin 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .EditElementTree .EditElementTree-TreeItem:not(:disabled):active, .EditElementTree select:not(:disabled):active {\n    transition: border 0.15s; }\n  .EditElementTree .EditElementTree-TreeItem:not(:disabled):focus, .EditElementTree select:not(:disabled):focus {\n    border-color: #829ab1; }\n  .EditElementTree .EditElementTree-TreeItem:disabled, .EditElementTree select:disabled {\n    cursor: auto;\n    opacity: 0.65;\n    color: #627d98; }\n\n.EditElementTree ul {\n  margin-top: 4px;\n  margin-bottom: 8px; }\n\n.EditElementTree .EditElementTree-TreeItem {\n  padding: 8px;\n  margin-bottom: 4px; }\n\n.EditElementTree .EditElementTree-IncludeItem {\n  width: min-content;\n  padding: 8px;\n  margin-bottom: 4px;\n  border: 2px solid #bcccdc;\n  border-radius: 4px; }\n\n.EditElementTree select {\n  width: 100%;\n  padding: 12px 8px; }\n", "",{"version":3,"sources":["webpack://components/editor/EditElementTree.sass","webpack://partial/_Ext.scss","webpack://partial/_Vars.scss"],"names":[],"mappings":"AAGA;ECyEC,kBAAkB;EAClB,6BAA6B;EAC7B,eAAe;EACf,YAAY;EACZ,UAAU;EAEV,iBAAiB;EACjB,kBAAkB;EAClB,qBAAqB;EACrB,6BAA6B;EAC7B,qCAAiD,EAAA;EDnFlD;ICwFE,YAAY;IACZ,cAAc;IACd,kBAAkB;IAClB,iBAAiB;IACjB,oBAAoB;IAGpB,SAAS;IACT,UAAU;IACV,WAAW;IACX,YAAY;IAEZ,WAAW;IACX,sBAAsB;IAEtB,sBAAsB;IACtB,kCAA2C;IAE3C,2KArB0C,EAAA;EDrF5C;ICgHI,WAAW;IACX,mBAAmB;IACnB,qCAAiD;IAEjD,uKA/BwC,EAAA;EDrF5C;ICyHG,wBCpGW,EAAA;EFrBd;IC6HG,qBC5HkB,EAAA;EFDrB;ICkIE,YAAY;IACZ,aAAa;IACb,cClImB,EAAA;;AFFrB;EAEE,eAAe;EACf,kBAAkB,EAAA;;AAHpB;EAQE,YAAY;EACZ,kBAAkB,EAAA;;AATpB;EAYE,kBAAkB;EAClB,YAAY;EACZ,kBAAkB;EAElB,yBEjBmB;EFkBnB,kBAAkB,EAAA;;AAjBpB;EAqBE,WAAW;EACX,iBAAiB,EAAA","sourcesContent":["@import \"../../partial/Vars\";\n@import \"../../partial/Ext\";\n\n.EditElementTree {\n\tul {\n\t\tmargin-top: 4px;\n\t\tmargin-bottom: 8px; }\n\n\t.EditElementTree-TreeItem {\n\t\t@extend %material_button;\n\n\t\tpadding: 8px;\n\t\tmargin-bottom: 4px; }\n\n\t.EditElementTree-IncludeItem {\n\t\twidth: min-content;\n\t\tpadding: 8px;\n\t\tmargin-bottom: 4px;\n\n\t\tborder: 2px solid $neutral-200;\n\t\tborder-radius: 4px; }\n\n\tselect {\n\t\t@extend %material_button;\n\t\twidth: 100%;\n\t\tpadding: 12px 8px; } }\n","@import \"Vars\";\n\n%card {\n\theight: min-content;\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n}\n\n%card_toolbar {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\n\tbutton {\n\t\t@extend %material_icon_button;\n\t}\n\n\t.separator {\n\t\twidth: 24px;\n\t\tdisplay: inline-block;\n\t}\n\n\tdiv:first-of-type button {\n\t\tmargin-right: 8px;\n\t}\n\n\tdiv:last-of-type button {\n\t\tmargin-left: 8px;\n\t}\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tuser-select: none;\n\tborder-radius: 4px;\n\ttext-decoration: none;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-300, 1 - .15);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:not(:disabled) {\n\t\t&:hover, &:focus {\n\t\t\t&::after {\n\t\t\t\tmargin: 0px;\n\t\t\t\ttransform: scale(1);\n\t\t\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\t\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t\t\t}\n\t\t}\n\n\t\t&:active {\n\t\t\ttransition: border $t-fast;\n\t\t}\n\n\t\t&:focus {\n\t\t\tborder-color: $neutral-400;\n\t\t}\n\t}\n\n\t&:disabled {\n\t\tcursor: auto;\n\t\topacity: 0.65;\n\t\tcolor: $neutral-500;\n\t}\n}\n\n%material_icon_button {\n\t@extend %material_button;\n\tdisplay: inline-block;\n\n\t// width: 48px;\n\theight: 48px;\n\n\tpadding: 8px;\n\tborder-radius: 24px;\n\n\timg {\n\t\twidth: 30px;\n\t\theight: 30px;\n\t\tpointer-events: none;\n\t\tvertical-align: middle;\n\t}\n\n\tspan {\n\t\tcolor: $neutral-700;\n\t\tvertical-align: middle;\n\t\tpadding-right: 8px;\n\t\tpadding-left: 8px;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/editor/ElementEditor.sass":
+/*!*********************************************************************************************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/cjs.js!C:/Users/100To/Documents/AuriServe/node_modules/sass-loader/dist/cjs.js!./components/editor/ElementEditor.sass ***!
+  \*********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "../../node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
+// Module
+___CSS_LOADER_EXPORT___.push([module.i, ".ElementEditor .ElementEditor-ActionBar button {\n  position: relative;\n  background-color: transparent;\n  cursor: pointer;\n  border: none;\n  outline: 0;\n  user-select: none;\n  border-radius: 4px;\n  text-decoration: none;\n  border: 1px solid transparent;\n  background: rgba(159, 179, 200, 0.15); }\n  .ElementEditor .ElementEditor-ActionBar button::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    user-select: none;\n    pointer-events: none;\n    top: -1px;\n    left: -1px;\n    right: -1px;\n    bottom: -1px;\n    margin: 4px;\n    transform: scale(0.87);\n    border-radius: inherit;\n    background: rgba(130, 154, 177, 0);\n    transition: background 0.3s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02) 0.075s, margin 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .ElementEditor .ElementEditor-ActionBar button:not(:disabled):hover::after, .ElementEditor .ElementEditor-ActionBar button:not(:disabled):focus::after {\n    margin: 0px;\n    transform: scale(1);\n    background: rgba(130, 154, 177, 0.15);\n    transition: background 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), margin 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .ElementEditor .ElementEditor-ActionBar button:not(:disabled):active {\n    transition: border 0.15s; }\n  .ElementEditor .ElementEditor-ActionBar button:not(:disabled):focus {\n    border-color: #829ab1; }\n  .ElementEditor .ElementEditor-ActionBar button:disabled {\n    cursor: auto;\n    opacity: 0.65;\n    color: #627d98; }\n\n.ElementEditor {\n  min-width: 400px; }\n  .ElementEditor .ElementEditor-ActionBar {\n    margin: 16px 0px 8px 0px;\n    display: flex;\n    flex-direction: row-reverse;\n    justify-content: space-between; }\n    .ElementEditor .ElementEditor-ActionBar button {\n      padding: 12px; }\n", "",{"version":3,"sources":["webpack://components/editor/ElementEditor.sass","webpack://partial/_Ext.scss","webpack://partial/_Vars.scss"],"names":[],"mappings":"AAGA;ECyEC,kBAAkB;EAClB,6BAA6B;EAC7B,eAAe;EACf,YAAY;EACZ,UAAU;EAEV,iBAAiB;EACjB,kBAAkB;EAClB,qBAAqB;EACrB,6BAA6B;EAC7B,qCAAiD,EAAA;EDnFlD;ICwFE,YAAY;IACZ,cAAc;IACd,kBAAkB;IAClB,iBAAiB;IACjB,oBAAoB;IAGpB,SAAS;IACT,UAAU;IACV,WAAW;IACX,YAAY;IAEZ,WAAW;IACX,sBAAsB;IAEtB,sBAAsB;IACtB,kCAA2C;IAE3C,2KArB0C,EAAA;EDrF5C;ICgHI,WAAW;IACX,mBAAmB;IACnB,qCAAiD;IAEjD,uKA/BwC,EAAA;EDrF5C;ICyHG,wBCpGW,EAAA;EFrBd;IC6HG,qBC5HkB,EAAA;EFDrB;ICkIE,YAAY;IACZ,aAAa;IACb,cClImB,EAAA;;AFFrB;EACC,gBAAgB,EAAA;EADjB;IAIE,wBAAwB;IACxB,aAAa;IACb,2BAA2B;IAC3B,8BAA8B,EAAA;IAPhC;MAWG,aAAa,EAAA","sourcesContent":["@import \"../../partial/Vars\";\n@import \"../../partial/Ext\";\n\n.ElementEditor {\n\tmin-width: 400px;\n\n\t.ElementEditor-ActionBar {\n\t\tmargin: 16px 0px 8px 0px;\n\t\tdisplay: flex;\n\t\tflex-direction: row-reverse;\n\t\tjustify-content: space-between;\n\n\t\tbutton {\n\t\t\t@extend %material_button;\n\t\t\tpadding: 12px; } } }\n","@import \"Vars\";\n\n%card {\n\theight: min-content;\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n}\n\n%card_toolbar {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\n\tbutton {\n\t\t@extend %material_icon_button;\n\t}\n\n\t.separator {\n\t\twidth: 24px;\n\t\tdisplay: inline-block;\n\t}\n\n\tdiv:first-of-type button {\n\t\tmargin-right: 8px;\n\t}\n\n\tdiv:last-of-type button {\n\t\tmargin-left: 8px;\n\t}\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tuser-select: none;\n\tborder-radius: 4px;\n\ttext-decoration: none;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-300, 1 - .15);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:not(:disabled) {\n\t\t&:hover, &:focus {\n\t\t\t&::after {\n\t\t\t\tmargin: 0px;\n\t\t\t\ttransform: scale(1);\n\t\t\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\t\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t\t\t}\n\t\t}\n\n\t\t&:active {\n\t\t\ttransition: border $t-fast;\n\t\t}\n\n\t\t&:focus {\n\t\t\tborder-color: $neutral-400;\n\t\t}\n\t}\n\n\t&:disabled {\n\t\tcursor: auto;\n\t\topacity: 0.65;\n\t\tcolor: $neutral-500;\n\t}\n}\n\n%material_icon_button {\n\t@extend %material_button;\n\tdisplay: inline-block;\n\n\t// width: 48px;\n\theight: 48px;\n\n\tpadding: 8px;\n\tborder-radius: 24px;\n\n\timg {\n\t\twidth: 30px;\n\t\theight: 30px;\n\t\tpointer-events: none;\n\t\tvertical-align: middle;\n\t}\n\n\tspan {\n\t\tcolor: $neutral-700;\n\t\tvertical-align: middle;\n\t\tpadding-right: 8px;\n\t\tpadding-left: 8px;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -632,9 +674,9 @@ ___CSS_LOADER_EXPORT___.push([module.i, ".ElementEditor {\n  min-width: 400px; }
 /***/ }),
 
 /***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/editor/ElementPropArray.sass":
-/*!**************************************************************************************************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/css-loader/dist/cjs.js!/home/auri/Code/Projects/AuriServer/node_modules/sass-loader/dist/cjs.js!./components/editor/ElementPropArray.sass ***!
-  \**************************************************************************************************************************************************************************************************/
+/*!************************************************************************************************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/cjs.js!C:/Users/100To/Documents/AuriServe/node_modules/sass-loader/dist/cjs.js!./components/editor/ElementPropArray.sass ***!
+  \************************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -654,9 +696,9 @@ ___CSS_LOADER_EXPORT___.push([module.i, ".ElementPropArray {\n  display: block;\
 /***/ }),
 
 /***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/editor/ElementPropInput.sass":
-/*!**************************************************************************************************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/css-loader/dist/cjs.js!/home/auri/Code/Projects/AuriServer/node_modules/sass-loader/dist/cjs.js!./components/editor/ElementPropInput.sass ***!
-  \**************************************************************************************************************************************************************************************************/
+/*!************************************************************************************************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/cjs.js!C:/Users/100To/Documents/AuriServe/node_modules/sass-loader/dist/cjs.js!./components/editor/ElementPropInput.sass ***!
+  \************************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -668,7 +710,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, ".ElementPropInput input[type=text], .ElementPropInput input[type=number], .ElementPropInput textarea {\n  border-radius: 4px;\n  border-width: 1px;\n  border-style: solid;\n  border-color: #829ab1; }\n\n.ElementPropInput input[type=text], .ElementPropInput input[type=number], .ElementPropInput textarea {\n  border-color: #d9e2ec;\n  outline: 0; }\n  .ElementPropInput input:hover[type=text], .ElementPropInput input:hover[type=number], .ElementPropInput textarea:hover {\n    border-color: #bcccdc; }\n  .ElementPropInput input:focus[type=text], .ElementPropInput input:focus[type=number], .ElementPropInput textarea:focus {\n    border-color: #829ab1; }\n  .ElementPropInput input[type=text]::placeholder, .ElementPropInput input[type=number]::placeholder, .ElementPropInput textarea::placeholder {\n    font-weight: 400;\n    color: #829ab1; }\n\n.ElementPropInput {\n  display: block;\n  position: relative;\n  width: 100%;\n  height: auto;\n  overflow: auto; }\n  .ElementPropInput .ElementPropInput-Label {\n    display: block;\n    padding: 16px 0 8px 0;\n    user-select: none;\n    font-weight: normal;\n    color: #486581; }\n  .ElementPropInput input[type=text], .ElementPropInput input[type=number], .ElementPropInput textarea {\n    padding: 12px;\n    width: 100%;\n    resize: none; }\n  .ElementPropInput input[type=checkbox] {\n    position: absolute;\n    top: 16px;\n    right: 0;\n    width: 18px;\n    height: 18px;\n    margin: 0; }\n", "",{"version":3,"sources":["webpack://components/editor/ElementPropInput.sass","webpack://partial/_Ext.scss","webpack://partial/_Vars.scss"],"names":[],"mappings":"AAGA;EC+CC,kBAAkB;EAClB,iBAAiB;EACjB,mBAAmB;EACnB,qBCjDoB,EAAA;;AFDrB;ECuDC,qBCzDoB;ED0DpB,UAAU,EAAA;EDxDX;IC2DE,qBC5DmB,EAAA;EFCrB;IC+DE,qBC9DmB,EAAA;EFDrB;ICmEE,gBAAgB;IAChB,cCnEmB,EAAA;;AFDrB;EACC,cAAc;EACd,kBAAkB;EAElB,WAAW;EACX,YAAY;EACZ,cAAc,EAAA;EANf;IASE,cAAc;IACd,qBAAqB;IAErB,iBAAiB;IACjB,mBAAmB;IACnB,cEXmB,EAAA;EFHrB;IAkBE,aAAa;IACb,WAAW;IACX,YAAY,EAAA;EApBd;IAuBE,kBAAkB;IAClB,SAAS;IACT,QAAQ;IACR,WAAW;IACX,YAAY;IACZ,SAAS,EAAA","sourcesContent":["@import \"../../partial/Vars\";\n@import \"../../partial/Ext\";\n\n.ElementPropInput {\n\tdisplay: block;\n\tposition: relative;\n\n\twidth: 100%;\n\theight: auto;\n\toverflow: auto;\n\n\t.ElementPropInput-Label {\n\t\tdisplay: block;\n\t\tpadding: 16px 0 8px 0;\n\n\t\tuser-select: none;\n\t\tfont-weight: normal;\n\t\tcolor: $neutral-600; }\n\n\tinput[type=text], input[type=number], textarea {\n\t\t@extend %material_input;\n\t\tpadding: 12px;\n\t\twidth: 100%;\n\t\tresize: none; }\n\n\tinput[type=checkbox] {\n\t\tposition: absolute;\n\t\ttop: 16px;\n\t\tright: 0;\n\t\twidth: 18px;\n\t\theight: 18px;\n\t\tmargin: 0; } }\n","@import \"Vars\";\n\n%card {\n\theight: min-content;\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n}\n\n%card_toolbar {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\n\tbutton {\n\t\t@extend %material_icon_button;\n\t}\n\n\t.separator {\n\t\twidth: 24px;\n\t\tdisplay: inline-block;\n\t}\n\n\tdiv:first-of-type button {\n\t\tmargin-right: 8px;\n\t}\n\n\tdiv:last-of-type button {\n\t\tmargin-left: 8px;\n\t}\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tuser-select: none;\n\tborder-radius: 4px;\n\ttext-decoration: none;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-300, 1 - .15);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:not(:disabled) {\n\t\t&:hover, &:focus {\n\t\t\t&::after {\n\t\t\t\tmargin: 0px;\n\t\t\t\ttransform: scale(1);\n\t\t\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\t\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t\t\t}\n\t\t}\n\n\t\t&:active {\n\t\t\ttransition: border $t-fast;\n\t\t}\n\n\t\t&:focus {\n\t\t\tborder-color: $neutral-400;\n\t\t}\n\t}\n\n\t&:disabled {\n\t\tcursor: auto;\n\t\topacity: 0.65;\n\t\tcolor: $neutral-500;\n\t}\n}\n\n%material_icon_button {\n\t@extend %material_button;\n\tdisplay: inline-block;\n\n\t// width: 48px;\n\theight: 48px;\n\n\tpadding: 8px;\n\tborder-radius: 24px;\n\n\timg {\n\t\twidth: 30px;\n\t\theight: 30px;\n\t\tpointer-events: none;\n\t\tvertical-align: middle;\n\t}\n\n\tspan {\n\t\tcolor: $neutral-700;\n\t\tvertical-align: middle;\n\t\tpadding-right: 8px;\n\t\tpadding-left: 8px;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.i, ".ElementPropInput input[type=text], .ElementPropInput input[type=number], .ElementPropInput textarea {\n  border-radius: 4px;\n  border-width: 1px;\n  border-style: solid;\n  border-color: #829ab1; }\n\n.ElementPropInput input[type=text], .ElementPropInput input[type=number], .ElementPropInput textarea {\n  border-color: #d9e2ec;\n  outline: 0; }\n  .ElementPropInput input:hover[type=text], .ElementPropInput input:hover[type=number], .ElementPropInput textarea:hover {\n    border-color: #bcccdc; }\n  .ElementPropInput input:focus[type=text], .ElementPropInput input:focus[type=number], .ElementPropInput textarea:focus {\n    border-color: #829ab1; }\n  .ElementPropInput input[type=text]::placeholder, .ElementPropInput input[type=number]::placeholder, .ElementPropInput textarea::placeholder {\n    font-weight: 400;\n    color: #829ab1; }\n\n.ElementPropInput {\n  display: block;\n  position: relative;\n  width: 100%;\n  height: auto;\n  overflow: auto; }\n  .ElementPropInput .ElementPropInput-Label {\n    display: block;\n    padding: 16px 0 8px 0;\n    user-select: none;\n    font-weight: normal;\n    color: #486581; }\n  .ElementPropInput input[type=text], .ElementPropInput input[type=number], .ElementPropInput textarea {\n    padding: 12px;\n    width: 100%;\n    resize: none; }\n  .ElementPropInput input[type=checkbox] {\n    position: absolute;\n    top: 16px;\n    right: 0;\n    width: 18px;\n    height: 18px;\n    margin: 0; }\n  .ElementPropInput .ElementPropInput-Code {\n    font-family: monospace; }\n", "",{"version":3,"sources":["webpack://components/editor/ElementPropInput.sass","webpack://partial/_Ext.scss","webpack://partial/_Vars.scss"],"names":[],"mappings":"AAGA;EC+CC,kBAAkB;EAClB,iBAAiB;EACjB,mBAAmB;EACnB,qBCjDoB,EAAA;;AFDrB;ECuDC,qBCzDoB;ED0DpB,UAAU,EAAA;EDxDX;IC2DE,qBC5DmB,EAAA;EFCrB;IC+DE,qBC9DmB,EAAA;EFDrB;ICmEE,gBAAgB;IAChB,cCnEmB,EAAA;;AFDrB;EACC,cAAc;EACd,kBAAkB;EAElB,WAAW;EACX,YAAY;EACZ,cAAc,EAAA;EANf;IASE,cAAc;IACd,qBAAqB;IAErB,iBAAiB;IACjB,mBAAmB;IACnB,cEXmB,EAAA;EFHrB;IAkBE,aAAa;IACb,WAAW;IACX,YAAY,EAAA;EApBd;IAuBE,kBAAkB;IAClB,SAAS;IACT,QAAQ;IACR,WAAW;IACX,YAAY;IACZ,SAAS,EAAA;EA5BX;IA+BE,sBAAsB,EAAA","sourcesContent":["@import \"../../partial/Vars\";\n@import \"../../partial/Ext\";\n\n.ElementPropInput {\n\tdisplay: block;\n\tposition: relative;\n\n\twidth: 100%;\n\theight: auto;\n\toverflow: auto;\n\n\t.ElementPropInput-Label {\n\t\tdisplay: block;\n\t\tpadding: 16px 0 8px 0;\n\n\t\tuser-select: none;\n\t\tfont-weight: normal;\n\t\tcolor: $neutral-600; }\n\n\tinput[type=text], input[type=number], textarea {\n\t\t@extend %material_input;\n\t\tpadding: 12px;\n\t\twidth: 100%;\n\t\tresize: none; }\n\n\tinput[type=checkbox] {\n\t\tposition: absolute;\n\t\ttop: 16px;\n\t\tright: 0;\n\t\twidth: 18px;\n\t\theight: 18px;\n\t\tmargin: 0; }\n\n\t.ElementPropInput-Code {\n\t\tfont-family: monospace; } }\n","@import \"Vars\";\n\n%card {\n\theight: min-content;\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n}\n\n%card_toolbar {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\n\tbutton {\n\t\t@extend %material_icon_button;\n\t}\n\n\t.separator {\n\t\twidth: 24px;\n\t\tdisplay: inline-block;\n\t}\n\n\tdiv:first-of-type button {\n\t\tmargin-right: 8px;\n\t}\n\n\tdiv:last-of-type button {\n\t\tmargin-left: 8px;\n\t}\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tuser-select: none;\n\tborder-radius: 4px;\n\ttext-decoration: none;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-300, 1 - .15);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:not(:disabled) {\n\t\t&:hover, &:focus {\n\t\t\t&::after {\n\t\t\t\tmargin: 0px;\n\t\t\t\ttransform: scale(1);\n\t\t\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\t\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t\t\t}\n\t\t}\n\n\t\t&:active {\n\t\t\ttransition: border $t-fast;\n\t\t}\n\n\t\t&:focus {\n\t\t\tborder-color: $neutral-400;\n\t\t}\n\t}\n\n\t&:disabled {\n\t\tcursor: auto;\n\t\topacity: 0.65;\n\t\tcolor: $neutral-500;\n\t}\n}\n\n%material_icon_button {\n\t@extend %material_button;\n\tdisplay: inline-block;\n\n\t// width: 48px;\n\theight: 48px;\n\n\tpadding: 8px;\n\tborder-radius: 24px;\n\n\timg {\n\t\twidth: 30px;\n\t\theight: 30px;\n\t\tpointer-events: none;\n\t\tvertical-align: middle;\n\t}\n\n\tspan {\n\t\tcolor: $neutral-700;\n\t\tvertical-align: middle;\n\t\tpadding-right: 8px;\n\t\tpadding-left: 8px;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -676,9 +718,9 @@ ___CSS_LOADER_EXPORT___.push([module.i, ".ElementPropInput input[type=text], .El
 /***/ }),
 
 /***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/editor/ElementPropsEditor.sass":
-/*!****************************************************************************************************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/css-loader/dist/cjs.js!/home/auri/Code/Projects/AuriServer/node_modules/sass-loader/dist/cjs.js!./components/editor/ElementPropsEditor.sass ***!
-  \****************************************************************************************************************************************************************************************************/
+/*!**************************************************************************************************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/cjs.js!C:/Users/100To/Documents/AuriServe/node_modules/sass-loader/dist/cjs.js!./components/editor/ElementPropsEditor.sass ***!
+  \**************************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -697,10 +739,32 @@ ___CSS_LOADER_EXPORT___.push([module.i, ".ElementPropsEditor-WrapLabel {\n  disp
 
 /***/ }),
 
+/***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/editor/PageEditor.sass":
+/*!******************************************************************************************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/cjs.js!C:/Users/100To/Documents/AuriServe/node_modules/sass-loader/dist/cjs.js!./components/editor/PageEditor.sass ***!
+  \******************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "../../node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(true);
+// Module
+___CSS_LOADER_EXPORT___.push([module.i, ".PageEditor .PageEditor-Toolbar {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between; }\n  .PageEditor .PageEditor-Toolbar .separator {\n    width: 24px;\n    display: inline-block; }\n  .PageEditor .PageEditor-Toolbar div:first-of-type button {\n    margin-right: 8px; }\n  .PageEditor .PageEditor-Toolbar div:last-of-type button {\n    margin-left: 8px; }\n\n.PageEditor .PageEditor-Toolbar button {\n  position: relative;\n  background-color: transparent;\n  cursor: pointer;\n  border: none;\n  outline: 0;\n  user-select: none;\n  border-radius: 4px;\n  text-decoration: none;\n  border: 1px solid transparent;\n  background: rgba(159, 179, 200, 0.15); }\n  .PageEditor .PageEditor-Toolbar button::after {\n    content: \" \";\n    display: block;\n    position: absolute;\n    user-select: none;\n    pointer-events: none;\n    top: -1px;\n    left: -1px;\n    right: -1px;\n    bottom: -1px;\n    margin: 4px;\n    transform: scale(0.87);\n    border-radius: inherit;\n    background: rgba(130, 154, 177, 0);\n    transition: background 0.3s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02) 0.075s, margin 0.5s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .PageEditor .PageEditor-Toolbar button:not(:disabled):hover::after, .PageEditor .PageEditor-Toolbar button:not(:disabled):focus::after {\n    margin: 0px;\n    transform: scale(1);\n    background: rgba(130, 154, 177, 0.15);\n    transition: background 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), transform 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02), margin 0.15s cubic-bezier(0.1, 0.43, 0.43, 1.02); }\n  .PageEditor .PageEditor-Toolbar button:not(:disabled):active {\n    transition: border 0.15s; }\n  .PageEditor .PageEditor-Toolbar button:not(:disabled):focus {\n    border-color: #829ab1; }\n  .PageEditor .PageEditor-Toolbar button:disabled {\n    cursor: auto;\n    opacity: 0.65;\n    color: #627d98; }\n\n.PageEditor .PageEditor-Toolbar button {\n  display: inline-block;\n  height: 48px;\n  padding: 8px;\n  border-radius: 24px; }\n  .PageEditor .PageEditor-Toolbar button img {\n    width: 30px;\n    height: 30px;\n    pointer-events: none;\n    vertical-align: middle; }\n  .PageEditor .PageEditor-Toolbar button span {\n    color: #334e68;\n    vertical-align: middle;\n    padding-right: 8px;\n    padding-left: 8px; }\n\n.PageEditor .PageEditor-Toolbar {\n  margin-bottom: 16px; }\n  .PageEditor .PageEditor-Toolbar .PageEditor-Changes {\n    margin-left: 8px; }\n", "",{"version":3,"sources":["webpack://components/editor/PageEditor.sass","webpack://partial/_Ext.scss","webpack://partial/_Vars.scss"],"names":[],"mappings":"AAGA;ECSC,aAAa;EACb,mBAAmB;EACnB,8BAA8B,EAAA;EDX/B;ICkBE,WAAW;IACX,qBAAqB,EAAA;EDnBvB;ICuBE,iBAAiB,EAAA;EDvBnB;IC2BE,gBAAgB,EAAA;;AD3BlB;ECyEC,kBAAkB;EAClB,6BAA6B;EAC7B,eAAe;EACf,YAAY;EACZ,UAAU;EAEV,iBAAiB;EACjB,kBAAkB;EAClB,qBAAqB;EACrB,6BAA6B;EAC7B,qCAAiD,EAAA;EDnFlD;ICwFE,YAAY;IACZ,cAAc;IACd,kBAAkB;IAClB,iBAAiB;IACjB,oBAAoB;IAGpB,SAAS;IACT,UAAU;IACV,WAAW;IACX,YAAY;IAEZ,WAAW;IACX,sBAAsB;IAEtB,sBAAsB;IACtB,kCAA2C;IAE3C,2KArB0C,EAAA;EDrF5C;ICgHI,WAAW;IACX,mBAAmB;IACnB,qCAAiD;IAEjD,uKA/BwC,EAAA;EDrF5C;ICyHG,wBCpGW,EAAA;EFrBd;IC6HG,qBC5HkB,EAAA;EFDrB;ICkIE,YAAY;IACZ,aAAa;IACb,cClImB,EAAA;;AFFrB;EC0IC,qBAAqB;EAGrB,YAAY;EAEZ,YAAY;EACZ,mBAAmB,EAAA;EDhJpB;ICmJE,WAAW;IACX,YAAY;IACZ,oBAAoB;IACpB,sBAAsB,EAAA;EDtJxB;IC0JE,cCtJmB;IDuJnB,sBAAsB;IACtB,kBAAkB;IAClB,iBAAiB,EAAA;;AD7JnB;EAGE,mBAAmB,EAAA;EAHrB;IAMG,gBAAgB,EAAA","sourcesContent":["@import \"../../partial/Vars\";\n@import \"../../partial/Ext\";\n\n.PageEditor {\n\t.PageEditor-Toolbar {\n\t\t@extend %card_toolbar;\n\t\tmargin-bottom: 16px;\n\n\t\t.PageEditor-Changes {\n\t\t\tmargin-left: 8px; } } }\n","@import \"Vars\";\n\n%card {\n\theight: min-content;\n\tborder-radius: 4px;\n\tpadding: 16px 24px;\n\n\tbackground-color: #fff;\n\tbox-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);\n}\n\n%card_toolbar {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\n\tbutton {\n\t\t@extend %material_icon_button;\n\t}\n\n\t.separator {\n\t\twidth: 24px;\n\t\tdisplay: inline-block;\n\t}\n\n\tdiv:first-of-type button {\n\t\tmargin-right: 8px;\n\t}\n\n\tdiv:last-of-type button {\n\t\tmargin-left: 8px;\n\t}\n}\n\n%center_wrap {\n\tdisplay: flex;\n\twidth: 100%;\n\theight: 100%;\n\tflex-direction: column;\n\tjustify-content: center;\n\talign-items: center;\n}\n\n%para_no_collapse {\n\t// Use Japanese fullwidth spaces\n\t// to prevent line collapsing.\n\t&::before, &::after { content: \"　\"; }\n}\n\n%material_border {\n\tborder-radius: 4px;\n\tborder-width: 1px;\n\tborder-style: solid;\n\tborder-color: $neutral-400;\n}\n\n%material_input {\n\t@extend %material_border;\n\tborder-color: $neutral-100;\n\toutline: 0;\n\n\t&:hover {\n\t\tborder-color: $neutral-200;\n\t}\n\n\t&:focus {\n\t\tborder-color: $neutral-400;\n\t}\n\n\t&::placeholder {\n\t\tfont-weight: 400;\n\t\tcolor: $neutral-400;\n\t}\n}\n\n%material_button {\n\tposition: relative;\n\tbackground-color: transparent;\n\tcursor: pointer;\n\tborder: none;\n\toutline: 0;\n\n\tuser-select: none;\n\tborder-radius: 4px;\n\ttext-decoration: none;\n\tborder: 1px solid transparent;\n\tbackground: transparentize($neutral-300, 1 - .15);\n\n\t$curve: cubic-bezier(0.1, 0.43, 0.43, 1.02);\n\n\t&::after {\n\t\tcontent: \" \";\n\t\tdisplay: block;\n\t\tposition: absolute;\n\t\tuser-select: none;\n\t\tpointer-events: none;\n\n\t\t// Compensate for 1px border.\n\t\ttop: -1px;\n\t\tleft: -1px;\n\t\tright: -1px;\n\t\tbottom: -1px;\n\n\t\tmargin: 4px;\n\t\ttransform: scale(0.87);\n\t\n\t\tborder-radius: inherit;\n\t\tbackground: transparentize($neutral-400, 1);\n\n\t\ttransition: background $t-med $curve, transform $t-slow $curve $t-ufast, margin $t-slow $curve;\n\t}\n\n\t&:not(:disabled) {\n\t\t&:hover, &:focus {\n\t\t\t&::after {\n\t\t\t\tmargin: 0px;\n\t\t\t\ttransform: scale(1);\n\t\t\t\tbackground: transparentize($neutral-400, 1 - .15);\n\n\t\t\t\ttransition: background $t-fast $curve, transform $t-fast $curve, margin $t-fast $curve;\n\t\t\t}\n\t\t}\n\n\t\t&:active {\n\t\t\ttransition: border $t-fast;\n\t\t}\n\n\t\t&:focus {\n\t\t\tborder-color: $neutral-400;\n\t\t}\n\t}\n\n\t&:disabled {\n\t\tcursor: auto;\n\t\topacity: 0.65;\n\t\tcolor: $neutral-500;\n\t}\n}\n\n%material_icon_button {\n\t@extend %material_button;\n\tdisplay: inline-block;\n\n\t// width: 48px;\n\theight: 48px;\n\n\tpadding: 8px;\n\tborder-radius: 24px;\n\n\timg {\n\t\twidth: 30px;\n\t\theight: 30px;\n\t\tpointer-events: none;\n\t\tvertical-align: middle;\n\t}\n\n\tspan {\n\t\tcolor: $neutral-700;\n\t\tvertical-align: middle;\n\t\tpadding-right: 8px;\n\t\tpadding-left: 8px;\n\t}\n}\n","$neutral-000: #f0f4f8;\n$neutral-100: #d9e2ec;\n$neutral-200: #bcccdc;\n$neutral-300: #9fb3c8;\n$neutral-400: #829ab1;\n$neutral-500: #627d98;\n$neutral-600: #486581;\n$neutral-700: #334e68;\n$neutral-800: #243b53;\n$neutral-900: #102a43;\n$neutral-1000:#081e38;\n\n$accent-100: #e0fcff;\n$accent-200: #bef8fd;\n$accent-300: #87eaf2;\n$accent-400: #54d1db;\n$accent-500: #38bec9;\n$accent-600: #2cb1bc;\n$accent-700: #14919b;\n$accent-800: #0e7c86;\n$accent-900: #0a6c74;\n$accent-1000:#044e54;\n\n$t-ufast: 0.075s;\n$t-fast: 0.15s;\n$t-med: 0.3s;\n$t-slow: 0.5s;\n\n$wrap-wide: 1400px;\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
 /***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/pages/MainPage.scss":
-/*!*****************************************************************************************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/css-loader/dist/cjs.js!/home/auri/Code/Projects/AuriServer/node_modules/sass-loader/dist/cjs.js!./components/pages/MainPage.scss ***!
-  \*****************************************************************************************************************************************************************************************/
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/cjs.js!C:/Users/100To/Documents/AuriServe/node_modules/sass-loader/dist/cjs.js!./components/pages/MainPage.scss ***!
+  \***************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -720,9 +784,9 @@ ___CSS_LOADER_EXPORT___.push([module.i, ".MainPage-MediaCard {\n  height: min-co
 /***/ }),
 
 /***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/pages/MediaPage.scss":
-/*!******************************************************************************************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/css-loader/dist/cjs.js!/home/auri/Code/Projects/AuriServer/node_modules/sass-loader/dist/cjs.js!./components/pages/MediaPage.scss ***!
-  \******************************************************************************************************************************************************************************************/
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/cjs.js!C:/Users/100To/Documents/AuriServe/node_modules/sass-loader/dist/cjs.js!./components/pages/MediaPage.scss ***!
+  \****************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -742,9 +806,9 @@ ___CSS_LOADER_EXPORT___.push([module.i, ".MediaPage .MediaPage-Toolbar {\n  disp
 /***/ }),
 
 /***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/pages/Page.sass":
-/*!*************************************************************************************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/css-loader/dist/cjs.js!/home/auri/Code/Projects/AuriServer/node_modules/sass-loader/dist/cjs.js!./components/pages/Page.sass ***!
-  \*************************************************************************************************************************************************************************************/
+/*!***********************************************************************************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/cjs.js!C:/Users/100To/Documents/AuriServe/node_modules/sass-loader/dist/cjs.js!./components/pages/Page.sass ***!
+  \***********************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -764,9 +828,9 @@ ___CSS_LOADER_EXPORT___.push([module.i, ".Page .Page-Card {\n  height: min-conte
 /***/ }),
 
 /***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/pages/PagePage.sass":
-/*!*****************************************************************************************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/css-loader/dist/cjs.js!/home/auri/Code/Projects/AuriServer/node_modules/sass-loader/dist/cjs.js!./components/pages/PagePage.sass ***!
-  \*****************************************************************************************************************************************************************************************/
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/cjs.js!C:/Users/100To/Documents/AuriServe/node_modules/sass-loader/dist/cjs.js!./components/pages/PagePage.sass ***!
+  \***************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -786,9 +850,9 @@ ___CSS_LOADER_EXPORT___.push([module.i, "", "",{"version":3,"sources":[],"names"
 /***/ }),
 
 /***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/pages/PagesPage.sass":
-/*!******************************************************************************************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/css-loader/dist/cjs.js!/home/auri/Code/Projects/AuriServer/node_modules/sass-loader/dist/cjs.js!./components/pages/PagesPage.sass ***!
-  \******************************************************************************************************************************************************************************************/
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/cjs.js!C:/Users/100To/Documents/AuriServe/node_modules/sass-loader/dist/cjs.js!./components/pages/PagesPage.sass ***!
+  \****************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -808,9 +872,9 @@ ___CSS_LOADER_EXPORT___.push([module.i, ".PagesPage .PagesPage-Toolbar {\n  disp
 /***/ }),
 
 /***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/pages/PluginsPage.scss":
-/*!********************************************************************************************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/css-loader/dist/cjs.js!/home/auri/Code/Projects/AuriServer/node_modules/sass-loader/dist/cjs.js!./components/pages/PluginsPage.scss ***!
-  \********************************************************************************************************************************************************************************************/
+/*!******************************************************************************************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/cjs.js!C:/Users/100To/Documents/AuriServe/node_modules/sass-loader/dist/cjs.js!./components/pages/PluginsPage.scss ***!
+  \******************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -830,9 +894,9 @@ ___CSS_LOADER_EXPORT___.push([module.i, ".PluginsPage .PluginsPage-Toolbar {\n  
 /***/ }),
 
 /***/ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/pages/ThemesPage.scss":
-/*!*******************************************************************************************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/css-loader/dist/cjs.js!/home/auri/Code/Projects/AuriServer/node_modules/sass-loader/dist/cjs.js!./components/pages/ThemesPage.scss ***!
-  \*******************************************************************************************************************************************************************************************/
+/*!*****************************************************************************************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/cjs.js!C:/Users/100To/Documents/AuriServe/node_modules/sass-loader/dist/cjs.js!./components/pages/ThemesPage.scss ***!
+  \*****************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -852,9 +916,9 @@ ___CSS_LOADER_EXPORT___.push([module.i, ".ThemesPage .ThemesPage-Toolbar {\n  di
 /***/ }),
 
 /***/ "../../node_modules/css-loader/dist/runtime/api.js":
-/*!***************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/css-loader/dist/runtime/api.js ***!
-  \***************************************************************************************/
+/*!**************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/css-loader/dist/runtime/api.js ***!
+  \**************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -957,9 +1021,9 @@ function toComment(sourceMap) {
 /***/ }),
 
 /***/ "../../node_modules/history/esm/history.js":
-/*!*******************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/history/esm/history.js ***!
-  \*******************************************************************************/
+/*!******************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/history/esm/history.js ***!
+  \******************************************************************************/
 /*! exports provided: createBrowserHistory, createHashHistory, createMemoryHistory, createLocation, locationsAreEqual, parsePath, createPath */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1912,9 +1976,9 @@ function createMemoryHistory(props) {
 /***/ }),
 
 /***/ "../../node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js":
-/*!********************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js ***!
-  \********************************************************************************************************************/
+/*!*******************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js ***!
+  \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2028,9 +2092,9 @@ module.exports = hoistNonReactStatics;
 /***/ }),
 
 /***/ "../../node_modules/js-cookie/src/js.cookie.js":
-/*!***********************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/js-cookie/src/js.cookie.js ***!
-  \***********************************************************************************/
+/*!**********************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/js-cookie/src/js.cookie.js ***!
+  \**********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2215,9 +2279,9 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 /***/ }),
 
 /***/ "../../node_modules/mini-create-react-context/dist/esm/index.js":
-/*!****************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/mini-create-react-context/dist/esm/index.js ***!
-  \****************************************************************************************************/
+/*!***************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/mini-create-react-context/dist/esm/index.js ***!
+  \***************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2407,9 +2471,9 @@ var index = react__WEBPACK_IMPORTED_MODULE_0__["default"].createContext || creat
 /***/ }),
 
 /***/ "../../node_modules/moment/locale sync recursive \\b\\B":
-/*!********************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/moment/locale sync \b\B ***!
-  \********************************************************************************/
+/*!*******************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/moment/locale sync \b\B ***!
+  \*******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -2426,9 +2490,9 @@ webpackEmptyContext.id = "../../node_modules/moment/locale sync recursive \\b\\B
 /***/ }),
 
 /***/ "../../node_modules/moment/moment.js":
-/*!*************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/moment/moment.js ***!
-  \*************************************************************************/
+/*!************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/moment/moment.js ***!
+  \************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7540,9 +7604,9 @@ webpackEmptyContext.id = "../../node_modules/moment/locale sync recursive \\b\\B
 /***/ }),
 
 /***/ "../../node_modules/object-assign/index.js":
-/*!*******************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/object-assign/index.js ***!
-  \*******************************************************************************/
+/*!******************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/object-assign/index.js ***!
+  \******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7646,9 +7710,9 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /***/ }),
 
 /***/ "../../node_modules/preact/compat/dist/compat.module.js":
-/*!********************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/preact/compat/dist/compat.module.js ***!
-  \********************************************************************************************/
+/*!*******************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/preact/compat/dist/compat.module.js ***!
+  \*******************************************************************************************/
 /*! exports provided: useState, useReducer, useEffect, useLayoutEffect, useRef, useImperativeHandle, useMemo, useCallback, useContext, useDebugValue, useErrorBoundary, createElement, createContext, createRef, Fragment, Component, default, version, Children, render, hydrate, unmountComponentAtNode, createPortal, createFactory, cloneElement, isValidElement, findDOMNode, PureComponent, memo, forwardRef, unstable_batchedUpdates, StrictMode, Suspense, SuspenseList, lazy, __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -8083,9 +8147,9 @@ var on = function (n, t) {
 /***/ }),
 
 /***/ "../../node_modules/preact/hooks/dist/hooks.module.js":
-/*!******************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/preact/hooks/dist/hooks.module.js ***!
-  \******************************************************************************************/
+/*!*****************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/preact/hooks/dist/hooks.module.js ***!
+  \*****************************************************************************************/
 /*! exports provided: useState, useReducer, useEffect, useLayoutEffect, useRef, useImperativeHandle, useMemo, useCallback, useContext, useDebugValue, useErrorBoundary */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -8263,9 +8327,9 @@ function k(n, t) {
 /***/ }),
 
 /***/ "../../node_modules/prop-types/checkPropTypes.js":
-/*!*************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/prop-types/checkPropTypes.js ***!
-  \*************************************************************************************/
+/*!************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/prop-types/checkPropTypes.js ***!
+  \************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8369,9 +8433,9 @@ module.exports = checkPropTypes;
 /***/ }),
 
 /***/ "../../node_modules/prop-types/factoryWithTypeCheckers.js":
-/*!**********************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/prop-types/factoryWithTypeCheckers.js ***!
-  \**********************************************************************************************/
+/*!*********************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/prop-types/factoryWithTypeCheckers.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9023,9 +9087,9 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 /***/ }),
 
 /***/ "../../node_modules/prop-types/index.js":
-/*!****************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/prop-types/index.js ***!
-  \****************************************************************************/
+/*!***************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/prop-types/index.js ***!
+  \***************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9047,9 +9111,9 @@ if (true) {
 /***/ }),
 
 /***/ "../../node_modules/prop-types/lib/ReactPropTypesSecret.js":
-/*!***********************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/prop-types/lib/ReactPropTypesSecret.js ***!
-  \***********************************************************************************************/
+/*!**********************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/prop-types/lib/ReactPropTypesSecret.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9068,9 +9132,9 @@ module.exports = ReactPropTypesSecret;
 /***/ }),
 
 /***/ "../../node_modules/react-is/cjs/react-is.development.js":
-/*!*********************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/react-is/cjs/react-is.development.js ***!
-  \*********************************************************************************************/
+/*!********************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/react-is/cjs/react-is.development.js ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9268,9 +9332,9 @@ if (true) {
 /***/ }),
 
 /***/ "../../node_modules/react-is/index.js":
-/*!**************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/react-is/index.js ***!
-  \**************************************************************************/
+/*!*************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/react-is/index.js ***!
+  \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9284,9 +9348,9 @@ if (false) {} else {
 /***/ }),
 
 /***/ "../../node_modules/react-router-dom/esm/react-router-dom.js":
-/*!*************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/react-router-dom/esm/react-router-dom.js ***!
-  \*************************************************************************************************/
+/*!************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/react-router-dom/esm/react-router-dom.js ***!
+  \************************************************************************************************/
 /*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -9650,9 +9714,9 @@ if (true) {
 /***/ }),
 
 /***/ "../../node_modules/react-router/esm/react-router.js":
-/*!*****************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/react-router/esm/react-router.js ***!
-  \*****************************************************************************************/
+/*!****************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/react-router/esm/react-router.js ***!
+  \****************************************************************************************/
 /*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __HistoryContext, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -10446,9 +10510,9 @@ if (true) {
 /***/ }),
 
 /***/ "../../node_modules/react-router/node_modules/isarray/index.js":
-/*!***************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/react-router/node_modules/isarray/index.js ***!
-  \***************************************************************************************************/
+/*!**************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/react-router/node_modules/isarray/index.js ***!
+  \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -10459,9 +10523,9 @@ module.exports = Array.isArray || function (arr) {
 /***/ }),
 
 /***/ "../../node_modules/react-router/node_modules/path-to-regexp/index.js":
-/*!**********************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/react-router/node_modules/path-to-regexp/index.js ***!
-  \**********************************************************************************************************/
+/*!*********************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/react-router/node_modules/path-to-regexp/index.js ***!
+  \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10910,9 +10974,9 @@ function pathToRegexp(path, keys, options) {
 /***/ }),
 
 /***/ "../../node_modules/resolve-pathname/esm/resolve-pathname.js":
-/*!*************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/resolve-pathname/esm/resolve-pathname.js ***!
-  \*************************************************************************************************/
+/*!************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/resolve-pathname/esm/resolve-pathname.js ***!
+  \************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -10987,9 +11051,9 @@ function resolvePathname(to, from) {
 /***/ }),
 
 /***/ "../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js":
-/*!**************************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
-  \**************************************************************************************************************/
+/*!*************************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
+  \*************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -11267,9 +11331,9 @@ module.exports = function (list, options) {
 /***/ }),
 
 /***/ "../../node_modules/tiny-invariant/dist/tiny-invariant.esm.js":
-/*!**************************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/tiny-invariant/dist/tiny-invariant.esm.js ***!
-  \**************************************************************************************************/
+/*!*************************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/tiny-invariant/dist/tiny-invariant.esm.js ***!
+  \*************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -11295,9 +11359,9 @@ function invariant(condition, message) {
 /***/ }),
 
 /***/ "../../node_modules/tiny-warning/dist/tiny-warning.esm.js":
-/*!**********************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/tiny-warning/dist/tiny-warning.esm.js ***!
-  \**********************************************************************************************/
+/*!*********************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/tiny-warning/dist/tiny-warning.esm.js ***!
+  \*********************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -11328,9 +11392,9 @@ function warning(condition, message) {
 /***/ }),
 
 /***/ "../../node_modules/value-equal/esm/value-equal.js":
-/*!***************************************************************************************!*\
-  !*** /home/auri/Code/Projects/AuriServer/node_modules/value-equal/esm/value-equal.js ***!
-  \***************************************************************************************/
+/*!**************************************************************************************!*\
+  !*** C:/Users/100To/Documents/AuriServe/node_modules/value-equal/esm/value-equal.js ***!
+  \**************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -11511,8 +11575,8 @@ module.exports = content.locals || {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! preact */ "preact");
 /* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(preact__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Main_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Main.scss */ "./Main.scss");
-/* harmony import */ var _Main_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_Main_scss__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _Main_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Main.scss */ "./Main.scss");
+/* harmony import */ var _Main_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Main_scss__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/App */ "./components/App.tsx");
 
 
@@ -11644,7 +11708,7 @@ class App extends preact__WEBPACK_IMPORTED_MODULE_1__["Component"] {
 
     this.getPageData = async page => {
       try {
-        const r = await fetch('/admin/page-data/', {
+        const r = await fetch('/admin/pages/data/', {
           method: 'POST',
           cache: 'no-cache',
           headers: {
@@ -12240,6 +12304,88 @@ LoginForm.contextType = _AppContext__WEBPACK_IMPORTED_MODULE_3__["AppContext"];
 
 /***/ }),
 
+/***/ "./components/MediaIcon.sass":
+/*!***********************************!*\
+  !*** ./components/MediaIcon.sass ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/sass-loader/dist/cjs.js!./MediaIcon.sass */ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/MediaIcon.sass");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+
+
+module.exports = content.locals || {};
+
+/***/ }),
+
+/***/ "./components/MediaIcon.tsx":
+/*!**********************************!*\
+  !*** ./components/MediaIcon.tsx ***!
+  \**********************************/
+/*! exports provided: mediaIsImage, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mediaIsImage", function() { return mediaIsImage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return MediaIcon; });
+/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! preact */ "preact");
+/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(preact__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _MediaIcon_sass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MediaIcon.sass */ "./components/MediaIcon.sass");
+/* harmony import */ var _MediaIcon_sass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_MediaIcon_sass__WEBPACK_IMPORTED_MODULE_1__);
+
+
+const IMAGE_EXTS = ['png', 'svg', 'jpg', 'jpeg', 'svg', 'gif'];
+const ICON_PREFIX = '/admin/asset/icon/ext-';
+const ICONS = {
+  unknown: ICON_PREFIX + 'unknown-color.svg',
+  md: ICON_PREFIX + 'txt-color.svg',
+  txt: ICON_PREFIX + 'txt-color.svg',
+  doc: ICON_PREFIX + 'document-color.svg',
+  docx: ICON_PREFIX + 'document-color.svg',
+  xls: ICON_PREFIX + 'sheet-color.svg',
+  xlsx: ICON_PREFIX + 'sheet-color.svg',
+  ppt: ICON_PREFIX + 'slideshow-color.svg',
+  pptx: ICON_PREFIX + 'slideshow-color.svg',
+  image: ICON_PREFIX + 'image-color.svg'
+};
+function mediaIsImage(path) {
+  return IMAGE_EXTS.filter(p => path.endsWith('.' + p)).length > 0;
+}
+class MediaIcon extends preact__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  render(props) {
+    var _props$image, _props$image2, _ICONS$props$path$sub;
+
+    const isImage = (_props$image = props.image) !== null && _props$image !== void 0 ? _props$image : mediaIsImage(props.path);
+    const showImage = props.imageIcon === undefined || props.imageIcon;
+    let iconUrl = ICONS['unknown'];
+    if (isImage) iconUrl = showImage ? (_props$image2 = props.image) !== null && _props$image2 !== void 0 ? _props$image2 : props.path : ICONS['image'];else iconUrl = (_ICONS$props$path$sub = ICONS[props.path.substr(props.path.lastIndexOf('.') + 1)]) !== null && _ICONS$props$path$sub !== void 0 ? _ICONS$props$path$sub : iconUrl;
+    return preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
+      class: "MediaIcon" + (isImage && showImage ? '' : ' Icon'),
+      src: iconUrl,
+      alt: ""
+    });
+  }
+
+}
+
+/***/ }),
+
 /***/ "./components/MediaItem.scss":
 /*!***********************************!*\
   !*** ./components/MediaItem.scss ***!
@@ -12283,8 +12429,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(preact__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _MediaItem_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MediaItem.scss */ "./components/MediaItem.scss");
 /* harmony import */ var _MediaItem_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_MediaItem_scss__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Selectable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Selectable */ "./components/Selectable.tsx");
-/* harmony import */ var _common_util_Format__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/util/Format */ "../../common/util/Format.ts");
+/* harmony import */ var _MediaIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MediaIcon */ "./components/MediaIcon.tsx");
+/* harmony import */ var _Selectable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Selectable */ "./components/Selectable.tsx");
+/* harmony import */ var _common_util_Format__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../common/util/Format */ "../../common/util/Format.ts");
+
 
 
 
@@ -12299,28 +12447,22 @@ class MediaItem extends preact__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   }
 
   render() {
-    let isImage = this.props.item.ext === 'png' || this.props.item.ext === 'jpg' || this.props.item.ext === 'svg' || this.props.item.ext === 'gif';
-    let icon = '/admin/asset/icon/ext-unknown-color.svg';
-    if (isImage) icon = this.props.item.publicPath;else {
-      if (this.props.item.ext === 'pdf') icon = '/admin/asset/icon/ext-pdf-color.svg';else if (this.props.item.ext === 'md' || this.props.item.ext === 'txt') icon = '/admin/asset/icon/ext-txt-color.svg';else if (this.props.item.ext === 'doc' || this.props.item.ext === 'docx') icon = '/admin/asset/icon/ext-document-color.svg';else if (this.props.item.ext === 'xls' || this.props.item.ext === 'xlsx') icon = '/admin/asset/icon/ext-sheet-color.svg';else if (this.props.item.ext === 'ppt' || this.props.item.ext === 'pptx') icon = '/admin/asset/icon/ext-slideshow-color.svg';
-    }
-    return preact__WEBPACK_IMPORTED_MODULE_0__["h"](_Selectable__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    return preact__WEBPACK_IMPORTED_MODULE_0__["h"](_Selectable__WEBPACK_IMPORTED_MODULE_3__["default"], {
       class: "MediaItem",
       ind: this.props.ind,
       callbacks: this.callbacks,
       doubleClickSelects: true
-    }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
-      src: icon,
-      class: 'MediaItem-Image' + (isImage ? '' : ' icon')
+    }, preact__WEBPACK_IMPORTED_MODULE_0__["h"](_MediaIcon__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      path: this.props.item.publicPath
     }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
       class: "MediaItem-Description"
     }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("p", {
       class: "MediaItem-Title"
     }, this.props.item.name), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("p", {
       class: "MediaItem-Author"
-    }, `Uploaded by ${this.props.item.uploadUser} ${_common_util_Format__WEBPACK_IMPORTED_MODULE_3__["date"](this.props.item.uploadDate)}.`), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("p", {
+    }, `Uploaded by ${this.props.item.uploadUser} ${_common_util_Format__WEBPACK_IMPORTED_MODULE_4__["date"](this.props.item.uploadDate)}.`), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("p", {
       class: "MediaItem-Size"
-    }, (this.props.item.dimensions ? _common_util_Format__WEBPACK_IMPORTED_MODULE_3__["vector"](this.props.item.dimensions, 'px') + ' • ' : '') + _common_util_Format__WEBPACK_IMPORTED_MODULE_3__["bytes"](this.props.item.size))));
+    }, (this.props.item.dimensions ? _common_util_Format__WEBPACK_IMPORTED_MODULE_4__["vector"](this.props.item.dimensions, 'px') + ' • ' : '') + _common_util_Format__WEBPACK_IMPORTED_MODULE_4__["bytes"](this.props.item.size))));
   }
 
 }
@@ -12678,39 +12820,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(preact__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _MediaUploadItem_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MediaUploadItem.scss */ "./components/MediaUploadItem.scss");
 /* harmony import */ var _MediaUploadItem_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_MediaUploadItem_scss__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Selectable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Selectable */ "./components/Selectable.tsx");
-/* harmony import */ var _common_util_Format__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/util/Format */ "../../common/util/Format.ts");
+/* harmony import */ var _MediaIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MediaIcon */ "./components/MediaIcon.tsx");
+/* harmony import */ var _Selectable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Selectable */ "./components/Selectable.tsx");
+/* harmony import */ var _common_util_Format__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../common/util/Format */ "../../common/util/Format.ts");
+
 
 
 
 
 class MediaItem extends preact__WEBPACK_IMPORTED_MODULE_0__["Component"] {
-  // callbacks: ClickHandlerCallbacks;
   constructor(props) {
-    super(props); // this.callbacks = {
-    // 	onDoubleClick: this.props.onClick
-    // };
-
+    super(props);
     this.handleInputClick = this.handleInputClick.bind(this);
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleFilenameChange = this.handleFilenameChange.bind(this);
   }
 
   render() {
-    const ext = this.props.file.ext;
-    const isImage = !!this.props.file.thumbnail;
-    let icon = '/admin/asset/icon/ext-unknown-color.svg';
-    if (isImage) icon = this.props.file.thumbnail;else {
-      if (ext === 'pdf') icon = '/admin/asset/icon/ext-pdf-color.svg';else if (ext === 'md' || ext === 'txt') icon = '/admin/asset/icon/ext-txt-color.svg';else if (ext === 'doc' || ext === 'docx') icon = '/admin/asset/icon/ext-document-color.svg';else if (ext === 'xls' || ext === 'xlsx') icon = '/admin/asset/icon/ext-sheet-color.svg';else if (ext === 'ppt' || ext === 'pptx') icon = '/admin/asset/icon/ext-slideshow-color.svg';
-    }
     const identifier = this.props.file.name.toLowerCase().replace(/[ -]/g, '_').replace(/[^a-zA-Z0-9_]/g, '');
-    return preact__WEBPACK_IMPORTED_MODULE_0__["h"](_Selectable__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    return preact__WEBPACK_IMPORTED_MODULE_0__["h"](_Selectable__WEBPACK_IMPORTED_MODULE_3__["default"], {
       class: "MediaUploadItem",
       ind: this.props.ind,
       doubleClickSelects: true
-    }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
-      src: icon,
-      className: 'MediaItem-Image' + (isImage ? '' : ' icon')
+    }, preact__WEBPACK_IMPORTED_MODULE_0__["h"](_MediaIcon__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      path: this.props.file.file.name,
+      image: this.props.file.thumbnail
     }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
       className: "MediaItem-Description"
     }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("input", {
@@ -12734,7 +12868,7 @@ class MediaItem extends preact__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       onMouseUp: this.handleInputClick
     }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("p", {
       className: "MediaItem-Metadata"
-    }, `${_common_util_Format__WEBPACK_IMPORTED_MODULE_3__["bytes"](this.props.file.file.size)} • ` + `Last modified ${_common_util_Format__WEBPACK_IMPORTED_MODULE_3__["date"](this.props.file.file.lastModified)}`)));
+    }, `${_common_util_Format__WEBPACK_IMPORTED_MODULE_4__["bytes"](this.props.file.file.size)} • ` + `Last modified ${_common_util_Format__WEBPACK_IMPORTED_MODULE_4__["date"](this.props.file.file.lastModified)}`)));
   }
 
   handleNameChange(e) {
@@ -12765,15 +12899,15 @@ class MediaItem extends preact__WEBPACK_IMPORTED_MODULE_0__["Component"] {
 
 /***/ }),
 
-/***/ "./components/MediaView.scss":
+/***/ "./components/MediaView.sass":
 /*!***********************************!*\
-  !*** ./components/MediaView.scss ***!
+  !*** ./components/MediaView.sass ***!
   \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 var api = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
-            var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/sass-loader/dist/cjs.js!./MediaView.scss */ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/MediaView.scss");
+            var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js!../../../node_modules/sass-loader/dist/cjs.js!./MediaView.sass */ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/MediaView.sass");
 
             content = content.__esModule ? content.default : content;
 
@@ -12806,17 +12940,50 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return MediaView; });
 /* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! preact */ "preact");
 /* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(preact__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _MediaView_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MediaView.scss */ "./components/MediaView.scss");
-/* harmony import */ var _MediaView_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_MediaView_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _MediaView_sass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MediaView.sass */ "./components/MediaView.sass");
+/* harmony import */ var _MediaView_sass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_MediaView_sass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _MediaIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MediaIcon */ "./components/MediaIcon.tsx");
+/* harmony import */ var _common_util_Format__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../common/util/Format */ "../../common/util/Format.ts");
+
+
 
 
 class MediaView extends preact__WEBPACK_IMPORTED_MODULE_0__["Component"] {
-  render() {
+  render(props) {
     return preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
       className: "MediaView"
+    }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
+      class: "MediaView-Top"
+    }, preact__WEBPACK_IMPORTED_MODULE_0__["h"](_MediaIcon__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      path: props.item.publicPath,
+      imageIcon: false
+    }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
+      class: "MediaView-Info"
+    }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("h1", {
+      class: "MediaView-Name"
+    }, props.item.name, " ", preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", {
+      class: "MediaView-Path"
+    }, "( ", props.item.publicPath, " )")), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("h2", {
+      class: "MediaView-Author"
+    }, `Uploaded by ${props.item.uploadUser} ${_common_util_Format__WEBPACK_IMPORTED_MODULE_3__["date"](props.item.uploadDate)}.`), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("h3", {
+      class: "MediaView-Size"
+    }, _common_util_Format__WEBPACK_IMPORTED_MODULE_3__["bytes"](props.item.size) + (props.item.dimensions ? ' • ' + _common_util_Format__WEBPACK_IMPORTED_MODULE_3__["vector"](props.item.dimensions, 'px') : '')))), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
+      class: "MediaView-Toolbar"
+    }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
+      src: "/admin/asset/icon/trash-dark.svg",
+      alt: ""
+    }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Delete Media")), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
+      src: "/admin/asset/icon/refresh-dark.svg",
+      alt: ""
+    }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Replace Media"))), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
+      src: "/admin/asset/icon/check-dark.svg",
+      alt: ""
+    }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Done")))), Object(_MediaIcon__WEBPACK_IMPORTED_MODULE_2__["mediaIsImage"])(props.item.publicPath) && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
+      class: "MediaView-Image"
     }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
-      src: this.props.item.publicPath
-    }));
+      src: props.item.publicPath,
+      alt: ""
+    })));
   }
 
 }
@@ -13648,7 +13815,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Modal */ "./components/Modal.tsx");
 /* harmony import */ var _ElementEditor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ElementEditor */ "./components/editor/ElementEditor.tsx");
 /* harmony import */ var _DimensionTransition__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../DimensionTransition */ "./components/DimensionTransition.tsx");
-/* harmony import */ var _common_util_ObjectPath__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../common/util/ObjectPath */ "../../common/util/ObjectPath.ts");
+/* harmony import */ var _common_interface_Page__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../common/interface/Page */ "../../common/interface/Page.ts");
+/* harmony import */ var _common_util_ObjectPath__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../common/util/ObjectPath */ "../../common/util/ObjectPath.ts");
+
 
 
 
@@ -13665,40 +13834,84 @@ class EditElementTree extends preact__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       });
     };
 
+    this.handleEditCancel = () => {
+      this.setState({
+        editing: undefined
+      });
+    };
+
+    this.handleEditSave = props => {
+      const element = _common_util_ObjectPath__WEBPACK_IMPORTED_MODULE_6__["traversePath"](this.state.editing, this.state.tree);
+      const changed = JSON.stringify(element.props) !== JSON.stringify(props);
+
+      if (changed) {
+        element.props = props;
+        this.props.onChange(JSON.parse(JSON.stringify(this.state.tree)));
+      }
+
+      this.setState({
+        editing: undefined
+      });
+    };
+
     this.state = {
       tree: JSON.parse(JSON.stringify(this.props.tree))
     };
   }
 
   render() {
+    let element = undefined;
+
+    if (typeof this.state.editing === 'string') {
+      element = _common_util_ObjectPath__WEBPACK_IMPORTED_MODULE_6__["traversePath"](this.state.editing, this.state.tree);
+      if (_common_interface_Page__WEBPACK_IMPORTED_MODULE_5__["isInclude"](element)) element = element.elem;
+    }
+
     return preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
       class: "EditElementTree"
-    }, this.renderElement(this.state.tree, ''), typeof this.state.editing === 'string' && preact__WEBPACK_IMPORTED_MODULE_0__["h"](_Modal__WEBPACK_IMPORTED_MODULE_2__["default"], null, preact__WEBPACK_IMPORTED_MODULE_0__["h"](_DimensionTransition__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }, this.renderNode(this.state.tree, ''), typeof this.state.editing === 'string' && preact__WEBPACK_IMPORTED_MODULE_0__["h"](_Modal__WEBPACK_IMPORTED_MODULE_2__["default"], null, preact__WEBPACK_IMPORTED_MODULE_0__["h"](_DimensionTransition__WEBPACK_IMPORTED_MODULE_4__["default"], {
       duration: 200
     }, preact__WEBPACK_IMPORTED_MODULE_0__["h"](_ElementEditor__WEBPACK_IMPORTED_MODULE_3__["default"], {
-      element: _common_util_ObjectPath__WEBPACK_IMPORTED_MODULE_5__["traversePath"](this.state.editing, this.state.tree)
+      element: element,
+      onSave: this.handleEditSave,
+      onCancel: this.handleEditCancel
     }))));
   }
 
-  renderElement(elem, path) {
+  renderNode(elem, path) {
+    if (_common_interface_Page__WEBPACK_IMPORTED_MODULE_5__["isInclude"](elem)) return this.renderIncludeNode(elem, path);else return this.renderElementNode(elem, path);
+  }
+
+  renderElementNode(elem, path) {
     return preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
       key: path
     }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
       class: "EditElementTree-TreeItem",
       onClick: this.handleEdit.bind(this, path),
       disabled: !elem.props
-    }, elem.elem), elem.children && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("ul", null, elem.children.map((c, key) => this.renderElement(c, _common_util_ObjectPath__WEBPACK_IMPORTED_MODULE_5__["combinePath"](path, 'children', key)))));
-  } // private handleStopEdit = () => {
-  // 	this.setState({ editing: undefined });
-  // };
-  // private handleSetProps = (object: any) => {
-  // 	let element = ObjectPath.traversePath(this.state.editing!, this.state.tree);
-  // 	const props = element.props;
-  // 	const newProps = Object.assign({}, props, object);
-  // 	element.props = newProps;
-  // 	this.forceUpdate();
-  // };
+    }, elem.elem), elem.children && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("ul", null, elem.children.map((c, key) => this.renderNode(c, _common_util_ObjectPath__WEBPACK_IMPORTED_MODULE_6__["combinePath"](path, 'children', key)))));
+  }
 
+  renderIncludeNode(include, path) {
+    const exposed = this.recursivelyFindExposed(include, '');
+    return preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
+      class: "EditElementTree-IncludeItem",
+      key: path
+    }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("ul", null, exposed.map(c => this.renderElementNode(c.elem, _common_util_ObjectPath__WEBPACK_IMPORTED_MODULE_6__["combinePath"]('elem', c.path)))));
+  }
+
+  recursivelyFindExposed(elem, path) {
+    let exposed = [];
+    if (_common_interface_Page__WEBPACK_IMPORTED_MODULE_5__["isElement"](elem) && elem.exposeAs) exposed.push({
+      elem: elem,
+      path: path
+    });
+    ((_common_interface_Page__WEBPACK_IMPORTED_MODULE_5__["isInclude"](elem) ? elem.elem.children : elem.children) || []).forEach((c, key) => {
+      const childPath = _common_util_ObjectPath__WEBPACK_IMPORTED_MODULE_6__["combinePath"](path, 'children', key);
+      exposed.push(...this.recursivelyFindExposed(c, childPath));
+    });
+    return exposed;
+  }
 
 }
 
@@ -13757,17 +13970,25 @@ __webpack_require__.r(__webpack_exports__);
 
 class ElementEditor extends preact__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   constructor(p) {
-    super(p); // Deep copy using JSON is safe, because page data is already JSON.
+    super(p);
 
     this.handleSetProps = object => {
       const props = Object.assign({}, this.state.props, object);
       this.setState({
         props: props
       });
-      console.log(props);
+    };
+
+    this.handleCancel = () => {
+      this.props.onCancel();
+    };
+
+    this.handleSave = () => {
+      this.props.onSave(this.state.props);
     };
 
     this.state = {
+      // Deep copy using JSON is safe, because page data is already JSON.
       props: JSON.parse(JSON.stringify(p.element.props))
     };
   }
@@ -13775,18 +13996,20 @@ class ElementEditor extends preact__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   render() {
     var _this$context$plugins;
 
-    const editElement = (_this$context$plugins = this.context.plugins.elements.get(this.props.element.elem)) === null || _this$context$plugins === void 0 ? void 0 : _this$context$plugins.editElement;
-    if (editElement) return preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
-      class: "ElementEditor Custom"
-    }, preact__WEBPACK_IMPORTED_MODULE_0__["h"](editElement, {
+    const EditElement = (_this$context$plugins = this.context.plugins.elements.get(this.props.element.elem)) === null || _this$context$plugins === void 0 ? void 0 : _this$context$plugins.editElement;
+    const defs = !EditElement && this.context.data.elementDefs[this.props.element.elem];
+    return preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
+      class: "ElementEditor " + (EditElement ? "Custom" : "Automatic")
+    }, EditElement && preact__WEBPACK_IMPORTED_MODULE_0__["h"](EditElement, {
       props: this.state.props,
       setProps: this.handleSetProps
-    }));else {
-      const defs = this.context.data.elementDefs[this.props.element.elem];
-      return preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
-        class: "ElementEditor Fields"
-      }, this.renderPropsTable(defs.props, this.state.props, ""));
-    }
+    }), !EditElement && this.renderPropsTable(defs.props, this.state.props, ""), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
+      className: "ElementEditor-ActionBar"
+    }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
+      onClick: this.handleSave
+    }, "Save"), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
+      onClick: this.handleCancel
+    }, "Cancel")));
   }
 
   renderPropsTable(props, values, fullIdentifier) {
@@ -13984,6 +14207,18 @@ class ElementPropInput extends preact__WEBPACK_IMPORTED_MODULE_0__["Component"] 
         });
         break;
 
+      case 'html':
+        widget = preact__WEBPACK_IMPORTED_MODULE_0__["h"]("textarea", {
+          class: "ElementPropInput-Code",
+          ref: this.ref,
+          rows: 1,
+          name: this.props.identifier,
+          value: this.props.value,
+          onChange: this.handleChange,
+          onInput: this.handleChange
+        });
+        break;
+
       case 'number':
         widget = preact__WEBPACK_IMPORTED_MODULE_0__["h"]("input", {
           type: "number",
@@ -14148,6 +14383,131 @@ __webpack_require__.r(__webpack_exports__);
 class ElementPropsEditor extends preact__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   render() {
     return this.renderPropsTable(this.props.props, this.props.values, '');
+  }
+
+}
+
+/***/ }),
+
+/***/ "./components/editor/PageEditor.sass":
+/*!*******************************************!*\
+  !*** ./components/editor/PageEditor.sass ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../../../node_modules/css-loader/dist/cjs.js!../../../../node_modules/sass-loader/dist/cjs.js!./PageEditor.sass */ "../../node_modules/css-loader/dist/cjs.js!../../node_modules/sass-loader/dist/cjs.js!./components/editor/PageEditor.sass");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+
+
+module.exports = content.locals || {};
+
+/***/ }),
+
+/***/ "./components/editor/PageEditor.tsx":
+/*!******************************************!*\
+  !*** ./components/editor/PageEditor.tsx ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return PageEditor; });
+/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! preact */ "preact");
+/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(preact__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _PageEditor_sass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PageEditor.sass */ "./components/editor/PageEditor.sass");
+/* harmony import */ var _PageEditor_sass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_PageEditor_sass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _editor_EditElementTree__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../editor/EditElementTree */ "./components/editor/EditElementTree.tsx");
+/* harmony import */ var _common_interface_Page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../common/interface/Page */ "../../common/interface/Page.ts");
+
+
+
+
+class PageEditor extends preact__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+  constructor(p) {
+    super(p); // Deep copy using JSON is safe, because page data is already JSON.
+
+    this.handleChange = (part, tree) => {
+      let newPage = JSON.parse(JSON.stringify(this.state.page));
+      newPage.elements[part] = tree;
+      this.setState({
+        changes: this.state.changes + 1,
+        page: newPage
+      });
+    };
+
+    this.handleSave = () => {
+      this.setState({
+        changes: 0
+      });
+      let page = JSON.parse(JSON.stringify(this.state.page));
+      page.elements.header && this.recursivelyCleanExpansion(page.elements.header);
+      page.elements.footer && this.recursivelyCleanExpansion(page.elements.footer);
+      this.recursivelyCleanExpansion(page.elements.main);
+      this.props.onSave(page);
+    };
+
+    this.state = {
+      page: JSON.parse(JSON.stringify(this.props.page)),
+      changes: 0
+    };
+  }
+
+  render(_, state) {
+    return preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
+      class: "PageEditor"
+    }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
+      class: "PageEditor-Toolbar"
+    }, !!this.state.changes && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
+      onClick: this.handleSave
+    }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
+      src: "/admin/asset/icon/add-dark.svg"
+    }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Save")), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", {
+      class: "PageEditor-Changes"
+    }, this.state.changes, " Change", this.state.changes != 1 && 's')), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null)), typeof state.page.elements.header === 'object' && this.renderEditor(state.page.elements.header, 'header'), typeof state.page.elements.main === 'object' && this.renderEditor(state.page.elements.main, 'main'), typeof state.page.elements.footer === 'object' && this.renderEditor(state.page.elements.footer, 'footer'));
+  }
+
+  renderEditor(tree, part) {
+    return preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
+      class: "PageEditor-Tree"
+    }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("h2", null, part.charAt(0).toUpperCase() + part.substr(1)), preact__WEBPACK_IMPORTED_MODULE_0__["h"](_editor_EditElementTree__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      tree: tree,
+      onChange: this.handleChange.bind(this, part)
+    }));
+  }
+
+  recursivelyCleanExpansion(tree) {
+    var _ref, _ref$children;
+
+    if (_common_interface_Page__WEBPACK_IMPORTED_MODULE_3__["isInclude"](tree)) {
+      if (!tree.override) tree.override = {};
+      this.recursivelyCleanOverrides(tree.elem, tree.override);
+      delete tree.elem;
+    }
+
+    (_ref = _common_interface_Page__WEBPACK_IMPORTED_MODULE_3__["isInclude"](tree) ? tree.elem : tree) === null || _ref === void 0 ? void 0 : (_ref$children = _ref.children) === null || _ref$children === void 0 ? void 0 : _ref$children.forEach(e => this.recursivelyCleanExpansion(e));
+  }
+
+  recursivelyCleanOverrides(tree, overrides) {
+    var _tree$children;
+
+    if (tree.exposeAs && tree.props) overrides[tree.exposeAs] = tree.props;
+    (_tree$children = tree.children) === null || _tree$children === void 0 ? void 0 : _tree$children.forEach(e => _common_interface_Page__WEBPACK_IMPORTED_MODULE_3__["isElement"](e) && this.recursivelyCleanOverrides(e, overrides));
   }
 
 }
@@ -14511,7 +14871,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PagePage_sass__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_PagePage_sass__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _CardHeader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../CardHeader */ "./components/CardHeader.tsx");
 /* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../AppContext */ "./components/AppContext.tsx");
-/* harmony import */ var _editor_EditElementTree__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../editor/EditElementTree */ "./components/editor/EditElementTree.tsx");
+/* harmony import */ var _editor_PageEditor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../editor/PageEditor */ "./components/editor/PageEditor.tsx");
 
 
 
@@ -14521,6 +14881,21 @@ __webpack_require__.r(__webpack_exports__);
 class PagePage extends preact__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   constructor(p) {
     super(p);
+
+    this.handleSave = page => {
+      const pagePath = window.location.pathname.replace(/^\/admin\/pages\//g, '');
+      fetch('/admin/pages/update', {
+        cache: 'no-cache',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          path: pagePath,
+          body: page
+        })
+      });
+    };
   }
 
   componentDidMount() {
@@ -14536,12 +14911,13 @@ class PagePage extends preact__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       class: "Page PagePage"
     }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("section", {
       class: "Page-Card"
-    }, this.state.page && preact__WEBPACK_IMPORTED_MODULE_0__["h"](preact__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, preact__WEBPACK_IMPORTED_MODULE_0__["h"](_CardHeader__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    }, this.state.page && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"](_CardHeader__WEBPACK_IMPORTED_MODULE_3__["default"], {
       icon: "/admin/asset/icon/element-dark.svg",
       title: this.state.page.title,
       subtitle: this.state.page.description || preact__WEBPACK_IMPORTED_MODULE_0__["h"]("em", null, "No description.")
-    }), typeof this.state.page.elements.main === 'object' && preact__WEBPACK_IMPORTED_MODULE_0__["h"](_editor_EditElementTree__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      tree: this.state.page.elements.main
+    }), this.state.page && preact__WEBPACK_IMPORTED_MODULE_0__["h"](_editor_PageEditor__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      page: this.state.page,
+      onSave: this.handleSave
     }))));
   }
 
@@ -14751,20 +15127,24 @@ class PluginsPage extends preact__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       className: "MediaPage-Toolbar-Button",
       onClick: this.handleTogglePlugins
     }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
-      src: "/admin/asset/icon/add-dark.svg"
+      src: "/admin/asset/icon/add-dark.svg",
+      alt: ""
     }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Install Plugin")), this.state.selected.length > 0 && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
       onClick: this.handleTogglePlugins
     }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
-      src: "/admin/asset/icon/refresh-dark.svg"
+      src: "/admin/asset/icon/refresh-dark.svg",
+      alt: ""
     }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, 'Toggle Plugin' + (this.state.selected.length !== 1 ? ' (' + this.state.selected.length + ')' : '')))), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
       className: "MediaPage-Toolbar-Button",
       onClick: this.handleTogglePlugins
     }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
-      src: "/admin/asset/icon/sort-dark.svg"
+      src: "/admin/asset/icon/sort-dark.svg",
+      alt: ""
     }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Sort by Size")), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
       onClick: this.handleRefreshPlugins
     }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
-      src: "/admin/asset/icon/refresh-dark.svg"
+      src: "/admin/asset/icon/refresh-dark.svg",
+      alt: ""
     }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Refresh")))), preact__WEBPACK_IMPORTED_MODULE_0__["h"](_SelectGroup__WEBPACK_IMPORTED_MODULE_5__["default"], {
       className: "PluginsPage-Plugins",
       onSelectionChange: this.handleSelectionChange,
@@ -14874,12 +15254,35 @@ class ThemesPage extends preact__WEBPACK_IMPORTED_MODULE_0__["Component"] {
   constructor(props) {
     super(props);
     this.selected = [];
+
+    this.handleSelectionChange = selected => {
+      this.selected = selected;
+      this.setState({
+        selected: selected
+      });
+    };
+
+    this.handleToggleThemes = () => {
+      fetch('/admin/themes/toggle', {
+        method: 'POST',
+        cache: 'no-cache',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(this.selected.map(ind => this.context.data.themes[ind].identifier))
+      }).then(r => r.json()).then(this.context.handleSiteData);
+    };
+
+    this.handleRefreshThemes = () => {
+      fetch('/admin/themes/refresh', {
+        cache: 'no-cache',
+        method: 'POST'
+      }).then(r => r.json()).then(this.context.handleSiteData);
+    };
+
     this.state = {
       selected: []
     };
-    this.handleToggleThemes = this.handleToggleThemes.bind(this);
-    this.handleRefreshThemes = this.handleRefreshThemes.bind(this);
-    this.handleSelectionChange = this.handleSelectionChange.bind(this);
   }
 
   componentWillMount() {
@@ -14928,35 +15331,6 @@ class ThemesPage extends preact__WEBPACK_IMPORTED_MODULE_0__["Component"] {
     }))), ctx.data.themes.length === 0 && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("h2", {
       className: "ThemesPage-NoThemes"
     }, "No themes found."))));
-  }
-
-  handleSelectionChange(selected) {
-    this.selected = selected;
-    this.setState({
-      selected: selected
-    });
-  }
-
-  handleToggleThemes() {
-    fetch('/admin/themes/toggle', {
-      method: 'POST',
-      cache: 'no-cache',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(this.selected.map(ind => this.context.data.themes[ind].identifier))
-    }).then(r => r.json()).then(res => {
-      this.context.handleSiteData(res);
-    });
-  }
-
-  handleRefreshThemes() {
-    fetch('/admin/themes/refresh', {
-      cache: 'no-cache',
-      method: 'POST'
-    }).then(r => r.json()).then(res => {
-      this.context.handleSiteData(res);
-    });
   }
 
 }

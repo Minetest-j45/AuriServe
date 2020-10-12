@@ -41,21 +41,21 @@ export default class PluginsPage extends Preact.Component<{}, State> {
 						<div className="PluginsPage-Toolbar">
 							<div>
 								<button className="MediaPage-Toolbar-Button" onClick={this.handleTogglePlugins}>
-									<img src="/admin/asset/icon/add-dark.svg"/><span>Install Plugin</span>
+									<img src="/admin/asset/icon/add-dark.svg" alt=""/><span>Install Plugin</span>
 								</button>
 
 								{this.state.selected.length > 0 && <button onClick={this.handleTogglePlugins}>
-									<img src="/admin/asset/icon/refresh-dark.svg"/>
+									<img src="/admin/asset/icon/refresh-dark.svg" alt=""/>
 									<span>{'Toggle Plugin' + (this.state.selected.length !== 1 ? ' (' + this.state.selected.length + ')' : '')}</span>
 								</button>}
 							</div>
 							<div>
 								<button className="MediaPage-Toolbar-Button" onClick={this.handleTogglePlugins}>
-									<img src="/admin/asset/icon/sort-dark.svg"/><span>Sort by Size</span>
+									<img src="/admin/asset/icon/sort-dark.svg" alt=""/><span>Sort by Size</span>
 								</button>
 
 								<button onClick={this.handleRefreshPlugins}>
-									<img src="/admin/asset/icon/refresh-dark.svg"/><span>Refresh</span>
+									<img src="/admin/asset/icon/refresh-dark.svg" alt=""/><span>Refresh</span>
 								</button>
 							</div>
 						</div>

@@ -6,15 +6,15 @@ import './PagePage.sass';
 import CardHeader from '../CardHeader';
 import { AppContext } from '../AppContext';
 
-import EditElementTree from '../editor/EditElementTree';
+import PageEditor from '../editor/PageEditor';
 
-import { Page } from '../../../../common/interface/Page';
+import * as Page from '../../../../common/interface/Page';
 
 interface Props {
 }
 
 interface State {
-	page?: Page;
+	page?: Page.Page;
 }
 
 export default class PagePage extends Preact.Component<Props, State> {
@@ -24,7 +24,7 @@ export default class PagePage extends Preact.Component<Props, State> {
 
 	componentDidMount() {
 		let page: string = window.location.pathname.replace(/^\/admin\/pages\//g, '');
-		this.context.getPageData(page).then((page: Page) => this.setState({ page: page }));
+		this.context.getPageData(page).then((page: Page.Page) => this.setState({ page: page }));
 		this.context.refreshSiteData('elements');
 	}
 
@@ -32,15 +32,25 @@ export default class PagePage extends Preact.Component<Props, State> {
 		return (
 			<div class='Page PagePage'>
 				<section class='Page-Card'>
-					{this.state.page && <Preact.Fragment>
+					{this.state.page && <div>
 						<CardHeader icon='/admin/asset/icon/element-dark.svg' title={this.state.page!.title}
 							subtitle={this.state.page!.description || <em>No description.</em> as any as string} />
-
-						{typeof(this.state.page.elements.main) === 'object' && <EditElementTree tree={this.state.page.elements.main} />}
-					</Preact.Fragment>}
+						{this.state.page && <PageEditor page={this.state.page} onSave={this.handleSave} />}
+					</div>}
 				</section>
 			</div>
 		);
+	}
+
+	handleSave = (page: Page.Page) => {
+		const pagePath: string = window.location.pathname.replace(/^\/admin\/pages\//g, '');
+		
+		fetch('/admin/pages/update', {
+			cache: 'no-cache',
+			method: 'POST',
+    	headers: {'Content-Type': 'application/json'},
+    	body: JSON.stringify({ path: pagePath, body: page })
+		});
 	}
 }
 

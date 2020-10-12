@@ -2,6 +2,7 @@ import * as Preact from 'preact';
 
 import './MediaUploadItem.scss';
 
+import MediaIcon from './MediaIcon';
 import Selectable from './Selectable';
 import { UploadItemData } from './MediaUploadForm';
 
@@ -18,14 +19,8 @@ interface Props {
 }
 
 export default class MediaItem extends Preact.Component<Props, {}> {
-	// callbacks: ClickHandlerCallbacks;
-
 	constructor(props: Props) {
 		super(props);
-
-		// this.callbacks = {
-		// 	onDoubleClick: this.props.onClick
-		// };
 
 		this.handleInputClick = this.handleInputClick.bind(this);
 		this.handleNameChange = this.handleNameChange.bind(this);
@@ -33,24 +28,10 @@ export default class MediaItem extends Preact.Component<Props, {}> {
 	}
 
 	render() {
-		const ext = this.props.file.ext;
-		const isImage = !!this.props.file.thumbnail;
-
-		let icon = '/admin/asset/icon/ext-unknown-color.svg';
-		if (isImage) icon = this.props.file.thumbnail!;
-		else {
-			if (ext === 'pdf') icon = '/admin/asset/icon/ext-pdf-color.svg';
-			else if (ext === 'md' || ext === 'txt') icon = '/admin/asset/icon/ext-txt-color.svg';
-			else if (ext === 'doc' || ext === 'docx') icon = '/admin/asset/icon/ext-document-color.svg';
-			else if (ext === 'xls' || ext === 'xlsx') icon = '/admin/asset/icon/ext-sheet-color.svg';
-			else if (ext === 'ppt' || ext === 'pptx') icon = '/admin/asset/icon/ext-slideshow-color.svg';
-		}
-
 		const identifier = this.props.file.name.toLowerCase().replace(/[ -]/g, '_').replace(/[^a-zA-Z0-9_]/g, '');
-
 		return (
 			<Selectable class="MediaUploadItem" ind={this.props.ind} doubleClickSelects={true}>
-				<img src={icon} className={'MediaItem-Image' + (isImage ? '' : ' icon')}/>
+				<MediaIcon path={this.props.file.file.name} image={this.props.file.thumbnail} />
 				<div className="MediaItem-Description">
 
 					<input

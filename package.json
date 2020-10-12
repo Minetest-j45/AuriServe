@@ -4,8 +4,9 @@
 	"description": "",
 	"main": "build/Main.js",
 	"scripts": {
+		"super": "ts-node --project server/tsconfig.json ./server/src/Main.ts --super",
 		"dev": "npm run dev-admin & npm run dev-server",
-		"dev-admin": "cd admin; webpack --mode=development --watch --progress --config webpack.ts",
+		"dev-admin": "webpack --mode=development --watch --progress --config admin\\webpack.ts",
 		"dev-server": "nodemon --config server/nodemon.json",
 		"dist": "npm run dist-admin & npm run dist-server",
 		"dist-admin": "cd admin; webpack --mode=production --progress --config webpack.ts",

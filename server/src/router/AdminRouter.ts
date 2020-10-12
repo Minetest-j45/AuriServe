@@ -24,8 +24,8 @@ export default class AdminRouter extends Router {
 		* Authentication Routes
 		*/
 
-		this.router.post('/auth', async (req, res) => {
-			await this.routeSafely(res, async () => {
+		this.router.post('/auth', 
+			this.safeRoute(async (req: Express.Request, res: Express.Response) => {
 				const user = req.body.user;
 				const pass = req.body.pass;
 
@@ -33,35 +33,25 @@ export default class AdminRouter extends Router {
 					throw "Request is missing required parameters.";
 
 				res.send(await this.db.getAuthToken(user, pass));
-			});
-		});
+			})
+		);
 
 		/*
 		* Data Routes
 		*/
 
-		this.router.get('/data/:specifier?', async (req, res, next) => {
-			await this.routeAuthenticated(req, res, next, async () => {
+		this.router.get('/data/:specifier?', 
+			this.authRoute(async (req: Express.Request, res: Express.Response) => {
 				res.send(JSON.stringify(await this.getSiteData(req.params.specifier)));
-			});
-		});
-
-		this.router.post('/page-data/', async(req, res, next) => {
-			await this.routeAuthenticated(req, res, next, async () => {
-				if (!req.body.page || typeof(req.body.page) !== "string") 
-					throw "Request is missing required data.";
-					
-				const data = await this.pages.getPage(req.body.page);
-				res.send(JSON.stringify(data));
-			});
-		});
+			})
+		);
 
 		/*
 		* Media Routes
 		*/
 
-		this.router.post('/media/upload', async (req, res, next) => {
-			await this.routeAuthenticated(req, res, next, async () => {
+		this.router.post('/media/upload', 
+			this.authRoute(async (req: Express.Request, res: Express.Response) => {
 				const user = await this.db.authUser(req);
 
 				const file: UploadedFile = (req.files || {}).file as UploadedFile;
@@ -76,88 +66,89 @@ export default class AdminRouter extends Router {
 				let status = await this.db.acceptMedia(user, file, name, identifier);
 				if (status != MediaStatus.OK) res.status(409).send(status.toString());
 				else res.status(202).send(status.toString());
-			});
-		});
+			})
+		);
 
-		this.router.post('/media/delete', async (req, res, next) => {
-			await this.routeAuthenticated(req, res, next, async () => {
+		this.router.post('/media/delete', 
+			this.authRoute(async (req: Express.Request, res: Express.Response) => {
 				//TODO: Sanitize the fuck out of this
 				await this.db.deleteMedia(req.body);
 				res.send(JSON.stringify(await this.getSiteData('media')));
-			});
-		});
+			})
+		);
 
 		/*
 		* Theme Routes
 		*/
 
-		this.router.get('/themes/cover/:identifier.jpg', async (req, res, next) => {
-			await this.routeAuthenticated(req, res, next, async () => {
+		this.router.get('/themes/cover/:identifier.jpg', 
+			this.authRoute(async (req: Express.Request, res: Express.Response) => {
 				res.sendFile(path.join(this.dataPath, "themes", req.params.identifier, "cover.jpg"));
-			});
-		});
+			})
+		);
 
-		this.router.post('/themes/refresh', async (req, res, next) => {
-			await this.routeAuthenticated(req, res, next, async () => {
+		this.router.post('/themes/refresh',
+			this.authRoute(async (_: any, res: Express.Response) => {
 				await this.themes.refresh();
 				res.send(JSON.stringify(await this.getSiteData('themes&info')));
-			});
-		});
+			})
+		);
 
-		this.router.post('/themes/toggle', async (req, res, next) => {
-			await this.routeAuthenticated(req, res, next, async () => {
+		this.router.post('/themes/toggle', 
+			this.authRoute(async (req: Express.Request, res: Express.Response) => {
 				//TODO: Santiize the fuck outa this too
 				await this.themes.toggle(req.body);
 				res.send(JSON.stringify(await this.getSiteData('info')));
-			});
-		});
+			})
+		);
 
 		/*
 		* Plugin Routes
 		*/
 
-		this.router.get('/plugins/cover/:identifier.jpg', async (req, res, next) => {
-			await this.routeAuthenticated(req, res, next, async () => {
+		this.router.get('/plugins/cover/:identifier.jpg', 
+			this.authRoute(async (req: Express.Request, res: Express.Response) => {
 				res.sendFile(path.join(this.dataPath, "plugins", req.params.identifier, "cover.jpg"));
-			});
-		});
+			})
+		);
 
-		this.router.post('/plugins/refresh', async (req, res, next) => {
-			await this.routeAuthenticated(req, res, next, async () => {
+		this.router.post('/plugins/refresh', 
+			this.authRoute(async (_: any, res: Express.Response) => {
 				await this.plugins.refresh();
 				res.send(JSON.stringify(await this.getSiteData('plugins&info')));
-			});
-		});
+			})
+		);
 
-		this.router.post('/plugins/toggle', async (req, res, next) => {
-			await this.routeAuthenticated(req, res, next, async () => {
+		this.router.post('/plugins/toggle', 
+			this.authRoute(async (req: Express.Request, res: Express.Response) => {
 				await this.plugins.toggle(req.body);
 				res.send(JSON.stringify(await this.getSiteData('info')));
-			});
-		});
+			})
+		);
 
 		/*
-		* Element Routes
+		* Page Routes
 		*/
 
-		// this.router.post('/elements/create', async (req, res, next) => {
-		// 	await this.routeAuthenticated(req, res, next, async () => {
-		// 		const element = req.body.element;
-		// 		const identifier = req.body.identifier;
-		// 		const props = JSON.stringify(req.body.props);
+		this.router.post('/pages/data', 
+			this.authRoute(async (req: Express.Request, res: Express.Response) => {
+				if (!req.body.page || typeof(req.body.page) !== "string") 
+					throw "Request is missing required data.";
+					
+				const data = await this.pages.getExpandedPage(req.body.page);
+				res.send(JSON.stringify(data));
+			})
+		);
 
-		// 		if (typeof(identifier) != 'string' || typeof(element) != 'string') 
-		// 			throw 'Request is missing required data.';
+		this.router.post('/pages/update', 
+			this.authRoute(async (req: Express.Request, res: Express.Response) => {
+				if (!req.body.path || typeof req.body.path !== "string" || !req.body.body || typeof req.body.body !== "object")
+					throw "Request is missing required data.";
 
-		// 		if (sanitize(identifier) != identifier) 
-		// 			throw 'Identifier was not a properly sanitized value.';
-				
-		// 		if (!this.elements.getAllElements().get(element))
-		// 			throw 'Element of type ' + element + ' is not currently loaded.';
-
-		// 		await this.db.createElement(req.body.identifier, req.body.element, props);
-		// 	});
-		// });
+				await this.pages.updatePage(req.body.path, req.body.body);
+				res.sendStatus(200);
+			})
+		);
 		
 		/*
 		* Basic App Content
@@ -173,13 +164,15 @@ export default class AdminRouter extends Router {
 		this.app.use('/admin', this.router);
 	}
 
-	protected async routeAuthenticated(req: Express.Request, res: Express.Response, next: Express.NextFunction, fn: () => void, code?: number) {
-		try {
-			await this.db.authUser(req);
-			await this.routeSafely(res, fn, code);
-		}
-		catch (e) {
-			next();
+	protected authRoute(fn: (req: Express.Request, res: Express.Response, next: Express.NextFunction) => any, code?: number) {
+		return async (req: Express.Request, res: Express.Response, next: Express.NextFunction) => {
+			try {
+				await this.db.authUser(req);
+				await this.safeRoute(fn, code)(req, res, next);
+			}
+			catch (e) {
+				next();
+			}
 		}
 	}
 }

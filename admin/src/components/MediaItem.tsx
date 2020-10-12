@@ -2,6 +2,7 @@ import * as Preact from 'preact';
 
 import './MediaItem.scss';
 
+import MediaIcon from './MediaIcon';
 import Selectable from './Selectable';
 import { ClickHandlerCallbacks } from '../ClickHandler';
 
@@ -27,23 +28,9 @@ export default class MediaItem extends Preact.Component<Props, {}> {
 	}
 
 	render() {
-		let isImage = this.props.item.ext === 'png' || this.props.item.ext === 'jpg' ||
-			this.props.item.ext === 'svg' || this.props.item.ext === 'gif';
-		
-		let icon = '/admin/asset/icon/ext-unknown-color.svg';
-
-		if (isImage) icon = this.props.item.publicPath;
-		else {
-			if (this.props.item.ext === 'pdf') icon = '/admin/asset/icon/ext-pdf-color.svg';
-			else if (this.props.item.ext === 'md' || this.props.item.ext === 'txt') icon = '/admin/asset/icon/ext-txt-color.svg';
-			else if (this.props.item.ext === 'doc' || this.props.item.ext === 'docx') icon = '/admin/asset/icon/ext-document-color.svg';
-			else if (this.props.item.ext === 'xls' || this.props.item.ext === 'xlsx') icon = '/admin/asset/icon/ext-sheet-color.svg';
-			else if (this.props.item.ext === 'ppt' || this.props.item.ext === 'pptx') icon = '/admin/asset/icon/ext-slideshow-color.svg';
-		}
-
 		return (
 			<Selectable class="MediaItem" ind={this.props.ind} callbacks={this.callbacks} doubleClickSelects={true}>
-				<img src={icon} class={'MediaItem-Image' + (isImage ? '' : ' icon')}/>
+				<MediaIcon path={this.props.item.publicPath} />
 				<div class="MediaItem-Description">
 					<p class="MediaItem-Title">{this.props.item.name}</p>
 					<p class="MediaItem-Author">{`Uploaded by ${this.props.item.uploadUser} ${Format.date(this.props.item.uploadDate)}.`}</p>

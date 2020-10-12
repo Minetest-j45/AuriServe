@@ -127,7 +127,7 @@ export default class App extends Preact.Component<{}, State> {
 
 	private getPageData = async (page: string): Promise<Page> => {
 		try {
-			const r = await fetch('/admin/page-data/', {
+			const r = await fetch('/admin/pages/data/', {
 				method: 'POST',
 				cache: 'no-cache',
 	    	headers: {'Content-Type': 'application/json'},

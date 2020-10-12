@@ -12,6 +12,9 @@ import { Element as PageElement } from '../../../../common/interface/Page';
 
 interface Props {
 	element: PageElement;
+
+	onCancel: () => void;
+	onSave: (props: any) => void;
 }
 
 interface State {
@@ -22,20 +25,27 @@ export default class ElementEditor extends Preact.Component<Props, State> {
 	constructor(p: Props) {
 		super(p);
 
-		// Deep copy using JSON is safe, because page data is already JSON.
-		this.state = { props: JSON.parse(JSON.stringify(p.element.props)) };
+		this.state = {
+			// Deep copy using JSON is safe, because page data is already JSON.
+			props: JSON.parse(JSON.stringify(p.element.props)) 
+		};
 	}
 
 	render() {
-		const editElement = this.context.plugins.elements.get(this.props.element.elem)?.editElement;
+		const EditElement = this.context.plugins.elements.get(this.props.element.elem)?.editElement;
+		const defs = !EditElement && this.context.data.elementDefs[this.props.element.elem];
+		
+		return (
+			<div class={"ElementEditor " + (EditElement ? "Custom" : "Automatic")}>
+				{EditElement && <EditElement props={this.state.props} setProps={this.handleSetProps} />}
+				{!EditElement && this.renderPropsTable(defs.props, this.state.props, "")}
 
-		if (editElement) return (
-			<div class="ElementEditor Custom">{Preact.h(editElement, { props: this.state.props, setProps: this.handleSetProps })}</div>
+				<div className="ElementEditor-ActionBar">
+					<button onClick={this.handleSave}>Save</button>
+					<button onClick={this.handleCancel}>Cancel</button>
+				</div>
+			</div>
 		);
-		else {
-			const defs = this.context.data.elementDefs[this.props.element.elem];
-			return <div class="ElementEditor Fields">{this.renderPropsTable(defs.props, this.state.props, "")}</div>;
-		}
 	}
 
 	private renderPropsTable(props: Element.PropsTable, values: any, fullIdentifier: string) {
@@ -87,8 +97,14 @@ export default class ElementEditor extends Preact.Component<Props, State> {
 	private handleSetProps = (object: any) => {
 		const props = Object.assign({}, this.state.props, object);
 		this.setState({ props: props });
+	};
 
-		console.log(props);
+	private handleCancel = () => {
+		this.props.onCancel();
+	};
+
+	private handleSave = () => {
+		this.props.onSave(this.state.props);
 	};
 }
 
