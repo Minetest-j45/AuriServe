@@ -58,7 +58,7 @@
 		"eslint-config-prettier": "^6.11.0",
 		"eslint-loader": "^4.0.2",
 		"eslint-plugin-jsdoc": "^30.5.1",
-		"file-loader": "^6.0.0",
+		"file-loader": "^6.1.1",
 		"fork-ts-checker-webpack-plugin": "^5.2.0",
 		"moment-locales-webpack-plugin": "^1.2.0",
 		"nodemon": "^2.0.4",
