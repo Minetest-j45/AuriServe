@@ -49,7 +49,7 @@
 				opacity: 0.7
 				font-size: 14px
 
-	.MediaView-Image
+	.MediaView-Preview
 		display: block
 		position: relative
 		width: 100%
@@ -57,6 +57,7 @@
 		padding: 16px
 		margin-top: 16px
 
+		text-align: center
 		border-radius: 4px
 		background-color: $neutral-000
 
@@ -68,3 +69,9 @@
 
 			object-fit: contain
 			object-position: center center
+
+	.MediaView-UnknownPreview
+		@extend %material_button
+		display: inline-block
+		padding: 16px
+		margin: 48px auto

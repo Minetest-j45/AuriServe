@@ -192,6 +192,52 @@ export default class Database {
 
 
 	/**
+	* Replace a media asset with a new file.
+	*
+	* @param {string} user - The uploading user.
+	* @param {UploadedFile} item - The file to accept.
+	* @param {string} replace - Media identifier to replace.
+	*/
+
+	async replaceMedia(user: string, item: UploadedFile, replace: string): Promise<MediaStatus> {
+		try {
+			const media = this.db!.collection('media');
+			const siteinfo = this.db!.collection('siteinfo');
+
+			const existing = await media.findOne({ identifier: replace }) as any as DB.Media;
+			if (!existing) return MediaStatus.INVALID;
+			delete existing._id;
+	
+			// Make sure there is space in the server for
+			// the media, and update the media used value.
+			const sizeDiff = item.size - existing.size;
+			const max = (await siteinfo.findOne({})).mediaMax;
+			const ret = await siteinfo.findOneAndUpdate(
+				{mediaUsed: {$lte: max - sizeDiff }}, { $inc: { mediaUsed: sizeDiff }});
+
+			// Return if there wasn't enough space.
+			if (ret.value == null) return MediaStatus.MEDIA_LIMIT;
+
+			// const ext = item.name.substr(item.name.lastIndexOf("."));
+
+			await media.deleteOne({ identifier: replace });
+			await item.mv(existing.path);
+
+			existing.size = item.size;
+			existing.uploadUser = user;
+			existing.uploadDate = Date.now();
+
+			await media.insertOne(existing);
+			return MediaStatus.OK;
+		}
+		catch(e) {
+			console.log(e);
+			return MediaStatus.INVALID;
+		}
+	}
+
+
+	/**
 	* Delete a series of media objects from the database.
 	* 
 	* @param {string[]} identifiers - A list of media identifiers to delete.

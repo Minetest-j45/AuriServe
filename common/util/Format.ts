@@ -24,3 +24,11 @@ export function date(date: number) {
 	else if (d.getFullYear() == new Date().getFullYear()) return "on " + moment(date).format("MMMM Do");
 	else return "on " + moment(date).format("MMMM Do, YYYY");
 }
+
+export function cleanName(name: string, len?: number) {
+	//@ts-ignore
+	let cleanName = name.substr(0, name.lastIndexOf('.')).replace(/[_-]+/g, ' ').split(' ').map(([firstChar, ...rest]) =>
+		firstChar.toUpperCase() + rest.join('').toLowerCase()).join(' ');
+	if (len && cleanName.length > len) cleanName = cleanName.substr(0, len);
+	return cleanName;
+}

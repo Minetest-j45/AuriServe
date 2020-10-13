@@ -41,7 +41,7 @@ export default class ElementEditor extends Preact.Component<Props, State> {
 				{!EditElement && this.renderPropsTable(defs.props, this.state.props, "")}
 
 				<div className="ElementEditor-ActionBar">
-					<button onClick={this.handleSave}>Save</button>
+					<button onClick={this.handleSave}>Confirm</button>
 					<button onClick={this.handleCancel}>Cancel</button>
 				</div>
 			</div>

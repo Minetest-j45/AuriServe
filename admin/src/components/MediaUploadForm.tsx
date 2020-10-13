@@ -2,12 +2,13 @@ import * as Preact from 'preact';
 
 import './MediaUploadForm.scss';
 
-import CardHeader from './CardHeader';
 import SelectGroup from './SelectGroup';
 import MediaUploadItem from './MediaUploadItem';
 import DimensionTransition from './DimensionTransition';
 
 import { AppContext } from './AppContext';
+
+import * as Format from '../../../common/util/Format';
 
 enum MediaUploadState {
 	SELECTING,
@@ -48,17 +49,6 @@ export default class MediaUploadForm extends Preact.Component<Props, State> {
 			selected: [],
 			grid: false
 		};
-
-		this.handleKeyUp = this.handleKeyUp.bind(this);
-		this.handleClose = this.handleClose.bind(this);
-		this.handleUpload = this.handleUpload.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
-		this.handleNameChange = this.handleNameChange.bind(this);
-		this.handleViewToggle = this.handleViewToggle.bind(this);
-		this.handleRemoveFiles = this.handleRemoveFiles.bind(this);
-		this.handleFilesChange = this.handleFilesChange.bind(this);
-		this.handleFilenameChange = this.handleFilenameChange.bind(this);
-		this.handleSelectionChange = this.handleSelectionChange.bind(this);
 	}
 
 	componentDidMount() {
@@ -74,11 +64,8 @@ export default class MediaUploadForm extends Preact.Component<Props, State> {
 			file={f} ind={i} key={f.file.name} editable={this.state.state === MediaUploadState.SELECTING}
 			onNameChange={this.handleNameChange.bind(this, i)} onFilenameChange={this.handleFilenameChange.bind(this, i)}/>);
 
-		return <AppContext.Consumer>{ctx =>
+		return (
 			<form className="MediaUploadForm" onSubmit={(e) => e.preventDefault()}>
-				<CardHeader icon="/admin/asset/icon/document-dark.svg" title="Upload Media"
-					subtitle={`Upload new media assets to ${ctx.data.sitename}.`} />
-
 				<div className={'MediaUploadForm-InputWrap' + (this.state.state !== MediaUploadState.SELECTING ? ' disabled' : '')}>
 					<input type="file" multiple autoFocus
 						className="MediaUploadForm-Input"
@@ -137,18 +124,18 @@ export default class MediaUploadForm extends Preact.Component<Props, State> {
 					</div>
 				</div>
 			</form>
-		}</AppContext.Consumer>;
+		);
 	}
 
-	private handleKeyUp(e: KeyboardEvent): void {
+	private handleKeyUp = (e: KeyboardEvent) => {
 		if (e.key === 'Delete') this.handleRemoveFiles();
 	}
 
-	private handleViewToggle() {
+	private handleViewToggle = () => {
 		this.setState({ grid: !this.state.grid });
 	}
 
-	private handleRemoveFiles(): void {
+	private handleRemoveFiles = () => {
 		let files = [...this.state.files];
 		for (let i = this.state.selected.length - 1; i >= 0; i--) {
 			let ind = this.state.selected[i];
@@ -157,7 +144,7 @@ export default class MediaUploadForm extends Preact.Component<Props, State> {
 		this.setState({files: files});
 	}
 
-	private handleNameChange(ind: number, name: string) {
+	private handleNameChange = (ind: number, name: string) => {
 		let files = [...this.state.files];
 		let file = Object.assign(files[ind]);
 		file.name = name;
@@ -165,7 +152,7 @@ export default class MediaUploadForm extends Preact.Component<Props, State> {
 		this.setState({files: files});
 	}
 
-	private handleFilenameChange(ind: number, name: string) {
+	private handleFilenameChange = (ind: number, name: string) => {
 		const cleanName = name.toLowerCase().replace(/[ -]/g, '_').replace(/[^a-zA-Z0-9_]/g, '');
 
 		let files = [...this.state.files];
@@ -175,21 +162,21 @@ export default class MediaUploadForm extends Preact.Component<Props, State> {
 		this.setState({files: files});
 	}
 
-	private handleClose(e: any) {
+	private handleClose = (e: any) => {
 		e.preventDefault();
 		this.props.onCancel();
 	}
 
-	private handleUpload() {
+	private handleUpload = () => {
 		this.setState({state: MediaUploadState.UPLOADING, selected: []});
 		this.handleSubmit();
 	}
 
-	private handleSelectionChange(selected: number[]): void {
+	private handleSelectionChange = (selected: number[]) => {
 		this.setState({ selected: selected });
 	}
 
-	private handleSubmit(): void {
+	private handleSubmit = () => {
 		const threads = 6;
 
 		let promises = [];
@@ -230,8 +217,8 @@ export default class MediaUploadForm extends Preact.Component<Props, State> {
 		});
 	}
 
-	private async handleFilesChange(e: any) {
-		let target = e.target as HTMLInputElement;
+	private handleFilesChange = async (e: any) => {
+		const target = e.target as HTMLInputElement;
 		let files = [...this.state.files];
 		let newFiles = Array.from(target.files || []);
 		target.value = '';
@@ -240,12 +227,8 @@ export default class MediaUploadForm extends Preact.Component<Props, State> {
 			const ext = file.name.substr(file.name.lastIndexOf('.') + 1);
 			const isImage = ext === 'png' || ext === 'jpeg' || ext === 'jpg' || ext === 'svg' || ext === 'gif';
 
-			// @ts-ignore
-			let cleanName = file.name.substr(0, file.name.lastIndexOf('.')).replace(/[_-]+/g, ' ').split(' ').map(([firstChar, ...rest]) =>
-				firstChar.toUpperCase() + rest.join('').toLowerCase()).join(' ');
-			if (cleanName.length > 32) cleanName = cleanName.substr(0, 32);
-
-			let resolveFile = (image?: string) => {
+			const cleanName = Format.cleanName(file.name, 32);
+			const resolveFile = (image?: string) => {
 
 				let exists = false;
 				for (let existingFile of files) {

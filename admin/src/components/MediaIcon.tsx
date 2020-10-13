@@ -15,6 +15,8 @@ const ICONS: {[key: string]: string | undefined} = {
 	
 	md:  ICON_PREFIX + 'txt-color.svg',
 	txt: ICON_PREFIX + 'txt-color.svg',
+
+	pdf: ICON_PREFIX + 'pdf-color.svg',
 	
 	doc:  ICON_PREFIX + 'document-color.svg',
 	docx: ICON_PREFIX + 'document-color.svg',

@@ -54,7 +54,7 @@ export default class AdminRouter extends Router {
 			this.authRoute(async (req: Express.Request, res: Express.Response) => {
 				const user = await this.db.authUser(req);
 
-				const file: UploadedFile = (req.files || {}).file as UploadedFile;
+				const file: UploadedFile = req.files?.file as UploadedFile;
 				if (!file) throw "Request is missing a file.";
 
 				const name: string = req.body.name;
@@ -64,6 +64,24 @@ export default class AdminRouter extends Router {
 					throw "Request is missing required data.";
 
 				let status = await this.db.acceptMedia(user, file, name, identifier);
+				if (status != MediaStatus.OK) res.status(409).send(status.toString());
+				else res.status(202).send(status.toString());
+			})
+		);
+
+		this.router.post('/media/replace', 
+			this.authRoute(async (req: Express.Request, res: Express.Response) => {
+				const user = await this.db.authUser(req);
+
+				const file: UploadedFile = req.files?.file as UploadedFile;
+				if (!file) throw "Request is missing a file.";
+
+				const replace: string = req.body.replace;
+
+				if (typeof(replace) != "string")
+					throw "Request is missing required data.";
+
+				let status = await this.db.replaceMedia(user, file, replace);
 				if (status != MediaStatus.OK) res.status(409).send(status.toString());
 				else res.status(202).send(status.toString());
 			})
