@@ -249,41 +249,13 @@ export default class Database {
 		const docs = await (await media.find({identifier: { $in: identifiers }})).toArray();
 		await media.deleteMany({identifier: { $in: identifiers }});
 
+		let freedSpace = docs.map(d => d.size).reduce((a, b) => a + b);
+		this.db!.collection('siteinfo').findOneAndUpdate(
+			{}, { $inc: { mediaUsed: -freedSpace }});
+
 		// Delete all of the files.
 		await Promise.all(docs.map((d) => fs.unlink(d.path)));
 	}
-
-
-	/**
-	* Returns a list of all elements.
-	*/
-
-	// async listElements(): Promise<DB.Element[]> {
-	// 	return await (await this.db!.collection('elements').find({})).toArray();
-	// }
-
-
-	/**
-	* Create a new element with the specified props and add it to the database.
-	* Throws if the identifier is in use.
-	*
-	* @param {string} identifier  - The unique identifier for the element, must pass sanitize.
-	* @param {string} elementType - The type of the element, must be a valid type in the elements list.
-	* @param {string} properties  - A valid JSON string containing the element properties.
-	*/
-
-	// async createElement(identifier: string, elementType: string, properties: string) {
-	// 	const elements = this.db!.collection('elements');
-		
-	// 	if (await elements.findOne({identifier: identifier})) 
-	// 		throw "An element with that identifier already exists in the database.";
-
-	// 	elements.insertOne({
-	// 		identifier: identifier,
-	// 		type: elementType,
-	// 		props: properties
-	// 	} as DB.Element);
-	// }
 
 
 	/**
