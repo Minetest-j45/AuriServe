@@ -218,14 +218,18 @@ export default class Database {
 			// Return if there wasn't enough space.
 			if (ret.value == null) return MediaStatus.MEDIA_LIMIT;
 
-			// const ext = item.name.substr(item.name.lastIndexOf("."));
-
+			const ext = item.name.substr(item.name.lastIndexOf("."));
+			const p = path.join(path.dirname(existing.path), replace + ext);
 			await media.deleteOne({ identifier: replace });
-			await item.mv(existing.path);
+			await fs.unlink(existing.path);
+			await item.mv(p);
 
+			existing.path = p;
+			existing.ext = ext;
 			existing.size = item.size;
 			existing.uploadUser = user;
 			existing.uploadDate = Date.now();
+			existing.publicPath = `/media/${replace}${ext}`;
 
 			await media.insertOne(existing);
 			return MediaStatus.OK;

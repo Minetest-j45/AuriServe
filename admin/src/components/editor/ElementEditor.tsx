@@ -37,7 +37,7 @@ export default class ElementEditor extends Preact.Component<Props, State> {
 		
 		return (
 			<div class={"ElementEditor " + (EditElement ? "Custom" : "Automatic")}>
-				{EditElement && <EditElement props={this.state.props} setProps={this.handleSetProps} />}
+				{EditElement && <EditElement {...this.state.props} setProps={this.handleSetProps} />}
 				{!EditElement && this.renderPropsTable(defs.props, this.state.props, "")}
 
 				<div className="ElementEditor-ActionBar">

@@ -33,10 +33,9 @@ export default class MediaView extends Preact.Component<Props, State> {
 					<div class="MediaView-Top">
 						<MediaIcon path={props.item.publicPath} imageIcon={false} />
 						<div class="MediaView-Info">
-							<h1 class="MediaView-Name">{props.item.name} <span class="MediaView-Path">( {props.item.publicPath} )</span></h1>
-							<h2 class="MediaView-Author">{`Uploaded by ${props.item.uploadUser} ${Format.date(props.item.uploadDate)}.`}</h2>
-							<h3 class="MediaView-Size">{Format.bytes(props.item.size)
-								+ (props.item.dimensions ? ' • ' + Format.vector(props.item.dimensions, 'px') : '')}</h3>
+							<h1 class="MediaView-Name">{props.item.name}</h1>
+							<h2 class="MediaView-Details">{Format.bytes(props.item.size)} • Uploaded by {props.item.uploadUser} {Format.date(props.item.uploadDate)}</h2>
+							<h3 class="MediaView-Path">{props.item.publicPath}</h3>
 						</div>
 					</div>
 
