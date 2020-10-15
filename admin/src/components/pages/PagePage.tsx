@@ -51,7 +51,7 @@ export default class PagePage extends Preact.Component<Props, State> {
     	headers: {'Content-Type': 'application/json'},
     	body: JSON.stringify({ path: pagePath, body: page })
 		});
-	}
+	};
 }
 
 PagePage.contextType = AppContext;

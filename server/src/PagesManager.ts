@@ -41,7 +41,7 @@ export default class PagesManager {
 						// File is not a page.
 						if (!(fileContents as Page.Page).elements) return;
 
-						delete ((fileContents as Page.Page).elements);
+						delete ((fileContents as Partial<Page.Page>).elements);
 						pages[filePath.replace(/\.json$/g, '')] = fileContents;
 					}
 				})()

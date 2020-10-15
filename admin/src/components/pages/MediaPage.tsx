@@ -4,11 +4,11 @@ import './Page.sass';
 import './MediaPage.scss';
 
 import Modal from '../Modal';
-import MediaItem from '../MediaItem';
-import MediaView from '../MediaView';
 import CardHeader from '../CardHeader';
 import SelectGroup from '../SelectGroup';
-import MediaUploadForm from '../MediaUploadForm';
+import MediaItem from '../media/MediaItem';
+import MediaView from '../media/MediaView';
+import MediaUploadForm from '../media/MediaUploadForm';
 
 import { AppContext } from '../AppContext';
 
@@ -55,9 +55,9 @@ export default class MediaPage extends Preact.Component<{}, State> {
 								</button>}
 							</div>
 							<div>
-								{/*<button className="MediaPage-Toolbar-Button" onClick={this.handleUploadMedia}>
+								{/* <button className="MediaPage-Toolbar-Button" onClick={this.handleUploadMedia}>
 									<img src="/admin/asset/icon/sort-dark.svg"/><span>Sort by Size</span>
-								</button>*/}
+								</button> */}
 
 								<button className="MediaPage-Toolbar-Button" onClick={this.handleViewToggle}>
 									<img src={`/admin/asset/icon/${this.state.grid ? 'grid' : 'list'}-view-dark.svg`}/>
@@ -81,8 +81,8 @@ export default class MediaPage extends Preact.Component<{}, State> {
 					</section>
 
 					{this.state.viewed !== undefined && <Modal onClose={this.handleCloseMedia}>
-						<MediaView onDelete={this.handleDelete.bind(this, this.state.viewed)} 
-							item={ctx.data.media.filter(m => m.identifier == this.state.viewed)[0]}/>
+						<MediaView onDelete={this.handleDelete.bind(this, this.state.viewed) as () => void}
+							item={ctx.data.media.filter(m => m.identifier === this.state.viewed)[0]}/>
 					</Modal>}
 
 					{this.state.uploading && <Modal>
@@ -97,37 +97,35 @@ export default class MediaPage extends Preact.Component<{}, State> {
 
 	private handleKeyUp = (e: KeyboardEvent) => {
 		if (e.key === 'Delete') this.handleDeleteSelection();
-	}
+	};
 
 	private handleViewToggle = () => {
 		this.setState({ grid: !this.state.grid });
-	}
+	};
 
 	private handleOpenMedia = (key: string) => {
 		this.setState({ viewed: key });
-	}
+	};
 
 	private handleCloseMedia = () => {
 		this.setState({ viewed: undefined });
-	}
+	};
 
 	private handleUploadCancel = () => {
 		this.setState({ uploading: false });
-	}
+	};
 
 	private handleUploadMedia = () => {
 		this.handleSelectionChange([]);
 		this.setState({ uploading: true });
-	}
+	};
 
 	private handleDeleteSelection = () => {
 		if (this.state.selected.length === 0) return;
 		this.handleDelete(...this.state.selected.map(ind => this.context.data.media[ind].identifier));
-	}
+	};
 
 	private handleDelete = (...identifiers: string[]) => {
-		if (this.state.selected.length === 0) return;
-		
 		fetch('/admin/media/delete', {
 			method: 'POST',
 			cache: 'no-cache',
@@ -137,11 +135,11 @@ export default class MediaPage extends Preact.Component<{}, State> {
 			this.setState({ viewed: undefined });
 			this.context.handleSiteData(res);
 		});
-	}
+	};
 
 	private handleSelectionChange = (selected: number[]) => {
 		this.setState({ selected: selected });
-	}
+	};
 }
 
 MediaPage.contextType = AppContext;

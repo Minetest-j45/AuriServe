@@ -1,6 +1,6 @@
 import * as Preact from 'preact';
 
-import "./ElementEditor.sass";
+import './ElementEditor.sass';
 
 import { AppContext } from '../AppContext';
 
@@ -27,20 +27,20 @@ export default class ElementEditor extends Preact.Component<Props, State> {
 
 		this.state = {
 			// Deep copy using JSON is safe, because page data is already JSON.
-			props: JSON.parse(JSON.stringify(p.element.props)) 
+			props: JSON.parse(JSON.stringify(p.element.props))
 		};
 	}
 
 	render() {
 		const EditElement = this.context.plugins.elements.get(this.props.element.elem)?.editElement;
 		const defs = !EditElement && this.context.data.elementDefs[this.props.element.elem];
-		
-		return (
-			<div class={"ElementEditor " + (EditElement ? "Custom" : "Automatic")}>
-				{EditElement && <EditElement {...this.state.props} setProps={this.handleSetProps} />}
-				{!EditElement && this.renderPropsTable(defs.props, this.state.props, "")}
 
-				<div className="ElementEditor-ActionBar">
+		return (
+			<div class={'ElementEditor ' + (EditElement ? 'Custom' : 'Automatic')}>
+				{EditElement && <EditElement {...this.state.props} setProps={this.handleSetProps} />}
+				{!EditElement && this.renderPropsTable(defs.props, this.state.props, '')}
+
+				<div className='ElementEditor-ActionBar'>
 					<button onClick={this.handleSave}>Confirm</button>
 					<button onClick={this.handleCancel}>Cancel</button>
 				</div>
@@ -50,7 +50,7 @@ export default class ElementEditor extends Preact.Component<Props, State> {
 
 	private renderPropsTable(props: Element.PropsTable, values: any, fullIdentifier: string) {
 		return (
-			<div className="ElementEditor-PropsTable">
+			<div className='ElementEditor-PropsTable'>
 				{Object.entries(props).map(([k, v]) => this.renderProp(k, v, values, fullIdentifier + (fullIdentifier !== '' ? '.' : '') + k))}
 			</div>
 		);
@@ -60,9 +60,9 @@ export default class ElementEditor extends Preact.Component<Props, State> {
 		// Table
 		if ('fields' in p) {
 			const friendlyName = p.name || identifier.split(' ').map(s => s.charAt(0).toUpperCase() + s.substr(1)).join(' ');
-			
+
 			return (
-				<label key={fullIdentifier + '-LABEL'} className="ElementEditor-TableWrap">
+				<label key={fullIdentifier + '-LABEL'} className='ElementEditor-TableWrap'>
 					<span>{friendlyName}</span>
 					{this.renderPropsTable(p.fields, values[identifier], fullIdentifier)}
 				</label>
@@ -76,7 +76,7 @@ export default class ElementEditor extends Preact.Component<Props, State> {
 					key={fullIdentifier}
 					identifier={identifier}
 					value={values[identifier]}
-					onChange={this.handleSetProps} 
+					onChange={this.handleSetProps}
 				/>
 			);
 		}
@@ -88,7 +88,7 @@ export default class ElementEditor extends Preact.Component<Props, State> {
 					key={fullIdentifier}
 					identifier={identifier}
 					value={values[identifier]}
-					setProps={this.handleSetProps} 
+					setProps={this.handleSetProps}
 				/>
 			);
 		}

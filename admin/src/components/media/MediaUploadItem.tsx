@@ -3,10 +3,10 @@ import * as Preact from 'preact';
 import './MediaUploadItem.scss';
 
 import MediaIcon from './MediaIcon';
-import Selectable from './Selectable';
+import Selectable from '../Selectable';
 import { UploadItemData } from './MediaUploadForm';
 
-import * as Format from '../../../common/util/Format';
+import * as Format from '../../../../common/util/Format';
 
 interface Props {
 	file: UploadItemData;

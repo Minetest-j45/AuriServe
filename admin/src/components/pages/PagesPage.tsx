@@ -4,9 +4,7 @@ import { NavLink as Link } from 'react-router-dom';
 import './Page.sass';
 import './PagesPage.sass';
 
-import Modal from '../Modal';
 import CardHeader from '../CardHeader';
-import CreateElementForm from '../editor/CreateElementForm';
 
 import { AppContext } from '../AppContext';
 
@@ -33,11 +31,6 @@ export default class PagesPage extends Preact.Component<{}, State> {
 					<section class="Page-Card">
 						<CardHeader icon="/admin/asset/icon/element-dark.svg" title="Manage Pages"
 							subtitle={'Manage site pages and elements.'} />
-						<div class="PagesPage-Toolbar">
-							<button class="PagesPage-Toolbar-Button" onClick={this.toggleCreateElement}>
-								<img src="/admin/asset/icon/add-dark.svg"/><span>Create new Element</span>
-							</button>
-						</div>
 
 						<ul class="PagesPage-Pages">
 							{Object.keys(ctx.data.pages).sort((a, b) => a > b ? 1 : -1).map(p =>
@@ -50,10 +43,6 @@ export default class PagesPage extends Preact.Component<{}, State> {
 						</ul>
 
 					</section>
-
-					{this.state.create && <Modal>
-						<CreateElementForm onCancel={this.toggleCreateElement}/>
-					</Modal>}
 				</div>
 			}</AppContext.Consumer>
 		);

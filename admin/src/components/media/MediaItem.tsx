@@ -3,11 +3,11 @@ import * as Preact from 'preact';
 import './MediaItem.scss';
 
 import MediaIcon from './MediaIcon';
-import Selectable from './Selectable';
-import { ClickHandlerCallbacks } from '../ClickHandler';
+import Selectable from '../Selectable';
+import { ClickHandlerCallbacks } from '../../ClickHandler';
 
-import * as Format from '../../../common/util/Format';
-import { Media } from '../../../common/interface/DBStructs';
+import * as Format from '../../../../common/util/Format';
+import { Media } from '../../../../common/interface/DBStructs';
 
 interface Props {
 	item: Media;

@@ -225,7 +225,7 @@ export default class Database {
 			await item.mv(p);
 
 			existing.path = p;
-			existing.ext = ext;
+			existing.ext = ext.substr(1);
 			existing.size = item.size;
 			existing.uploadUser = user;
 			existing.uploadDate = Date.now();

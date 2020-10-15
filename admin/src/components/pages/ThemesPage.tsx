@@ -71,7 +71,7 @@ export default class ThemesPage extends Preact.Component<{}, State> {
 	private handleSelectionChange = (selected: number[]): void => {
 		this.selected = selected;
 		this.setState({ selected: selected });
-	}
+	};
 
 	private handleToggleThemes = (): void => {
 		fetch('/admin/themes/toggle', {
@@ -80,14 +80,14 @@ export default class ThemesPage extends Preact.Component<{}, State> {
     	headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify(this.selected.map(ind => this.context.data.themes[ind].identifier))
 		}).then(r => r.json()).then(this.context.handleSiteData);
-	}
+	};
 
 	private handleRefreshThemes = (): void => {
 		fetch('/admin/themes/refresh', {
 			cache: 'no-cache',
 			method: 'POST'
 		}).then(r => r.json()).then(this.context.handleSiteData);
-	}
+	};
 }
 
 ThemesPage.contextType = AppContext;

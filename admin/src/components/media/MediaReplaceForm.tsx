@@ -4,9 +4,9 @@ import './MediaReplaceForm.sass';
 
 import MediaIcon from './MediaIcon';
 
-import { AppContext } from './AppContext';
+import { AppContext } from '../AppContext';
 
-import * as Format from '../../../common/util/Format';
+import * as Format from '../../../../common/util/Format';
 
 enum FormState {
 	SELECTING,
@@ -18,7 +18,7 @@ interface Props {
 	replace: string;
 	accept?: string;
 
-	onSubmit: () => {};
+	onSubmit: () => void;
 }
 
 interface State {
@@ -36,39 +36,39 @@ export default class MediaUploadForm extends Preact.Component<Props, State> {
 
 	render() {
 		return (
-			<form class="MediaReplaceForm" onSubmit={(e) => e.preventDefault()}>
-				<div class={"MediaReplaceForm-InputWrap" + 
+			<form class='MediaReplaceForm' onSubmit={(e) => e.preventDefault()}>
+				<div class={'MediaReplaceForm-InputWrap' +
 					(this.state.file ? this.state.state === FormState.UPLOADING ? ' Hidden' : ' Back' : '')}>
 					{!this.state.file && <Preact.Fragment>
-						<input type="file" autoFocus accept={this.props.accept}
-							class="MediaReplaceForm-Input"
+						<input type='file' autoFocus accept={this.props.accept}
+							class='MediaReplaceForm-Input'
 							onChange={this.handleFileSelect} />
 						<h2>Click or drag a replacement file here.</h2>
 					</Preact.Fragment>}
 					{this.state.file && <button onClick={this.handleFileRemove}
-						class="MediaReplaceForm-IconButton MediaReplaceForm-BackButton" >
-						<img src="/admin/asset/icon/back-dark.svg" alt="" />
+						class='MediaReplaceForm-IconButton MediaReplaceForm-BackButton' >
+						<img src='/admin/asset/icon/back-dark.svg' alt='' />
 						<span>Change File</span>
 					</button>}
 				</div>
 
-				<div class={"MediaReplaceForm-Preview" + (this.state.file ? ' Expand' : '')}>
+				<div class={'MediaReplaceForm-Preview' + (this.state.file ? ' Expand' : '')}>
 					{this.state.file && <Preact.Fragment>
 						<MediaIcon path={this.state.file.name} image={this.state.imagePreview} />
-						<div class="MediaReplaceForm-PreviewDescription">
-							<p class="MediaReplaceForm-PreviewTitle">{Format.cleanName(this.state.file.name)}</p>
-							<p class="MediaReplaceForm-PreviewAuthor">{this.state.file.name}</p>
-							<p class="MediaReplaceForm-PreviewSize">{Format.bytes(this.state.file.size)} • 
+						<div class='MediaReplaceForm-PreviewDescription'>
+							<p class='MediaReplaceForm-PreviewTitle'>{Format.cleanName(this.state.file.name)}</p>
+							<p class='MediaReplaceForm-PreviewAuthor'>{this.state.file.name}</p>
+							<p class='MediaReplaceForm-PreviewSize'>{Format.bytes(this.state.file.size)} •
 							Last modified {Format.date(this.state.file.lastModified)}</p>
 						</div>
 					</Preact.Fragment>}
 				</div>
 
 				<button onClick={this.handleUpload}
-					class="MediaReplaceForm-IconButton MediaReplaceForm-SubmitButton"
+					class='MediaReplaceForm-IconButton MediaReplaceForm-SubmitButton'
 					disabled={!this.state.file || this.state.state === FormState.UPLOADING}>
-						<img src="/admin/asset/icon/check-dark.svg" alt="" />
-						<span>Replace</span>
+					<img src='/admin/asset/icon/check-dark.svg' alt='' />
+					<span>Replace</span>
 				</button>
 			</form>
 		);

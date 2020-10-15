@@ -2,13 +2,13 @@ import * as Preact from 'preact';
 
 import './MediaUploadForm.scss';
 
-import SelectGroup from './SelectGroup';
+import SelectGroup from '../SelectGroup';
 import MediaUploadItem from './MediaUploadItem';
-import DimensionTransition from './DimensionTransition';
+import DimensionTransition from '../DimensionTransition';
 
-import { AppContext } from './AppContext';
+import { AppContext } from '../AppContext';
 
-import * as Format from '../../../common/util/Format';
+import * as Format from '../../../../common/util/Format';
 
 enum MediaUploadState {
 	SELECTING,
@@ -129,11 +129,11 @@ export default class MediaUploadForm extends Preact.Component<Props, State> {
 
 	private handleKeyUp = (e: KeyboardEvent) => {
 		if (e.key === 'Delete') this.handleRemoveFiles();
-	}
+	};
 
 	private handleViewToggle = () => {
 		this.setState({ grid: !this.state.grid });
-	}
+	};
 
 	private handleRemoveFiles = () => {
 		let files = [...this.state.files];
@@ -142,7 +142,7 @@ export default class MediaUploadForm extends Preact.Component<Props, State> {
 			files.splice(ind, 1);
 		}
 		this.setState({files: files});
-	}
+	};
 
 	private handleNameChange = (ind: number, name: string) => {
 		let files = [...this.state.files];
@@ -150,7 +150,7 @@ export default class MediaUploadForm extends Preact.Component<Props, State> {
 		file.name = name;
 		files[ind] = file;
 		this.setState({files: files});
-	}
+	};
 
 	private handleFilenameChange = (ind: number, name: string) => {
 		const cleanName = name.toLowerCase().replace(/[ -]/g, '_').replace(/[^a-zA-Z0-9_]/g, '');
@@ -160,21 +160,21 @@ export default class MediaUploadForm extends Preact.Component<Props, State> {
 		file.identifier = cleanName;
 		files[ind] = file;
 		this.setState({files: files});
-	}
+	};
 
 	private handleClose = (e: any) => {
 		e.preventDefault();
 		this.props.onCancel();
-	}
+	};
 
 	private handleUpload = () => {
 		this.setState({state: MediaUploadState.UPLOADING, selected: []});
 		this.handleSubmit();
-	}
+	};
 
 	private handleSelectionChange = (selected: number[]) => {
 		this.setState({ selected: selected });
-	}
+	};
 
 	private handleSubmit = () => {
 		const threads = 6;
@@ -215,7 +215,7 @@ export default class MediaUploadForm extends Preact.Component<Props, State> {
 				this.props.onCancel();
 			});
 		});
-	}
+	};
 
 	private handleFilesChange = async (e: any) => {
 		const target = e.target as HTMLInputElement;
@@ -260,7 +260,7 @@ export default class MediaUploadForm extends Preact.Component<Props, State> {
 		})));
 		
 		this.setState({files: files});
-	}
-}
+	};
+};
 
 MediaUploadForm.contextType = AppContext;

@@ -13,7 +13,7 @@ import * as ObjectPath from '../../../../common/util/ObjectPath';
 interface Props {
 	tree: Page.Child;
 
-	onChange: (tree: Page.Child) => void; 
+	onChange: (tree: Page.Child) => void;
 }
 
 interface State {
@@ -41,7 +41,7 @@ export default class EditElementTree extends Preact.Component<Props, State> {
 				{this.renderNode(this.state.tree, '')}
 				{typeof(this.state.editing) === 'string' && <Modal>
 					<DimensionTransition duration={200}>
-						<ElementEditor 
+						<ElementEditor
 							element={element}
 							onSave={this.handleEditSave}
 							onCancel={this.handleEditCancel} />
@@ -76,10 +76,10 @@ export default class EditElementTree extends Preact.Component<Props, State> {
 		);
 	}
 
-	private recursivelyFindExposed(elem: Page.Child, path: string): { elem: Page.Element, path: string}[] {
-		let exposed: { elem: Page.Element, path: string }[] = [];
+	private recursivelyFindExposed(elem: Page.Child, path: string): { elem: Page.Element; path: string}[] {
+		let exposed: { elem: Page.Element; path: string }[] = [];
 
-		if (Page.isElement(elem) && elem.exposeAs) 
+		if (Page.isElement(elem) && elem.exposeAs)
 			exposed.push({ elem: elem, path: path });
 
 		((Page.isInclude(elem) ? elem.elem!.children : elem.children) || []).forEach((c, key) => {

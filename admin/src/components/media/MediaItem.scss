@@ -1,8 +1,7 @@
-@import "../partial/Vars";
-@import "../partial/Ext";
+@import "../../partial/Vars";
+@import "../../partial/Ext";
 
 .MediaItem {
-	// @extend %material_border;
 	@extend %material_button;
 	background: transparent;
 	border-color: $neutral-100;
