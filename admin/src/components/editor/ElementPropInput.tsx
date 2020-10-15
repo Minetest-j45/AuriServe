@@ -93,7 +93,10 @@ export default class ElementPropInput extends Preact.Component<Props, State> {
 
 		case 'enum':
 			widget = <select name={this.props.identifier} onChange={this.handleChange}>
-				{(type as any as string[]).map(t => <option selected={this.props.value === t} value={t}>{t}</option>)}
+				{(type as any as string[]).map(t => {
+					const title = t.split(' ').map(s => s.charAt(0).toUpperCase() + s.substr(1)).join(' ');
+					return <option selected={this.props.value === t} value={t}>{title}</option>;
+				})}
 			</select>;
 		}
 
