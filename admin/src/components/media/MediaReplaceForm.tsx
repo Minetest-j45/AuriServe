@@ -4,7 +4,7 @@ import './MediaReplaceForm.sass';
 
 import MediaIcon from './MediaIcon';
 
-import { AppContext } from '../AppContext';
+import { AppContext } from '../../AppContext';
 
 import * as Format from '../../../../common/util/Format';
 
@@ -76,7 +76,7 @@ export default class MediaUploadForm extends Preact.Component<Props, State> {
 
 	private handleUpload = () => {
 		this.setState({ state: FormState.UPLOADING });
-		
+
 		let data = new FormData();
 		data.append('file', this.state.file!);
 		data.append('replace', this.props.replace);
@@ -104,7 +104,7 @@ export default class MediaUploadForm extends Preact.Component<Props, State> {
 			reader.readAsDataURL(file);
 			reader.onload = () => this.setState({ imagePreview: reader.result as string });
 		}
-		
+
 		this.setState({ file: file });
 	};
 

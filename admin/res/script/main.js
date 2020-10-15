@@ -11482,6 +11482,23 @@ module.exports = function (module) {
 
 /***/ }),
 
+/***/ "./AppContext.ts":
+/*!***********************!*\
+  !*** ./AppContext.ts ***!
+  \***********************/
+/*! exports provided: AppContext */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppContext", function() { return AppContext; });
+/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! preact */ "preact");
+/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(preact__WEBPACK_IMPORTED_MODULE_0__);
+
+const AppContext = preact__WEBPACK_IMPORTED_MODULE_0__["createContext"]({});
+
+/***/ }),
+
 /***/ "./ClickHandler.ts":
 /*!*************************!*\
   !*** ./ClickHandler.ts ***!
@@ -11627,7 +11644,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_MediaPage__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./pages/MediaPage */ "./components/pages/MediaPage.tsx");
 /* harmony import */ var _pages_ThemesPage__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./pages/ThemesPage */ "./components/pages/ThemesPage.tsx");
 /* harmony import */ var _pages_PluginsPage__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./pages/PluginsPage */ "./components/pages/PluginsPage.tsx");
-/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./AppContext */ "./components/AppContext.tsx");
+/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../AppContext */ "./AppContext.ts");
 
 
 
@@ -11815,23 +11832,6 @@ class App extends preact__WEBPACK_IMPORTED_MODULE_1__["Component"] {
 
 /***/ }),
 
-/***/ "./components/AppContext.tsx":
-/*!***********************************!*\
-  !*** ./components/AppContext.tsx ***!
-  \***********************************/
-/*! exports provided: AppContext */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppContext", function() { return AppContext; });
-/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! preact */ "preact");
-/* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(preact__WEBPACK_IMPORTED_MODULE_0__);
-
-const AppContext = preact__WEBPACK_IMPORTED_MODULE_0__["createContext"]({});
-
-/***/ }),
-
 /***/ "./components/AppHeader.scss":
 /*!***********************************!*\
   !*** ./components/AppHeader.scss ***!
@@ -11913,12 +11913,7 @@ class AppHeader extends preact__WEBPACK_IMPORTED_MODULE_1__["Component"] {
     }, "Themes"), preact__WEBPACK_IMPORTED_MODULE_1__["h"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
       activeClassName: "active",
       to: "/plugins"
-    }, "Plugins")), preact__WEBPACK_IMPORTED_MODULE_1__["h"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
-      className: "AppHeader-options",
-      to: "/user_options"
-    }, preact__WEBPACK_IMPORTED_MODULE_1__["h"]("img", {
-      src: "/admin/asset/icon/settings-dark.svg"
-    })), preact__WEBPACK_IMPORTED_MODULE_1__["h"]("button", {
+    }, "Plugins")), preact__WEBPACK_IMPORTED_MODULE_1__["h"]("button", {
       class: "AppHeader-logout",
       onClick: this.logout
     }, preact__WEBPACK_IMPORTED_MODULE_1__["h"]("img", {
@@ -12152,7 +12147,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(preact__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _LoginForm_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LoginForm.scss */ "./components/LoginForm.scss");
 /* harmony import */ var _LoginForm_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_LoginForm_scss__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AppContext */ "./components/AppContext.tsx");
+/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../AppContext */ "./AppContext.ts");
 
 
 
@@ -13004,7 +12999,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var preact__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(preact__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _ElementEditor_sass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ElementEditor.sass */ "./components/editor/ElementEditor.sass");
 /* harmony import */ var _ElementEditor_sass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ElementEditor_sass__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../AppContext */ "./components/AppContext.tsx");
+/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../AppContext */ "./AppContext.ts");
 /* harmony import */ var _ElementPropInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ElementPropInput */ "./components/editor/ElementPropInput.tsx");
 /* harmony import */ var _ElementPropArray__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./ElementPropArray */ "./components/editor/ElementPropArray.tsx");
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
@@ -13718,7 +13713,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _MediaReplaceForm_sass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MediaReplaceForm.sass */ "./components/media/MediaReplaceForm.sass");
 /* harmony import */ var _MediaReplaceForm_sass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_MediaReplaceForm_sass__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _MediaIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MediaIcon */ "./components/media/MediaIcon.tsx");
-/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../AppContext */ "./components/AppContext.tsx");
+/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../AppContext */ "./AppContext.ts");
 /* harmony import */ var _common_util_Format__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../common/util/Format */ "../../common/util/Format.ts");
 
 
@@ -13879,7 +13874,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SelectGroup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../SelectGroup */ "./components/SelectGroup.tsx");
 /* harmony import */ var _MediaUploadItem__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./MediaUploadItem */ "./components/media/MediaUploadItem.tsx");
 /* harmony import */ var _DimensionTransition__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../DimensionTransition */ "./components/DimensionTransition.tsx");
-/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../AppContext */ "./components/AppContext.tsx");
+/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../AppContext */ "./AppContext.ts");
 /* harmony import */ var _common_util_Format__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../common/util/Format */ "../../common/util/Format.ts");
 
 
@@ -14440,7 +14435,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _MainPage_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MainPage.scss */ "./components/pages/MainPage.scss");
 /* harmony import */ var _MainPage_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_MainPage_scss__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _Meter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Meter */ "./components/Meter.tsx");
-/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../AppContext */ "./components/AppContext.tsx");
+/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../AppContext */ "./AppContext.ts");
 
 
 
@@ -14525,7 +14520,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _media_MediaItem__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../media/MediaItem */ "./components/media/MediaItem.tsx");
 /* harmony import */ var _media_MediaView__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../media/MediaView */ "./components/media/MediaView.tsx");
 /* harmony import */ var _media_MediaUploadForm__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../media/MediaUploadForm */ "./components/media/MediaUploadForm.tsx");
-/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../AppContext */ "./components/AppContext.tsx");
+/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../AppContext */ "./AppContext.ts");
 
 
 
@@ -14750,7 +14745,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PagePage_sass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PagePage.sass */ "./components/pages/PagePage.sass");
 /* harmony import */ var _PagePage_sass__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_PagePage_sass__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _CardHeader__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../CardHeader */ "./components/CardHeader.tsx");
-/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../AppContext */ "./components/AppContext.tsx");
+/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../AppContext */ "./AppContext.ts");
 /* harmony import */ var _editor_PageEditor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../editor/PageEditor */ "./components/editor/PageEditor.tsx");
 
 
@@ -14853,7 +14848,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PagesPage_sass__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PagesPage.sass */ "./components/pages/PagesPage.sass");
 /* harmony import */ var _PagesPage_sass__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_PagesPage_sass__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _CardHeader__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../CardHeader */ "./components/CardHeader.tsx");
-/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../AppContext */ "./components/AppContext.tsx");
+/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../AppContext */ "./AppContext.ts");
 
 
 
@@ -14955,7 +14950,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _PluginItem__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../PluginItem */ "./components/PluginItem.tsx");
 /* harmony import */ var _CardHeader__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../CardHeader */ "./components/CardHeader.tsx");
 /* harmony import */ var _SelectGroup__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../SelectGroup */ "./components/SelectGroup.tsx");
-/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../AppContext */ "./components/AppContext.tsx");
+/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../AppContext */ "./AppContext.ts");
 
 
 
@@ -14990,24 +14985,12 @@ class PluginsPage extends preact__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       subtitle: 'Install, enable, or disable plugins.'
     }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
       className: "PluginsPage-Toolbar"
-    }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
-      className: "MediaPage-Toolbar-Button",
-      onClick: this.handleTogglePlugins
-    }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
-      src: "/admin/asset/icon/add-dark.svg",
-      alt: ""
-    }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Install Plugin")), this.state.selected.length > 0 && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
+    }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, this.state.selected.length > 0 && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
       onClick: this.handleTogglePlugins
     }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
       src: "/admin/asset/icon/refresh-dark.svg",
       alt: ""
     }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, 'Toggle Plugin' + (this.state.selected.length !== 1 ? ' (' + this.state.selected.length + ')' : '')))), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
-      className: "MediaPage-Toolbar-Button",
-      onClick: this.handleTogglePlugins
-    }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
-      src: "/admin/asset/icon/sort-dark.svg",
-      alt: ""
-    }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Sort by Size")), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
       onClick: this.handleRefreshPlugins
     }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
       src: "/admin/asset/icon/refresh-dark.svg",
@@ -15109,7 +15092,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ThemeItem__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../ThemeItem */ "./components/ThemeItem.tsx");
 /* harmony import */ var _CardHeader__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../CardHeader */ "./components/CardHeader.tsx");
 /* harmony import */ var _SelectGroup__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../SelectGroup */ "./components/SelectGroup.tsx");
-/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../AppContext */ "./components/AppContext.tsx");
+/* harmony import */ var _AppContext__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../AppContext */ "./AppContext.ts");
 
 
 
@@ -15167,21 +15150,11 @@ class ThemesPage extends preact__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       subtitle: 'Install, enable, or disable site themes.'
     }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", {
       className: "ThemesPage-Toolbar"
-    }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
-      className: "MediaPage-Toolbar-Button",
-      onClick: this.handleToggleThemes
-    }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
-      src: "/admin/asset/icon/add-dark.svg"
-    }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Install Theme")), this.state.selected.length > 0 && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
+    }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, this.state.selected.length > 0 && preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
       onClick: this.handleToggleThemes
     }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
       src: "/admin/asset/icon/refresh-dark.svg"
     }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, 'Toggle Theme' + (this.state.selected.length !== 1 ? ' (' + this.state.selected.length + ')' : '')))), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("div", null, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
-      className: "MediaPage-Toolbar-Button",
-      onClick: this.handleToggleThemes
-    }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
-      src: "/admin/asset/icon/sort-dark.svg"
-    }), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("span", null, "Sort by Size")), preact__WEBPACK_IMPORTED_MODULE_0__["h"]("button", {
       onClick: this.handleRefreshThemes
     }, preact__WEBPACK_IMPORTED_MODULE_0__["h"]("img", {
       src: "/admin/asset/icon/refresh-dark.svg"

@@ -1,7 +1,7 @@
 import * as Preact from 'preact';
-import PluginData from '../interface/PluginData';
-import { Page } from '../../../common/interface/Page';
-import { SiteData, SiteDataSpecifier } from '../../../common/interface/SiteData';
+import PluginData from './interface/PluginData';
+import { Page } from '../../common/interface/Page';
+import { SiteData, SiteDataSpecifier } from '../../common/interface/SiteData';
 
 export interface AppContextData {
 	plugins: PluginData;

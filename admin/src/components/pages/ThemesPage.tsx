@@ -7,8 +7,8 @@ import ThemeItem from '../ThemeItem';
 import CardHeader from '../CardHeader';
 import SelectGroup from '../SelectGroup';
 
+import { AppContext } from '../../AppContext';
 import { Theme } from '../../../../common/interface/DBStructs';
-import { AppContext } from '../AppContext';
 
 interface State {
 	selected: number[];
@@ -36,9 +36,9 @@ export default class ThemesPage extends Preact.Component<{}, State> {
 
 						<div className="ThemesPage-Toolbar">
 							<div>
-								<button className="MediaPage-Toolbar-Button" onClick={this.handleToggleThemes}>
+								{/* <button className="MediaPage-Toolbar-Button" onClick={this.handleToggleThemes}>
 									<img src="/admin/asset/icon/add-dark.svg"/><span>Install Theme</span>
-								</button>
+								</button>*/}
 
 								{this.state.selected.length > 0 && <button onClick={this.handleToggleThemes}>
 									<img src="/admin/asset/icon/refresh-dark.svg"/>
@@ -46,9 +46,9 @@ export default class ThemesPage extends Preact.Component<{}, State> {
 								</button>}
 							</div>
 							<div>
-								<button className="MediaPage-Toolbar-Button" onClick={this.handleToggleThemes}>
+								{/* <button className="MediaPage-Toolbar-Button" onClick={this.handleToggleThemes}>
 									<img src="/admin/asset/icon/sort-dark.svg"/><span>Sort by Size</span>
-								</button>
+								</button>*/}
 
 								<button onClick={this.handleRefreshThemes}>
 									<img src="/admin/asset/icon/refresh-dark.svg"/><span>Refresh</span>

@@ -6,7 +6,7 @@ import './PagesPage.sass';
 
 import CardHeader from '../CardHeader';
 
-import { AppContext } from '../AppContext';
+import { AppContext } from '../../AppContext';
 
 interface State {
 	create: boolean;

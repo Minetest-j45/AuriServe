@@ -5,7 +5,7 @@ import './MainPage.scss';
 
 import Meter from '../Meter';
 
-import { AppContext } from '../AppContext';
+import { AppContext } from '../../AppContext';
 
 export default class MainPage extends Preact.Component {
 	componentWillMount() {

@@ -4,7 +4,7 @@ import './Page.sass';
 import './PagePage.sass';
 
 import CardHeader from '../CardHeader';
-import { AppContext } from '../AppContext';
+import { AppContext } from '../../AppContext';
 
 import PageEditor from '../editor/PageEditor';
 
@@ -44,7 +44,7 @@ export default class PagePage extends Preact.Component<Props, State> {
 
 	handleSave = (page: Page.Page) => {
 		const pagePath: string = window.location.pathname.replace(/^\/admin\/pages\//g, '');
-		
+
 		fetch('/admin/pages/update', {
 			cache: 'no-cache',
 			method: 'POST',

@@ -24,8 +24,8 @@ export default class AppHeader extends Preact.Component {
 						<Link activeClassName="active" to="/themes">Themes</Link>
 						<Link activeClassName="active" to="/plugins">Plugins</Link>
 					</nav>
-					
-					<Link className="AppHeader-options" to="/user_options"><img src="/admin/asset/icon/settings-dark.svg"/></Link>
+
+					{/* <Link className="AppHeader-options" to="/user_options"><img src="/admin/asset/icon/settings-dark.svg"/></Link>*/}
 					<button class="AppHeader-logout" onClick={this.logout}><img src="/admin/asset/icon/logout-dark.svg" /></button>
 				</div>
 			</header>

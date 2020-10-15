@@ -3,7 +3,7 @@ import * as Preact from 'preact';
 
 import './LoginForm.scss';
 
-import { AppContext } from './AppContext';
+import { AppContext } from '../AppContext';
 import { SiteInfo } from '../../../common/interface/DBStructs';
 
 enum LoginState {
@@ -47,7 +47,7 @@ export default class LoginForm extends Preact.Component<{}, State> {
 						<img className="success" src="/admin/asset/icon/serve-light.svg"/>
 					</div>
 					<div className="LoginForm-FormContents">
-					
+
 						<input type="text" name="user" placeholder="Username"
 							autoFocus required minLength={3} maxLength={32} autoComplete={'username'}
 							value={this.state.username} onChange={this.handleUsernameChange} disabled={loading}/>

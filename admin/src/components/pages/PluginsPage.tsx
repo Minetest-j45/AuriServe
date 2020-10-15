@@ -7,7 +7,7 @@ import PluginItem from '../PluginItem';
 import CardHeader from '../CardHeader';
 import SelectGroup from '../SelectGroup';
 
-import { AppContext } from '../AppContext';
+import { AppContext } from '../../AppContext';
 import { Plugin } from '../../../../common/interface/DBStructs';
 
 interface State {
@@ -40,9 +40,9 @@ export default class PluginsPage extends Preact.Component<{}, State> {
 
 						<div className="PluginsPage-Toolbar">
 							<div>
-								<button className="MediaPage-Toolbar-Button" onClick={this.handleTogglePlugins}>
+								{/* <button className="MediaPage-Toolbar-Button" onClick={this.handleTogglePlugins}>
 									<img src="/admin/asset/icon/add-dark.svg" alt=""/><span>Install Plugin</span>
-								</button>
+								</button>*/}
 
 								{this.state.selected.length > 0 && <button onClick={this.handleTogglePlugins}>
 									<img src="/admin/asset/icon/refresh-dark.svg" alt=""/>
@@ -50,9 +50,9 @@ export default class PluginsPage extends Preact.Component<{}, State> {
 								</button>}
 							</div>
 							<div>
-								<button className="MediaPage-Toolbar-Button" onClick={this.handleTogglePlugins}>
+								{/* <button className="MediaPage-Toolbar-Button" onClick={this.handleTogglePlugins}>
 									<img src="/admin/asset/icon/sort-dark.svg" alt=""/><span>Sort by Size</span>
-								</button>
+								</button>*/}
 
 								<button onClick={this.handleRefreshPlugins}>
 									<img src="/admin/asset/icon/refresh-dark.svg" alt=""/><span>Refresh</span>

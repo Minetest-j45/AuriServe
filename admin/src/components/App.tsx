@@ -15,7 +15,7 @@ import ThemesPage from './pages/ThemesPage';
 import PluginsPage from './pages/PluginsPage';
 
 import { Page } from '../../../common/interface/Page';
-import { AppContext, AppContextData } from './AppContext';
+import { AppContext, AppContextData } from '../AppContext';
 import { AdminDefinition } from '../../../common/interface/Element';
 import { SiteData, SiteDataSpecifier } from '../../../common/interface/SiteData';
 
@@ -44,7 +44,7 @@ interface State {
 export default class App extends Preact.Component<{}, State> {
 	constructor(props: any) {
 		super(props);
-		
+
 		const tkn = Cookie.get('tkn');
 
 		this.state = {
@@ -100,7 +100,7 @@ export default class App extends Preact.Component<{}, State> {
 					let contextData = Object.assign({}, this.state.contextData);
 					contextData.plugins = Object.assign({}, contextData.plugins);
 					contextData.plugins.elements.set(elem.identifier, elem);
-					
+
 					this.setState({ contextData: contextData });
 				}
 			};
@@ -118,7 +118,7 @@ export default class App extends Preact.Component<{}, State> {
 				tag.href = '/plugin/' + styl;
 				document.head.appendChild(tag);
 			});
-			
+
 			pluginState = PluginState.LINKED;
 		}
 
@@ -162,14 +162,14 @@ export default class App extends Preact.Component<{}, State> {
 		const pluginState = this.loadPlugins();
 
 		let siteData = Object.assign({}, this.state.contextData.data);
-		
+
 		for (const key of Object.keys(data)) (siteData as any)[key] = (data as any)[key];
 
 		if (!siteData.media) siteData.media = [];
 		if (!siteData.themes) siteData.themes = [];
 		if (!siteData.plugins) siteData.plugins = [];
 		if (!siteData.elements) siteData.elements = [];
-		
+
 		if (!siteData.pages) siteData.pages = {};
 		if (!siteData.elementDefs) siteData.elementDefs = {};
 

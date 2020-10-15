@@ -2,7 +2,7 @@ import * as Preact from 'preact';
 
 import './ElementEditor.sass';
 
-import { AppContext } from '../AppContext';
+import { AppContext } from '../../AppContext';
 
 import ElementPropInput from './ElementPropInput';
 import ElementPropArray from './ElementPropArray';

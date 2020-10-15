@@ -10,7 +10,7 @@ import MediaItem from '../media/MediaItem';
 import MediaView from '../media/MediaView';
 import MediaUploadForm from '../media/MediaUploadForm';
 
-import { AppContext } from '../AppContext';
+import { AppContext } from '../../AppContext';
 
 interface State {
 	selected: number[];

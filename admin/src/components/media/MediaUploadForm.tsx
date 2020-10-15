@@ -6,7 +6,7 @@ import SelectGroup from '../SelectGroup';
 import MediaUploadItem from './MediaUploadItem';
 import DimensionTransition from '../DimensionTransition';
 
-import { AppContext } from '../AppContext';
+import { AppContext } from '../../AppContext';
 
 import * as Format from '../../../../common/util/Format';
 
@@ -206,7 +206,7 @@ export default class MediaUploadForm extends Preact.Component<Props, State> {
 				f();
 			}));
 		}
-		
+
 		Promise.all(promises).then(() => {
 			fetch('/admin/data/media', {
 				cache: 'no-cache'
@@ -237,7 +237,7 @@ export default class MediaUploadForm extends Preact.Component<Props, State> {
 						break;
 					}
 				}
-				
+
 				if (!exists) {
 					files.push({
 						file: file,
@@ -258,7 +258,7 @@ export default class MediaUploadForm extends Preact.Component<Props, State> {
 			}
 			else resolveFile();
 		})));
-		
+
 		this.setState({files: files});
 	};
 };
