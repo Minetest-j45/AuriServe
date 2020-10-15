@@ -55,9 +55,14 @@ export default class ElementPropInput extends Preact.Component<Props, State> {
 			widget = <input type="text" name={this.props.identifier}
 				value={this.props.value} onChange={this.handleChange} onInput={this.handleChange} />;
 			break;
-
+		
 		case 'long_text':
 			widget = <textarea ref={this.ref as any} rows={1} name={this.props.identifier}
+				value={this.props.value} onChange={this.handleChange} onInput={this.handleChange} />;
+			break;
+		
+		case 'html':
+			widget = <textarea class="ElementPropInput-Code" ref={this.ref as any} rows={1} name={this.props.identifier}
 				value={this.props.value} onChange={this.handleChange} onInput={this.handleChange} />;
 			break;
 

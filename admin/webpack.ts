@@ -35,8 +35,8 @@ export default function(_: {}, argv: { mode: string, analyze: boolean }) {
 
 		plugins: [
 			new ForkTsCheckerPlugin({
-				typescript: { configFile: 
-					resolve(__dirname, 'tsconfig.json') 
+				typescript: { 
+					configFile: resolve(__dirname, 'tsconfig.json'),
 				},
 				eslint: {
 					files: './**/*.{ts,tsx}',

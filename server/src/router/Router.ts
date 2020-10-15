@@ -3,12 +3,14 @@ import Express from "express";
 export default class Router {
 	router: Express.Router = Express.Router();
 
-	protected async routeSafely(res: Express.Response, fn: () => void, code?: number) {
-		try {
-			await fn();
-		}
-		catch (e) {
-			this.routeError(res, e, code);
+	protected safeRoute(fn: (req: Express.Request, res: Express.Response, next: Express.NextFunction) => any, code?: number) {
+		return async (req: Express.Request, res: Express.Response, next: Express.NextFunction) => {
+			try {
+				await fn(req, res, next);
+			}
+			catch (e) {
+				this.routeError(res, e, code);
+			}
 		}
 	}
 

@@ -18,7 +18,6 @@ export default class PagesRouter extends Router {
 		this.router.use('/theme', Express.static(path.join(this.dataPath, "themes", "public")));
 
 		this.router.use('/plugin/:identifier/:file', async (req, res, next) => {
-			// setTimeout(() => {
 			try {
 				let plugins = this.plugins.getEnabledPlugins().filter(p => p.conf.identifier === req.params.identifier);
 				if (plugins.length == 0) throw `There is no loaded plugin with identifier ${req.params.identifier}.`;
@@ -27,7 +26,6 @@ export default class PagesRouter extends Router {
 			catch (e) {
 				res.status(403).send(e);
 			}
-			// }, req.params.file.endsWith(".js") ? 1000 : 0);
 		});
 		
 		this.router.get('/plugin/styles/:identifier.css', (req, res) => {

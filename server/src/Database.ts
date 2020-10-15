@@ -192,6 +192,56 @@ export default class Database {
 
 
 	/**
+	* Replace a media asset with a new file.
+	*
+	* @param {string} user - The uploading user.
+	* @param {UploadedFile} item - The file to accept.
+	* @param {string} replace - Media identifier to replace.
+	*/
+
+	async replaceMedia(user: string, item: UploadedFile, replace: string): Promise<MediaStatus> {
+		try {
+			const media = this.db!.collection('media');
+			const siteinfo = this.db!.collection('siteinfo');
+
+			const existing = await media.findOne({ identifier: replace }) as any as DB.Media;
+			if (!existing) return MediaStatus.INVALID;
+			delete existing._id;
+	
+			// Make sure there is space in the server for
+			// the media, and update the media used value.
+			const sizeDiff = item.size - existing.size;
+			const max = (await siteinfo.findOne({})).mediaMax;
+			const ret = await siteinfo.findOneAndUpdate(
+				{mediaUsed: {$lte: max - sizeDiff }}, { $inc: { mediaUsed: sizeDiff }});
+
+			// Return if there wasn't enough space.
+			if (ret.value == null) return MediaStatus.MEDIA_LIMIT;
+
+			const ext = item.name.substr(item.name.lastIndexOf("."));
+			const p = path.join(path.dirname(existing.path), replace + ext);
+			await media.deleteOne({ identifier: replace });
+			await fs.unlink(existing.path);
+			await item.mv(p);
+
+			existing.path = p;
+			existing.ext = ext;
+			existing.size = item.size;
+			existing.uploadUser = user;
+			existing.uploadDate = Date.now();
+			existing.publicPath = `/media/${replace}${ext}`;
+
+			await media.insertOne(existing);
+			return MediaStatus.OK;
+		}
+		catch(e) {
+			console.log(e);
+			return MediaStatus.INVALID;
+		}
+	}
+
+
+	/**
 	* Delete a series of media objects from the database.
 	* 
 	* @param {string[]} identifiers - A list of media identifiers to delete.
@@ -203,41 +253,13 @@ export default class Database {
 		const docs = await (await media.find({identifier: { $in: identifiers }})).toArray();
 		await media.deleteMany({identifier: { $in: identifiers }});
 
+		let freedSpace = docs.map(d => d.size).reduce((a, b) => a + b);
+		this.db!.collection('siteinfo').findOneAndUpdate(
+			{}, { $inc: { mediaUsed: -freedSpace }});
+
 		// Delete all of the files.
 		await Promise.all(docs.map((d) => fs.unlink(d.path)));
 	}
-
-
-	/**
-	* Returns a list of all elements.
-	*/
-
-	// async listElements(): Promise<DB.Element[]> {
-	// 	return await (await this.db!.collection('elements').find({})).toArray();
-	// }
-
-
-	/**
-	* Create a new element with the specified props and add it to the database.
-	* Throws if the identifier is in use.
-	*
-	* @param {string} identifier  - The unique identifier for the element, must pass sanitize.
-	* @param {string} elementType - The type of the element, must be a valid type in the elements list.
-	* @param {string} properties  - A valid JSON string containing the element properties.
-	*/
-
-	// async createElement(identifier: string, elementType: string, properties: string) {
-	// 	const elements = this.db!.collection('elements');
-		
-	// 	if (await elements.findOne({identifier: identifier})) 
-	// 		throw "An element with that identifier already exists in the database.";
-
-	// 	elements.insertOne({
-	// 		identifier: identifier,
-	// 		type: elementType,
-	// 		props: properties
-	// 	} as DB.Element);
-	// }
 
 
 	/**

@@ -20,10 +20,6 @@ export default class ThemesPage extends Preact.Component<{}, State> {
 	constructor(props: {}) {
 		super(props);
 		this.state = { selected: [] };
-
-		this.handleToggleThemes = this.handleToggleThemes.bind(this);
-		this.handleRefreshThemes = this.handleRefreshThemes.bind(this);
-		this.handleSelectionChange = this.handleSelectionChange.bind(this);
 	}
 
 	componentWillMount() {
@@ -72,29 +68,25 @@ export default class ThemesPage extends Preact.Component<{}, State> {
 		);
 	}
 
-	private handleSelectionChange(selected: number[]): void {
+	private handleSelectionChange = (selected: number[]): void => {
 		this.selected = selected;
 		this.setState({ selected: selected });
 	}
 
-	private handleToggleThemes(): void {
+	private handleToggleThemes = (): void => {
 		fetch('/admin/themes/toggle', {
 			method: 'POST',
 			cache: 'no-cache',
     	headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify(this.selected.map(ind => this.context.data.themes[ind].identifier))
-		}).then(r => r.json()).then(res => {
-			this.context.handleSiteData(res);
-		});
+		}).then(r => r.json()).then(this.context.handleSiteData);
 	}
 
-	private handleRefreshThemes(): void {
+	private handleRefreshThemes = (): void => {
 		fetch('/admin/themes/refresh', {
 			cache: 'no-cache',
 			method: 'POST'
-		}).then(r => r.json()).then(res => {
-			this.context.handleSiteData(res);
-		});
+		}).then(r => r.json()).then(this.context.handleSiteData);
 	}
 }
 
