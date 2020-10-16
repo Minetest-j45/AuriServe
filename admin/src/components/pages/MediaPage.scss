@@ -11,14 +11,14 @@
 		grid-template-columns: 1fr;
 
 		&.Grid {
-			grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+			grid-template-columns: repeat(auto-fit, minmax(#{"min(100%, 400px)"}, 1fr));
 		}
 	}
 
 	.MediaPage-NoMedia {
 		text-align: center;
 		color: $neutral-500;
-		margin: 32px 0px 48px 0px; 
+		margin: 32px 0px 48px 0px;
 	}
 
 	& > img {

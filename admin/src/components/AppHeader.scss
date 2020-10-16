@@ -3,9 +3,9 @@
 .AppHeader {
 	width: 100%;
 	height: auto;
-	
+
 	overflow: auto;
-	background-color: #fff;
+	background-color: white;
 
 	user-select: none;
 
@@ -57,7 +57,7 @@
 
 				&:hover {
 					color: $neutral-600;
-					
+
 					&::after {
 						opacity: 0.5;
 						transform: scaleX(0.8);
@@ -73,7 +73,7 @@
 
 				&.active {
 					color: $neutral-800;
-					
+
 					&::after {
 						opacity: 0.9;
 						transform: scaleX(0.85);
@@ -82,7 +82,7 @@
 
 				&:active {
 					color: $neutral-800;
-					
+
 					&::after {
 						opacity: 1;
 						transform: scaleX(1);
@@ -94,7 +94,7 @@
 		.AppHeader-logo {
 			position: absolute;
 			top: 10px;
-			left: 10px;
+			left: 12px;
 			width: 44px;
 			height: 44px;
 
@@ -110,7 +110,7 @@
 
 			position: absolute;
 			top: 8px;
-			right: 8px;
+			right: 12px;
 		}
 
 		.AppHeader-options {

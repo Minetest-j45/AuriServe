@@ -7,7 +7,7 @@
 		height: auto;
 		grid-gap: 8px;
 		margin-top: 16px;
-		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		grid-template-columns: repeat(auto-fill, minmax(#{"min(100%, 300px)"}, 1fr));
 	}
 
 	.ThemesPage-Toolbar {
@@ -17,6 +17,6 @@
 	.ThemesPage-NoThemes {
 		text-align: center;
 		color: $neutral-500;
-		margin: 32px 0px 48px 0px; 
+		margin: 32px 0px 48px 0px;
 	}
 }
