@@ -21,7 +21,7 @@
 		"CMS"
 	],
 	"author": "Auri Collings",
-	"license": "UNLICENSED",
+	"license": "AGPL-3.0-only",
 	"bugs": {
 		"url": "https://github.com/Aurailus/AuriServe/issues"
 	},
