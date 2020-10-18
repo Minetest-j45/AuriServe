@@ -10,6 +10,6 @@ export default function resolvePath(p: string) {
 	let resolved = expandHome(p);
 	if (!path.isAbsolute(resolved)) resolved = path.join(
 		// Ascend three levels up the tree... There should be a better way to do this.
-		path.dirname(path.dirname(path.dirname(require.main!.filename))), resolved);
+		process.cwd(), resolved);
 	return path.normalize(resolved);
 }

@@ -1,31 +1,31 @@
-import path from "path";
-import HTTP from "http";
-import HTTPS from "https";
-import { promises as fs } from "fs";
-import compression from "compression";
-import cookieParser from "cookie-parser";
-import fileUpload from "express-fileupload";
+import path from 'path';
+import HTTP from 'http';
+import HTTPS from 'https';
+import { promises as fs } from 'fs';
+import compression from 'compression';
+import cookieParser from 'cookie-parser';
+import fileUpload from 'express-fileupload';
 
-import log4js from "log4js";
-import Express from "express";
-import bodyParser from "body-parser";
+import log4js from 'log4js';
+import Express from 'express';
+import bodyParser from 'body-parser';
 
 import DBView from './DBView';
-import Database from "./Database";
-import Elements from "./Elements";
-import ThemeParser from "./ThemeParser";
-import PluginParser from "./PluginParser";
-import PagesManager from "./PagesManager";
+import Database from './Database';
+import Elements from './Elements';
+import ThemeParser from './ThemeParser';
+import PluginParser from './PluginParser';
+import PagesManager from './PagesManager';
 
-import AdminRouter from "./router/AdminRouter";
-import PagesRouter from "./router/PagesRouter";
+import AdminRouter from './router/AdminRouter';
+import PagesRouter from './router/PagesRouter';
 import SuperUserPrompt from './SuperUserPrompt';
 
-import { Config } from "./interface/Config";
-import resolvePath from "../../common/util/ResolvePath";
+import { Config } from './interface/Config';
+import resolvePath from '../../common/util/ResolvePath';
 import { SiteDataSpecifier, SiteData } from '../../common/interface/SiteData';
 
-const logger = log4js.getLogger()
+const logger = log4js.getLogger();
 
 export default class Server {
 	adminRouter: AdminRouter;
@@ -46,14 +46,14 @@ export default class Server {
 		this.app.use(fileUpload({ useTempFiles: true, tempFileDir: '/tmp/' }));
 
 		this.app.set('view engine', 'pug');
-		this.app.set('views', path.join(path.dirname(__filename), "views"));
+		this.app.set('views', path.join(path.dirname(__dirname), 'views'));
 
 		this.getSiteData = this.getSiteData.bind(this);
 
 		this.elements = new Elements();
 		this.themes = new ThemeParser(this.dataPath, this.db as any as DBView, this.getSiteData);
 		this.plugins = new PluginParser(this.dataPath, this.db as any as DBView, this.elements);
-		this.pages = new PagesManager(this.themes, this.plugins, this.elements, path.join(this.dataPath, "pages"));
+		this.pages = new PagesManager(this.themes, this.plugins, this.elements, path.join(this.dataPath, 'pages'));
 
 		this.adminRouter = new AdminRouter(this.dataPath, this.db as any as DBView,
 			this.app, this.themes, this.plugins, this.pages, this.getSiteData);
@@ -74,19 +74,19 @@ export default class Server {
 
 
 	/**
-	* Returns a Partial<SiteData> object.
-	*
-	* @param {string} specifier - A ampersand-separated string containing one or more specifiers.
-	*
-	* Specifiers:
-	* info - Basic state and enabled themes and plugins.
-	* users - User listings
-	* media - Media listings
-	* themes - Theme listings
-	* plugins - Plugin listings
-	* elements - Element definitions
-	* pages - Basic page listings
-	*/
+	 * Returns a Partial<SiteData> object.
+	 *
+	 * @param {string} specifier - A ampersand-separated string containing one or more specifiers.
+	 *
+	 * Specifiers:
+	 * info - Basic state and enabled themes and plugins.
+	 * users - User listings
+	 * media - Media listings
+	 * themes - Theme listings
+	 * plugins - Plugin listings
+	 * elements - Element definitions
+	 * pages - Basic page listings
+	 */
 
 	async getSiteData(specifier: string | undefined): Promise<Partial<SiteData>> {
 		let data = await this.db.getSiteData(specifier);
@@ -108,15 +108,15 @@ export default class Server {
 
 
 	/**
-	* Initializes the server.
-	* Throws if there are configuration or database errors.
-	*/
+	 * Initializes the server.
+	 * Throws if there are configuration or database errors.
+	 */
 
 	private async init() {
 		await new Promise(async (resolve) => {
 			if (this.conf.https) {
 				if (!this.conf.https.cert || !this.conf.https.key) {
-					logger.fatal("Config is missing https.cert and https.key fields.");
+					logger.fatal('Config is missing https.cert and https.key fields.');
 					process.exit(1);
 				}
 
@@ -126,7 +126,7 @@ export default class Server {
 					key = await fs.readFile(resolvePath(this.conf.https.key), 'utf8');
 				}
 				catch (e) {
-					logger.fatal("Failed to access HTTPS certificate/key files.\n %s", e);
+					logger.fatal('Failed to access HTTPS certificate/key files.\n %s', e);
 					process.exit(1);
 				}
 
@@ -134,9 +134,9 @@ export default class Server {
 				const https = HTTPS.createServer({ cert: cert, key: key }, this.app);
 
 				http.listen(this.conf.port || 80, () => {
-					logger.debug("Redirect server listening on port %s.", this.conf.port || 80);
+					logger.debug('Redirect server listening on port %s.', this.conf.port || 80);
 					https.listen(this.conf.https!.port || 443, () => {
-						logger.debug(`HTTPS Server listening on port %s.`, this.conf.https!.port || 443);
+						logger.debug('HTTPS Server listening on port %s.', this.conf.https!.port || 443);
 						resolve();
 					});
 				});
@@ -144,38 +144,38 @@ export default class Server {
 			else {
 				const http = HTTP.createServer(this.app);
 				http.listen(this.conf.port || 80, () => {
-					logger.debug(`HTTP Server listening on port %s.`, this.conf.port || 80);
+					logger.debug('HTTP Server listening on port %s.', this.conf.port || 80);
 					resolve();
 				});
 			}
 		});
 
 		if (!this.conf.db || !this.conf.db.url) {
-			logger.fatal("Config is missing db.url field.");
+			logger.fatal('Config is missing db.url field.');
 			process.exit(1);
 		}
 
-		await this.db.init(this.conf.db.url, this.conf.db.name || "auriserve");
+		await this.db.init(this.conf.db.url, this.conf.db.name || 'auriserve');
 
-		logger.info("Initialized AuriServe.");
+		logger.info('Initialized AuriServe.');
 	}
 
 
 	/**
-	* Routing function to forward HTTP traffic to HTTPS.
-	*
-	* @param {Express.Request} req - The request object.
-	* @param {Express.Response} res - The response object.
-	*/
+	 * Routing function to forward HTTP traffic to HTTPS.
+	 *
+	 * @param {Express.Request} req - The request object.
+	 * @param {Express.Response} res - The response object.
+	 */
 
 	private forwardHttps(req: Express.Request, res: Express.Response) {
-		const host = req.headers['host'];
-		if (!host || typeof host != "string") {
+		const host = req.headers.host;
+		if (!host || typeof host !== 'string') {
 			res.status(403);
 			return;
 		}
 
-		const loc = "https://" + host.replace((this.conf.port || 80).toString(), (this.conf.https!.port || 443).toString()) + req.url;
+		const loc = 'https://' + host.replace((this.conf.port || 80).toString(), (this.conf.https!.port || 443).toString()) + req.url;
 		res.writeHead(301, { Location: loc });
 		res.end();
 	}

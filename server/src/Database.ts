@@ -1,9 +1,9 @@
 import path from 'path';
 import crypto from 'crypto';
-import bcrypt from 'bcrypt';
-import log4js from "log4js";
+import log4js from 'log4js';
+import bcrypt from 'bcryptjs';
 import { MongoClient, Db } from 'mongodb';
-import { UploadedFile } from "express-fileupload";
+import { UploadedFile } from 'express-fileupload';
 import { promises as fs, constants as fsc } from 'fs';
 
 import * as DB from '../../common/interface/DBStructs';
@@ -20,7 +20,7 @@ export enum MediaStatus {
 
 export default class Database {
 	private client: MongoClient | null = null;
-	private db: Db | null = null
+	private db: Db | null = null;
 
 	constructor(private dataPath: string) {	}
 
@@ -29,14 +29,14 @@ export default class Database {
 
 		try {
 			await this.client.connect();
-			logger.debug("Connected to MongoDB successfully.");
+			logger.debug('Connected to MongoDB successfully.');
 
 			this.db = this.client.db(db);
 
 			if (!await this.db.collection('siteinfo').findOne({})) {
 				await this.db.collection('siteinfo').insertOne({
-					domain: "example.com",
-					sitename: "Example",
+					domain: 'example.com',
+					sitename: 'Example',
 
 					mediaMax: 1*1024*1024*1024,
 					mediaUsed: 0,
@@ -47,16 +47,16 @@ export default class Database {
 			}
 		}
 		catch (e) {
-			logger.fatal("Failed to connect to MongoDB instance %s with database %s.\n %s", url, db, e);
+			logger.fatal('Failed to connect to MongoDB instance %s with database %s.\n %s', url, db, e);
 			process.exit(1);
 		}
 	}
 
 
 	/**
-	* Sets the contents of the plugins collection to the
-	* Passed in array of theme objects.
-	*/
+	 * Sets the contents of the plugins collection to the
+	 * Passed in array of theme objects.
+	 */
 
 	async setPlugins(plugins: DB.Plugin[]) {
 		const collection = this.db!.collection('plugins');
@@ -66,33 +66,33 @@ export default class Database {
 
 
 	/**
-	* Returns the active plugins.
-	*
-	* @param {string[]} identifiers - Themes to be activated.
-	*/
+	 * Returns the active plugins.
+	 *
+	 * @param {string[]} identifiers - Themes to be activated.
+	 */
 
 	async getEnabledPlugins(): Promise<string[]> {
-		let info = this.db!.collection("siteinfo");
+		let info = this.db!.collection('siteinfo');
 		let themes = await info.findOne({}, { projection: { enabledPlugins: 1 }});
 		return themes.enabledPlugins || [];
 	}
 
 
 	/**
-	* Sets the active plugins to the string provided.
-	*
-	* @param {string[]} identifiers - Themes to be activated.
-	*/
+	 * Sets the active plugins to the string provided.
+	 *
+	 * @param {string[]} identifiers - Themes to be activated.
+	 */
 
 	async setEnabledPlugins(plugins: string[]) {
-		let info = this.db!.collection("siteinfo");
+		let info = this.db!.collection('siteinfo');
 		await info.updateOne({}, { $set: { enabledPlugins: plugins }});
 	}
 
 
 	/**
-	* Returns an array of every currently loaded theme
-	*/
+	 * Returns an array of every currently loaded theme
+	 */
 
 	async getThemes() {
 		const collection = this.db!.collection('themes');
@@ -101,11 +101,11 @@ export default class Database {
 
 
 	/**
-	* Sets the contents of the themes collection to the
-	* Passed in array of theme objects.
-	*
-	* @param {Db.Theme[]} themes - The themes to populate the array with.
-	*/
+	 * Sets the contents of the themes collection to the
+	 * Passed in array of theme objects.
+	 *
+	 * @param {Db.Theme[]} themes - The themes to populate the array with.
+	 */
 
 	async setThemes(themes: DB.Theme[]) {
 		const collection = this.db!.collection('themes');
@@ -115,39 +115,39 @@ export default class Database {
 
 
 	/**
-	* Returns the enabled themes.
-	*
-	* @param {string[]} identifiers - Themes to be activated.
-	*/
+	 * Returns the enabled themes.
+	 *
+	 * @param {string[]} identifiers - Themes to be activated.
+	 */
 
 	async getEnabledThemes(): Promise<string[]> {
-		let info = this.db!.collection("siteinfo");
+		let info = this.db!.collection('siteinfo');
 		let themes = await info.findOne({}, { projection: { enabledThemes: 1 }});
 		return themes.enabledThemes || [];
 	}
 
 
 	/**
-	* Sets the enabled themes to the string provided.
-	*
-	* @param {string[]} identifiers - Themes to be activated.
-	*/
+	 * Sets the enabled themes to the string provided.
+	 *
+	 * @param {string[]} identifiers - Themes to be activated.
+	 */
 
 	async setEnabledThemes(themes: string[]) {
-		let info = this.db!.collection("siteinfo");
+		let info = this.db!.collection('siteinfo');
 		await info.updateOne({}, { $set: { enabledThemes: themes }});
 	}
 
 
 	/**
-	* Accept a file as a media asset.
-	* Add it to the database and move it into the media folder.
-	*
-	* @param {string} user - The uploading user.
-	* @param {string} name - A name for the asset.
-	* @param {string} identifier - A sanitized asset identifier.
-	* @param {UploadedFile} media - The file to accept.
-	*/
+	 * Accept a file as a media asset.
+	 * Add it to the database and move it into the media folder.
+	 *
+	 * @param {string} user - The uploading user.
+	 * @param {string} name - A name for the asset.
+	 * @param {string} identifier - A sanitized asset identifier.
+	 * @param {UploadedFile} media - The file to accept.
+	 */
 
 	async acceptMedia(user: string, media: UploadedFile, name: string, identifier: string): Promise<MediaStatus> {
 		try {
@@ -163,10 +163,11 @@ export default class Database {
 			// Return if there wasn't enough space.
 			if (ret.value == null) return MediaStatus.MEDIA_LIMIT;
 
-			const ext = media.name.substr(media.name.lastIndexOf("."));
-			const fullPath = path.join(this.dataPath, "media", identifier + ext);
+			const ext = media.name.substr(media.name.lastIndexOf('.'));
+			const fullPath = path.join(this.dataPath, 'media', identifier + ext);
 
-			try { await fs.access(fullPath, fsc.R_OK); return MediaStatus.EXISTS; } catch (e) {}
+			try { await fs.access(fullPath, fsc.R_OK); return MediaStatus.EXISTS; }
+			catch (e) { /* This error indicates that there is no file conflict. */ }
 
 			await media.mv(fullPath);
 
@@ -179,7 +180,7 @@ export default class Database {
 				uploadUser: user,
 				uploadDate: Date.now(),
 				publicPath: `/media/${identifier}${ext}`
-			}
+			};
 
 			await this.db!.collection('media').insertOne(mediaEntry);
 			return MediaStatus.OK;
@@ -192,12 +193,12 @@ export default class Database {
 
 
 	/**
-	* Replace a media asset with a new file.
-	*
-	* @param {string} user - The uploading user.
-	* @param {UploadedFile} item - The file to accept.
-	* @param {string} replace - Media identifier to replace.
-	*/
+	 * Replace a media asset with a new file.
+	 *
+	 * @param {string} user - The uploading user.
+	 * @param {UploadedFile} item - The file to accept.
+	 * @param {string} replace - Media identifier to replace.
+	 */
 
 	async replaceMedia(user: string, item: UploadedFile, replace: string): Promise<MediaStatus> {
 		try {
@@ -218,7 +219,7 @@ export default class Database {
 			// Return if there wasn't enough space.
 			if (ret.value == null) return MediaStatus.MEDIA_LIMIT;
 
-			const ext = item.name.substr(item.name.lastIndexOf("."));
+			const ext = item.name.substr(item.name.lastIndexOf('.'));
 			const p = path.join(path.dirname(existing.path), replace + ext);
 			await media.deleteOne({ identifier: replace });
 			await fs.unlink(existing.path);
@@ -242,10 +243,10 @@ export default class Database {
 
 
 	/**
-	* Delete a series of media objects from the database.
-	*
-	* @param {string[]} identifiers - A list of media identifiers to delete.
-	*/
+	 * Delete a series of media objects from the database.
+	 *
+	 * @param {string[]} identifiers - A list of media identifiers to delete.
+	 */
 
 	async deleteMedia(identifiers: string[]) {
 		const media = this.db!.collection('media');
@@ -263,18 +264,18 @@ export default class Database {
 
 
 	/**
-	* Returns a PartialSiteData object from the database.
-	* Used for the client admin site to show information.
-	*
-	* @param {string} specifier - A ampersand-separated string containing one or more specifiers.
-	*
-	* Specifiers:
-	* info - Basic state and enabled themes and plugins.
-	* users - User listings
-	* media - Media listings
-	* themes - Theme listings
-	* plugins - Plugin listings
-	*/
+	 * Returns a PartialSiteData object from the database.
+	 * Used for the client admin site to show information.
+	 *
+	 * @param {string} specifier - A ampersand-separated string containing one or more specifiers.
+	 *
+	 * Specifiers:
+	 * info - Basic state and enabled themes and plugins.
+	 * users - User listings
+	 * media - Media listings
+	 * themes - Theme listings
+	 * plugins - Plugin listings
+	 */
 
 	async getSiteData(specifier?: string): Promise<Partial<SiteData>> {
 		const specifiers = (specifier ? specifier.split('&') as SiteDataSpecifier[] : []);
@@ -304,33 +305,33 @@ export default class Database {
 
 
 	/**
-	* Get a User database object from a user user.
-	* Throws if the user doesn't exist.
-	*
-	* @param {string} user - The username.
-	*/
+	 * Get a User database object from a user user.
+	 * Throws if the user doesn't exist.
+	 *
+	 * @param {string} user - The username.
+	 */
 
 	async getAccount(user: string): Promise<DB.User> {
 		const accounts = this.db!.collection('accounts');
 		const accountObj: DB.User | null = await accounts.findOne({identifier: user});
-		if (!accountObj) throw "This user no longer exists.";
+		if (!accountObj) throw 'This user no longer exists.';
 
 		return accountObj;
 	}
 
 
 	/**
-	* Create a user in the database from a user object.
-	* This function DOES NOT SANITIZE the user object, make sure that it is safe.
-	* Throws if another user with the same user string already exists.
-	*
-	* @param {string} user - A DB.User object with an unhashed password.
-	*/
+	 * Create a user in the database from a user object.
+	 * This function DOES NOT SANITIZE the user object, make sure that it is safe.
+	 * Throws if another user with the same user string already exists.
+	 *
+	 * @param {string} user - A DB.User object with an unhashed password.
+	 */
 
-	async createAccount(user: Omit<DB.User, "id">) {
+	async createAccount(user: Omit<DB.User, 'id'>) {
 		const accounts = this.db!.collection('accounts');
 		if (await accounts.findOne({identifier: user.identifier}) != null)
-			throw "A user with this identifier already exists.";
+			throw 'A user with this identifier already exists.';
 
 		user.pass = await bcrypt.hash(user.pass, 10);
 		await accounts.insertOne(user);
@@ -338,11 +339,11 @@ export default class Database {
 
 
 	/**
-	* Changes an account's password to the one specified.
-	*
-	* @param {string} user - The username.
-	* @param {string} password - The new password.
-	*/
+	 * Changes an account's password to the one specified.
+	 *
+	 * @param {string} user - The username.
+	 * @param {string} password - The new password.
+	 */
 
 	async updatePassword(user: string, password: string) {
 		const accounts = this.db!.collection('accounts');
@@ -352,10 +353,10 @@ export default class Database {
 
 
 	/**
-	* Deletes an account.
-	*
-	* @param {string} user - The account to delete.
-	*/
+	 * Deletes an account.
+	 *
+	 * @param {string} user - The account to delete.
+	 */
 
 	async deleteAccount(user: string) {
 		const accounts = this.db!.collection('accounts');
@@ -364,8 +365,8 @@ export default class Database {
 
 
 	/**
-	* Lists all of the accounts
-	*/
+	 * Lists all of the accounts
+	 */
 
 	async listAccounts() {
 		const accounts = this.db!.collection('accounts');
@@ -374,18 +375,18 @@ export default class Database {
 
 
 	/**
-	* Creates and returns an authentication token for a user using a username / password pair.
-	* Throws if the username and password do not refer to a valid user.
-	*
-	* @param {string} user - The username that was provided.
-	* @param {string} password - An unhashed password.
-	*/
+	 * Creates and returns an authentication token for a user using a username / password pair.
+	 * Throws if the username and password do not refer to a valid user.
+	 *
+	 * @param {string} user - The username that was provided.
+	 * @param {string} password - An unhashed password.
+	 */
 
 	async getAuthToken(user: string, password: string): Promise<string> {
 		const accounts = this.db!.collection('accounts');
 		const accountObj: DB.User | null = await accounts.findOne({identifier: user});
 
-		if (!accountObj || !await bcrypt.compare(password, accountObj.pass)) throw "Incorrect username or password.";
+		if (!accountObj || !await bcrypt.compare(password, accountObj.pass)) throw 'Incorrect username or password.';
 
 		const buffer = await crypto.randomBytes(48);
 		const token = buffer.toString('hex');
@@ -398,31 +399,31 @@ export default class Database {
 	}
 
 	/**
-	* Returns the user identifier that a token points to when provided with a
-	* token string or a network request containing a 'tkn' cookie.
-	* Throws if the token doesn't exist.
-	*
-	* @param {string | request} token - The token to authenticate.
-	*/
+	 * Returns the user identifier that a token points to when provided with a
+	 * token string or a network request containing a 'tkn' cookie.
+	 * Throws if the token doesn't exist.
+	 *
+	 * @param {string | request} token - The token to authenticate.
+	 */
 
 	async authUser(token: string | any): Promise<string> {
-		if (typeof token !== "string") {
-			if (!token.cookies || !token.cookies.tkn || typeof token.cookies.tkn != "string")
-				throw "Auth token is no longer valid, please reload the page.";
+		if (typeof token !== 'string') {
+			if (!token.cookies || !token.cookies.tkn || typeof token.cookies.tkn != 'string')
+				throw 'Auth token is no longer valid, please reload the page.';
 			token = token.cookies.tkn;
 		}
 
 		await this.pruneTokens();
 		let inst: DB.AuthToken | null = await this.db!.collection('tokens').findOne({token: token});
-		if (!inst) throw "Auth token is no longer valid, please reload the page.";
+		if (!inst) throw 'Auth token is no longer valid, please reload the page.';
 
 		return inst.identifier;
 	}
 
 
 	/**
-	* Prune authentication tokens that are past their expiry date.
-	*/
+	 * Prune authentication tokens that are past their expiry date.
+	 */
 
 	private async pruneTokens() {
 		const users = (await (await this.db!.collection('accounts').find({},

@@ -1,4 +1,4 @@
-import Express from "express";
+import Express from 'express';
 
 export default class Router {
 	router: Express.Router = Express.Router();
@@ -11,11 +11,11 @@ export default class Router {
 			catch (e) {
 				this.routeError(res, e, code);
 			}
-		}
+		};
 	}
 
-	protected routeError(res: Express.Response, e: any, code?: number, ) {
-		if (typeof e == "string") {
+	protected routeError(res: Express.Response, e: any, code?: number) {
+		if (typeof e == 'string') {
 			res.status(code ?? 403).send(e);
 		}
 		else {

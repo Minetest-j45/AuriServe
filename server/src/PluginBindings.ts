@@ -5,5 +5,5 @@ export default class PluginBindings {
 
 	registerElement = (def: ServerDefinition): void => {
 		this.elements.set(def.identifier, def);
-	}
+	};
 }
