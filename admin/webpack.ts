@@ -24,7 +24,7 @@ export default function(_: {}, argv: { mode: string, analyze: boolean }) {
 		devtool: prod ? undefined : 'source-map',
 
 		entry: { main: [ './Main.ts' ] },
-		output: { path: resolve(__dirname, './res/script') },
+		output: { path: resolve(__dirname, './build') },
 
 		// TODO: Check if neccessary
 		node: { __dirname: false, __filename: false },

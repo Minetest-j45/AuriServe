@@ -8,12 +8,12 @@
 		"dev": "npm run dev-admin & npm run dev-server",
 		"dev-admin": "cd admin; webpack --mode=development --watch --progress --config webpack.ts",
 		"dev-server": "nodemon --config server/nodemon.json",
+		"dev-clean": "rm -r common; rm -r admin; rm -r server; rm -rf node_modules",
 		"build": "npm run build-admin && npm run build-server",
 		"build-admin": "cd admin; webpack --mode=production --progress --config webpack.ts",
-		"build-server": "npm run lint-server && tsc --project server/tsconfig.json && pkg package.json --out-path build && npm run build-clean",
-		"lint-server": "cd server; eslint -c .eslintrc.js 'src/**/*.ts'",
-		"dev-clean": "rm -r common; rm -r admin; rm -r server; rm -rf node_modules",
-		"build-clean": "find server/src -name '*.js' -type f -delete && find common -name '*.js' -type f -delete"
+		"build-server": "npm run lint-server && tsc --project server/tsconfig.json && pkg package.json --options expose-gc --out-path build && npm run build-clean",
+		"build-clean": "find server/src -name '*.js' -type f -delete && find common -name '*.js' -type f -delete",
+		"lint-server": "cd server; eslint -c .eslintrc.js 'src/**/*.ts'"
 	},
 	"repository": {
 		"type": "git",
@@ -32,7 +32,8 @@
 	"pkg": {
 		"assets": [
 			"server/views/*",
-			"admin/**/*"
+			"admin/res/**/*",
+			"admin/build/*"
 		]
 	},
 	"homepage": "https://github.com/Aurailus/AuriServe#readme",
