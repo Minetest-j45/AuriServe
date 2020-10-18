@@ -12,7 +12,7 @@
 		"build-admin": "cd admin; webpack --mode=production --progress --config webpack.ts",
 		"build-server": "npm run lint-server && tsc --project server/tsconfig.json && pkg package.json --out-path build && npm run build-clean",
 		"lint-server": "cd server; eslint -c .eslintrc.js 'src/**/*.ts'",
-		"dev-clean": "rm -r common && rm -r admin && rm -r server && rm -r node_modules",
+		"dev-clean": "rm -r common; rm -r admin; rm -r server; rm -rf node_modules",
 		"build-clean": "find server/src -name '*.js' -type f -delete && find common -name '*.js' -type f -delete"
 	},
 	"repository": {
