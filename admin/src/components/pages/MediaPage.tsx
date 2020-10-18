@@ -40,7 +40,7 @@ export default class MediaPage extends Preact.Component<{}, State> {
 			<AppContext.Consumer>{ctx =>
 				<div className="Page MediaPage">
 					<section className="Page-Card">
-						<CardHeader icon="/admin/asset/icon/document-dark.svg" title="Manage Media"
+						<CardHeader icon="/admin/asset/icon/image-dark.svg" title="Manage Media"
 							subtitle={'Create or remove user-uploaded media.'} />
 
 						<div className="MediaPage-Toolbar">

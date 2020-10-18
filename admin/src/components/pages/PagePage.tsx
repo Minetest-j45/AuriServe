@@ -33,7 +33,7 @@ export default class PagePage extends Preact.Component<Props, State> {
 			<div class='Page PagePage'>
 				<section class='Page-Card'>
 					{this.state.page && <div>
-						<CardHeader icon='/admin/asset/icon/element-dark.svg' title={this.state.page!.title}
+						<CardHeader icon='/admin/asset/icon/document-dark.svg' title={this.state.page!.title}
 							subtitle={this.state.page!.description || <em>No description.</em> as any as string} />
 						{this.state.page && <PageEditor page={this.state.page} onSave={this.handleSave} />}
 					</div>}

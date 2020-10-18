@@ -1,12 +1,13 @@
 import { ObjectID } from 'mongodb';
 
-export interface Account {
+export interface User {
 	_id?: ObjectID;
-	
+
 	identifier: string;
+	name: string;
 	pass: string;
 
-	super: boolean;
+	roles: string[];
 }
 
 export interface AuthToken {
@@ -37,7 +38,7 @@ export interface Media {
 	identifier: string;
 	size: number;
 	ext: string;
-	
+
 	path: string;
 	publicPath: string;
 
@@ -69,13 +70,4 @@ export interface Plugin {
 	description: string;
 	author: string;
 	hasCover: boolean;
-}
-
-export interface Element {
-	_id?: ObjectID;
-
-	identifier: string;
-	type: string;
-	
-	props: any;
 }

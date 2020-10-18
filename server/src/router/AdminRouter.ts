@@ -10,21 +10,21 @@ import PagesManager from '../PagesManager';
 import PluginParser from '../PluginParser';
 
 import sanitize from "../../../common/util/Sanitize";
-import { PartialSiteData } from "../../../common/interface/SiteData";
+import { SiteData } from "../../../common/interface/SiteData";
 
 export default class AdminRouter extends Router {
 	authenticated: Express.Router = Express.Router();
 
-	constructor(private dataPath: string, private db: DBView, private app: Express.Application, 
+	constructor(private dataPath: string, private db: DBView, private app: Express.Application,
 		private themes: ThemeParser, private plugins: PluginParser, private pages: PagesManager,
-		private getSiteData: (specifier: string | undefined) => Promise<PartialSiteData>) { super(); }
+		private getSiteData: (specifier: string | undefined) => Promise<Partial<SiteData>>) { super(); }
 
 	init() {
 		/*
 		* Authentication Routes
 		*/
 
-		this.router.post('/auth', 
+		this.router.post('/auth',
 			this.safeRoute(async (req: Express.Request, res: Express.Response) => {
 				const user = req.body.user;
 				const pass = req.body.pass;
@@ -40,7 +40,7 @@ export default class AdminRouter extends Router {
 		* Data Routes
 		*/
 
-		this.router.get('/data/:specifier?', 
+		this.router.get('/data/:specifier?',
 			this.authRoute(async (req: Express.Request, res: Express.Response) => {
 				res.send(JSON.stringify(await this.getSiteData(req.params.specifier)));
 			})
@@ -50,7 +50,7 @@ export default class AdminRouter extends Router {
 		* Media Routes
 		*/
 
-		this.router.post('/media/upload', 
+		this.router.post('/media/upload',
 			this.authRoute(async (req: Express.Request, res: Express.Response) => {
 				const user = await this.db.authUser(req);
 
@@ -69,7 +69,7 @@ export default class AdminRouter extends Router {
 			})
 		);
 
-		this.router.post('/media/replace', 
+		this.router.post('/media/replace',
 			this.authRoute(async (req: Express.Request, res: Express.Response) => {
 				const user = await this.db.authUser(req);
 
@@ -87,7 +87,7 @@ export default class AdminRouter extends Router {
 			})
 		);
 
-		this.router.post('/media/delete', 
+		this.router.post('/media/delete',
 			this.authRoute(async (req: Express.Request, res: Express.Response) => {
 				//TODO: Sanitize the fuck out of this
 				await this.db.deleteMedia(req.body);
@@ -99,7 +99,7 @@ export default class AdminRouter extends Router {
 		* Theme Routes
 		*/
 
-		this.router.get('/themes/cover/:identifier.jpg', 
+		this.router.get('/themes/cover/:identifier.jpg',
 			this.authRoute(async (req: Express.Request, res: Express.Response) => {
 				res.sendFile(path.join(this.dataPath, "themes", req.params.identifier, "cover.jpg"));
 			})
@@ -112,7 +112,7 @@ export default class AdminRouter extends Router {
 			})
 		);
 
-		this.router.post('/themes/toggle', 
+		this.router.post('/themes/toggle',
 			this.authRoute(async (req: Express.Request, res: Express.Response) => {
 				//TODO: Santiize the fuck outa this too
 				await this.themes.toggle(req.body);
@@ -124,20 +124,20 @@ export default class AdminRouter extends Router {
 		* Plugin Routes
 		*/
 
-		this.router.get('/plugins/cover/:identifier.jpg', 
+		this.router.get('/plugins/cover/:identifier.jpg',
 			this.authRoute(async (req: Express.Request, res: Express.Response) => {
 				res.sendFile(path.join(this.dataPath, "plugins", req.params.identifier, "cover.jpg"));
 			})
 		);
 
-		this.router.post('/plugins/refresh', 
+		this.router.post('/plugins/refresh',
 			this.authRoute(async (_: any, res: Express.Response) => {
 				await this.plugins.refresh();
 				res.send(JSON.stringify(await this.getSiteData('plugins&info')));
 			})
 		);
 
-		this.router.post('/plugins/toggle', 
+		this.router.post('/plugins/toggle',
 			this.authRoute(async (req: Express.Request, res: Express.Response) => {
 				await this.plugins.toggle(req.body);
 				res.send(JSON.stringify(await this.getSiteData('info')));
@@ -148,17 +148,17 @@ export default class AdminRouter extends Router {
 		* Page Routes
 		*/
 
-		this.router.post('/pages/data', 
+		this.router.post('/pages/data',
 			this.authRoute(async (req: Express.Request, res: Express.Response) => {
-				if (!req.body.page || typeof(req.body.page) !== "string") 
+				if (!req.body.page || typeof(req.body.page) !== "string")
 					throw "Request is missing required data.";
-					
+
 				const data = await this.pages.getExpandedPage(req.body.page);
 				res.send(JSON.stringify(data));
 			})
 		);
 
-		this.router.post('/pages/update', 
+		this.router.post('/pages/update',
 			this.authRoute(async (req: Express.Request, res: Express.Response) => {
 				if (!req.body.path || typeof req.body.path !== "string" || !req.body.body || typeof req.body.body !== "object")
 					throw "Request is missing required data.";
@@ -167,7 +167,7 @@ export default class AdminRouter extends Router {
 				res.sendStatus(200);
 			})
 		);
-		
+
 		/*
 		* Basic App Content
 		*/

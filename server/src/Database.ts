@@ -7,7 +7,7 @@ import { UploadedFile } from "express-fileupload";
 import { promises as fs, constants as fsc } from 'fs';
 
 import * as DB from '../../common/interface/DBStructs';
-import { SiteDataSpecifier, PartialSiteData } from '../../common/interface/SiteData';
+import { SiteDataSpecifier, SiteData } from '../../common/interface/SiteData';
 
 const logger = log4js.getLogger();
 
@@ -140,7 +140,7 @@ export default class Database {
 
 
 	/**
-	* Accept a file as a media asset. 
+	* Accept a file as a media asset.
 	* Add it to the database and move it into the media folder.
 	*
 	* @param {string} user - The uploading user.
@@ -153,7 +153,7 @@ export default class Database {
 		try {
 			if (identifier.length > 32 || name.length > 32) return MediaStatus.INVALID;
 			let siteinfo = this.db!.collection('siteinfo');
-	
+
 			// Make sure there is space in the server for
 			// the media, and update the media used value.
 			const max = (await siteinfo.findOne({})).mediaMax;
@@ -207,7 +207,7 @@ export default class Database {
 			const existing = await media.findOne({ identifier: replace }) as any as DB.Media;
 			if (!existing) return MediaStatus.INVALID;
 			delete existing._id;
-	
+
 			// Make sure there is space in the server for
 			// the media, and update the media used value.
 			const sizeDiff = item.size - existing.size;
@@ -243,7 +243,7 @@ export default class Database {
 
 	/**
 	* Delete a series of media objects from the database.
-	* 
+	*
 	* @param {string[]} identifiers - A list of media identifiers to delete.
 	*/
 
@@ -270,30 +270,34 @@ export default class Database {
 	*
 	* Specifiers:
 	* info - Basic state and enabled themes and plugins.
+	* users - User listings
 	* media - Media listings
 	* themes - Theme listings
 	* plugins - Plugin listings
 	*/
 
-	async getSiteData(specifier?: string): Promise<PartialSiteData> {
+	async getSiteData(specifier?: string): Promise<Partial<SiteData>> {
 		const specifiers = (specifier ? specifier.split('&') as SiteDataSpecifier[] : []);
 
-		let data: PartialSiteData = {};
+		let data: Partial<SiteData> = {};
 
-		data = (specifiers.includes('info')) ? 
-			Object.assign(data, await this.db!.collection('siteinfo').findOne({}) as PartialSiteData) : data;
+		data = (specifiers.includes('info')) ?
+			Object.assign(data, await this.db!.collection('siteinfo').findOne({}) as Partial<SiteData>) : data;
 
-		if (specifiers.includes('media')) data.media = 
+		if (specifiers.includes('media')) data.media =
 			await (await this.db!.collection('media').find({})).toArray();
 
-		if (specifiers.includes('themes')) data.themes = 
+		if (specifiers.includes('themes')) data.themes =
 			await (await this.db!.collection('themes').find({})).toArray();
-		
-		if (specifiers.includes('plugins')) data.plugins = 
+
+		if (specifiers.includes('plugins')) data.plugins =
 			await (await this.db!.collection('plugins').find({})).toArray();
 
-		// if (specifiers.includes('elements')) data.elements = 
-		// 	await (await this.db!.collection('elements').find({})).toArray();
+		if (specifiers.includes('users')) {
+			let users = await (await this.db!.collection('accounts').find({})).toArray();
+			users.forEach((u) => delete u.pass);
+			data.users = users;
+		}
 
 		return data;
 	}
@@ -306,9 +310,9 @@ export default class Database {
 	* @param {string} user - The username.
 	*/
 
-	async getAccount(user: string): Promise<DB.Account> {
+	async getAccount(user: string): Promise<DB.User> {
 		const accounts = this.db!.collection('accounts');
-		const accountObj: DB.Account | null = await accounts.findOne({identifier: user});
+		const accountObj: DB.User | null = await accounts.findOne({identifier: user});
 		if (!accountObj) throw "This user no longer exists.";
 
 		return accountObj;
@@ -316,28 +320,28 @@ export default class Database {
 
 
 	/**
-	* Create a user in the database from a user string, a name, and a password.
+	* Create a user in the database from a user object.
+	* This function DOES NOT SANITIZE the user object, make sure that it is safe.
 	* Throws if another user with the same user string already exists.
 	*
-	* @param {string} user - A username.
-	* @param {string} password - A password.
-	* @param {boolean} superUser - Whether or not the account should have super priveleges.
+	* @param {string} user - A DB.User object with an unhashed password.
 	*/
 
-	async createAccount(user: string, password: string, superUser: boolean) {
+	async createAccount(user: Omit<DB.User, "id">) {
 		const accounts = this.db!.collection('accounts');
-		if (await accounts.findOne({identifier: user}) != null) throw "This user already already exists.";
+		if (await accounts.findOne({identifier: user.identifier}) != null)
+			throw "A user with this identifier already exists.";
 
-		let pass = await bcrypt.hash(password, 10);
-		await accounts.insertOne({identifier: user, pass: pass, super: superUser});
+		user.pass = await bcrypt.hash(user.pass, 10);
+		await accounts.insertOne(user);
 	}
 
 
 	/**
 	* Changes an account's password to the one specified.
 	*
-	* @param {string} user - The username. 
-	* @param {string} password - The new password. 
+	* @param {string} user - The username.
+	* @param {string} password - The new password.
 	*/
 
 	async updatePassword(user: string, password: string) {
@@ -360,22 +364,12 @@ export default class Database {
 
 
 	/**
-	* Deletes all super accounts.
-	*/
-
-	async deleteSuperAccounts() {
-		const accounts = this.db!.collection('accounts');
-		await accounts.deleteMany({ super: true });
-	}
-
-
-	/**
 	* Lists all of the accounts
 	*/
 
 	async listAccounts() {
 		const accounts = this.db!.collection('accounts');
-		return (await accounts.find({}, {projection: {identifier: 1}}).toArray()).map((a: DB.Account) => a.identifier);
+		return (await accounts.find({}, {projection: {identifier: 1}}).toArray()).map((a: DB.User) => a.identifier);
 	}
 
 
@@ -389,7 +383,7 @@ export default class Database {
 
 	async getAuthToken(user: string, password: string): Promise<string> {
 		const accounts = this.db!.collection('accounts');
-		const accountObj: DB.Account | null = await accounts.findOne({identifier: user});
+		const accountObj: DB.User | null = await accounts.findOne({identifier: user});
 
 		if (!accountObj || !await bcrypt.compare(password, accountObj.pass)) throw "Incorrect username or password.";
 
@@ -413,7 +407,7 @@ export default class Database {
 
 	async authUser(token: string | any): Promise<string> {
 		if (typeof token !== "string") {
-			if (!token.cookies || !token.cookies.tkn || typeof token.cookies.tkn != "string") 
+			if (!token.cookies || !token.cookies.tkn || typeof token.cookies.tkn != "string")
 				throw "Auth token is no longer valid, please reload the page.";
 			token = token.cookies.tkn;
 		}
@@ -421,7 +415,7 @@ export default class Database {
 		await this.pruneTokens();
 		let inst: DB.AuthToken | null = await this.db!.collection('tokens').findOne({token: token});
 		if (!inst) throw "Auth token is no longer valid, please reload the page.";
-		
+
 		return inst.identifier;
 	}
 
@@ -431,8 +425,8 @@ export default class Database {
 	*/
 
 	private async pruneTokens() {
-		const users = (await (await this.db!.collection('accounts').find({}, 
-			{projection: {identifier: 1}}).toArray()).map((u: DB.Account) => u.identifier));
+		const users = (await (await this.db!.collection('accounts').find({},
+			{projection: {identifier: 1}}).toArray()).map((u: DB.User) => u.identifier));
 
 		await this.db!.collection('tokens').deleteMany(
 			{$or: [{expires: { $lt: (Date.now() / 1000)}}, {identifier: { $nin: users }}]});

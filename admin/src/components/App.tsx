@@ -11,6 +11,7 @@ import MainPage from './pages/MainPage';
 import PagePage from './pages/PagePage';
 import PagesPage from './pages/PagesPage';
 import MediaPage from './pages/MediaPage';
+import UsersPage from './pages/UsersPage';
 import ThemesPage from './pages/ThemesPage';
 import PluginsPage from './pages/PluginsPage';
 
@@ -59,7 +60,8 @@ export default class App extends Preact.Component<{}, State> {
 			pluginState: PluginState.UNLINKED
 		};
 
-		if (tkn) this.refreshSiteData('info');
+		if (tkn) this.refreshSiteData('info', 'users').then(
+			() => this.refreshSiteData('pages', 'media', 'themes', 'plugins', 'elements'));
 	}
 
 	render() {
@@ -79,7 +81,9 @@ export default class App extends Preact.Component<{}, State> {
 								<Route exact path="/media" component={MediaPage as any}/>
 								<Route exact path="/themes" component={ThemesPage as any}/>
 								<Route exact path="/plugins" component={PluginsPage as any}/>
+								<Route exact path="/users" component={UsersPage as any} />
 								<Route path="/pages/" component={PagePage as any}/>
+								{/* <Route path="/users/" component={UserPage as any}/>*/}
 							</Switch>
 						</Router>
 					</div>}
@@ -143,18 +147,19 @@ export default class App extends Preact.Component<{}, State> {
 		}
 	};
 
-	private refreshSiteData = (...types: SiteDataSpecifier[]): void => {
-		fetch('/admin/data/' + types.join('&'), {
-			cache: 'no-cache'
-		}).then(r => {
-			if (r.status !== 200) throw 'Invalid credentials.';
-			return r.json();
-		}).then(res => {
-			this.handleSiteData(res);
-		}).catch(() => {
+	private refreshSiteData = async (...types: SiteDataSpecifier[]): Promise<SiteData> => {
+		try {
+			let res = await fetch('/admin/data/' + types.join('&'), { cache: 'no-cache' });
+			if (res.status !== 200) throw 'Invalid credentials.';
+			let json = await res.json();
+			this.handleSiteData(json);
+			return this.state.contextData.data;
+		}
+		catch {
 			Cookie.remove('tkn');
 			location.href = '/admin';
-		});
+			return undefined as any;
+		}
 	};
 
 	private handleSiteData = (data: SiteData): void => {
@@ -165,10 +170,10 @@ export default class App extends Preact.Component<{}, State> {
 
 		for (const key of Object.keys(data)) (siteData as any)[key] = (data as any)[key];
 
+		if (!siteData.users) siteData.users = [];
 		if (!siteData.media) siteData.media = [];
 		if (!siteData.themes) siteData.themes = [];
 		if (!siteData.plugins) siteData.plugins = [];
-		if (!siteData.elements) siteData.elements = [];
 
 		if (!siteData.pages) siteData.pages = {};
 		if (!siteData.elementDefs) siteData.elementDefs = {};

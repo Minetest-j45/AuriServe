@@ -41,6 +41,12 @@
 	align-items: center;
 }
 
+%ellipsize {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
 %para_no_collapse {
 	// Use Japanese fullwidth spaces
 	// to prevent line collapsing.
@@ -103,7 +109,7 @@
 
 		margin: 4px;
 		transform: scale(0.87);
-	
+
 		border-radius: inherit;
 		background: transparentize($neutral-400, 1);
 

@@ -40,12 +40,10 @@
 		padding-top: 8px;
 
 		p {
+			@extend %ellipsize;
+
 			margin-top: 0em;
 			margin-bottom: 0.3em;
-
-			overflow: hidden;
-			white-space: nowrap;
-			text-overflow: ellipsis;
 		}
 
 		p.MediaItem-Title {

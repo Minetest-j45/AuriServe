@@ -13,18 +13,18 @@ const ICON_PREFIX = '/admin/asset/icon/ext-';
 
 const ICONS: {[key: string]: string | undefined} = {
 	unknown: ICON_PREFIX + 'unknown-color.svg',
-	
+
 	md:  ICON_PREFIX + 'txt-color.svg',
 	txt: ICON_PREFIX + 'txt-color.svg',
 
 	pdf: ICON_PREFIX + 'pdf-color.svg',
-	
+
 	doc:  ICON_PREFIX + 'document-color.svg',
 	docx: ICON_PREFIX + 'document-color.svg',
-	
+
 	xls:  ICON_PREFIX + 'sheet-color.svg',
 	xlsx: ICON_PREFIX + 'sheet-color.svg',
-	
+
 	ppt:  ICON_PREFIX + 'slideshow-color.svg',
 	pptx: ICON_PREFIX + 'slideshow-color.svg',
 

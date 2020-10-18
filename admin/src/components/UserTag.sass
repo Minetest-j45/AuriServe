@@ -1,0 +1,24 @@
+@import "../partial/Vars"
+@import "../partial/Ext"
+
+.UserTag
+	display: inline
+
+	margin: 0
+	padding: 0
+	outline: 0
+
+	border: none
+	color: $accent-800
+	background: transparent
+
+	&:hover, &:focus
+		color: $accent-700
+		text-decoration: underline $accent-700
+
+	&:active
+		color: $accent-600
+
+	.UserTag-At
+		font-family: $font-header
+		vertical-align: 8%

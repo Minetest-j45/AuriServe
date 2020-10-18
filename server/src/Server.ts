@@ -23,14 +23,14 @@ import SuperUserPrompt from './SuperUserPrompt';
 
 import { Config } from "./interface/Config";
 import resolvePath from "../../common/util/ResolvePath";
-import { SiteDataSpecifier, PartialSiteData } from '../../common/interface/SiteData';
+import { SiteDataSpecifier, SiteData } from '../../common/interface/SiteData';
 
 const logger = log4js.getLogger()
 
 export default class Server {
 	adminRouter: AdminRouter;
 	pagesRouter: PagesRouter;
-	
+
 	app = Express();
 	db = new Database(this.dataPath);
 
@@ -55,16 +55,16 @@ export default class Server {
 		this.plugins = new PluginParser(this.dataPath, this.db as any as DBView, this.elements);
 		this.pages = new PagesManager(this.themes, this.plugins, this.elements, path.join(this.dataPath, "pages"));
 
-		this.adminRouter = new AdminRouter(this.dataPath, this.db as any as DBView, 
+		this.adminRouter = new AdminRouter(this.dataPath, this.db as any as DBView,
 			this.app, this.themes, this.plugins, this.pages, this.getSiteData);
-		
+
 		this.pagesRouter = new PagesRouter(this.dataPath, this.app, this.pages, this.plugins);
 
 		this.init().then(async () => {
 			await this.themes.init();
 			await this.plugins.init();
 
-			if (this.conf.super) 
+			if (this.conf.super)
 				new SuperUserPrompt(this.db);
 
 			await this.adminRouter.init();
@@ -74,12 +74,13 @@ export default class Server {
 
 
 	/**
-	* Returns a PartialSiteData object.
+	* Returns a Partial<SiteData> object.
 	*
 	* @param {string} specifier - A ampersand-separated string containing one or more specifiers.
 	*
 	* Specifiers:
 	* info - Basic state and enabled themes and plugins.
+	* users - User listings
 	* media - Media listings
 	* themes - Theme listings
 	* plugins - Plugin listings
@@ -87,16 +88,16 @@ export default class Server {
 	* pages - Basic page listings
 	*/
 
-	async getSiteData(specifier: string | undefined): Promise<PartialSiteData> {
+	async getSiteData(specifier: string | undefined): Promise<Partial<SiteData>> {
 		let data = await this.db.getSiteData(specifier);
 
 		const specifiers = (specifier ? specifier.split('&') as SiteDataSpecifier[] : []);
-		
+
 		if (specifiers.includes('elements')) {
 			let confMap: {[key: string]: any} = {};
 			this.elements.getAllElements().forEach((elem, key) => confMap[key] = elem.config);
 			data.elementDefs = confMap;
-		
+
 		}
 
 		if (specifiers.includes('pages'))
@@ -118,7 +119,7 @@ export default class Server {
 					logger.fatal("Config is missing https.cert and https.key fields.");
 					process.exit(1);
 				}
-				
+
 				let cert: string, key: string;
 				try {
 					cert = await fs.readFile(resolvePath(this.conf.https.cert), 'utf8');
@@ -148,7 +149,7 @@ export default class Server {
 				});
 			}
 		});
-		
+
 		if (!this.conf.db || !this.conf.db.url) {
 			logger.fatal("Config is missing db.url field.");
 			process.exit(1);
@@ -162,7 +163,7 @@ export default class Server {
 
 	/**
 	* Routing function to forward HTTP traffic to HTTPS.
-	* 
+	*
 	* @param {Express.Request} req - The request object.
 	* @param {Express.Response} res - The response object.
 	*/

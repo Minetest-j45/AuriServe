@@ -4,7 +4,7 @@
 body {
 	background-color: $neutral-000;
 	color: $neutral-800;
-	font-family: "Roboto", sans-serif;
+	font-family: $font-main;
 
 	&.dark {
 		filter: invert(0.9) hue-rotate(180deg) contrast(1.1);
@@ -26,5 +26,5 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: "Alata", "Montserrat", "Roboto", sans-serif;
+	font-family: $font-header;;
 }

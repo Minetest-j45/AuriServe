@@ -17,6 +17,12 @@ export default class SuperUserPrompt {
 			pattern: /^\w{3,32}$/g,
 			required: true
 		}, {
+			name: "name",
+			description: "Please enter a name:",
+			message: "Name must be between 3 and 32 characters long.",
+			pattern: /^[\w ]{3,32}$/g,
+			required: true
+		}, {
 			name: "password",
 			description: "Please enter a password:",
 			message: "Password must be at least 8 characters long.",
@@ -24,25 +30,20 @@ export default class SuperUserPrompt {
 			required: true,
 			hidden: true,
 			replace: "*"
-		}, {
-			name: "erase",
-			description: "Erase other Superusers? Type 'yes' to confirm:",
-			required: false
-		}], async (err: string, result: {username: string, password: string, erase: string}) => {
+		}], async (err: string, result: { username: string, name: string, password: string }) => {
 				prompt.stop();
 
 				if (err) {
-					logger.fatal("Failed to create a superuser.\n %s", err);
+					logger.fatal("Failed to create a new administrator.\n %s", err);
 					process.exit(1);
 				}
 
-				if (result.erase.toLowerCase() == "yes") db.deleteSuperAccounts();
 				try {
-					await db.createAccount(result.username, result.password, true);
-					logger.info("Created new superuser account %s.", result.username);
+					await db.createAccount({ identifier: result.username, name: result.name, pass: result.password, roles: ['administrator'] });
+					logger.info("Created new administrator account %s.", result.username);
 				}
 				catch (e) {
-					logger.info("Failed to create new superuser account %s.\n %s", result.username, e);
+					logger.info("Failed to create new administrator account %s.\n %s", result.username, e);
 					process.exit(1);
 				}
 		});

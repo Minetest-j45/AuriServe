@@ -6,7 +6,7 @@ import { promises as fs, constants as fsc } from "fs";
 
 import DBView from './DBView';
 import sanitize from "../../common/util/Sanitize";
-import { PartialSiteData } from "../../common/interface/SiteData";
+import { SiteData } from "../../common/interface/SiteData";
 import { Theme as DBTheme } from "../../common/interface/DBStructs";
 
 const logger = log4js.getLogger();
@@ -18,16 +18,16 @@ export default class ThemeParser {
 	private parsing: boolean = false;
 	private enabledThemes: string[] = [];
 
-	constructor(private dataPath: string, private db: DBView, 
-		private getSiteData: (specifier: string | undefined) => Promise<PartialSiteData>) {};
+	constructor(private dataPath: string, private db: DBView,
+		private getSiteData: (specifier: string | undefined) => Promise<Partial<SiteData>>) {};
 
 	async init() {
 		// Synchronize active themes representation with server.
 		this.enabledThemes = await this.db.getEnabledThemes();
-		
+
 		// Reload themes list and parse themes.
 		await this.refresh();
-		
+
 		// Force clearing of invalid themes.
 		await this.toggle([]);
 	}
@@ -82,7 +82,7 @@ export default class ThemeParser {
 
 		logger.debug("Watching " + watched + " theme" + (watched != 1 ? "s" : "") + ".");
 	}
-	
+
 	async refresh() {
 		let themes: Theme[] = [];
 		let failedThemes = 0;
@@ -95,7 +95,7 @@ export default class ThemeParser {
 				if (sanitize(f) != f) throw `Failed to parse theme ${f}, theme directory must be lowercase alphanumeric.`;
 
 				const confStr = (await fs.readFile(path.join(this.dataPath, "themes", f, "conf.json"))).toString();
-				
+
 				let conf: Theme;
 				try { conf = JSON.parse(confStr); }
 				catch (e) { throw `Failed to parse configuration file for theme ${f}.\n ${e}`; }
@@ -110,7 +110,7 @@ export default class ThemeParser {
 					name: conf.name || f,
 					description: conf.description || "",
 					author: conf.author || "Unauthored",
-					
+
 					pre: conf.pre || "",
 
 					hasCover: cover

@@ -29,7 +29,7 @@ export default class PagesPage extends Preact.Component<{}, State> {
 			<AppContext.Consumer>{ctx =>
 				<div class="Page PagesPage">
 					<section class="Page-Card">
-						<CardHeader icon="/admin/asset/icon/element-dark.svg" title="Manage Pages"
+						<CardHeader icon="/admin/asset/icon/document-dark.svg" title="Manage Pages"
 							subtitle={'Manage site pages and elements.'} />
 
 						<ul class="PagesPage-Pages">
