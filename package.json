@@ -68,7 +68,7 @@
 		"file-loader": "^6.1.1",
 		"fork-ts-checker-webpack-plugin": "^5.2.0",
 		"moment-locales-webpack-plugin": "^1.2.0",
-		"nodemon": "^2.0.4",
+		"nodemon": "^2.0.6",
 		"pkg": "^4.4.9",
 		"sass-loader": "^9.0.3",
 		"style-loader": "^1.2.1",
