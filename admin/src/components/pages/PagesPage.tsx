@@ -34,11 +34,13 @@ export default class PagesPage extends Preact.Component<{}, State> {
 
 						<ul class="PagesPage-Pages">
 							{Object.keys(ctx.data.pages).sort((a, b) => a > b ? 1 : -1).map(p =>
-								<Link className="PagesPage-PageItem" to={'/pages/' + p}>
-									<p class="PagesPage-PageItemTitle">{ctx.data.pages[p]!.title}</p>
-									<p class="PagesPage-PageItemDescription">{ctx.data.pages[p].description || <em>No description</em>}</p>
-									<p class="PagesPage-PageItemPath">{p}</p>
-								</Link>
+								<li>
+									<Link className="PagesPage-PageItem" to={'/pages/' + p}>
+										<p class="PagesPage-PageItemTitle">{ctx.data.pages[p]!.title}</p>
+										<p class="PagesPage-PageItemDescription">{ctx.data.pages[p].description || <em>No description</em>}</p>
+										<p class="PagesPage-PageItemPath">{p}</p>
+									</Link>
+								</li>
 							)}
 						</ul>
 

@@ -8,7 +8,7 @@ import { AppContext } from '../../AppContext';
 
 import UserItem from '../UserItem';
 
-export default class PagePage extends Preact.Component {
+export default class UsersPage extends Preact.Component {
 	constructor(p: any) {
 		super(p);
 	}
@@ -40,4 +40,4 @@ export default class PagePage extends Preact.Component {
 	}
 }
 
-PagePage.contextType = AppContext;
+UsersPage.contextType = AppContext;

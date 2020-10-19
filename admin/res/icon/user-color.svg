@@ -12,7 +12,7 @@
    class="icon-user-circle"
    version="1.1"
    id="svg8"
-   sodipodi:docname="user-dark.svg"
+   sodipodi:docname="user-color.svg"
    inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
   <metadata
      id="metadata14">
@@ -59,7 +59,8 @@
        y1="22.769472"
        x2="17.297527"
        y2="6.4456387"
-       gradientUnits="userSpaceOnUse" />
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.1778574,0,0,1.1778574,-2.1342891,-2.134708)" />
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient854"
@@ -68,7 +69,8 @@
        y1="20.741001"
        x2="14.34"
        y2="7.3994823"
-       gradientUnits="userSpaceOnUse" />
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.1778574,0,0,1.1778574,-2.1342891,-2.134708)" />
   </defs>
   <sodipodi:namedview
      pagecolor="#ffffff"
@@ -84,23 +86,23 @@
      id="namedview10"
      showgrid="false"
      inkscape:zoom="10.120466"
-     inkscape:cx="-16.335144"
-     inkscape:cy="4.8565186"
-     inkscape:window-x="0"
+     inkscape:cx="-12.975615"
+     inkscape:cy="4.6588992"
+     inkscape:window-x="1920"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
      inkscape:current-layer="g6" />
   <g
      id="g6">
     <path
-       fill="#829ab1"
-       d="M3.66 17.52a10 10 0 1 1 16.68 0C19.48 16.02 17.86 16 16 16H8c-1.86 0-3.48.01-4.34 1.52z"
+       d="m 2.1766691,18.501354 a 11.778574,11.778574 0 1 1 19.6466619,0 C 20.810373,16.734568 18.902245,16.71101 16.71143,16.71101 H 7.2885703 c -2.1908148,0 -4.0989439,0.01178 -5.1119012,1.790344 z"
        id="path2"
-       style="fill-opacity:1;fill:url(#linearGradient835)" />
+       style="fill:url(#linearGradient835);fill-opacity:1;stroke-width:1.1778574"
+       inkscape:connector-curvature="0" />
     <path
-       fill="#486581"
-       d="M3.66 17.52A5 5 0 0 1 8 15h8a5 5 0 0 1 4.34 2.52 10 10 0 0 1-16.68 0zM12 13a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"
+       d="M 2.1766691,18.501354 A 5.8892872,5.8892872 0 0 1 7.2885703,15.533153 H 16.71143 a 5.8892872,5.8892872 0 0 1 5.111901,2.968201 11.778574,11.778574 0 0 1 -19.6466619,0 z M 12,13.177438 a 4.7114297,4.7114297 0 1 1 0,-9.4228589 4.7114297,4.7114297 0 0 1 0,9.4228589 z"
        id="path4"
-       style="opacity:1;fill-opacity:1;fill:url(#linearGradient843)" />
+       style="opacity:1;fill:url(#linearGradient843);fill-opacity:1;stroke-width:1.1778574"
+       inkscape:connector-curvature="0" />
   </g>
 </svg>

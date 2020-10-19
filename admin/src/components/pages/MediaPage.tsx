@@ -38,29 +38,30 @@ export default class MediaPage extends Preact.Component<{}, State> {
 	render() {
 		return (
 			<AppContext.Consumer>{ctx =>
-				<div className="Page MediaPage">
-					<section className="Page-Card">
-						<CardHeader icon="/admin/asset/icon/image-dark.svg" title="Manage Media"
+				<div className='Page MediaPage'>
+					<section className='Page-Card'>
+						<CardHeader icon='/admin/asset/icon/image-dark.svg' title='Manage Media'
 							subtitle={'Create or remove user-uploaded media.'} />
 
-						<div className="MediaPage-Toolbar">
+						<div className='MediaPage-Toolbar'>
 							<div>
-								<button className="MediaPage-Toolbar-Button" onClick={this.handleUploadMedia}>
-									<img src="/admin/asset/icon/add-dark.svg"/><span>Upload Media</span>
+								<button className='MediaPage-Toolbar-Button' onClick={this.handleUploadMedia}>
+									<img src='/admin/asset/icon/add-dark.svg' alt=''/><span>Upload Media</span>
 								</button>
 
-								{this.state.selected.length > 0 && <button className="MediaPage-Toolbar-Button" onClick={this.handleDeleteSelection}>
-									<img src="/admin/asset/icon/trash-dark.svg"/>
+								{this.state.selected.length > 0 && <button className='MediaPage-Toolbar-Button' onClick={this.handleDeleteSelection}>
+									<img src='/admin/asset/icon/trash-dark.svg' alt=''/>
 									<span>{this.state.selected.length === 1 ? 'Delete' : 'Delete (' + this.state.selected.length + ')'}</span>
 								</button>}
 							</div>
 							<div>
-								{/* <button className="MediaPage-Toolbar-Button" onClick={this.handleUploadMedia}>
-									<img src="/admin/asset/icon/sort-dark.svg"/><span>Sort by Size</span>
+								{/* <button className='MediaPage-Toolbar-Button' onClick={this.handleUploadMedia}>
+									<img src='/admin/asset/icon/sort-dark.svg'/><span>Sort by Size</span>
 								</button> */}
 
-								<button className="MediaPage-Toolbar-Button" onClick={this.handleViewToggle}>
-									<img src={`/admin/asset/icon/${this.state.grid ? 'grid' : 'list'}-view-dark.svg`}/>
+								<button className='MediaPage-Toolbar-Button'
+									onClick={this.handleViewToggle} aria-label='Switch View' title='Switch View'>
+									<img src={`/admin/asset/icon/${this.state.grid ? 'grid' : 'list'}-view-dark.svg`} alt=''/>
 								</button>
 							</div>
 						</div>
@@ -77,7 +78,7 @@ export default class MediaPage extends Preact.Component<{}, State> {
 							/>)}
 						</SelectGroup>
 
-						{ctx.data.media.length === 0 && <h2 className="MediaPage-NoMedia">No media found.</h2>}
+						{ctx.data.media.length === 0 && <h2 className='MediaPage-NoMedia'>No media found.</h2>}
 					</section>
 
 					{this.state.viewed !== undefined && <Modal onClose={this.handleCloseMedia}>
@@ -86,7 +87,7 @@ export default class MediaPage extends Preact.Component<{}, State> {
 					</Modal>}
 
 					{this.state.uploading && <Modal>
-						<CardHeader icon="/admin/asset/icon/document-dark.svg" title="Upload Media"
+						<CardHeader icon='/admin/asset/icon/document-dark.svg' title='Upload Media'
 							subtitle={`Upload new media assets to ${ctx.data.sitename}.`} />
 						<MediaUploadForm onCancel={this.handleUploadCancel}/>
 					</Modal>}

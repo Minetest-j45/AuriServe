@@ -5,10 +5,11 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 
 import './App.scss';
 
-import LoginForm from './LoginForm';
 import AppHeader from './AppHeader';
 import MainPage from './pages/MainPage';
 import PagePage from './pages/PagePage';
+import UserPage from './pages/UserPage';
+import LoginPage from './pages/LoginPage';
 import PagesPage from './pages/PagesPage';
 import MediaPage from './pages/MediaPage';
 import UsersPage from './pages/UsersPage';
@@ -69,7 +70,7 @@ export default class App extends Preact.Component<{}, State> {
 			<AppContext.Provider value={this.state.contextData!}>
 				<div className="App">
 
-					{this.state.appState === AppState.LOGIN && <LoginForm/>}
+					{this.state.appState === AppState.LOGIN && <LoginPage/>}
 					{this.state.appState === AppState.ADMIN &&
 					<div className="App-Wrap">
 						<Router basename="/admin">
@@ -82,8 +83,9 @@ export default class App extends Preact.Component<{}, State> {
 								<Route exact path="/themes" component={ThemesPage as any}/>
 								<Route exact path="/plugins" component={PluginsPage as any}/>
 								<Route exact path="/users" component={UsersPage as any} />
+
 								<Route path="/pages/" component={PagePage as any}/>
-								{/* <Route path="/users/" component={UserPage as any}/>*/}
+								<Route path="/users/" component={UserPage as any}/>
 							</Switch>
 						</Router>
 					</div>}

@@ -15,7 +15,7 @@ export default class AppHeader extends Preact.Component {
 		return (
 			<header class="AppHeader">
 				<div class="AppHeader-wrap">
-					<img class="AppHeader-logo" src="/admin/asset/icon/serve.svg" />
+					<img class="AppHeader-logo" src="/admin/asset/icon/serve.svg" title='AuriServe' alt='AuriServe' />
 
 					<nav class="AppHeader-nav">
 						<Link activeClassName="active" to="/home">Home</Link>
@@ -27,7 +27,10 @@ export default class AppHeader extends Preact.Component {
 					</nav>
 
 					{/* <Link className="AppHeader-options" to="/user_options"><img src="/admin/asset/icon/settings-dark.svg"/></Link>*/}
-					<button class="AppHeader-logout" onClick={this.logout}><img src="/admin/asset/icon/logout-dark.svg" /></button>
+
+					<button class="AppHeader-logout" onClick={this.logout} title='Log out'>
+						<img src="/admin/asset/icon/logout-dark.svg" alt='' />
+					</button>
 				</div>
 			</header>
 		);

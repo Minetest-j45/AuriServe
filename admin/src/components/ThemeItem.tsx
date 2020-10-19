@@ -1,6 +1,6 @@
 import * as Preact from 'preact';
 
-import './ThemeItem.scss';
+import './ThemeItem.sass';
 
 import Selectable from './Selectable';
 import { ClickHandlerCallbacks } from '../ClickHandler';
@@ -28,20 +28,22 @@ export default class MediaItem extends Preact.Component<Props> {
 
 	render() {
 		return (
-			<Selectable class="ThemeItem" ind={this.props.ind} callbacks={this.callbacks} doubleClickSelects={true}>
-				<div class="ThemeItem-Cover">
-					{this.props.item.hasCover && <img src={'/admin/themes/cover/' + this.props.item.identifier + '.jpg'}/>}
-					<span class={'ThemeItem-Tag ' + (this.props.active ? 'Enabled' : 'Disabled')}>
-						{this.props.active ? 'Enabled' : 'Disabled'}
-					</span>
-				</div>
+			<li class='ThemeItem'>
+				<Selectable class='ThemeItem-Select' ind={this.props.ind} callbacks={this.callbacks} doubleClickSelects={true}>
+					<div class='ThemeItem-Cover'>
+						{this.props.item.hasCover && <img src={'/admin/themes/cover/' + this.props.item.identifier + '.jpg'} alt=''/>}
+						<span class={'ThemeItem-Tag ' + (this.props.active ? 'Enabled' : 'Disabled')}>
+							{this.props.active ? 'Enabled' : 'Disabled'}
+						</span>
+					</div>
 
-				<div class="ThemeItem-Content">
-					<h2 class="ThemeItem-Title">{this.props.item.name}</h2>
-					<p class="ThemeItem-Author">{this.props.item.author}</p>
-					{this.props.item.description && <p class="ThemeItem-Description">{this.props.item.description}</p>}
-				</div>
-			</Selectable>
+					<div class='ThemeItem-Content'>
+						<h2 class='ThemeItem-Title'>{this.props.item.name}</h2>
+						<p class='ThemeItem-Author'>{this.props.item.author}</p>
+						{this.props.item.description && <p class='ThemeItem-Description'>{this.props.item.description}</p>}
+					</div>
+				</Selectable>
+			</li>
 		);
 	}
 }

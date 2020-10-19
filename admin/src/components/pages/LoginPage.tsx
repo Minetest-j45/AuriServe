@@ -1,10 +1,10 @@
 import Cookie from 'js-cookie';
 import * as Preact from 'preact';
 
-import './LoginForm.scss';
+import './LoginPage.scss';
 
-import { AppContext } from '../AppContext';
-import { SiteInfo } from '../../../common/interface/DBStructs';
+import { AppContext } from '../../AppContext';
+import { SiteInfo } from '../../../../common/interface/DBStructs';
 
 enum LoginState {
 	UNAUTH,
@@ -20,7 +20,7 @@ interface State {
 	state: LoginState;
 }
 
-export default class LoginForm extends Preact.Component<{}, State> {
+export default class LoginPage extends Preact.Component<{}, State> {
 	constructor(props: any) {
 		super(props);
 
@@ -40,26 +40,26 @@ export default class LoginForm extends Preact.Component<{}, State> {
 		const loading = this.state.state === LoginState.AUTH || this.state.state === LoginState.REDIRECT;
 		const loaded = this.state.state === LoginState.REDIRECT;
 		return (
-			<div className="LoginForm">
-				<form className={'LoginForm-Card' + (loading ? ' loading' : '') + (loaded ? ' loaded' : '')} onSubmit={this.handleSubmit}>
-					<div className="LoginForm-ProfilePlaceholder">
-						<img className="card" src="/admin/asset/icon/account-light.svg"/>
-						<img className="success" src="/admin/asset/icon/serve-light.svg"/>
+			<div className='LoginPage'>
+				<form className={'LoginPage-Card' + (loading ? ' loading' : '') + (loaded ? ' loaded' : '')} onSubmit={this.handleSubmit}>
+					<div className='LoginPage-ProfilePlaceholder' role='heading' aria-level='1' aria-label='Log In'>
+						<img className='card' src='/admin/asset/icon/account-light.svg' alt=''/>
+						<img className='success' src='/admin/asset/icon/serve-light.svg' alt=''/>
 					</div>
-					<div className="LoginForm-FormContents">
+					<div className='LoginPage-FormContents'>
 
-						<input type="text" name="user" placeholder="Username"
+						<input type='text' name='user' placeholder='Username' aria-label='Username'
 							autoFocus required minLength={3} maxLength={32} autoComplete={'username'}
 							value={this.state.username} onChange={this.handleUsernameChange} disabled={loading}/>
 
-						<input type="password" name="pass" placeholder="Password"
+						<input type='password' name='pass' placeholder='Password' aria-label='Password'
 							required minLength={8} autoComplete={'current-password'}
 							value={this.state.password} onChange={this.handlePasswordChange} disabled={loading}/>
 
 						<button disabled={loading}>Log In</button>
 					</div>
 				</form>
-				<p className="LoginForm-Warning">{this.state.warning}</p>
+				<p className='LoginPage-Warning'>{this.state.warning}</p>
 			</div>
 		);
 	}
@@ -118,4 +118,4 @@ export default class LoginForm extends Preact.Component<{}, State> {
 	}
 }
 
-LoginForm.contextType = AppContext;
+LoginPage.contextType = AppContext;

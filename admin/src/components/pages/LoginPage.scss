@@ -1,16 +1,16 @@
-@import "../partial/Ext";
+@import "../../partial/Ext";
 
-.LoginForm {
+.LoginPage {
 	@extend %center_wrap;
 	height: calc(100vh - 6px);
 }
 
-.LoginForm-Card {
+.LoginPage-Card {
 	&:not(.loading) { @extend %card; }
 
 	transition: background-color $t-fast, border-color $t-fast, padding $t-fast;
 
-	.LoginForm-FormContents {
+	.LoginPage-FormContents {
 		display: flex;
 		flex-direction: column;
 		max-height: 230px;
@@ -37,7 +37,7 @@
 		}
 	}
 
-	.LoginForm-ProfilePlaceholder {
+	.LoginPage-ProfilePlaceholder {
 		display: block;
 		position: relative;
 		width: 70%;
@@ -71,12 +71,12 @@
 	}
 }
 
-.LoginForm-Card.loading {
+.LoginPage-Card.loading {
 	background-color: transparent;
 	border-color: transparent;
 	padding: 0px 24px;
 
-	.LoginForm-ProfilePlaceholder {
+	.LoginPage-ProfilePlaceholder {
 		width: 80%;
 		height: 0;
 		padding-bottom: 80%;
@@ -97,20 +97,20 @@
 		}
 	}
 
-	.LoginForm-FormContents {
+	.LoginPage-FormContents {
 		max-height: 0;
 		opacity: 0;
 	}
 }
 
-.LoginForm-Card.loaded {
-	.LoginForm-ProfilePlaceholder {
+.LoginPage-Card.loaded {
+	.LoginPage-ProfilePlaceholder {
 		transform: scale(0.8);
 		opacity: 0;
 	}
 }
 
-.LoginForm-Warning {
+.LoginPage-Warning {
 	@extend %para_no_collapse;
 	user-select: none;
 	color: #ef4e4e;

@@ -1,6 +1,6 @@
 import * as Preact from 'preact';
 
-import './MediaItem.scss';
+import './MediaItem.sass';
 
 import MediaIcon from './MediaIcon';
 import Selectable from '../Selectable';
@@ -29,17 +29,19 @@ export default class MediaItem extends Preact.Component<Props, {}> {
 
 	render() {
 		return (
-			<Selectable class="MediaItem" ind={this.props.ind} callbacks={this.callbacks} doubleClickSelects={true}>
-				<MediaIcon path={this.props.item.publicPath} />
-				<div class="MediaItem-Description">
-					<p class="MediaItem-Title">{this.props.item.name}</p>
-					<p class="MediaItem-Author">{`Uploaded by ${this.props.item.uploadUser} ${Format.date(this.props.item.uploadDate)}.`}</p>
-					<p class="MediaItem-Size">{
-						(this.props.item.dimensions ? Format.vector(this.props.item.dimensions, 'px') + ' • ' : '')
-						+ Format.bytes(this.props.item.size)
-					}</p>
-				</div>
-			</Selectable>
+			<li class='MediaItem'>
+				<Selectable class='MediaItem-Select' ind={this.props.ind} callbacks={this.callbacks} doubleClickSelects={true}>
+					<MediaIcon path={this.props.item.publicPath} />
+					<div class='MediaItem-Description'>
+						<p class='MediaItem-Title'>{this.props.item.name}</p>
+						<p class='MediaItem-Author'>{`Uploaded by ${this.props.item.uploadUser} ${Format.date(this.props.item.uploadDate)}.`}</p>
+						<p class='MediaItem-Size'>{
+							(this.props.item.dimensions ? Format.vector(this.props.item.dimensions, 'px') + ' • ' : '')
+							+ Format.bytes(this.props.item.size)
+						}</p>
+					</div>
+				</Selectable>
+			</li>
 		);
 	}
 }

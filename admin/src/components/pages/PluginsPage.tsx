@@ -33,39 +33,39 @@ export default class PluginsPage extends Preact.Component<{}, State> {
 	render() {
 		return (
 			<AppContext.Consumer>{ctx =>
-				<div className="Page PluginsPage">
-					<section className="Page-Card">
-						<CardHeader icon="/admin/asset/icon/element-dark.svg" title="Manage Plugins"
+				<div className='Page PluginsPage'>
+					<section className='Page-Card'>
+						<CardHeader icon='/admin/asset/icon/element-dark.svg' title='Manage Plugins'
 							subtitle={'Install, enable, or disable plugins.'} />
 
-						<div className="PluginsPage-Toolbar">
+						<div className='PluginsPage-Toolbar'>
 							<div>
-								{/* <button className="MediaPage-Toolbar-Button" onClick={this.handleTogglePlugins}>
-									<img src="/admin/asset/icon/add-dark.svg" alt=""/><span>Install Plugin</span>
+								{/* <button className='MediaPage-Toolbar-Button' onClick={this.handleTogglePlugins}>
+									<img src='/admin/asset/icon/add-dark.svg' alt=''/><span>Install Plugin</span>
 								</button>*/}
 
 								{this.state.selected.length > 0 && <button onClick={this.handleTogglePlugins}>
-									<img src="/admin/asset/icon/refresh-dark.svg" alt=""/>
+									<img src='/admin/asset/icon/refresh-dark.svg' alt=''/>
 									<span>{'Toggle Plugin' + (this.state.selected.length !== 1 ? ' (' + this.state.selected.length + ')' : '')}</span>
 								</button>}
 							</div>
 							<div>
-								{/* <button className="MediaPage-Toolbar-Button" onClick={this.handleTogglePlugins}>
-									<img src="/admin/asset/icon/sort-dark.svg" alt=""/><span>Sort by Size</span>
+								{/* <button className='MediaPage-Toolbar-Button' onClick={this.handleTogglePlugins}>
+									<img src='/admin/asset/icon/sort-dark.svg' alt=''/><span>Sort by Size</span>
 								</button>*/}
 
-								<button onClick={this.handleRefreshPlugins}>
-									<img src="/admin/asset/icon/refresh-dark.svg" alt=""/><span>Refresh</span>
+								<button onClick={this.handleRefreshPlugins} title='Refresh' aria-label='Refresh'>
+									<img src='/admin/asset/icon/refresh-dark.svg' alt=''/><span>Refresh</span>
 								</button>
 							</div>
 						</div>
 
-						<SelectGroup className="PluginsPage-Plugins" onSelectionChange={this.handleSelectionChange} multi={true}>
+						<SelectGroup className='PluginsPage-Plugins' onSelectionChange={this.handleSelectionChange} multi={true}>
 							{ctx.data.plugins.map((t: Plugin, i: number) => <PluginItem item={t} ind={i} onClick={this.handleTogglePlugins}
 								active={ctx.data.enabledPlugins.indexOf(t.identifier) !== -1} key={t.identifier}/>)}
 						</SelectGroup>
 
-						{ctx.data.plugins.length === 0 && <h2 className="PluginsPage-NoPlugins">No plugins found.</h2>}
+						{ctx.data.plugins.length === 0 && <h2 className='PluginsPage-NoPlugins'>No plugins found.</h2>}
 					</section>
 				</div>
 			}</AppContext.Consumer>

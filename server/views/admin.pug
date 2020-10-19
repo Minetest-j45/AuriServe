@@ -1,18 +1,27 @@
 doctype html
-html(lang="en")
+html(lang='en')
 	head
-		<link rel="icon" type="image/svg" href="/admin/asset/icon/favi.svg"/>
-		<link rel="icon" type="image/svg" href="/admin/asset/icon/favi.svg"/>
+		link(rel='icon' type='image/svg' href='/admin/asset/icon/favi.svg')
+		link(rel='icon' type='image/svg' href='/admin/asset/icon/favi.svg')
 
-		script(src="https://cdn.jsdelivr.net/npm/preact/dist/preact.min.js" defer)
-		script#plugins(type="application/json")!= JSON.stringify({ pluginScripts: scripts, pluginStyles: styles })
-
-		script(src="/admin/script/main.js" defer)
-		script(src="http://localhost:35729/livereload.js" async)
-
-		meta(name="viewport" content="width=device-width")
-		link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alata&family=Roboto:wght@300;400;500&display=swap")
+		meta(name='viewport' content='width=device-width')
 		title Admin Panel
+
+		meta(name='robots' content='noindex')
+		meta(name='description' content='AuriServe administration panel.')
+
+		script(src='https://cdn.jsdelivr.net/npm/preact/dist/preact.min.js' defer)
+		script#plugins(type='application/json')!= JSON.stringify({ pluginScripts: scripts, pluginStyles: styles })
+
+		for val in styles
+			link(rel='preload' href=`/plugin/${val}` as='style')
+		for val in scripts
+			link(rel='preload' href=`/plugin/${val}` as='script')
+
+		script(src='/admin/script/main.js' defer)
+		script(src='http://localhost:35729/livereload.js' async)
+
+		link(rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Alata&family=Roboto:wght@300;400;500&display=swap')
 	body
 		.top_gradient
 		#root
