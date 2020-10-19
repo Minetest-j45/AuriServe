@@ -140,7 +140,12 @@ export default class PagesManager {
 				await fs.access(path.join(page, 'index.json'));
 				page = path.join(page, 'index');
 			}
+		}
+		catch (e) {
+			throw 404;
+		}
 
+		try {
 			const json = JSON.parse((await fs.readFile(page + '.json')).toString()) as Page.Page;
 
 			const header = await this.renderTree(page, json.elements.header);
@@ -169,8 +174,6 @@ export default class PagesManager {
 			return pug.renderFile(path.join(pugRoot, 'template.pug'), opt);
 		}
 		catch (e) {
-			// if (e.code == 'ENOENT') throw 404;
-
 			return pug.renderFile(path.join(pugRoot, 'error.pug'), { error: e, stack: e.stack });
 		}
 	}

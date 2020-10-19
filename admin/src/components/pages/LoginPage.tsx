@@ -82,7 +82,7 @@ export default class LoginPage extends Preact.Component<{}, State> {
 			if (r.status !== 200) throw res;
 			return res;
 		}).then(res => {
-			Cookie.set('tkn', res);
+			Cookie.set('tkn', res, { sameSite: 'Lax' });
 			this.setState({state: LoginState.AUTH});
 
 			let returnImmediate = false;
