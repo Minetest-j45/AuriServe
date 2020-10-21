@@ -174,6 +174,7 @@ export default class App extends Preact.Component<{}, State> {
 
 		if (!siteData.users) siteData.users = [];
 		if (!siteData.media) siteData.media = [];
+		if (!siteData.roles) siteData.roles = [];
 		if (!siteData.themes) siteData.themes = [];
 		if (!siteData.plugins) siteData.plugins = [];
 

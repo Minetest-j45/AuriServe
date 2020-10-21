@@ -39,7 +39,7 @@ export default class SuperUserPrompt {
 			}
 
 			try {
-				await db.createAccount({ identifier: result.username, name: result.name, pass: result.password, roles: ['administrator'] });
+				await db.createAccount({ identifier: result.username, name: result.name, pass: result.password, roles: [' Administrator '] });
 				logger.info('Created new administrator account %s.', result.username);
 			}
 			catch (e) {

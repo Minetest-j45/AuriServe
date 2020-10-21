@@ -5,6 +5,7 @@ import './UsersPage.sass';
 
 import CardHeader from '../CardHeader';
 import { AppContext } from '../../AppContext';
+import RolesEditor from '../roles/RolesEditor';
 
 import UserItem from '../UserItem';
 
@@ -14,28 +15,29 @@ export default class UsersPage extends Preact.Component {
 	}
 
 	componentDidMount() {
-		this.context.refreshSiteData('users');
+		this.context.refreshSiteData('users', 'roles');
 	}
 
 	render() {
 		return (
-			<div class='Page UsersPage'>
-				<section class='Page-Card'>
-					<CardHeader icon='/admin/asset/icon/users-dark.svg' title='Manage Accounts'
-						subtitle='Manage access to AuriServe.' />
+			<AppContext.Consumer>{ctx =>
+				<div class='Page UsersPage'>
+					<section class='Page-Card'>
+						<CardHeader icon='/admin/asset/icon/users-dark.svg' title='Manage Accounts'
+							subtitle='Manage access to AuriServe.' />
 
-					<AppContext.Consumer>{ctx =>
 						<div class='UsersPage-Users'>
 							{ctx.data.users.map(user => <UserItem key={user.identifier} user={user} />)}
 						</div>
-					}</AppContext.Consumer>
-				</section>
+					</section>
 
-				<section class='Page-Card'>
-					<CardHeader icon='/admin/asset/icon/element-dark.svg' title='Manage Roles'
-						subtitle='Manage access to AuriServe.' />
-				</section>
-			</div>
+					<section class='Page-Card'>
+						<CardHeader icon='/admin/asset/icon/element-dark.svg' title='Manage Roles'
+							subtitle='Manage access to AuriServe.' />
+						<RolesEditor roles={ctx.data.roles} />
+					</section>
+				</div>
+			}</AppContext.Consumer>
 		);
 	}
 }

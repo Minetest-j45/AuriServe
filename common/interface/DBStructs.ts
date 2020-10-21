@@ -18,6 +18,53 @@ export interface AuthToken {
 	expires: number;
 }
 
+export interface Role {
+	identifier: string;
+	color?: string;
+	abilities: (keyof typeof RoleAbility)[];
+}
+
+export enum RoleAbility {
+	/* Administrator */
+	ADMINISTRATOR,
+
+	/* Media */
+	VIEW_MEDIA,
+	MANAGE_MEDIA,
+	REPLACE_MEDIA,
+	EDIT_MEDIA_META,
+
+	/* Pages */
+	VIEW_PAGES,
+	MANAGE_PAGES,
+	EDIT_PAGES,
+
+	/* Themes */
+	VIEW_THEMES,
+	MANAGE_THEMES,
+	TOGGLE_THEMES,
+
+	/* Plugins */
+	VIEW_PLUGINS,
+	MANAGE_PLUGINS,
+	TOGGLE_PLUGINS,
+
+	/* Users */
+	VIEW_USERS,
+	MANAGE_USERS,
+	RESET_USER_PASSWORD,
+
+	/* Roles */
+	MANAGE_ROLES,
+
+	/* Audit Log */
+	VIEW_AUDIT_LOG
+};
+
+// export type RoleAbilitiesTable = {
+// 	[key in keyof typeof RoleAbility]?: true;
+// }
+
 export interface SiteInfo {
 	_id?: ObjectID;
 

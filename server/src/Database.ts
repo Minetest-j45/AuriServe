@@ -45,6 +45,22 @@ export default class Database {
 					enabledPlugins: []
 				} as DB.SiteInfo);
 			}
+
+			await this.db.collection('roles').deleteMany({});
+
+			if (!await this.db.collection('roles').findOne({ identifier: 'Administrator' })) {
+				await this.db.collection('roles').insertMany([{
+					identifier: 'Administrator',
+					abilities: [ 'ADMINISTRATOR' ]
+				}, {
+					identifier: 'Editor',
+					abilities: [ 'VIEW_AUDIT_LOG', 'VIEW_PAGES', 'MANAGE_PAGES', 'EDIT_PAGES', 'VIEW_MEDIA',
+						'MANAGE_MEDIA', 'VIEW_THEMES', 'MANAGE_THEMES', 'TOGGLE_THEMES' ]
+				}, {
+					identifier: 'Writer',
+					abilities: [ 'VIEW_PAGES', 'EDIT_PAGES', 'VIEW_MEDIA' ]
+				}]);
+			}
 		}
 		catch (e) {
 			logger.fatal('Failed to connect to MongoDB instance %s with database %s.\n %s', url, db, e);
@@ -271,6 +287,7 @@ export default class Database {
 	 *
 	 * Specifiers:
 	 * info - Basic state and enabled themes and plugins.
+	 * roles - Role listings
 	 * users - User listings
 	 * media - Media listings
 	 * themes - Theme listings
@@ -287,6 +304,9 @@ export default class Database {
 
 		if (specifiers.includes('media')) data.media =
 			await (await this.db!.collection('media').find({})).toArray();
+
+		if (specifiers.includes('roles')) data.roles =
+			await (await this.db!.collection('roles').find({})).toArray();
 
 		if (specifiers.includes('themes')) data.themes =
 			await (await this.db!.collection('themes').find({})).toArray();

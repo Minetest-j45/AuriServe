@@ -10,12 +10,7 @@
 	overflow: auto
 
 	.ElementPropInput-Label
-		display: block
-		padding: 16px 0 8px 0
-
-		user-select: none
-		font-weight: normal
-		color: $neutral-600
+		@extend %material_label
 
 	input[type=text], input[type=number], textarea
 		@extend %material_input
