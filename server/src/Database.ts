@@ -281,10 +281,10 @@ export default class Database {
 
 
 	/**
-	* Replaces all roles in the DB with the updated set.
-	*
-	* @param {DB.Role[]} roles - New roles
-	*/
+	 * Replaces all roles in the DB with the updated set.
+	 *
+	 * @param {DB.Role[]} roles - New roles
+	 */
 
 	async updateRoles(newRoles: DB.Role[]) {
 		const roles = this.db!.collection('roles');
@@ -294,11 +294,11 @@ export default class Database {
 
 
 	/**
-	* Adds the specified roles to a user's roles list.
-	*
-	* @param {string} user - The user to add the roles to.
-	* @param {string[]} roles - The roles to add to the user.
-	*/
+	 * Adds the specified roles to a user's roles list.
+	 *
+	 * @param {string} user - The user to add the roles to.
+	 * @param {string[]} roles - The roles to add to the user.
+	 */
 
 	async userAddRoles(user: string, roles: string[]) {
 		let success = !!(await this.db!.collection('accounts')
@@ -308,11 +308,11 @@ export default class Database {
 
 
 	/**
-	* Removes the specified roles from a user's roles list.
-	*
-	* @param {string} user - The user to remove the roles from.
-	* @param {string[]} roles - The roles to remove from the user.
-	*/
+	 * Removes the specified roles from a user's roles list.
+	 *
+	 * @param {string} user - The user to remove the roles from.
+	 * @param {string[]} roles - The roles to remove from the user.
+	 */
 
 	async userRemoveRoles(user: string, roles: string[]) {
 		let success = !!(await this.db!.collection('accounts')
