@@ -27,14 +27,14 @@ export default class UsersPage extends Preact.Component {
 							subtitle='Manage access to AuriServe.' />
 
 						<div class='UsersPage-Users'>
-							{ctx.data.users.map(user => <UserItem key={user.identifier} user={user} />)}
+							{ctx.data.users && ctx.data.users.map(user => <UserItem key={user.identifier} user={user} />)}
 						</div>
 					</section>
 
 					<section class='Page-Card'>
-						<CardHeader icon='/admin/asset/icon/element-dark.svg' title='Manage Roles'
+						<CardHeader icon='/admin/asset/icon/role-dark.svg' title='Manage Roles'
 							subtitle='Manage access to AuriServe.' />
-						<RolesEditor roles={ctx.data.roles} />
+						{ctx.data.roles && <RolesEditor roles={ctx.data.roles} />}
 					</section>
 				</div>
 			}</AppContext.Consumer>

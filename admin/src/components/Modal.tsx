@@ -1,6 +1,6 @@
 import * as Preact from 'preact';
 
-import './Modal.scss';
+import './Modal.sass';
 
 interface Props {
 	onClose?: (_: MouseEvent) => void;

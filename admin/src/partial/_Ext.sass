@@ -72,7 +72,9 @@
 %material_checkbox
 	$width: 32px
 	$height: 20px
-	$notchsize: 16px
+	$notch-small: 12px
+	$notch-large: 16px
+	$notch-grow: 6px
 
 	width: 1px
 	height: 1px
@@ -88,7 +90,7 @@
 		left: -$width / 2 - 1
 		width: $width
 		height: $height
-		border-radius: $height / 2
+		border-radius: $height
 
 		border: 1px solid $neutral-100
 		background-color: #fff
@@ -114,25 +116,29 @@
 
 		&:active
 			&::before
-				border-color: $accent-800
+				border-color: $accent-500
 
 	&::after
 		content: ' '
 		position: absolute
 
-		width: $notchsize
-		height: $notchsize
+		width: $notch-small
+		height: $notch-small
+
+		top: (-$height + $notch-large - $notch-small) / 2 + 2
+		left: (-$width + $notch-large - $notch-small) / 2 + 2
 
 		background-color: $neutral-200
-		border-radius: $notchsize / 2
+		border-radius: $notch-large / 2
 
-		top: -$height / 2 + 2
-		left: -$width / 2 + 2
-
-		transition: left $t-fast, background-color $t-fast, width $t-fast
+		transition: width $t-fast, height $t-fast, top $t-fast, left $t-fast, background-color $t-fast
 
 	&:checked::after
-		left: -$width / 2 + $width - $notchsize - 2
+		width: $notch-large
+		height: $notch-large
+
+		top: -$height / 2 + 2
+		left: -$width / 2 + $width - $notch-large - 2
 
 	&:checked
 		&::after
@@ -146,9 +152,20 @@
 
 	&:active
 		&::after
-			width: $notchsize + 4
+			width: $notch-small + $notch-grow
+
+			// width: $notch-large + $notch-grow
+			// top: (-$height + ($notch-large - $notch-small) / 2) / 2 + 2
+			// height: $notch-small + ($notch-large - $notch-small) / 2
 		&:checked::after
-			left: -$width / 2 + $width - $notchsize - 2 - 4
+			// left: -$width / 2 + $width - $notch-large - 2 - $notch-grow
+			// width: $notch-large + $notch-grow
+
+			width: $notch-small + $notch-grow
+			height: $notch-small
+
+			top: (-$height + $notch-large - $notch-small) / 2 + 2
+			left: (-$width / 2 + $width - $notch-small - 4 - $notch-grow) / 2 - 3
 
 %material_label
 	display: block

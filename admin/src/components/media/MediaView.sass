@@ -3,8 +3,8 @@
 
 .MediaView
 	display: block
-	width: 100vw
-	max-width: 800px
+	overflow: hidden
+	width: Min(calc(100vw - 72px), 800px)
 
 	.MediaView-Toolbar
 		margin-top: 16px
@@ -14,14 +14,17 @@
 		$imageWidth: 80px
 
 		display: grid
-		grid-template-columns: $imageWidth 1fr
+		grid-template-columns: $imageWidth minmax(0, 1fr)
 		grid-gap: 16px
 
 		.MediaIcon
 			height: $imageWidth
 
 		.MediaView-Info
+
 			.MediaView-Name, .MediaView-Details, .MediaView-Path
+				@extend %ellipsize
+
 				font-size: 14px
 				font-family: inherit
 
@@ -31,20 +34,19 @@
 
 			.MediaView-Name
 				margin-top: 6px
-				margin-bottom: 3px
+				margin-bottom: 6px
 
 				font-size: 18px
 
 			.MediaView-Details
 				margin-top: 0
 				margin-bottom: 0.3em
-				opacity: 0.8
+				color: $neutral-700
 
 			.MediaView-Path
 				margin-top: 0.5em
 				margin-bottom: 0
-
-				opacity: 0.6
+				color: $neutral-500
 
 	.MediaView-Preview
 		display: block

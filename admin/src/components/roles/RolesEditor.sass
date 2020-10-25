@@ -4,17 +4,22 @@
 	display: grid
 	grid-gap: 24px
 	margin-top: 16px
-	grid-template-columns: 200px 420px
+	grid-template-columns: 200px min(420px, 100% - 200px - 24px)
+
+	@media screen and (max-width: $m-small)
+		grid-template-columns: 1fr
 
 	.RolesEditor-RolesList
 		padding: 0
 		margin: 0
 
+		li
+			list-style-type: none
+
 		.RolesEditor-Label
 			@extend %material_label
 
 		.RolesEditor-RolesListRole
-			list-style-type: none
 			margin-bottom: 4px
 
 			button

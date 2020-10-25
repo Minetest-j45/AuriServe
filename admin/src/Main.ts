@@ -1,6 +1,6 @@
 import * as Preact from 'preact';
 
-import './Main.scss';
+import './Main.sass';
 
 import App from './components/App';
 

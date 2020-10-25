@@ -21,6 +21,7 @@ export default function(_: {}, argv: { mode: string, analyze: boolean }) {
 				"react-dom": "preact/compat"
 			}
 		},
+		mode: argv.mode as 'production' ?? 'development',
 		devtool: prod ? undefined : 'source-map',
 
 		entry: { main: [ './Main.ts' ] },

@@ -21,21 +21,10 @@ import { AppContext, AppContextData } from '../AppContext';
 import { AdminDefinition } from '../../../common/interface/Element';
 import { SiteData, SiteDataSpecifier } from '../../../common/interface/SiteData';
 
-declare global {
-	interface Window { serve: any }
-}
+declare global { interface Window { serve: any } }
 
-enum AppState {
-	QUERYING,
-	LOGIN,
-	ADMIN
-}
-
-enum PluginState {
-	SAFE,
-	UNLINKED,
-	LINKED
-}
+enum AppState { QUERYING, LOGIN, ADMIN }
+enum PluginState { SAFE, UNLINKED, LINKED }
 
 interface State {
 	appState: AppState;
@@ -55,13 +44,15 @@ export default class App extends Preact.Component<{}, State> {
 				refreshSiteData: this.refreshSiteData,
 				handleSiteData: this.handleSiteData,
 				plugins: { elements: new Map() },
-				data: null as any
+				data: {}
 			},
 			appState: tkn ? AppState.QUERYING : AppState.LOGIN,
 			pluginState: PluginState.UNLINKED
 		};
 
-		if (tkn) this.refreshSiteData('info', 'users').then(
+		if (tkn) this.refreshSiteData();
+
+		if (tkn) this.refreshSiteData('info', 'users', 'roles').then(
 			() => this.refreshSiteData('pages', 'media', 'themes', 'plugins', 'elements'));
 	}
 
@@ -149,7 +140,7 @@ export default class App extends Preact.Component<{}, State> {
 		}
 	};
 
-	private refreshSiteData = async (...types: SiteDataSpecifier[]): Promise<SiteData> => {
+	private refreshSiteData = async (...types: SiteDataSpecifier[]): Promise<Partial<SiteData>> => {
 		try {
 			let res = await fetch('/admin/data/' + types.join('&'), { cache: 'no-cache' });
 			if (res.status !== 200) throw 'Invalid credentials.';
@@ -164,31 +155,15 @@ export default class App extends Preact.Component<{}, State> {
 		}
 	};
 
-	private handleSiteData = (data: SiteData): void => {
+	private handleSiteData = (data: Partial<SiteData>): void => {
 		console.log(data);
 		const pluginState = this.loadPlugins();
 
-		let siteData = Object.assign({}, this.state.contextData.data);
-
-		for (const key of Object.keys(data)) (siteData as any)[key] = (data as any)[key];
-
-		if (!siteData.users) siteData.users = [];
-		if (!siteData.media) siteData.media = [];
-		if (!siteData.roles) siteData.roles = [];
-		if (!siteData.themes) siteData.themes = [];
-		if (!siteData.plugins) siteData.plugins = [];
-
-		if (!siteData.pages) siteData.pages = {};
-		if (!siteData.elementDefs) siteData.elementDefs = {};
+		let contextData = Object.assign({}, this.state.contextData);
+		contextData.data = Object.assign({}, contextData.data, data);
 
 		this.setState({
-			contextData: {
-				getPageData: this.getPageData,
-				refreshSiteData: this.refreshSiteData,
-				handleSiteData: this.handleSiteData,
-				plugins: this.state.contextData.plugins,
-				data: siteData
-			},
+			contextData: contextData,
 			appState: AppState.ADMIN,
 			pluginState: pluginState
 		});

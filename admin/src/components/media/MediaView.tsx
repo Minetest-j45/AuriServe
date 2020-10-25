@@ -29,7 +29,7 @@ export default class MediaView extends Preact.Component<Props, State> {
 
 	render(props: Props) {
 		return (
-			<DimensionTransition duration={200}>
+			<DimensionTransition duration={200} mode='height'>
 				<div className='MediaView'>
 					<div class='MediaView-Top'>
 						<MediaIcon path={props.item.publicPath} imageIcon={false} />

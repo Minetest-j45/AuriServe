@@ -66,25 +66,30 @@ export default class MediaPage extends Preact.Component<{}, State> {
 							</div>
 						</div>
 
-						<SelectGroup
-							multi={true}
-							onSelectionChange={this.handleSelectionChange}
-							className={'MediaPage-Media ' + (this.state.grid ? 'Grid' : 'Stack')}>
-							{ctx.data.media.map((a: any, i: number) => <MediaItem
-								ind={i}
-								item={a}
-								key={a.identifier}
-								onClick={this.handleOpenMedia.bind(this, a.identifier)}
-							/>)}
-						</SelectGroup>
+						{ctx.data.media &&
+							<SelectGroup
+								multi={true}
+								onSelectionChange={this.handleSelectionChange}
+								className={'MediaPage-Media ' + (this.state.grid ? 'Grid' : 'Stack')}>
+								{ctx.data.media.map((a: any, i: number) => <MediaItem
+									ind={i}
+									item={a}
+									key={a.identifier}
+									onClick={this.handleOpenMedia.bind(this, a.identifier)}
+								/>)}
+							</SelectGroup>
+						}
 
-						{ctx.data.media.length === 0 && <h2 className='MediaPage-NoMedia'>No media found.</h2>}
+						{!ctx.data.media && <h2 className='MediaPage-Notice'>Loading media...</h2>}
+						{ctx.data.media && ctx.data.media.length === 0 && <h2 className='MediaPage-Notice'>No media found.</h2>}
 					</section>
 
-					{this.state.viewed !== undefined && <Modal onClose={this.handleCloseMedia}>
-						<MediaView onDelete={this.handleDelete.bind(this, this.state.viewed) as () => void}
-							item={ctx.data.media.filter(m => m.identifier === this.state.viewed)[0]}/>
-					</Modal>}
+					{this.state.viewed !== undefined &&
+						<Modal onClose={this.handleCloseMedia}>
+							<MediaView onDelete={this.handleDelete.bind(this, this.state.viewed) as () => void}
+								item={ctx.data.media!.filter(m => m.identifier === this.state.viewed)[0]}/>
+						</Modal>
+					}
 
 					{this.state.uploading && <Modal>
 						<CardHeader icon='/admin/asset/icon/document-dark.svg' title='Upload Media'

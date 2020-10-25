@@ -3,13 +3,15 @@ import * as Preact from 'preact';
 import './Page.sass';
 import './UserPage.sass';
 
+import UserRolesList from '../UserRolesList';
+
 import { AppContext } from '../../AppContext';
 
+// import { SiteData } from '../../../../common/interface/SiteData';
 import { User } from '../../../../common/interface/DBStructs';
-import { SiteData } from '../../../../common/interface/SiteData';
 
 interface State {
-	user?: Omit<User, 'pass'>;
+	user: string;
 }
 
 export default class UserPage extends Preact.Component<{}, State> {
@@ -18,24 +20,28 @@ export default class UserPage extends Preact.Component<{}, State> {
 	}
 
 	componentDidMount() {
-		this.context.refreshSiteData('users').then((data: SiteData) => {
-			let user: string = window.location.pathname.replace(/^\/admin\/users\//g, '');
-			this.setState({ user: data.users.filter(u => u.identifier === user)[0] });
-		});
+		this.context.refreshSiteData('users');
+		this.setState({ user: window.location.pathname.replace(/^\/admin\/users\//g, '') });
 	}
 
 	render() {
+		let user: Omit<User, 'pass'> | undefined;
+
 		return (
 			<div class='Page UserPage'>
 				<section class='Page-Card UserPage-Card'>
-					{this.state.user && <Preact.Fragment>
-						<img class='UserPage-Icon' src='/admin/asset/icon/user-color.svg' alt=''/>
-						<div class='UserPage-Details'>
-							<h1 class='UserPage-Name'>{this.state.user.name}</h1>
-							<h2 class='UserPage-Identifier'><span class='UserPage-At'>@</span>{this.state.user.identifier}</h2>
-							<ul class='UserPage-Roles'>{this.state.user.roles.map(r => <li class='UserPage-Role'>{r}</li>)}</ul>
+					<AppContext.Consumer>{ctx =>
+						<div class='UserPage-Header'>
+							{(user = ctx.data.users?.filter(u => u.identifier === this.state.user)[0]) && <Preact.Fragment>
+								<img class='UserPage-Icon' src='/admin/asset/icon/user-color.svg' alt=''/>
+								<div class='UserPage-Details'>
+									<h1 class='UserPage-Name'>{user.name}</h1>
+									<h2 class='UserPage-Identifier'>@{user.identifier}</h2>
+									<UserRolesList user={user} wrap={true} edit={true} />
+								</div>
+							</Preact.Fragment>}
 						</div>
-					</Preact.Fragment>}
+					}</AppContext.Consumer>
 				</section>
 			</div>
 		);

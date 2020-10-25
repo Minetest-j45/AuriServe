@@ -150,7 +150,7 @@ export default class AdminRouter extends Router {
 
 		this.router.post('/pages/data',
 			this.authRoute(async (req: Express.Request, res: Express.Response) => {
-				if (!req.body.page || typeof(req.body.page) !== 'string')
+				if (typeof req.body !== 'object' || typeof req.body.page !== 'string')
 					throw 'Request is missing required data.';
 
 				const data = await this.pages.getExpandedPage(req.body.page);
@@ -160,7 +160,7 @@ export default class AdminRouter extends Router {
 
 		this.router.post('/pages/update',
 			this.authRoute(async (req: Express.Request, res: Express.Response) => {
-				if (!req.body.path || typeof req.body.path !== 'string' || !req.body.body || typeof req.body.body !== 'object')
+				if (typeof req.body !== 'object' || typeof req.body.path !== 'string' || typeof req.body.body !== 'object')
 					throw 'Request is missing required data.';
 
 				await this.pages.updatePage(req.body.path, req.body.body);
@@ -169,11 +169,47 @@ export default class AdminRouter extends Router {
 		);
 
 		/*
+		* Role Routes
+		*/
+
+		this.router.post('/roles/update',
+			this.authRoute(async (req: Express.Request, res: Express.Response) => {
+				if (typeof req.body !== 'object')
+					throw 'Request is missing required data.';
+
+				await this.db.updateRoles(req.body);
+				res.send(JSON.stringify(await this.getSiteData('roles')));
+			})
+		);
+
+		/*
+		* User Routes
+		*/
+
+		this.router.post('/users/role/add',
+			this.authRoute(async (req: Express.Request, res: Express.Response) => {
+				if (typeof req.body !== 'object' || typeof req.body.user !== 'string' || typeof req.body.role !== 'string')
+					throw 'Request is missing required data.';
+				await this.db.userAddRoles(req.body.user, req.body.role.split(','));
+				res.send(JSON.stringify(await this.getSiteData('users')));
+			})
+		);
+
+		this.router.post('/users/role/remove',
+			this.authRoute(async (req: Express.Request, res: Express.Response) => {
+				if (typeof req.body !== 'object' || typeof req.body.user !== 'string' || typeof req.body.role !== 'string')
+					throw 'Request is missing required data.';
+				await this.db.userRemoveRoles(req.body.user, req.body.role.split(','));
+				res.send(JSON.stringify(await this.getSiteData('users')));
+			})
+		);
+
+		/*
 		* Basic App Content
 		*/
 
-		this.router.use('/asset', Express.static(path.join(path.dirname(__dirname), '../../admin/res')));
 		this.router.use('/script', Express.static(path.join(path.dirname(__dirname), '../../admin/build')));
+		this.router.use('/asset', Express.static(path.join(path.dirname(__dirname), '../../admin/res')));
 
 		this.router.get('(/*)?', async (_, res) => res.render(path.join(path.dirname(__dirname), '../views/admin'), {
 			scripts: this.plugins.getEnabledPlugins().filter(p => p.conf.sources.admin).map(p => p.conf.identifier + '/' + p.conf.sources.admin),

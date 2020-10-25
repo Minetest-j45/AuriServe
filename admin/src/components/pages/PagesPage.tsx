@@ -21,7 +21,7 @@ export default class PagesPage extends Preact.Component<{}, State> {
 	}
 
 	componentWillMount() {
-		this.context.refreshSiteData('elements&pages');
+		this.context.refreshSiteData('elements', 'pages');
 	}
 
 	render() {
@@ -32,17 +32,22 @@ export default class PagesPage extends Preact.Component<{}, State> {
 						<CardHeader icon="/admin/asset/icon/document-dark.svg" title="Manage Pages"
 							subtitle={'Manage site pages and elements.'} />
 
-						<ul class="PagesPage-Pages">
-							{Object.keys(ctx.data.pages).sort((a, b) => a > b ? 1 : -1).map(p =>
-								<li>
-									<Link className="PagesPage-PageItem" to={'/pages/' + p}>
-										<p class="PagesPage-PageItemTitle">{ctx.data.pages[p]!.title}</p>
-										<p class="PagesPage-PageItemDescription">{ctx.data.pages[p].description || <em>No description</em>}</p>
-										<p class="PagesPage-PageItemPath">{p}</p>
-									</Link>
-								</li>
-							)}
-						</ul>
+						{ctx.data.pages &&
+							<ul class="PagesPage-Pages">
+								{Object.keys(ctx.data.pages).sort((a, b) => a > b ? 1 : -1).map(p =>
+									<li>
+										<Link className="PagesPage-PageItem" to={'/pages/' + p}>
+											<p class="PagesPage-PageItemTitle">{ctx.data.pages![p]!.title}</p>
+											<p class="PagesPage-PageItemDescription">{ctx.data.pages![p].description || <em>No description</em>}</p>
+											<p class="PagesPage-PageItemPath">{p}</p>
+										</Link>
+									</li>
+								)}
+							</ul>
+						}
+
+						{!ctx.data.pages && <h2 className='PagesPage-Notice'>Loading pages...</h2>}
+						{ctx.data.pages && Object.keys(ctx.data.pages).length === 0 && <h2 className='PagesPage-Notice'>No pages found.</h2>}
 
 					</section>
 				</div>

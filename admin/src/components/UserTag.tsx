@@ -29,7 +29,7 @@ export default class UserTag extends Preact.Component<Props, State> {
 		return (
 			<Preact.Fragment>
 				<button class="UserTag" ref={this.ref} onClick={this.handleToggleModal}>
-					<span class="UserTag-At">@</span>{this.props.identifier}
+					@{this.props.identifier}
 				</button>
 				{this.ref.current && <UserCard
 					visible={this.state.active}

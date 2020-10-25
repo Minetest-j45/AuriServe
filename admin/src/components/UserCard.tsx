@@ -5,6 +5,8 @@ import { CSSTransition } from 'preact-transitioning';
 
 import './UserCard.sass';
 
+import UserRolesList from './UserRolesList';
+
 import { AppContext } from '../AppContext';
 
 import { User } from '../../../common/interface/DBStructs';
@@ -17,11 +19,7 @@ interface Props {
 	onClose: () => void;
 }
 
-interface State {
-	user?: User;
-}
-
-export default class UserCard extends Preact.Component<Props, State> {
+export default class UserCard extends Preact.Component<Props, {}> {
 	ref: Preact.RefObject<HTMLDivElement>;
 
 	constructor(p: Props) {
@@ -31,8 +29,6 @@ export default class UserCard extends Preact.Component<Props, State> {
 	}
 
 	componentDidMount() {
-		this.setState({ user: this.context.data.users.filter((u: User) => u.identifier === this.props.identifier)[0] });
-
 		document.getElementsByTagName('body')[0].addEventListener('mouseup', this.closeCallback);
 		document.getElementsByTagName('body')[0].addEventListener('touchend', this.closeCallback);
 	}
@@ -43,6 +39,8 @@ export default class UserCard extends Preact.Component<Props, State> {
 	}
 
 	render(props: Props) {
+		const user = this.context.data.users.filter((u: User) => u.identifier === this.props.identifier)[0];
+
 		return createPortal(
 			<div>
 				<CSSTransition in={this.props.visible} duration={150} classNames='Animate'>
@@ -54,11 +52,11 @@ export default class UserCard extends Preact.Component<Props, State> {
 
 							<div class='UserCard-Header'>
 								<img src='/admin/asset/icon/user-color.svg' />
-								<h1 class='UserCard-Name' title={this.state.user?.name}>{this.state.user?.name}</h1>
-								<h2 class='UserCard-Identifier' title={'@' + this.props.identifier}>
-									<span class='UserCard-At'>@</span>{this.props.identifier}</h2>
+								<h1 class='UserCard-Name' title={user?.name}>{user?.name}</h1>
+								<h2 class='UserCard-Identifier' title={'@' + this.props.identifier}>@{this.props.identifier}</h2>
 							</div>
 							<div class='UserCard-Body'>
+								{user && <UserRolesList user={user} wrap={true} edit={true} />}
 								<Link to={'/users/' + this.props.identifier} className='UserCard-Full'>View Profile</Link>
 							</div>
 						</div>

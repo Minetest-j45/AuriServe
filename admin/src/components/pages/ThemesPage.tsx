@@ -56,12 +56,15 @@ export default class ThemesPage extends Preact.Component<{}, State> {
 							</div>
 						</div>
 
-						<SelectGroup className='ThemesPage-Themes' onSelectionChange={this.handleSelectionChange} multi={true}>
-							{ctx.data.themes.map((t: Theme, i: number) => <ThemeItem item={t} ind={i} onClick={this.handleToggleThemes}
-								active={ctx.data.enabledThemes.indexOf(t.identifier) !== -1} key={t.identifier}/>)}
-						</SelectGroup>
+						{ctx.data.themes && ctx.data.enabledThemes &&
+							<SelectGroup className='ThemesPage-Themes' onSelectionChange={this.handleSelectionChange} multi={true}>
+								{ctx.data.themes.map((t: Theme, i: number) => <ThemeItem item={t} ind={i} onClick={this.handleToggleThemes}
+									active={ctx.data.enabledThemes!.indexOf(t.identifier) !== -1} key={t.identifier}/>)}
+							</SelectGroup>
+						}
 
-						{ctx.data.themes.length === 0 && <h2 className='ThemesPage-NoThemes'>No themes found.</h2>}
+						{!ctx.data.themes && <h2 className='ThemesPage-Notice'>Loading themes...</h2>}
+						{ctx.data.themes && ctx.data.themes.length === 0 && <h2 className='ThemesPage-Notice'>No themes found.</h2>}
 					</section>
 				</div>
 			}</AppContext.Consumer>

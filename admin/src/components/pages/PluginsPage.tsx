@@ -60,12 +60,15 @@ export default class PluginsPage extends Preact.Component<{}, State> {
 							</div>
 						</div>
 
-						<SelectGroup className='PluginsPage-Plugins' onSelectionChange={this.handleSelectionChange} multi={true}>
-							{ctx.data.plugins.map((t: Plugin, i: number) => <PluginItem item={t} ind={i} onClick={this.handleTogglePlugins}
-								active={ctx.data.enabledPlugins.indexOf(t.identifier) !== -1} key={t.identifier}/>)}
-						</SelectGroup>
+						{ctx.data.plugins && ctx.data.enabledPlugins &&
+							<SelectGroup className='PluginsPage-Plugins' onSelectionChange={this.handleSelectionChange} multi={true}>
+								{ctx.data.plugins.map((t: Plugin, i: number) => <PluginItem item={t} ind={i} onClick={this.handleTogglePlugins}
+									active={ctx.data.enabledPlugins!.indexOf(t.identifier) !== -1} key={t.identifier}/>)}
+							</SelectGroup>
+						}
 
-						{ctx.data.plugins.length === 0 && <h2 className='PluginsPage-NoPlugins'>No plugins found.</h2>}
+						{!ctx.data.plugins && <h2 className='PluginsPage-Notice'>Loading plugins...</h2>}
+						{ctx.data.plugins && ctx.data.plugins.length === 0 && <h2 className='PluginsPage-Notice'>No plugins found.</h2>}
 					</section>
 				</div>
 			}</AppContext.Consumer>

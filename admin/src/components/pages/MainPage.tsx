@@ -14,20 +14,20 @@ export default class MainPage extends Preact.Component {
 
 	render() {
 		return (
-			<div className="MainPage">
-				<div className="MainPage-Header">
+			<div className='MainPage'>
+				<div className='MainPage-Header'>
 					<h1>
-						<img src="/admin/asset/icon/globe-dark.svg" alt=""/>
-						{this.context.data.domain}
+						<img src='/admin/asset/icon/globe-dark.svg' alt=''/>
+						{this.context.data.domain ?? '...'}
 					</h1>
-					<h2>{this.context.data.sitename}</h2>
+					<h2>{this.context.data.sitename ?? '...'}</h2>
 				</div>
-				<div className="MainPage-Content">
+				<div className='MainPage-Content'>
 					<aside>
-						<div className="MainPage-MediaCard">
+						<div className='MainPage-MediaCard'>
 
 							<AppContext.Consumer>{ctx =>
-								<Meter usage={ctx.data.mediaUsed} size={ctx.data.mediaMax} />
+								<Meter usage={ctx.data.mediaUsed ?? 0} size={ctx.data.mediaMax ?? 1} />
 							}</AppContext.Consumer>
 
 						</div>

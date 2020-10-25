@@ -15,12 +15,6 @@
 		}
 	}
 
-	.MediaPage-NoMedia {
-		text-align: center;
-		color: $neutral-500;
-		margin: 32px 0px 48px 0px;
-	}
-
 	& > img {
 		width: 24px;
 		height: 24px;
@@ -31,14 +25,10 @@
 	.MediaPage-Toolbar {
 		@extend %card_toolbar;
 	}
+
+	.MediaPage-Notice {
+		text-align: center;
+		color: $neutral-500;
+		margin: 32px 0px 48px 0px;
+	}
 }
-
-// .MainPage-MediaCard {
-// 	@extend %card;
-
-// 	// display: grid;
-// 	// grid-gap: 16px;
-// 	// grid-auto-rows: min-content;
-// 	// grid-template-columns: 1fr 1fr 1fr;
-
-// }

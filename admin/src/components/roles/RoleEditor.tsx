@@ -81,13 +81,13 @@ export default class RoleEditor extends Preact.Component<Props, {}> {
 
 					<span class='RoleEditor-AbilityCategory'>Role Management</span>
 
-					{this.renderAbilitySwitch(RoleAbility.MANAGE_ROLES, 'Manage Roles', 'Add, remove, and reorder roles.')}
+					{this.renderAbilitySwitch(RoleAbility.MANAGE_ROLES, 'Manage Roles', 'Add, remove, and reorder roles.', false)}
 				</div>
 			</div>
 		);
 	}
 
-	private renderAbilitySwitch(ability: RoleAbility, title: string, description?: string) {
+	private renderAbilitySwitch(ability: RoleAbility, title: string, description?: string, sep?: boolean) {
 		return (
 			<Preact.Fragment>
 				<label class='RoleEditor-AbilitySwitch'>
@@ -97,7 +97,7 @@ export default class RoleEditor extends Preact.Component<Props, {}> {
 					<input type='checkbox' checked={this.props.role.abilities.filter(f => f === RoleAbility[ability]).length > 0}
 						onChange={this.handleToggleAbility.bind(this, ability)}/>
 				</label>
-				<hr class='RoleEditor-Separator' />
+				{sep !== false && <hr class='RoleEditor-Separator' />}
 			</Preact.Fragment>
 		);
 	}

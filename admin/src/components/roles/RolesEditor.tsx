@@ -1,8 +1,10 @@
 import * as Preact from 'preact';
+import { Prompt } from 'react-router-dom';
 
 import './RolesEditor.sass';
 
 import RoleEditor from './RoleEditor';
+import SaveConfirmationModal from '../SaveConfirmationModal';
 
 import { AppContext } from '../../AppContext';
 
@@ -15,24 +17,26 @@ interface Props {
 interface State {
 	roles: Role[];
 	editing: number;
+	changed: boolean;
 }
 
 export default class RolesEditor extends Preact.Component<Props, State> {
 	constructor(p: Props) {
 		super(p);
 
-		this.setState({ editing: 0, roles: p.roles });
+		this.setState({ editing: 0, changed: false, roles: [] });
+		this.handleReset();
 	}
 
-	componentWillReceiveProps(props: Props) {
-		this.setState({ roles: props.roles });
+	componentWillReceiveProps() {
+		setTimeout(() => this.handleReset(), 0);
 	}
 
 	render() {
 		return (
 			<div class='RolesEditor'>
 				<ul class='RolesEditor-RolesList'>
-					<span class='RolesEditor-Label'>Roles</span>
+					<li><span class='RolesEditor-Label'>Roles</span></li>
 					{this.state.roles.map((r: Role, i: number) => <li key={i}
 						class={'RolesEditor-RolesListRole' + (i === this.state.editing ? ' active' : '')}
 						style={{['--color']: r.color || '#334E68', ['--bg-color']: (r.color || '#334E68') + '22'}}>
@@ -40,6 +44,8 @@ export default class RolesEditor extends Preact.Component<Props, State> {
 					</li>)}
 				</ul>
 				{this.state.roles[this.state.editing] && <RoleEditor role={this.state.roles[this.state.editing]} setRole={this.handleSetRole} />}
+				<SaveConfirmationModal active={this.state.changed} onReset={this.handleReset} onSave={this.handleSave} />
+			  <Prompt when={this.state.changed} message='Are you sure you want to leave this page?'/>
 			</div>
 		);
 	}
@@ -51,7 +57,33 @@ export default class RolesEditor extends Preact.Component<Props, State> {
 	private handleSetRole = (role: Role) => {
 		let roles = JSON.parse(JSON.stringify(this.state.roles));
 		roles[this.state.editing] = role;
-		this.setState({ roles: roles });
+
+		if (!this.validateRoles(roles)) return this.forceUpdate();
+
+		this.setState({ roles: roles, changed: JSON.stringify(roles) !== JSON.stringify(this.props.roles) });
+	};
+
+	private handleReset = () => {
+		this.setState({ roles: this.props.roles, changed: false });
+	};
+
+	private handleSave = () => {
+		fetch('/admin/roles/update', {
+			method: 'POST',
+			cache: 'no-cache',
+    	headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify(this.state.roles)
+		}).then(r => r.json()).then(this.context.handleSiteData);
+	};
+
+	// Ensure that at least one role has the ADMINISTRATOR ability.
+
+	private validateRoles = (roles: Role[]): boolean => {
+		for (let role of roles)
+			if (role.abilities.includes('ADMINISTRATOR'))
+				return true;
+
+		return false;
 	};
 }
 

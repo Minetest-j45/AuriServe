@@ -51,7 +51,8 @@ export default class Database {
 			if (!await this.db.collection('roles').findOne({ identifier: 'Administrator' })) {
 				await this.db.collection('roles').insertMany([{
 					identifier: 'Administrator',
-					abilities: [ 'ADMINISTRATOR' ]
+					abilities: [ 'ADMINISTRATOR' ],
+					color: '#0967D2'
 				}, {
 					identifier: 'Editor',
 					abilities: [ 'VIEW_AUDIT_LOG', 'VIEW_PAGES', 'MANAGE_PAGES', 'EDIT_PAGES', 'VIEW_MEDIA',
@@ -276,6 +277,47 @@ export default class Database {
 
 		// Delete all of the files.
 		await Promise.all(docs.map((d) => fs.unlink(d.path)));
+	}
+
+
+	/**
+	* Replaces all roles in the DB with the updated set.
+	*
+	* @param {DB.Role[]} roles - New roles
+	*/
+
+	async updateRoles(newRoles: DB.Role[]) {
+		const roles = this.db!.collection('roles');
+		await roles.deleteMany({});
+		await roles.insertMany(newRoles);
+	}
+
+
+	/**
+	* Adds the specified roles to a user's roles list.
+	*
+	* @param {string} user - The user to add the roles to.
+	* @param {string[]} roles - The roles to add to the user.
+	*/
+
+	async userAddRoles(user: string, roles: string[]) {
+		let success = !!(await this.db!.collection('accounts')
+			.updateOne({ identifier: user }, { $addToSet: { roles: { $each: roles } }})).matchedCount;
+		if (!success) throw 'This user no longer exists';
+	}
+
+
+	/**
+	* Removes the specified roles from a user's roles list.
+	*
+	* @param {string} user - The user to remove the roles from.
+	* @param {string[]} roles - The roles to remove from the user.
+	*/
+
+	async userRemoveRoles(user: string, roles: string[]) {
+		let success = !!(await this.db!.collection('accounts')
+			.updateOne({ identifier: user }, { $pull: { roles: { $in: roles } }})).matchedCount;
+		if (!success) throw 'This user no longer exists';
 	}
 
 

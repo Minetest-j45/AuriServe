@@ -2,65 +2,60 @@
 
 .UserPage
 	.UserPage-Card
-		display: grid
-		grid-gap: 16px
-		grid-template-columns: 162px 1fr
+		.UserPage-Header
+			display: grid
+			gap: 16px
+			grid-template-columns: 148px 1fr
 
-		.UserPage-Icon
-			padding: 8px
-			width: 100%
-			user-select: none
-			pointer-events: none
+			.UserPage-Icon
+				$margin: 20px
+				width: calc(100% - #{$margin * 2})
+				margin: $margin
+				user-select: none
+				pointer-events: none
 
-		.UserPage-Details
-			padding: 24px 0px
+				border-radius: 50%
+				background-color: $neutral-100
+				box-shadow: 0px 0px 0px 6px $neutral-100, 0px 0px 0px 12px $neutral-000
 
-			.UserPage-Name, .UserPage-Identifier
-				@extend %ellipsize
+			.UserPage-Details
+				padding: 20px 0px
 
-				margin: 0
-				font-size: 16px
-				font-weight: 400
-				font-family: $font-main
+				.UserPage-Name, .UserPage-Identifier
+					@extend %ellipsize
 
-			.UserPage-Name
-				font-size: 32px
-				font-family: $font-header
-
-			.UserPage-Identifier
-				font-size: 20px
-				color: $neutral-500
-
-				.UserPage-At
-					font-family: $font-header
-					vertical-align: 12%
-
-			.UserPage-Roles
-				position: relative
-				padding: 0
-				margin: 0
-				margin-top: 12px
-
-				list-style-type: none
-				white-space: nowrap
-				overflow: hidden
-
-				&::after
-					content: " "
-					position: absolute
-					width: 12px
-					height: 100%
-					background: linear-gradient(to left, white, transparent)
-					top: 0
-					right: 0
-
-				.UserPage-Role
-					display: inline-block
-					padding: 2px 6px
-					margin-right: 8px
-
-					font-size: 14px
+					margin: 0
+					font-size: 16px
 					font-weight: 400
+					font-family: $font-main
+
+				.UserPage-Name
+					font-size: 32px
+					font-family: $font-header
+
+				.UserPage-Identifier
+					margin-top: 4px
+					font-size: 20px
 					color: $neutral-500
-					border-radius: 20px
-					border: 2px solid $neutral-200
+
+				.UserRolesList
+					margin-top: 8px
+
+			@media screen and (max-width: $m-small)
+				display: flex
+				gap: 0
+				flex-direction: column
+
+				.UserPage-Icon
+					display: block
+					max-width: 148px
+					margin: 8px auto
+
+				.UserPage-Details
+					text-align: center
+
+					.UserPage-Name
+						margin-bottom: 4px
+
+					.UserPage-Identifier
+						margin-bottom: 16px
