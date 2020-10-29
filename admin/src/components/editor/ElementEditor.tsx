@@ -25,20 +25,25 @@ export default class ElementEditor extends Preact.Component<Props, State> {
 	constructor(p: Props) {
 		super(p);
 
-		this.state = {
-			// Deep copy using JSON is safe, because page data is already JSON.
-			props: JSON.parse(JSON.stringify(p.element.props))
-		};
+		// Deep copy using JSON is safe, because page data is already JSON.
+		this.state = { props: JSON.parse(JSON.stringify(p.element.props)) };
+	}
+
+	componentWillReceiveProps(props: Props) {
+		// Deep copy using JSON is safe, because page data is already JSON.
+		this.setState({ props: JSON.parse(JSON.stringify(props.element.props)) });
 	}
 
 	render() {
-		const EditElement = this.context.plugins.elements.get(this.props.element.elem)?.editElement;
-		const defs = !EditElement && this.context.data.elementDefs[this.props.element.elem];
+		const EditElement = this.context.plugins.elements.get(this.props.element.elem)?.editing?.propertyEditor;
+		const defs = this.context.data.elementDefs[this.props.element.elem];
 
 		return (
 			<div class={'ElementEditor ' + (EditElement ? 'Custom' : 'Automatic')}>
-				{EditElement && <EditElement {...this.state.props} setProps={this.handleSetProps} />}
-				{!EditElement && this.renderPropsTable(defs.props, this.state.props, '')}
+				{(EditElement && typeof EditElement != 'boolean' ?
+					<EditElement props={this.state.props} setProps={this.handleSetProps} /> :
+					this.renderPropsTable(defs.props, this.state.props, '')
+				)}
 
 				<div className='ElementEditor-ActionBar'>
 					<button onClick={this.handleSave}>Confirm</button>

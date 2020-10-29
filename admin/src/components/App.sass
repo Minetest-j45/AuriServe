@@ -1,0 +1,39 @@
+@import "../partial/Reset"
+@import "../partial/Vars"
+
+.App
+	min-height: 100vh
+	position: relative
+
+	background-color: $neutral-000
+	color: $neutral-800
+	font-family: $font-main
+
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0)
+
+	&.dark
+		filter: invert(0.9) hue-rotate(180deg) contrast(1.1)
+
+	*::selection
+		background-color: transparentize($neutral-300, 0.5)
+
+	::-webkit-scrollbar
+		width: 8px
+		height: 8px
+
+	::-webkit-scrollbar-thumb
+			background-color: rgba(87, 87, 87, .38)
+
+	::-webkit-scrollbar-thumb:hover
+			background-color: rgba(87, 87, 87, .6)
+
+	h1, h2, h3, h4, h5, h6
+		font-family: $font-header
+
+.App-Wrap
+	animation: App-FadeIn $t-slow 1
+	@keyframes App-FadeIn
+		from
+			opacity: 0
+		to
+			opacity: 1

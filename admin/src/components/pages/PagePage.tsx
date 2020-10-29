@@ -1,45 +1,39 @@
 import * as Preact from 'preact';
 
 import './Page.sass';
-import './PagePage.sass';
-
-import CardHeader from '../CardHeader';
-import { AppContext } from '../../AppContext';
+import './PagesPage.sass';
 
 import PageEditor from '../editor/PageEditor';
 
+import { AppContext } from '../../AppContext';
+
 import * as Page from '../../../../common/interface/Page';
 
-interface Props {
-}
-
 interface State {
+	path?: string;
 	page?: Page.Page;
 }
 
-export default class PagePage extends Preact.Component<Props, State> {
-	constructor(p: Props) {
-		super(p);
+export default class PagesPage extends Preact.Component<{}, State> {
+	constructor(props: {}) {
+		super(props);
 	}
 
-	componentDidMount() {
-		let page: string = window.location.pathname.replace(/^\/admin\/pages\//g, '');
-		this.context.getPageData(page).then((page: Page.Page) => this.setState({ page: page }));
-		this.context.refreshSiteData('elements');
+	componentWillMount() {
+		let path: string = window.location.pathname.replace(/^\/admin\/pages\//g, '');
+
+		(async () => {
+			await this.context.refreshSiteData('elements');
+			let page = await this.context.getPageData(path);
+			this.setState({ path: path, page: page });
+		})();
 	}
 
 	render() {
-		return (
-			<div class='Page PagePage'>
-				<section class='Page-Card'>
-					{this.state.page && <div>
-						<CardHeader icon='/admin/asset/icon/document-dark.svg' title={this.state.page!.title}
-							subtitle={this.state.page!.description || <em>No description.</em> as any as string} />
-						{this.state.page && <PageEditor page={this.state.page} onSave={this.handleSave} />}
-					</div>}
-				</section>
-			</div>
+		if (this.state.path && this.state.page) return (
+			<PageEditor path={this.state.path} page={this.state.page} onSave={this.handleSave} />
 		);
+		return null;
 	}
 
 	handleSave = (page: Page.Page) => {
@@ -54,4 +48,4 @@ export default class PagePage extends Preact.Component<Props, State> {
 	};
 }
 
-PagePage.contextType = AppContext;
+PagesPage.contextType = AppContext;

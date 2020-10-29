@@ -14,6 +14,7 @@ export default class AppHeader extends Preact.Component {
 	render() {
 		return (
 			<header class="AppHeader">
+				<div class='AppHeader-Gradient' />
 				<div class="AppHeader-wrap">
 					<img class="AppHeader-logo" src="/admin/asset/icon/serve.svg" title='AuriServe' alt='AuriServe' />
 

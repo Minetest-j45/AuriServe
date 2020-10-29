@@ -1,8 +1,20 @@
 @import "../../partial/Ext";
 
 .LoginPage {
-	@extend %center_wrap;
-	height: calc(100vh - 6px);
+	height: 100vh;
+
+	.LoginPage-Wrap {
+		@extend %center_wrap;
+	}
+
+	.LoginPage-Gradient {
+		content: " ";
+		display: block;
+		width: 100%;
+		height: 6px;
+
+		background: linear-gradient(-90deg, $accent-600, $accent-400);
+	}
 }
 
 .LoginPage-Card {

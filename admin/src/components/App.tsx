@@ -3,7 +3,7 @@ import * as Preact from 'preact';
 
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
-import './App.scss';
+import './App.sass';
 
 import AppHeader from './AppHeader';
 import MainPage from './pages/MainPage';
@@ -15,6 +15,8 @@ import MediaPage from './pages/MediaPage';
 import UsersPage from './pages/UsersPage';
 import ThemesPage from './pages/ThemesPage';
 import PluginsPage from './pages/PluginsPage';
+
+import PageEditorInner from './editor/PageEditorInner';
 
 import { Page } from '../../../common/interface/Page';
 import { AppContext, AppContextData } from '../AppContext';
@@ -59,28 +61,37 @@ export default class App extends Preact.Component<{}, State> {
 	render() {
 		return (
 			<AppContext.Provider value={this.state.contextData!}>
-				<div className="App">
+				{this.state.appState === AppState.LOGIN &&
+				<div class='App'>
+					<div class='AppWrap'>
+						<LoginPage/>
+					</div>
+				</div>}
+				{this.state.appState === AppState.ADMIN &&
+				<Router basename='/admin'>
+					<Switch>
+						<Route exact path='/page' component={PageEditorInner as any} />
+						<Route strict path='/pages/' component={PagePage as any} />
+						<Route>
+							<div class='App'>
+								<AppHeader/>
+								<div class='App-Wrap'>
+									<Switch>
+										<Redirect exact from='/' to='/home'/>
+										<Route exact path='/home' component={MainPage as any}/>
+										<Route exact path='/pages' component={PagesPage as any}/>
+										<Route exact path='/media' component={MediaPage as any}/>
+										<Route exact path='/themes' component={ThemesPage as any}/>
+										<Route exact path='/plugins' component={PluginsPage as any}/>
+										<Route exact path='/users' component={UsersPage as any} />
 
-					{this.state.appState === AppState.LOGIN && <LoginPage/>}
-					{this.state.appState === AppState.ADMIN &&
-					<div className="App-Wrap">
-						<Router basename="/admin">
-							<AppHeader/>
-							<Switch>
-								<Redirect exact from="/" to="/home"/>
-								<Route exact path="/home" component={MainPage as any}/>
-								<Route exact path="/pages" component={PagesPage as any}/>
-								<Route exact path="/media" component={MediaPage as any}/>
-								<Route exact path="/themes" component={ThemesPage as any}/>
-								<Route exact path="/plugins" component={PluginsPage as any}/>
-								<Route exact path="/users" component={UsersPage as any} />
-
-								<Route path="/pages/" component={PagePage as any}/>
-								<Route path="/users/" component={UserPage as any}/>
-							</Switch>
-						</Router>
-					</div>}
-				</div>
+										<Route path='/users/' component={UserPage as any}/>
+									</Switch>
+								</div>
+							</div>
+						</Route>
+					</Switch>
+				</Router>}
 			</AppContext.Provider>
 		);
 	}
@@ -156,7 +167,7 @@ export default class App extends Preact.Component<{}, State> {
 	};
 
 	private handleSiteData = (data: Partial<SiteData>): void => {
-		console.log(data);
+		// console.log(data);
 		const pluginState = this.loadPlugins();
 
 		let contextData = Object.assign({}, this.state.contextData);

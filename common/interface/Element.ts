@@ -20,14 +20,14 @@ export interface FieldProp {
 export interface TableProp {
 	name?: string;
 	optional?: true;
-	
+
 	fields: PropsTable;
 }
 
 export interface ArrayProp {
 	name?: string;
-	optional?: true;	
-	
+	optional?: true;
+
 	entries: PropType | PropsTable | PropType[] | PropsTable[];
 }
 
@@ -51,8 +51,8 @@ export type BaseAuriServePropType =
 export type AuriServePropType =
 	BaseAuriServePropType | 'media:image';
 
-export type PropType = 
-	PrimitivePropType | AuriServePropType | 'custom' 
+export type PropType =
+	PrimitivePropType | AuriServePropType | 'custom'
 
 /*
 * Configuration Object
@@ -80,6 +80,9 @@ export interface ClientDefinition {
 
 export interface AdminDefinition {
 	identifier: string;
-	editElement: T;
 	element: T;
+	editing: {
+		propertyEditor?: T | true;
+		inlineEditor?: T;
+	};
 }

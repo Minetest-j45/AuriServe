@@ -41,25 +41,28 @@ export default class LoginPage extends Preact.Component<{}, State> {
 		const loaded = this.state.state === LoginState.REDIRECT;
 		return (
 			<div className='LoginPage'>
-				<form className={'LoginPage-Card' + (loading ? ' loading' : '') + (loaded ? ' loaded' : '')} onSubmit={this.handleSubmit}>
-					<div className='LoginPage-ProfilePlaceholder' role='heading' aria-level='1' aria-label='Log In'>
-						<img className='card' src='/admin/asset/icon/account-light.svg' alt=''/>
-						<img className='success' src='/admin/asset/icon/serve-light.svg' alt=''/>
-					</div>
-					<div className='LoginPage-FormContents'>
+				<div class='LoginPage-Gradient' />
+				<div class='LoginPage-Wrap'>
+					<form className={'LoginPage-Card' + (loading ? ' loading' : '') + (loaded ? ' loaded' : '')} onSubmit={this.handleSubmit}>
+						<div className='LoginPage-ProfilePlaceholder' role='heading' aria-level='1' aria-label='Log In'>
+							<img className='card' src='/admin/asset/icon/account-light.svg' alt=''/>
+							<img className='success' src='/admin/asset/icon/serve-light.svg' alt=''/>
+						</div>
+						<div className='LoginPage-FormContents'>
 
-						<input type='text' name='user' placeholder='Username' aria-label='Username'
-							autoFocus required minLength={3} maxLength={32} autoComplete={'username'}
-							value={this.state.username} onChange={this.handleUsernameChange} disabled={loading}/>
+							<input type='text' name='user' placeholder='Username' aria-label='Username'
+								autoFocus required minLength={3} maxLength={32} autoComplete={'username'}
+								value={this.state.username} onChange={this.handleUsernameChange} disabled={loading}/>
 
-						<input type='password' name='pass' placeholder='Password' aria-label='Password'
-							required minLength={8} autoComplete={'current-password'}
-							value={this.state.password} onChange={this.handlePasswordChange} disabled={loading}/>
+							<input type='password' name='pass' placeholder='Password' aria-label='Password'
+								required minLength={8} autoComplete={'current-password'}
+								value={this.state.password} onChange={this.handlePasswordChange} disabled={loading}/>
 
-						<button disabled={loading}>Log In</button>
-					</div>
-				</form>
-				<p className='LoginPage-Warning'>{this.state.warning}</p>
+							<button disabled={loading}>Log In</button>
+						</div>
+					</form>
+					<p className='LoginPage-Warning'>{this.state.warning}</p>
+				</div>
 			</div>
 		);
 	}
