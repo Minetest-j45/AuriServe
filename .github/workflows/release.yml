@@ -29,8 +29,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: auto
-        release_name: ${{ github.sha }}
+        tag_name: auto_${GITHUB_SHA::8}
+        release_name: ${GITHUB_SHA::8}
         body: Built by Github Actions.
         prerelease: true
     - name: Upload Release Files
