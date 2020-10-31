@@ -13,8 +13,6 @@ jobs:
   release:
 
     runs-on: ubuntu-latest
-    env:
-      SHA8: ${GITHUB_SHA::8}
     
     steps:
     - uses: actions/checkout@v2
@@ -25,14 +23,17 @@ jobs:
     - run: npm install
     - run: npm run build
     - run: zip --junk-paths build build/*
+    - name: Get short SHA
+      id: slug
+      run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: :$SHA8
-        release_name: :$SHA8
+        tag_name: ${{steps.slug.outputs.sha8}}
+        release_name: ${{steps.slug.outputs.sha8}}
         body: Built by Github Actions.
         prerelease: true
     - name: Upload Release Files
