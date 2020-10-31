@@ -128,14 +128,14 @@ export default class PageEditor extends Preact.Component<Props, State> {
 
 	private handleReset = () => {
 		this.setPage(this.props.page);
-	}
+	};
 
 	private recursivelyShrinkIncludes(node: Page.Child) {
 		if (Page.isInclude(node))
 			delete node.elem;
 		else
 			(node.children || []).forEach(c => this.recursivelyShrinkIncludes(c));
-	}
+	};
 
 	private handleSave = () => {
 		// Deep copy using JSON is safe, because page data is already JSON.
@@ -146,7 +146,7 @@ export default class PageEditor extends Preact.Component<Props, State> {
 		if (page.elements.footer) this.recursivelyShrinkIncludes(page.elements.footer);
 
 		this.props.onSave(page);
-	}
+	};
 }
 
 PageEditor.contextType = AppContext;
