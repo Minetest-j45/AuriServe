@@ -44,6 +44,8 @@ export default class PagesPage extends Preact.Component<{}, State> {
 			method: 'POST',
     	headers: {'Content-Type': 'application/json'},
     	body: JSON.stringify({ path: pagePath, body: page })
+		}).then(() => {
+			(this.props as any).history.push('/pages');
 		});
 	};
 }

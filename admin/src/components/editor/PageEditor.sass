@@ -5,21 +5,67 @@
 	width: 100vw
 	height: 100vh
 	background-color: white
-	grid-template-columns: 360px 1fr
-
-	.PageEditor-Sidebar
-		position: relative
-		z-index: 5
-		padding: 16px
-		box-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.8)
-
-		h1
-			font-size: 24px
-			margin: 8px 0
-			font-weight: 600
+	grid-template-rows: 64px 1fr
 
 	.PageEditor-Frame
 		border: none
 
 		width: 100%
 		height: 100%
+
+	.PageEditor-Header
+		z-index: 5
+		display: flex
+		padding: 0 16px
+		position: relative
+		align-items: center
+		justify-content: space-between
+
+		box-shadow: 0px 2px 16px 0px transparentize($neutral-1000, 0.8)
+
+		h1
+			font-size: 20px
+
+
+		.PageEditor-HeaderResetButton
+			padding: 12px 12px
+			margin: 0
+			margin-right: 16px
+
+			border: none
+			outline: none
+			background-color: transparent
+
+			color: $neutral-600
+
+			&:hover, &:focus
+				text-decoration: underline
+				color: $neutral-700
+
+			&:active
+				color: $neutral-800
+
+
+		.PageEditor-HeaderSaveButton
+			@extend %material_button
+			padding: 12px 24px
+
+	.PageEditor-EditorWrap
+		position: absolute
+		z-index: 5
+		height: auto
+		top: 64px + 16px
+		left: 16px
+
+		border-radius: 4px
+		background-color: white
+		box-shadow: 0px 4px 32px 0px transparentize($neutral-1000, 0.7)
+
+		.PageEditor-Editor
+			padding: 16px
+			width: 400px
+
+			h1
+				font-size: 24px
+				margin: 8px 0
+				font-weight: 600

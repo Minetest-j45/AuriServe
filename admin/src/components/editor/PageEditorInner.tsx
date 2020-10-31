@@ -26,6 +26,7 @@ export default class PageEditorInner extends Preact.Component<{}, State> {
 	}
 
 	render() {
+		console.log('rerender');
 		if (!this.state.page) return;
 
 		return (

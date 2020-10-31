@@ -3,6 +3,7 @@ import * as Preact from 'preact';
 import './PageEditor.sass';
 
 import ElementEditor from './ElementEditor';
+import DimensionTransition from '../DimensionTransition';
 
 import * as Page from '../../../../common/interface/Page';
 import * as ObjectPath from '../../../../common/util/ObjectPath';
@@ -42,8 +43,16 @@ export default class PageEditor extends Preact.Component<Props, State> {
 		return (
 			<div class='App'>
 				<div class='PageEditor'>
-					<div class='PageEditor-Sidebar'>{typeof(this.state.editing) === 'string' && this.renderEditor()}</div>
+					<div class='PageEditor-Header'>
+						<h1>Editing {this.props.path}</h1>
+						<div>
+							<button class='PageEditor-HeaderResetButton' onClick={this.handleReset}>Reset</button>
+							<button class='PageEditor-HeaderSaveButton' onClick={this.handleSave}>Save</button>
+						</div>
+					</div>
 					<iframe class='PageEditor-Frame' ref={this.frame} src='/admin/page/' />
+
+					{typeof(this.state.editing) === 'string' && this.renderEditor()}
 				</div>
 			</div>
 		);
@@ -54,14 +63,18 @@ export default class PageEditor extends Preact.Component<Props, State> {
 		if (Page.isInclude(element)) element = element.elem;
 
 		return (
-			<Preact.Fragment>
-				<h1>{element.elem}</h1>
-				<ElementEditor
-					element={element}
-					onSave={this.handleElementEditSave}
-					onCancel={this.handleElementEditCancel}
-				/>
-			</Preact.Fragment>
+			<div class='PageEditor-EditorWrap'>
+				<DimensionTransition duration={200}>
+					<div class='PageEditor-Editor'>
+						<h1>{element.elem}</h1>
+						<ElementEditor
+							element={element}
+							onSave={this.handleElementEditSave}
+							onCancel={this.handleElementEditCancel}
+						/>
+					</div>
+				</DimensionTransition>
+			</div>
 		);
 	}
 
@@ -112,6 +125,28 @@ export default class PageEditor extends Preact.Component<Props, State> {
 		this.send('page', this.state.page);
 		this.setState({ editing: undefined });
 	};
+
+	private handleReset = () => {
+		this.setPage(this.props.page);
+	}
+
+	private recursivelyShrinkIncludes(node: Page.Child) {
+		if (Page.isInclude(node))
+			delete node.elem;
+		else
+			(node.children || []).forEach(c => this.recursivelyShrinkIncludes(c));
+	}
+
+	private handleSave = () => {
+		// Deep copy using JSON is safe, because page data is already JSON.
+		let page = JSON.parse(JSON.stringify(this.state.page));
+
+		if (page.elements.header) this.recursivelyShrinkIncludes(page.elements.header);
+		if (page.elements.main) this.recursivelyShrinkIncludes(page.elements.main);
+		if (page.elements.footer) this.recursivelyShrinkIncludes(page.elements.footer);
+
+		this.props.onSave(page);
+	}
 }
 
 PageEditor.contextType = AppContext;
