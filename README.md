@@ -1,5 +1,7 @@
 # AuriServe
 
+[![Release](https://github.com/AuriServe/AuriServe/workflows/Release/badge.svg?branch=master)](https://github.com/AuriServe/AuriServe/releases)
+
 Finally, an Open-Source, Modern, Node based CMS.
 
 ## About
