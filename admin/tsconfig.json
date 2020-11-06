@@ -20,6 +20,6 @@
     "noUnusedLocals": true,
     "noImplicitReturns": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
+    "noFallthroughCasesInSwitch": true
   }
 }

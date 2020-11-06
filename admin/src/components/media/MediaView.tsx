@@ -69,7 +69,8 @@ export default class MediaView extends Preact.Component<Props, State> {
 
 	private renderPreview() {
 		if (mediaIsImage(this.props.item.publicPath)) return <img src={this.props.item.publicPath} alt=''/>;
-		return <a class='MediaView-UnknownPreview' href={this.props.item.publicPath} target='_blank'>View File</a>;
+		return <a class='MediaView-UnknownPreview' href={this.props.item.publicPath} 
+			target='_blank' rel='noreferrer noopener'>View File</a>;
 	}
 
 	private handleReplace = () => {
