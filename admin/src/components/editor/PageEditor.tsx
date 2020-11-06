@@ -106,7 +106,7 @@ export default class PageEditor extends Preact.Component<Props, State> {
 			break;
 
 		default:
-			console.log(type, body);
+			console.log(type + '\n' + body);
 			break;
 		}
 	};
