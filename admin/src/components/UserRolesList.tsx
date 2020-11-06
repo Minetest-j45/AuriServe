@@ -66,7 +66,7 @@ export default class UserRolesList extends Preact.Component<Props, State> {
 			<div class='UserRolesList-AddRoleForm' ref={this.ref} onClick={e => e.stopPropagation()}>
 				<p class='UserRolesList-AddRoleFormHeader'>Add Role</p>
 				<ul>
-					{(ctx.data.roles || []).filter(role => !this.props.user.roles.includes(role.identifier)).map(role => <li>
+					{(ctx.data.roles || []).filter(role => !this.props.user.roles?.includes(role.identifier)).map(role => <li>
 						<button style={role.color && {['--color']: role.color}} onClick={this.handleAddRole.bind(this, role.identifier)}>
 							{role.identifier}</button>
 					</li>)}
