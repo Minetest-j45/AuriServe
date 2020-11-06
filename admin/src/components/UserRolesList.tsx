@@ -28,7 +28,7 @@ export default class UserRolesList extends Preact.Component<Props, State> {
 		return (
 			<AppContext.Consumer>{ctx =>
 				<ul class={'UserRolesList' + (this.props.wrap ? ' Wrap' : '')}>
-					{props.user.roles.map(r => this.renderRole(r, ctx.data.roles?.filter(role => role.identifier === r)[0]))}
+					{props.user.roles?.map(r => this.renderRole(r, ctx.data.roles?.filter(role => role.identifier === r)[0]))}
 					{props.edit && <button class='UserRolesList-Item UserRolesList-Add' onClick={this.handleToggleAddRole}>
 						<img src='/admin/asset/icon/add-dark.svg' alt='Add'/>
 						{this.state.editing && this.renderAddRoleForm(ctx)}
