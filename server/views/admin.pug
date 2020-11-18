@@ -9,6 +9,10 @@ html(lang='en')
 		meta(name='description' content='AuriServe administration panel.')
 		title Admin Panel
 
+		script(type='module').
+			import * as preact from 'https://cdn.skypack.dev/preact';
+			window.preact = preact;
+
 		script#plugins(type='application/json')!= JSON.stringify({ pluginScripts: scripts, pluginStyles: styles })
 
 		for val in styles

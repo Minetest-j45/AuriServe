@@ -2,10 +2,10 @@ import { resolve } from 'path';
 import * as Webpack from 'webpack';
 import { merge } from 'webpack-merge';
 
-const LiveReloadPlugin     = require('webpack-livereload-plugin');
-const MomentLocalesPlugin  = require('moment-locales-webpack-plugin');
-const ForkTsCheckerPlugin  = require('fork-ts-checker-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const LiveReloadPlugin       = require('webpack-livereload-plugin');
+const MomentLocalesPlugin    = require('moment-locales-webpack-plugin');
+const ForkTsCheckerPlugin    = require('fork-ts-checker-webpack-plugin');
+const BundleAnalyzerPlugin   = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 export default function(_: {}, argv: { mode: string, analyze: boolean }) {
 	const prod = argv.mode === 'production';
@@ -26,6 +26,10 @@ export default function(_: {}, argv: { mode: string, analyze: boolean }) {
 
 		entry: { main: [ './Main.ts' ] },
 		output: { path: resolve(__dirname, './build') },
+
+		externals: {
+			"preact": "preact"
+		},
 
 		plugins: [
 			new ForkTsCheckerPlugin({

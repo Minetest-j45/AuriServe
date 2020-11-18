@@ -1,5 +1,4 @@
 import * as Preact from 'preact';
-import { useState } from 'preact/hooks';
 
 import './CardHeader.sass';
 
