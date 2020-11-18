@@ -20,9 +20,9 @@ export default class PagesRouter extends Router {
 		this.router.get('/media/:asset', async (req, res, next) => {
 
 			const validImageExtensions = [ 'png', 'jpg' ];
-			const validResolutions = [ 'preload' ];
+			const validResolutions = { 'preload': 32, 'thumbnail': 128 };
 
-			let resolution: string = validResolutions.filter(res => (req.query.res || '') === (res))[0];
+			let resolution: string = Object.keys(validResolutions).filter(res => (req.query.res || '') === (res))[0];
 			let matched: string = validImageExtensions.filter(ext => req.params.asset.endsWith('.' + ext))[0];
 			if (!resolution || !matched) return next();
 
@@ -36,7 +36,7 @@ export default class PagesRouter extends Router {
 
 				await fs.writeFile(destP,
 					await resizeImg(await fs.readFile(path.join(this.dataPath, 'media', req.params.asset)), {
-					width: 32 }));
+						width: (validResolutions as any)[req.query.res as string] }));
 			}
 
 			res.contentType(mime.getType(matched) ?? '');

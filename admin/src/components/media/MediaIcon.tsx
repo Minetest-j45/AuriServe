@@ -35,17 +35,20 @@ export function mediaIsImage(path: string) {
 	return IMAGE_EXTS.filter((p) => path.endsWith('.' + p)).length > 0;
 }
 
-export default class MediaIcon extends Preact.Component<Props, {}> {
-	render(props: Props) {
-		const isImage = props.image ?? mediaIsImage(props.path);
-		const showImage = (props.imageIcon === undefined || props.imageIcon);
+export default function MediaIcon(props: Props) {
+	const isImage = props.image ?? mediaIsImage(props.path);
+	const showImage = (props.imageIcon === undefined || props.imageIcon);
 
-		let iconUrl = ICONS.unknown;
-		if (isImage) iconUrl = (showImage ? props.image ?? props.path : ICONS.image);
-		else iconUrl = ICONS[props.path.substr(props.path.lastIndexOf('.') + 1)] ?? iconUrl;
+	if (showImage) return (
+		<img class='MediaIcon Image' src={props.path + '?res=thumbnail'} alt='' />
+	);
 
-		return (
-			<img class={'MediaIcon' + (isImage && showImage ? '' : ' Icon')} src={iconUrl} alt='' />
-		);
-	}
+
+	let iconUrl = ICONS.unknown;
+	if (isImage) iconUrl = (showImage ? props.image ?? props.path : ICONS.image);
+	else iconUrl = ICONS[props.path.substr(props.path.lastIndexOf('.') + 1)] ?? iconUrl;
+
+	return (
+		<img class='MediaIcon Icon' src={iconUrl} alt='' />
+	);
 }

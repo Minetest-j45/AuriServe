@@ -1,4 +1,4 @@
-// if (process.env.NODE_ENV === 'development') require('preact/debug');
+if (process.env.NODE_ENV === 'development') require('preact/debug');
 
 import * as Preact from 'preact';
 
