@@ -38,7 +38,7 @@ export default class Database {
 					domain: 'example.com',
 					sitename: 'Example',
 
-					mediaMax: 1*1024*1024*1024,
+					mediaMax: 1024 * 1024 * 1024,
 					mediaUsed: 0,
 
 					enabledThemes: [],
@@ -84,8 +84,6 @@ export default class Database {
 
 	/**
 	 * Returns the active plugins.
-	 *
-	 * @param {string[]} identifiers - Themes to be activated.
 	 */
 
 	async getEnabledPlugins(): Promise<string[]> {
@@ -98,7 +96,7 @@ export default class Database {
 	/**
 	 * Sets the active plugins to the string provided.
 	 *
-	 * @param {string[]} identifiers - Themes to be activated.
+	 * @param {string[]} plugins - Plugins to be activated.
 	 */
 
 	async setEnabledPlugins(plugins: string[]) {
@@ -121,7 +119,7 @@ export default class Database {
 	 * Sets the contents of the themes collection to the
 	 * Passed in array of theme objects.
 	 *
-	 * @param {Db.Theme[]} themes - The themes to populate the array with.
+	 * @param {Theme[]} themes - The themes to populate the array with.
 	 */
 
 	async setThemes(themes: DB.Theme[]) {
@@ -133,8 +131,6 @@ export default class Database {
 
 	/**
 	 * Returns the enabled themes.
-	 *
-	 * @param {string[]} identifiers - Themes to be activated.
 	 */
 
 	async getEnabledThemes(): Promise<string[]> {
@@ -147,7 +143,7 @@ export default class Database {
 	/**
 	 * Sets the enabled themes to the string provided.
 	 *
-	 * @param {string[]} identifiers - Themes to be activated.
+	 * @param {string[]} themes - Themes to be activated.
 	 */
 
 	async setEnabledThemes(themes: string[]) {
@@ -272,7 +268,7 @@ export default class Database {
 		await media.deleteMany({identifier: { $in: identifiers }});
 
 		let freedSpace = docs.map(d => d.size).reduce((a, b) => a + b);
-		this.db!.collection('siteinfo').findOneAndUpdate(
+		await this.db!.collection('siteinfo').findOneAndUpdate(
 			{}, { $inc: { mediaUsed: -freedSpace }});
 
 		// Delete all of the files.
@@ -283,7 +279,7 @@ export default class Database {
 	/**
 	 * Replaces all roles in the DB with the updated set.
 	 *
-	 * @param {DB.Role[]} roles - New roles
+	 * @param {Role[]} newRoles - New roles
 	 */
 
 	async updateRoles(newRoles: DB.Role[]) {
@@ -451,7 +447,7 @@ export default class Database {
 		if (!accountObj || !await bcrypt.compare(password, accountObj.pass)) throw 'Incorrect username or password.';
 
 		const buffer = await crypto.randomBytes(48);
-		const token = buffer.toString('hex');
+		const token = buffer.toString();
 
 		const tokens = this.db!.collection('tokens');
 		const tkn = {identifier: accountObj.identifier, token: token, expires: (Date.now() / 1000) + 60 * 60 * 24 * 3};

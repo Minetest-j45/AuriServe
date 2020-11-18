@@ -1,6 +1,9 @@
+import { promises as fs, constants as fsc } from 'fs';
+import mime from 'mime';
 import path from 'path';
 import log4js from 'log4js';
 import Express from 'express';
+import resizeImg from 'resize-img';
 
 import Router from './Router';
 import PluginParser from '../PluginParser';
@@ -14,6 +17,32 @@ export default class PagesRouter extends Router {
 		private pages: PagesManager, private plugins: PluginParser) { super(); }
 
 	init() {
+		this.router.get('/media/:asset', async (req, res, next) => {
+
+			const validImageExtensions = [ 'png', 'jpg' ];
+			const validResolutions = [ 'preload' ];
+
+			let resolution: string = validResolutions.filter(res => (req.query.res || '') === (res))[0];
+			let matched: string = validImageExtensions.filter(ext => req.params.asset.endsWith('.' + ext))[0];
+			if (!resolution || !matched) return next();
+
+			const p = path.join(this.dataPath, 'media', req.params.asset);
+			const destP = path.join(this.dataPath, 'media', 'cache', req.params.asset + '-' + req.query.res);
+
+			try { await fs.access(destP, fsc.R_OK); }
+			catch {
+				try { await fs.access(p, fsc.R_OK); }
+				catch { return next(); }
+
+				await fs.writeFile(destP,
+					await resizeImg(await fs.readFile(path.join(this.dataPath, 'media', req.params.asset)), {
+					width: 32 }));
+			}
+
+			res.contentType(mime.getType(matched) ?? '');
+			res.sendFile(destP);
+		});
+
 		this.router.use('/media', Express.static(path.join(this.dataPath, 'media')));
 		this.router.use('/theme', Express.static(path.join(this.dataPath, 'themes', 'public')));
 

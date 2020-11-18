@@ -65,4 +65,4 @@ async function start() {
 }
 
 // Initialize AuriServe.
-start();
+start().then();

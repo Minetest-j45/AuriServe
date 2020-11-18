@@ -170,7 +170,7 @@ export default class Server {
 
 	private forwardHttps(req: Express.Request, res: Express.Response) {
 		const host = req.headers.host;
-		if (!host || typeof host !== 'string') {
+		if (!host) {
 			res.status(403);
 			return;
 		}

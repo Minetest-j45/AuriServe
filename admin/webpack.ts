@@ -2,9 +2,9 @@ import { resolve } from 'path';
 import * as Webpack from 'webpack';
 import { merge } from 'webpack-merge';
 
-const LiveReloadPlugin    = require('webpack-livereload-plugin');
-const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
-const ForkTsCheckerPlugin = require('fork-ts-checker-webpack-plugin');
+const LiveReloadPlugin     = require('webpack-livereload-plugin');
+const MomentLocalesPlugin  = require('moment-locales-webpack-plugin');
+const ForkTsCheckerPlugin  = require('fork-ts-checker-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 export default function(_: {}, argv: { mode: string, analyze: boolean }) {
@@ -26,13 +26,6 @@ export default function(_: {}, argv: { mode: string, analyze: boolean }) {
 
 		entry: { main: [ './Main.ts' ] },
 		output: { path: resolve(__dirname, './build') },
-
-		// TODO: Check if neccessary
-		node: { __dirname: false, __filename: false },
-
-		externals: {
-			preact: 'preact'
-		},
 
 		plugins: [
 			new ForkTsCheckerPlugin({
@@ -60,18 +53,22 @@ export default function(_: {}, argv: { mode: string, analyze: boolean }) {
 					babelrc: false,
 					cacheDirectory: true,
 					presets: [
-						'@babel/preset-typescript',
+						['@babel/preset-typescript', {
+							isTSX: true,
+							allExtensions: true,
+							jsxPragma: 'Preact.h'
+						}],
 						[ '@babel/preset-env', {
 							targets: { browsers: ['Chrome 78']},
 						}]
 					],
 					plugins: [
+						["@babel/transform-react-jsx", {
+				    	pragma: "Preact.h"
+				    }],
 						['@babel/plugin-proposal-class-properties', {
 							loose: true
-						}],
-				    ["@babel/transform-react-jsx", {
-				    	pragma: "Preact.h"
-				    }]
+						}]
 					]
 				}
 			}, {

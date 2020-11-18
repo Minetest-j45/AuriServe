@@ -3,7 +3,6 @@ import log4js from 'log4js';
 import decache from 'decache';
 import ff, { promises as fs, constants as fsc } from 'fs';
 
-
 import DBView from './DBView';
 import Elements from './Elements';
 import PluginBindings from './PluginBindings';
@@ -200,7 +199,7 @@ export default class PluginParser {
 				succeeded++;
 			}
 			catch (e) {
-				logger.error('Failed to attach plugin %s.\n %s', plugin?.conf?.identifier, e);
+				logger.error('Failed to attach plugin %s.\n %s', plugin?.conf?.identifier, e, e.stack);
 				if (plugin) plugin.bindings = undefined;
 				failed++;
 			}
@@ -239,7 +238,7 @@ export default class PluginParser {
 		}));
 
 		let log = 'Detached ' + succeeded + ' plugin' + (succeeded !== 1 ? 's' : '');
-		if (failed) log += ', failed to detache ' + failed + ' plugin' + (failed !== 1 ? 's' : '');
+		if (failed) log += ', failed to detach ' + failed + ' plugin' + (failed !== 1 ? 's' : '');
 		if (succeeded > 0 || failed > 0) logger.info(log + '.');
 		else logger.debug(log + '.');
 	}

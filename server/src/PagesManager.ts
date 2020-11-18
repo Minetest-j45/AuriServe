@@ -1,7 +1,7 @@
 import pug from 'pug';
 import path from 'path';
 import log4js from 'log4js';
-import * as Preact from 'preact';
+import { createElement } from 'preact';
 import { promises as fs, constants as fsc } from 'fs';
 import renderToString from 'preact-render-to-string';
 
@@ -183,7 +183,7 @@ export default class PagesManager {
 	 * Renders an element tree beginning at `root`. Return a HTML string.
 	 *
 	 * @param {string} page - The page to render.
-	 * @param {Page.Child} root - The root element to render.
+	 * @param {Child} root - The root element to render.
 	 */
 
 	private async renderTree(page: string, root?: Page.Child): Promise<string> {
@@ -196,11 +196,11 @@ export default class PagesManager {
 	 * Recursively creates Preact elements using a serialized page element, and returns them.
 	 * Throws if the page or page includes do not exist.
 	 *
-	 * @param {Page.Child} elemDef - The element to render or an include to a partial.
+	 * @param {Child} elemDef - The element to render or an include to a partial.
 	 * @param {string} pathRoot - The path for includes to be relative to.
 	 */
 
-	private async recursivelyCreate(elemDef: Page.Child, pathRoot: string): Promise<Preact.VNode> {
+	private async recursivelyCreate(elemDef: Page.Child, pathRoot: string): Promise<any> {
 		if (Page.isInclude(elemDef)) {
 			const includeRoot = elemDef.include;
 			elemDef = await this.expandInclude(elemDef, pathRoot);
@@ -208,14 +208,14 @@ export default class PagesManager {
 		}
 
 		const elem = this.elements.getAllElements().get(elemDef.elem);
-		if (!elem) return Preact.h('span', { style: PagesManager.invalidStyle }, 'Element ' + elemDef.elem + ' is not defined.');
+		if (!elem) return createElement('span', { style: PagesManager.invalidStyle }, 'Element ' + elemDef.elem + ' is not defined.');
 
-		let renderedChildren: Preact.VNode[] = [];
+		let renderedChildren: any[] = [];
 
 		for (let child of elemDef.children ?? [])
 			renderedChildren.push(await this.recursivelyCreate(child, pathRoot));
 
-		return Preact.h(elem.element, elemDef.props ?? {}, ...renderedChildren);
+		return createElement(elem.element, elemDef.props ?? {}, ...renderedChildren);
 	}
 
 
@@ -241,13 +241,12 @@ export default class PagesManager {
 	 * Returns a Page.Element of the root element of the include.
 	 * Throws if the include file doesn't exist.
 	 *
-	 * @param {Page.Include} include - The include to be expanded.
+	 * @param {Include} include - The include to be expanded.
 	 * @param {string} pathRoot - The path the include is relative to.
 	 */
 
 	private async expandInclude(include: Page.Include, pathRoot: string): Promise<Page.Element> {
 		const includePath = path.join(pathRoot, include.include + '.json');
-		pathRoot = path.dirname(path.resolve(pathRoot, include.include));
 
 		let element = JSON.parse((await fs.readFile(includePath)).toString()) as Page.Element;
 		await this.recursivelyOverride(element, include.override);
@@ -261,7 +260,7 @@ export default class PagesManager {
 	 * Manipulates the passed in elemDef, does not return anything.
 	 *
 	 * @param {Page.Element} elemDef - The element to override with properties.
-	 * @param {Page.IncludeProps} includeOverrides - The include override props to use.
+	 * @param {IncludeProps} includeOverrides - The include override props to use.
 	 */
 
 	private async recursivelyOverride(elemDef: Page.Element, includeOverrides?: Page.IncludeProps): Promise<void> {

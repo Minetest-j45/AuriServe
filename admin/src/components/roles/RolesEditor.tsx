@@ -39,13 +39,13 @@ export default class RolesEditor extends Preact.Component<Props, State> {
 					<li><span class='RolesEditor-Label'>Roles</span></li>
 					{this.state.roles.map((r: Role, i: number) => <li key={i}
 						class={'RolesEditor-RolesListRole' + (i === this.state.editing ? ' active' : '')}
-						style={{['--color']: r.color || '#334E68', ['--bg-color']: (r.color || '#334E68') + '22'}}>
+						style={{['--color']: r.color || '#334E68', ['--bg-color']: (r.color || '#334E68') + '22'} as any}>
 						<button onClick={this.handleClickRole.bind(this, i)}><span>{r.identifier}</span></button>
 					</li>)}
 				</ul>
 				{this.state.roles[this.state.editing] && <RoleEditor role={this.state.roles[this.state.editing]} setRole={this.handleSetRole} />}
 				<SaveConfirmationModal active={this.state.changed} onReset={this.handleReset} onSave={this.handleSave} />
-			  <Prompt when={this.state.changed} message='Are you sure you want to leave this page?'/>
+			  <Prompt when={this.state.changed} message='Are you sure you want to leave this page? Unsaved changes will be lost.'/>
 			</div>
 		);
 	}
