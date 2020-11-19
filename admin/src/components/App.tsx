@@ -10,8 +10,8 @@ import AppHeader from './AppHeader';
 import * as Pages from './pages/Pages';
 import PageEditorInner from './editor/PageEditorInner';
 
-import { AppContext } from '../AppContext';
-import { SiteData, SiteDataSpecifier } from '../../../common/interface/SiteData';
+import { AppContext, refreshSiteData } from '../AppContext';
+import { SiteData } from '../../../common/interface/SiteData';
 
 enum AppState { QUERYING, LOGIN, ADMIN };
 
@@ -34,18 +34,8 @@ export default function App() {
 	useEffect(() => {
 		if (appState !== AppState.QUERYING) return;
 
-		const refreshSiteData = async (refresh: SiteDataSpecifier[]) => {
-			const refreshArray = Array.isArray(refresh) ? refresh : [ refresh ];
-			const res = await fetch('/admin/data/' + refreshArray.join('&'), { cache: 'no-cache' });
-			if (res.status !== 200) {
-				Cookie.remove('tkn');
-				location.href = '/admin';
-			}
-			else mergeData(await res.json());
-		};
-
-		refreshSiteData([ 'info', 'users', 'roles' ]).then(() =>
-			refreshSiteData([ 'pages', 'media', 'themes', 'plugins', 'elements' ]));
+		refreshSiteData(mergeData, [ 'info', 'users', 'roles' ]).then(() =>
+			refreshSiteData(mergeData, [ 'pages', 'media', 'themes', 'plugins', 'elements' ]));
 	}, []);
 
 	return (

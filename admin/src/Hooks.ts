@@ -1,8 +1,7 @@
-import Cookie from 'js-cookie';
 import * as Preact from 'preact';
 import { useState, useEffect, useContext } from 'preact/hooks';
 
-import { AppContext } from './AppContext';
+import { AppContext, refreshSiteData } from './AppContext';
 import { SiteData, SiteDataSpecifier } from '../../common/interface/SiteData';
 
 /**
@@ -14,8 +13,7 @@ import { SiteData, SiteDataSpecifier } from '../../common/interface/SiteData';
  */
 
 export function useForceUpdate() {
-	// @ts-ignore
-	const [ value, setValue ] = useState<boolean>(false);
+	const [ , setValue ] = useState<boolean>(false);
 	return () => setValue(value => !value);
 };
 
@@ -93,24 +91,9 @@ export function useSiteData(refresh?: SiteDataSpecifier | SiteDataSpecifier[], d
 	(data: Partial<SiteData>) => void ] {
 	const ctx = useContext(AppContext);
 
-	const refreshSiteData = async (refresh: SiteDataSpecifier | SiteDataSpecifier[]) => {
-		try {
-			const refreshArray = Array.isArray(refresh) ? refresh : [ refresh ];
-			const res = await fetch('/admin/data/' + refreshArray.join('&'), { cache: 'no-cache' });
-			if (res.status !== 200) throw 'Invalid credentials.';
-			const json = await res.json();
-			ctx.mergeData(json);
-		}
-		catch {
-			Cookie.remove('tkn');
-			location.href = '/admin';
-			return undefined as any;
-		}
-	};
-
 	useEffect(() => {
-		if (refresh) refreshSiteData(refresh);
+		if (refresh) refreshSiteData(ctx.mergeData, refresh);
 	}, dependents ?? []);
 
-	return [ ctx.data, refreshSiteData, ctx.mergeData ];
+	return [ ctx.data, refreshSiteData.bind(undefined, ctx.mergeData), ctx.mergeData ];
 }
