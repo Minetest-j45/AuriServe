@@ -39,10 +39,9 @@ export default function MediaIcon(props: Props) {
 	const isImage = props.image ?? mediaIsImage(props.path);
 	const showImage = (props.imageIcon === undefined || props.imageIcon);
 
-	if (showImage) return (
-		<img class='MediaIcon Image' src={props.path + '?res=thumbnail'} alt='' />
+	if (isImage && showImage) return (
+		<img class='MediaIcon Image' src={(props.image ? props.image : props.path + '?res=thumbnail')} alt='' loading='lazy' />
 	);
-
 
 	let iconUrl = ICONS.unknown;
 	if (isImage) iconUrl = (showImage ? props.image ?? props.path : ICONS.image);

@@ -1,124 +1,121 @@
 import Cookie from 'js-cookie';
 import * as Preact from 'preact';
+import { useState } from 'preact/hooks';
+import { useSiteData } from '../../Hooks';
 
 import './LoginPage.scss';
 
-import { AppContext } from '../../AppContext';
-import { SiteInfo } from '../../../../common/interface/DBStructs';
+enum LoginState { UNAUTH, PENDING, AUTH, REDIRECT }
 
-enum LoginState {
-	UNAUTH,
-	PENDING,
-	AUTH,
-	REDIRECT
-}
+export default function LoginPage() {
+	const [ ,, mergeData ] = useSiteData();
 
-interface State {
-	username: string;
-	password: string;
-	warning: string;
-	state: LoginState;
-}
+	const [ username, setUsername ] = useState<string>('');
+	const [ password, setPassword ] = useState<string>('');
 
-export default class LoginPage extends Preact.Component<{}, State> {
-	constructor(props: any) {
-		super(props);
+	const [ state, setState ] = useState<LoginState>(LoginState.UNAUTH);
+	const [ warning, setWarning ] = useState<string>('');
 
-		this.state = {
-			username: '',
-			password: '',
-			warning: '',
-			state: LoginState.UNAUTH
-		};
-
-		this.handleSubmit = this.handleSubmit.bind(this);
-		this.handleUsernameChange = this.handleUsernameChange.bind(this);
-		this.handlePasswordChange = this.handlePasswordChange.bind(this);
-	}
-
-	render() {
-		const loading = this.state.state === LoginState.AUTH || this.state.state === LoginState.REDIRECT;
-		const loaded = this.state.state === LoginState.REDIRECT;
-		return (
-			<div className='LoginPage'>
-				<div class='LoginPage-Gradient' />
-				<div class='LoginPage-Wrap'>
-					<form className={'LoginPage-Card' + (loading ? ' loading' : '') + (loaded ? ' loaded' : '')} onSubmit={this.handleSubmit}>
-						<div className='LoginPage-ProfilePlaceholder' role='heading' aria-level='1' aria-label='Log In'>
-							<img className='card' src='/admin/asset/icon/account-light.svg' alt=''/>
-							<img className='success' src='/admin/asset/icon/serve-light.svg' alt=''/>
-						</div>
-						<div className='LoginPage-FormContents'>
-
-							<input type='text' name='user' placeholder='Username' aria-label='Username'
-								autoFocus required minLength={3} maxLength={32} autoComplete={'username'}
-								value={this.state.username} onChange={this.handleUsernameChange} disabled={loading}/>
-
-							<input type='password' name='pass' placeholder='Password' aria-label='Password'
-								required minLength={8} autoComplete={'current-password'}
-								value={this.state.password} onChange={this.handlePasswordChange} disabled={loading}/>
-
-							<button disabled={loading}>Log In</button>
-						</div>
-					</form>
-					<p className='LoginPage-Warning'>{this.state.warning}</p>
-				</div>
-			</div>
-		);
-	}
-
-	private handleSubmit(e: any): boolean {
+	const handleSubmit = async (e: any) => {
 		e.preventDefault();
-		if (this.state.state === LoginState.PENDING) return false;
-		this.setState({warning: ''});
 
-		fetch('/admin/auth', {
-			method: 'POST',
-			cache: 'no-cache',
-    	headers: {'Content-Type': 'application/json'},
-			body: JSON.stringify({
-				user: this.state.username,
-				pass: this.state.password
-			})
-		}).then(async (r) => {
-			const res = await r.text();
-			if (r.status !== 200) throw res;
-			return res;
-		}).then(res => {
-			Cookie.set('tkn', res, { sameSite: 'Lax' });
-			this.setState({state: LoginState.AUTH});
-
+		try {
+			let data: any = null;
 			let returnImmediate = false;
-			let data: SiteInfo | null = null;
 
-			fetch('/admin/data', {
-				cache: 'no-cache'
-			}).then(r => r.json()).then(r => {
-				if (returnImmediate) this.context.handleSiteData(r);
-				else data = r;
-			});
+			if (state === LoginState.PENDING)
+				throw 'Attempt to send request while already logging in.';
 
-			setTimeout(() => this.setState({state: LoginState.REDIRECT}), 450);
+			setTimeout(() => setState(LoginState.REDIRECT), 500);
 			setTimeout(() => {
-				if (data) this.context.handleSiteData(data);
+				if (data) mergeData(data);
 				else returnImmediate = true;
 			}, 650);
 
-		}).catch(err => {
-			this.setState({state: LoginState.UNAUTH, warning: err});
-		});
+			setWarning('');
 
-		e.preventDefault();
+			const r = await fetch('/admin/auth', {
+				method: 'POST', cache: 'no-cache',
+				headers: {'Content-Type': 'application/json'},
+				body: JSON.stringify({
+					user: username,
+					pass: password
+				})
+			});
+
+			const res = await r.text();
+			if (r.status !== 200) throw res;
+			
+			Cookie.set('tkn', res, { sameSite: 'Lax' });
+			setState(LoginState.AUTH);
+
+			data = await (await fetch('/admin/data', { cache: 'no-cache' })).json();
+			if (returnImmediate) mergeData(data);
+		}
+		catch(err) {
+			setState(LoginState.UNAUTH);
+			setWarning(err);
+		}
+
 		return false;
-	}
+	};
+	
+	const loading = state === LoginState.AUTH || state === LoginState.REDIRECT;
+	const loaded = state === LoginState.REDIRECT;
 
-	private handleUsernameChange(e: any) {
-		this.setState({username: e.target.value});
-	}
+	return (
+		<div class='LoginPage'>
+			<div class='LoginPage-Gradient' />
+			<div class='LoginPage-Wrap'>
+				<form class={'LoginPage-Card' + (loading ? ' loading' : '') + (loaded ? ' loaded' : '')} onSubmit={handleSubmit}>
+					<div class='LoginPage-ProfilePlaceholder' role='heading' aria-level='1' aria-label='Log In'>
+						<img class='card' src='/admin/asset/icon/account-light.svg' alt=''/>
+						<img class='success' src='/admin/asset/icon/serve-light.svg' alt=''/>
+					</div>
+					<div class='LoginPage-FormContents'>
 
-	private handlePasswordChange(e: any) {
-		this.setState({password: e.target.value});
-	}
+						<input
+							type='text'
+							autoComplete='username'
+							
+							autoFocus
+							required
+							minLength={3}
+							maxLength={32}
+
+							aria-label='Username'
+							placeholder='Username'
+							
+							value={username}
+							onInput={(evt: any) => setUsername(evt.target.value)}
+							onChange={(evt: any) => setUsername(evt.target.value)}
+
+							disabled={loading}
+						/>
+
+						<input
+							type='password'
+							autoComplete={'current-password'}
+							
+							required
+							minLength={8}
+							
+							aria-label='Password'
+							placeholder='Password'
+							
+							value={password}
+							onInput={(evt: any) => setPassword(evt.target.value)}
+							onChange={(evt: any) => setPassword(evt.target.value)}
+
+							disabled={loading}
+						/>
+
+						<button disabled={loading}>Log In</button>
+					</div>
+				</form>
+
+				<p class='LoginPage-Warning'>{warning}</p>
+			</div>
+		</div>
+	);
 }
-
-LoginPage.contextType = AppContext;

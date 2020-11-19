@@ -1,104 +1,70 @@
 import * as Preact from 'preact';
+import { useState } from 'preact/hooks';
+import { useSiteData } from '../../Hooks';
 
-import './Page.sass';
 import './PluginsPage.scss';
 
 import PluginItem from '../PluginItem';
 import CardHeader from '../CardHeader';
 import SelectGroup from '../SelectGroup';
 
-import { AppContext } from '../../AppContext';
 import { Plugin } from '../../../../common/interface/DBStructs';
 
-interface State {
-	selected: number[];
-}
+export default function PluginsPage() {
+	const [ { plugins, enabledPlugins }, refreshData, updateData ] = useSiteData('plugins');
 
-export default class PluginsPage extends Preact.Component<{}, State> {
-	private selected: number[] = [];
+	const [ selected, setSelected ] = useState<number[]>([]);
 
-	constructor(props: {}) {
-		super(props);
-		this.state = { selected: [] };
+	const handleTogglePlugins = async () => {
+		const r = await fetch('/admin/plugins/toggle', {
+			method: 'POST', cache: 'no-cache',
+			headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify(selected.map(ind => (plugins || [])[ind]?.identifier))
+		});
+		const res = await r.json();
+		updateData(res as any);
+	};
 
-		this.handleTogglePlugins = this.handleTogglePlugins.bind(this);
-		this.handleRefreshPlugins = this.handleRefreshPlugins.bind(this);
-		this.handleSelectionChange = this.handleSelectionChange.bind(this);
-	}
+	return (
+		<div className='Page PluginsPage'>
+			<section className='Page-Card'>
+				<CardHeader icon='/admin/asset/icon/element-dark.svg' title='Manage Plugins'
+					subtitle={'Install, enable, or disable plugins.'} />
 
-	componentWillMount() {
-		this.context.refreshSiteData('plugins');
-	}
+				<div className='PluginsPage-Toolbar'>
+					<div>
 
-	render() {
-		return (
-			<AppContext.Consumer>{ctx =>
-				<div className='Page PluginsPage'>
-					<section className='Page-Card'>
-						<CardHeader icon='/admin/asset/icon/element-dark.svg' title='Manage Plugins'
-							subtitle={'Install, enable, or disable plugins.'} />
+						{/* <button className='MediaPage-Toolbar-Button' onClick={this.handleTogglePlugins}>
+							<img src='/admin/asset/icon/add-dark.svg' alt=''/><span>Install Plugin</span>
+						</button>*/}
 
-						<div className='PluginsPage-Toolbar'>
-							<div>
-								{/* <button className='MediaPage-Toolbar-Button' onClick={this.handleTogglePlugins}>
-									<img src='/admin/asset/icon/add-dark.svg' alt=''/><span>Install Plugin</span>
-								</button>*/}
+						{selected.length > 0 && <button onClick={handleTogglePlugins}>
+							<img src='/admin/asset/icon/refresh-dark.svg' alt=''/>
+							<span>{'Toggle Plugin' + (selected.length !== 1 ? ' (' + selected.length + ')' : '')}</span>
+						</button>}
+					</div>
+					<div>
 
-								{this.state.selected.length > 0 && <button onClick={this.handleTogglePlugins}>
-									<img src='/admin/asset/icon/refresh-dark.svg' alt=''/>
-									<span>{'Toggle Plugin' + (this.state.selected.length !== 1 ? ' (' + this.state.selected.length + ')' : '')}</span>
-								</button>}
-							</div>
-							<div>
-								{/* <button className='MediaPage-Toolbar-Button' onClick={this.handleTogglePlugins}>
-									<img src='/admin/asset/icon/sort-dark.svg' alt=''/><span>Sort by Size</span>
-								</button>*/}
+						{/* <button className='MediaPage-Toolbar-Button' onClick={this.handleTogglePlugins}>
+							<img src='/admin/asset/icon/sort-dark.svg' alt=''/><span>Sort by Size</span>
+						</button>*/}
 
-								<button onClick={this.handleRefreshPlugins} title='Refresh' aria-label='Refresh'>
-									<img src='/admin/asset/icon/refresh-dark.svg' alt=''/><span>Refresh</span>
-								</button>
-							</div>
-						</div>
-
-						{ctx.data.plugins && ctx.data.enabledPlugins &&
-							<SelectGroup className='PluginsPage-Plugins' onSelectionChange={this.handleSelectionChange} multi={true}>
-								{ctx.data.plugins.map((t: Plugin, i: number) => <PluginItem item={t} ind={i} onClick={this.handleTogglePlugins}
-									active={ctx.data.enabledPlugins!.indexOf(t.identifier) !== -1} key={t.identifier}/>)}
-							</SelectGroup>
-						}
-
-						{!ctx.data.plugins && <h2 className='PluginsPage-Notice'>Loading plugins...</h2>}
-						{ctx.data.plugins && ctx.data.plugins.length === 0 && <h2 className='PluginsPage-Notice'>No plugins found.</h2>}
-					</section>
+						<button onClick={() => refreshData(['plugins', 'info'])} title='Refresh' aria-label='Refresh'>
+							<img src='/admin/asset/icon/refresh-dark.svg' alt=''/><span>Refresh</span>
+						</button>
+					</div>
 				</div>
-			}</AppContext.Consumer>
-		);
-	}
 
-	private handleSelectionChange(selected: number[]): void {
-		this.selected = selected;
-		this.setState({ selected: selected });
-	}
+				{plugins && enabledPlugins &&
+					<SelectGroup className='PluginsPage-Plugins' onSelectionChange={setSelected} multi={true}>
+						{plugins.map((t: Plugin, i: number) => <PluginItem item={t} ind={i} onClick={handleTogglePlugins}
+							active={enabledPlugins!.indexOf(t.identifier) !== -1} key={t.identifier}/>)}
+					</SelectGroup>
+				}
 
-	private handleTogglePlugins(): void {
-		fetch('/admin/plugins/toggle', {
-			method: 'POST',
-			cache: 'no-cache',
-    	headers: {'Content-Type': 'application/json'},
-			body: JSON.stringify(this.selected.map(ind => this.context.data.plugins[ind].identifier))
-		}).then(r => r.json()).then(res => {
-			this.context.handleSiteData(res);
-		});
-	}
-
-	private handleRefreshPlugins(): void {
-		fetch('/admin/plugins/refresh', {
-			cache: 'no-cache',
-			method: 'POST'
-		}).then(r => r.json()).then(res => {
-			this.context.handleSiteData(res);
-		});
-	}
+				{!plugins && <h2 className='PluginsPage-Notice'>Loading plugins...</h2>}
+				{plugins && plugins.length === 0 && <h2 className='PluginsPage-Notice'>No plugins found.</h2>}
+			</section>
+		</div>
+	);
 }
-
-PluginsPage.contextType = AppContext;

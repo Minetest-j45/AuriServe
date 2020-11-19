@@ -26,7 +26,6 @@ export default class PageEditorInner extends Preact.Component<{}, State> {
 	}
 
 	render() {
-		console.log('rerender');
 		if (!this.state.page) return;
 
 		return (
@@ -124,10 +123,13 @@ export default class PageEditorInner extends Preact.Component<{}, State> {
 	}
 
 	private send(type: string, body?: any) {
-		window.parent?.postMessage({ type: type, body: body }, window.location.origin);
+		window.parent?.postMessage({ _as: true, type: type, body: body }, window.location.origin);
 	}
 
 	private receive = (evt: MessageEvent) => {
+		// Return if the message was not meant for us.
+		if (evt.origin !== window.location.origin || !evt.data._as) return;
+
 		let type = evt.data.type as string;
 		let body = evt.data.body as any;
 
@@ -137,7 +139,7 @@ export default class PageEditorInner extends Preact.Component<{}, State> {
 			break;
 
 		default:
-			console.log(type + '\n' + body);
+			console.error(`Unknown data recieved, type '${type}', body:`, body);
 			break;
 		}
 	};

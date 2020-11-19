@@ -16,8 +16,6 @@ module.exports = {
 		"browser": true
 	},
 	"extends": [
-		// "prettier",
-		// "prettier/@typescript-eslint"
 	],
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
@@ -27,7 +25,6 @@ module.exports = {
 	"plugins": [
 		"@typescript-eslint",
 		"eslint-plugin-jsdoc"
-		// "@typescript-eslint/tslint"
 	],
 	"rules": {
 		"@typescript-eslint/dot-notation": "error",

@@ -1,6 +1,7 @@
 import * as Preact from 'preact';
+import { useState, useEffect } from 'preact/hooks';
+import { useSiteData } from '../../Hooks';
 
-import './Page.sass';
 import './MediaPage.scss';
 
 import Modal from '../Modal';
@@ -10,142 +11,104 @@ import MediaItem from '../media/MediaItem';
 import MediaView from '../media/MediaView';
 import MediaUploadForm from '../media/MediaUploadForm';
 
-import { AppContext } from '../../AppContext';
+export default function MediaPage() {
+	const [ data, , setData ] = useSiteData('media');
 
-interface State {
-	selected: number[];
-	viewed?: string;
-	uploading: boolean;
-	grid: boolean;
-}
+	const [ grid, setGrid ] = useState<boolean>(true);
+	const [ selected, setSelected ] = useState<number[]>([]);
 
-export default class MediaPage extends Preact.Component<{}, State> {
-	constructor(props: any) {
-		super(props);
+	const [ viewing, setViewing ] = useState<string | undefined>(undefined);
+	const [ uploading, setUploading ] = useState<boolean>(false);
 
-		this.state = { selected: [], viewed: undefined, grid: true, uploading: false };
-	}
-
-	componentDidMount() {
-		window.addEventListener('keyup', this.handleKeyUp);
-		this.context.refreshSiteData('media');
-	}
-
-	componentWillUnmount() {
-		window.removeEventListener('keyup', this.handleKeyUp);
-	}
-
-	render() {
-		return (
-			<AppContext.Consumer>{ctx =>
-				<div className='Page MediaPage'>
-					<section className='Page-Card'>
-						<CardHeader icon='/admin/asset/icon/image-dark.svg' title='Manage Media'
-							subtitle={'Create or remove user-uploaded media.'} />
-
-						<div className='MediaPage-Toolbar'>
-							<div>
-								<button className='MediaPage-Toolbar-Button' onClick={this.handleUploadMedia}>
-									<img src='/admin/asset/icon/add-dark.svg' alt=''/><span>Upload Media</span>
-								</button>
-
-								{this.state.selected.length > 0 && <button className='MediaPage-Toolbar-Button' onClick={this.handleDeleteSelection}>
-									<img src='/admin/asset/icon/trash-dark.svg' alt=''/>
-									<span>{this.state.selected.length === 1 ? 'Delete' : 'Delete (' + this.state.selected.length + ')'}</span>
-								</button>}
-							</div>
-							<div>
-								{/* <button className='MediaPage-Toolbar-Button' onClick={this.handleUploadMedia}>
-									<img src='/admin/asset/icon/sort-dark.svg'/><span>Sort by Size</span>
-								</button> */}
-
-								<button className='MediaPage-Toolbar-Button'
-									onClick={this.handleViewToggle} aria-label='Switch View' title='Switch View'>
-									<img src={`/admin/asset/icon/${this.state.grid ? 'grid' : 'list'}-view-dark.svg`} alt=''/>
-								</button>
-							</div>
-						</div>
-
-						{ctx.data.media &&
-							<SelectGroup
-								multi={true}
-								onSelectionChange={this.handleSelectionChange}
-								className={'MediaPage-Media ' + (this.state.grid ? 'Grid' : 'Stack')}>
-								{ctx.data.media.map((a: any, i: number) => <MediaItem
-									ind={i}
-									item={a}
-									key={a.identifier}
-									onClick={this.handleOpenMedia.bind(this, a.identifier)}
-								/>)}
-							</SelectGroup>
-						}
-
-						{!ctx.data.media && <h2 className='MediaPage-Notice'>Loading media...</h2>}
-						{ctx.data.media && ctx.data.media.length === 0 && <h2 className='MediaPage-Notice'>No media found.</h2>}
-					</section>
-
-					{this.state.viewed !== undefined &&
-						<Modal onClose={this.handleCloseMedia}>
-							<MediaView onDelete={this.handleDelete.bind(this, this.state.viewed) as () => void}
-								item={ctx.data.media!.filter(m => m.identifier === this.state.viewed)[0]}/>
-						</Modal>
-					}
-
-					{this.state.uploading && <Modal>
-						<CardHeader icon='/admin/asset/icon/document-dark.svg' title='Upload Media'
-							subtitle={`Upload new media assets to ${ctx.data.sitename}.`} />
-						<MediaUploadForm onCancel={this.handleUploadCancel}/>
-					</Modal>}
-				</div>
-			}</AppContext.Consumer>
-		);
-	}
-
-	private handleKeyUp = (e: KeyboardEvent) => {
-		if (e.key === 'Delete') this.handleDeleteSelection();
+	const handleUploadMedia = () => {
+		setSelected([]);
+		setUploading(true);
 	};
 
-	private handleViewToggle = () => {
-		this.setState({ grid: !this.state.grid });
-	};
-
-	private handleOpenMedia = (key: string) => {
-		this.setState({ viewed: key });
-	};
-
-	private handleCloseMedia = () => {
-		this.setState({ viewed: undefined });
-	};
-
-	private handleUploadCancel = () => {
-		this.setState({ uploading: false });
-	};
-
-	private handleUploadMedia = () => {
-		this.handleSelectionChange([]);
-		this.setState({ uploading: true });
-	};
-
-	private handleDeleteSelection = () => {
-		if (this.state.selected.length === 0) return;
-		this.handleDelete(...this.state.selected.map(ind => this.context.data.media[ind].identifier));
-	};
-
-	private handleDelete = (...identifiers: string[]) => {
-		fetch('/admin/media/delete', {
-			method: 'POST',
-			cache: 'no-cache',
-    	headers: {'Content-Type': 'application/json'},
+	const handleDelete = async (...identifiers: string[]) => {
+		const r = await fetch('/admin/media/delete', {
+			method: 'POST', cache: 'no-cache',
+			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify(identifiers)
-		}).then(r => r.json()).then(res => {
-			this.setState({ viewed: undefined });
-			this.context.handleSiteData(res);
 		});
+		const res = await r.json();
+		setViewing(undefined);
+		setData(res);
 	};
 
-	private handleSelectionChange = (selected: number[]) => {
-		this.setState({ selected: selected });
+	const handleDeleteSelection = () => {
+		if (selected.length === 0) return;
+		handleDelete(...selected.map(ind => (data.media || [])[ind].identifier));
 	};
+
+	useEffect(() => {
+		const handleKeyUp = (e: KeyboardEvent) => {
+			if (e.key === 'Delete') handleDeleteSelection();
+		};
+
+		window.addEventListener('keyup', handleKeyUp);
+		return () => window.removeEventListener('keyup', handleKeyUp);
+	}, [ handleDeleteSelection ]);
+
+	return (
+		<div class='Page MediaPage'>
+			<section class='Page-Card'>
+				<CardHeader icon='/admin/asset/icon/image-dark.svg' title='Manage Media'
+					subtitle={'Create or remove user-uploaded media.'} />
+
+				<div class='MediaPage-Toolbar'>
+					<div>
+						<button class='MediaPage-Toolbar-Button' onClick={handleUploadMedia}>
+							<img src='/admin/asset/icon/add-dark.svg' alt=''/><span>Upload Media</span>
+						</button>
+
+						{selected.length > 0 && <button class='MediaPage-Toolbar-Button' onClick={handleDeleteSelection}>
+							<img src='/admin/asset/icon/trash-dark.svg' alt=''/>
+							<span>{selected.length === 1 ? 'Delete' : 'Delete (' + selected.length + ')'}</span>
+						</button>}
+					</div>
+					<div>
+						{/* <button class='MediaPage-Toolbar-Button' onClick={this.handleUploadMedia}>
+							<img src='/admin/asset/icon/sort-dark.svg'/><span>Sort by Size</span>
+						</button> */}
+
+						<button class='MediaPage-Toolbar-Button'
+							onClick={() => setGrid(!grid)} aria-label='Switch View' title='Switch View'>
+							<img src={`/admin/asset/icon/${grid ? 'grid' : 'list'}-view-dark.svg`} alt=''/>
+						</button>
+					</div>
+				</div>
+
+				{data.media &&
+					<SelectGroup
+						multi={true}
+						onSelectionChange={setSelected}
+						className={'MediaPage-Media ' + (grid ? 'Grid' : 'Stack')}>
+						{data.media.map((a: any, i: number) => <MediaItem
+							ind={i}
+							item={a}
+							key={a.identifier}
+							onClick={() => setViewing(a.identifier)}
+						/>)}
+					</SelectGroup>
+				}
+
+				{!data.media && <h2 class='MediaPage-Notice'>Loading media...</h2>}
+				{data.media && data.media.length === 0 && <h2 class='MediaPage-Notice'>No media found.</h2>}
+			</section>
+
+			{viewing !== undefined &&
+				<Modal onClose={() => setViewing(undefined)}>
+					<MediaView onDelete={() => handleDelete(viewing)}
+						item={data.media!.filter(m => m.identifier === viewing)[0]}/>
+				</Modal>
+			}
+
+			{uploading && <Modal>
+				<CardHeader icon='/admin/asset/icon/document-dark.svg' title='Upload Media'
+					subtitle={`Upload new media assets to ${data.sitename}.`} />
+				<MediaUploadForm onCancel={() => setUploading(false)}/>
+			</Modal>}
+		</div>
+	);
 }
-
-MediaPage.contextType = AppContext;

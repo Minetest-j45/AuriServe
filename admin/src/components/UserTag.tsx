@@ -1,4 +1,6 @@
 import * as Preact from 'preact';
+import { useState, useRef } from 'preact/hooks';
+import { useImmediateRerender } from '../Hooks';
 
 import UserCard from './UserCard';
 
@@ -8,44 +10,23 @@ interface Props {
 	identifier: string;
 }
 
-interface State {
-	active: boolean;
-}
+export default function UserTag(props: Props) {
+	const ref = useRef(null);
+	useImmediateRerender();
 
-export default class UserTag extends Preact.Component<Props, State> {
-	ref: Preact.RefObject<HTMLButtonElement>;
+	const [ active, setActive ] = useState<boolean>(false);
 
-	constructor(p: Props) {
-		super(p);
-		this.state = { active: false };
-		this.ref = Preact.createRef();
-	}
+	return (
+		<button class="UserTag" ref={ref}
+			onClick={() => setActive(true)}>
+			@{props.identifier}
 
-	componentDidMount() {
-		this.forceUpdate();
-	}
-
-	render() {
-		return (
-			<Preact.Fragment>
-				<button class="UserTag" ref={this.ref} onClick={this.handleToggleModal}>
-					@{this.props.identifier}
-				</button>
-				{this.ref.current && <UserCard
-					visible={this.state.active}
-					parent={this.ref.current!}
-					identifier={this.props.identifier}
-					onClose={this.handleCloseModal}/>
-				}
-			</Preact.Fragment>
-		);
-	}
-
-	handleCloseModal = () => {
-		setTimeout(() => this.setState({ active: false }), 1);
-	};
-
-	handleToggleModal = () => {
-		this.setState({ active: !this.state.active });
-	};
+			{ref.current && <UserCard
+				visible={active}
+				parent={ref.current!}
+				identifier={props.identifier}
+				onClose={() => setTimeout(() => setActive(false), 0)}/>
+			}
+		</button>
+	);
 }

@@ -1,43 +1,31 @@
 import * as Preact from 'preact';
+import { useEffect } from 'preact/hooks';
 
 import './Modal.sass';
 
 interface Props {
 	onClose?: (_: MouseEvent) => void;
 	children?: Preact.VNode | Preact.VNode[];
-	className?: string;
+
+	class?: string;
 	style?: any;
 }
 
-export default class Modal extends Preact.Component<Props, {}> {
-	constructor(props: Props) {
-		super(props);
+export default function Modal(props: Props) {
+	useEffect(() => {
+		const body = document.getElementsByTagName('body')[0];
+		body.style.overflow = 'hidden';
+		return () => body.style.overflow = '';
+	}, []);
 
-		this.avoidClose = this.avoidClose.bind(this);
-	}
-
-	componentDidMount() {
-		document.getElementsByTagName('body')[0].style.overflow = 'hidden';
-	}
-
-	componentWillUnmount() {
-		document.getElementsByTagName('body')[0].style.overflow = '';
-	}
-
-	render() {
-		return (
-			<div className={'Modal' + (this.props.className ? ' ' + this.props.className : '') + (this.props.onClose ? ' closes' : '')}
-				style={this.props.style} onClick={this.props.onClose}>
-				<div className="Modal-CardWrap">
-					<div className="Modal-Card" onClick={this.avoidClose}>
-						{this.props.children}
-					</div>
+	return (
+		<div style={props.style} onClick={props.onClose}
+			class={('Modal ' + (props.class ?? '')).trim() + (props.onClose ? ' closes' : '')}>
+			<div class="Modal-CardWrap">
+				<div class="Modal-Card" onClick={e => e.stopPropagation()}>
+					{props.children}
 				</div>
 			</div>
-		);
-	}
-
-	private avoidClose(e: MouseEvent): void {
-		e.stopPropagation();
-	}
+		</div>
+	);
 }

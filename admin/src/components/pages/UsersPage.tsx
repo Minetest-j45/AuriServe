@@ -1,45 +1,32 @@
 import * as Preact from 'preact';
+import { useSiteData } from '../../Hooks';
 
-import './Page.sass';
 import './UsersPage.sass';
 
 import CardHeader from '../CardHeader';
-import { AppContext } from '../../AppContext';
 import RolesEditor from '../roles/RolesEditor';
 
 import UserItem from '../UserItem';
 
-export default class UsersPage extends Preact.Component {
-	constructor(p: any) {
-		super(p);
-	}
+export default function UsersPage() {
+	const [ { users, roles } ] = useSiteData([ 'users', 'roles' ]);
 
-	componentDidMount() {
-		this.context.refreshSiteData('users', 'roles');
-	}
+	return (
+		<div class='Page UsersPage'>
+			<section class='Page-Card'>
+				<CardHeader icon='/admin/asset/icon/users-dark.svg' title='Manage Accounts'
+					subtitle='Manage access to AuriServe.' />
 
-	render() {
-		return (
-			<AppContext.Consumer>{ctx =>
-				<div class='Page UsersPage'>
-					<section class='Page-Card'>
-						<CardHeader icon='/admin/asset/icon/users-dark.svg' title='Manage Accounts'
-							subtitle='Manage access to AuriServe.' />
-
-						<div class='UsersPage-Users'>
-							{ctx.data.users && ctx.data.users.map(user => <UserItem key={user.identifier} user={user} />)}
-						</div>
-					</section>
-
-					<section class='Page-Card'>
-						<CardHeader icon='/admin/asset/icon/role-dark.svg' title='Manage Roles'
-							subtitle='Manage access to AuriServe.' />
-						{ctx.data.roles && <RolesEditor roles={ctx.data.roles} />}
-					</section>
+				<div class='UsersPage-Users'>
+					{users && users.map(user => <UserItem key={user.identifier} user={user} />)}
 				</div>
-			}</AppContext.Consumer>
-		);
-	}
-}
+			</section>
 
-UsersPage.contextType = AppContext;
+			<section class='Page-Card'>
+				<CardHeader icon='/admin/asset/icon/role-dark.svg' title='Manage Roles'
+					subtitle='Manage access to AuriServe.' />
+				{roles && <RolesEditor roles={roles} />}
+			</section>
+		</div>
+	);
+}

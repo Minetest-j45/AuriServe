@@ -1,6 +1,5 @@
 import * as Preact from 'preact';
 
-import './Page.sass';
 import './PagesPage.sass';
 
 import PageEditor from '../editor/PageEditor';

@@ -1,96 +1,68 @@
 import * as Preact from 'preact';
+import { useState } from 'preact/hooks';
+import { useSiteData } from '../../Hooks';
 
-import './Page.sass';
 import './ThemesPage.scss';
 
 import ThemeItem from '../ThemeItem';
 import CardHeader from '../CardHeader';
 import SelectGroup from '../SelectGroup';
 
-import { AppContext } from '../../AppContext';
 import { Theme } from '../../../../common/interface/DBStructs';
 
-interface State {
-	selected: number[];
-}
+export default function ThemesPage() {
+	const [ { themes, enabledThemes }, refreshData, updateData ] = useSiteData('themes');
 
-export default class ThemesPage extends Preact.Component<{}, State> {
-	private selected: number[] = [];
+	const [ selected, setSelected ] = useState<number[]>([]);
 
-	constructor(props: {}) {
-		super(props);
-		this.state = { selected: [] };
-	}
+	const handleToggleThemes = async () => {
+		const r = await fetch('/admin/themes/toggle', {
+			method: 'POST', cache: 'no-cache',
+			headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify(selected.map(ind => (themes || [])[ind]?.identifier))
+		});
+		const res = await r.json();
+		updateData(res as any);
+	};
 
-	componentWillMount() {
-		this.context.refreshSiteData('themes');
-	}
+	return (
+		<div className='Page ThemesPage'>
+			<section className='Page-Card'>
+				<CardHeader icon='/admin/asset/icon/theme-dark.svg' title='Manage Themes'
+					subtitle={'Install, enable, or disable site themes.'} />
 
-	render() {
-		return (
-			<AppContext.Consumer>{ctx =>
-				<div className='Page ThemesPage'>
-					<section className='Page-Card'>
-						<CardHeader icon='/admin/asset/icon/theme-dark.svg' title='Manage Themes'
-							subtitle={'Install, enable, or disable site themes.'} />
+				<div className='ThemesPage-Toolbar'>
+					<div>
+						{/* <button className='MediaPage-Toolbar-Button' onClick={this.handleToggleThemes}>
+							<img src='/admin/asset/icon/add-dark.svg'/><span>Install Theme</span>
+						</button>*/}
 
-						<div className='ThemesPage-Toolbar'>
-							<div>
-								{/* <button className='MediaPage-Toolbar-Button' onClick={this.handleToggleThemes}>
-									<img src='/admin/asset/icon/add-dark.svg'/><span>Install Theme</span>
-								</button>*/}
+						{selected.length > 0 && <button onClick={handleToggleThemes}>
+							<img src='/admin/asset/icon/refresh-dark.svg' alt=''/>
+							<span>{'Toggle Theme' + (selected.length !== 1 ? ' (' + selected.length + ')' : '')}</span>
+						</button>}
+					</div>
+					<div>
+						{/* <button className='MediaPage-Toolbar-Button' onClick={this.handleToggleThemes}>
+							<img src='/admin/asset/icon/sort-dark.svg'/><span>Sort by Size</span>
+						</button>*/}
 
-								{this.state.selected.length > 0 && <button onClick={this.handleToggleThemes}>
-									<img src='/admin/asset/icon/refresh-dark.svg' alt=''/>
-									<span>{'Toggle Theme' + (this.state.selected.length !== 1 ? ' (' + this.state.selected.length + ')' : '')}</span>
-								</button>}
-							</div>
-							<div>
-								{/* <button className='MediaPage-Toolbar-Button' onClick={this.handleToggleThemes}>
-									<img src='/admin/asset/icon/sort-dark.svg'/><span>Sort by Size</span>
-								</button>*/}
-
-								<button onClick={this.handleRefreshThemes}>
-									<img src='/admin/asset/icon/refresh-dark.svg' alt=''/><span>Refresh</span>
-								</button>
-							</div>
-						</div>
-
-						{ctx.data.themes && ctx.data.enabledThemes &&
-							<SelectGroup className='ThemesPage-Themes' onSelectionChange={this.handleSelectionChange} multi={true}>
-								{ctx.data.themes.map((t: Theme, i: number) => <ThemeItem item={t} ind={i} onClick={this.handleToggleThemes}
-									active={ctx.data.enabledThemes!.indexOf(t.identifier) !== -1} key={t.identifier}/>)}
-							</SelectGroup>
-						}
-
-						{!ctx.data.themes && <h2 className='ThemesPage-Notice'>Loading themes...</h2>}
-						{ctx.data.themes && ctx.data.themes.length === 0 && <h2 className='ThemesPage-Notice'>No themes found.</h2>}
-					</section>
+						<button onClick={() => refreshData(['themes', 'info'])}>
+							<img src='/admin/asset/icon/refresh-dark.svg' alt=''/><span>Refresh</span>
+						</button>
+					</div>
 				</div>
-			}</AppContext.Consumer>
-		);
-	}
 
-	private handleSelectionChange = (selected: number[]): void => {
-		this.selected = selected;
-		this.setState({ selected: selected });
-	};
+				{themes && enabledThemes &&
+					<SelectGroup className='ThemesPage-Themes' onSelectionChange={setSelected} multi={true}>
+						{themes.map((t: Theme, i: number) => <ThemeItem item={t} ind={i} onClick={handleToggleThemes}
+							active={enabledThemes!.indexOf(t.identifier) !== -1} key={t.identifier}/>)}
+					</SelectGroup>
+				}
 
-	private handleToggleThemes = (): void => {
-		fetch('/admin/themes/toggle', {
-			method: 'POST',
-			cache: 'no-cache',
-    	headers: {'Content-Type': 'application/json'},
-			body: JSON.stringify(this.selected.map(ind => this.context.data.themes[ind].identifier))
-		}).then(r => r.json()).then(this.context.handleSiteData);
-	};
-
-	private handleRefreshThemes = (): void => {
-		fetch('/admin/themes/refresh', {
-			cache: 'no-cache',
-			method: 'POST'
-		}).then(r => r.json()).then(this.context.handleSiteData);
-	};
+				{!themes && <h2 className='ThemesPage-Notice'>Loading themes...</h2>}
+				{themes && themes.length === 0 && <h2 className='ThemesPage-Notice'>No themes found.</h2>}
+			</section>
+		</div>
+	);
 }
-
-ThemesPage.contextType = AppContext;

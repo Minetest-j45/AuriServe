@@ -1,5 +1,6 @@
 import * as Preact from 'preact';
 import { Prompt } from 'react-router-dom';
+import { useState, useEffect, useContext } from 'preact/hooks';
 
 import './RolesEditor.sass';
 
@@ -14,77 +15,63 @@ interface Props {
 	roles: Role[];
 }
 
-interface State {
-	roles: Role[];
-	editing: number;
-	changed: boolean;
+function validateRoles(roles: Role[]): boolean {
+	for (let role of roles)
+		if (role.abilities.includes('ADMINISTRATOR'))
+			return true;
+
+	return false;
 }
 
-export default class RolesEditor extends Preact.Component<Props, State> {
-	constructor(p: Props) {
-		super(p);
+export default function RolesEditor(props: Props) {
+	const ctx = useContext(AppContext);
+	const [ roles, setRoles ] = useState<Role[]>([]);
+	const [ dirty, setDirty ] = useState<boolean>(false);
+	const [ editing, setEditing ] = useState<number>(0);
 
-		this.setState({ editing: 0, changed: false, roles: [] });
-		this.handleReset();
-	}
+	useEffect(() => {
+		setRoles(props.roles);
+		setDirty(false);
+	}, [ props.roles ]);
 
-	componentWillReceiveProps() {
-		setTimeout(() => this.handleReset(), 0);
-	}
+	const handleSetRole = (role: Role) => {
+		let newRoles = [...roles ];
+		newRoles[editing] = role;
 
-	render() {
-		return (
-			<div class='RolesEditor'>
-				<ul class='RolesEditor-RolesList'>
-					<li><span class='RolesEditor-Label'>Roles</span></li>
-					{this.state.roles.map((r: Role, i: number) => <li key={i}
-						class={'RolesEditor-RolesListRole' + (i === this.state.editing ? ' active' : '')}
-						style={{['--color']: r.color || '#334E68', ['--bg-color']: (r.color || '#334E68') + '22'} as any}>
-						<button onClick={this.handleClickRole.bind(this, i)}><span>{r.identifier}</span></button>
-					</li>)}
-				</ul>
-				{this.state.roles[this.state.editing] && <RoleEditor role={this.state.roles[this.state.editing]} setRole={this.handleSetRole} />}
-				<SaveConfirmationModal active={this.state.changed} onReset={this.handleReset} onSave={this.handleSave} />
-			  <Prompt when={this.state.changed} message='Are you sure you want to leave this page? Unsaved changes will be lost.'/>
-			</div>
-		);
-	}
+		if (!validateRoles(newRoles)) return setRoles([...roles ]);
 
-	private handleClickRole = (role: number) => {
-		this.setState({ editing: role });
+		setRoles(newRoles);
+		setDirty(JSON.stringify(newRoles) !== JSON.stringify(props.roles));
 	};
 
-	private handleSetRole = (role: Role) => {
-		let roles = JSON.parse(JSON.stringify(this.state.roles));
-		roles[this.state.editing] = role;
-
-		if (!this.validateRoles(roles)) return this.forceUpdate();
-
-		this.setState({ roles: roles, changed: JSON.stringify(roles) !== JSON.stringify(this.props.roles) });
+	const handleReset = () => {
+		setRoles(props.roles);
+		setDirty(false);
 	};
 
-	private handleReset = () => {
-		this.setState({ roles: this.props.roles, changed: false });
-	};
-
-	private handleSave = () => {
+	const handleSave = () => {
 		fetch('/admin/roles/update', {
 			method: 'POST',
 			cache: 'no-cache',
     	headers: {'Content-Type': 'application/json'},
-			body: JSON.stringify(this.state.roles)
-		}).then(r => r.json()).then(this.context.handleSiteData);
+			body: JSON.stringify(roles)
+		}).then(r => r.json()).then(ctx.mergeData);
 	};
 
-	// Ensure that at least one role has the ADMINISTRATOR ability.
-
-	private validateRoles = (roles: Role[]): boolean => {
-		for (let role of roles)
-			if (role.abilities.includes('ADMINISTRATOR'))
-				return true;
-
-		return false;
-	};
+	return (
+		<div class='RolesEditor'>
+			<ul class='RolesEditor-RolesList'>
+				<li><span class='RolesEditor-Label'>Roles</span></li>
+				{roles.map((r: Role, i: number) => <li key={i}
+					class={'RolesEditor-RolesListRole' + (i === editing ? ' active' : '')}
+					style={{['--color']: r.color || '#334E68', ['--bg-color']: (r.color || '#334E68') + '22'} as any}>
+					<button onClick={() => setEditing(i)}><span>{r.identifier}</span></button>
+				</li>)}
+			</ul>
+			
+			{roles[editing] && <RoleEditor role={roles[editing]} setRole={handleSetRole} />}
+			<SaveConfirmationModal active={dirty} onReset={handleReset} onSave={handleSave} />
+		  <Prompt when={dirty} message='Are you sure you want to leave this page? Unsaved changes will be lost.'/>
+		</div>
+	);
 }
-
-RolesEditor.contextType = AppContext;

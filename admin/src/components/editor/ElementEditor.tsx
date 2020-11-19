@@ -93,11 +93,15 @@ export default class ElementEditor extends Preact.Component<Props, State> {
 					key={fullIdentifier}
 					identifier={identifier}
 					value={values[identifier]}
-					setProps={this.handleSetProps}
+					onChange={this.handleSetProp.bind(this, identifier)}
 				/>
 			);
 		}
 	}
+
+	private handleSetProp = (identifier: string, object: any) => {
+		this.handleSetProps({ [identifier]: object });
+	};
 
 	private handleSetProps = (object: any) => {
 		const props = Object.assign({}, this.state.props, object);

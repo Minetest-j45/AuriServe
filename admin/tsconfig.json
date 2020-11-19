@@ -19,7 +19,6 @@
     "removeComments": true,
     "noUnusedLocals": true,
     "noImplicitReturns": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noUnusedParameters": true
   }
 }
