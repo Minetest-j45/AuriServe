@@ -78,10 +78,8 @@ export interface ClientDefinition {
 	element: T;
 }
 
-export interface AdminDefinition {
-	identifier: string;
-	element: T;
-	editing: {
+export interface AdminDefinition extends ServerDefinition {
+	editing?: {
 		propertyEditor?: T | true;
 		inlineEditor?: T;
 	};

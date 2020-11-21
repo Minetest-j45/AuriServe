@@ -4,6 +4,7 @@ import { useState, useEffect, useContext } from 'preact/hooks';
 import { AppContext, refreshSiteData } from './AppContext';
 import { SiteData, SiteDataSpecifier } from '../../common/interface/SiteData';
 
+
 /**
  * Returns a function that forces a component to rerender.
  * Can be used to manually reload a component if it becomes desync'd from the state.
@@ -87,8 +88,9 @@ export function usePopupCancel(popup: Preact.RefObject<any>, onCancel: () => any
  */
 
 export function useSiteData(refresh?: SiteDataSpecifier | SiteDataSpecifier[], dependents?: any[]):
-[ Partial<SiteData>, (refresh: SiteDataSpecifier | SiteDataSpecifier []) => Promise<Partial<SiteData>>,
+[ Partial<SiteData>, (refresh: SiteDataSpecifier | SiteDataSpecifier[]) => Promise<Partial<SiteData>>,
 	(data: Partial<SiteData>) => void ] {
+
 	const ctx = useContext(AppContext);
 
 	useEffect(() => {
@@ -96,4 +98,53 @@ export function useSiteData(refresh?: SiteDataSpecifier | SiteDataSpecifier[], d
 	}, dependents ?? []);
 
 	return [ ctx.data, refreshSiteData.bind(undefined, ctx.mergeData), ctx.mergeData ];
+}
+
+
+/**
+ * Sends a message to a host with the requested properties.
+ */
+
+function sendMessage(key: string, target: { postMessage: any }, type: string, body?: any) {
+	target.postMessage({ _as: key, type: type, body: body });
+}
+
+
+/**
+ * Takes a message event, a key, and a recieve callback and
+ * executes the callback if it meets the required parameters.
+ */
+
+function recieveMessage(key: string, onRecieve: (type: string, body?: string) => void, evt: MessageEvent) {
+	if (evt.origin !== window.location.origin || !evt.data._as || evt.data._as !== key) return;
+
+	const type = evt.data.type as string;
+	const body = evt.data.body as any;
+
+	onRecieve(type, body);
+}
+
+
+/**
+ * Provides cross-origin message passing between hosts, with an optional key to mask out other origins.
+ * This function works by being defined on both ends, and both are initialized with the same key.
+ *
+ * @param {{ postMessage: any }} target - The target to send messages to, must have a postMessage method.
+ * @param {Function} onRecieve - The function to call when a messae is recieved.
+ * @param {string} key - An optional string to mask out other origins.
+ * @returns a function to send messages between origins.
+ */
+
+export function useMessaging(target: { postMessage: any } | null | undefined,
+	onRecieve: (type: string, body?: string) => void, dependents: any[], key: string = '!') {
+
+	useEffect(() => {
+		if (!target) return;
+		const cb = recieveMessage.bind(undefined, key, onRecieve);
+
+		window.addEventListener('message', cb);
+		return () => window.removeEventListener('message', cb);
+	}, [ key, onRecieve, ...dependents ]);
+
+	return target && sendMessage.bind(undefined, key, target);
 }

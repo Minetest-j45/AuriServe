@@ -1,6 +1,5 @@
 import * as Preact from 'preact';
 import { useSiteData } from '../../Hooks';
-import { NavLink as Link } from 'react-router-dom';
 
 import './PagesPage.sass';
 
@@ -19,11 +18,11 @@ export default function PagesPage() {
 					<ul class="PagesPage-Pages">
 						{Object.keys(data.pages).sort((a, b) => a > b ? 1 : -1).map(p =>
 							<li>
-								<Link className="PagesPage-PageItem" to={'/pages/' + p}>
+								<a className="PagesPage-PageItem" href={'/admin/pages/' + p}>
 									<p class="PagesPage-PageItemTitle">{data.pages![p]!.title}</p>
 									<p class="PagesPage-PageItemDescription">{data.pages![p].description || <em>No description</em>}</p>
 									<p class="PagesPage-PageItemPath">{p}</p>
-								</Link>
+								</a>
 							</li>
 						)}
 					</ul>

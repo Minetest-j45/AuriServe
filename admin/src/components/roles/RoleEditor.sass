@@ -19,13 +19,18 @@
 		display: grid
 		grid-gap: 8px clamp(2px, calc(10% - 32px), 8px)
 		grid-template-rows: repeat(2, 24px)
-		grid-template-columns: 64px repeat(11, 1fr)
-		grid-template-areas: "a ." "a ."
+		grid-template-columns: 64px 64px repeat(11, 1fr)
+		grid-template-areas: "a b ." "a b ."
 		user-select: none
 
 		.RoleEditor-ColorTransparent
 			grid-area: a
 			background-color: $neutral-700
+			padding: 12px
+
+		.RoleEditor-ColorCustom
+			grid-area: b
+			background-color: $neutral-100
 			padding: 12px
 
 		button
@@ -46,7 +51,7 @@
 				object-fit: contain
 
 	.RoleEditor-Separator
-		margin: 16px 0
+		margin: 14px 0 8px 0
 		border: none
 		border-bottom: 1px solid $neutral-100
 

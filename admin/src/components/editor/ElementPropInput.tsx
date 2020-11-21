@@ -1,8 +1,8 @@
 import * as Preact from 'preact';
-import { useRef, useLayoutEffect } from 'preact/hooks';
 
 import './ElementPropInput.sass';
 
+import * as Input from '../input/Input';
 import * as Element from '../../../../common/interface/Element';
 
 
@@ -25,119 +25,9 @@ interface Props {
  */
 
 interface WidgetProps {
-	identifier: string;
 	value: any;
 
-	onChange: (newValue: any) => any;
-}
-
-
-/**
- * Automatically scales a HTML TextArea element to the height of its content,
- * or the specified max-height, whichever is smaller. Returns a ref to attach to
- * the TextArea which should be scaled.
- *
- * @param {number} maxHeight - An optional maximum height, defaults to Infinity.
- * @param {any[]} dependents - A list of dependent variables for the TextArea's content.
- * @return {RefObject} - A RefObject to attach to the targeted TextArea.
- */
-
-function useAutoTextArea(maxHeight?: number, dependents?: any[]): Preact.RefObject<HTMLTextAreaElement> {
-	const ref = useRef<HTMLTextAreaElement>(null);
-
-	useLayoutEffect(() => {
-		if (!ref.current) return;
-		ref.current.style.height = '';
-		ref.current.style.height = Math.min(ref.current.scrollHeight + 2, maxHeight ?? Infinity) + 'px';
-	}, [ ref.current, ...dependents || [] ]);
-
-	return ref;
-}
-
-
-/**
- * A single-line text input widget.
- * Horizontally scrolls when the content becomes longer than its width.
- */
-
-function TextInput(props: WidgetProps) {
-	return (
-		<input
-			type='text'
-			name={props.identifier}
-			value={props.value}
-			
-			onChange={props.onChange}
-			onInput={props.onChange}
-		/>
-	);
-}
-
-
-/**
- * A multiline text input widget,
- * that automatically scales to the content inside.
- */
-
-function LongTextInput(props: WidgetProps) {
-	const ref = useAutoTextArea(420, [ props.value ]);
-
-	return (
-		<textarea
-			ref={ref as any}
-			name={props.identifier}
-			value={props.value}
-
-			rows={1}
-			  
-			onChange={props.onChange}
-			onInput={props.onChange}
-		/>
-	);
-}
-
-
-/**
- * A multiline 'code' input widget,
- * that automatically scales to the content inside.
- * Content is rendered in monospace.
- */
-
-function LongCodeInput(props: WidgetProps) {
-	const ref = useAutoTextArea(420, [ props.value ]);
-
-	return (
-		<textarea
-			ref={ref as any}
-			class='ElementPropInput-Code'
-			
-			name={props.identifier}
-			value={props.value}
-
-			rows={1}
-			  
-			onChange={props.onChange}
-			onInput={props.onChange}
-		/>
-	);
-}
-
-
-/**
- * A numeric input widget.
- */
-
-function NumberInput(props: WidgetProps) {
-	return (
-		<input
-			type='number'
-			name={props.identifier}
-			value={props.value}
-			
-			onChange={props.onChange}
-			onInput={props.onChange}
-		/>
-	);
+	setValue: (newValue: any) => any;
 }
 
 
@@ -150,28 +40,10 @@ function DateTimeInput(props: WidgetProps & { mode?: 'date' | 'time' | 'datetime
 	return (
 		<input
 			type={props.mode ?? 'datetime'}
-			name={props.identifier}
 			value={props.value}
 			
-			onChange={props.onChange}
-			onInput={props.onChange}
-		/>
-	);
-}
-
-
-/**
- * A two-state checkbox input widget.
- */
-
-function CheckboxInput(props: WidgetProps) {
-	return (
-		<input
-			type='checkbox'
-			name={props.identifier}
-			checked={props.value}
-
-			onChange={props.onChange}
+			onChange={(e: any) => props.setValue(e.target.value)}
+			onInput={(e: any) => props.setValue(e.target.value)}
 		/>
 	);
 }
@@ -184,11 +56,10 @@ function ColorInput(props: WidgetProps) {
 	return (
 		<input
 			type='color'
-			name={props.identifier}
 			value={props.value}
 
-			onChange={props.onChange}
-			onInput={props.onChange}
+			onChange={(e: any) => props.setValue(e.target.value)}
+			onInput={(e: any) => props.setValue(e.target.value)}
 		/>
 	);
 }
@@ -201,8 +72,7 @@ function ColorInput(props: WidgetProps) {
 function SelectInput(props: WidgetProps & { values: string[] }) {
 	return (
 		<select
-			name={props.identifier}
-			onChange={props.onChange}>
+			onChange={props.setValue}>
 			{props.values.map(v => {
 				const title = v.split(' ').map(s => s.charAt(0).toUpperCase() + s.substr(1)).join(' ');
 				return <option selected={props.value === v} value={v}>{title}</option>;
@@ -225,32 +95,9 @@ export default function ElementPropInput(props: Props) {
 	const displayName = props.prop.name ||
 		props.identifier.split(' ').map(s => s.charAt(0).toUpperCase() + s.substr(1)).join(' ');
 
-	const handleChange = (evt: any) => {
-		let value: any = (evt.target as HTMLInputElement).value!;
-
-		// Apply transformations to value based on type.
-
-		switch (baseType) {
-		default: break;
-		
-		case 'number':
-			value = (value === '' ? 0 : Number.parseInt(value, 10));
-			if (Number.isNaN(value)) value = props.value;
-			break;
-
-		case 'boolean':
-			value = !props.value;
-			break;
-		}
-		
-		props.onChange(value);
-	};
-
 	const widgetProps: WidgetProps = {
-		identifier: props.identifier,
 		value: props.value,
-
-		onChange: handleChange
+		setValue: props.onChange
 	};
 
 	return (
@@ -263,16 +110,16 @@ export default function ElementPropInput(props: Props) {
 					// fall through
 
 				case 'text':
-					return <TextInput {...widgetProps} />;
+					return <Input.Text {...widgetProps} />;
 				
 				case 'long_text':
-					return <LongTextInput {...widgetProps} />;
+					return <Input.Text {...widgetProps} long={true} />;
 				
 				case 'html':
-					return <LongCodeInput {...widgetProps} />;
+					return <Input.Text {...widgetProps} long={true} code={true} />;
 
 				case 'number':
-					return <NumberInput {...widgetProps} />;
+					return <Input.Numeric {...widgetProps} />;
 
 				case 'date':
 				case 'time':
@@ -280,7 +127,7 @@ export default function ElementPropInput(props: Props) {
 					return <DateTimeInput {...widgetProps} mode={baseType} />;
 
 				case 'boolean':
-					return <CheckboxInput {...widgetProps} />;
+					return <Input.Checkbox {...widgetProps} />;
 
 				case 'color':
 					return <ColorInput {...widgetProps} />;

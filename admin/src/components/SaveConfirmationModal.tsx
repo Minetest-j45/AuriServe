@@ -9,7 +9,7 @@ interface Props {
 	onSave: () => void;
 }
 
-export default class UserItem extends Preact.Component<Props, {}> {
+export default class SaveConfirmationModal extends Preact.Component<Props, {}> {
 	render(_: Props) {
 		return (
 			<div class={'SaveConfirmationModal' + (this.props.active ? ' Active' : '')}>
@@ -19,7 +19,6 @@ export default class UserItem extends Preact.Component<Props, {}> {
 					<div class='SaveConfirmationModal-Spacer' />
 					<button class='SaveConfirmationModal-ResetButton' onClick={this.props.onReset}>Reset</button>
 					<button class='SaveConfirmationModal-SaveButton' onClick={this.props.onSave}>Save</button>
-
 				</div>
 			</div>
 		);

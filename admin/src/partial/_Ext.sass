@@ -57,6 +57,9 @@
 %material_input
 	@extend %material_border
 	border-color: $neutral-100
+	background-color: $neutral-000
+	font-weight: 400
+	line-height: 1.4em
 	outline: 0
 
 	&:hover
@@ -70,14 +73,15 @@
 		color: $neutral-400
 
 %material_checkbox
-	$width: 32px
-	$height: 20px
+	$width: 34px
+	$height: 22px
 	$notch-small: 12px
 	$notch-large: 16px
 	$notch-grow: 6px
 
 	width: 1px
 	height: 1px
+	position: relative
 	margin: $height / 2 $width / 2 $height / 2 - 1 $width / 2 - 1
 
 	cursor: pointer
@@ -86,12 +90,13 @@
 		content: ' '
 		position: absolute
 
-		top: -$height / 2 - 1
-		left: -$width / 2 - 1
+		top: -$height / 2
+		left: -$width / 2 + 1
 		width: $width
 		height: $height
 		border-radius: $height
 
+		box-sizing: border-box
 		border: 1px solid $neutral-100
 		background-color: #fff
 
@@ -125,8 +130,8 @@
 		width: $notch-small
 		height: $notch-small
 
-		top: (-$height + $notch-large - $notch-small) / 2 + 2
-		left: (-$width + $notch-large - $notch-small) / 2 + 2
+		top: (-$height + $notch-large - $notch-small) / 2 + 3
+		left: (-$width + $notch-large - $notch-small) / 2 + 4
 
 		background-color: $neutral-200
 		border-radius: $notch-large / 2
@@ -137,7 +142,7 @@
 		width: $notch-large
 		height: $notch-large
 
-		top: -$height / 2 + 2
+		top: -$height / 2 + 3
 		left: -$width / 2 + $width - $notch-large - 2
 
 	&:checked
@@ -164,7 +169,7 @@
 			width: $notch-small + $notch-grow
 			height: $notch-small
 
-			top: (-$height + $notch-large - $notch-small) / 2 + 2
+			top: (-$height + $notch-large - $notch-small) / 2 + 3
 			left: (-$width / 2 + $width - $notch-small - 4 - $notch-grow) / 2 - 3
 
 %material_label

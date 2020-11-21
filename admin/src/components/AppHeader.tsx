@@ -20,9 +20,10 @@ export default function AppHeader() {
 					<Link activeClassName="active" exact to="/">Home</Link>
 					<Link activeClassName="active" to="/pages">Pages</Link>
 					<Link activeClassName="active" to="/media">Media</Link>
-					<Link activeClassName="active" to="/themes">Themes</Link>
-					<Link activeClassName="active" to="/plugins">Plugins</Link>
-					<Link activeClassName="active" to="/users">Users</Link>
+					<Link activeClassName="active" to="/settings">Settings</Link>
+					{/* <Link activeClassName="active" to="/themes">Themes</Link>*/}
+					{/* <Link activeClassName="active" to="/plugins">Plugins</Link>*/}
+					{/* <Link activeClassName="active" to="/users">Users</Link>*/}
 				</nav>
 
 				{/* <Link className="AppHeader-options" to="/user_options"><img src="/admin/asset/icon/settings-dark.svg"/></Link>*/}

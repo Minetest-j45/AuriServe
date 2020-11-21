@@ -3,10 +3,12 @@
 .AppHeader {
 	width: 100%;
 	height: auto;
+	position: relative;
 
+	z-index: 1;
 	overflow: auto;
 	background-color: white;
-
+	box-shadow: 0px 2px 8px 0px transparentize($neutral-1000, 0.9);
 	user-select: none;
 
 	.AppHeader-Gradient {

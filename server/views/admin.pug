@@ -14,11 +14,7 @@ html(lang='en')
 			window.preact = preact;
 
 		script#plugins(type='application/json')!= JSON.stringify({ pluginScripts: scripts, pluginStyles: styles })
-
-		for val in styles
-			link(rel='preload' href=`/plugin/${val}` as='style')
-		for val in scripts
-			link(rel='preload' href=`/plugin/${val}` as='script')
+		script#themes(type='application/json')!= JSON.stringify({ themes: themes })
 
 		script(src='/admin/script/main.js' defer)
 		script(src='http://localhost:35729/livereload.js' async)

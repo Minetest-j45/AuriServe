@@ -1,0 +1,56 @@
+@import '../../partial/Ext'
+
+.SettingsPage
+	$main-width: 800px
+	$aside-width: 240px
+	$top-spacing: 32px
+	$offset-left: $aside-width * (2/3)
+
+	display: grid
+	background-image: linear-gradient(to right, transparent, transparent 50%, white 50%, white)
+	// grid-template-columns: Max(calc((100vw - #{$main-width} - #{$aside-width}) / 2 + #{$aside-width}), #{$aside-width}) Min($main-width, calc(100vw - #{$aside-width}))
+	grid-template-columns: Max(calc((100vw - #{$main-width + $aside-width + $offset-left}) / 2 + #{$aside-width}), #{$aside-width}) Min($main-width, calc(100vw - #{$aside-width}))
+
+	.Settings-Aside
+		display: block
+		margin-left: auto
+		width: $aside-width
+		padding: $top-spacing 16px 0 16px
+
+		.SettingsPage-Label
+			padding-left: 9px
+			display: inline-block
+			@extend %material_label
+
+		ul
+			padding: 0
+			margin: 0
+
+			li
+				list-style-type: none
+
+				a
+					@extend %material_button
+					display: block
+					width: 100%
+					padding: 8px
+					margin-bottom: 2px
+
+					text-align: left
+					text-decoration: none
+					background-color: transparent
+					transition: background-color $t-ufast
+
+					&.active
+						background-color: $neutral-100
+
+				hr
+					border: none
+					border-bottom: 1px solid $neutral-200
+					margin: 12px 4px
+
+	.Settings-Main
+		padding: $top-spacing 16px 0 16px
+		min-height: calc(100vh - 70px)
+			
+		background-color: white

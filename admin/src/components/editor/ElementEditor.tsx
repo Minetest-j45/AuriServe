@@ -2,15 +2,15 @@ import * as Preact from 'preact';
 
 import './ElementEditor.sass';
 
-import { AppContext } from '../../AppContext';
-
 import ElementPropInput from './ElementPropInput';
 import ElementPropArray from './ElementPropArray';
 
+import { PluginElements } from '../../LoadPlugins';
 import * as Element from '../../../../common/interface/Element';
 import { Element as PageElement } from '../../../../common/interface/Page';
 
 interface Props {
+	defs: PluginElements;
 	element: PageElement;
 
 	onCancel: () => void;
@@ -35,14 +35,17 @@ export default class ElementEditor extends Preact.Component<Props, State> {
 	}
 
 	render() {
-		const EditElement = this.context.plugins.elements.get(this.props.element.elem)?.editing?.propertyEditor;
-		const defs = this.context.data.elementDefs[this.props.element.elem];
+		const definition = this.props.defs[this.props.element.elem];
+		if (!definition) return null;
+
+		const propDefs = definition.config.props;
+		const EditElement = definition?.editing?.propertyEditor;
 
 		return (
 			<div class={'ElementEditor ' + (EditElement ? 'Custom' : 'Automatic')}>
 				{(EditElement && typeof EditElement != 'boolean' ?
 					<EditElement props={this.state.props} setProps={this.handleSetProps} /> :
-					this.renderPropsTable(defs.props, this.state.props, '')
+					this.renderPropsTable(propDefs, this.state.props, '')
 				)}
 
 				<div className='ElementEditor-ActionBar'>
@@ -116,5 +119,3 @@ export default class ElementEditor extends Preact.Component<Props, State> {
 		this.props.onSave(this.state.props);
 	};
 }
-
-ElementEditor.contextType = AppContext;

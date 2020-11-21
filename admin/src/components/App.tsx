@@ -1,14 +1,14 @@
 import Cookie from 'js-cookie';
 import * as Preact from 'preact';
 import { useState, useEffect, useCallback } from 'preact/hooks';
-
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
 import './App.sass';
 
 import AppHeader from './AppHeader';
-import * as Pages from './pages/Pages';
-import PageEditorInner from './editor/PageEditorInner';
+import * as Pages from './route/Pages';
+import PageEditorControl from './route/editor/PageEditorControlPage';
+import PageEditorRenderer from './route/editor/PageEditorRendererPage';
 
 import { AppContext, refreshSiteData } from '../AppContext';
 import { SiteData } from '../../../common/interface/SiteData';
@@ -33,7 +33,6 @@ export default function App() {
 
 	useEffect(() => {
 		if (appState !== AppState.QUERYING) return;
-
 		refreshSiteData(mergeData, [ 'info', 'users', 'roles' ]).then(() =>
 			refreshSiteData(mergeData, [ 'pages', 'media', 'themes', 'plugins', 'elements' ]));
 	}, []);
@@ -44,8 +43,8 @@ export default function App() {
 				<div class='App'><div class='AppWrap'><Pages.Login/></div></div> :
 				<Router basename='/admin'>
 					<Switch>
-						<Route exact path='/page' component={PageEditorInner as any} />
-						<Route strict path='/pages/' component={Pages.Page as any} />
+						<Route exact path='/renderer' component={PageEditorRenderer as any} />
+						<Route strict path='/pages/' component={PageEditorControl as any} />
 
 						<Route>
 							<div class='App'>
@@ -55,9 +54,7 @@ export default function App() {
 										<Route exact path='/' component={Pages.Main as any}/>
 										<Route exact path='/pages' component={Pages.Pages as any}/>
 										<Route exact path='/media' component={Pages.Media as any}/>
-										<Route exact path='/themes' component={Pages.Themes as any}/>
-										<Route exact path='/plugins' component={Pages.Plugins as any}/>
-										<Route exact path='/users' component={Pages.Users as any} />
+										<Route path='/settings' component={Pages.Settings as any}/>
 
 										<Route path='/users/' component={Pages.User as any}/>
 
