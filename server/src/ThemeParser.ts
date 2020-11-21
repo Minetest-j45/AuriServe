@@ -25,11 +25,8 @@ export default class ThemeParser {
 		// Synchronize active themes representation with server.
 		this.enabledThemes = await this.db.getEnabledThemes();
 
-		// Reload themes list and parse themes.
+		// Reload list and parse themes.
 		await this.refresh();
-
-		// Force clearing of invalid themes.
-		await this.toggle([]);
 	}
 
 	getEnabledThemes(): string[] {
@@ -68,16 +65,11 @@ export default class ThemeParser {
 		this.watch();
 	}
 
-	async toggle(themes: string[]) {
-		// Prune invalid active themes.
-		const existing = (await this.db.getThemes()).map(t => t.identifier);
-		this.enabledThemes = this.enabledThemes.filter(t => existing.indexOf(t) !== -1);
+	async setEnabled(themes: string[]) {
+		const realThemes = ((await this.getSiteData('themes')).themes || []).map(t => t.identifier);
+		if (themes.filter(t => !realThemes.includes(t)).length > 0) throw 'Invalid themes specified.';
 
-		// Toggle themes.
-		for (let theme of themes) {
-			if (this.enabledThemes.indexOf(theme) !== -1) this.enabledThemes.splice(this.enabledThemes.indexOf(theme), 1);
-			else if (existing.indexOf(theme) !== -1) this.enabledThemes.push(theme);
-		}
+		this.enabledThemes = themes;
 
 		await this.db.setEnabledThemes(this.enabledThemes);
 		await this.parse();

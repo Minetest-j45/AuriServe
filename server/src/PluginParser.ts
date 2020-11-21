@@ -159,23 +159,17 @@ export default class PluginParser {
 
 
 	/**
-	 * Toggles the state of a list of plugins, and then detaches and attaches all enabled plugins.
+	 * Sets the list of enabled plugins, and refreshes plugins.
 	 *
 	 * @param {string[]} identifiers - Plugins to toggle the state of.
 	 */
 
-	async toggle(plugins: string[]) {
+	async setEnabled(identifiers: string[]) {
+		//TODO: Sanitize this
+		
 		await this.detach();
-
-		// Toggle Plugins
-		for (let plugin of plugins) {
-			if (this.enabledPlugins.indexOf(plugin) !== -1)
-				this.enabledPlugins.splice(this.enabledPlugins.indexOf(plugin), 1);
-			else this.enabledPlugins.push(plugin);
-		}
-
+		this.enabledPlugins = identifiers;
 		await this.db.setEnabledPlugins(this.enabledPlugins);
-
 		await this.attach();
 	}
 

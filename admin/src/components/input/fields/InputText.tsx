@@ -1,5 +1,5 @@
 import * as Preact from 'preact';
-import { useState, useRef, useLayoutEffect, useEffect } from 'preact/hooks';
+import { useRef, useLayoutEffect } from 'preact/hooks';
 
 import './InputText.sass';
 
@@ -17,27 +17,12 @@ import { WidgetProps as Props } from '../Input';
 
 function useAutoTextArea(maxHeight?: number, dependents?: any[]): Preact.RefObject<HTMLTextAreaElement> {
 	const ref = useRef<HTMLTextAreaElement>(null);
-	const [ value, setValue ] = useState<string>('');
-
-	useEffect(() => {
-		if (!ref.current) return;
-
-		const updateValue = (evt: any) => setValue(evt.target.value);
-
-		ref.current.addEventListener('input', updateValue);
-		ref.current.addEventListener('change', updateValue);
-
-		return () => {
-			ref.current.removeEventListener('input', updateValue);
-			ref.current.removeEventListener('change', updateValue);
-		};
-	}, [ ref.current ]);
 
 	useLayoutEffect(() => {
 		if (!ref.current) return;
 		ref.current.style.height = '';
 		ref.current.style.height = Math.min(ref.current.scrollHeight + 2, maxHeight ?? Infinity) + 'px';
-	}, [ ref.current, value, ...dependents || [] ]);
+	}, [ ref.current, ...dependents || [] ]);
 
 	return ref;
 }

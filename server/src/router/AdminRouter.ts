@@ -21,8 +21,8 @@ export default class AdminRouter extends Router {
 
 	init() {
 		/*
-		* Authentication Routes
-		*/
+		 * Authentication Routes
+		 */
 
 		this.router.post('/auth',
 			this.safeRoute(async (req: Express.Request, res: Express.Response) => {
@@ -37,8 +37,8 @@ export default class AdminRouter extends Router {
 		);
 
 		/*
-		* Data Routes
-		*/
+		 * Data Routes
+		 */
 
 		this.router.get('/data/:specifier?',
 			this.authRoute(async (req: Express.Request, res: Express.Response) => {
@@ -47,8 +47,23 @@ export default class AdminRouter extends Router {
 		);
 
 		/*
-		* Media Routes
-		*/
+		 * Info Routes
+		 */
+
+		this.router.post('/info/update',
+			this.authRoute(async (req: Express.Request, res: Express.Response) => {
+				if (typeof req.body !== 'object' || typeof req.body.sitename !== 'string' ||
+					typeof req.body.domain !== 'string' || typeof req.body.description !== 'string')
+					throw 'Request is missing required data.';
+				
+				await this.db.setInfo(req.body);
+				res.send(JSON.stringify(await this.getSiteData('info')));
+			})
+		);
+
+		/*
+		 * Media Routes
+		 */
 
 		this.router.post('/media/upload',
 			this.authRoute(async (req: Express.Request, res: Express.Response) => {
@@ -96,8 +111,8 @@ export default class AdminRouter extends Router {
 		);
 
 		/*
-		* Theme Routes
-		*/
+		 * Theme Routes
+		 */
 
 		this.router.get('/themes/cover/:identifier.jpg',
 			this.authRoute(async (req: Express.Request, res: Express.Response) => {
@@ -112,17 +127,18 @@ export default class AdminRouter extends Router {
 			})
 		);
 
-		this.router.post('/themes/toggle',
+		this.router.post('/themes/update',
 			this.authRoute(async (req: Express.Request, res: Express.Response) => {
-				// TODO: Santiize the fuck outa this too
-				await this.themes.toggle(req.body);
+				if (!Array.isArray(req.body)) throw 'Request is missing required data.';
+				
+				await this.themes.setEnabled(req.body);
 				res.send(JSON.stringify(await this.getSiteData('info')));
 			})
 		);
 
 		/*
-		* Plugin Routes
-		*/
+		 * Plugin Routes
+		 */
 
 		this.router.get('/plugins/cover/:identifier.jpg',
 			this.authRoute(async (req: Express.Request, res: Express.Response) => {
@@ -137,16 +153,18 @@ export default class AdminRouter extends Router {
 			})
 		);
 
-		this.router.post('/plugins/toggle',
+		this.router.post('/plugins/update',
 			this.authRoute(async (req: Express.Request, res: Express.Response) => {
-				await this.plugins.toggle(req.body);
+				if (!Array.isArray(req.body)) throw 'Request is missing required data.';
+				
+				await this.plugins.setEnabled(req.body);
 				res.send(JSON.stringify(await this.getSiteData('info')));
 			})
 		);
 
 		/*
-		* Page Routes
-		*/
+		 * Page Routes
+		 */
 
 		this.router.post('/pages/data',
 			this.authRoute(async (req: Express.Request, res: Express.Response) => {
@@ -169,8 +187,8 @@ export default class AdminRouter extends Router {
 		);
 
 		/*
-		* Role Routes
-		*/
+		 * Role Routes
+		 */
 
 		this.router.post('/roles/update',
 			this.authRoute(async (req: Express.Request, res: Express.Response) => {
@@ -183,8 +201,8 @@ export default class AdminRouter extends Router {
 		);
 
 		/*
-		* User Routes
-		*/
+		 * User Routes
+		 */
 
 		this.router.post('/users/role/add',
 			this.authRoute(async (req: Express.Request, res: Express.Response) => {
@@ -205,8 +223,8 @@ export default class AdminRouter extends Router {
 		);
 
 		/*
-		* Basic App Content
-		*/
+		 * Basic App Content
+		 */
 
 		this.router.use('/script', Express.static(path.join(path.dirname(__dirname), '../../admin/build')));
 		this.router.use('/asset', Express.static(path.join(path.dirname(__dirname), '../../admin/res')));

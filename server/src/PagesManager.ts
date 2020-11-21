@@ -10,13 +10,15 @@ import ThemeParser from './ThemeParser';
 import PluginParser from './PluginParser';
 
 import * as Page from '../../common/interface/Page';
+import { SiteData } from '../../common/interface/SiteData';
 
 const logger = log4js.getLogger();
 
 export default class PagesManager {
 	private static invalidStyle = { backgroundColor: '#f00', color: '#fff', fontWeight: 800 };
 
-	constructor(private themes: ThemeParser, private plugins: PluginParser, private elements: Elements, private pagesRoot: string) {}
+	constructor(private themes: ThemeParser, private plugins: PluginParser,
+		private getSiteData: (s?: string) => Promise<Partial<SiteData>>, private elements: Elements, private pagesRoot: string) {}
 
 
 	/**
@@ -146,6 +148,7 @@ export default class PagesManager {
 		}
 
 		try {
+			const { sitename: siteTitle, description: siteDescription } = await this.getSiteData('info');
 			const json = JSON.parse((await fs.readFile(page + '.json')).toString()) as Page.Page;
 
 			const header = await this.renderTree(page, json.elements.header);
@@ -155,7 +158,9 @@ export default class PagesManager {
 			const opt = {
 				basedir: pugRoot,
 				server: {
-					title: json.title,
+					title: `${json.title}&nbsp; • &nbsp;${siteTitle}`,
+					description: json.description || siteDescription,
+
 					themes: this.themes.getEnabledThemes(),
 					plugins: {
 						styles: this.plugins.getEnabledPlugins().filter(p => p.conf.sources.style)

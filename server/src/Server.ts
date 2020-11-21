@@ -53,7 +53,7 @@ export default class Server {
 		this.elements = new Elements();
 		this.themes = new ThemeParser(this.dataPath, this.db as any as DBView, this.getSiteData);
 		this.plugins = new PluginParser(this.dataPath, this.db as any as DBView, this.elements);
-		this.pages = new PagesManager(this.themes, this.plugins, this.elements, path.join(this.dataPath, 'pages'));
+		this.pages = new PagesManager(this.themes, this.plugins, this.getSiteData, this.elements, path.join(this.dataPath, 'pages'));
 
 		this.adminRouter = new AdminRouter(this.dataPath, this.db as any as DBView,
 			this.app, this.themes, this.plugins, this.pages, this.getSiteData);

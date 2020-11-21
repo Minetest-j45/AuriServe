@@ -1,5 +1,4 @@
 import * as Preact from 'preact';
-import { Helmet } from 'react-helmet';
 import { useMessaging } from '../../Hooks';
 import { useState, useEffect } from 'preact/hooks';
 
@@ -91,14 +90,9 @@ export default function PageEditorRenderer(props: Props) {
 
 	return (
 		<Preact.Fragment>
-			<Helmet>
-				{/* {this.context.data.themes?.map((t: any) => <link rel='stylesheet' href={`/theme/${t.identifier}.css`} />)}*/}
-			</Helmet>
-
 			<header>{page?.elements?.header && renderTree(page.elements.header, 'header')}</header>
 			<main>{page?.elements?.main && renderTree(page.elements.main, 'main')}</main>
 			<footer>{page?.elements?.footer && renderTree(page.elements.footer, 'footer')}</footer>
-
 			{/* {this.state.hovered?.elem && this.renderFocusRing()}*/}
 		</Preact.Fragment>
 	);

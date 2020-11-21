@@ -4,6 +4,7 @@ import { useSiteData } from '../../Hooks';
 
 import './UserPage.sass';
 
+import Title from '../Title';
 import UserRolesList from '../UserRolesList';
 
 export default function UserPage() {
@@ -13,6 +14,7 @@ export default function UserPage() {
 
 	return (
 		<div class='Page UserPage'>
+			<Title>{identifier}</Title>
 			<section class='Page-Card UserPage-Card'>
 				<div class='UserPage-Header'>
 					{user && <Preact.Fragment>

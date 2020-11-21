@@ -37,6 +37,7 @@ export default class Database {
 				await this.db.collection('siteinfo').insertOne({
 					domain: 'example.com',
 					sitename: 'Example',
+					description: '',
 
 					mediaMax: 1024 * 1024 * 1024,
 					mediaUsed: 0,
@@ -67,6 +68,17 @@ export default class Database {
 			logger.fatal('Failed to connect to MongoDB instance %s with database %s.\n %s', url, db, e);
 			process.exit(1);
 		}
+	}
+
+
+	/**
+	 * Sets the site information (name, domain, description)
+	 * to the data object provided.
+	 */
+
+	async setInfo(newInfo: Partial<DB.SiteInfo>) {
+		let info = this.db!.collection('siteinfo');
+		await info.updateOne({}, { $set: newInfo });
 	}
 
 

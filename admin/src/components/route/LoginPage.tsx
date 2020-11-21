@@ -5,6 +5,8 @@ import { useSiteData } from '../../Hooks';
 
 import './LoginPage.scss';
 
+import Title from '../Title';
+
 enum LoginState { UNAUTH, PENDING, AUTH, REDIRECT }
 
 export default function LoginPage() {
@@ -65,6 +67,7 @@ export default function LoginPage() {
 
 	return (
 		<div class='LoginPage'>
+			<Title>Login</Title>
 			<div class='LoginPage-Gradient' />
 			<div class='LoginPage-Wrap'>
 				<form class={'LoginPage-Card' + (loading ? ' loading' : '') + (loaded ? ' loaded' : '')} onSubmit={handleSubmit}>

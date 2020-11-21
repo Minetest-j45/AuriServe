@@ -4,6 +4,7 @@ import { NavLink as Link, Switch, Route, Redirect } from 'react-router-dom';
 
 import './SettingsPage.sass';
 
+import Title from '../Title';
 import * as Settings from './settings/Settings';
 
 export default function SettingsPage() {
@@ -14,6 +15,7 @@ export default function SettingsPage() {
 
 	return (
 		<div class='Page SettingsPage'>
+			<Title>Settings</Title>
 			<div class='Settings-Aside'>
 				<ul class='Settings-Nav'>
 					<li><span class='SettingsPage-Label'>Settings</span></li>

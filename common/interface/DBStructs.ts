@@ -70,6 +70,7 @@ export interface SiteInfo {
 
 	domain: string;
 	sitename: string;
+	description: string;
 
 	mediaMax: number;
 	mediaUsed: number;

@@ -3,6 +3,7 @@ import { useSiteData } from '../../Hooks';
 
 import './PagesPage.sass';
 
+import Title from '../Title';
 import CardHeader from '../CardHeader';
 
 export default function PagesPage() {
@@ -10,6 +11,7 @@ export default function PagesPage() {
 
 	return (
 		<div class="Page PagesPage">
+			<Title>Pages</Title>
 			<section class="Page-Card">
 				<CardHeader icon="/admin/asset/icon/document-dark.svg" title="Manage Pages"
 					subtitle={'Manage site pages and elements.'} />

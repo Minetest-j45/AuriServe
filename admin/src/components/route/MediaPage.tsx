@@ -5,6 +5,7 @@ import { useSiteData } from '../../Hooks';
 import './MediaPage.scss';
 
 import Modal from '../Modal';
+import Title from '../Title';
 import CardHeader from '../CardHeader';
 import SelectGroup from '../SelectGroup';
 import MediaItem from '../media/MediaItem';
@@ -52,6 +53,7 @@ export default function MediaPage() {
 
 	return (
 		<div class='Page MediaPage'>
+			<Title>Media</Title>
 			<section class='Page-Card'>
 				<CardHeader icon='/admin/asset/icon/image-dark.svg' title='Manage Media'
 					subtitle={'Create or remove user-uploaded media.'} />

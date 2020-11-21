@@ -3,6 +3,7 @@ html(lang="en")
 	head
 		include head
 		title!= server.title
+		meta(name='description', content=server.description)
 
 	body
 		header!= server.includes.header
