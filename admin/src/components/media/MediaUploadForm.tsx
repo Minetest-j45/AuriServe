@@ -1,12 +1,12 @@
 import * as Preact from 'preact';
+import { useState, useEffect } from 'preact/hooks';
+import { useSiteData } from '../../Hooks';
 
 import './MediaUploadForm.scss';
 
 import SelectGroup from '../SelectGroup';
 import MediaUploadItem from './MediaUploadItem';
 import DimensionTransition from '../DimensionTransition';
-
-import { AppContext } from '../../AppContext';
 
 import * as Format from '../../../../common/util/Format';
 
@@ -30,163 +30,34 @@ interface Props {
 	onCancel: () => void;
 }
 
-interface State {
-	state: MediaUploadState;
+export default function MediaUploadForm(props: Props) {
+	const [ ,, mergeData ] = useSiteData();
+	
+	const [ grid, setGrid ] = useState<boolean>(true);
 
-	files: UploadItemData[];
-	selected: number[];
+	const [ selected, setSelected ] = useState<number[]>([]);
+	const [ files, setFiles ] = useState<UploadItemData[]>([]);
+	const [ state, setState ] = useState<MediaUploadState>(MediaUploadState.SELECTING);
 
-	grid: boolean;
-}
-
-export default class MediaUploadForm extends Preact.Component<Props, State> {
-	constructor(props: any) {
-		super(props);
-
-		this.state = {
-			state: MediaUploadState.SELECTING,
-			files: [],
-			selected: [],
-			grid: false
-		};
-	}
-
-	componentDidMount() {
-		window.addEventListener('keyup', this.handleKeyUp);
-	}
-
-	componentWillUnmount() {
-		window.removeEventListener('keyup', this.handleKeyUp);
-	}
-
-	render() {
-		const uploadItems: Preact.VNode[] = this.state.files.map((f, i) => <MediaUploadItem
-			file={f} ind={i} key={f.file.name} editable={this.state.state === MediaUploadState.SELECTING}
-			onNameChange={this.handleNameChange.bind(this, i)} onFilenameChange={this.handleFilenameChange.bind(this, i)}/>);
-
-		return (
-			<form className="MediaUploadForm" onSubmit={(e) => e.preventDefault()}>
-				<div className={'MediaUploadForm-InputWrap' + (this.state.state !== MediaUploadState.SELECTING ? ' disabled' : '')}>
-					<input type="file" multiple autoFocus
-						className="MediaUploadForm-Input"
-						onChange={this.handleFilesChange}
-						disabled={this.state.state !== MediaUploadState.SELECTING} />
-					<h2>Click or drag files here to upload.</h2>
-				</div>
-
-				{this.state.files.length > 0 && <div className="MediaUploadForm-Toolbar">
-					<div>
-						{this.state.selected.length > 0 && <button className="MediaUploadForm-Toolbar-Button" onClick={this.handleRemoveFiles}>
-							<img src="/admin/asset/icon/trash-dark.svg"/>
-							<span>{this.state.selected.length === 1 ? 'Remove' : 'Remove (' + this.state.selected.length + ')'}</span>
-						</button>}
-					</div>
-					<div>
-						<button className="MediaUploadForm-Toolbar-Button">
-							<img src="/admin/asset/icon/sort-dark.svg"/><span>Sort by Size</span>
-						</button>
-
-						<button className="MediaUploadForm-Toolbar-Button" onClick={this.handleViewToggle}>
-							<img src={`/admin/asset/icon/${this.state.grid ? 'grid' : 'list'}-view-dark.svg`}/>
-						</button>
-					</div>
-				</div>}
-
-				<DimensionTransition duration={150}>
-					{this.state.state === MediaUploadState.SELECTING && <SelectGroup
-						className={'MediaUploadForm-Files ' + (this.state.grid ? 'Grid' : 'Stack')}
-						onSelectionChange={this.handleSelectionChange} multi={true}>
-						{uploadItems}
-					</SelectGroup>}
-
-					{this.state.state === MediaUploadState.UPLOADING &&
-					<div className={'MediaUploadForm-Files ' + (this.state.grid ? 'Grid' : 'Stack')}>
-						{uploadItems}
-					</div>}
-				</DimensionTransition>
-
-				<div className="MediaUploadForm-ActionBar">
-					<div>
-						<button
-							onClick={this.handleClose}
-							className="MediaUploadForm-ActionBar-Button"
-							disabled={this.state.state === MediaUploadState.UPLOADING}>
-							Cancel
-						</button>
-					</div>
-					<div>
-						{this.state.files.length > 0 && <button
-							onClick={this.handleUpload}
-							className="MediaUploadForm-ActionBar-Button Upload"
-							disabled={this.state.state === MediaUploadState.UPLOADING}>
-							{`Upload File${this.state.files.length > 1 ? 's' : ''}`}
-						</button>}
-					</div>
-				</div>
-			</form>
-		);
-	}
-
-	private handleKeyUp = (e: KeyboardEvent) => {
-		if (e.key === 'Delete') this.handleRemoveFiles();
-	};
-
-	private handleViewToggle = () => {
-		this.setState({ grid: !this.state.grid });
-	};
-
-	private handleRemoveFiles = () => {
-		let files = [...this.state.files];
-		for (let i = this.state.selected.length - 1; i >= 0; i--) {
-			let ind = this.state.selected[i];
-			files.splice(ind, 1);
-		}
-		this.setState({files: files});
-	};
-
-	private handleNameChange = (ind: number, name: string) => {
-		let files = [...this.state.files];
-		let file = Object.assign(files[ind]);
-		file.name = name;
-		files[ind] = file;
-		this.setState({files: files});
-	};
-
-	private handleFilenameChange = (ind: number, name: string) => {
-		const cleanName = name.toLowerCase().replace(/[ -]/g, '_').replace(/[^a-zA-Z0-9_]/g, '');
-
-		let files = [...this.state.files];
-		let file = Object.assign(files[ind]);
-		file.identifier = cleanName;
-		files[ind] = file;
-		this.setState({files: files});
-	};
-
-	private handleClose = (e: any) => {
+	const handleClose = (e: any) => {
 		e.preventDefault();
-		this.props.onCancel();
+		props.onCancel();
 	};
 
-	private handleUpload = () => {
-		this.setState({state: MediaUploadState.UPLOADING, selected: []});
-		this.handleSubmit();
-	};
+	const handleUpload = () => {
+		setState(MediaUploadState.UPLOADING);
+		setSelected([]);
 
-	private handleSelectionChange = (selected: number[]) => {
-		this.setState({ selected: selected });
-	};
-
-	private handleSubmit = () => {
-		const threads = 6;
+		const THREADS = 6;
 
 		let promises = [];
-		for (let i = 0; i < threads; i++) {
+		for (let i = 0; i < THREADS; i++) {
 			let ind = i;
 
 			promises.push(new Promise((resolve) => {
 				const f = () => {
-					if (ind >= this.state.files.length) return resolve();
-					const file = this.state.files[ind];
+					if (ind >= files.length) return resolve();
+					const file = files[ind];
 
 					let data = new FormData();
 					data.append('file', file.file);
@@ -199,55 +70,50 @@ export default class MediaUploadForm extends Preact.Component<Props, State> {
 			    	// headers: {'Content-Type': 'application/json'},
 						body: data
 					}).then(() => {
-						ind += threads;
+						ind += THREADS;
 						f();
 					});
 				};
 				f();
 			}));
-		}
+		};
 
 		Promise.all(promises).then(() => {
 			fetch('/admin/data/media', {
 				cache: 'no-cache'
 			}).then(r => r.json()).then(res => {
-				this.context.handleSiteData(res);
-				this.props.onCancel();
+				mergeData(res);
+				props.onCancel();
 			});
 		});
 	};
 
-	private handleFilesChange = async (e: any) => {
-		const target = e.target as HTMLInputElement;
-		let files = [...this.state.files];
-		let newFiles = Array.from(target.files || []);
-		target.value = '';
+	const handleRemoveFiles = () => {
+		let newFiles = [ ...files ];
+		selected.reverse().forEach((ind) => newFiles.splice(ind, 1));
+		setFiles(newFiles);
+	};
 
-		await Promise.all(newFiles.map(file => new Promise((resolve) => {
+	const handleAddFiles = async (e: any) => {
+		let newFiles = [ ...files ];
+		let addedFiles = [ ...(e.target.files || [])];
+		e.target.value = '';
+
+		await Promise.all(addedFiles.map(file => new Promise((resolve) => {
 			const ext = file.name.substr(file.name.lastIndexOf('.') + 1);
 			const isImage = ext === 'png' || ext === 'jpeg' || ext === 'jpg' || ext === 'svg' || ext === 'gif';
 
 			const cleanName = Format.cleanName(file.name, 32);
+			
 			const resolveFile = (image?: string) => {
-
-				let exists = false;
-				for (let existingFile of files) {
-					if (existingFile.name === cleanName) {
-						exists = true;
-						break;
-					}
-				}
-
-				if (!exists) {
-					files.push({
-						file: file,
-						ext: ext,
+				if (!newFiles.map(f => f.name).includes(cleanName)) {
+					newFiles.push({
+						file, ext,
 						name: cleanName,
 						identifier: '',
 						thumbnail: image
 					});
 				}
-
 				resolve();
 			};
 
@@ -256,11 +122,102 @@ export default class MediaUploadForm extends Preact.Component<Props, State> {
 				reader.readAsDataURL(file);
 				reader.onload = () => resolveFile(reader.result as string);
 			}
-			else resolveFile();
+			else {
+				resolveFile();
+			}
 		})));
 
-		this.setState({files: files});
+		setFiles(newFiles);
 	};
-};
 
-MediaUploadForm.contextType = AppContext;
+	const handleNameChange = (ind: number, name: string) => {
+		let newFiles = [ ...files ];
+		newFiles[ind] = { ...newFiles[ind], name };
+		setFiles(newFiles);
+	};
+
+	const handleFilenameChange = (ind: number, name: string) => {
+		const cleanName = name.toLowerCase().replace(/[ -]/g, '_').replace(/[^a-zA-Z0-9_]/g, '');
+		let newFiles = [ ...files ];
+		newFiles[ind] = { ...newFiles[ind], identifier: cleanName };
+		setFiles(newFiles);
+	};
+
+	useEffect(() => {
+		const handleKeyUp = (e: KeyboardEvent) => {
+			if (e.key === 'Delete') handleRemoveFiles();
+		};
+
+		window.addEventListener('keyup', handleKeyUp);
+		return () => window.removeEventListener('keyup', handleKeyUp);
+	}, [ handleRemoveFiles ]);
+
+	const uploadItems: Preact.VNode[] = files.map((f, i) => <MediaUploadItem
+		file={f} ind={i} key={f.file.name} editable={state === MediaUploadState.SELECTING}
+		onNameChange={(name) => handleNameChange(i, name)} onFilenameChange={(filename) => handleFilenameChange(i, filename)}/>);
+
+	return (
+		<form class="MediaUploadForm" onSubmit={(e) => e.preventDefault()}>
+			<div class={'MediaUploadForm-InputWrap' + (state !== MediaUploadState.SELECTING ? ' disabled' : '')}>
+				<input type="file" multiple autoFocus
+					class="MediaUploadForm-Input"
+					onChange={handleAddFiles}
+					disabled={state !== MediaUploadState.SELECTING} />
+				<h2>Click or drag files here to upload.</h2>
+			</div>
+
+			{files.length > 0 && <div class="MediaUploadForm-Toolbar">
+				<div>
+					{selected.length > 0 && <button class="MediaUploadForm-Toolbar-Button" onClick={handleRemoveFiles}>
+						<img src="/admin/asset/icon/trash-dark.svg"/>
+						<span>{selected.length === 1 ? 'Remove' : 'Remove (' + selected.length + ')'}</span>
+					</button>}
+				</div>
+				<div>
+					{/* <button class="MediaUploadForm-Toolbar-Button">
+						<img src="/admin/asset/icon/sort-dark.svg"/><span>Sort by Size</span>
+					</button>*/}
+
+					<button class="MediaUploadForm-Toolbar-Button" onClick={() => setGrid(!grid)}>
+						<img src={`/admin/asset/icon/${grid ? 'grid' : 'list'}-view-dark.svg`}/>
+					</button>
+				</div>
+			</div>}
+
+			<DimensionTransition duration={150}>
+				{state === MediaUploadState.SELECTING &&
+					<SelectGroup
+						className={'MediaUploadForm-Files ' + (grid ? 'Grid' : 'Stack')}
+						onSelectionChange={setSelected} multi={true}>
+						{uploadItems}
+					</SelectGroup>
+				}
+
+				{state === MediaUploadState.UPLOADING &&
+					<div class={'MediaUploadForm-Files ' + (grid ? 'Grid' : 'Stack')}>
+						{uploadItems}
+					</div>
+				}
+			</DimensionTransition>
+
+			<div class="MediaUploadForm-ActionBar">
+				<div>
+					<button
+						onClick={handleClose}
+						class="MediaUploadForm-ActionBar-Button"
+						disabled={state === MediaUploadState.UPLOADING}>
+						Cancel
+					</button>
+				</div>
+				<div>
+					{files.length > 0 && <button
+						onClick={handleUpload}
+						class="MediaUploadForm-ActionBar-Button Upload"
+						disabled={state === MediaUploadState.UPLOADING}>
+						{`Upload File${files.length > 1 ? 's' : ''}`}
+					</button>}
+				</div>
+			</div>
+		</form>
+	);
+}
