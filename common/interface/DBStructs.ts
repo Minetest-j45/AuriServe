@@ -1,4 +1,5 @@
 import { ObjectID } from 'mongodb';
+import * as Color from '../util/Color';
 
 export interface User {
 	_id?: ObjectID;
@@ -20,7 +21,7 @@ export interface AuthToken {
 
 export interface Role {
 	identifier: string;
-	color?: string;
+	color?: Color.HSV;
 	abilities: (keyof typeof RoleAbility)[];
 }
 
@@ -60,10 +61,6 @@ export enum RoleAbility {
 	/* Audit Log */
 	VIEW_AUDIT_LOG
 };
-
-// export type RoleAbilitiesTable = {
-// 	[key in keyof typeof RoleAbility]?: true;
-// }
 
 export interface SiteInfo {
 	_id?: ObjectID;
