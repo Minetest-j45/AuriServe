@@ -22,6 +22,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install
+    - run: cd admin; npm install; cd ../;
     - run: npm run build
     - run: zip --junk-paths build build/*
     - name: Get short SHA
