@@ -10,3 +10,4 @@ Finally, an Open-Source, Modern, Node based CMS.
 ## About
 
 More information will come once the structure of this project is more finalized. For more information and to follow development, join Auri's Den on Discord by using the badge above.
+
