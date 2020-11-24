@@ -5,6 +5,7 @@ import { promises as fs } from 'fs';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import fileUpload from 'express-fileupload';
+import { SiteData, SiteDataSpecifier, resolvePath } from 'auriserve-api';
 
 import log4js from 'log4js';
 import Express from 'express';
@@ -22,8 +23,6 @@ import PagesRouter from './router/PagesRouter';
 import SuperUserPrompt from './SuperUserPrompt';
 
 import { Config } from './interface/Config';
-import resolvePath from '../../common/util/ResolvePath';
-import { SiteDataSpecifier, SiteData } from '../../common/interface/SiteData';
 
 const logger = log4js.getLogger();
 

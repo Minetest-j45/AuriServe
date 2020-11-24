@@ -7,8 +7,7 @@ import DBView from './DBView';
 import Elements from './Elements';
 import PluginBindings from './PluginBindings';
 
-import sanitize from '../../common/util/Sanitize';
-import { Plugin as DBPlugin } from '../../common/interface/DBStructs';
+import { sanitizeIdentifier, Database as DB } from 'auriserve-api';
 
 const logger = log4js.getLogger();
 
@@ -80,7 +79,7 @@ export default class PluginParser {
 		await this.detach();
 		this.plugins = [];
 
-		let pluginData: DBPlugin[] = [];
+		let pluginData: DB.Plugin[] = [];
 
 		const dirs = await fs.readdir(path.join(this.dataPath, 'plugins'));
 		await Promise.all(dirs.map(async identifier => {
@@ -89,7 +88,8 @@ export default class PluginParser {
 
 				// Validate basic plugin file structure.
 
-				if (sanitize(identifier) !== identifier) throw 'Plugin identifier must be lowercase alphanumeric.';
+				if (sanitizeIdentifier(identifier) !== identifier)
+					throw 'Plugin identifier must be lowercase alphanumeric.';
 				const p = path.join(this.dataPath, 'plugins', identifier);
 
 				const stat = await fs.stat(p);

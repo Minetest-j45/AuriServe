@@ -9,8 +9,7 @@ import Elements from './Elements';
 import ThemeParser from './ThemeParser';
 import PluginParser from './PluginParser';
 
-import * as Page from '../../common/interface/Page';
-import { SiteData } from '../../common/interface/SiteData';
+import { Page, SiteData } from 'auriserve-api';
 
 const logger = log4js.getLogger();
 

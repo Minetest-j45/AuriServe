@@ -5,13 +5,11 @@ import rimraf from 'rimraf';
 import { promises as fs, constants as fsc } from 'fs';
 
 import DBView from './DBView';
-import sanitize from '../../common/util/Sanitize';
-import { SiteData } from '../../common/interface/SiteData';
-import { Theme as DBTheme } from '../../common/interface/DBStructs';
+import { sanitizeIdentifier, SiteData, Database as DB } from 'auriserve-api';
 
 const logger = log4js.getLogger();
 
-export type Theme = DBTheme;
+export type Theme = DB.Theme;
 
 export default class ThemeParser {
 	private watchers: any = [];
@@ -84,7 +82,7 @@ export default class ThemeParser {
 		await Promise.all(files.map(async f => {
 			if (f === 'public') return;
 			try {
-				if (sanitize(f) !== f) throw `Failed to parse theme ${f}, theme directory must be lowercase alphanumeric.`;
+				if (sanitizeIdentifier(f) !== f) throw `Failed to parse theme ${f}, theme directory must be lowercase alphanumeric.`;
 
 				const confStr = (await fs.readFile(path.join(this.dataPath, 'themes', f, 'conf.json'))).toString();
 

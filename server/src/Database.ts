@@ -6,8 +6,7 @@ import { MongoClient, Db } from 'mongodb';
 import { UploadedFile } from 'express-fileupload';
 import { promises as fs, constants as fsc } from 'fs';
 
-import * as DB from '../../common/interface/DBStructs';
-import { SiteDataSpecifier, SiteData } from '../../common/interface/SiteData';
+import { Database as DB, SiteData, SiteDataSpecifier } from 'auriserve-api';
 
 const logger = log4js.getLogger();
 

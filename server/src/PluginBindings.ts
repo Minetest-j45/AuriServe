@@ -1,4 +1,4 @@
-import { ServerDefinition } from '../../common/interface/Element';
+import { ServerDefinition } from 'auriserve-api';
 
 export default class PluginBindings {
 	elements: Map<string, ServerDefinition> = new Map();

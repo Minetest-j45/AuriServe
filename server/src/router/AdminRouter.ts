@@ -9,8 +9,7 @@ import { MediaStatus } from '../Database';
 import PagesManager from '../PagesManager';
 import PluginParser from '../PluginParser';
 
-import sanitize from '../../../common/util/Sanitize';
-import { SiteData } from '../../../common/interface/SiteData';
+import { sanitizeIdentifier, SiteData } from 'auriserve-api';
 
 export default class AdminRouter extends Router {
 	authenticated: Express.Router = Express.Router();
@@ -73,7 +72,7 @@ export default class AdminRouter extends Router {
 				if (!file) throw 'Request is missing a file.';
 
 				const name: string = req.body.name;
-				const identifier: string = sanitize(req.body.identifier || req.body.name);
+				const identifier: string = sanitizeIdentifier(req.body.identifier || req.body.name);
 
 				if (typeof(name) != 'string' || typeof(identifier) != 'string')
 					throw 'Request is missing required data.';
