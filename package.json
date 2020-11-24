@@ -8,11 +8,11 @@
 		"dev": "npm run dev-admin & npm run dev-server",
 		"dev-admin": "cd admin; npm run dev",
 		"dev-server": "nodemon --config server/nodemon.json",
-		"dev-clean": "rm -r common; rm -r admin; rm -r server; rm -rf node_modules",
+		"dev-clean": "rm -r admin; rm -r server; rm -rf node_modules",
 		"build": "npm run build-admin && npm run build-server",
 		"build-admin": "cd admin; npm run build",
 		"build-server": "npm run lint-server && tsc --project server/tsconfig.json && pkg package.json --options expose-gc --out-path build && npm run build-clean",
-		"build-clean": "find server/src -name '*.js' -type f -delete && find common -name '*.js' -type f -delete",
+		"build-clean": "find server/src -name '*.js' -type f -delete",
 		"lint-server": "cd server; eslint -c .eslintrc.js 'src/**/*.ts'"
 	},
 	"repository": {
@@ -49,6 +49,10 @@
 		"@types/pug": "^2.0.4",
 		"@types/rimraf": "^3.0.0",
 		"@types/sass": "^1.16.0",
+		"@typescript-eslint/eslint-plugin": "^4.8.2",
+		"@typescript-eslint/parser": "^4.8.2",
+		"eslint": "^7.14.0",
+		"eslint-plugin-jsdoc": "^30.7.8",
 		"nodemon": "^2.0.6",
 		"pkg": "^4.4.9",
 		"ts-node": "^9.0.0",
@@ -58,7 +62,7 @@
 	"dependencies": {
 		"@types/mime": "^2.0.3",
 		"@types/resize-img": "^1.1.0",
-		"auriserve-api": "0.0.5",
+		"auriserve-api": "0.0.7",
 		"bcryptjs": "^2.4.3",
 		"body-parser": "^1.19.0",
 		"compression": "^1.7.4",

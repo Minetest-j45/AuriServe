@@ -165,7 +165,7 @@ export default class PluginParser {
 	 */
 
 	async setEnabled(identifiers: string[]) {
-		//TODO: Sanitize this
+		// TODO: Sanitize this
 		
 		await this.detach();
 		this.enabledPlugins = identifiers;
