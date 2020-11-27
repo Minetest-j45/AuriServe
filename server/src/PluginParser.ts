@@ -17,9 +17,11 @@ import Hooks from 'preact/hooks';
 // and pkg'd AuriSere providing no instance issues.
 
 // @ts-ignore
-global.__PREACT = Preact;
+global.AURI = {};
 // @ts-ignore
-global.__PREACT_HOOKS = Hooks;
+global.AURI.Preact = Preact;
+// @ts-ignore
+global.AURI.PreactHooks = Hooks;
 
 const logger = log4js.getLogger();
 
