@@ -9,6 +9,18 @@ import PluginBindings from './PluginBindings';
 
 import { sanitizeIdentifier, Database as DB } from 'auriserve-api';
 
+import Preact from 'preact';
+import Hooks from 'preact/hooks';
+
+// Assign globals here for plugins to add to the cache,
+// fixes dynamic peerDependency resolution giving a different instance &
+// and pkg'd AuriSere providing no instance issues.
+
+// @ts-ignore
+global.__PREACT = Preact;
+// @ts-ignore
+global.__PREACT_HOOKS = Hooks;
+
 const logger = log4js.getLogger();
 
 interface PluginConfig {
@@ -32,7 +44,8 @@ class Plugin {
 	constructor(private elements: Elements, public conf: PluginConfig, private init: (p: PluginBindings) => void) {};
 
 	async attach() {
-		await this.init(this.bindings!);
+		// @ts-ignore
+		await this.init(this.bindings!, Preact, Hooks);
 		this.elements.addList(this.bindings!.elements);
 	}
 
@@ -144,6 +157,7 @@ export default class PluginParser {
 				// Create Plugin object and add it to the plugins array.
 
 				let requirePath = require.resolve(path.join(p, conf.sourceRoot, conf.sources.server));
+				// delete require.cache[requirePath];
 				decache(requirePath);
 				const plugin = new Plugin(this.elements, conf, require(requirePath));
 				this.plugins.push(plugin);
