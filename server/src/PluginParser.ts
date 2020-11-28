@@ -1,6 +1,5 @@
 import path from 'path';
 import log4js from 'log4js';
-import decache from 'decache';
 import ff, { promises as fs, constants as fsc } from 'fs';
 
 import DBView from './DBView';
@@ -23,6 +22,11 @@ global.preact_hooks = Hooks;
 
 const logger = log4js.getLogger();
 
+interface PluginSources {
+	script?: string;
+	style?: string;
+}
+
 interface PluginConfig {
 	identifier: string;
 
@@ -32,10 +36,9 @@ interface PluginConfig {
 
 	sourceRoot: string;
 	sources: {
-		server: string;
-		client?: string;
-		admin?: string;
-		style?: string;
+		server: PluginSources;
+		client?: PluginSources;
+		editor?: PluginSources;
 	};
 }
 
@@ -121,17 +124,17 @@ export default class PluginParser {
 
 				if (!conf.sources || !conf.sources.server) throw 'Plugin configuration is missing sources.server.';
 
-				try { await fs.access(path.join(p, conf.sourceRoot, conf.sources.server)); }
+				try { await fs.access(path.join(p, conf.sourceRoot, conf.sources.server.script ?? '___')); }
 				catch (e) { throw `Server source file '${conf.sourceRoot}/${conf.sources.server}' not found.`; }
 
-				if (conf.sources.client) {
-					try { await fs.access(path.join(p, conf.sourceRoot, conf.sources.client)); }
+				if (conf.sources.client?.script) {
+					try { await fs.access(path.join(p, conf.sourceRoot, conf.sources.client.script)); }
 					catch (e) { throw `Client source file '${conf.sourceRoot}/${conf.sources.client}' not found.`; }
 				}
 
-				if (conf.sources.admin) {
-					try { await fs.access(path.join(p, conf.sourceRoot, conf.sources.admin)); }
-					catch (e) { throw `Admin source file '${conf.sourceRoot}/${conf.sources.admin}' not found.`; }
+				if (conf.sources.editor?.script) {
+					try { await fs.access(path.join(p, conf.sourceRoot, conf.sources.editor.script)); }
+					catch (e) { throw `Admin source file '${conf.sourceRoot}/${conf.sources.editor}' not found.`; }
 				}
 
 				// Add extra details to config.
@@ -156,9 +159,8 @@ export default class PluginParser {
 
 				// Create Plugin object and add it to the plugins array.
 
-				let requirePath = require.resolve(path.join(p, conf.sourceRoot, conf.sources.server));
-				// delete require.cache[requirePath];
-				decache(requirePath);
+				let requirePath = require.resolve(path.join(p, conf.sourceRoot, conf.sources.server.script!));
+				delete require.cache[require.resolve(requirePath)];
 				const plugin = new Plugin(this.elements, conf, require(requirePath));
 				this.plugins.push(plugin);
 			}
@@ -267,7 +269,7 @@ export default class PluginParser {
 			if (!plugin || !plugin.bindings) return;
 
 			this.watchers.push(ff.watch(path.join(this.dataPath, 'plugins',
-				plugin.conf.identifier, plugin.conf.sourceRoot, plugin.conf.sources.server),
+				plugin.conf.identifier, plugin.conf.sourceRoot, plugin.conf.sources.server.script!),
 			{ persistent: false, recursive: false, encoding: 'utf8'}, () => this.refresh()));
 
 			watched ++;

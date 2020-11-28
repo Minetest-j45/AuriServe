@@ -63,8 +63,8 @@ export default class PagesRouter extends Router {
 			if (plugins.length !== 1) { res.sendStatus(404); return; }
 			const plugin = plugins[0];
 
-			if (!plugin.conf.sources.style) { res.sendStatus(404); return; }
-			res.sendFile(path.join(this.dataPath, 'plugins', plugin.conf.identifier, plugin.conf.sources.style));
+			if (!plugin.conf.sources.client?.style) { res.sendStatus(404); return; }
+			res.sendFile(path.join(this.dataPath, 'plugins', plugin.conf.identifier, plugin.conf.sources.client.style));
 		});
 
 		this.router.get('*', (req, res, next) => {

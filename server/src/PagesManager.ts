@@ -162,10 +162,10 @@ export default class PagesManager {
 
 					themes: this.themes.getEnabledThemes(),
 					plugins: {
-						styles: this.plugins.getEnabledPlugins().filter(p => p.conf.sources.style)
-							.map(p => p.conf.identifier + '/' + p.conf.sources.style),
-						scripts: this.plugins.getEnabledPlugins().filter(p => p.conf.sources.client)
-							.map(p => p.conf.identifier + '/' + p.conf.sources.client)
+						styles: this.plugins.getEnabledPlugins().filter(p => p.conf.sources.client?.style)
+							.map(p => p.conf.identifier + '/' + p.conf.sources.client?.style),
+						scripts: this.plugins.getEnabledPlugins().filter(p => p.conf.sources.client?.script)
+							.map(p => p.conf.identifier + '/' + p.conf.sources.client?.script)
 					},
 					includes: {
 						header: header,
