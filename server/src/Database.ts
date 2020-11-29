@@ -46,13 +46,11 @@ export default class Database {
 				} as DB.SiteInfo);
 			}
 
-			await this.db.collection('roles').deleteMany({});
-
 			if (!await this.db.collection('roles').findOne({ identifier: 'Administrator' })) {
 				await this.db.collection('roles').insertMany([{
 					identifier: 'Administrator',
 					abilities: [ 'ADMINISTRATOR' ],
-					color: '#0967D2'
+					color: { h: 0.588, s: 0.96, v: 0.82 }
 				}, {
 					identifier: 'Editor',
 					abilities: [ 'VIEW_AUDIT_LOG', 'VIEW_PAGES', 'MANAGE_PAGES', 'EDIT_PAGES', 'VIEW_MEDIA',
