@@ -1,5 +1,6 @@
 import path from 'path';
 import log4js from 'log4js';
+import { debounce } from 'debounce';
 import ff, { promises as fs, constants as fsc } from 'fs';
 
 import DBView from './DBView';
@@ -58,6 +59,7 @@ class Plugin {
 }
 
 export default class PluginParser {
+	private debounceRefresh: any;
 	private watchers: ff.FSWatcher[] = [];
 	private enabledPlugins: string[] = [];
 	private plugins: Plugin[] = [];
@@ -94,6 +96,9 @@ export default class PluginParser {
 	async refresh() {
 		await this.detach();
 		this.plugins = [];
+		
+		if (this.debounceRefresh) this.debounceRefresh.clear();
+		this.debounceRefresh = undefined;
 
 		let pluginData: DB.Plugin[] = [];
 
@@ -264,13 +269,15 @@ export default class PluginParser {
 		this.watchers.forEach(w => w.close());
 		this.watchers = [];
 
+		this.debounceRefresh = debounce(this.refresh, 200);
+
 		this.enabledPlugins.forEach(identifier => {
 			const plugin = this.plugins.filter(p => p.conf.identifier === identifier)[0];
 			if (!plugin || !plugin.bindings) return;
 
 			this.watchers.push(ff.watch(path.join(this.dataPath, 'plugins',
 				plugin.conf.identifier, plugin.conf.sourceRoot, plugin.conf.sources.server.script!),
-			{ persistent: false, recursive: false, encoding: 'utf8'}, () => this.refresh()));
+			{ persistent: false, recursive: false, encoding: 'utf8'}, () => this.debounceRefresh()));
 
 			watched ++;
 		});
