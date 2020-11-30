@@ -36,6 +36,7 @@ export default class Database {
 				await this.db.collection('siteinfo').insertOne({
 					domain: 'example.com',
 					sitename: 'Example',
+					favicon: '',
 					description: '',
 
 					mediaMax: 1024 * 1024 * 1024,

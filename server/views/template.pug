@@ -3,6 +3,7 @@ html(lang="en")
 	head
 		include head
 		title!= server.title
+		link(rel='icon' type='image/png' href='/media/' + server.favicon + '.png')
 		meta(name='description', content=server.description)
 
 	body

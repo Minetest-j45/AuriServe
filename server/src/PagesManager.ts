@@ -147,7 +147,7 @@ export default class PagesManager {
 		}
 
 		try {
-			const { sitename: siteTitle, description: siteDescription } = await this.getSiteData('info');
+			const { sitename: siteTitle, description: siteDescription, favicon } = await this.getSiteData('info');
 			const json = JSON.parse((await fs.readFile(page + '.json')).toString()) as Page.Page;
 
 			const header = await this.renderTree(page, json.elements.header);
@@ -159,6 +159,7 @@ export default class PagesManager {
 				server: {
 					title: `${json.title}&nbsp; • &nbsp;${siteTitle}`,
 					description: json.description || siteDescription,
+					favicon: favicon,
 
 					themes: this.themes.getEnabledThemes(),
 					plugins: {
