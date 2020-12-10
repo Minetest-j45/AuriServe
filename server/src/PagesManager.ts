@@ -176,7 +176,7 @@ export default class PagesManager {
 				}
 			};
 
-			return pug.renderFile(path.join(pugRoot, 'template.pug'), opt);
+			return pug.renderFile(path.join(pugRoot, 'page.pug'), opt);
 		}
 		catch (e) {
 			return pug.renderFile(path.join(pugRoot, 'error.pug'), { error: e, stack: e.stack });
