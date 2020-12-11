@@ -228,7 +228,7 @@ export default class PagesManager {
 
 		for (let iden in props) {
 			if (Array.isArray(props[iden])) {
-				for (i = 0; i < props.length; i++) {
+				for (let i = 0; i < props.length; i++) {
 					props[iden][i] = await this.parseProp(props[iden][i]);
 				}
 			}
