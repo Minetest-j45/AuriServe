@@ -226,14 +226,16 @@ export default class PagesManager {
 	private async parseProps(props?: { [key: string]: any }) {
 		if (!props) return;
 
-	 	for (let iden in props) {
-	 		if (Array.isArray(props[iden]))
-	 			for (let ind in props[iden])
-	 				props[iden][ind] = await this.parseProp(props[iden][ind]);
+		for (let iden in props) {
+			if (Array.isArray(props[iden])) {
+				for (i = 0; i < props.length; i++) {
+					props[iden][i] = await this.parseProp(props[iden][i]);
+				}
+			}
 
-	 		else props[iden] = await this.parseProp(props[iden]);
-	 	}
-	 }
+			else props[iden] = await this.parseProp(props[iden]);
+		}
+	}
 
 
 	/**
