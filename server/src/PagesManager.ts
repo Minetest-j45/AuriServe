@@ -208,7 +208,7 @@ export default class PagesManager {
 		const { media } = await this.getSiteData('media');
 
 		if (typeof prop === 'object' && 'identifier' in prop) {
-			const mediaItem = (media || []).filter(m => m.identifier == prop.identifier)[0];
+			const mediaItem = (media || []).filter(m => m.identifier === prop.identifier)[0];
 			if (mediaItem) prop = mediaItem;
 			delete prop.path;
 			delete prop._id;
