@@ -84,10 +84,10 @@ export default class PagesManager {
 		try {
 			let pageObj = JSON.parse((await fs.readFile(p)).toString()) as Page.Page;
 
+			await this.recursivelyExpand(pageObj.elements.main, path.dirname(p));
+
 			if (pageObj.elements.header)
 				await this.recursivelyExpand(pageObj.elements.header, path.dirname(p));
-
-			await this.recursivelyExpand(pageObj.elements.main, path.dirname(p));
 
 			if (pageObj.elements.footer)
 				await this.recursivelyExpand(pageObj.elements.footer, path.dirname(p));
@@ -198,6 +198,45 @@ export default class PagesManager {
 
 
 	/**
+	 * Parses a prop and fills out its structs.
+	 *
+	 * @param {any} props - The prop to fill.
+	 * @returns {any} - The filled out prop.
+	 */
+
+	private async parseProp(prop: any): Promise<any> {
+		const { media } = await this.getSiteData('media');
+
+		if (typeof prop === 'object' && 'identifier' in prop) {
+			const mediaItem = (media || []).filter(m => m.identifier == prop.identifier)[0];
+			if (mediaItem) prop = mediaItem;
+			delete prop.path;
+			delete prop._id;
+		}
+
+		return prop;
+	}
+
+	/**
+	 * Parse a props array and fill out structs.
+	 *
+	 * @param {{ [key: string]: string }} props - The props to fill.
+	 */
+
+	private async parseProps(props?: { [key: string]: any }) {
+		if (!props) return;
+
+	 	for (let iden in props) {
+	 		if (Array.isArray(props[iden]))
+	 			for (let ind in props[iden])
+	 				props[iden][ind] = await this.parseProp(props[iden][ind]);
+
+	 		else props[iden] = await this.parseProp(props[iden]);
+	 	}
+	 }
+
+
+	/**
 	 * Recursively creates Preact elements using a serialized page element, and returns them.
 	 * Throws if the page or page includes do not exist.
 	 *
@@ -219,8 +258,9 @@ export default class PagesManager {
 
 		for (let child of elemDef.children ?? [])
 			renderedChildren.push(await this.recursivelyCreate(child, pathRoot));
-
-		return createElement(elem.element, elemDef.props ?? {}, ...renderedChildren);
+		
+		await this.parseProps(elemDef.props);
+		return createElement(elem.element, { ...elemDef.props, children: renderedChildren });
 	}
 
 
@@ -236,7 +276,12 @@ export default class PagesManager {
 			pathRoot = path.dirname(path.resolve(pathRoot, includeRoot));
 		}
 
-		for (let child of ((Page.isInclude(elemDef) ? elemDef.elem!.children : elemDef.children) || []))
+		const elem: Page.Element = Page.isInclude(elemDef) ? elemDef.elem! : elemDef;
+		await this.parseProps(elem.props);
+		// console.log(elem.props, );
+		// // elem.props = await this.parseProps(elem.props);
+
+		for (let child of elem.children || [])
 			await this.recursivelyExpand(child, pathRoot);
 	}
 
