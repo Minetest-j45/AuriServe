@@ -228,7 +228,7 @@ export default class PagesManager {
 
 		for (let iden in props) {
 			if (Array.isArray(props[iden])) {
-				for (let i = 0; i < props.length; i++) {
+				for (let i = 0; i < props[iden].length; i++) {
 					props[iden][i] = await this.parseProp(props[iden][i]);
 				}
 			}
@@ -280,8 +280,6 @@ export default class PagesManager {
 
 		const elem: Page.Element = Page.isInclude(elemDef) ? elemDef.elem! : elemDef;
 		await this.parseProps(elem.props);
-		// console.log(elem.props, );
-		// // elem.props = await this.parseProps(elem.props);
 
 		for (let child of elem.children || [])
 			await this.recursivelyExpand(child, pathRoot);
