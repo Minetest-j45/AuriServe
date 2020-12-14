@@ -119,6 +119,15 @@ export default class AdminRouter extends Router {
 			})
 		);
 
+		this.router.post('/themes/layout',
+			this.authRoute(async (req: Express.Request, res: Express.Response) => {
+				if (typeof req.body.layout !== 'string') throw 'Request is missing required data.';
+				const layouts = await this.themes.getLayouts();
+				if (!layouts[req.body.layout]) throw 'Layout doesn\'t exist';
+				res.send(layouts[req.body.layout]);
+			})
+		);
+
 		this.router.post('/themes/refresh',
 			this.authRoute(async (_: any, res: Express.Response) => {
 				await this.themes.refresh();

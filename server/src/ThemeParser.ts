@@ -11,6 +11,8 @@ const logger = log4js.getLogger();
 
 export type Theme = DB.Theme;
 
+export const OUT_DIR = '.public';
+
 export default class ThemeParser {
 	private watchers: any = [];
 	private parsing: boolean = false;
@@ -20,6 +22,9 @@ export default class ThemeParser {
 		private getSiteData: (specifier: string | undefined) => Promise<Partial<SiteData>>) {};
 
 	async init() {
+		try { await fs.access(path.join(this.dataPath, 'themes'), fsc.R_OK); }
+		catch (e) { fs.mkdir(path.join(this.dataPath, 'themes')); }
+
 		// Synchronize active themes representation with server.
 		this.enabledThemes = await this.db.getEnabledThemes();
 
@@ -31,17 +36,45 @@ export default class ThemeParser {
 		return this.enabledThemes;
 	}
 
+	async getLayouts(): Promise<{[key: string]: string}> {
+		let layouts: {[key: string]: string} = {};
+
+		let dirs: string[] = [];
+		for (let theme of this.enabledThemes)
+			dirs.push(path.join(theme, 'layout'));
+
+		while (dirs.length > 0) {
+			const dir = dirs.pop()!;
+
+			await Promise.all((await fs.readdir(path.join(this.dataPath, 'themes', dir)))
+				.map((file: string) => (async () => {
+					
+					const filePath = path.join(dir, file);
+					const stat = await fs.lstat(path.join(this.dataPath, 'themes', filePath));
+
+					if (stat.isDirectory()) dirs.push(filePath);
+					else if (stat.isFile() && file.endsWith('.html')) {
+						let fileContents = (await fs.readFile(path.join(this.dataPath, 'themes', filePath))).toString();
+						layouts[path.basename(filePath, '.html')] = fileContents;
+					}
+				})())
+			);
+		}
+
+		return layouts;
+	}
+
 	async parse() {
 		if (this.parsing) return;
 		this.parsing = true;
 
-		const outPath = path.join(this.dataPath, 'themes', 'public');
+		const outPath = path.join(this.dataPath, 'themes', OUT_DIR);
 
-		// Remove everything from themes/public.
+		// Remove everything from themes/.public.
 		await new Promise((res) => rimraf(outPath, res));
 		await fs.mkdir(outPath);
 
-		// Parse all active themes and add them to themes/public.
+		// Parse all active themes and add them to themes/.public.
 		const enabledThemes = (await this.getSiteData('themes')).themes!.filter(t => this.enabledThemes.indexOf(t.identifier) !== -1);
 		await Promise.all(enabledThemes.map(async t => {
 			const themePath = path.join(this.dataPath, 'themes', t.identifier);
@@ -80,7 +113,7 @@ export default class ThemeParser {
 		const files = await fs.readdir(path.join(this.dataPath, 'themes'));
 
 		await Promise.all(files.map(async f => {
-			if (f === 'public') return;
+			if (f.startsWith('.')) return;
 			try {
 				if (sanitizeIdentifier(f) !== f) throw `Failed to parse theme ${f}, theme directory must be lowercase alphanumeric.`;
 

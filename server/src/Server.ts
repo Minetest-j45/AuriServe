@@ -1,20 +1,18 @@
 import path from 'path';
 import HTTP from 'http';
 import HTTPS from 'https';
-import { promises as fs } from 'fs';
-import compression from 'compression';
-import cookieParser from 'cookie-parser';
-import fileUpload from 'express-fileupload';
-import { SiteData, SiteDataSpecifier, resolvePath } from 'auriserve-api';
-
 import log4js from 'log4js';
 import Express from 'express';
 import bodyParser from 'body-parser';
+import compression from 'compression';
+import cookieParser from 'cookie-parser';
+import fileUpload from 'express-fileupload';
+import { promises as fs, constants as fsc } from 'fs';
+import { SiteData, SiteDataSpecifier, resolvePath } from 'auriserve-api';
 
 import DBView from './DBView';
 import Database from './Database';
 import Elements from './Elements';
-import ThemeParser from './ThemeParser';
 import PluginParser from './PluginParser';
 import PagesManager from './PagesManager';
 
@@ -35,7 +33,6 @@ export default class Server {
 
 	elements: Elements;
 	pages: PagesManager;
-	themes: ThemeParser;
 	plugins: PluginParser;
 
 	constructor(public readonly conf: Config, public readonly dataPath: string) {
@@ -47,21 +44,26 @@ export default class Server {
 		this.app.set('view engine', 'pug');
 		this.app.set('views', path.join(path.dirname(__dirname), 'views'));
 
-		this.getSiteData = this.getSiteData.bind(this);
+		const view = this.db as any as DBView;
 
 		this.elements = new Elements();
-		this.themes = new ThemeParser(this.dataPath, this.db as any as DBView, this.getSiteData);
-		this.plugins = new PluginParser(this.dataPath, this.db as any as DBView, this.elements);
-		this.pages = new PagesManager(this.themes, this.plugins, this.getSiteData, this.elements, path.join(this.dataPath, 'pages'));
+		this.plugins = new PluginParser(this.dataPath, view, this.elements);
+		this.pages = new PagesManager(this.plugins, this.elements, view, this.getSiteData, this.dataPath);
 
 		this.adminRouter = new AdminRouter(this.dataPath, this.db as any as DBView,
-			this.app, this.themes, this.plugins, this.pages, this.getSiteData);
+			this.app, this.pages.themes, this.plugins, this.pages, this.getSiteData);
 
 		this.pagesRouter = new PagesRouter(this.dataPath, this.app, this.pages, this.plugins);
 
 		this.init().then(async () => {
-			await this.themes.init();
+			await this.pages.init();
 			await this.plugins.init();
+			
+			// Create media folder
+			try { await fs.access(path.join(this.dataPath, 'media'), fsc.R_OK); }
+			catch (e) { fs.mkdir(path.join(this.dataPath, 'media')); }
+			try { await fs.access(path.join(this.dataPath, 'media', '.cache'), fsc.R_OK); }
+			catch (e) { fs.mkdir(path.join(this.dataPath, 'media', '.cache')); }
 
 			if (this.conf.super)
 				new SuperUserPrompt(this.db);
@@ -87,7 +89,7 @@ export default class Server {
 	 * pages - Basic page listings
 	 */
 
-	async getSiteData(specifier: string | undefined): Promise<Partial<SiteData>> {
+	getSiteData = async (specifier: string | undefined): Promise<Partial<SiteData>> => {
 		let data = await this.db.getSiteData(specifier);
 
 		const specifiers = (specifier ? specifier.split('&') as SiteDataSpecifier[] : []);
@@ -103,7 +105,7 @@ export default class Server {
 			data.pages = await this.pages.getAllPages();
 
 		return data;
-	}
+	};
 
 
 	/**
@@ -112,49 +114,55 @@ export default class Server {
 	 */
 
 	private async init() {
+		
+		// Initialize HTTP / HTTPS server(s).
+
 		await new Promise(async (resolve) => {
-			if (this.conf.https) {
-				if (!this.conf.https.cert || !this.conf.https.key) {
-					logger.fatal('Config is missing https.cert and https.key fields.');
-					process.exit(1);
-				}
+			try {
+				if (this.conf.https) {
+					if (!this.conf.https.cert || !this.conf.https.key)
+						throw 'Config is missing https.cert or https.key fields.';
 
-				let cert: string, key: string;
-				try {
-					cert = await fs.readFile(resolvePath(this.conf.https.cert), 'utf8');
-					key = await fs.readFile(resolvePath(this.conf.https.key), 'utf8');
-				}
-				catch (e) {
-					logger.fatal('Failed to access HTTPS certificate/key files.\n %s', e);
-					process.exit(1);
-				}
+					let cert: string, key: string;
+					try {
+						cert = await fs.readFile(resolvePath(this.conf.https.cert), 'utf8');
+						key = await fs.readFile(resolvePath(this.conf.https.key), 'utf8');
+					}
+					catch (e) {
+						throw 'Failed to parse HTTPS key / certificate files.\n ' + e;
+					}
 
-				const http = HTTP.createServer(this.forwardHttps.bind(this) as any);
-				const https = HTTPS.createServer({ cert: cert, key: key }, this.app);
+					const http = HTTP.createServer(this.forwardHttps.bind(this) as any);
+					const https = HTTPS.createServer({ cert: cert, key: key }, this.app);
 
-				http.listen(this.conf.port || 80, () => {
-					logger.debug('Redirect server listening on port %s.', this.conf.port || 80);
-					https.listen(this.conf.https!.port || 443, () => {
-						logger.debug('HTTPS Server listening on port %s.', this.conf.https!.port || 443);
+					http.listen(this.conf.port || 80, () => {
+						logger.debug('Redirect server listening on port %s.', this.conf.port || 80);
+						https.listen(this.conf.https!.port || 443, () => {
+							logger.debug('HTTPS Server listening on port %s.', this.conf.https!.port || 443);
+							resolve();
+						});
+					});
+				}
+				else {
+					const http = HTTP.createServer(this.app);
+					http.listen(this.conf.port || 80, () => {
+						logger.debug('HTTP Server listening on port %s.', this.conf.port || 80);
 						resolve();
 					});
-				});
+				}
 			}
-			else {
-				const http = HTTP.createServer(this.app);
-				http.listen(this.conf.port || 80, () => {
-					logger.debug('HTTP Server listening on port %s.', this.conf.port || 80);
-					resolve();
-				});
+			catch (e) {
+				logger.fatal(e);
+				process.exit(1);
 			}
 		});
 
-		if (!this.conf.db || !this.conf.db.url) {
-			logger.fatal('Config is missing db.url field.');
+		if (!this.conf.db || !this.conf.db.url || !this.conf.db.name) {
+			logger.fatal('Config is missing db.url or db.name fields.');
 			process.exit(1);
 		}
 
-		await this.db.init(this.conf.db.url, this.conf.db.name || 'auriserve');
+		await this.db.init(this.conf.db.url, this.conf.db.name);
 
 		logger.info('Initialized AuriServe.');
 	}

@@ -8,6 +8,7 @@ import resizeImg from 'resize-img';
 import Router from './Router';
 import PluginParser from '../PluginParser';
 import PagesManager from '../PagesManager';
+import { OUT_DIR as THEME_DIR } from '../ThemeParser';
 
 const logger = log4js.getLogger();
 
@@ -27,7 +28,7 @@ export default class PagesRouter extends Router {
 			if (!resolution || !matched) return next();
 
 			const p = path.join(this.dataPath, 'media', req.params.asset);
-			const destP = path.join(this.dataPath, 'media', 'cache', req.params.asset + '-' + req.query.res);
+			const destP = path.join(this.dataPath, 'media', '.cache', req.params.asset + '.' + req.query.res);
 
 			try { await fs.access(destP, fsc.R_OK); }
 			catch {
@@ -44,7 +45,7 @@ export default class PagesRouter extends Router {
 		});
 
 		this.router.use('/media', Express.static(path.join(this.dataPath, 'media')));
-		this.router.use('/theme', Express.static(path.join(this.dataPath, 'themes', 'public')));
+		this.router.use('/theme', Express.static(path.join(this.dataPath, 'themes', THEME_DIR)));
 
 		this.router.use('/plugin/:identifier/:file', async (req, res, next) => {
 			try {
@@ -76,7 +77,7 @@ export default class PagesRouter extends Router {
 
 	private async resolvePage(req: Express.Request, res: Express.Response, next: Express.NextFunction) {
 		try {
-			res.send(await this.pages.renderPage(req.params[0]));
+			res.send(await this.pages.render(req.params[0]));
 		}
 		catch (e) {
 			if (typeof(e) === 'number') res.sendStatus(e);

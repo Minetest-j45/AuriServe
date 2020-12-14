@@ -68,6 +68,9 @@ export default class PluginParser {
 	constructor(private dataPath: string, private db: DBView, private elements: Elements) {};
 
 	async init() {
+		try { await fs.access(path.join(this.dataPath, 'plugins'), fsc.R_OK); }
+		catch (e) { fs.mkdir(path.join(this.dataPath, 'plugins')); }
+		
 		// Synchronize active themes representation with server.
 		this.enabledPlugins = await this.db.getEnabledPlugins();
 
