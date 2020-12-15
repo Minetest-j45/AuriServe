@@ -17,7 +17,7 @@ export default function UndefinedElement(props: any) {
 		h('div', { class: 'UndefinedElement', style: style },
 			h('p', null,
 				h('strong', null, props.elem),
-				'is undefined.'
+				' is undefined.'
 			)
 		)
 	);
