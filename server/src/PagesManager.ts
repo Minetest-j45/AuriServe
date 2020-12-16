@@ -17,6 +17,7 @@ const logger = log4js.getLogger();
 
 type GetSiteData = (s?: string) => Promise<Partial<SiteData>>;
 
+type ExposedMap = { [key: string]: Page.Element }
 
 export default class PagesManager {
 	root: string;
@@ -289,7 +290,7 @@ export default class PagesManager {
 	 * @param {Media[]} media - The current SiteData media array.
 	 */
 
-	private async expandTree(elem: Page.Child, pathRoot: string, media: Media[]): Promise<void> {
+	private async expandTree(elem: Page.Child, pathRoot: string, media: Media[], exposed: ExposedMap): Promise<void> {
 		if (Page.isInclude(elem)) {
 			const includePath = elem.include;
 			elem.elem = await this.expandInclude(elem, pathRoot);
@@ -297,9 +298,9 @@ export default class PagesManager {
 		}
 
 		const expand: Page.Element = Page.isInclude(elem) ? elem.elem! : elem;
-		if (expand.props) await this.parseProps(expand.props, media);
+		if (expand.props) expand.props = await this.parseProps(expand.props, media, exposed);
 
-		for (let child of expand.children || []) await this.expandTree(child, pathRoot, media);
+		for (let child of expand.children || []) await this.expandTree(child, pathRoot, media, exposed);
 	}
 
 
@@ -349,36 +350,49 @@ export default class PagesManager {
 	 * @returns {any} - The modified property.
 	 */
 
-	private async parseProp(prop: any, media: Media[]): Promise<any> {
-		if (typeof prop === 'object' && 'identifier' in prop) {
-			const mediaItem = (media || []).filter(m => m.identifier === prop.identifier)[0];
-			if (mediaItem) prop = mediaItem;
-			delete prop.path;
-			delete prop._id;
-		}
+	private async parseProp(prop: any, media: Media[], exposed: ExposedMap): Promise<any> {
+		let wasValue = false;
 
-		return prop;
+		if (typeof prop === 'object') {
+			if ('identifier' in prop) {
+				const mediaItem = (media || []).filter(m => m.identifier === prop.identifier)[0];
+				if (mediaItem) prop = mediaItem;
+				delete prop.path;
+				delete prop._id;
+				wasValue = true;
+			}
+			else if ('_AS_PROP_REF' in prop) {
+				console.log('found include request', prop._AS_PROP_REF);
+				return prop = exposed[prop._AS_PROP_REF].props;
+				wasValue = true;
+			}
+		}
+		else wasValue = true;
+
+		return [ prop, wasValue ];
 	}
 
 	/**
 	 * Applies transformations to non-trivial properties, modifying the table directly.
 	 * e.g. filling out a media prop with the rest of the fields.
 	 *
-	 * @param {any} props - The props table to parse through.
+	 * @param {any} prop - The props table to parse through.
 	 * @param {Media[]} media - The current SiteData media array.
 	 */
 
-	private async parseProps(props: { [key: string]: any }, media: Media[]) {
-		if (!props) return;
+	private async parseProps(prop: any, media: Media[], exposed: ExposedMap) {
+		const [ newProp, wasValue ] = await this.parseProp(prop, media, exposed);
+		prop = newProp;
 
-		for (let iden in props) {
-			if (Array.isArray(props[iden])) {
-				for (let i = 0; i < props[iden].length; i++) {
-					props[iden][i] = await this.parseProp(props[iden][i], media);
-				}
+		if (!wasValue && typeof prop === 'object') {
+			if (Array.isArray(prop)) for (let i = 0; i < prop.length; i++)
+				prop[i] = await this.parseProps(prop[i], media, exposed);
+
+			else if (typeof prop === 'object') for (let iden in prop) {
+				prop[iden] = await this.parseProps(prop[iden], media, exposed);
 			}
-
-			else props[iden] = await this.parseProp(props[iden], media);
 		}
+
+		return prop;
 	}
 }
