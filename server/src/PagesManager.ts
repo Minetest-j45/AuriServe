@@ -70,14 +70,13 @@ export default class PagesManager {
 
 	async render(page: string): Promise<string> {
 		const pugRoot = path.join(path.dirname(__dirname), 'views');
-		page = path.join(this.root, page);
 
 		// Ensure the page exists.
 
 		try {
-			try { await fs.access(page + '.json'); }
+			try { await fs.access(path.join(this.root, page + '.json')); }
 			catch (e) {
-				await fs.access(path.join(page, 'index.json'));
+				await fs.access(path.join(this.root, page, 'index.json'));
 				page = path.join(page, 'index');
 			}
 		}
@@ -87,14 +86,14 @@ export default class PagesManager {
 
 		try {
 			const { media, sitename: siteTitle, description: siteDescription, favicon } = await this.getSiteData('media&info');
-			const json = JSON.parse((await fs.readFile(page + '.json')).toString()) as Page.Page;
+
+			const json = await this.getPreparedPage(page);
+			// const json = JSON.parse((await fs.readFile(page + '.json')).toString()) as Page.Page;
 			const faviconItem = (media ?? []).filter(m => m.identifier === favicon)[0];
 
-			let parsedElements: {[key: string]: string } = {};
-			await Promise.all(Object.keys(json.elements).map(async (key) => {
-				await this.expandTree(json.elements[key], path.dirname(page), media ?? []);
-				parsedElements[key] = await this.renderTree(page, json.elements[key]);
-			}));
+			let rendered: {[key: string]: string } = {};
+			await Promise.all(Object.keys(json.elements).map(async (key) =>
+				rendered[key] = await this.renderTree(page, json.elements[key])));
 
 			const layouts = await this.themes.getLayouts();
 			const layout = layouts[json.layout] ?? layouts.default;
@@ -104,9 +103,9 @@ export default class PagesManager {
 
 			document.querySelectorAll('[data-include]').forEach(e => {
 				const section = e.getAttribute('data-include') ?? '';
-				if (!parsedElements[section]) return;
-				e.innerHTML = parsedElements[section];
-				delete parsedElements[section];
+				if (!rendered[section]) return;
+				e.innerHTML = rendered[section];
+				delete rendered[section];
 				e.removeAttribute('data-include');
 			});
 
@@ -142,7 +141,7 @@ export default class PagesManager {
 
 
 	/**
-	 * Returns a page document, without expanding includes.
+	 * Returns a raw page document, not ready for use.
 	 * Throws if there is no page at the requested path.
 	 *
 	 * @param {string} page - The page to return.
@@ -160,21 +159,26 @@ export default class PagesManager {
 
 
 	/**
-	 * Returns a page document, with includes expanded.
+	 * Returns a page that has been prepared for use.
 	 * Throws if there is no page at the requested path.
 	 *
 	 * @param {string} page - The page to expand.
 	 */
 
-	async getExpandedPage(page: string): Promise<Page.Page> {
+	async getPreparedPage(page: string): Promise<Page.Page> {
 		const { media } = await this.getSiteData('media');
 		const p = path.join(this.root, page + '.json');
 
 		try {
 			let pageObj = JSON.parse((await fs.readFile(p)).toString()) as Page.Page;
 
-			await Promise.all(Object.keys(pageObj.elements).map(async (key) =>
-				await this.expandTree(pageObj.elements[key], path.dirname(p), media ?? [])));
+			await Promise.all(Object.keys(pageObj.elements).map(async (key) => {
+				const tree = pageObj.elements[key];
+				await this.includeTree(tree, path.dirname(p));
+				const exposed = await this.exposeTree(tree);
+				await this.parseTree(tree, media ?? [], exposed);
+				return;
+			}));
 
 			return pageObj;
 		}
@@ -281,26 +285,59 @@ export default class PagesManager {
 
 
 	/**
-	 * Recursively expands a element tree, expanding includes and parsing properties.
+	 * Recursively expands includes in a tree.
 	 * Directly manipulates the passed-in object, does not return anything.
 	 * Throws if the required includes do not exist.
 	 *
 	 * @param {Child} elem - The root element to expand.
 	 * @param {string} pathRoot - The path that includes are relative to.
-	 * @param {Media[]} media - The current SiteData media array.
 	 */
 
-	private async expandTree(elem: Page.Child, pathRoot: string, media: Media[], exposed: ExposedMap): Promise<void> {
+	private async includeTree(elem: Page.Child, pathRoot: string): Promise<void> {
 		if (Page.isInclude(elem)) {
 			const includePath = elem.include;
 			elem.elem = await this.expandInclude(elem, pathRoot);
 			pathRoot = path.dirname(path.resolve(pathRoot, path.dirname(includePath)));
 		}
 
-		const expand: Page.Element = Page.isInclude(elem) ? elem.elem! : elem;
-		if (expand.props) expand.props = await this.parseProps(expand.props, media, exposed);
+		const element: Page.Element = Page.isInclude(elem) ? elem.elem! : elem;
+		for (let child of element.children || []) await this.includeTree(child, pathRoot);
+	}
 
-		for (let child of expand.children || []) await this.expandTree(child, pathRoot, media, exposed);
+
+	/**
+	 * Recursively exposes a tree, storing named references to all elements containing
+	 * an 'exposeAs' key. Returns a key-value map of the elements.
+	 *
+	 * @param {Child} elem - The root element to expand.
+	 */
+
+	private async exposeTree(elem: Page.Child): Promise<ExposedMap> {
+		let exposedMap: ExposedMap = {};
+
+		const expose: Page.Element = Page.isInclude(elem) ? elem.elem! : elem;
+		if (expose.exposeAs) exposedMap[expose.exposeAs] = expose;
+
+		for (let child of expose.children || []) exposedMap = { ...exposedMap, ...await this.exposeTree(child) };
+
+		return exposedMap;
+	}
+
+
+	/**
+	 * Recursively parses the properties of an element tree.
+	 * Directly manipulates the passed-in object, does not return anything.
+	 *
+	 * @param {Child} elem - The root element to expand.
+	 * @param {Media[]} media - The current SiteData media array.
+	 * @param {ExposedMap} exposed - The tree's exposed map.
+	 */
+
+	private async parseTree(elem: Page.Child, media: Media[], exposed: ExposedMap): Promise<void> {
+		const parse: Page.Element = Page.isInclude(elem) ? elem.elem! : elem;
+		if (parse.props) parse.props = await this.parseProps(parse.props, media, exposed);
+
+		for (let child of parse.children || []) await this.parseTree(child, media, exposed);
 	}
 
 
@@ -362,8 +399,7 @@ export default class PagesManager {
 				wasValue = true;
 			}
 			else if ('_AS_PROP_REF' in prop) {
-				console.log('found include request', prop._AS_PROP_REF);
-				return prop = exposed[prop._AS_PROP_REF].props;
+				prop = { _AS_PROP_REF: prop._AS_PROP_REF, ...exposed[prop._AS_PROP_REF].props };
 				wasValue = true;
 			}
 		}

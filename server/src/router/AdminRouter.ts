@@ -179,7 +179,7 @@ export default class AdminRouter extends Router {
 				if (typeof req.body !== 'object' || typeof req.body.page !== 'string')
 					throw 'Request is missing required data.';
 
-				const data = await this.pages.getExpandedPage(req.body.page);
+				const data = await this.pages.getPreparedPage(req.body.page);
 				res.send(JSON.stringify(data));
 			})
 		);
