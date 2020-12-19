@@ -404,7 +404,7 @@ export default class PagesManager {
 	 * @param {string} ref - The prop ref to parse.
 	 */
 
-	private parsePropRef(ref: string): { page?: string, tree?: string, exposed: string } {
+	private parsePropRef(ref: string): { page?: string; tree?: string; exposed: string } {
 		let page: string | undefined  = undefined;
 		let tree: string | undefined = undefined;
 		let exposed: string = ref;
@@ -485,7 +485,7 @@ export default class PagesManager {
 			if (Array.isArray(prop)) for (let i = 0; i < prop.length; i++)
 				prop[i] = await this.parseProps(prop[i], media, tree, exposedMap);
 
-			else if (typeof prop === 'object') for (let iden in prop) {
+			else if (typeof prop === 'object') for (let iden of Object.keys(prop)) {
 				prop[iden] = await this.parseProps(prop[iden], media, tree, exposedMap);
 			}
 		}
