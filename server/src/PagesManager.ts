@@ -105,7 +105,9 @@ export default class PagesManager {
 			document.querySelectorAll('[data-include]').forEach(e => {
 				const section = e.getAttribute('data-include') ?? '';
 				if (!rendered[section]) return;
-				e.innerHTML = rendered[section];
+				const div = document.createElement('div');
+				div.innerHTML = rendered[section];
+				while (div.childNodes.length > 0) e.append(div.childNodes[0]);
 				delete rendered[section];
 				e.removeAttribute('data-include');
 			});
