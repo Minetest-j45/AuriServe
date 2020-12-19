@@ -17,7 +17,8 @@ const logger = log4js.getLogger();
 
 type GetSiteData = (s?: string) => Promise<Partial<SiteData>>;
 
-type ExposedMap = { [key: string]: Page.Element }
+type ExposedTree = { [key: string]: Page.Element };
+type ExposedMap = { [tree: string]: ExposedTree };
 
 export default class PagesManager {
 	root: string;
@@ -168,17 +169,17 @@ export default class PagesManager {
 	async getPreparedPage(page: string): Promise<Page.Page> {
 		const { media } = await this.getSiteData('media');
 		const p = path.join(this.root, page + '.json');
-
+			
 		try {
-			let pageObj = JSON.parse((await fs.readFile(p)).toString()) as Page.Page;
+			const pageObj = await this.getPage(page);
 
-			await Promise.all(Object.keys(pageObj.elements).map(async (key) => {
-				const tree = pageObj.elements[key];
-				await this.includeTree(tree, path.dirname(p));
-				const exposed = await this.exposeTree(tree);
-				await this.parseTree(tree, media ?? [], exposed);
-				return;
-			}));
+			await Promise.all(Object.keys(pageObj.elements).map(async (key) =>
+				await this.includeTree(pageObj.elements[key], path.dirname(p))));
+
+			const exposed = await this.exposePage(pageObj);
+			
+			await Promise.all(Object.keys(pageObj.elements).map(async (key) =>
+				await this.parseTree(key, pageObj.elements[key], media ?? [], exposed)));
 
 			return pageObj;
 		}
@@ -306,21 +307,37 @@ export default class PagesManager {
 
 
 	/**
+	 * Recursively exposes a page, storing named references to all elements containing
+	 * an 'exposeAs' key. Returns a key-value map of the elements organized by tree.
+	 *
+	 * @param {Page} page - The page to expose.
+	 */
+
+	private exposePage(page: Page.Page) {
+		let exposedMap: ExposedMap = {};
+		Object.keys(page.elements).map((key) => {
+			exposedMap[key] = this.exposeTree(page.elements[key]);
+		});
+		return exposedMap;
+	}
+
+
+	/**
 	 * Recursively exposes a tree, storing named references to all elements containing
 	 * an 'exposeAs' key. Returns a key-value map of the elements.
 	 *
 	 * @param {Child} elem - The root element to expand.
 	 */
 
-	private async exposeTree(elem: Page.Child): Promise<ExposedMap> {
-		let exposedMap: ExposedMap = {};
+	private exposeTree(elem: Page.Child): ExposedTree {
+		let exposedTree: ExposedTree = {};
 
 		const expose: Page.Element = Page.isInclude(elem) ? elem.elem! : elem;
-		if (expose.exposeAs) exposedMap[expose.exposeAs] = expose;
+		if (expose.exposeAs) exposedTree[expose.exposeAs] = expose;
 
-		for (let child of expose.children || []) exposedMap = { ...exposedMap, ...await this.exposeTree(child) };
+		for (let child of expose.children || []) exposedTree = { ...exposedTree, ...this.exposeTree(child) };
 
-		return exposedMap;
+		return exposedTree;
 	}
 
 
@@ -328,16 +345,17 @@ export default class PagesManager {
 	 * Recursively parses the properties of an element tree.
 	 * Directly manipulates the passed-in object, does not return anything.
 	 *
+	 * @param {string} tree - The identifier of the tree that is being expanded.
 	 * @param {Child} elem - The root element to expand.
 	 * @param {Media[]} media - The current SiteData media array.
 	 * @param {ExposedMap} exposed - The tree's exposed map.
 	 */
 
-	private async parseTree(elem: Page.Child, media: Media[], exposed: ExposedMap): Promise<void> {
+	private async parseTree(tree: string, elem: Page.Child, media: Media[], exposed: ExposedMap): Promise<void> {
 		const parse: Page.Element = Page.isInclude(elem) ? elem.elem! : elem;
-		if (parse.props) parse.props = await this.parseProps(parse.props, media, exposed);
+		if (parse.props) parse.props = await this.parseProps(parse.props, media, tree, exposed);
 
-		for (let child of parse.children || []) await this.parseTree(child, media, exposed);
+		for (let child of parse.children || []) await this.parseTree(tree, child, media, exposed);
 	}
 
 
@@ -379,15 +397,49 @@ export default class PagesManager {
 
 
 	/**
+	 * Reads a Prop Ref and returns a list of keys.
+	 *
+	 * @param {string} ref - The prop ref to parse.
+	 */
+
+	private parsePropRef(ref: string): { page?: string, tree?: string, exposed: string } {
+		let page: string | undefined  = undefined;
+		let tree: string | undefined = undefined;
+		let exposed: string = ref;
+
+		const space = ref.indexOf(' ');
+		let period = ref.indexOf('.');
+
+		if (space > -1) {
+			page = ref.substr(0, space);
+			ref = ref.substr(space + 1);
+			period -= space + 1;
+			exposed = ref;
+		}
+
+		if (period > -1) {
+			tree = ref.substr(0, period);
+			ref = ref.substr(period + 1);
+			exposed = ref;
+		}
+
+		return { page, tree, exposed };
+	}
+
+
+	/**
 	 * Applies transformations to a non-trivial property,
 	 * e.g. filling out a media prop with the rest of the fields.
 	 *
 	 * @param {any} props - The property to parse.
 	 * @param {Media[]} media - The current SiteData media array.
+	 * @param {string} myTree - The tree the prop is contained in.
+	 * @param {ExposedMap} exposedMap - A map of exposed props.
+	 *
 	 * @returns {any} - The modified property.
 	 */
 
-	private async parseProp(prop: any, media: Media[], exposed: ExposedMap): Promise<any> {
+	private async parseProp(prop: any, media: Media[], myTree: string, exposedMap: ExposedMap): Promise<any> {
 		let wasValue = false;
 
 		if (typeof prop === 'object') {
@@ -399,8 +451,13 @@ export default class PagesManager {
 				wasValue = true;
 			}
 			else if ('_AS_PROP_REF' in prop) {
-				prop = { _AS_PROP_REF: prop._AS_PROP_REF, ...exposed[prop._AS_PROP_REF].props };
-				wasValue = true;
+				const { page, tree, exposed } = this.parsePropRef(prop._AS_PROP_REF);
+				if (page) {
+					const pageObj = await this.getPage(page);
+					exposedMap = this.exposePage(pageObj);
+				}
+				
+				prop = { _AS_PROP_REF: prop._AS_PROP_REF, ...exposedMap[tree ?? myTree][exposed].props };
 			}
 		}
 		else wasValue = true;
@@ -414,18 +471,20 @@ export default class PagesManager {
 	 *
 	 * @param {any} prop - The props table to parse through.
 	 * @param {Media[]} media - The current SiteData media array.
+	 * @param {string} tree - The tree the props are contained in.
+	 * @param {ExposedMap} exposedMap - A map of exposed props.
 	 */
 
-	private async parseProps(prop: any, media: Media[], exposed: ExposedMap) {
-		const [ newProp, wasValue ] = await this.parseProp(prop, media, exposed);
+	private async parseProps(prop: any, media: Media[], tree: string, exposedMap: ExposedMap) {
+		const [ newProp, wasValue ] = await this.parseProp(prop, media, tree, exposedMap);
 		prop = newProp;
 
 		if (!wasValue && typeof prop === 'object') {
 			if (Array.isArray(prop)) for (let i = 0; i < prop.length; i++)
-				prop[i] = await this.parseProps(prop[i], media, exposed);
+				prop[i] = await this.parseProps(prop[i], media, tree, exposedMap);
 
 			else if (typeof prop === 'object') for (let iden in prop) {
-				prop[iden] = await this.parseProps(prop[iden], media, exposed);
+				prop[iden] = await this.parseProps(prop[iden], media, tree, exposedMap);
 			}
 		}
 
