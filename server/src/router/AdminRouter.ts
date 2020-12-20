@@ -11,6 +11,9 @@ import PluginParser from '../PluginParser';
 
 import { sanitizeIdentifier, SiteData } from 'auriserve-api';
 
+// For delaying responses, can be useful for many things.
+const delay = (d: number, s?: number) => new Promise(r => setTimeout(r, Math.max(d - (s ? (Date.now() - s) : 0), 0)));
+
 export default class AdminRouter extends Router {
 	authenticated: Express.Router = Express.Router();
 
@@ -23,17 +26,22 @@ export default class AdminRouter extends Router {
 		 * Authentication Routes
 		 */
 
-		this.router.post('/auth',
-			this.safeRoute(async (req: Express.Request, res: Express.Response) => {
+		this.router.post('/auth', async (req, res) => {
+			const start = Date.now();
+			try {
 				const user = req.body.user;
 				const pass = req.body.pass;
 
 				if (typeof user != 'string' || typeof pass != 'string')
 					throw 'Request is missing required parameters.';
-
+				
 				res.send(await this.db.getAuthToken(user, pass));
-			})
-		);
+			}
+			catch (e) {
+				await delay(1000, start);
+				res.status(403).send('Invalid username or password.');
+			}
+		});
 
 		/*
 		 * Data Routes

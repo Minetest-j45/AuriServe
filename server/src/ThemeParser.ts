@@ -98,10 +98,7 @@ export default class ThemeParser {
 
 	async setEnabled(themes: string[]) {
 		const realThemes = ((await this.getSiteData('themes')).themes || []).map(t => t.identifier);
-		if (themes.filter(t => !realThemes.includes(t)).length > 0) throw 'Invalid themes specified.';
-
-		this.enabledThemes = themes;
-
+		this.enabledThemes = themes.filter(t => realThemes.includes(t));
 		await this.db.setEnabledThemes(this.enabledThemes);
 		await this.parse();
 	}
