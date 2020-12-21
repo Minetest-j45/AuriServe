@@ -300,7 +300,7 @@ export default class PagesManager {
 		if (Page.isInclude(elem)) {
 			const includePath = elem.include;
 			elem.elem = await this.expandInclude(elem, pathRoot);
-			pathRoot = path.dirname(path.resolve(pathRoot, path.dirname(includePath)));
+			pathRoot = path.resolve(pathRoot, path.dirname(includePath));
 		}
 
 		const element: Page.Element = Page.isInclude(elem) ? elem.elem! : elem;
@@ -372,7 +372,6 @@ export default class PagesManager {
 
 	private async expandInclude(include: Page.Include, pathRoot: string): Promise<Page.Element> {
 		const includePath = path.join(pathRoot, include.include + '.json');
-
 		let element = JSON.parse((await fs.readFile(includePath)).toString()) as Page.Element;
 		await this.overrideTree(element, include.override);
 
