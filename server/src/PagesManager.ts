@@ -67,9 +67,10 @@ export default class PagesManager {
 	 * Throws an HTML error code if the requested page does not exist.
 	 *
 	 * @param {string} page - The page to render.
+	 * @returns a tuple containing the rendered page and an HTML response code.
 	 */
 
-	async render(page: string): Promise<string> {
+	async render(page: string): Promise<[ string, number ]> {
 		const pugRoot = path.join(path.dirname(__dirname), 'views');
 
 		// Ensure the page exists.
@@ -81,7 +82,7 @@ export default class PagesManager {
 				page = path.join(page, 'index');
 			}
 		}
-		catch (e) { throw 404; }
+		catch (e) {}
 
 		// Begin rendering the page, *safely*.
 
@@ -89,7 +90,6 @@ export default class PagesManager {
 			const { media, sitename: siteTitle, description: siteDescription, favicon } = await this.getSiteData('media&info');
 
 			const json = await this.getPreparedPage(page);
-			// const json = JSON.parse((await fs.readFile(page + '.json')).toString()) as Page.Page;
 			const faviconItem = (media ?? []).filter(m => m.identifier === favicon)[0];
 
 			let rendered: {[key: string]: string } = {};
@@ -104,7 +104,7 @@ export default class PagesManager {
 
 			document.querySelectorAll('[data-include]').forEach(e => {
 				const section = e.getAttribute('data-include') ?? '';
-				if (!rendered[section]) return;
+				if (!rendered[section]) return e.remove();
 				const div = document.createElement('div');
 				div.innerHTML = rendered[section];
 				while (div.childNodes.length > 0) e.append(div.childNodes[0]);
@@ -112,7 +112,7 @@ export default class PagesManager {
 				e.removeAttribute('data-include');
 			});
 
-			return pug.renderFile(path.join(pugRoot, 'page.pug'), {
+			return [ pug.renderFile(path.join(pugRoot, 'page.pug'), {
 				basedir: pugRoot,
 				server: {
 
@@ -135,10 +135,12 @@ export default class PagesManager {
 					// Actual page content
 					content: document.documentElement.innerHTML
 				}
-			});
+			}), 200 ];
 		}
 		catch (e) {
-			return pug.renderFile(path.join(pugRoot, 'error.pug'), { error: e, stack: e.stack });
+			if (typeof e === 'object' && typeof e.description === 'string' && typeof e.code === 'number')
+				return [ pug.renderFile(path.join(pugRoot, 'error.pug'), e), e.code ];
+			throw e;
 		}
 	}
 
@@ -155,8 +157,8 @@ export default class PagesManager {
 		const p = path.join(this.root, page + '.json');
 		try { return JSON.parse((await fs.readFile(p)).toString()) as Page.Page; }
 		catch (e) {
-			logger.error('Error parsing page file \'%s\'.\n %s', p, e);
-			throw 'No page found.';
+			if (e.code === 'ENOENT') throw { code: 404, description: 'Page not found.' };
+			throw { code: 500, description: 'Internal server error.', stack: e.stack};
 		}
 	}
 
@@ -186,8 +188,8 @@ export default class PagesManager {
 			return pageObj;
 		}
 		catch (e) {
-			logger.error('Error parsing page file \'%s\'.\n %s', p, e);
-			throw 'No page found.';
+			if (typeof e.code === 'number') throw e;
+			throw { code: 500, description: 'Internal server error.', stack: e.stack };
 		}
 	}
 

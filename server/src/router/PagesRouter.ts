@@ -77,7 +77,8 @@ export default class PagesRouter extends Router {
 
 	private async resolvePage(req: Express.Request, res: Express.Response, next: Express.NextFunction) {
 		try {
-			res.send(await this.pages.render(req.params[0]));
+			const [ page, code ] = await this.pages.render(req.params[0]);
+			res.status(code).send(page);
 		}
 		catch (e) {
 			if (typeof(e) === 'number') res.sendStatus(e);

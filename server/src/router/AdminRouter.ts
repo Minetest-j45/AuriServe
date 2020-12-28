@@ -39,6 +39,7 @@ export default class AdminRouter extends Router {
 			}
 			catch (e) {
 				await delay(1000, start);
+				await delay(Math.random() * 150);
 				res.status(403).send('Invalid username or password.');
 			}
 		});
