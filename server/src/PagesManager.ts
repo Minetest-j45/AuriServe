@@ -73,7 +73,7 @@ export default class PagesManager {
 	async render(page: string): Promise<[ string, number ]> {
 		const pugRoot = path.join(path.dirname(__dirname), 'views');
 
-		// Ensure the page exists.
+		// Redirect to an index if target is a folder.
 
 		try {
 			try { await fs.access(path.join(this.root, page + '.json')); }
@@ -82,7 +82,7 @@ export default class PagesManager {
 				page = path.join(page, 'index');
 			}
 		}
-		catch (e) {}
+		catch (e) { /* Continue on */ }
 
 		// Begin rendering the page, *safely*.
 
