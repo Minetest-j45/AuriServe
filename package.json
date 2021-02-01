@@ -53,7 +53,7 @@
 		"@types/sass": "^1.16.0",
 		"@typescript-eslint/eslint-plugin": "^4.11.1",
 		"@typescript-eslint/parser": "^4.8.2",
-		"eslint": "^7.14.0",
+		"eslint": "^7.19.0",
 		"eslint-plugin-jsdoc": "^30.7.8",
 		"nodemon": "^2.0.6",
 		"pkg": "^4.4.9",
