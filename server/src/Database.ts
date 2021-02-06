@@ -490,6 +490,15 @@ export default class Database {
 
 
 	/**
+	 * Returns the MongoDB client and database name for rate limiting.
+	 */
+
+  getClientDetails(): [ MongoClient, string ] {
+  	return [ this.client!, this.db!.databaseName ];
+  }
+
+
+	/**
 	 * Prune authentication tokens that are past their expiry date.
 	 */
 

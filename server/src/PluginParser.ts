@@ -13,8 +13,8 @@ import Preact from 'preact';
 import Hooks from 'preact/hooks';
 
 // Assign globals here for plugins to add to the cache,
-// fixes dynamic peerDependency resolution giving a different instance &
-// and pkg'd AuriSere providing no instance issues.
+// fixes dynamic peerDependency resolving a different instance,
+// and packaged AuriServe build issues.
 
 // @ts-ignore
 global._AS_ = {

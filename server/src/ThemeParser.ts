@@ -1,10 +1,10 @@
-import sass from 'sass';
 import path from 'path';
 import log4js from 'log4js';
 import rimraf from 'rimraf';
 import { promises as fs, constants as fsc } from 'fs';
 
 import DBView from './DBView';
+import SassBuilder from './util/SassBuilder';
 import { sanitizeIdentifier, SiteData, Database as DB } from 'auriserve-api';
 
 const logger = log4js.getLogger();
@@ -75,22 +75,25 @@ export default class ThemeParser {
 		await fs.mkdir(outPath);
 
 		// Parse all active themes and add them to themes/.public.
+		let failedThemes = 0;
 		const enabledThemes = (await this.getSiteData('themes')).themes!.filter(t => this.enabledThemes.indexOf(t.identifier) !== -1);
 		await Promise.all(enabledThemes.map(async t => {
 			const themePath = path.join(this.dataPath, 'themes', t.identifier);
 
-			return new Promise((resolve) => {
-				sass.render({
-					file: path.join(themePath, 'style', 'Main.sass')
-				}, async (err: sass.SassException, result: sass.Result) => {
-					if (err) logger.error(err);
-					else await fs.writeFile(path.join(outPath, t.identifier + '.css'), result.css);
-					resolve();
-				});
-			});
+			try {
+				await (await new SassBuilder()
+					.file(path.join(themePath, 'style', 'Main.sass'))
+					.build())
+					.toFile(path.join(outPath, t.identifier + '.css'));
+			}
+			catch (e) {
+				logger.error('Failed to parse theme %s.\n%s', t.identifier, e);
+				failedThemes++;
+			}
 		}));
 
-		logger.debug('Parsed %s theme%s.', enabledThemes.length, enabledThemes.length !== 1 ? 's' : '');
+		logger.info('Parsed %s theme%s.', enabledThemes.length - failedThemes, (enabledThemes.length - failedThemes !== 1) ? 's' : '');
+		if (failedThemes) logger.warn('Failed to parse %s theme%s.', failedThemes, (failedThemes !== 1 ? 's' : ''));
 
 		this.parsing = false;
 		this.watch();
@@ -148,10 +151,8 @@ export default class ThemeParser {
 
 		await this.db.setThemes(themes);
 
-		let log = 'Loaded ' + themes.length + ' theme' + (themes.length !== 1 ? 's' : '');
-		if (failedThemes) log += ', failed to load ' + failedThemes + ' theme' + (failedThemes !== 1 ? 's' : '');
-		else log += '.';
-		logger.info(log);
+		logger.debug('Loaded %s theme%s.', themes.length, (themes.length !== 1) ? 's' : '');
+		if (failedThemes) logger.warn('Failed to load %s theme%s.', failedThemes, (failedThemes !== 1 ? 's' : ''));
 
 		await this.parse();
 	}
