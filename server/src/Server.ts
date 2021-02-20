@@ -22,8 +22,8 @@ import SuperUserPrompt from './SuperUserPrompt';
 
 import { Config } from './interface/Config';
 
-import { graphql } from 'graphql';
-import { Schema, Resolver } from './graph';
+// import { graphql } from 'graphql';
+// import { Schema, Resolver } from './graph';
 
 const logger = log4js.getLogger();
 
