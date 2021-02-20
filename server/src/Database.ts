@@ -493,9 +493,9 @@ export default class Database {
 	 * Returns the MongoDB client and database name for rate limiting.
 	 */
 
-  getClientDetails(): [ MongoClient, string ] {
-  	return [ this.client!, this.db!.databaseName ];
-  }
+	getClientDetails(): [ MongoClient, string ] {
+		return [ this.client!, this.db!.databaseName ];
+	}
 
 
 	/**

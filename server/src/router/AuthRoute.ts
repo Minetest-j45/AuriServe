@@ -4,7 +4,7 @@ import { RateLimiterMongo } from 'rate-limiter-flexible';
 import DBView from '../DBView';
 
 export interface AuthRouteConfig {
-	db: DBView,
+	db: DBView;
 
 	attempts?: number;
 	duration?: number;
@@ -39,7 +39,7 @@ export default function AuthRoute(config: AuthRouteConfig): {
 			.catch(() => limiter.consume(req.ip, 9)
 				.then(() => res.status(403).send('You must be logged in to use this route.'))
 				.catch(() => res.status(403).send('Too many requests. Please wait before trying again.')));
-	}
+	};
 
 	return { rateLimit, authRoute };
 }
