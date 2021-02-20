@@ -23,8 +23,7 @@ interface SassBuildResult {
 export default class SassBuilder {
 	private shouldMinify: boolean = true;
 	private options: Map<string, string> = new Map();
-	private compile: { file: string, path: string } | { data: string, mode: 'sass' | 'scss', path?: string } =
-		{ data: '', mode: 'sass' };
+	private compile: { file: string; path: string } | { data: string; mode: 'sass' | 'scss'; path?: string } = { data: '', mode: 'sass' };
 
 
 	/**
@@ -35,7 +34,7 @@ export default class SassBuilder {
 	 * @returns a chainable reference to the builder.
 	 */
 
-	file(file: string, root?: string): this {
+	fromFile(file: string, root?: string): this {
 		this.compile = { file, path: root ?? path.dirname(file) };
 		return this;
 	}
@@ -50,7 +49,7 @@ export default class SassBuilder {
 	 * @returns a chainable reference to the builder.
 	 */
 
-	string(data: string, mode: 'sass' | 'scss', root?: string): this {
+	fromString(data: string, mode: 'sass' | 'scss', root?: string): this {
 		this.compile = { data, mode, path: root };
 		return this;
 	}
@@ -102,7 +101,7 @@ export default class SassBuilder {
 						data: s,
 						indentedSyntax: mode === 'sass',
 						outputStyle: this.shouldMinify ? 'compressed' : undefined,
-						includePaths: (this.compile.path ? [ this.compile.path ] : undefined),
+						includePaths: (this.compile.path ? [ this.compile.path ] : undefined)
 					}, (err: sass.SassException, res: sass.Result) => {
 						if (err) return reject(err);
 						let css = res.css.toString();

@@ -23,5 +23,8 @@ html(lang="en")
 
 		link(rel='icon' type='image/' + server.favicon.substr(server.favicon.lastIndexOf('.') + 1) href='/media/' + server.favicon + '?res=preload')
 		meta(name='description', content=server.description)
+
+		script(src='/admin/client.js' defer)
+		script(src='http://localhost:35729/livereload.js' async)
 	
 	!=server.content

@@ -81,10 +81,9 @@ export default class ThemeParser {
 			const themePath = path.join(this.dataPath, 'themes', t.identifier);
 
 			try {
-				await (await new SassBuilder()
-					.file(path.join(themePath, 'style', 'Main.sass'))
-					.build())
-					.toFile(path.join(outPath, t.identifier + '.css'));
+				await new SassBuilder()
+					.fromFile(path.join(themePath, 'style', 'Main.sass'))
+					.build().then(r => r.toFile(path.join(outPath, t.identifier + '.css')));
 			}
 			catch (e) {
 				logger.error('Failed to parse theme %s.\n%s', t.identifier, e);
