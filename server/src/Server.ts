@@ -22,6 +22,9 @@ import SuperUserPrompt from './SuperUserPrompt';
 
 import { Config } from './interface/Config';
 
+import { graphql } from 'graphql';
+import { Schema, Resolver } from './graph';
+
 const logger = log4js.getLogger();
 
 export default class Server {
@@ -70,6 +73,9 @@ export default class Server {
 
 			await this.adminRouter.init();
 			await this.pagesRouter.init();
+
+			// graphql(Schema, '{ info { domain, favicon, name, description } }', Resolver, { db: this.db }).then(console.log);
+
 		});
 	}
 
