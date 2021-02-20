@@ -17,11 +17,11 @@ export default `
 		enabled: Boolean!
 
 		name: String!
-		description: String
-		author: String
+		description: String!
+		author: String!
 		coverPath: String
 
 		layouts: [Layout]!
-		format: ThemeFormat
+		format: ThemeFormat!
 	}
 `;

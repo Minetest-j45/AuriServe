@@ -2,13 +2,13 @@ export default `
 	scalar Date
 
 	type Color {
-		h: Float
-		s: Float
-		v: Float
+		h: Float!
+		s: Float!
+		v: Float!
 	}
 
 	type Vec2 {
-		x: Float
-		y: Float
+		x: Float!
+		y: Float!
 	}
 `;

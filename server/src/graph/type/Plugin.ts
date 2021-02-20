@@ -7,8 +7,8 @@ export default `
 		enabled: Boolean!
 
 		name: String!
-		description: String
-		author: String
+		description: String!
+		author: String!
 		coverPath: String
 	}
 `;

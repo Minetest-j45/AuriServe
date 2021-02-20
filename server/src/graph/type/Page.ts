@@ -8,7 +8,7 @@ export default `
 		lastModifier: User
 
 		name: String!
-		description: String
+		description: String!
 		layout: Layout
 	}
 `;

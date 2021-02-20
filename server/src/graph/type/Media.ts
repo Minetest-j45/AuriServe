@@ -8,12 +8,12 @@ export default `
 		lastModifier: User
 
 		name: String!
-		description: String
+		description: String!
 
-		bytes: Int
-		extension: String
-		path: String
-		url: String
+		bytes: Int!
+		extension: String!
+		path: String!
+		url: String!
 		size: Vec2
 	}
 `;
