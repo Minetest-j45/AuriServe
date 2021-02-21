@@ -1,3 +1,3 @@
-[submodule "admin"]
+[submodule "interface"]
 	path = interface
 	url = https://github.com/AuriServe/Interface
