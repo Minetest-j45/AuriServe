@@ -2,6 +2,8 @@ import bcrypt from 'bcryptjs';
 import { Long } from 'mongodb';
 import Mongoose from 'mongoose';
 
+import { snowflake } from '../Database';
+
 
 /**
  * A user with access to the administrator interface.
@@ -19,13 +21,13 @@ export interface IUser extends Mongoose.Document {
 }
 
 const UserSchema = new Mongoose.Schema<IUser>({
-	_id: { type: {}, required: true },
+	_id: { type: {}, default: snowflake },
 
 	username: { type: String, required: true },
 	passwordHash: { type: String, required: true },
 	emails: { type: [String], required: true },
 	role: { type: [String], required: true }
-}, { id: false });
+});
 
 
 /**

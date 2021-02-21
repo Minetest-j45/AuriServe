@@ -3,22 +3,23 @@ import Express from 'express';
 import { UploadedFile } from 'express-fileupload';
 
 import Router from './Router';
-import DBView from '../DBView';
-import ThemeParser from '../ThemeParser';
-import { MediaStatus } from '../Database';
+import * as Auth from '../data/Auth';
+import Properties from '../data/model/Properties';
+import Media from '../data/Media';
+import Themes from '../data/Themes';
+import Plugins from '../data/Plugins';
 import PagesManager from '../PagesManager';
-import PluginParser from '../PluginParser';
 import AuthRoute, { delay } from './AuthRoute';
 
 import { sanitizeIdentifier, SiteData } from 'auriserve-api';
 
 export default class AdminRouter extends Router {
-	constructor(private dataPath: string, private db: DBView, private app: Express.Application,
-		private themes: ThemeParser, private plugins: PluginParser, private pages: PagesManager,
+	constructor(private dataPath: string, private app: Express.Application,
+		private themes: Themes, private plugins: Plugins, _media: Media, private pages: PagesManager,
 		private getSiteData: (specifier: string | undefined) => Promise<Partial<SiteData>>) { super(); }
 
 	init() {
-		const { rateLimit, authRoute } = AuthRoute({ db: this.db });
+		const { rateLimit, authRoute } = AuthRoute();
 
 
 		/**
@@ -39,7 +40,7 @@ export default class AdminRouter extends Router {
 				if (typeof user != 'string' || typeof pass != 'string')
 					throw 'Request is missing required parameters.';
 				
-				res.send(await this.db.getAuthToken(user, pass));
+				res.send(await Auth.getToken(user, pass));
 			}
 			catch (e) {
 				await delay(1000, start);
@@ -78,8 +79,16 @@ export default class AdminRouter extends Router {
 				typeof req.body.favicon !== 'string')
 				
 				throw 'Request is missing required data.';
-			
-			await this.db.setInfo(req.body);
+
+			const properties = (await Properties.findOne({}))!;
+			properties.info.name = req.body.sitename;
+			properties.info.description = req.body.description;
+			properties.info.domain = req.body.domain;
+			await properties.save();
+			// properties.info.favicon = req.body.favicon;
+				
+			// TODO: Info setting.
+			// await this.db.setInfo(req.body);
 			res.send(JSON.stringify(await this.getSiteData('info')));
 		}));
 
@@ -95,7 +104,7 @@ export default class AdminRouter extends Router {
 		 */
 
 		this.router.post('/media/upload', authRoute, Router.safeRoute(async (req, res) => {
-			const user = await this.db.authUser(req);
+			// const user = await Auth.testToken(req.cookies.tkn);
 
 			const file: UploadedFile = req.files?.file as UploadedFile;
 			if (!file) throw 'Request is missing a file.';
@@ -106,9 +115,11 @@ export default class AdminRouter extends Router {
 			if (typeof(name) != 'string' || typeof(identifier) != 'string')
 				throw 'Request is missing required data.';
 
-			let status = await this.db.acceptMedia(user, file, name, identifier);
-			if (status !== MediaStatus.OK) res.status(409).send(status.toString());
-			else res.status(202).send(status.toString());
+			// TODO: Reimplement this
+			// let status = await this.db.acceptMedia(user, file, name, identifier);
+			// if (status !== MediaStatus.OK) res.status(409).send(status.toString());
+			// else res.status(202).send(status.toString());
+			res.send(400);
 		}));
 
 
@@ -122,7 +133,7 @@ export default class AdminRouter extends Router {
 		 */
 
 		this.router.post('/media/replace', authRoute, Router.safeRoute(async (req, res) => {
-			const user = await this.db.authUser(req);
+			// const user = await Auth.testToken(req.cookies.tkn);
 
 			const file: UploadedFile = req.files?.file as UploadedFile;
 			if (!file) throw 'Request is missing a file.';
@@ -132,9 +143,11 @@ export default class AdminRouter extends Router {
 			if (typeof(replace) !== 'string')
 				throw 'Request is missing required data.';
 
-			let status = await this.db.replaceMedia(user, file, replace);
-			if (status !== MediaStatus.OK) res.status(409).send(status.toString());
-			else res.status(202).send(status.toString());
+			// TODO: Reimplement
+			// let status = await this.media.addMedia(user, file, undefined, undefined, replace);
+			// if (status !== MediaStatus.OK) res.status(409).send(status.toString());
+			// else res.status(202).send(status.toString());
+			res.sendStatus(400);
 		}));
 
 
@@ -146,9 +159,9 @@ export default class AdminRouter extends Router {
 		 * @returns {403} An error.
 		 */
 
-		this.router.post('/media/delete', authRoute, Router.safeRoute(async (req, res) => {
-			// TODO: Sanitize the fuck out of this
-			await this.db.deleteMedia(req.body);
+		this.router.post('/media/delete', authRoute, Router.safeRoute(async (_, res) => {
+			// TODO: Reimplement this
+			// await this.media.removeMedia(req.body);
 			res.send(JSON.stringify(await this.getSiteData('media')));
 		}));
 
@@ -174,9 +187,9 @@ export default class AdminRouter extends Router {
 
 		this.router.post('/themes/layout', authRoute, Router.safeRoute(async (req, res) => {
 			if (typeof req.body.layout !== 'string') throw 'Request is missing required data.';
-			const layouts = await this.themes.getLayouts();
-			if (!layouts[req.body.layout]) throw 'Layout doesn\'t exist';
-			res.send(layouts[req.body.layout]);
+			const layouts = await this.themes.listLayouts();
+			if (!layouts.has(req.body.layout)) throw 'Layout doesn\'t exist';
+			res.send(layouts.get(req.body.layout));
 		}));
 
 
@@ -193,9 +206,12 @@ export default class AdminRouter extends Router {
 		}));
 
 		this.router.post('/themes/update', authRoute, Router.safeRoute(async (req, res) => {
-			if (!Array.isArray(req.body)) throw 'Request is missing required data.';
-			
-			await this.themes.setEnabled(req.body);
+			if (typeof req.body !== 'object' || !Array.isArray(req.body.enabled) || !Array.isArray(req.body.disabled))
+				throw 'Request is missing required data.';
+
+			req.body.enabled.map((p: string) => this.themes.enable(p));
+			req.body.disabled.map((p: string) => this.themes.disable(p));
+
 			res.send(JSON.stringify(await this.getSiteData('info')));
 		}));
 
@@ -212,9 +228,12 @@ export default class AdminRouter extends Router {
 		});
 
 		this.router.post('/plugins/update', authRoute, Router.safeRoute(async (req, res) => {
-			if (!Array.isArray(req.body)) throw 'Request is missing required data.';
-			
-			await this.plugins.setEnabled(req.body);
+			if (typeof req.body !== 'object' || !Array.isArray(req.body.enabled) || !Array.isArray(req.body.disabled))
+				throw 'Request is missing required data.';
+
+			req.body.enabled.map((p: string) => this.plugins.enable(p));
+			req.body.disabled.map((p: string) => this.plugins.disable(p));
+
 			res.send(JSON.stringify(await this.getSiteData('info')));
 		}));
 
@@ -238,35 +257,35 @@ export default class AdminRouter extends Router {
 			res.sendStatus(200);
 		}));
 
-		/*
-		 * Role Routes
-		 */
+		// /*
+		//  * Role Routes
+		//  */
 
-		this.router.post('/roles/update', authRoute, Router.safeRoute(async (req, res) => {
-			if (typeof req.body !== 'object')
-				throw 'Request is missing required data.';
+		// this.router.post('/roles/update', authRoute, Router.safeRoute(async (req, res) => {
+		// 	if (typeof req.body !== 'object')
+		// 		throw 'Request is missing required data.';
 
-			await this.db.updateRoles(req.body);
-			res.send(JSON.stringify(await this.getSiteData('roles')));
-		}));
+		// 	await this.db.updateRoles(req.body);
+		// 	res.send(JSON.stringify(await this.getSiteData('roles')));
+		// }));
 
-		/*
-		 * User Routes
-		 */
+		// /*
+		//  * User Routes
+		//  */
 
-		this.router.post('/users/role/add', authRoute, Router.safeRoute(async (req, res) => {
-			if (typeof req.body !== 'object' || typeof req.body.user !== 'string' || typeof req.body.role !== 'string')
-				throw 'Request is missing required data.';
-			await this.db.userAddRoles(req.body.user, req.body.role.split(','));
-			res.send(JSON.stringify(await this.getSiteData('users')));
-		}));
+		// this.router.post('/users/role/add', authRoute, Router.safeRoute(async (req, res) => {
+		// 	if (typeof req.body !== 'object' || typeof req.body.user !== 'string' || typeof req.body.role !== 'string')
+		// 		throw 'Request is missing required data.';
+		// 	await this.db.userAddRoles(req.body.user, req.body.role.split(','));
+		// 	res.send(JSON.stringify(await this.getSiteData('users')));
+		// }));
 
-		this.router.post('/users/role/remove', authRoute, Router.safeRoute(async (req, res) => {
-			if (typeof req.body !== 'object' || typeof req.body.user !== 'string' || typeof req.body.role !== 'string')
-				throw 'Request is missing required data.';
-			await this.db.userRemoveRoles(req.body.user, req.body.role.split(','));
-			res.send(JSON.stringify(await this.getSiteData('users')));
-		}));
+		// this.router.post('/users/role/remove', authRoute, Router.safeRoute(async (req, res) => {
+		// 	if (typeof req.body !== 'object' || typeof req.body.user !== 'string' || typeof req.body.role !== 'string')
+		// 		throw 'Request is missing required data.';
+		// 	await this.db.userRemoveRoles(req.body.user, req.body.role.split(','));
+		// 	res.send(JSON.stringify(await this.getSiteData('users')));
+		// }));
 
 		/*
 		 * Basic App Content
@@ -278,7 +297,7 @@ export default class AdminRouter extends Router {
 		this.router.get('/client.js', async (req, res) => {
 			try {
 				if (!req.cookies.tkn) throw 'No token.';
-				if (!await this.db.authUser(req)) throw 'Not auth';
+				if (!await Auth.testToken(req.cookies.tkn)) throw 'Not auth';
 				res.sendFile(path.join(path.dirname(path.dirname(path.dirname(__dirname))), 'admin', 'build', 'client.js'));
 			}
 			catch (e) {
@@ -288,11 +307,11 @@ export default class AdminRouter extends Router {
 		});
 
 		this.router.get('(/*)?', async (_, res) => res.render(path.join(path.dirname(__dirname), '../views/admin'), {
-			themes: this.themes.getEnabledThemes(),
-			scripts: this.plugins.getEnabledPlugins().filter(p => p.conf.sources.editor?.script)
-				.map(p => p.conf.identifier + '/' + p.conf.sources.editor!.script),
-			styles: this.plugins.getEnabledPlugins().filter(p => p.conf.sources.editor?.style)
-				.map(p => p.conf.identifier + '/' + p.conf.sources.editor!.style)
+			themes: this.themes.listEnabled(),
+			scripts: this.plugins.listEnabled().filter(p => p.config.sources.editor?.script)
+				.map(p => p.config.identifier + '/' + p.config.sources.editor!.script),
+			styles: this.plugins.listEnabled().filter(p => p.config.sources.editor?.style)
+				.map(p => p.config.identifier + '/' + p.config.sources.editor!.style)
 		}));
 
 		this.app.use('/admin', this.router);

@@ -3,40 +3,41 @@ import HTTP from 'http';
 import HTTPS from 'https';
 import log4js from 'log4js';
 import Express from 'express';
+import { promises as fs } from 'fs';
 import bodyParser from 'body-parser';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import fileUpload from 'express-fileupload';
-import { promises as fs, constants as fsc } from 'fs';
 import { SiteData, SiteDataSpecifier, resolvePath } from 'auriserve-api';
 
-import DBView from './DBView';
-import Database from './Database';
+import * as Auth from './data/Auth';
+import Media from './data/Media';
 import Elements from './Elements';
-import PluginParser from './PluginParser';
+import Plugins from './data/Plugins';
 import PagesManager from './PagesManager';
+
+import Properties from './data/model/Properties';
 
 // import * as Auth from './data/Auth';
 import { init as initDatabase } from './data/Database';
 
 import AdminRouter from './router/AdminRouter';
 import PagesRouter from './router/PagesRouter';
-import SuperUserPrompt from './SuperUserPrompt';
+// import SuperUserPrompt from './SuperUserPrompt';
 
-import { Config } from './interface/Config';
+import { Config } from './ServerConfig';
 
 const logger = log4js.getLogger();
 
 export default class Server {
-	adminRouter: AdminRouter;
-	pagesRouter: PagesRouter;
+	private app = Express();
+	private adminRouter: AdminRouter;
+	private pagesRouter: PagesRouter;
 
-	app = Express();
-	db = new Database(this.dataPath);
-
-	elements: Elements;
-	pages: PagesManager;
-	plugins: PluginParser;
+	private elements: Elements;
+	private pages: PagesManager;
+	private plugins: Plugins;
+	private media: Media;
 
 	constructor(public readonly conf: Config, public readonly dataPath: string) {
 		this.app.use(compression());
@@ -47,29 +48,22 @@ export default class Server {
 		this.app.set('view engine', 'pug');
 		this.app.set('views', path.join(path.dirname(__dirname), 'views'));
 
-		const view = this.db as any as DBView;
-
 		this.elements = new Elements();
-		this.plugins = new PluginParser(this.dataPath, view, this.elements);
-		this.pages = new PagesManager(this.plugins, this.elements, view, this.getSiteData, this.dataPath);
+		this.media = new Media(this.dataPath);
+		this.plugins = new Plugins(this.dataPath, this.elements);
+		this.pages = new PagesManager(this.plugins, this.elements, this.getSiteData, this.dataPath);
 
-		this.adminRouter = new AdminRouter(this.dataPath, this.db as any as DBView,
-			this.app, this.pages.themes, this.plugins, this.pages, this.getSiteData);
+		this.adminRouter = new AdminRouter(this.dataPath, this.app,
+			this.pages.themes, this.plugins, this.media, this.pages, this.getSiteData);
 
 		this.pagesRouter = new PagesRouter(this.dataPath, this.app, this.pages, this.plugins);
 
 		this.init().then(async () => {
 			await this.pages.init();
 			await this.plugins.init();
-			
-			// Create media folder
-			try { await fs.access(path.join(this.dataPath, 'media'), fsc.R_OK); }
-			catch (e) { fs.mkdir(path.join(this.dataPath, 'media')); }
-			try { await fs.access(path.join(this.dataPath, 'media', '.cache'), fsc.R_OK); }
-			catch (e) { fs.mkdir(path.join(this.dataPath, 'media', '.cache')); }
 
-			if (this.conf.super)
-				new SuperUserPrompt(this.db);
+			// if (this.conf.super)
+			//	 new SuperUserPrompt(this.db);
 
 			await this.adminRouter.init();
 			await this.pagesRouter.init();
@@ -96,15 +90,52 @@ export default class Server {
 	 */
 
 	getSiteData = async (specifier: string | undefined): Promise<Partial<SiteData>> => {
-		let data = await this.db.getSiteData(specifier);
-
 		const specifiers = (specifier ? specifier.split('&') as SiteDataSpecifier[] : []);
+
+		let data: Partial<SiteData> = {};
+
+		if (specifiers.includes('info')) {
+			const d = (await Properties.findOne({}))!;
+			data.domain = d.info.domain;
+			data.sitename = d.info.name;
+			data.favicon = d.info.favicon as any;
+			data.description = d.info.description;
+			data.mediaMax = d.usage.media_allocated;
+			data.mediaUsed = d.usage.media_used;
+			data.enabledThemes = this.pages.themes.listEnabled().map(t => t.config.identifier);
+			data.enabledPlugins = this.plugins.listEnabled().map(t => t.config.identifier);
+		}
+
+		if (specifiers.includes('users')) {
+			data.users = (await Auth.listUsers()).map(u => ({
+				identifier: u.username,
+				name: u.username,
+				roles: u.roles
+			}));
+		}
+
+		// @ts-ignore
+		if (specifiers.includes('media')) data.media = await this.media.listMedia();
+
+		// if (specifiers.includes('roles')) data.roles =
+		// 	await (await this.db!.collection('roles').find({})).toArray();
+
+
+		// @ts-ignore
+		if (specifiers.includes('themes')) data.themes = this.pages.themes.listAll().map(t => t.config);
+		// @ts-ignore
+		if (specifiers.includes('plugins')) data.plugins = this.plugins.listAll().map(t => t.config);
+
+		// if (specifiers.includes('users')) {
+		// 	let users = await (await this.db!.collection('accounts').find({})).toArray();
+		// 	users.forEach((u) => delete u.pass);
+		// 	data.users = users;
+		// }
 
 		if (specifiers.includes('elements')) {
 			let confMap: {[key: string]: any} = {};
 			this.elements.getAllElements().forEach((elem, key) => confMap[key] = elem.config);
 			data.elementDefs = confMap;
-
 		}
 
 		if (specifiers.includes('pages'))
@@ -168,21 +199,13 @@ export default class Server {
 			process.exit(1);
 		}
 
-		await this.db.init(this.conf.db.url, this.conf.db.name);
 		await initDatabase(this.conf.db.url, this.conf.db.name);
+		await Promise.all((await Auth.listUsers()).map(u => Auth.removeUser(u._id)));
+		await Auth.addUser('Auri', 'password');
 
-		// await Promise.all((await Auth.listUsers()).map(u => Auth.removeUser(u.id)));
-		// const user = await Auth.addUser('auri', 'fuckass');
-		// console.log(await Auth.getToken('auri', 'fuckass'));
-		// console.log(await Auth.getToken('auri', 'fuckass'));
-
-		// console.log(await Auth.removeTokensForUser(user.id));
-		// console.log(await Auth.removeTokensForUser(user.id));
-
-		// console.log(await Auth.getToken('auri', 'fuckass'));
-
-		// console.log(users.map(u => u.id));
-		// console.log(await a.listUsers());
+		process.on('SIGINT',  () => this.shutdown());
+		process.on('SIGQUIT', () => this.shutdown());
+		process.on('SIGTERM', () => this.shutdown());
 
 		logger.info('Initialized AuriServe.');
 	}
@@ -205,5 +228,19 @@ export default class Server {
 		const loc = 'https://' + host.replace((this.conf.port || 80).toString(), (this.conf.https!.port || 443).toString()) + req.url;
 		res.writeHead(301, { Location: loc });
 		res.end();
+	}
+
+
+	/**
+	 * Shuts down the server, saving required data.
+	 */
+
+	private async shutdown() {
+		logger.info('Shutting down AuriServe.');
+		await Promise.all([
+			this.plugins.cleanup(),
+			this.pages.themes.cleanup()
+		]);
+		process.exit();
 	}
 }

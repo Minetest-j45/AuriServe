@@ -1,7 +1,7 @@
 import * as path from 'path';
 import { Long } from 'mongodb';
-import { promises as fs } from 'fs';
 import { UploadedFile } from 'express-fileupload';
+import { promises as fs, constants as fsc } from 'fs';
 
 import { snowflake } from './Database';
 import MediaModel, { IMedia } from './model/Media';
@@ -12,7 +12,12 @@ import MediaModel, { IMedia } from './model/Media';
  */
 
 export default class Media {
-	constructor(private dataPath: string) {};
+	constructor(private dataPath: string) {
+		// Create media folder
+		fs.access(path.join(this.dataPath, 'media'), fsc.R_OK).catch(_ => fs.mkdir(path.join(this.dataPath, 'media')));
+		// Create media cache folder
+		fs.access(path.join(this.dataPath, 'media', '.cache'), fsc.R_OK).catch(_ => fs.mkdir(path.join(this.dataPath, 'media', '.cache')));
+	};
 
 
 	/**
@@ -24,6 +29,17 @@ export default class Media {
 
 	async getMedia(id: Long) {
 		return MediaModel.findById(id);
+	}
+
+
+	/**
+	 * Lists all media documents.
+	 *
+	 * @returns an array of media documents.
+	 */
+
+	async listMedia() {
+		return MediaModel.find({});
 	}
 
 

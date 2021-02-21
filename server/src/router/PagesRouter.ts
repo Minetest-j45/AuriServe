@@ -6,16 +6,16 @@ import Express from 'express';
 import resizeImg from 'resize-img';
 
 import Router from './Router';
-import PluginParser from '../PluginParser';
+import Plugins from '../data/Plugins';
 import PagesManager from '../PagesManager';
-import { OUT_DIR as THEME_DIR } from '../ThemeParser';
+import { OUT_DIR as THEME_DIR } from '../data/Themes';
 
 const logger = log4js.getLogger();
 
 export default class PagesRouter extends Router {
 
 	constructor(private dataPath: string, private app: Express.Application,
-		private pages: PagesManager, private plugins: PluginParser) { super(); }
+		private pages: PagesManager, private plugins: Plugins) { super(); }
 
 	init() {
 		this.router.get('/media/:asset', async (req, res, next) => {
@@ -49,10 +49,10 @@ export default class PagesRouter extends Router {
 
 		this.router.use('/plugin/:identifier/:file', async (req, res, next) => {
 			try {
-				let plugins = this.plugins.getEnabledPlugins().filter(p => p.conf.identifier === req.params.identifier);
+				let plugins = this.plugins.listEnabled().filter(p => p.config.identifier === req.params.identifier);
 				if (plugins.length === 0) throw `There is no loaded plugin with identifier ${req.params.identifier}.`;
 				Express.static(path.join(this.dataPath, 'plugins', req.params.identifier,
-					plugins[0].conf.sourceRoot, req.params.file))(req, res, next);
+					plugins[0].config.sourceRoot, req.params.file))(req, res, next);
 			}
 			catch (e) {
 				res.status(403).send(e);
@@ -60,12 +60,12 @@ export default class PagesRouter extends Router {
 		});
 
 		this.router.get('/plugin/styles/:identifier.css', (req, res) => {
-			const plugins = this.plugins.getEnabledPlugins().filter(p => p.conf.identifier === req.params.identifier);
+			const plugins = this.plugins.listEnabled().filter(p => p.config.identifier === req.params.identifier);
 			if (plugins.length !== 1) { res.sendStatus(404); return; }
 			const plugin = plugins[0];
 
-			if (!plugin.conf.sources.client?.style) { res.sendStatus(404); return; }
-			res.sendFile(path.join(this.dataPath, 'plugins', plugin.conf.identifier, plugin.conf.sources.client.style));
+			if (!plugin.config.sources.client?.style) { res.sendStatus(404); return; }
+			res.sendFile(path.join(this.dataPath, 'plugins', plugin.config.identifier, plugin.config.sources.client.style));
 		});
 
 		this.router.get('*', (req, res, next) => {

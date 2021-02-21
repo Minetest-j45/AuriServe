@@ -1,25 +1,22 @@
+import Mongoose from 'mongoose';
 import * as Express from 'express';
 import { RateLimiterMongo } from 'rate-limiter-flexible';
 
-import DBView from '../DBView';
+import * as Auth from '../data/Auth';
 
 export interface AuthRouteConfig {
-	db: DBView;
-
 	attempts?: number;
 	duration?: number;
 }
 
 export const delay = (d: number, s?: number) => new Promise(r => setTimeout(r, Math.max(d - (s ? (Date.now() - s) : 0), 0)));
 
-export default function AuthRoute(config: AuthRouteConfig): {
+export default function AuthRoute(config: AuthRouteConfig = {}): {
 	rateLimit: (req: Express.Request, res: Express.Response, next: Express.NextFunction) => void;
 	authRoute: (req: Express.Request, res: Express.Response, next: Express.NextFunction) => void; } {
 
-	const [ storeClient, dbName ] = config.db.getClientDetails();
-
 	const limiter = new RateLimiterMongo({
-		storeClient, dbName,
+		storeClient: Mongoose.connection,
 		points: config.attempts ?? 100,
 		duration: config.duration ?? 10
 	});
@@ -35,7 +32,7 @@ export default function AuthRoute(config: AuthRouteConfig): {
 
 	const authRoute = async (req: Express.Request, res: Express.Response, next: Express.NextFunction) => {
 		limiter.consume(req.ip, 1)
-			.then(() => config.db.authUser(req)).then(() => next())
+			.then(() => Auth.testToken(req.cookies.tkn)).then(() => next())
 			.catch(() => limiter.consume(req.ip, 9)
 				.then(() => res.status(403).send('You must be logged in to use this route.'))
 				.catch(() => res.status(403).send('Too many requests. Please wait before trying again.')));

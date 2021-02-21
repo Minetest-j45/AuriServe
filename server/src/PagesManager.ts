@@ -7,10 +7,9 @@ import renderToString from 'preact-render-to-string';
 import { promises as fs, constants as fsc } from 'fs';
 import { Page, SiteData, Media } from 'auriserve-api';
 
-import DBView from './DBView';
 import Elements from './Elements';
-import ThemeParser from './ThemeParser';
-import PluginParser from './PluginParser';
+import Themes from './data/Themes';
+import Plugins from './data/Plugins';
 import UndefinedElement from './UndefinedElement';
 
 const logger = log4js.getLogger();
@@ -22,7 +21,7 @@ type ExposedMap = { [tree: string]: ExposedTree };
 
 export default class PagesManager {
 	root: string;
-	themes: ThemeParser;
+	themes: Themes;
 
 
 	/**
@@ -30,18 +29,18 @@ export default class PagesManager {
 	 * Can create an HTML representation of a page,
 	 * or return an expanded JSON representation with includes included.
 	 *
-	 * @param {PluginParser} plugins - The plugin parser.
+	 * @param {Plugins} plugins - The plugin parser.
 	 * @param {DBView} db - The database.
 	 * @param {Elements} elements - The registered elements.
 	 * @param {GetSiteData} getSiteData - The getSiteData function.
 	 * @param {string} dataPath - The root data path for AuriServe.
 	 */
 
-	constructor(private plugins: PluginParser, private elements: Elements, private db: DBView,
+	constructor(private plugins: Plugins, private elements: Elements,
 		private getSiteData: GetSiteData, private dataPath: string) {
 		
 		this.root = path.join(this.dataPath, 'pages');
-		this.themes = new ThemeParser(this.dataPath, this.db, this.getSiteData);
+		this.themes = new Themes(this.dataPath);
 	}
 
 
@@ -96,10 +95,10 @@ export default class PagesManager {
 			await Promise.all(Object.keys(json.elements).map(async (key) =>
 				rendered[key] = await this.renderTree(page, json.elements[key])));
 
-			const layouts = await this.themes.getLayouts();
-			const layout = layouts[json.layout] ?? layouts.default;
+			const layouts = await this.themes.listLayouts();
+			const layout = layouts.get(json.layout) ?? layouts.get('default');
 
-			if (!layout) throw `Layout '${layout}' doesn't exist.`;
+			if (!layout) throw `Layout '${json.layout}' doesn't exist.`;
 			const { document } = (new JSDOM(layout)).window;
 
 			document.querySelectorAll('[data-include]').forEach(e => {
@@ -122,14 +121,14 @@ export default class PagesManager {
 					favicon: favicon + (faviconItem ? '.' + faviconItem.ext : ''),
 
 					// Themes
-					themes: this.themes.getEnabledThemes(),
+					themes: this.themes.listEnabled().map(t => t.config.identifier),
 					
 					// Plugins
 					plugins: {
-						styles: this.plugins.getEnabledPlugins().filter(p => p.conf.sources.client?.style)
-							.map(p => p.conf.identifier + '/' + p.conf.sources.client?.style),
-						scripts: this.plugins.getEnabledPlugins().filter(p => p.conf.sources.client?.script)
-							.map(p => p.conf.identifier + '/' + p.conf.sources.client?.script)
+						styles: this.plugins.listEnabled().filter(p => p.config.sources.client?.style)
+							.map(p => p.config.identifier + '/' + p.config.sources.client?.style),
+						scripts: this.plugins.listEnabled().filter(p => p.config.sources.client?.script)
+							.map(p => p.config.identifier + '/' + p.config.sources.client?.script)
 					},
 
 					// Actual page content

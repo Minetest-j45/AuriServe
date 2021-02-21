@@ -5,6 +5,9 @@ import sizeOf from 'image-size';
 import { UploadedFile } from 'express-fileupload';
 import { promises as fs, constants as fsc } from 'fs';
 
+import { snowflake } from '../Database';
+
+
 /**
  * A temporary authentication token for a single user.
  */
@@ -31,23 +34,23 @@ export interface IMedia extends Mongoose.Document {
 }
 
 export const MediaSchema = new Mongoose.Schema<IMedia>({
-	_id: { type: {}, required: true },
+	_id: { type: {}, default: snowflake },
 	uploader: { type: {} },
 
 	lastModified: { type: Number },
 	lastModifier: { type: {} },
 
-	name: { type: String, required: true },
-	identifier: { type: String, required: true },
-	description: { type: String, required: true },
-	bytes: { type: Number, required: true, default: 0 },
-	extension: { type: String, required: true, default: '' },
+	name: { type: String, default: '' },
+	identifier: { type: String, default: '' },
+	description: { type: String, default: '' },
+	bytes: { type: Number, default: 0 },
+	extension: { type: String, default: '' },
 
 	size: {
 		width: { type: Number },
 		height: { type: Number }
 	}
-}, { id: false });
+});
 
 
 /**

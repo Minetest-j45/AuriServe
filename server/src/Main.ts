@@ -6,7 +6,7 @@ import minimist from 'minimist';
 
 import Server from './Server';
 import { resolvePath } from 'auriserve-api';
-import { Config, mergeConfig } from './interface/Config';
+import { Config, mergeConfig } from './ServerConfig';
 
 const DEFAULT_DATA_DIR = 'site-data';
 const DEFAULT_CONF_FILENAME = 'conf.json';
