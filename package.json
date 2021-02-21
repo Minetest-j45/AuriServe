@@ -75,6 +75,7 @@
 		"express": "^4.17.1",
 		"express-fileupload": "^1.2.0",
 		"graphql": "^15.5.0",
+		"image-size": "^0.9.3",
 		"jsdom": "^16.4.0",
 		"log4js": "^6.3.0",
 		"mime": "^2.4.6",

@@ -17,7 +17,7 @@ import PluginParser from './PluginParser';
 import PagesManager from './PagesManager';
 
 // import * as Auth from './data/Auth';
-import MongooseDB from './data/Database';
+import { init as initDatabase } from './data/Database';
 
 import AdminRouter from './router/AdminRouter';
 import PagesRouter from './router/PagesRouter';
@@ -33,7 +33,6 @@ export default class Server {
 
 	app = Express();
 	db = new Database(this.dataPath);
-	mdb = new MongooseDB();
 
 	elements: Elements;
 	pages: PagesManager;
@@ -170,7 +169,7 @@ export default class Server {
 		}
 
 		await this.db.init(this.conf.db.url, this.conf.db.name);
-		await this.mdb.init(this.conf.db.url, this.conf.db.name);
+		await initDatabase(this.conf.db.url, this.conf.db.name);
 
 		// await Promise.all((await Auth.listUsers()).map(u => Auth.removeUser(u.id)));
 		// const user = await Auth.addUser('auri', 'fuckass');

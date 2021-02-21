@@ -1,7 +1,7 @@
 import crypto from 'crypto';
 import { Long } from 'mongodb';
 
-import Database from './Database';
+import { snowflake } from './Database';
 
 import User from './model/User';
 import AuthToken from './model/AuthToken';
@@ -28,11 +28,11 @@ export const getToken = async (username: string, password: string) => {
 	const user = await User.findOne({ username });
 	if (!user || !await user.passwordEquals(password)) throw 'Incorrect username or password';
 
-	return (await AuthToken.findOneAndUpdate({ user: user.id }, {
+	return (await AuthToken.findOneAndUpdate({ user: user._id }, {
 		$set: { until: Date.now() + TOKEN_TIMEOUT },
 		$setOnInsert: {
-			_id: Database.snowflake(),
-			user: user.id, token: (await crypto.randomBytes(48)).toString()
+			_id: snowflake(),
+			user: user._id, token: (await crypto.randomBytes(48)).toString()
 		}
 	}, { upsert: true, new: true }))!.token;
 };
@@ -48,7 +48,7 @@ export const getToken = async (username: string, password: string) => {
 export const purgeExpiredTokens = async () => {
 	const now = Date.now();
 	lastPurge = now;
-	const users = (await User.find({}, '_id')).map(u => u.id);
+	const users = (await User.find({}, '_id')).map(u => u._id);
 	await AuthToken.deleteMany({ $or: [ { until: { $lt: now } }, { _id: { $nin: users } } ] });
 };
 
@@ -98,7 +98,7 @@ export const getUser = async (id: Long) => User.findById(id);
 
 export const addUser = async (username: string, password: string) => {
 	return User.create({
-		_id: Database.snowflake(),
+		_id: snowflake(),
 
 		username,
 		password,
@@ -117,7 +117,7 @@ export const addUser = async (username: string, password: string) => {
 
 export const removeUser = async (id: Long) => {
 	removeTokensForUser(id);
-	return User.findOneAndDelete({ _id: id });
+	return User.findByIdAndDelete(id);
 };
 
 
