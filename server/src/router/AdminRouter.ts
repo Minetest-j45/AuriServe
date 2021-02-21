@@ -291,14 +291,13 @@ export default class AdminRouter extends Router {
 		 * Basic App Content
 		 */
 
-		this.router.use('/script', Express.static(path.join(path.dirname(__dirname), '../../admin/build')));
-		this.router.use('/asset', Express.static(path.join(path.dirname(__dirname), '../../admin/res')));
+		this.router.use('/script', Express.static(path.join(path.dirname(__dirname), '../../interface/build')));
+		this.router.use('/asset', Express.static(path.join(path.dirname(__dirname), '../../interface/res')));
 
 		this.router.get('/client.js', async (req, res) => {
 			try {
-				if (!req.cookies.tkn) throw 'No token.';
 				if (!await Auth.testToken(req.cookies.tkn)) throw 'Not auth';
-				res.sendFile(path.join(path.dirname(path.dirname(path.dirname(__dirname))), 'admin', 'build', 'client.js'));
+				res.sendFile(path.join(path.dirname(path.dirname(path.dirname(__dirname))), 'interface', 'build', 'client.js'));
 			}
 			catch (e) {
 				if (typeof e !== 'string') e = 'Internal server error.';

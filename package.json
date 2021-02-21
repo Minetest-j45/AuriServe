@@ -1,16 +1,16 @@
 {
 	"name": "auriserve",
-	"version": "1.0.0",
+	"version": "0.0.1",
 	"description": "",
 	"main": "server/src/Main.js",
 	"bin": "server/src/Main.js",
 	"scripts": {
-		"dev": "npm run dev-admin & npm run dev-server",
-		"dev-admin": "cd admin; npm run dev",
+		"dev": "npm run dev-interface & npm run dev-server",
+		"dev-interface": "cd interface; npm run dev",
 		"dev-server": "nodemon --config server/nodemon.json",
-		"dev-clean": "rm -r admin; rm -r server; rm -rf node_modules",
-		"build": "npm run build-admin && npm run build-server",
-		"build-admin": "cd admin; npm run build",
+		"dev-clean": "rm -r interface; rm -r server; rm -rf node_modules",
+		"build": "npm run build-interface && npm run build-server",
+		"build-interface": "cd interface; npm run build",
 		"build-server": "npm run lint-server && tsc --project server/tsconfig.json && pkg package.json --options expose-gc --out-path build && npm run build-clean",
 		"build-clean": "find server/src -name '*.js' -type f -delete",
 		"lint-server": "cd server; eslint -c .eslintrc.js 'src/**/*.ts'"
@@ -32,8 +32,8 @@
 	"pkg": {
 		"assets": [
 			"server/views/*",
-			"admin/res/**/*",
-			"admin/build/*"
+			"interface/res/**/*",
+			"interface/build/*"
 		]
 	},
 	"homepage": "https://github.com/Aurailus/AuriServe#readme",
