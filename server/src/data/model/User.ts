@@ -1,3 +1,4 @@
+import bcrypt from 'bcryptjs';
 import { Long } from 'mongodb';
 import Mongoose from 'mongoose';
 
@@ -8,6 +9,8 @@ export interface IUser extends Mongoose.Document {
 	passwordHash: string;
 	emails: string[];
 	roles: string[];
+
+	passwordEquals(password: string): boolean;
 }
 
 export const UserSchema = new Mongoose.Schema<IUser>({
@@ -19,6 +22,16 @@ export const UserSchema = new Mongoose.Schema<IUser>({
 	role: { type: [String], required: true }
 }, { id: false });
 
-UserSchema.virtual('id').get(function(this: IUser) { return this._id; });
+UserSchema.virtual('id').get(function(this: IUser) {
+	return this._id;
+});
+
+UserSchema.virtual('password').set(function(this: IUser, password: string) {
+	this.passwordHash = bcrypt.hashSync(password, 10);
+});
+
+UserSchema.method('passwordEquals', function(this: IUser, password: string) {
+	return bcrypt.compare(password, this.passwordHash);
+});
 
 export default Mongoose.model('User', UserSchema);

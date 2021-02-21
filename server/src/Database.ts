@@ -121,7 +121,7 @@ export default class Database {
 
 	async getThemes() {
 		const collection = this.db!.collection('themes');
-		return await (await collection.find({})).toArray();
+		return collection.find({}).toArray();
 	}
 
 

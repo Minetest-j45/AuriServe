@@ -13,19 +13,17 @@ import { SiteData, SiteDataSpecifier, resolvePath } from 'auriserve-api';
 import DBView from './DBView';
 import Database from './Database';
 import Elements from './Elements';
-import MongooseDB from './data/Database';
 import PluginParser from './PluginParser';
 import PagesManager from './PagesManager';
-import * as Auth from './data/Auth';
+
+// import * as Auth from './data/Auth';
+import MongooseDB from './data/Database';
 
 import AdminRouter from './router/AdminRouter';
 import PagesRouter from './router/PagesRouter';
 import SuperUserPrompt from './SuperUserPrompt';
 
 import { Config } from './interface/Config';
-
-// import { graphql } from 'graphql';
-// import { Schema, Resolver } from './graph';
 
 const logger = log4js.getLogger();
 
@@ -176,8 +174,16 @@ export default class Server {
 
 		// await Promise.all((await Auth.listUsers()).map(u => Auth.removeUser(u.id)));
 		// const user = await Auth.addUser('auri', 'fuckass');
+		// console.log(await Auth.getToken('auri', 'fuckass'));
+		// console.log(await Auth.getToken('auri', 'fuckass'));
 
+		// console.log(await Auth.removeTokensForUser(user.id));
+		// console.log(await Auth.removeTokensForUser(user.id));
 
+		// console.log(await Auth.getToken('auri', 'fuckass'));
+
+		// console.log(users.map(u => u.id));
+		// console.log(await a.listUsers());
 
 		logger.info('Initialized AuriServe.');
 	}
