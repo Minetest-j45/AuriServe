@@ -82,7 +82,7 @@
 		"minimist": "^1.2.5",
 		"mongoose": "^5.11.17",
 		"nodejs-snowflake": "^1.5.1",
-		"preact": "^10.5.7",
+		"preact": "^10.5.12",
 		"preact-render-to-string": "^5.1.12",
 		"prompt": "^1.0.0",
 		"pug": "^3.0.0",
